@@ -1,23 +1,32 @@
 .. AAltsys Technology Development documentation master file, created by
    sphinx-quickstart on Sat Feb 23 09:36:40 2013.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
 
 .. _index:
 
-AAltsys Technology Development Documentation
+AAltsys Technology Web Development Guide
 ============================================
 
-:ref:<introduction>
-#. Section: :ref:`<collaborate:index>`.
-#. Section: :ref:`<cloud:index>`.
-#. Section: :ref:`<ruby:index>`.
-#. Section: :ref:`<python:index>`.
-#. Section: :ref:`<html-css:index>`.
-#. Section: :ref:`<javascript:index>`.
-#. Section: :ref:`<bash:index>`.
-#. Section: :ref:`<servers:index>`.
-#. Section: :ref:`<resources:index>`.
+AAltsys Technology throws this guide into the face of the onslaught of videos, 
+tutorials, and guides for all types of software development. Why? Every other 
+developer guide is intended to convey a specific topic. On the other hand, 
+AAltsys Technology seeks to introduce software development as a process which 
+uses many tools at once in a methodical way.
+
+"A poor workman blames his tools," it is said. The good workman, on the other 
+hand, respects his tools and uses them appropriately in combination to complete 
+his work. The Internet does not need separate guides for using a screwdriver 
+and a hammer. Likewise, a software development guide needs to combine a range 
+of technologies and methodologies. 
+
+#. Section: :ref:`collaborate:index`.
+#. Section: :ref:`cloud:index`.
+#. Section: :ref:`ruby:index`.
+#. Section: :ref:`python:index`.
+#. Section: :ref:`html-css:index`.
+#. Section: :ref:`javascript:index`.
+#. Section: :ref:`bash:index`.
+#. Section: :ref:`servers:index`.
+#. Section: :ref:`resources:index`.
 
 ----------
 
