@@ -161,7 +161,7 @@ Each journal document must be written as a plain text document in the editor,
 using proper ReStructuredText markup with added Sphinx features. Refer to the  
 following resources to learn about document syntax:
 
-+  Davenport's :ref:`guide to basic ReStructuredText syntax <rst-syntax>`.
++  Davenport's :ref:`resources:rst-syntax`.
 
 +  `The official Sphinx-doc documentation site <http://sphinx-doc.org/index.html>`_.
 
