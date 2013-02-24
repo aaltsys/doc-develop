@@ -1,0 +1,161 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Using Heroku &mdash; Cloud Development 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Cloud Development 1.0 documentation" href="index.html" />
+    <link rel="prev" title="Documentation Sample Project" href="08_use-sphinxdoc.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="08_use-sphinxdoc.html" title="Documentation Sample Project"
+             accesskey="P">previous</a></li>
+        <li><a href="index.html">Cloud Development 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Using Heroku</a><ul>
+<li><a class="reference internal" href="#install-heroku-tools">Install Heroku Tools</a></li>
+<li><a class="reference internal" href="#add-heroku-server-to-project">Add Heroku Server to Project</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="08_use-sphinxdoc.html"
+                        title="previous chapter">Documentation Sample Project</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/09_use-heroku.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="using-heroku">
+<span id="use-heroku"></span><h1>Using Heroku<a class="headerlink" href="#using-heroku" title="Permalink to this headline">¶</a></h1>
+<p>Heroku provides a free web application deployment services, integrated with
+the Cloud9 development environment through Git and GitHub. Following is a
+brief outline for configuring and deploying a project on Heroku.</p>
+<div class="section" id="install-heroku-tools">
+<h2>Install Heroku Tools<a class="headerlink" href="#install-heroku-tools" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first">Open a project in Cloud9</p>
+</li>
+<li><p class="first">In the Cloud9 Project, choose <em class="menuselection">View ‣ Console</em> from the menu</p>
+</li>
+<li><p class="first">At the console command line, type:</p>
+<div class="highlight-python"><pre>c9pm install heroku</pre>
+</div>
+</li>
+<li><p class="first">To make sure that your install was successful, and to get ready to use heroku,
+run the following command in your Terminal:</p>
+<div class="highlight-python"><pre>heroku login</pre>
+</div>
+<p>Enter your heroku username and password when prompted.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="add-heroku-server-to-project">
+<h2>Add Heroku Server to Project<a class="headerlink" href="#add-heroku-server-to-project" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first">Open a project in Cloud9</p>
+</li>
+<li><p class="first">In the Cloud9 Project, choose <em class="menuselection">View ‣ Console</em> from the menu</p>
+</li>
+<li><p class="first">At the console command line, type:</p>
+<div class="highlight-python"><pre>heroku create</pre>
+</div>
+<p>This will create a heroku server for your app, and configure your git
+repository with an extra remote location that you can push to to deploy your
+app.</p>
+</li>
+<li><p class="first">To see the new git heroku deployment branch, type:</p>
+<div class="highlight-python"><pre>git remote -v</pre>
+</div>
+</li>
+<li><p class="first">Open in a new browser tab, and bookmark, the url of your new heroku server,
+which you will see in the output of the <tt class="docutils literal"><span class="pre">heroku</span> <span class="pre">create</span></tt> command. The URL
+will look similar to this:</p>
+<div class="highlight-python"><pre>random-word-1234.herokuapp.com</pre>
+</div>
+</li>
+<li><p class="first">After making changes to the project in Cloud9 and pushing to the GitHub
+repository, deploy changes on Heroku with the additional command:</p>
+<div class="highlight-python"><pre>git push heroku master</pre>
+</div>
+</li>
+<li><p class="first">Now you can view your live site at your heroku server URL (which you
+bookmarked earlier).</p>
+</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="08_use-sphinxdoc.html" title="Documentation Sample Project"
+             >previous</a></li>
+        <li><a href="index.html">Cloud Development 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Gerald Lovel.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>
