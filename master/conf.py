@@ -286,8 +286,7 @@ epub_copyright = u'2013, Gerald Lovel, Julia Lovel, Keith Mattix II'
 
 
 # Example configuration for intersphinx: refer to the Python standard library.
-intersphinx_mapping = {'http://docs.python.org/': None}
-
+# intersphinx_mapping = {'http://docs.python.org/': None}
 
 intersphinx_mapping = {
  'collaborate': ('collaborate', '../_deploy/collaborate/objects.inv'),

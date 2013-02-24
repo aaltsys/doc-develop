@@ -42,10 +42,10 @@ Download Files to Include
 We wish to include some files in this project which are downloadable from the 
 following links:
 
-+  :download:`gitignore for Sphinx projects <_downloads/.gitignore>`
-+  :download:`Adding documentation to a code project <_downloads/doc-addbranch.sh>`
-+  :download:`Starting a documentation project <_downloads/doc-newproject.sh>`
-+  :download:`Deploy documentation to GitHub gh-pages <_downloads/doc-deploy.sh>`
++  :download:`gitignore for Sphinx projects <../resources/_downloads/.gitignore>`
++  :download:`Adding documentation to a code project <../resources/_downloads/doc-addbranch.sh>`
++  :download:`Starting a documentation project <../resources/_downloads/doc-newproject.sh>`
++  :download:`Deploy documentation to GitHub gh-pages <../resources/_downloads/doc-deploy.sh>`
 
 Now here is the problem: the web browser downloads files to a local device, not 
 to the Cloud9 workspace. To return files to Cloud9, use the Linux command
@@ -161,7 +161,7 @@ Each journal document must be written as a plain text document in the editor,
 using proper ReStructuredText markup with added Sphinx features. Refer to the  
 following resources to learn about document syntax:
 
-+  Davenport's :ref:`guide to basic ReStructuredText syntax <rst-syntax>`.
++  Davenport's :ref:`resources:rst-syntax`.
 
 +  `The official Sphinx-doc documentation site <http://sphinx-doc.org/index.html>`_.
 
