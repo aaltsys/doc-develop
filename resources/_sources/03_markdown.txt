@@ -164,7 +164,7 @@ forms::
 
 Both of the above examples produce the same output:
 
-.. image:: _images/06_publish_toast.jpg
+.. image:: _images/404_toast.jpg
 
 ------
 
