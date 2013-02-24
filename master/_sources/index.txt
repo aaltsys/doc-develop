@@ -35,9 +35,3 @@ of development are already mastered.
 Search the site text on this :ref:`search`.
 
 ----------
-
-.. toctree::
-   :maxdepth: 2
-   :glob:
-
-   [0-9]*
