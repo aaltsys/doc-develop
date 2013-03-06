@@ -82,13 +82,11 @@ deployment on Heroku. Bitbucket allows unlimited private (and public)
 repositories, but it does not provide additional hosting services for blogs, 
 static sites, and so forth, the way Github does.
 
-.. note:: | Add Bitbucket registration to article 02_...
-
-
+.. note:: Add Bitbucket registration to article 02_repo_hosts.rst.
 
 htaccess documentation and password generator:
 
-:ref:`.htaccess tools and information <http://www.htaccesstools.com/>`
+`.htaccess tools and information <http://www.htaccesstools.com/>`_
 
 ------
 
