@@ -34,7 +34,7 @@ sphinxinit () {
   # edit conf.py: use aaltsys theme, remove index navigation link
   sed -i "s/\#html_use_index = True/html_use_index = False/" ./conf.py
   sed -i "s/html_theme = 'default'/html_theme = 'aaltsys'/" ./conf.py
-  sed -i "s/#html_theme_path = []/html_theme_path = ['_static']/" ./conf.py
+  sed -i "s/\#html_theme_path = \[\]/html_theme_path = \['_static'\]/" ./conf.py
 
   # add aaltsys theme and aaltsys.css
    mkdir -p _static/aaltsys
