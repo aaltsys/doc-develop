@@ -40,11 +40,15 @@ sphinxinit () {
   # edit sphinxdoc.css
   if [[ -e "_build/html/_static/sphinxdoc.css" ]] ; then
     cp _build/html/_static/sphinxdoc.css _static/
-    touch _static/.gitignore
+    wget -O doc-newproject.sh http://develop.aaltsys.info/resources/_downloads/.gitignore
+    
+    # Needs to be a separate CSS file download which includes sphinxdoc.css !!!
     # fix overall side margins of page
     sed -i "s/  margin: 0px 80px 0px 80px;/\/*  margin: 0px 80px 0px 80px; *\//" ./_static/sphinxdoc.css
     # fix table margins to display correctly in notes, etc.
     sed -i "s/  margin: 0 -0.5em 0 -0.5em;/\/*  margin: 0 -0.5em 0 -0.5em; *\//" ./_static/sphinxdoc.css
+    # ----end of CSS
+    
   fi
   # add entries for pseudo-dynamic deployment
   touch _static/index.php

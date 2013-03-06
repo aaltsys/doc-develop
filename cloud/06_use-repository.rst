@@ -43,3 +43,4 @@ Instead, fork someone else's open source work. Login to GitHub, then:
    .. image:: _images/06_github-5.png
 
 GitHub will make a copy of the repository and open it for you.
+
