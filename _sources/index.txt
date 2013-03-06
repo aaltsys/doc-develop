@@ -23,7 +23,7 @@ of development are already mastered.
 #. :ref:`cloud:index`.
 #. :ref:`ruby:index`.
 #. :ref:`python:index`.
-#. :ref:`html-css:index`.
+#. :ref:`htmlcss:index`.
 #. :ref:`javascript:index`.
 #. :ref:`bash:index`.
 #. :ref:`servers:index`.
@@ -32,5 +32,3 @@ of development are already mastered.
 ----------
 
 Search the site text on this :ref:`search`.
-
-----------
