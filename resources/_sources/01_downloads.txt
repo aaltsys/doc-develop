@@ -56,7 +56,7 @@ aaltsys theme documents
 -----------------------------
 
 doc-...sh scripts include custom stylesheet CSS in your documentation project. 
-Add these default theme files with the commands:
+Add these default theme files with the commands::
 
    mkdir -p _static/aaltsys
    wget -O _static/aaltsys.css_t http://develop.aaltsys.info/resources/_downloads/aaltsys.css_t
