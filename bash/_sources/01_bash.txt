@@ -42,4 +42,9 @@ Date and time
 
 ----------
 
-`Bash commands <http://ss64.com/bash/>`_
+.. rubric:: Footnotes
+
+.. [#] <http://www.howtoforge.com/useful_linux_commands> presents a list of 
+   useful Linux commands.
+
+.. [#] `Bash commands <http://ss64.com/bash/>`_

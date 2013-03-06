@@ -31,22 +31,21 @@ sphinxinit () {
     touch $DIR/$KEEP
   done
 
-  # edit conf.py: use sphinxdoc theme, remove index navigation link
-  sed -i "s/html_theme = 'default'/html_theme = 'sphinxdoc'/" ./conf.py
+  # edit conf.py: use aaltsys theme, remove index navigation link
   sed -i "s/\#html_use_index = True/html_use_index = False/" ./conf.py
-  
-  # make initial index html
-  make clean html
-  # edit sphinxdoc.css
-  if [[ -e "_build/html/_static/sphinxdoc.css" ]] ; then
-    cp _build/html/_static/sphinxdoc.css _static/
-    touch _static/.gitignore
-    sed -i "s/  margin: 0px 80px 0px 80px/# margin: 0px 80px 0px 80px/" ./_static/sphinxdoc.css
-  fi
-  # add entries for pseudo-dynamic deployment
+  sed -i "s/html_theme = 'default'/html_theme = 'aaltsys'/" ./conf.py
+  sed -i "s/#html_theme_path = []/html_theme_path = ['_static']/" ./conf.py
+
+  # add aaltsys theme and aaltsys.css
+   mkdir -p _static/aaltsys
+   wget -O _static/aaltsys.css_t http://develop.aaltsys.info/resources/_downloads/aaltsys.css_t
+   wget -O _static/aaltsys/theme.conf http://develop.aaltsys.info/resources/_downloads/aaltsys/theme.conf
+
+  # add entries for pseudo-dynamic deployment at Heroku
   touch _static/index.php
   echo 'php_flag engine off' > _static/.htaccess
-  # make fresh index html
+  
+  # make initial index html
   make clean html
 }
 
@@ -101,6 +100,10 @@ if [[ ! -d $BRANCH_DOC/.git ]] ; then
 
   # create doc folder with branch $BRANCH_DOC
   git init
+  
+  # setup .gitignore for documentation project
+  wget -O .gitignore http://develop.aaltsys.info/resources/_downloads/.gitignore
+
   git commit --allow-empty -m "empty first commit"
   set -- $(git branch)
   git branch -m $2 $BRANCH_DOC

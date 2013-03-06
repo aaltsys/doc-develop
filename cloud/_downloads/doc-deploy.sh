@@ -36,10 +36,13 @@ makedeployment () {
   # Add static content (static is link shared with all sections, include is not)
   if [[ -d $DIR_STATIC ]] ; then
     cp -R $DIR_STATIC/* $DIR_OUT
+    cp -R $DIR_STATIC/.ht* $DIR_OUT
   fi
   if [[ -d $DIR_INCLUDE ]] ; then
     cp -R $DIR_INCLUDE/* $DIR_OUT
+    cp -R $DIR_INCLUDE/.ht* $DIR_OUT
   fi
+  
 }
 
 # =============================================================================
@@ -90,6 +93,16 @@ if [[ ! -e $FILE_SPHINX ]] ; then
   if [[ -e $DIR_DOC/$FILE_SPHINX ]] ; then
     PROJECT=$PROJECT/$DIR_DOC
     cd $DIR_DOC
+    # if remote is heroku, and no heroku remote in folder, then -- heroku create
+    if [[ $REMOTE = "heroku" ]] ; then
+      set -- $(git remote -v)
+      TEST=$2
+      if [[ ! $TEST = "heroku" ]] ; then
+        heroku create
+        echo "Created new heroku remote deployment for documentation"
+	echo "$(git remote -v)"
+      fi
+    fi
   else
     echo "No sphinxdoc configuration or document folder missing, Exiting ..."
     exit 1

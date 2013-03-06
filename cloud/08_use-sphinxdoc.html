@@ -149,9 +149,9 @@ following links:</p>
 to the Cloud9 workspace. To return files to Cloud9, use the Linux command
 <strong class="command">wget</strong> instead. Copy and paste the following commands into a terminal
 window or into the console command line beneath an edit window:</p>
-<div class="highlight-python"><pre>wget http://alt-davenport.github.com/doc-devcloud/_downloads/.gitignore
-wget http://alt-davenport.github.com/doc-devcloud/_downloads/docproject-start.sh
-wget http://alt-davenport.github.com/doc-devcloud/_downloads/github-deploy.sh</pre>
+<div class="highlight-python"><pre>wget http://develop.github.com/resources/_downloads/.gitignore
+wget http://develop.github.com/resources/_downloads/doc-newproject.sh
+wget http://develop.github.com/resources/_downloads/doc-deploy.sh</pre>
 </div>
 <p>After getting the files, click the <em class="guilabel">gear icon</em> on top of the left
 sidebar, and choose <em class="guilabel">Refresh Project Tree</em> to see the additions.</p>
@@ -165,11 +165,11 @@ sidebar, and choose <em class="guilabel">Refresh Project Tree</em> to see the ad
 <div class="section" id="initialize-sphinxdoc">
 <h2>Initialize Sphinxdoc<a class="headerlink" href="#initialize-sphinxdoc" title="Permalink to this headline">¶</a></h2>
 <p>In your Cloud9 doc-journal workspace, open a terminal and type the command:</p>
-<div class="highlight-python"><pre>bash docproject-start.sh</pre>
+<div class="highlight-python"><pre>bash doc-newproject.sh</pre>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>The <strong class="program">docproject-start.sh</strong> script runs right away in projects
+<p>The <strong class="program">doc-newproject.sh</strong> script runs right away in projects
 which are cloned from GitHub. Otherwise, the script requires the following
 two commands to be executed first:</p>
 <div class="last highlight-python"><pre>git init
@@ -276,7 +276,7 @@ as you encounter information which needs to be organized in its own topic.</p>
 <div class="section" id="how-to-write-it">
 <h3>How to write it<a class="headerlink" href="#how-to-write-it" title="Permalink to this headline">¶</a></h3>
 <p>Each journal document must be written as a plain text document in the editor,
-using proper ReStructuredText markup with added Sphinx features. Refer to the
+using proper ReStructuredText markup <a class="footnote-reference" href="#id3" id="id1">[1]</a> with added Sphinx features. Refer to the
 following resources to learn about document syntax:</p>
 <ul class="simple">
 <li>Davenport&#8217;s <a class="reference external" href="resources/02_restructure.html#rst-syntax" title="(in Developer Documentation Resource Pages v0.5)"><em>Re-Structured Text Syntax</em></a>.</li>
@@ -317,7 +317,7 @@ from the top menu.</p>
 <div class="section" id="committing-repository">
 <h3>Committing Repository<a class="headerlink" href="#committing-repository" title="Permalink to this headline">¶</a></h3>
 <p>At the end of a day, or when a portion of work is finished, it should be
-committed and pushed to the GitHub repository. Here are commands for that:</p>
+committed and pushed to the GitHub repository. <a class="footnote-reference" href="#id4" id="id2">[2]</a> Here are commands for that:</p>
 <div class="highlight-python"><pre>git add .
 git status
 git commit -m "commit message"
@@ -330,7 +330,7 @@ git push</pre>
 <p>Work would be deployed only when completed satisfactorily. Your project will be
 deployed at GitHub as a <strong>gh-pages</strong> repository branch. The command to deploy
 documentation in a <strong>gh-pages</strong> branch is:</p>
-<div class="highlight-python"><pre>bash github-deploy.sh</pre>
+<div class="highlight-python"><pre>bash doc-deploy.sh</pre>
 </div>
 <p>Now the sequence of steps to build and deploy output might be:</p>
 <table border="1" class="docutils">
@@ -366,11 +366,33 @@ documentation in a <strong>gh-pages</strong> branch is:</p>
 <td><tt class="docutils literal"><span class="pre">git</span> <span class="pre">push</span></tt></td>
 </tr>
 <tr class="row-odd"><td>Build and deploy gh-pages</td>
-<td><tt class="docutils literal"><span class="pre">bash</span> <span class="pre">github-deploy.sh</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">bash</span> <span class="pre">doc-deploy.sh</span></tt></td>
 </tr>
 <tr class="row-even"><td>View deployed site in browser</td>
 <td><tt class="docutils literal"><span class="pre">http:__yourname__.github.com/__project__</span></tt></td>
 </tr>
+</tbody>
+</table>
+<hr class="docutils" />
+<p class="rubric">Footnotes</p>
+<table class="docutils footnote" frame="void" id="id3" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>Davenport&#8217;s <a class="reference external" href="resources/02_restructure.html#rst-syntax" title="(in Developer Documentation Resource Pages v0.5)"><em>Re-Structured Text Syntax</em></a>.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id4" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td>Scott Chacon, Pro Git (August 27, 2009, ISBN-10: 1430218339), available
+at Amazon, or for free on-line at <a class="reference external" href="http://git-scm.com/book">http://git-scm.com/book</a>.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id5" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[3]</td><td>Scott Chacon, Pro Git book source (written in MarkDown, not reST)
+repository on GitHub: <a class="reference external" href="https://github.com/progit/progit">https://github.com/progit/progit</a>.</td></tr>
 </tbody>
 </table>
 </div>

@@ -52,9 +52,9 @@ to the Cloud9 workspace. To return files to Cloud9, use the Linux command
 :command:`wget` instead. Copy and paste the following commands into a terminal 
 window or into the console command line beneath an edit window::
 
-   wget http://alt-davenport.github.com/doc-devcloud/_downloads/.gitignore
-   wget http://alt-davenport.github.com/doc-devcloud/_downloads/docproject-start.sh
-   wget http://alt-davenport.github.com/doc-devcloud/_downloads/github-deploy.sh
+   wget http://develop.github.com/resources/_downloads/.gitignore
+   wget http://develop.github.com/resources/_downloads/doc-newproject.sh
+   wget http://develop.github.com/resources/_downloads/doc-deploy.sh
 
 After getting the files, click the :guilabel:`gear icon` on top of the left 
 sidebar, and choose :guilabel:`Refresh Project Tree` to see the additions.
@@ -67,9 +67,9 @@ Initialize Sphinxdoc
 
 In your Cloud9 doc-journal workspace, open a terminal and type the command::
 
-   bash docproject-start.sh
+   bash doc-newproject.sh
 
-.. note:: The :program:`docproject-start.sh` script runs right away in projects 
+.. note:: The :program:`doc-newproject.sh` script runs right away in projects 
    which are cloned from GitHub. Otherwise, the script requires the following
    two commands to be executed first::
 
@@ -158,7 +158,7 @@ How to write it
 -----------------------------
 
 Each journal document must be written as a plain text document in the editor,
-using proper ReStructuredText markup with added Sphinx features. Refer to the  
+using proper ReStructuredText markup [#]_ with added Sphinx features. Refer to the  
 following resources to learn about document syntax:
 
 +  Davenport's :ref:`resources:rst-syntax`.
@@ -204,7 +204,7 @@ Committing Repository
 -----------------------------
 
 At the end of a day, or when a portion of work is finished, it should be 
-committed and pushed to the GitHub repository. Here are commands for that::
+committed and pushed to the GitHub repository. [#]_ Here are commands for that::
 
    git add .
    git status
@@ -220,7 +220,7 @@ Work would be deployed only when completed satisfactorily. Your project will be
 deployed at GitHub as a **gh-pages** repository branch. The command to deploy 
 documentation in a **gh-pages** branch is::
 
-   bash github-deploy.sh
+   bash doc-deploy.sh
 
 Now the sequence of steps to build and deploy output might be:
 
@@ -241,7 +241,19 @@ Now the sequence of steps to build and deploy output might be:
 +-------------------------------+---------------------------------------------+
 | Push to remote at GitHub      | ``git push``                                |
 +-------------------------------+---------------------------------------------+
-| Build and deploy gh-pages     | ``bash github-deploy.sh``                   |
+| Build and deploy gh-pages     | ``bash doc-deploy.sh``                      |
 +-------------------------------+---------------------------------------------+
 | View deployed site in browser | ``http:__yourname__.github.com/__project__``|
 +-------------------------------+---------------------------------------------+
+
+------
+
+.. rubric:: Footnotes
+
+.. [#] Davenport's :ref:`resources:rst-syntax`.
+
+.. [#] Scott Chacon, Pro Git (August 27, 2009, ISBN-10: 1430218339), available
+   at Amazon, or for free on-line at http://git-scm.com/book. 
+
+.. [#] Scott Chacon, Pro Git book source (written in MarkDown, not reST) 
+   repository on GitHub: https://github.com/progit/progit.
