@@ -91,7 +91,7 @@ pygments_style = 'sphinx'
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
-html_theme = 'sphinxdoc'
+html_theme = 'aaltsys'
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
@@ -99,7 +99,7 @@ html_theme = 'sphinxdoc'
 #html_theme_options = {}
 
 # Add any paths that contain custom themes here, relative to this directory.
-#html_theme_path = []
+html_theme_path = ['_static']
 
 # The name for this set of Sphinx documents.  If None, it defaults to
 # "<project> v<release> documentation".
@@ -293,7 +293,7 @@ intersphinx_mapping = {
  'cloud': ('cloud', '../_deploy/cloud/objects.inv'),
  'ruby': ('ruby', '../_deploy/ruby/objects.inv'),
  'python': ('python', '../_deploy/python/objects.inv'),
- 'html-css': ('html-css', '../_deploy/html-css/objects.inv'),
+ 'htmlcss': ('htmlcss', '../_deploy/html-css/objects.inv'),
  'javascript': ('javascript', '../_deploy/javascript/objects.inv'),
  'bash': ('bash', '../_deploy/bash/objects.inv'),
  'servers': ('servers', '../_deploy/servers/objects.inv'),

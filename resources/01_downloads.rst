@@ -38,7 +38,7 @@ Add documentation into an existing development project with the command
 | Download link to script: :download:`_downloads/doc-addbranch.sh`.
 | Get the script from the command line with::
 
-   wget -O doc-newproject.sh http://develop.aaltsys.info/resources/_downloads/doc-addbranch.sh
+   wget -O doc-addbranch.sh http://develop.aaltsys.info/resources/_downloads/doc-addbranch.sh
 
 doc-deploy.sh
 -----------------------------
@@ -50,8 +50,18 @@ the command :command:`~/Projects/doc-deploy.sh {project_folder_name}`
 | Download link to script::download:`_downloads/doc-deploy.sh`
 | Get the script from the command line with::
 
-   wget -O doc-newproject.sh http://develop.aaltsys.info/resources/_downloads/doc-deploy.sh
+   wget -O doc-deploy.sh http://develop.aaltsys.info/resources/_downloads/doc-deploy.sh
 
+aaltsys theme documents
+-----------------------------
+
+doc-...sh scripts include custom stylesheet CSS in your documentation project. 
+Add these default theme files with the commands::
+
+   mkdir -p _static/aaltsys
+   wget -O _static/aaltsys.css_t http://develop.aaltsys.info/resources/_downloads/aaltsys.css_t
+   wget -O _static/aaltsys/theme.conf http://develop.aaltsys.info/resources/_downloads/aaltsys/theme.conf
+   
 .gitignore
 -----------------------------
 
@@ -62,7 +72,7 @@ undesirable chuff in the repository.
 | Download link to file: :download:`_downloads/.gitignore`.
 | Get this file from the command line with::
 
-   wget -O doc-newproject.sh http://develop.aaltsys.info/resources/_downloads/.gitignore
+   wget -O .gitignore http://develop.aaltsys.info/resources/_downloads/.gitignore
 
 .htaccess
 -----------------------------
@@ -74,7 +84,7 @@ Heroku, add the following :file:`.htaccess` server directive file:
 | Download link to file: :download:`_downloads/.htaccess`.
 | Get this file from the command line with::
    
-   wget -O doc-newproject.sh http://develop.aaltsys.info/resources/_downloads/.htaccess
+   wget -O _static/.htaccess http://develop.aaltsys.info/resources/_downloads/.htaccess
    
 .. note:: An :file:`.htpasswd` file is also required, in the same directory.
    Learn about basic authentication using :file:`.htaccess`

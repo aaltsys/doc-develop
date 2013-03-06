@@ -117,17 +117,17 @@ create these folders::
 You can avoid typing all these commands, however, by downloading the following 
 two scripts to your :file:`~/Projects` folder:
 
-+ :download:`Documentation project startup script <_downloads/docproject-start.sh>` 
-+ :download:`Add documentation to project script <_downloads/docbranch-add.sh>` 
++ :download:`Documentation project startup script <_downloads/doc-newproject.sh>` 
++ :download:`Add documentation to project script <_downloads/doc-addbranch.sh>` 
 
 To start a new documentation project, from :file:`~/Projects`, run the command:: 
   
-  bash docproject-start.sh {document_foldername}
+  bash doc-newproject.sh {document_foldername}
 
 To add a documentation branch to a code project repository, from 
 :file:`~/Projects`, run the command:: 
 
-  bash docbranch-add.sh {project_foldername}
+  bash doc-addbranch.sh {project_foldername}
 
 .. note:: These scripts assume that you have already created the documentation 
   or project folder, that ``git init`` has been run on the folder, and that a 
