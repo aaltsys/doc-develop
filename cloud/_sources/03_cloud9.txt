@@ -10,31 +10,30 @@
 
 Sign up for free Cloud9 developer workspace.
 
-+  Click button :guilabel:`SIGN UP FOR  FREE` at https://c9.io/site/pricing/ 
-+  Enter your developer username
-+  Enter your developer email address, and confirm it
++  Click button :guilabel:`SIGN UP FOR  FREE` at https://c9.io/site/pricing/. 
++  Enter your developer username. 
++  Enter your developer email address, and confirm it.
 
    .. image:: _images/04_cloud9-2.png
 
-+  Click button :guilabel:`Create your free account`
++  Click button :guilabel:`Create your free account`.
 
    .. image:: _images/04_cloud9-3.png
 
 +  Read :guilabel:`Welcome to Cloud9! Please activate your account!` in your
-   GMail
-+  Click the link to activate your account
+   GMail.
++  Click the link to activate your account.
 
    .. note:: Here is a smaple confirmation email:
 
       .. image:: _images/04_cloud9-4.png
 
-+  In the resulting webpage, enter your developer password and confirm it
++  In the resulting webpage, enter your developer password and confirm it.
 
    .. image:: _images/04_cloud9-5.png
 
-+  Your Cloud9 workspace will display at https://c9.io/ALT-username
-
-+  Click the page title to set your full name
++  Your Cloud9 workspace will display at https://c9.io/ALT-username.
++  Click the page title to set your full name.
 
    .. image:: _images/04_cloud9-6.png
 
