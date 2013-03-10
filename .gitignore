@@ -1,6 +1,6 @@
 # files which should not be included in any repository
 
-# OS directory files
+# OS hidden .directory files
 .directory
 */.directory
 
@@ -22,9 +22,7 @@
 */*deploy/*
 
 # keep directories which include .gitkeep
-!.git_keep
 !.gitkeep
-!*/.git_keep
 !*/.gitkeep
 
 # Private files
