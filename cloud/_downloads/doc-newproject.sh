@@ -132,9 +132,7 @@ fi
 
 cd ..
 
-echo
-echo "Finished creating directories and files for project \"$PROJECT\"."
-echo
+echo -e "\nFinished creating directories and files for project \"$PROJECT\".\n"
 echo "Edit main \".gitignore\" file to ignore \"_build\", \"_deploy\" folders."
 if [[ ! $SECTIONS = "" ]] ; then
   echo "Edit master index to reference"
