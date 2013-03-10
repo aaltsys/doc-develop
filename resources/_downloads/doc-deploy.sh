@@ -9,11 +9,12 @@ OWNER=""
 REMOTE=""
 SECTIONS=""
 BRANCH_DEPLOY=""
+REMOTE_DEPLOY=""
 MASTER="master"
 DEPLOY="deploy"
-FILE_SPHINX="conf.py"
-DIR_DOC="doc"
-# DIR_DOC="_doc"
+FILE_SPHINX="index.rst"
+# DIR_DOC="doc"
+DIR_DOC="_doc"
 DIR_DOWNLOADS="_downloads"
 DIR_DEPLOY="_deploy"
 DIR_STATIC="_static"
@@ -50,77 +51,112 @@ makedeployment () {
 
 ######### PRE-EXECUTION TESTS
 
-# test for no project name entered
+# test for no project name entered and not in a project already
 if [[ $PROJECT = "" ]] ; then
-  # project folder may be open already
   if [[ ! -d .git ]] ; then
+    # not in a project and no project name given
     echo "Not in a project, or no project name given. Exiting ... "
     exit 1
   else
+    # set project folder to present working directory
     PROJECT=${PWD##*/}
   fi
 else
-  # test for project folder does not exist
-  if [[ -d $PROJECT ]] ; then
-    # test for project folder is not a git repository
-    if [[ -d $PROJECT/.git ]] ; then
-      # now open project folder
-      cd $PROJECT
-    else
-      echo "Folder \"$PROJECT\" is not a git repository. Exiting ... "
-      exit 1
-    fi
-  else
+  if [[ ! -d $PROJECT ]] ; then
+    # project folder does not exist
     echo "Project folder \"$PROJECT\" does not exist. Exiting ... "
     exit 1
+  elif [[ ! -d $PROJECT/.git ]] ; then
+    # no git repository in project
+    echo "Folder \"$PROJECT\" is not a git repository. Exiting ... "
+    exit 1
+  else 
+    # open project folder to set present working directory
+    cd $PROJECT
   fi
 fi
 
-echo "Project is \"$PROJECT\""
-
-# test for project has a remote, otherwise document deployment will not work
+# test for type of remote in main project
 set -- $(git remote -v)
-REMOTE=$2
-if [[ $REMOTE = "" ]] ; then
+if [[ $2 = "" ]] ; then
+  # project has no remote
   echo "Project \"$PROJECT\" has no remote. Exiting ... "
+  exit 1
+else
+  # save remote name
+  REMOTE=$1
+fi
+
+# test for embedded documentation project folder or main documentation project
+if [[ -e $DIR_DOC/$FILE_SPHINX ]] ; then
+  # embedded sphinx documentation project found; set directory to it
+  PROJECT=$PROJECT/$DIR_DOC
+  cd $DIR_DOC
+elif [[ ! -e $FILE_SPHINX ]] ; then
+  # no embedded sphinx and not a sphinx project
+  echo "No sphinxdoc configuration or document folder missing, Exiting ..."
   exit 1
 fi
 
-echo "Remote for project is $REMOTE"
-
-# Test for embedded documentation folder inside project
-if [[ ! -e $FILE_SPHINX ]] ; then
-  # test for documentation is sphinx
-  if [[ -e $DIR_DOC/$FILE_SPHINX ]] ; then
-    PROJECT=$PROJECT/$DIR_DOC
-    cd $DIR_DOC
-    # if remote is heroku, and no heroku remote in folder, then -- heroku create
-    if [[ $REMOTE = "heroku" ]] ; then
-      set -- $(git remote -v)
-      TEST=$2
-      if [[ ! $TEST = "heroku" ]] ; then
-        heroku create
-        echo "Created new heroku remote deployment for documentation"
-	echo "$(git remote -v)"
-      fi
-    fi
+# test for or create remote in documentation (sub)project
+set -- $(git remote -v)
+TEST=$1
+REMOTE_DEPLOY=$2
+if [[ "${TEST#*$REMOTE}" = "$TEST" ]] ; then
+  if [[ $REMOTE = "heroku" ]] ; then
+    # project is deployed on Heroku, create documentation deployment there too
+    echo -e "\nCreating new heroku remote deployment for documentation\n"
+    heroku create
+    echo "$(git remote -v)"
   else
-    echo "No sphinxdoc configuration or document folder missing, Exiting ..."
+    # main project deployed somewhere and documentation remote not set
+    echo -e "Use \"git remote ... \" to set deployment for $PROJECT. Exiting ..."
     exit 1
   fi
+  # project has a remote; use it
 fi
+
+# set branch name for deploy pull and push
+case $REMOTE_DEPLOY in
+  *"github"*)  
+    BRANCH_DEPLOY=$GITHUB
+    ;;
+  *"heroku"*)
+    BRANCH_DEPLOY=$HEROKU
+    ;;
+  **)
+    # this script does not know how to deploy to the specified remote
+    echo "Script does not support remote $REMOTE_DEPLOY. Exiting ..."
+    exit 1
+    ;;
+esac
+
+#  Project folder, supported remote, (embedded) sphinxdoc index.rst
+
+echo -e "\nDocumentation project folder is $PROJECT"
+echo "Remote for documentation is at $REMOTE_DEPLOY"
+echo -e "Documentation branches:\n$(git branch -a)"
+echo -e "Documentation remotes:\n$(git remote -v) \n"
+
+########## MAIN PROGRAM
+
+echo "  --- MAIN PROGRAM ---"
 
 # in the event it is missing, create a git project deployment folder
 if [[ ! -d $DIR_DEPLOY ]] ; then
   mkdir -p $DIR_DEPLOY
 fi
 if [[ ! -d $DIR_DEPLOY/.git ]] ; then
+  echo -e "\nCreating deployment folder $DIR_DEPLOY\n"
   cd $DIR_DEPLOY
   git init
   git commit --allow-empty -m "empty first commit"
   set -- $(git branch)
   git branch -m $2 $DEPLOY
-  git remote add origin $REMOTE
+  # ##
+  echo "git remote add origin $REMOTE_DEPLOY"
+  # ##
+  git remote add origin $REMOTE_DEPLOY
   echo "BRANCH is \"$(git branch -a)\""
   git fetch origin
   # git checkout -B $DEPLOY
@@ -132,24 +168,6 @@ if [[ ! -d $DIR_DEPLOY/.git ]] ; then
   git commit -m "hidden control files"
   cd ..
 fi
-
-# set branch name for deploy pull and push
-case $REMOTE in
-  *"github"*)  
-    BRANCH_DEPLOY=$GITHUB
-    ;;
-  *"heroku"*)
-    BRANCH_DEPLOY=$HEROKU
-    ;;
-  **)
-    echo "No target branch for the deployment. Exiting ..."
-    exit 1
-    ;;
-esac
-  
-########## MAIN PROGRAM
-
-echo "  --- MAIN PROGRAM ---"
 
 # Read CNAME owner for github deployment, in case there is one
 if [[ -e cnameowner ]] ; then
@@ -193,10 +211,13 @@ else
   fi
 fi
 
-# if CNAME owner != remote deployer, remove CNAME
-if [[ "$REMOTE" == "${REMOTE/$OWNER/}" ]] ; then
+# if we are on gh-pages AND there exists a CNAME file
+if [[ $BRANCH_DEPLOY = $GITHUB ]] ; then
   if [[ -e $DIR_DEPLOY/CNAME ]] ; then
-    rm $DIR_DEPLOY/CNAME
+    if [[ "$REMOTE_DEPLOY" == "${REMOTE_DEPLOY/$OWNER/}" ]] ; then
+      # if $GITHUB and CNAME owner != remote deployer, remove CNAME
+      rm $DIR_DEPLOY/CNAME
+    fi
   fi
 fi
 
@@ -207,7 +228,7 @@ if [[ -d $DIR_DEPLOY ]] ; then
   git commit -m "Deployed documentation"
   git push -u origin $DEPLOY:$BRANCH_DEPLOY
 
-  echo "pushed to origin branch $DEPLOY:$BRANCH_DEPLOY"
+  echo -e "\npushed to origin branch $DEPLOY:$BRANCH_DEPLOY\n"
 
   cd ..
 fi
@@ -218,7 +239,8 @@ echo "  --- FINISHED ---"
 echo "Check all messages for possible errors."
 echo "Then commit and push source changes as well."
 
-# Authors: Gerald Lovel, gerald@lovels.us
+# Authors: Gerald Lovel, glovel@aaltsys.com; Julia Lovel, jlovel@aaltsys.com
 
 # 12/17/2012 - GARL -- Added copy master folder contents to $DIR_DEPLOY root
 # 02/20/2013 - GARL -- Added support for deployment to Heroku, Github, ...
+# 03/10/2013 - GARL -- Embedded documentation in code projects added
