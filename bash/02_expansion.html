@@ -1,0 +1,154 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Command Expansions &mdash; Linux BASH Commands Tutorial 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Linux BASH Commands Tutorial 1.0 documentation" href="index.html" />
+    <link rel="next" title="Windows OS Commands" href="09_windows.html" />
+    <link rel="prev" title="System Utilities" href="01_bash.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="09_windows.html" title="Windows OS Commands"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="01_bash.html" title="System Utilities"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Linux BASH Commands Tutorial 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Command Expansions</a><ul>
+<li><a class="reference internal" href="#string-commands">String Commands</a><ul>
+<li><a class="reference internal" href="#id1">$()</a></li>
+<li><a class="reference internal" href="#id2">${}</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#quotes">Quotes</a><ul>
+<li><a class="reference internal" href="#single-vs-double-quotes">Single vs Double Quotes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="01_bash.html"
+                        title="previous chapter">System Utilities</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="09_windows.html"
+                        title="next chapter">Windows OS Commands</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/02_expansion.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="command-expansions">
+<h1>Command Expansions<a class="headerlink" href="#command-expansions" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="string-commands">
+<h2>String Commands<a class="headerlink" href="#string-commands" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id1">
+<h3>$()<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id2">
+<h3>${}<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="quotes">
+<h2>Quotes<a class="headerlink" href="#quotes" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="single-vs-double-quotes">
+<h3>Single vs Double Quotes<a class="headerlink" href="#single-vs-double-quotes" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="44%" />
+<col width="56%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">echo</span> <span class="pre">$(git</span> <span class="pre">branch</span> <span class="pre">-a)</span></tt></td>
+<td>garbage</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">echo</span> <span class="pre">'$(git</span> <span class="pre">branch</span> <span class="pre">-a)'</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">git</span> <span class="pre">branch</span> <span class="pre">-a</span></tt></td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">echo</span> <span class="pre">&quot;$(git</span> <span class="pre">branch</span> <span class="pre">-a)&quot;</span></tt></td>
+<td>expected output of git branch command</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="09_windows.html" title="Windows OS Commands"
+             >next</a></li>
+        <li class="right" >
+          <a href="01_bash.html" title="System Utilities"
+             >previous</a> |</li>
+        <li><a href="index.html">Linux BASH Commands Tutorial 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Gerald Lovel.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>
