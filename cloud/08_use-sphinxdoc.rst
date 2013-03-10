@@ -40,7 +40,7 @@ Download Files to Include
 -----------------------------
 
 We wish to include some files in this project which are downloadable from the 
-following links:
+following links: 
 
 +  :download:`gitignore for Sphinx projects <../resources/_downloads/.gitignore>`
 +  :download:`Adding documentation to a code project <../resources/_downloads/doc-addbranch.sh>`
@@ -53,6 +53,7 @@ to the Cloud9 workspace. To return files to Cloud9, use the Linux command
 window or into the console command line beneath an edit window::
 
    wget http://develop.github.com/resources/_downloads/.gitignore
+   wget http://develop.github.com/resources/_downloads/doc-addbranch.sh
    wget http://develop.github.com/resources/_downloads/doc-newproject.sh
    wget http://develop.github.com/resources/_downloads/doc-deploy.sh
 
@@ -106,7 +107,8 @@ defaulted. Type your answers NOT INCLUDING UNDERLINES.
 
 .. hint:: Sphinx appends **'s Documentation** to the :guilabel:`Project name`. 
    For example, the entry *Cloud Development Journal* will become the title
-   **Cloud Development Journal's Documentation**.
+   **Cloud Development Journal's Documentation**. Change the project title in 
+   the files :file:`conf.py` and :file:`index.rst`, if the title is unsuitable.
 
 Write Documents
 =============================
@@ -162,7 +164,6 @@ using proper ReStructuredText markup [#]_ with added Sphinx features. Refer to t
 following resources to learn about document syntax:
 
 +  Davenport's :ref:`resources:rst-syntax`.
-
 +  `The official Sphinx-doc documentation site <http://sphinx-doc.org/index.html>`_.
 
 Index your project
@@ -216,7 +217,7 @@ Most of these actions are available from the Cloud9 menu as well.
 Deploying
 -----------------------------
 
-Work would be deployed only when completed satisfactorily. Your project will be 
+Work should be deployed only when completed satisfactorily. Your project will be 
 deployed at GitHub as a **gh-pages** repository branch. The command to deploy 
 documentation in a **gh-pages** branch is::
 
@@ -250,7 +251,7 @@ Now the sequence of steps to build and deploy output might be:
 
 .. rubric:: Footnotes
 
-.. [#] Davenport's :ref:`resources:rst-syntax`.
+.. [#] Davenport's `Re-Structured Text Syntax <../resources/02_restructure.html#rst-syntax>`_.
 
 .. [#] Scott Chacon, Pro Git (August 27, 2009, ISBN-10: 1430218339), available
    at Amazon, or for free on-line at http://git-scm.com/book. 

@@ -288,5 +288,5 @@ epub_copyright = u'2013, Gerald Lovel'
 # intersphinx_mapping = {'http://docs.python.org/': None}
 
 intersphinx_mapping = {
- 'resources': ('resources', '../_deploy/resources/objects.inv'),
+ 'resources': ('resources', '_deploy/resources/objects.inv'),
 }

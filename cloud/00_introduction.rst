@@ -18,7 +18,7 @@ With cloud services, it does not matter what local computer one uses.
 What matters is that one can connect to the Internet with a web browser which 
 fully supports HTML5. Previously programmers had to carry their development 
 environments around, meaning they had to use laptops. Cloud services allow 
-programmers to use available computers whereever they are.
+programmers to use available computers wherever they are.
 
 Currently several cloud services are required to provide all the features a 
 programming team would require for web development. This document describes one 
@@ -33,25 +33,27 @@ This project uses free services which, in combination, present the essential
 elements of a full web development environment. Typical web development needs 
 and the cloud services which emulate them are listed in the following table.
 
-+---------------------------------+------------+------------------------------+
-| Development Environment Need    | Cloud Service Equivalent and URL          |
-+=================================+============+==============================+
-| email                           | Gmail      | https://mail.google.com/     |
-+---------------------------------+------------+------------------------------+
-| Linux console                   | Cloud9     | https://c9.io/               |
-+---------------------------------+------------+------------------------------+
-| programming language (RoR)      | Cloud9     | https://c9.io/               |
-+---------------------------------+------------+------------------------------+
-| text editor (Kate)              | Cloud9     | https://c9.io/               |
-+---------------------------------+------------+------------------------------+
-| code repository (Git)           | Cloud9     | https://c9.io/               |
-+---------------------------------+------------+------------------------------+
-| public repository hosting (Git) | GitHub     | https://github.com/          |
-+---------------------------------+------------+------------------------------+
-| web server                      | Heroku     | https://heroku.com           |                   
-+---------------------------------+------------+------------------------------+
-| database (postgreSQL)           | Heroku     | https://heroku.com           |                           
-+---------------------------------+------------+------------------------------+
++----------------------------------+------------+------------------------------+
+| Development Environment Need     | Cloud Service Equivalent and URL          |
++==================================+============+==============================+
+| email                            | Gmail      | https://mail.google.com/     |
++----------------------------------+------------+------------------------------+
+| Linux console                    | Cloud9     | https://c9.io/               |
++----------------------------------+------------+------------------------------+
+| programming language (RoR)       | Cloud9     | https://c9.io/               |
++----------------------------------+------------+------------------------------+
+| text editor (Kate)               | Cloud9     | https://c9.io/               |
++----------------------------------+------------+------------------------------+
+| code repository (Git)            | Cloud9     | https://c9.io/               |
++----------------------------------+------------+------------------------------+
+| public repository hosting (Git)  | GitHub     | https://github.com/          |
++----------------------------------+------------+------------------------------+
+| private repository hosting (Git) | Bitbucket  | https://bitbucket.com/       |
++----------------------------------+------------+------------------------------+
+| web server                       | Heroku     | https://heroku.com           |                   
++----------------------------------+------------+------------------------------+
+| database (postgreSQL)            | Heroku     | https://heroku.com           |                           
++----------------------------------+------------+------------------------------+
 
 .. note:: Heroku includes client services: the `Heroku Toolbelt
    <https://devcenter.heroku.com/x?url=https%3A%2F%2Ftoolbelt.heroku.com%2F>`_, 
