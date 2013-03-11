@@ -9,8 +9,13 @@ REMOTE=""
 SECTIONS=""
 BRANCH_DOC="doc"
 # used in sphinxinit
-DIRS="_build _deploy _downloads _images _static"
 KEEP=".gitkeep"
+STATIC="_static"
+DEPLOY="_deploy"
+XSTATIC=""
+XDEPLOY=""
+DIRS="_build _downloads _images"
+THEME="aaltsys"
 # used in main program
 MASTER="master"
 CONFPY=""
@@ -18,10 +23,6 @@ CONFPY=""
 # ===============function to initialize Sphinx in a folder=====================
 
 sphinxinit () {
-  echo -e "$(tput setaf 1)\n -- Initializing Sphinxdoc in folder \"${PWD##*/}\" -- \n$(tput sgr0)"
-
-  # add sphinx to documents folder
-  sphinx-quickstart
 
   # create directories and keep for git
   for DIR in $DIRS ; do
@@ -31,21 +32,30 @@ sphinxinit () {
     touch $DIR/$KEEP
   done
 
-  # edit conf.py: use aaltsys theme, remove index navigation link
-  sed -i "s/\#html_use_index = True/html_use_index = False/" ./conf.py
-  sed -i "s/html_theme = 'default'/html_theme = 'aaltsys'/" ./conf.py
-  sed -i "s/\#html_theme_path = \[\]/html_theme_path = \['_static'\]/" ./conf.py
-
   # add aaltsys theme and aaltsys.css
-   mkdir -p _static/aaltsys
-   wget -O _static/aaltsys.css_t http://develop.aaltsys.info/resources/_downloads/aaltsys.css_t
-   wget -O _static/aaltsys/theme.conf http://develop.aaltsys.info/resources/_downloads/aaltsys/theme.conf
+   mkdir -p $XSTATIC/$THEME
+   wget -O $XSTATIC/$THEME.css_t http://develop.aaltsys.info/resources/_downloads/aaltsys.css_t
+   wget -O $XSTATIC/$THEME/theme.conf http://develop.aaltsys.info/resources/_downloads/aaltsys/theme.conf
 
   # add entries for pseudo-dynamic deployment at Heroku
-  touch _static/index.php
-  echo 'php_flag engine off' > _static/.htaccess
+  touch $XSTATIC/index.php
+  echo 'php_flag engine off' > $XSTATIC/.htaccess
   
-  # make initial index html
+  # add sphinx to documents folder
+  echo -e "$(tput setaf 1)\n -- Initializing Sphinxdoc in folder \"${PWD##*/}\" -- \n$(tput sgr0)"
+  sphinx-quickstart
+
+  # edit conf.py: use aaltsys theme, remove index navigation link
+  sed -i "s^\['$STATIC'\]^\['$XSTATIC'\]^" ./conf.py
+  sed -i "s^\#html_use_index = True^html_use_index = False^" ./conf.py
+  sed -i "s^html_theme = 'default'^html_theme = '$THEME'^" ./conf.py
+  sed -i "s^\#html_theme_path = \[\]^html_theme_path = \['$XSTATIC'\]^" ./conf.py
+  if [[ $SECTIONS != "" ]] ; then
+    sed -i "s^extensions = \[\]^extensions = \['sphinx.ext.intersphinx'\]^" ./conf.py
+    rm -rf $STATIC
+  fi
+
+  # make sphinx initial index html
   make clean html
 }
 
@@ -103,23 +113,27 @@ wget -O .gitignore http://develop.aaltsys.info/resources/_downloads/.gitignore
 
 # initialize main or subsections folders
 if [[ $SECTIONS = "" ]] ; then
+  XSTATIC="$STATIC"
+  XDEPLOY="$DEPLOY"
+  DIRS="$DIRS $STATIC $DEPLOY"
   sphinxinit
 else
+  # $STATIC and $DEPLOY must be shared --
+  XSTATIC='../'$STATIC
+  XDEPLOY='../'$DEPLOY
+  DIRS="$DIRS $XSTATIC $XDEPLOY"
+  
   CONFPY='\n\n''intersphinx_mapping = {'
-  mkdir _deploy
-  mkdir _static
   touch conf.py
   for SECT in $SECTIONS ; do
     if [[ ! -d $SECT ]] ; then
       mkdir $SECT
-      ln -s ${PWD}/_deploy ${PWD}/$SECT/_deploy
-      ln -s ${PWD}/_static ${PWD}/$SECT/_static
     fi
     cd $SECT
     sphinxinit
     cd ..
     if [[ $SECT != $MASTER ]] ; then
-      CONFPY=${CONFPY}'\n'"   '$SECT': ('$SECT', '../_deploy/$SECT/objects.inv'),"
+      CONFPY=${CONFPY}'\n'"   '$SECT': ('$SECT', '$XDEPLOY/$SECT/objects.inv'),"
     fi
   done
   CONFPY=${CONFPY}'\n'"}"
