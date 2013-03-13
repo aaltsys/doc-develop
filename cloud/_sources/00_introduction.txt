@@ -60,6 +60,21 @@ and the cloud services which emulate them are listed in the following table.
    <https://devcenter.heroku.com/x?url=https%3A%2F%2Ftoolbelt.heroku.com%2F>`_, 
    Foreman, and Git.
 
+How To Use A Browser
+=============================
+
+Throughout this project one will have to open many websites. To keep organized 
+when opening a lot of links, right-click on the link then select 'Open Link in 
+New Tab'. This will make it so there is one window with all the tabs one needs.
+
+Also, if one wishes to make a tab into a separate window, simply click on the 
+tab marker at the top and drag the tab away until it detaches. This is will 
+help because it allows one to organize so that there are two separate 
+windows. One window is going to be this guide while the other window will be 
+github, cloud9, and heroku. This technique allows you to read the instructions 
+while working, so one doesn't have to go back and forth between the instructions
+and the other windows.
+
 Logins and Passwords
 =============================
 
