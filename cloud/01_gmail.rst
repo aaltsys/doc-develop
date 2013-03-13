@@ -72,3 +72,8 @@ and choose  :menuselection:`Open in new tab`.
    email to your new mailbox. An example verification email is shown following: 
  
    .. image:: _images/01_gmail-3.png 
+   
+To login to the new Gmail account, click on your photo or email address directly
+to the right of the gmail search bar at the top of your window. Clicking on that
+will produce a drop down menu in which you can select to switch to your new 
+account.
