@@ -36,11 +36,11 @@ Sphinxdoc documenation tools are installed using python package manager
 
    easy_install -U sphinx
 
-Download Files to Include
+How To Get Files
 -----------------------------
 
-We wish to include some files in this project which are downloadable from the 
-following links: 
+**Normally,** if we wished to include some files in this project, we would download
+them from the following links:
 
 +  :download:`gitignore for Sphinx projects <../resources/_downloads/.gitignore>`
 +  :download:`Adding documentation to a code project <../resources/_downloads/doc-addbranch.sh>`
@@ -52,10 +52,10 @@ to the Cloud9 workspace. To return files to Cloud9, use the Linux command
 :command:`wget` instead. Copy and paste the following commands into a terminal 
 window or into the console command line beneath an edit window::
 
-   wget http://develop.github.com/resources/_downloads/.gitignore
-   wget http://develop.github.com/resources/_downloads/doc-addbranch.sh
-   wget http://develop.github.com/resources/_downloads/doc-newproject.sh
-   wget http://develop.github.com/resources/_downloads/doc-deploy.sh
+   wget http://develop.aaltsys.info/resources/_downloads/.gitignore
+   wget http://develop.aaltsys.info/resources/_downloads/doc-addbranch.sh
+   wget http://develop.aaltsys.info/resources/_downloads/doc-newproject.sh
+   wget http://develop.aaltsys.info/resources/_downloads/doc-deploy.sh
 
 After getting the files, click the :guilabel:`gear icon` on top of the left 
 sidebar, and choose :guilabel:`Refresh Project Tree` to see the additions.
