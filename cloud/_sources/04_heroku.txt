@@ -22,3 +22,5 @@
 +  click button :guilabel:`Save` to register and login.
 
    .. image:: _images/03_heroku-3.png
+   
+   If you are asked to download the Heroku Toolbelt, do not download.

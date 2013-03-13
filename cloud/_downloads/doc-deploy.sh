@@ -39,6 +39,7 @@ makedeployment () {
   # Add section-specific static content
   if [[ -d $DIR_STATIC ]] ; then
     cp -R $DIR_STATIC/* $DIR_OUT/
+    cp -R $DIR_STATIC/.ht* $DIR_OUT/
   fi
   
 }
@@ -200,24 +201,26 @@ else
   fi
   
   # Make HTML, other deployment files
+  DIR_DEPLOY='../'$DIR_DEPLOY
   for SECT in $SECTIONS ; do
     if [[ -d $SECT ]] ; then
-      DIR_OUT='../'$DIR_DEPLOY/$SECT
+      DIR_OUT=$DIR_DEPLOY/$SECT
       cd $SECT
       
         mkdir -p $DIR_OUT
         makedeployment
         # Copy MASTER from its deploy subdirectory
         if [[ $SECT == $MASTER ]] ; then
-          cp -r $DIR_OUT/* '../'$DIR_DEPLOY/
-          # If it exists, delete CNAME from master deploy subdirectory
+          cp -r $DIR_OUT/* $DIR_DEPLOY/
+          # If it exists, delete CNAME from deploy subdirectories (is this required?)
           if [[ -e $DIR_OUT/CNAME ]] ; then
-            echo "CNAME $(<'../'$DIR_DEPLOY/$MASTER/CNAME) found in '../'$DIR_DEPLOY/$MASTER/CNAME"
+            echo "CNAME $(<$DIR_DEPLOY/$MASTER/CNAME) found in $DIR_DEPLOY/$MASTER/CNAME"
             rm $DIR_OUT/CNAME
           fi
         fi
       cd ..
     fi
+  
   done
 
 fi
@@ -231,6 +234,10 @@ if [[ $BRANCH_DEPLOY = $GITHUB ]] ; then
     fi
   fi
 fi
+
+# temporary
+echo -e "\nStopped before deployment\n"
+exit 0
 
 # Deploy the repository branch
 if [[ -d $DIR_DEPLOY ]] ; then

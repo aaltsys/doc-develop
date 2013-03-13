@@ -24,7 +24,8 @@ Currently several cloud services are required to provide all the features a
 programming team would require for web development. This document describes one 
 selection of cloud services which results in a flexible web programming 
 setup. Other, possibly better, choices may exist, but that discussion is beyond 
-the scope of this guide.
+the scope of this guide. Simply read this guide if you want to figure out how 
+to develop a website using the internet. 
 
 Services Developers Need
 =============================
