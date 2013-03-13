@@ -39,7 +39,6 @@ makedeployment () {
   # Add section-specific static content
   if [[ -d $DIR_STATIC ]] ; then
     cp -R $DIR_STATIC/* $DIR_OUT/
-    cp -R $DIR_STATIC/.ht* $DIR_OUT/
   fi
   
 }
@@ -219,7 +218,6 @@ else
         fi
       cd ..
     fi
-  
   done
 
 fi
