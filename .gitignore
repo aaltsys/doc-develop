@@ -25,6 +25,9 @@
 !.gitkeep
 !*/.gitkeep
 
+# ignore working copies of scripts
+*.sh
+
 # Private files
 # .htaccess
 # .htpasswd
