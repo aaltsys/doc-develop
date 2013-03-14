@@ -63,17 +63,17 @@ and the cloud services which emulate them are listed in the following table.
 How To Use A Browser
 =============================
 
-Throughout this project one will have to open many websites. To keep organized 
-when opening a lot of links, right-click on the link then select 'Open Link in 
-New Tab'. This will make it so there is one window with all the tabs one needs.
+This project uses many websites at once. When opening links, please right-click 
+on each link then select :guilabel:`Open Link in New Tab`. To make a tab into a 
+separate window, click on the tab marker at the top and drag the tab away until 
+it detaches. Similarly, tabs may be moved from one browser window to another by 
+dragging the tab marker between window title bars. 
 
-Also, if one wishes to make a tab into a separate window, simply click on the 
-tab marker at the top and drag the tab away until it detaches. This is will 
-help because it allows one to organize so that there are two separate 
-windows. One window is going to be this guide while the other window will be 
-github, cloud9, and heroku. This technique allows you to read the instructions 
-while working, so one doesn't have to go back and forth between the instructions
-and the other windows.
+In this project, it helps to organize the desktop into two separate browser
+windows: one window containing this guide, and another window containing tabs 
+for github, cloud9, heroku, or anything else. This technique allows you to read 
+the instructions while working, without having to go back and forth between the 
+instructions and the other windows.
 
 Logins and Passwords
 =============================
