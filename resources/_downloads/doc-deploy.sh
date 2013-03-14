@@ -39,6 +39,7 @@ makedeployment () {
   # Add section-specific static content
   if [[ -d $DIR_STATIC ]] ; then
     cp -R $DIR_STATIC/* $DIR_OUT/
+    cp $DIR_STATIC/.ht* $DIR_OUT/
   fi
   
 }
@@ -104,6 +105,8 @@ if [[ "${TEST#*$REMOTE}" = "$TEST" ]] ; then
     echo -e "\nCreating new heroku remote deployment for documentation\n"
     heroku create
     echo "$(git remote -v)"
+    set -- $(git remote -v)
+    REMOTE_DEPLOY=$2
   else
     # main project deployed somewhere and documentation remote not set
     echo -e "Use \"git remote ... \" to set deployment for $PROJECT. Exiting ..."

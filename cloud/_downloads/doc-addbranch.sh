@@ -135,12 +135,12 @@ if [[ ! -d $DIR_DOC/.git ]] ; then
     sphinxinit
   else
     # $STATIC and $DEPLOY must be shared --
+    touch index.rst
     XSTATIC='../'$STATIC
     XDEPLOY='../'$DEPLOY
     DIRS="$DIRS $XSTATIC $XDEPLOY"
   
     CONFPY='\n\n''intersphinx_mapping = {'
-    touch conf.py
     for SECT in $SECTIONS ; do
       if [[ ! -d $SECT ]] ; then
         mkdir $SECT
