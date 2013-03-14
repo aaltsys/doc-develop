@@ -1,1 +1,0 @@
-Search.setIndex({objects:{},terms:{index:0,search:0,aaltsi:0,modul:0,indic:0,content:0,python:0,tutori:0,tabl:0,strong:0,page:0,languag:0},objtypes:{},titles:["AAltsys <strong>Python Language</strong> Tutorial"],objnames:{},filenames:["index"]})
