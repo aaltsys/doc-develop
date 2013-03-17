@@ -23,4 +23,5 @@ git.. _setup_heroku:
 
    .. image:: _images/03_heroku-3.png
    
-   If you are asked to download the Heroku Toolbelt, do not download.
+   .. note:: You may be asked to download the Heroku Toolbelt. Do not download
+      it to Cloud9; a separate installation step is used instead.
