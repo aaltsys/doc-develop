@@ -223,9 +223,8 @@ In this case, the local project is initialized with the command:</p>
 <div class="highlight-python"><pre>git init {folder_path}</pre>
 </div>
 <p>for example,</p>
-<blockquote>
-<div><p>git init ~/Projects/doc-develop</p>
-</div></blockquote>
+<div class="highlight-python"><pre>git init ~/Projects/doc-develop</pre>
+</div>
 </li>
 </ol>
 </div>
@@ -331,10 +330,12 @@ hosting site to add the missing key.</p>
 <p>Add your local changes and view the results with the command sequence:</p>
 <div class="highlight-python"><pre>git add .
 git status
-git commit -m "{a brief description of the changes for this commit}"
-
-.. hint:: Git adds and commits your saved work. Therefore, make sure you save
-   changes to documents in the editor before using git commands.</pre>
+git commit -m "{a brief description of the changes for this commit}"</pre>
+</div>
+<div class="admonition hint">
+<p class="first admonition-title">Hint</p>
+<p class="last">Git adds and commits your saved work. Therefore, make sure you save
+changes to documents in the editor before using git commands.</p>
 </div>
 <p>Rename files or delete them with git-specific commands:</p>
 <div class="highlight-python"><pre>git mv {old_filename} {new_filename}

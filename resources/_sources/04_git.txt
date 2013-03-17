@@ -118,7 +118,7 @@ folder in one of two ways:
    
       git init {folder_path}
    
-   for example,
+   for example, ::
    
       git init ~/Projects/doc-develop
 
@@ -212,8 +212,8 @@ Add your local changes and view the results with the command sequence::
    git status
    git commit -m "{a brief description of the changes for this commit}"
 
-   .. hint:: Git adds and commits your saved work. Therefore, make sure you save 
-      changes to documents in the editor before using git commands. 
+.. hint:: Git adds and commits your saved work. Therefore, make sure you save 
+   changes to documents in the editor before using git commands. 
   
 Rename files or delete them with git-specific commands::
 
