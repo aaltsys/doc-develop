@@ -1,159 +1,270 @@
-.. _configure:
+.. _git:
 
 #############################
- Right Configuration
+Git Version Control
 ############################# 
 
-Generate Missing SSH Keys
+**Git** [#]_ is a distributed text code repository which operates as follows:
+
++  Local workstation project folders include a copy of the repository archive
++  :command:`Commit` adds changes to the local repository copy
++  A remote master or upstream repository maintains the canonical archive
++  :command:`Pull` retrieves remote master archive changes and merges them into
+   the local copy
++  :command:`Push` merges local commits with the remote master archive 
++  Collision detection rather than exclusive locking manages conflicts between 
+   local and remote archives
+
+Git was written by Linus Torvalds to manage version control for the Linux 
+kernel. It has become a *de facto* standard for open-source version control. 
+Git is simple in use, and the distributed code approach is well-suited to 
+open-source development, where contributors do not share continents, much less 
+office space.
+
+Set  Up Git 
 =============================
 
-The following command will generate missing **ssh keys** for a user::
+Installation
+-----------------------------
 
-  if [ ! -f ~/.ssh/id_rsa ]; then ssh-keygen -N '' -f ~/.ssh/id_rsa; fi
+Git installation packages are available for practically every computer system. 
+Here are Linux installation commands:
 
-Configure git 
-=============================
++------------------------+----------------------------------------------------+
+| System                 | Git Installation Command                           |
++========================+====================================================+
+| Debian/Ubuntu Linux    | ``sudo apt-get install git-core``                  |
++------------------------+----------------------------------------------------+
+| Redhat/Fedora Linux    | ``sudo yum install git-core``                      |
++------------------------+----------------------------------------------------+
+| Mac OS-X w/ Mac Ports  | ``sudo port install git-core``                     |
++------------------------+----------------------------------------------------+
+| OS-X graphical install | http://code.google.com/p/git-osx-installer         |
++------------------------+----------------------------------------------------+
 
-Publishing on the web is a form of coding, and code belongs in a repository. 
-While there are many options for repositories, **git** [#]_ has become a 
-*de facto* standard for publicly exchanged projects. Enter the following 
-console commands to configure git:: 
+Use `this guide <http://yuilibrary.com/yui/docs/tutorials/git/>`_ for a more 
+detailed explanation of Git packages, versions, and system requirements.
+
+Configuration
+-----------------------------
+
+Git stores global settings for each user in home directory file 
+:file:`~/.gitconfig`. :command:`Git config` console commands change settings in 
+this file. The following global configuration settings are recommended:: 
    
-  git config --global user.name "firstname lastname"
-  git config --global user.email "email@domain"
-  git config --global branch.master.remote origin
-  git config --global branch.master.merge refs/heads/master
+   git config --global user.name "{firstname lastname}"
+   git config --global user.email "{email@domain}"
+   git config --global branch.master.remote origin
+   git config --global branch.master.merge refs/heads/master
+   git config --global --add color.ui true
 
-These global settings are recorded in home directory file :file:`~/.gitconfig`. 
+The following configuration is necessary when encased in the Microsoft Windows 
+coccoon::
 
-Create a Project Folder
+   git config --global core.autocrlf true 
+
+If the :command:`--global` option is omitted, then settings will apply to 
+whichever project repository is open at the time. Most git information specific 
+to a project is stored in directory :file:`.git` at a project's root folder.
+
+Remote Repository Hosting
 =============================
 
-Documentation is treated as a project. Work is divided into projects which are 
-stored locally as sub-folders of a :file:`Projects` folder. Oddly, Linux 
-desktops create folders for music, downloads, pictures, videos, and so forth, 
-but a place to do actual work? Missing. Create the missing folder and start 
-your first project with the following command:: 
-   
-  git init ~/Projects/doc-firsttask
+Remote Git repository hosting services are readily available, and so there is 
+little reason to install a private Git repository server. Some sites which 
+provide free repository services for public and some private repositories are 
+listed following:
 
-This creates the directory :file:`~/Projects/doc-firsttask/.git` where 
-repository information is kept for that project. 
++--------------------+-------------------------------------------+
+| Site name          | URL to site                               |
++====================+===========================================+
+| Gitorious          | https://gitorious.org                     |
++--------------------+-------------------------------------------+
+| GitHub             | https://github.com                        |
++--------------------+-------------------------------------------+
+| Bitbucket          | https://bitbucket.org                     |
++--------------------+-------------------------------------------+
+
+Many website hosting services provide direct integration with repository 
+services. Github provides hosting for static sites through **gh-pages** and 
+blogs with **octopress**. **Heroku** hosts a variety of code sites with 
+deployment occurring through git repository commands:
+
+|   ``heroku create`` adds a git repository remote ``heroku`` to a project
+|   ``git push heroku`` deploys project web application code at Heroku
+
+Creating a Project
+=============================
+
+Project Folder
+-----------------------------
+
+Typically developers manage projects as folders in a :file:`Projects` directory 
+within their user :file:`home`. Git commands will create or install a project 
+folder in one of two ways:
+
+#. A git server or hosting service, such as Github, will generate a project 
+   resource URL. The project can be cloned to a local client with the command::
+   
+      git clone {project_resource_URL} {folder_path}
+   
+   for example, clone this project from github into folder :file:`doc-develop` 
+   with the command::
+   
+      git clone git@github.com:aaltsys/doc-develop.git ~/Projects/doc-develop
+
+#. A project is started on a local client and later pushed to a remote server. 
+   In this case, the local project is initialized with the command::
+   
+      git init {folder_path}
+   
+   for example,
+   
+      git init ~/Projects/doc-develop
 
 .. _gitignore:
 
-Prepare .gitignore
-=============================
+.gitignore
+-----------------------------
 
 Your project will contain files with content that you create, and other files 
-which are generated by the system. The git repository should track content and 
-not system files. Using ``nano`` or ``kate``, create a :file:`.gitignore` file 
-to identify untracked files to git. [#]_ Here is some suggested content for 
-:file:`.gitignore`::
+which are generated by the system, such as compiled code. A git repository 
+should track user-created text content and not system files. Using ``nano`` or 
+``kate``, create a :file:`.gitignore` file to identify untracked files to git. 
+[#]_ Here are suggested entries for :file:`.gitignore` with a documentation 
+project using the Linux Kate editor::
   
-  # ignore editor backup files 
-  *~
-  */*~
-  # ignore compilation from make
-  *build/*
-  */*build/*
-  # ignore deployment content
-  *deploy/*
-  */*deploy/*
-  # keep hidden placeholder files which preserve directories
-  !.gitkeep
-  !*/.gitkeep
+   # ignore editor backup files 
+   *~
+   */*~
+   # ignore make compilation
+   *build/*
+   */*build/*
+   # ignore deployment content
+   *deploy/*
+   */*deploy/*
+   # keep hidden placeholder files which preserve directories
+   !.gitkeep
+   !*/.gitkeep
 
-Add Sphinx to a Project
+When creating a repository, most hosting services will include a 
+:file:`.gitignore` file appropriate to the specified repository type.
+
+Using Git
 =============================
 
-Add the Sphinx documentation features to your new project from the console as 
-follows::
-   
-  cd ~/Projects/doc-firsttask
-  sphinx-quickstart
+[#]_
 
-Answer the resulting questions, which are::
-   
-  Root path for the documentation [.]:
-  Separate source and build directories (y/N) [n]:
-  Name prefix for templates and static dir [_]:
-  Project name: __First Project__
-  Author name(s): __Your Name Here__
-  Project version: __1.0__
-  Project release [1.0]:
-  Source file suffix [.rst]:
-  Name of your master document (without suffix) [index]:
-  Do you want to use the epub builder (y/N) [n]:
-  autodoc: automatically insert docstringss from modules (y/N) [n]:
-  doctest: automatically test code snippets in doctest blocks (y/N) [n]:
-  intersphinx link between Sphinxx documentation of different projects (y/N) [n]:
-  todo: write "todo" entries that can be shown or hidden on build (y/N) [n]:
-  coverage: checks for documentation coverage (y/N) [n]:
-  pngmath: include math, rendered as PNG images (y/N) [n]:
-  mathjax: include math, rendered in the browser by MathJax (y/N) [n]:
-  ifconfig: conditional inclusion of content based on config values (y/N) [n]:
-  viewcode: include links to the source code of documented Python objects (y/N) [n]:
-  Create Makefile? (Y/n) [y]:
-  Create Windows command file? (Y/n) [y]: __n__
+Basic git  commands
+-----------------------------
 
-Only four questions actually require answering; the rest are defaulted.
++-------------------------------+------------------------------------------------+
+| Git Command                   | Command Purpose                                |
++===============================+================================================+
+| ``git pull``                  | retrieve and merge remote changes with local   |
++-------------------------------+------------------------------------------------+
+| ``git status``                | display tracked and untracked changes          |
++-------------------------------+------------------------------------------------+
+| ``git add {filename}``        | stage and track changes ({filename}=. for all) |
++-------------------------------+------------------------------------------------+
+| ``git reset``                 | clear changes staged for commit (undo add)     |
++-------------------------------+------------------------------------------------+
+| ``git mv {old} {new}``        | rename files under git version control         |
++-------------------------------+------------------------------------------------+
+| ``git rm {-rf} {filepath}``   | delete files under git version control         |
++-------------------------------+------------------------------------------------+
+| ``git commit -m "{message}"`` | commit changes to local repository copy        |
++-------------------------------+------------------------------------------------+
+| ``git push``                  | add and merge local changes with remote        |
++-------------------------------+------------------------------------------------+
 
-Add Documentation Folders
-=============================
+Command Notes:
 
-A publication may require additional folders to hold images, downloads, static 
-content, web program includes, and deployed results. Following are commands to 
-create these folders::
-   
-  cd ~/Projects/doc-firsttask
-  mkdir _build;     touch _build/.git_keep
-  mkdir _deploy;    touch _deploy/.git_kep
-  mkdir _downloads; touch _downloads/.git_keep
-  mkdir _images;    touch _images/.git_keep
-  mkdir _include;   touch _include/.git_keep
-  mkdir _static;    touch _static/.git_keep
++  ``git add`` -- use the period ("dot") to stage all tracked changes, otherwise 
+   name specific files to add. Exclude categories of files using 
+   :file:`.gitignore` entries.
++  ``git mv`` -- syntax for :command:`git-mv` is the same as the Linux 
+   :command:`mv` command, but proceded with :command:`git`.
++  ``git rm`` -- syntax for :command:`git-rm` is the same as the Linux 
+   :command:`rm` command, but proceded with :command:`git`.
++  ``git commit`` -- Provide a terse but descriptive 
 
-You can avoid typing all these commands, however, by downloading the following 
-two scripts to your :file:`~/Projects` folder:
+.. warning:: Always use the :command:`git` command versions for :command:`mv` 
+   and :command:`rm` when working with files under version control. The penalty 
+   for ignoring this convention is much repeated typing.
 
-+ :download:`Documentation project startup script <_downloads/doc-newproject.sh>` 
-+ :download:`Add documentation to project script <_downloads/doc-addbranch.sh>` 
+Adding changes to repository
+-----------------------------
 
-To start a new documentation project, from :file:`~/Projects`, run the command:: 
-  
-  bash doc-newproject.sh {document_foldername}
-
-To add a documentation branch to a code project repository, from 
-:file:`~/Projects`, run the command:: 
-
-  bash doc-addbranch.sh {project_foldername}
-
-.. note:: These scripts assume that you have already created the documentation 
-  or project folder, that ``git init`` has been run on the folder, and that a 
-  remote host repository is named using ``git remote add origin {remotename}``. 
-
-Add Changes to git
-=============================
-
-Now add your changes to git [#]_ and view the results with the commands::
+Add your changes to git  and view the results with the commands::
    
   git add .
   git status
-  git commit -m "Empty project directory for firsttask"
+  git commit -m "{a brief description of the changes for this commit}"
 
-Summary Configuration
+
+Commit changes to repository
+-----------------------------
+
+Periodically add and commit completed content to your local repository::
+
+  git add .
+  git status
+  git commit -m "type a brief message here describing your changes"
+
+Remote Repository Updates
 =============================
 
-This section covered:
+Pull remote content
+-----------------------------
 
-+ Generating Missing SSH keys
-+ Configuring git
-+ Creating a Projects folder and the first project within it
-+ Initializing the project for git tracking
-+ Applying Sphinx documentation tools on the project
-+ Adding other folders for later use
-+ Performing the first git commit
+Before starting a day's work, synchronize your local repository copy to the 
+remote master repository::
+
+  git pull
+
+Push local content
+-----------------------------
+
+When local content is synchronized with master changes, tested, and committed 
+locally, then push the content commits to the remote master::
+
+ git push
+
+.. Note:: If git requires a user password in the :command:`git push` command, 
+   then an ssh key is missing at GitHub. Follow GitHub directions to add the 
+   missing key. 
+ 
+Build Final Web Content
+=============================
+
+The original goal of this guide may seem forgotten, in that a free hosted 
+website has not yet materialized. (You are viewing just such a site, of course, 
+but that doesn't count.) That goal can be achieved now if all the preliminary
+steps are complete.
+
+GitHub deploy requirements
+-----------------------------
+
++ A local project folder with .rst document content
++ git repository and sphinx markup initialized on the project folder
++ Some .rst document content, stored in the repository
++ A GitHub remote master repository which is updated from the local content
++ A **gh-pages** branch in the GitHub repository to contain deployed HTML 
++ A script to build and deploy the site, which is downloaded below.
+
+GitHub deployment script
+----------------------------- 
+
+Download script :download:`github-deploy.sh <_downloads/github-deploy.sh>` to
+your :file:`Projects` folder, or inside of your project.
+
+Then deploy the site at GitHub with the command::
+
+  bash gitdeploy.sh {project_foldername}
+
+.. Note:: If the script is executed from within your project, omit the 
+   ``{project_foldername}`` from the command.
 
 ------
 
