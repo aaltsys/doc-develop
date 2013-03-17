@@ -212,7 +212,8 @@ else
         makedeployment
         # Copy MASTER from its deploy subdirectory
         if [[ $SECT == $MASTER ]] ; then
-          cp -r $DIR_OUT/* '../'$DIR_DEPLOY/
+          cp -R $DIR_OUT/* '../'$DIR_DEPLOY/
+          cp -R $DIR_OUT/.ht* '../'$DIR_DEPLOY/
           # If it exists, delete CNAME from master deploy subdirectory
           if [[ -e $DIR_OUT/CNAME ]] ; then
             echo "CNAME $(<'../'$DIR_DEPLOY/$MASTER/CNAME) found in '../'$DIR_DEPLOY/$MASTER/CNAME"

@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Right Configuration &mdash; Developer Documentation Resource Pages 1.0 documentation</title>
+    <title>Git Version Control &mdash; Developer Documentation Resource Pages 1.0 documentation</title>
     
     <link rel="stylesheet" href="_static/aaltsys.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -42,15 +42,34 @@
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">Right Configuration</a><ul>
-<li><a class="reference internal" href="#generate-missing-ssh-keys">Generate Missing SSH Keys</a></li>
-<li><a class="reference internal" href="#configure-git">Configure git</a></li>
-<li><a class="reference internal" href="#create-a-project-folder">Create a Project Folder</a></li>
-<li><a class="reference internal" href="#prepare-gitignore">Prepare .gitignore</a></li>
-<li><a class="reference internal" href="#add-sphinx-to-a-project">Add Sphinx to a Project</a></li>
-<li><a class="reference internal" href="#add-documentation-folders">Add Documentation Folders</a></li>
-<li><a class="reference internal" href="#add-changes-to-git">Add Changes to git</a></li>
-<li><a class="reference internal" href="#summary-configuration">Summary Configuration</a></li>
+<li><a class="reference internal" href="#">Git Version Control</a><ul>
+<li><a class="reference internal" href="#set-up-git">Set  Up Git</a><ul>
+<li><a class="reference internal" href="#installation">Installation</a></li>
+<li><a class="reference internal" href="#configuration">Configuration</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#remote-repository-hosting">Remote Repository Hosting</a></li>
+<li><a class="reference internal" href="#creating-a-project">Creating a Project</a><ul>
+<li><a class="reference internal" href="#project-folder">Project Folder</a></li>
+<li><a class="reference internal" href="#gitignore">.gitignore</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#using-git">Using Git</a><ul>
+<li><a class="reference internal" href="#basic-git-commands">Basic git  commands</a></li>
+<li><a class="reference internal" href="#adding-changes-to-repository">Adding changes to repository</a></li>
+<li><a class="reference internal" href="#commit-changes-to-repository">Commit changes to repository</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#remote-repository-updates">Remote Repository Updates</a><ul>
+<li><a class="reference internal" href="#pull-remote-content">Pull remote content</a></li>
+<li><a class="reference internal" href="#push-local-content">Push local content</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#build-final-web-content">Build Final Web Content</a><ul>
+<li><a class="reference internal" href="#github-deploy-requirements">GitHub deploy requirements</a></li>
+<li><a class="reference internal" href="#github-deployment-script">GitHub deployment script</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -84,50 +103,155 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="right-configuration">
-<span id="configure"></span><h1>Right Configuration<a class="headerlink" href="#right-configuration" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="generate-missing-ssh-keys">
-<h2>Generate Missing SSH Keys<a class="headerlink" href="#generate-missing-ssh-keys" title="Permalink to this headline">¶</a></h2>
-<p>The following command will generate missing <strong>ssh keys</strong> for a user:</p>
-<div class="highlight-python"><pre>if [ ! -f ~/.ssh/id_rsa ]; then ssh-keygen -N '' -f ~/.ssh/id_rsa; fi</pre>
+  <div class="section" id="git-version-control">
+<span id="git"></span><h1>Git Version Control<a class="headerlink" href="#git-version-control" title="Permalink to this headline">¶</a></h1>
+<p><strong>Git</strong> <a class="footnote-reference" href="#id5" id="id1">[1]</a> is a distributed text code repository which operates as follows:</p>
+<ul class="simple">
+<li>Local workstation project folders include a copy of the repository archive</li>
+<li><strong class="command">Commit</strong> adds changes to the local repository copy</li>
+<li>A remote master or upstream repository maintains the canonical archive</li>
+<li><strong class="command">Pull</strong> retrieves remote master archive changes and merges them into
+the local copy</li>
+<li><strong class="command">Push</strong> merges local commits with the remote master archive</li>
+<li>Collision detection rather than exclusive locking manages conflicts between
+local and remote archives</li>
+</ul>
+<p>Git was written by Linus Torvalds to manage version control for the Linux
+kernel. It has become a <em>de facto</em> standard for open-source version control.
+Git is simple in use, and the distributed code approach is well-suited to
+open-source development, where contributors do not share continents, much less
+office space.</p>
+<div class="section" id="set-up-git">
+<h2>Set  Up Git<a class="headerlink" href="#set-up-git" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="installation">
+<h3>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h3>
+<p>Git installation packages are available for practically every computer system.
+Here are Linux installation commands:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="32%" />
+<col width="68%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">System</th>
+<th class="head">Git Installation Command</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Debian/Ubuntu Linux</td>
+<td><tt class="docutils literal"><span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">git-core</span></tt></td>
+</tr>
+<tr class="row-odd"><td>Redhat/Fedora Linux</td>
+<td><tt class="docutils literal"><span class="pre">sudo</span> <span class="pre">yum</span> <span class="pre">install</span> <span class="pre">git-core</span></tt></td>
+</tr>
+<tr class="row-even"><td>Mac OS-X w/ Mac Ports</td>
+<td><tt class="docutils literal"><span class="pre">sudo</span> <span class="pre">port</span> <span class="pre">install</span> <span class="pre">git-core</span></tt></td>
+</tr>
+<tr class="row-odd"><td>OS-X graphical install</td>
+<td><a class="reference external" href="http://code.google.com/p/git-osx-installer">http://code.google.com/p/git-osx-installer</a></td>
+</tr>
+</tbody>
+</table>
+<p>Use <a class="reference external" href="http://yuilibrary.com/yui/docs/tutorials/git/">this guide</a> for a more
+detailed explanation of Git packages, versions, and system requirements.</p>
 </div>
-</div>
-<div class="section" id="configure-git">
-<h2>Configure git<a class="headerlink" href="#configure-git" title="Permalink to this headline">¶</a></h2>
-<p>Publishing on the web is a form of coding, and code belongs in a repository.
-While there are many options for repositories, <strong>git</strong> <a class="footnote-reference" href="#id4" id="id1">[1]</a> has become a
-<em>de facto</em> standard for publicly exchanged projects. Enter the following
-console commands to configure git:</p>
-<div class="highlight-python"><pre>git config --global user.name "firstname lastname"
-git config --global user.email "email@domain"
+<div class="section" id="configuration">
+<h3>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h3>
+<p>Git stores global settings for each user in home directory file
+<tt class="file docutils literal"><span class="pre">~/.gitconfig</span></tt>. <strong class="command">Git config</strong> console commands change settings in
+this file. The following global configuration settings are recommended:</p>
+<div class="highlight-python"><pre>git config --global user.name "{firstname lastname}"
+git config --global user.email "{email@domain}"
 git config --global branch.master.remote origin
-git config --global branch.master.merge refs/heads/master</pre>
+git config --global branch.master.merge refs/heads/master
+git config --global --add color.ui true</pre>
 </div>
-<p>These global settings are recorded in home directory file <tt class="file docutils literal"><span class="pre">~/.gitconfig</span></tt>.</p>
+<p>The following configuration is necessary when encased in the Microsoft Windows
+coccoon:</p>
+<div class="highlight-python"><pre>git config --global core.autocrlf true</pre>
 </div>
-<div class="section" id="create-a-project-folder">
-<h2>Create a Project Folder<a class="headerlink" href="#create-a-project-folder" title="Permalink to this headline">¶</a></h2>
-<p>Documentation is treated as a project. Work is divided into projects which are
-stored locally as sub-folders of a <tt class="file docutils literal"><span class="pre">Projects</span></tt> folder. Oddly, Linux
-desktops create folders for music, downloads, pictures, videos, and so forth,
-but a place to do actual work? Missing. Create the missing folder and start
-your first project with the following command:</p>
-<div class="highlight-python"><pre>git init ~/Projects/doc-firsttask</pre>
+<p>If the <strong class="command">&#8211;global</strong> option is omitted, then settings will apply to
+whichever project repository is open at the time. Most git information specific
+to a project is stored in directory <tt class="file docutils literal"><span class="pre">.git</span></tt> at a project&#8217;s root folder.</p>
 </div>
-<p>This creates the directory <tt class="file docutils literal"><span class="pre">~/Projects/doc-firsttask/.git</span></tt> where
-repository information is kept for that project.</p>
 </div>
-<div class="section" id="prepare-gitignore">
-<span id="gitignore"></span><h2>Prepare .gitignore<a class="headerlink" href="#prepare-gitignore" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="remote-repository-hosting">
+<h2>Remote Repository Hosting<a class="headerlink" href="#remote-repository-hosting" title="Permalink to this headline">¶</a></h2>
+<p>Remote Git repository hosting services are readily available, and so there is
+little reason to install a private Git repository server. Some sites which
+provide free repository services for public and some private repositories are
+listed following:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="32%" />
+<col width="68%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Site name</th>
+<th class="head">URL to site</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Gitorious</td>
+<td><a class="reference external" href="https://gitorious.org">https://gitorious.org</a></td>
+</tr>
+<tr class="row-odd"><td>GitHub</td>
+<td><a class="reference external" href="https://github.com">https://github.com</a></td>
+</tr>
+<tr class="row-even"><td>Bitbucket</td>
+<td><a class="reference external" href="https://bitbucket.org">https://bitbucket.org</a></td>
+</tr>
+</tbody>
+</table>
+<p>Many website hosting services provide direct integration with repository
+services. Github provides hosting for static sites through <strong>gh-pages</strong> and
+blogs with <strong>octopress</strong>. <strong>Heroku</strong> hosts a variety of code sites with
+deployment occurring through git repository commands:</p>
+<div class="line-block">
+<div class="line"><tt class="docutils literal"><span class="pre">heroku</span> <span class="pre">create</span></tt> adds a git repository remote <tt class="docutils literal"><span class="pre">heroku</span></tt> to a project</div>
+<div class="line"><tt class="docutils literal"><span class="pre">git</span> <span class="pre">push</span> <span class="pre">heroku</span></tt> deploys project web application code at Heroku</div>
+</div>
+</div>
+<div class="section" id="creating-a-project">
+<h2>Creating a Project<a class="headerlink" href="#creating-a-project" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="project-folder">
+<h3>Project Folder<a class="headerlink" href="#project-folder" title="Permalink to this headline">¶</a></h3>
+<p>Typically developers manage projects as folders in a <tt class="file docutils literal"><span class="pre">Projects</span></tt> directory
+within their user <tt class="file docutils literal"><span class="pre">home</span></tt>. Git commands will create or install a project
+folder in one of two ways:</p>
+<ol class="arabic">
+<li><p class="first">A git server or hosting service, such as Github, will generate a project
+resource URL. The project can be cloned to a local client with the command:</p>
+<div class="highlight-python"><pre>git clone {project_resource_URL} {folder_path}</pre>
+</div>
+<p>for example, clone this project from github into folder <tt class="file docutils literal"><span class="pre">doc-develop</span></tt>
+with the command:</p>
+<div class="highlight-python"><pre>git clone git@github.com:aaltsys/doc-develop.git ~/Projects/doc-develop</pre>
+</div>
+</li>
+<li><p class="first">A project is started on a local client and later pushed to a remote server.
+In this case, the local project is initialized with the command:</p>
+<div class="highlight-python"><pre>git init {folder_path}</pre>
+</div>
+<p>for example,</p>
+<blockquote>
+<div><p>git init ~/Projects/doc-develop</p>
+</div></blockquote>
+</li>
+</ol>
+</div>
+<div class="section" id="gitignore">
+<span id="id2"></span><h3>.gitignore<a class="headerlink" href="#gitignore" title="Permalink to this headline">¶</a></h3>
 <p>Your project will contain files with content that you create, and other files
-which are generated by the system. The git repository should track content and
-not system files. Using <tt class="docutils literal"><span class="pre">nano</span></tt> or <tt class="docutils literal"><span class="pre">kate</span></tt>, create a <tt class="file docutils literal"><span class="pre">.gitignore</span></tt> file
-to identify untracked files to git. <a class="footnote-reference" href="#id5" id="id2">[2]</a> Here is some suggested content for
-<tt class="file docutils literal"><span class="pre">.gitignore</span></tt>:</p>
+which are generated by the system, such as compiled code. A git repository
+should track user-created text content and not system files. Using <tt class="docutils literal"><span class="pre">nano</span></tt> or
+<tt class="docutils literal"><span class="pre">kate</span></tt>, create a <tt class="file docutils literal"><span class="pre">.gitignore</span></tt> file to identify untracked files to git.
+<a class="footnote-reference" href="#id6" id="id3">[2]</a> Here are suggested entries for <tt class="file docutils literal"><span class="pre">.gitignore</span></tt> with a documentation
+project using the Linux Kate editor:</p>
 <div class="highlight-python"><pre># ignore editor backup files
 *~
 */*~
-# ignore compilation from make
+# ignore make compilation
 *build/*
 */*build/*
 # ignore deployment content
@@ -137,129 +261,177 @@ to identify untracked files to git. <a class="footnote-reference" href="#id5" id
 !.gitkeep
 !*/.gitkeep</pre>
 </div>
+<p>When creating a repository, most hosting services will include a
+<tt class="file docutils literal"><span class="pre">.gitignore</span></tt> file appropriate to the specified repository type.</p>
 </div>
-<div class="section" id="add-sphinx-to-a-project">
-<h2>Add Sphinx to a Project<a class="headerlink" href="#add-sphinx-to-a-project" title="Permalink to this headline">¶</a></h2>
-<p>Add the Sphinx documentation features to your new project from the console as
-follows:</p>
-<div class="highlight-python"><pre>cd ~/Projects/doc-firsttask
-sphinx-quickstart</pre>
 </div>
-<p>Answer the resulting questions, which are:</p>
-<div class="highlight-python"><pre>Root path for the documentation [.]:
-Separate source and build directories (y/N) [n]:
-Name prefix for templates and static dir [_]:
-Project name: __First Project__
-Author name(s): __Your Name Here__
-Project version: __1.0__
-Project release [1.0]:
-Source file suffix [.rst]:
-Name of your master document (without suffix) [index]:
-Do you want to use the epub builder (y/N) [n]:
-autodoc: automatically insert docstringss from modules (y/N) [n]:
-doctest: automatically test code snippets in doctest blocks (y/N) [n]:
-intersphinx link between Sphinxx documentation of different projects (y/N) [n]:
-todo: write "todo" entries that can be shown or hidden on build (y/N) [n]:
-coverage: checks for documentation coverage (y/N) [n]:
-pngmath: include math, rendered as PNG images (y/N) [n]:
-mathjax: include math, rendered in the browser by MathJax (y/N) [n]:
-ifconfig: conditional inclusion of content based on config values (y/N) [n]:
-viewcode: include links to the source code of documented Python objects (y/N) [n]:
-Create Makefile? (Y/n) [y]:
-Create Windows command file? (Y/n) [y]: __n__</pre>
-</div>
-<p>Only four questions actually require answering; the rest are defaulted.</p>
-</div>
-<div class="section" id="add-documentation-folders">
-<h2>Add Documentation Folders<a class="headerlink" href="#add-documentation-folders" title="Permalink to this headline">¶</a></h2>
-<p>A publication may require additional folders to hold images, downloads, static
-content, web program includes, and deployed results. Following are commands to
-create these folders:</p>
-<div class="highlight-python"><pre>cd ~/Projects/doc-firsttask
-mkdir _build;     touch _build/.git_keep
-mkdir _deploy;    touch _deploy/.git_kep
-mkdir _downloads; touch _downloads/.git_keep
-mkdir _images;    touch _images/.git_keep
-mkdir _include;   touch _include/.git_keep
-mkdir _static;    touch _static/.git_keep</pre>
-</div>
-<p>You can avoid typing all these commands, however, by downloading the following
-two scripts to your <tt class="file docutils literal"><span class="pre">~/Projects</span></tt> folder:</p>
+<div class="section" id="using-git">
+<h2>Using Git<a class="headerlink" href="#using-git" title="Permalink to this headline">¶</a></h2>
+<p><a class="footnote-reference" href="#id7" id="id4">[3]</a></p>
+<div class="section" id="basic-git-commands">
+<h3>Basic git  commands<a class="headerlink" href="#basic-git-commands" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="39%" />
+<col width="61%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Git Command</th>
+<th class="head">Command Purpose</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">git</span> <span class="pre">pull</span></tt></td>
+<td>retrieve and merge remote changes with local</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">git</span> <span class="pre">status</span></tt></td>
+<td>display tracked and untracked changes</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">git</span> <span class="pre">add</span> <span class="pre">{filename}</span></tt></td>
+<td>stage and track changes ({filename}=. for all)</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">git</span> <span class="pre">reset</span></tt></td>
+<td>clear changes staged for commit (undo add)</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">git</span> <span class="pre">mv</span> <span class="pre">{old}</span> <span class="pre">{new}</span></tt></td>
+<td>rename files under git version control</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">git</span> <span class="pre">rm</span> <span class="pre">{-rf}</span> <span class="pre">{filepath}</span></tt></td>
+<td>delete files under git version control</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">git</span> <span class="pre">commit</span> <span class="pre">-m</span> <span class="pre">&quot;{message}&quot;</span></tt></td>
+<td>commit changes to local repository copy</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">git</span> <span class="pre">push</span></tt></td>
+<td>add and merge local changes with remote</td>
+</tr>
+</tbody>
+</table>
+<p>Command Notes:</p>
 <ul class="simple">
-<li><a class="reference download internal" href="_downloads/doc-newproject.sh"><tt class="xref download docutils literal"><span class="pre">Documentation</span> <span class="pre">project</span> <span class="pre">startup</span> <span class="pre">script</span></tt></a></li>
-<li><a class="reference download internal" href="_downloads/doc-addbranch.sh"><tt class="xref download docutils literal"><span class="pre">Add</span> <span class="pre">documentation</span> <span class="pre">to</span> <span class="pre">project</span> <span class="pre">script</span></tt></a></li>
+<li><tt class="docutils literal"><span class="pre">git</span> <span class="pre">add</span></tt> &#8211; use the period (&#8220;dot&#8221;) to stage all tracked changes, otherwise
+name specific files to add. Exclude categories of files using
+<tt class="file docutils literal"><span class="pre">.gitignore</span></tt> entries.</li>
+<li><tt class="docutils literal"><span class="pre">git</span> <span class="pre">mv</span></tt> &#8211; syntax for <strong class="command">git-mv</strong> is the same as the Linux
+<strong class="command">mv</strong> command, but proceded with <strong class="command">git</strong>.</li>
+<li><tt class="docutils literal"><span class="pre">git</span> <span class="pre">rm</span></tt> &#8211; syntax for <strong class="command">git-rm</strong> is the same as the Linux
+<strong class="command">rm</strong> command, but proceded with <strong class="command">git</strong>.</li>
+<li><tt class="docutils literal"><span class="pre">git</span> <span class="pre">commit</span></tt> &#8211; Provide a terse but descriptive</li>
 </ul>
-<p>To start a new documentation project, from <tt class="file docutils literal"><span class="pre">~/Projects</span></tt>, run the command:</p>
-<div class="highlight-python"><pre>bash doc-newproject.sh {document_foldername}</pre>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Always use the <strong class="command">git</strong> command versions for <strong class="command">mv</strong>
+and <strong class="command">rm</strong> when working with files under version control. The penalty
+for ignoring this convention is much repeated typing.</p>
 </div>
-<p>To add a documentation branch to a code project repository, from
-<tt class="file docutils literal"><span class="pre">~/Projects</span></tt>, run the command:</p>
-<div class="highlight-python"><pre>bash doc-addbranch.sh {project_foldername}</pre>
+</div>
+<div class="section" id="adding-changes-to-repository">
+<h3>Adding changes to repository<a class="headerlink" href="#adding-changes-to-repository" title="Permalink to this headline">¶</a></h3>
+<p>Add your changes to git  and view the results with the commands:</p>
+<div class="highlight-python"><pre>git add .
+git status
+git commit -m "{a brief description of the changes for this commit}"</pre>
+</div>
+</div>
+<div class="section" id="commit-changes-to-repository">
+<h3>Commit changes to repository<a class="headerlink" href="#commit-changes-to-repository" title="Permalink to this headline">¶</a></h3>
+<p>Periodically add and commit completed content to your local repository:</p>
+<div class="highlight-python"><pre>git add .
+git status
+git commit -m "type a brief message here describing your changes"</pre>
+</div>
+</div>
+</div>
+<div class="section" id="remote-repository-updates">
+<h2>Remote Repository Updates<a class="headerlink" href="#remote-repository-updates" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="pull-remote-content">
+<h3>Pull remote content<a class="headerlink" href="#pull-remote-content" title="Permalink to this headline">¶</a></h3>
+<p>Before starting a day&#8217;s work, synchronize your local repository copy to the
+remote master repository:</p>
+<div class="highlight-python"><pre>git pull</pre>
+</div>
+</div>
+<div class="section" id="push-local-content">
+<h3>Push local content<a class="headerlink" href="#push-local-content" title="Permalink to this headline">¶</a></h3>
+<p>When local content is synchronized with master changes, tested, and committed
+locally, then push the content commits to the remote master:</p>
+<div class="highlight-python"><pre>git push</pre>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">These scripts assume that you have already created the documentation
-or project folder, that <tt class="docutils literal"><span class="pre">git</span> <span class="pre">init</span></tt> has been run on the folder, and that a
-remote host repository is named using <tt class="docutils literal"><span class="pre">git</span> <span class="pre">remote</span> <span class="pre">add</span> <span class="pre">origin</span> <span class="pre">{remotename}</span></tt>.</p>
+<p class="last">If git requires a user password in the <strong class="command">git push</strong> command,
+then an ssh key is missing at GitHub. Follow GitHub directions to add the
+missing key.</p>
 </div>
 </div>
-<div class="section" id="add-changes-to-git">
-<h2>Add Changes to git<a class="headerlink" href="#add-changes-to-git" title="Permalink to this headline">¶</a></h2>
-<p>Now add your changes to git <a class="footnote-reference" href="#id6" id="id3">[3]</a> and view the results with the commands:</p>
-<div class="highlight-python"><pre>git add .
-git status
-git commit -m "Empty project directory for firsttask"</pre>
 </div>
-</div>
-<div class="section" id="summary-configuration">
-<h2>Summary Configuration<a class="headerlink" href="#summary-configuration" title="Permalink to this headline">¶</a></h2>
-<p>This section covered:</p>
+<div class="section" id="build-final-web-content">
+<h2>Build Final Web Content<a class="headerlink" href="#build-final-web-content" title="Permalink to this headline">¶</a></h2>
+<p>The original goal of this guide may seem forgotten, in that a free hosted
+website has not yet materialized. (You are viewing just such a site, of course,
+but that doesn&#8217;t count.) That goal can be achieved now if all the preliminary
+steps are complete.</p>
+<div class="section" id="github-deploy-requirements">
+<h3>GitHub deploy requirements<a class="headerlink" href="#github-deploy-requirements" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>Generating Missing SSH keys</li>
-<li>Configuring git</li>
-<li>Creating a Projects folder and the first project within it</li>
-<li>Initializing the project for git tracking</li>
-<li>Applying Sphinx documentation tools on the project</li>
-<li>Adding other folders for later use</li>
-<li>Performing the first git commit</li>
+<li>A local project folder with .rst document content</li>
+<li>git repository and sphinx markup initialized on the project folder</li>
+<li>Some .rst document content, stored in the repository</li>
+<li>A GitHub remote master repository which is updated from the local content</li>
+<li>A <strong>gh-pages</strong> branch in the GitHub repository to contain deployed HTML</li>
+<li>A script to build and deploy the site, which is downloaded below.</li>
 </ul>
+</div>
+<div class="section" id="github-deployment-script">
+<h3>GitHub deployment script<a class="headerlink" href="#github-deployment-script" title="Permalink to this headline">¶</a></h3>
+<p>Download script <tt class="xref download docutils literal"><span class="pre">github-deploy.sh</span></tt> to
+your <tt class="file docutils literal"><span class="pre">Projects</span></tt> folder, or inside of your project.</p>
+<p>Then deploy the site at GitHub with the command:</p>
+<div class="highlight-python"><pre>bash gitdeploy.sh {project_foldername}</pre>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If the script is executed from within your project, omit the
+<tt class="docutils literal"><span class="pre">{project_foldername}</span></tt> from the command.</p>
+</div>
 <hr class="docutils" />
 <p class="rubric">Footnotes</p>
-<table class="docutils footnote" frame="void" id="id4" rules="none">
+<table class="docutils footnote" frame="void" id="id5" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>For information on git, see <a class="reference external" href="http://en.wikipedia.org/wiki/Git_(software">http://en.wikipedia.org/wiki/Git_(software</a>).
 A git online reference manual is at <a class="reference external" href="http://gitref.org/">http://gitref.org/</a>.</td></tr>
 </tbody>
 </table>
-<table class="docutils footnote" frame="void" id="id5" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td><a class="reference external" href="http://help.github.com/ignore-files/">GitHub Help</a> has an excellent
-explanation of <tt class="file docutils literal"><span class="pre">.gitignore</span></tt>.</td></tr>
-</tbody>
-</table>
 <table class="docutils footnote" frame="void" id="id6" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id3">[3]</a></td><td><a class="reference external" href="http://try.github.com/">Try GitHub</a> offers a quick tutorial on Git
-and GitHub to bring you up to speed.</td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id3">[2]</a></td><td><a class="reference external" href="http://help.github.com/ignore-files/">GitHub Help</a> has an excellent
+explanation of <tt class="file docutils literal"><span class="pre">.gitignore</span></tt>.</td></tr>
 </tbody>
 </table>
 <table class="docutils footnote" frame="void" id="id7" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id4">[3]</a></td><td><a class="reference external" href="http://try.github.com/">Try GitHub</a> offers a quick tutorial on Git
+and GitHub to bring you up to speed.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id8" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label">[4]</td><td>Scott Chacon, Pro Git (August 27, 2009, ISBN-10: 1430218339), available
 at Amazon, or for free on-line at <a class="reference external" href="http://git-scm.com/book">http://git-scm.com/book</a>.</td></tr>
 </tbody>
 </table>
-<table class="docutils footnote" frame="void" id="id8" rules="none">
+<table class="docutils footnote" frame="void" id="id9" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label">[5]</td><td>Scott Chacon, Pro Git book source (written in MarkDown, not reST)
 repository on GitHub: <a class="reference external" href="https://github.com/progit/progit">https://github.com/progit/progit</a>.</td></tr>
 </tbody>
 </table>
+</div>
 </div>
 </div>
 
