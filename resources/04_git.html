@@ -43,7 +43,7 @@
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Git Version Control</a><ul>
-<li><a class="reference internal" href="#set-up-git">Set  Up Git</a><ul>
+<li><a class="reference internal" href="#set-up-git">Set Up Git</a><ul>
 <li><a class="reference internal" href="#installation">Installation</a></li>
 <li><a class="reference internal" href="#configuration">Configuration</a></li>
 </ul>
@@ -55,19 +55,8 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#using-git">Using Git</a><ul>
-<li><a class="reference internal" href="#basic-git-commands">Basic git  commands</a></li>
-<li><a class="reference internal" href="#adding-changes-to-repository">Adding changes to repository</a></li>
-<li><a class="reference internal" href="#commit-changes-to-repository">Commit changes to repository</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#remote-repository-updates">Remote Repository Updates</a><ul>
-<li><a class="reference internal" href="#pull-remote-content">Pull remote content</a></li>
-<li><a class="reference internal" href="#push-local-content">Push local content</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#build-final-web-content">Build Final Web Content</a><ul>
-<li><a class="reference internal" href="#github-deploy-requirements">GitHub deploy requirements</a></li>
-<li><a class="reference internal" href="#github-deployment-script">GitHub deployment script</a></li>
+<li><a class="reference internal" href="#basic-git-commands">Basic git  commands </a></li>
+<li><a class="reference internal" href="#git-in-daily-workflow">Git in daily workflow</a></li>
 </ul>
 </li>
 </ul>
@@ -122,7 +111,7 @@ Git is simple in use, and the distributed code approach is well-suited to
 open-source development, where contributors do not share continents, much less
 office space.</p>
 <div class="section" id="set-up-git">
-<h2>Set  Up Git<a class="headerlink" href="#set-up-git" title="Permalink to this headline">¶</a></h2>
+<h2>Set Up Git<a class="headerlink" href="#set-up-git" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="installation">
 <h3>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h3>
 <p>Git installation packages are available for practically every computer system.
@@ -267,9 +256,8 @@ project using the Linux Kate editor:</p>
 </div>
 <div class="section" id="using-git">
 <h2>Using Git<a class="headerlink" href="#using-git" title="Permalink to this headline">¶</a></h2>
-<p><a class="footnote-reference" href="#id7" id="id4">[3]</a></p>
 <div class="section" id="basic-git-commands">
-<h3>Basic git  commands<a class="headerlink" href="#basic-git-commands" title="Permalink to this headline">¶</a></h3>
+<h3>Basic git  commands <a class="footnote-reference" href="#id7" id="id4">[3]</a><a class="headerlink" href="#basic-git-commands" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="docutils">
 <colgroup>
 <col width="39%" />
@@ -309,14 +297,18 @@ project using the Linux Kate editor:</p>
 </table>
 <p>Command Notes:</p>
 <ul class="simple">
+<li><tt class="docutils literal"><span class="pre">git</span> <span class="pre">pull</span></tt> &#8211; synchronize your local repository copy to the remote master
+repository before starting a day&#8217;s work.</li>
 <li><tt class="docutils literal"><span class="pre">git</span> <span class="pre">add</span></tt> &#8211; use the period (&#8220;dot&#8221;) to stage all tracked changes, otherwise
-name specific files to add. Exclude categories of files using
-<tt class="file docutils literal"><span class="pre">.gitignore</span></tt> entries.</li>
+name specific files to add. Exclude categories of files using entries in
+<tt class="file docutils literal"><span class="pre">.gitignore</span></tt>.</li>
 <li><tt class="docutils literal"><span class="pre">git</span> <span class="pre">mv</span></tt> &#8211; syntax for <strong class="command">git-mv</strong> is the same as the Linux
 <strong class="command">mv</strong> command, but proceded with <strong class="command">git</strong>.</li>
 <li><tt class="docutils literal"><span class="pre">git</span> <span class="pre">rm</span></tt> &#8211; syntax for <strong class="command">git-rm</strong> is the same as the Linux
 <strong class="command">rm</strong> command, but proceded with <strong class="command">git</strong>.</li>
-<li><tt class="docutils literal"><span class="pre">git</span> <span class="pre">commit</span></tt> &#8211; Provide a terse but descriptive</li>
+<li><tt class="docutils literal"><span class="pre">git</span> <span class="pre">commit</span></tt> &#8211; Provide a terse but descriptive message for your changes.</li>
+<li><tt class="docutils literal"><span class="pre">git</span> <span class="pre">push</span></tt> &#8211; push local content once it is synchronized with master
+changes, tested, and committed locally.</li>
 </ul>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
@@ -324,75 +316,32 @@ name specific files to add. Exclude categories of files using
 and <strong class="command">rm</strong> when working with files under version control. The penalty
 for ignoring this convention is much repeated typing.</p>
 </div>
-</div>
-<div class="section" id="adding-changes-to-repository">
-<h3>Adding changes to repository<a class="headerlink" href="#adding-changes-to-repository" title="Permalink to this headline">¶</a></h3>
-<p>Add your changes to git  and view the results with the commands:</p>
-<div class="highlight-python"><pre>git add .
-git status
-git commit -m "{a brief description of the changes for this commit}"</pre>
-</div>
-</div>
-<div class="section" id="commit-changes-to-repository">
-<h3>Commit changes to repository<a class="headerlink" href="#commit-changes-to-repository" title="Permalink to this headline">¶</a></h3>
-<p>Periodically add and commit completed content to your local repository:</p>
-<div class="highlight-python"><pre>git add .
-git status
-git commit -m "type a brief message here describing your changes"</pre>
-</div>
-</div>
-</div>
-<div class="section" id="remote-repository-updates">
-<h2>Remote Repository Updates<a class="headerlink" href="#remote-repository-updates" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="pull-remote-content">
-<h3>Pull remote content<a class="headerlink" href="#pull-remote-content" title="Permalink to this headline">¶</a></h3>
-<p>Before starting a day&#8217;s work, synchronize your local repository copy to the
-remote master repository:</p>
-<div class="highlight-python"><pre>git pull</pre>
-</div>
-</div>
-<div class="section" id="push-local-content">
-<h3>Push local content<a class="headerlink" href="#push-local-content" title="Permalink to this headline">¶</a></h3>
-<p>When local content is synchronized with master changes, tested, and committed
-locally, then push the content commits to the remote master:</p>
-<div class="highlight-python"><pre>git push</pre>
-</div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">If git requires a user password in the <strong class="command">git push</strong> command,
-then an ssh key is missing at GitHub. Follow GitHub directions to add the
-missing key.</p>
+then an ssh key is missing at the remote host. Follow directions from the
+hosting site to add the missing key.</p>
 </div>
 </div>
+<div class="section" id="git-in-daily-workflow">
+<h3>Git in daily workflow<a class="headerlink" href="#git-in-daily-workflow" title="Permalink to this headline">¶</a></h3>
+<p>Start your day&#8217;s work with:</p>
+<div class="highlight-python"><pre>git pull</pre>
 </div>
-<div class="section" id="build-final-web-content">
-<h2>Build Final Web Content<a class="headerlink" href="#build-final-web-content" title="Permalink to this headline">¶</a></h2>
-<p>The original goal of this guide may seem forgotten, in that a free hosted
-website has not yet materialized. (You are viewing just such a site, of course,
-but that doesn&#8217;t count.) That goal can be achieved now if all the preliminary
-steps are complete.</p>
-<div class="section" id="github-deploy-requirements">
-<h3>GitHub deploy requirements<a class="headerlink" href="#github-deploy-requirements" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li>A local project folder with .rst document content</li>
-<li>git repository and sphinx markup initialized on the project folder</li>
-<li>Some .rst document content, stored in the repository</li>
-<li>A GitHub remote master repository which is updated from the local content</li>
-<li>A <strong>gh-pages</strong> branch in the GitHub repository to contain deployed HTML</li>
-<li>A script to build and deploy the site, which is downloaded below.</li>
-</ul>
+<p>Add your local changes and view the results with the command sequence:</p>
+<div class="highlight-python"><pre>git add .
+git status
+git commit -m "{a brief description of the changes for this commit}"
+
+.. hint:: Git adds and commits your saved work. Therefore, make sure you save
+   changes to documents in the editor before using git commands.</pre>
 </div>
-<div class="section" id="github-deployment-script">
-<h3>GitHub deployment script<a class="headerlink" href="#github-deployment-script" title="Permalink to this headline">¶</a></h3>
-<p>Download script <tt class="xref download docutils literal"><span class="pre">github-deploy.sh</span></tt> to
-your <tt class="file docutils literal"><span class="pre">Projects</span></tt> folder, or inside of your project.</p>
-<p>Then deploy the site at GitHub with the command:</p>
-<div class="highlight-python"><pre>bash gitdeploy.sh {project_foldername}</pre>
+<p>Rename files or delete them with git-specific commands:</p>
+<div class="highlight-python"><pre>git mv {old_filename} {new_filename}
+git rm {-rf} {path/filename}</pre>
 </div>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">If the script is executed from within your project, omit the
-<tt class="docutils literal"><span class="pre">{project_foldername}</span></tt> from the command.</p>
+<p>Update the remote master repository with the command:</p>
+<div class="highlight-python"><pre>git push</pre>
 </div>
 <hr class="docutils" />
 <p class="rubric">Footnotes</p>

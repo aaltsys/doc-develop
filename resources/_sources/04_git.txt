@@ -21,7 +21,7 @@ Git is simple in use, and the distributed code approach is well-suited to
 open-source development, where contributors do not share continents, much less 
 office space.
 
-Set  Up Git 
+Set Up Git 
 =============================
 
 Installation
@@ -153,9 +153,7 @@ When creating a repository, most hosting services will include a
 Using Git
 =============================
 
-[#]_
-
-Basic git  commands
+Basic git  commands [#]_
 -----------------------------
 
 +-------------------------------+------------------------------------------------+
@@ -180,91 +178,51 @@ Basic git  commands
 
 Command Notes:
 
++  ``git pull`` -- synchronize your local repository copy to the remote master 
+   repository before starting a day's work. 
 +  ``git add`` -- use the period ("dot") to stage all tracked changes, otherwise 
-   name specific files to add. Exclude categories of files using 
-   :file:`.gitignore` entries.
+   name specific files to add. Exclude categories of files using entries in
+   :file:`.gitignore`.
 +  ``git mv`` -- syntax for :command:`git-mv` is the same as the Linux 
    :command:`mv` command, but proceded with :command:`git`.
 +  ``git rm`` -- syntax for :command:`git-rm` is the same as the Linux 
    :command:`rm` command, but proceded with :command:`git`.
-+  ``git commit`` -- Provide a terse but descriptive 
++  ``git commit`` -- Provide a terse but descriptive message for your changes. 
++  ``git push`` -- push local content once it is synchronized with master 
+   changes, tested, and committed locally.
 
 .. warning:: Always use the :command:`git` command versions for :command:`mv` 
    and :command:`rm` when working with files under version control. The penalty 
    for ignoring this convention is much repeated typing.
 
-Adding changes to repository
------------------------------
-
-Add your changes to git  and view the results with the commands::
-   
-  git add .
-  git status
-  git commit -m "{a brief description of the changes for this commit}"
-
-
-Commit changes to repository
------------------------------
-
-Periodically add and commit completed content to your local repository::
-
-  git add .
-  git status
-  git commit -m "type a brief message here describing your changes"
-
-Remote Repository Updates
-=============================
-
-Pull remote content
------------------------------
-
-Before starting a day's work, synchronize your local repository copy to the 
-remote master repository::
-
-  git pull
-
-Push local content
------------------------------
-
-When local content is synchronized with master changes, tested, and committed 
-locally, then push the content commits to the remote master::
-
- git push
-
 .. Note:: If git requires a user password in the :command:`git push` command, 
-   then an ssh key is missing at GitHub. Follow GitHub directions to add the 
-   missing key. 
- 
-Build Final Web Content
-=============================
-
-The original goal of this guide may seem forgotten, in that a free hosted 
-website has not yet materialized. (You are viewing just such a site, of course, 
-but that doesn't count.) That goal can be achieved now if all the preliminary
-steps are complete.
-
-GitHub deploy requirements
+   then an ssh key is missing at the remote host. Follow directions from the 
+   hosting site to add the missing key.  
+   
+Git in daily workflow
 -----------------------------
 
-+ A local project folder with .rst document content
-+ git repository and sphinx markup initialized on the project folder
-+ Some .rst document content, stored in the repository
-+ A GitHub remote master repository which is updated from the local content
-+ A **gh-pages** branch in the GitHub repository to contain deployed HTML 
-+ A script to build and deploy the site, which is downloaded below.
+Start your day's work with::
 
-GitHub deployment script
------------------------------ 
+   git pull
+   
+Add your local changes and view the results with the command sequence::
+   
+   git add .
+   git status
+   git commit -m "{a brief description of the changes for this commit}"
 
-Download script :download:`github-deploy.sh <_downloads/github-deploy.sh>` to
-your :file:`Projects` folder, or inside of your project.
+   .. hint:: Git adds and commits your saved work. Therefore, make sure you save 
+      changes to documents in the editor before using git commands. 
+  
+Rename files or delete them with git-specific commands::
 
-Then deploy the site at GitHub with the command::
+   git mv {old_filename} {new_filename}
+   git rm {-rf} {path/filename}
+  
+Update the remote master repository with the command::
 
-  bash gitdeploy.sh {project_foldername}
-
-.. Note:: If the script is executed from within your project, omit the 
-   ``{project_foldername}`` from the command.
+   git push
 
 ------
 
