@@ -17,7 +17,9 @@ Create a New Repository
 +  Click your name to go to your own page on GitHub.
 +  To the right of your name, click the **+** to start a new repository.
 +  Fill out **Repository name**, **Description**, and **.gitignore** entries.
-.. note:: There should be no spaces in the name of one's repository.
+   
+   .. note:: There should be no spaces in the name of one's repository.
+
 +  Click button :guilabel:`Create repository` to generate the repository.
 
    .. image:: _images/06_github-2.png
