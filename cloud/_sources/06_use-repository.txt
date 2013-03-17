@@ -18,13 +18,13 @@ Create a New Repository
 +  To the right of your name, click the **+** to start a new repository.
 +  Fill out **Repository name**, **Description**, and **.gitignore** entries.
    
-   .. note:: There should be no spaces in the name of one's repository.
+   .. note:: The repository name should not contain spaces.
 
 +  Click button :guilabel:`Create repository` to generate the repository.
 
    .. image:: _images/06_github-2.png
 
-GitHub will make a fresh repository and open it for you.
+GitHub will make a fresh repository and display its contents for you.
 
 Fork a Remote Project
 =============================
@@ -45,4 +45,4 @@ Instead, fork someone else's open source work. Login to GitHub, then:
 
    .. image:: _images/06_github-5.png
 
-GitHub will make a copy of the repository and open it for you.
+GitHub will make a copy of the repository and display it for you.

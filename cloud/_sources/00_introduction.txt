@@ -25,7 +25,7 @@ programming team would require for web development. This document describes one
 selection of cloud services which results in a flexible web programming 
 setup. Other, possibly better, choices may exist, but that discussion is beyond 
 the scope of this guide. Simply read this guide if you want to figure out how 
-to develop a website using the internet. 
+to develop a website using the Internet. 
 
 Services Developers Need
 =============================
@@ -64,7 +64,7 @@ How To Use A Browser
 =============================
 
 This project uses many websites at once. When opening links, please right-click 
-on each link then select :guilabel:`Open Link in New Tab`. To make a tab into a 
+on each link, then select :guilabel:`Open Link in New Tab`. To make a tab into a 
 separate window, click on the tab marker at the top and drag the tab away until 
 it detaches. Similarly, tabs may be moved from one browser window to another by 
 dragging the tab marker between window title bars. 

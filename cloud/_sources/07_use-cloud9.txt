@@ -43,83 +43,6 @@ there is an embedded command line at the bottom of the Cloud9 workspace where
 one can type in commands. Following are git commands, most of which can be 
 performed from the :menuselection:`Tools --> Git` menu.
 
-Commit to Local Repository
-=============================
-
-Track current changes
------------------------------
-
-Make git aware of current changes with the command::
-
-   git add .
-
-The "dot" means track everything in a project directory. Name specific files 
-if everything is not desired. Exclude categories of files from tracking with  
-entries in :file:`.gitignore`.
-
-See changes being tracked
------------------------------
-
-::
-
-   git status
-
-Shows what git has staged to be committed based on :command:`add` commands.
-
-Undo an add
------------------------------
-
-Clear staged content which you do not want to add with the command::
-
-   git reset
-
-Rename a project file
------------------------------
-
-Always use git to move or rename a tracked file. The syntax is the same as 
-Linux :command:`mv` command, but proceded with :command:`git`::
-
-   git mv old_filename.rst new_filename.rst
-
-Delete a project file
------------------------------
-
-As with moving a tracked file, use a :command:`git` command when deleting::
-
-   git rm bad_filename.rst
-
-Commit changes to repository
------------------------------
-
-Periodically add and commit completed content to your local repository::
-
-   git add .
-   git status
-   git commit -m "type a brief message here describing your changes"
-
-Remote Repository Updates
-=============================
-
-Pull remote content
------------------------------
-
-Before starting a day's work, synchronize your local repository copy to the 
-remote master repository::
-
-   git pull
-
-Push local content
------------------------------
-
-When local content is synchronized with master changes, tested, and committed 
-locally, then push the content commits to the remote master::
-
-   git push
-
-.. Note:: If git requires a user password in the :command:`git push` command,
-   then an ssh key is missing at GitHub. Follow GitHub directions to add the 
-   missing key. 
-
 Upstream Repositories
 =============================
 
@@ -134,3 +57,9 @@ Then synchronize the local repository with the commands::
    git pull upstream master
 
 Finally, refresh the file tree view in cloud9 to show new or changed files.
+
+Git Commands Guide
+=============================
+
+For information on common git command syntax and usage, please see the section 
+on :ref:`resources:git`.
