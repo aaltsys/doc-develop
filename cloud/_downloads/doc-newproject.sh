@@ -50,6 +50,7 @@ sphinxinit () {
   sed -i "s^\#html_use_index = True^html_use_index = False^" ./conf.py
   sed -i "s^html_theme = 'default'^html_theme = '$THEME'^" ./conf.py
   sed -i "s^\#html_theme_path = \[\]^html_theme_path = \['$XSTATIC'\]^" ./conf.py
+  sed -i "s^\#_patterns = \['_build'\]^_patterns = \['_build', '_deploy'\]^" ./conf.py
   if [[ $SECTIONS != "" ]] ; then
     sed -i "s^extensions = \[\]^extensions = \['sphinx.ext.intersphinx'\]^" ./conf.py
     rm -rf $STATIC
