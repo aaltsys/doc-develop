@@ -39,7 +39,9 @@ makedeployment () {
   # Add section-specific static content
   if [[ -d $DIR_STATIC ]] ; then
     cp -R $DIR_STATIC/* $DIR_OUT/
-    cp $DIR_STATIC/.ht* $DIR_OUT/
+    # cp $DIR_STATIC/.ht* $DIR_OUT/ &>/dev/null || RC=$?
+    cp -R $DIR_STATIC/.ht* $DIR_OUT/ &>/dev/null || RC=$?
+    if [[ $RC > 0 ]] ; then echo "$(pwd)$(tput setaf 1) $LINENO: cp -R $DIR_STATIC/.ht* $DIR_OUT/ $(tput sgr0)" ; fi
   fi
   
 }
@@ -199,24 +201,28 @@ else
   # Add shared static content
   if [[ -d $DIR_STATIC ]] ; then
     cp -R $DIR_STATIC/* $DIR_DEPLOY/
-    cp -R $DIR_STATIC/.ht* $DIR_DEPLOY/
+    # cp $DIR_STATIC/.ht* $DIR_DEPLOY/ &>/dev/null || RC=$?
+    cp -R $DIR_STATIC/.ht* $DIR_DEPLOY/ &>/dev/null || RC=$?
+    if [[ $RC > 0 ]] ; then echo "$(pwd)$(tput setaf 1) $LINENO: cp -R $DIR_STATIC/.ht* $DIR_DEPLOY/ $(tput sgr0)" ; fi
   fi
   
   # Make HTML, other deployment files
   for SECT in $SECTIONS ; do
     if [[ -d $SECT ]] ; then
-      DIR_OUT='../'$DIR_DEPLOY/$SECT
+      DIR_OUT=../$DIR_DEPLOY/$SECT
       cd $SECT
         echo -e "$(tput setaf 2)\n Making section $SECT \n$(tput sgr0)"
         mkdir -p $DIR_OUT
         makedeployment
         # Copy MASTER from its deploy subdirectory
         if [[ $SECT == $MASTER ]] ; then
-          cp -R $DIR_OUT/* '../'$DIR_DEPLOY/
-          cp -R $DIR_OUT/.ht* '../'$DIR_DEPLOY/
+          cp -R $DIR_OUT/* ../$DIR_DEPLOY/
+          # cp $DIR_OUT/.ht* ../$DIR_DEPLOY/ &>/dev/null || RC=$?
+          cp -R $DIR_OUT/.ht* ../$DIR_DEPLOY/ &>/dev/null || RC=$?
+          if [[ $RC > 0 ]] ; then echo "$(pwd)$(tput setaf 1) $LINENO: cp -R $DIR_OUT/.ht* ../$DIR_DEPLOY/ $(tput sgr0)" ; fi
           # If it exists, delete CNAME from master deploy subdirectory
           if [[ -e $DIR_OUT/CNAME ]] ; then
-            echo "CNAME $(<'../'$DIR_DEPLOY/$MASTER/CNAME) found in '../'$DIR_DEPLOY/$MASTER/CNAME"
+            echo "CNAME $(<../$DIR_DEPLOY/$MASTER/CNAME) found in ../$DIR_DEPLOY/$MASTER/CNAME"
             rm $DIR_OUT/CNAME
           fi
         fi
