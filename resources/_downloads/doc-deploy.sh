@@ -38,10 +38,10 @@ makedeployment () {
 
   # Add section-specific static content
   if [[ -d $DIR_STATIC ]] ; then
-    cp -R $DIR_STATIC/* $DIR_OUT/
+    cp -RH $DIR_STATIC/* $DIR_OUT/
     # cp $DIR_STATIC/.ht* $DIR_OUT/ &>/dev/null || RC=$?
-    cp -R $DIR_STATIC/.ht* $DIR_OUT/ &>/dev/null || RC=$?
-    if [[ $RC > 0 ]] ; then echo "$(pwd)$(tput setaf 1) $LINENO: cp -R $DIR_STATIC/.ht* $DIR_OUT/ $(tput sgr0)" ; fi
+    cp -RH $DIR_STATIC/.ht* $DIR_OUT/ &>/dev/null || RC=$?
+    if [[ $RC > 0 ]] ; then echo "$(pwd)$(tput setaf 1) $LINENO: cp -RH $DIR_STATIC/.ht* $DIR_OUT/ $(tput sgr0)" ; fi
   fi
   
 }
@@ -200,10 +200,10 @@ else
   
   # Add shared static content
   if [[ -d $DIR_STATIC ]] ; then
-    cp -R $DIR_STATIC/* $DIR_DEPLOY/
+    cp -RH $DIR_STATIC/* $DIR_DEPLOY/
     # cp $DIR_STATIC/.ht* $DIR_DEPLOY/ &>/dev/null || RC=$?
-    cp -R $DIR_STATIC/.ht* $DIR_DEPLOY/ &>/dev/null || RC=$?
-    if [[ $RC > 0 ]] ; then echo "$(pwd)$(tput setaf 1) $LINENO: cp -R $DIR_STATIC/.ht* $DIR_DEPLOY/ $(tput sgr0)" ; fi
+    cp -RH $DIR_STATIC/.ht* $DIR_DEPLOY/ &>/dev/null || RC=$?
+    if [[ $RC > 0 ]] ; then echo "$(pwd)$(tput setaf 1) $LINENO: cp -RH $DIR_STATIC/.ht* $DIR_DEPLOY/ $(tput sgr0)" ; fi
   fi
   
   # Make HTML, other deployment files
@@ -216,10 +216,10 @@ else
         makedeployment
         # Copy MASTER from its deploy subdirectory
         if [[ $SECT == $MASTER ]] ; then
-          cp -R $DIR_OUT/* ../$DIR_DEPLOY/
+          cp -RH $DIR_OUT/* ../$DIR_DEPLOY/
           # cp $DIR_OUT/.ht* ../$DIR_DEPLOY/ &>/dev/null || RC=$?
-          cp -R $DIR_OUT/.ht* ../$DIR_DEPLOY/ &>/dev/null || RC=$?
-          if [[ $RC > 0 ]] ; then echo "$(pwd)$(tput setaf 1) $LINENO: cp -R $DIR_OUT/.ht* ../$DIR_DEPLOY/ $(tput sgr0)" ; fi
+          cp -RH $DIR_OUT/.ht* ../$DIR_DEPLOY/ &>/dev/null || RC=$?
+          if [[ $RC > 0 ]] ; then echo "$(pwd)$(tput setaf 1) $LINENO: cp -RH $DIR_OUT/.ht* ../$DIR_DEPLOY/ $(tput sgr0)" ; fi
           # If it exists, delete CNAME from master deploy subdirectory
           if [[ -e $DIR_OUT/CNAME ]] ; then
             echo "CNAME $(<../$DIR_DEPLOY/$MASTER/CNAME) found in ../$DIR_DEPLOY/$MASTER/CNAME"
