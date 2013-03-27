@@ -21,7 +21,7 @@ This page documents these CSS rule changes with corresponding notes.
 
       table, table.docutils {
         border-collapse: separate;
-        border-spacing: 0.25em;
+        border-spacing: .25em;
       }
 
 This body paragraph is at the left margin and has no indent. The following table 
@@ -44,18 +44,20 @@ text should align with this paragraph body text.
     
 #. Change tables in bulleted lists to display margins even with paragraphs::    
     
+      /*
       .ul table, .ul table.docutils {
-        margin: 0em -.5em 0em -.5em;
+        margin: 0 -.5em 0 -.5em;
       }
+      */
 
-      +  This bulleted list is a paragraph within a numbered list. The following 
-         table text should align with text in this bulleted paragraph.
+   +  This bulleted list is a paragraph within a numbered list. The following 
+      table text should align with text in this bulleted paragraph.
          
-         +----------------+----------------------------------------------+
-         | Table heading  | Description                                  |
-         +================+==============================================+
-         | Table detail   | This table section is numbered and bulleted  |
-         +----------------+----------------------------------------------+ 
+      +----------------+----------------------------------------------+
+      | Table heading  | Description                                  |
+      +================+==============================================+
+      | Table detail   | This table section is numbered and bulleted  |
+      +----------------+----------------------------------------------+ 
          
 +  This bulleted list is within the main body of a document. The table text 
    which follows should align with the text in this bulleted paragraph.
@@ -66,8 +68,14 @@ text should align with this paragraph body text.
    | Table detail   | This table is in a bulleted body section     |
    +----------------+----------------------------------------------+
       
-#. Change tables in numbered lists to display margins even with paragraphs::
-
+#. Test that tables in numbered lists to display margins even with paragraphs::
+   
+      /*
+      .ol table, .ol table.docutils {
+         margin 0 -.5em 0 -.5em
+      }
+      */
+   
    This paragraph is in a numbered list. The table text which follows should
    align with this numbered paragraph.
   
@@ -81,10 +89,11 @@ text should align with this paragraph body text.
    paragraphs::
    
       .admonition table, .admonition table.docutils {
-        margin: 0.5em 0.5em 0.5em 0.5em;
+        margin: .5em .5em .5em .5em;
       }
+      
       .warning table, .warning table.docutils {
-        margin: 0.5em 0.5em 0.5em 0.5em;
+        margin: .5em .5em .5em .5em;
       }
       
    .. note:: This note text is embedded within a numbered paragraph. The note 
