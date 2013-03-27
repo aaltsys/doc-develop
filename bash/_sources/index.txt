@@ -6,7 +6,7 @@
 AAltsys Developer **Linux BASH Commands** Guide
 ===============================================
 
-:ref:`Return to main site index <../index>`
+:ref:`Return to main site index <master:index>`
 
 Contents:
 
