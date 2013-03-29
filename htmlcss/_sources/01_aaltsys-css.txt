@@ -8,15 +8,13 @@ AAltsys documentation projects add a few CSS rules to the default Sphinxdoc CSS
 to accomodate better browser display and proper alignment of text in tables. 
 This page documents these CSS rule changes with corresponding notes. 
 
-#. Eliminate the 80-pixel side borders on the Sphinx pages::
+#. Eliminate the 80-pixel side borders on the Sphinx pages, using a 5px border
+   around the entire page including at the top::
 
       body {
           margin: 5px 5px 5px 5px;
       }
 
-   A 5px border should be observed in the entire page display, including at the 
-   top of the page.
-      
 #. Change tables from collapsed borders to separate, with .25em spacing::
 
       table, table.docutils {
@@ -24,7 +22,7 @@ This page documents these CSS rule changes with corresponding notes.
         border-collapse: separate;
         border-spacing: .25em;
       }
-  
+
 #. Change table head and detail to display margins even with paragraphs in 
    bulleted lists:: 
      

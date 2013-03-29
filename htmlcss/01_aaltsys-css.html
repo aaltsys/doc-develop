@@ -89,13 +89,12 @@
 to accomodate better browser display and proper alignment of text in tables.
 This page documents these CSS rule changes with corresponding notes.</p>
 <ol class="arabic">
-<li><p class="first">Eliminate the 80-pixel side borders on the Sphinx pages:</p>
+<li><p class="first">Eliminate the 80-pixel side borders on the Sphinx pages, using a 5px border
+around the entire page including at the top:</p>
 <div class="highlight-python"><pre>body {
     margin: 5px 5px 5px 5px;
 }</pre>
 </div>
-<p>A 5px border should be observed in the entire page display, including at the
-top of the page.</p>
 </li>
 <li><p class="first">Change tables from collapsed borders to separate, with .25em spacing:</p>
 <div class="highlight-python"><pre>table, table.docutils {
