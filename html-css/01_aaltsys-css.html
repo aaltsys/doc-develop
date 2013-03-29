@@ -40,6 +40,20 @@
     </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">AAltsys CSS Rules</a><ul>
+<li><a class="reference internal" href="#tests-of-table-formatting">Tests of Table Formatting</a><ul>
+<li><a class="reference internal" href="#body-paragraphs">Body paragraphs</a></li>
+<li><a class="reference internal" href="#bulleted-lists">Bulleted lists</a></li>
+<li><a class="reference internal" href="#numbered-lists">Numbered lists</a></li>
+<li><a class="reference internal" href="#admonitions-and-warnings">Admonitions and Warnings</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
   <h4>Previous topic</h4>
   <p class="topless"><a href="index.html"
                         title="previous chapter">AAltsys Developer <strong>HTML and CSS</strong> Guides</a></p>
@@ -85,12 +99,37 @@ top of the page.</p>
 </li>
 <li><p class="first">Change tables from collapsed borders to separate, with .25em spacing:</p>
 <div class="highlight-python"><pre>table, table.docutils {
+  margin: 0 -0.75em 0 -0.75em;
   border-collapse: separate;
   border-spacing: .25em;
 }</pre>
 </div>
 </li>
+<li><p class="first">Change table head and detail to display margins even with paragraphs in
+bulleted lists:</p>
+<div class="highlight-python"><pre>table th, table td, table.docutils th, table.docutils td {
+  padding: 0 0.5em 0 0.5em;
+}</pre>
+</div>
+</li>
+<li><p class="first">Fix margins for headings and detail in tables in numbered lists:</p>
+<div class="highlight-python"><pre>th p, td p, th p.first.last, td p.first.last {
+  margin: 0 0 0 0;
+}</pre>
+</div>
+</li>
+<li><p class="first">Change tables in admonitions and warnings to display margins even with
+paragraphs:</p>
+<div class="highlight-python"><pre>.admonition table, .warning table, {
+  margin: .5em .5em .5em .5em;
+}</pre>
+</div>
+</li>
 </ol>
+<div class="section" id="tests-of-table-formatting">
+<h2>Tests of Table Formatting<a class="headerlink" href="#tests-of-table-formatting" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="body-paragraphs">
+<h3>Body paragraphs<a class="headerlink" href="#body-paragraphs" title="Permalink to this headline">¶</a></h3>
 <p>This body paragraph is at the left margin and has no indent. The following table
 text should align with this paragraph body text.</p>
 <table border="1" class="docutils">
@@ -129,14 +168,61 @@ table text should align with this paragraph text.</p>
 </tbody>
 </table>
 </div></blockquote>
-<ol class="arabic">
-<li><p class="first">Change tables in bulleted lists to display margins even with paragraphs:</p>
-<div class="highlight-python"><pre>/*
-.ul table, .ul table.docutils {
-  margin: 0 -.5em 0 -.5em;
-}
-*/</pre>
 </div>
+<div class="section" id="bulleted-lists">
+<h3>Bulleted lists<a class="headerlink" href="#bulleted-lists" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first">This bulleted list is within the main body of a document. The table text
+which follows should align with the text in this bulleted paragraph.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="26%" />
+<col width="74%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><p class="first last">Table heading</p>
+</th>
+<th class="head"><p class="first last">Description</p>
+</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><p class="first last">Table detail</p>
+</td>
+<td><p class="first last">This table is in a bulleted body section</p>
+</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+</div>
+<div class="section" id="numbered-lists">
+<h3>Numbered lists<a class="headerlink" href="#numbered-lists" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic">
+<li><p class="first">This is a numbered list in the main body of a document.</p>
+<p>This paragraph is in a numbered list. The table text which follows should
+align with this numbered paragraph.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="26%" />
+<col width="74%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><p class="first last">Table heading</p>
+</th>
+<th class="head"><p class="first last">Description</p>
+</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><p class="first last">Table detail</p>
+</td>
+<td><p class="first last">This table is in a numbered body section</p>
+</td>
+</tr>
+</tbody>
+</table>
 <ul>
 <li><p class="first">This bulleted list is a paragraph within a numbered list. The following
 table text should align with text in this bulleted paragraph.</p>
@@ -164,72 +250,33 @@ table text should align with text in this bulleted paragraph.</p>
 </ul>
 </li>
 </ol>
-<ul>
-<li><p class="first">This bulleted list is within the main body of a document. The table text
-which follows should align with the text in this bulleted paragraph.</p>
-<table border="1" class="docutils">
+</div>
+<div class="section" id="admonitions-and-warnings">
+<h3>Admonitions and Warnings<a class="headerlink" href="#admonitions-and-warnings" title="Permalink to this headline">¶</a></h3>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>This warning is within the main body text of the page. The border
+of the warning should align with main body text, and the following table text
+should align with this paragraph.</p>
+<table border="1" class="last docutils">
 <colgroup>
 <col width="26%" />
 <col width="74%" />
 </colgroup>
 <thead valign="bottom">
-<tr class="row-odd"><th class="head"><p class="first last">Table heading</p>
-</th>
-<th class="head"><p class="first last">Description</p>
-</th>
+<tr class="row-odd"><th class="head">Table heading</th>
+<th class="head">Description</th>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><p class="first last">Table detail</p>
-</td>
-<td><p class="first last">This table is in a bulleted body section</p>
-</td>
+<tr class="row-even"><td>Table detail</td>
+<td>A warning encloses this table body section</td>
 </tr>
 </tbody>
 </table>
-</li>
-</ul>
+</div>
 <ol class="arabic">
-<li><p class="first">Test that tables in numbered lists to display margins even with paragraphs:</p>
-<div class="highlight-python"><pre>/*
-.ol table, .ol table.docutils {
-   margin 0 -.5em 0 -.5em
-}
-*/</pre>
-</div>
-<p>This paragraph is in a numbered list. The table text which follows should
-align with this numbered paragraph.</p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="26%" />
-<col width="74%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head"><p class="first last">Table heading</p>
-</th>
-<th class="head"><p class="first last">Description</p>
-</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td><p class="first last">Table detail</p>
-</td>
-<td><p class="first last">This table is in a numbered body section</p>
-</td>
-</tr>
-</tbody>
-</table>
-</li>
-<li><p class="first">Change tables in admonitions and warnings to display margins even with
-paragraphs:</p>
-<div class="highlight-python"><pre>.admonition table, .admonition table.docutils {
-  margin: .5em .5em .5em .5em;
-}
-
-.warning table, .warning table.docutils {
-  margin: .5em .5em .5em .5em;
-}</pre>
-</div>
+<li><p class="first">Numbered paragraph section.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p>This note text is embedded within a numbered paragraph. The note
@@ -257,27 +304,7 @@ encloses table text which should align with the note paragraph.</p>
 </div>
 </li>
 </ol>
-<div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p>This warning is within the main body text of the page. The border
-of the warning should align with main body text, and the following table text
-should align with this paragraph.</p>
-<table border="1" class="last docutils">
-<colgroup>
-<col width="26%" />
-<col width="74%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Table heading</th>
-<th class="head">Description</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td>Table detail</td>
-<td>A warning encloses this table body section</td>
-</tr>
-</tbody>
-</table>
+</div>
 </div>
 </div>
 

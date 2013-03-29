@@ -17,20 +17,19 @@ body {
 /* -- body styles ----------------------------------------------------------- */
 
 table, table.docutils {
+  margin: 0 -0.75em 0 -0.75em;
   border-collapse: separate;
   border-spacing: .25em;
 }
 
-.admonition table, .admonition table.docutils, .warning table, .warning table.docutils {
-  margin: .5em .5em .5em .5em;
+table th, table td, table.docutils th, table.docutils td {
+  padding: 0 0.5em 0 0.5em;
 }
 
-/*
-.ul table, .ul table.docutils {
-  margin: 0 -.5em 0 -.5em;
+th p, td p, th p.first.last, td p.first.last {
+  margin: 0 0 0 0; 
 }
 
-.ol table, .ol table.docutils {
-  margin: 0 -.5em 0 -.5em;
+.admonition table, .warning table {
+  margin: 0 0.5em 0 0.5em;
 }
-*/
