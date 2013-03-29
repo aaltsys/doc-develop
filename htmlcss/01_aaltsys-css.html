@@ -98,16 +98,16 @@ around the entire page including at the top:</p>
 </li>
 <li><p class="first">Change tables from collapsed borders to separate, with .25em spacing:</p>
 <div class="highlight-python"><pre>table, table.docutils {
-  margin: 0 -0.75em 0 -0.75em;
+  margin: 0.5em -0.5em 0.5em -0.5em;
   border-collapse: separate;
-  border-spacing: .25em;
+  border-spacing: 0.25em;
 }</pre>
 </div>
 </li>
 <li><p class="first">Change table head and detail to display margins even with paragraphs in
 bulleted lists:</p>
 <div class="highlight-python"><pre>table th, table td, table.docutils th, table.docutils td {
-  padding: 0 0.5em 0 0.5em;
+  padding: 0 0.25em 0 0.25em;
 }</pre>
 </div>
 </li>
@@ -120,7 +120,7 @@ bulleted lists:</p>
 <li><p class="first">Change tables in admonitions and warnings to display margins even with
 paragraphs:</p>
 <div class="highlight-python"><pre>.admonition table, .warning table, {
-  margin: .5em .5em .5em .5em;
+  margin: 0 0.5em 0.5em 0.5em;
 }</pre>
 </div>
 </li>

@@ -18,16 +18,16 @@ This page documents these CSS rule changes with corresponding notes.
 #. Change tables from collapsed borders to separate, with .25em spacing::
 
       table, table.docutils {
-        margin: 0 -0.75em 0 -0.75em;
+        margin: 0.5em -0.5em 0.5em -0.5em;
         border-collapse: separate;
-        border-spacing: .25em;
+        border-spacing: 0.25em;
       }
 
 #. Change table head and detail to display margins even with paragraphs in 
    bulleted lists:: 
      
       table th, table td, table.docutils th, table.docutils td {
-        padding: 0 0.5em 0 0.5em;
+        padding: 0 0.25em 0 0.25em;
       }
 
 #. Fix margins for headings and detail in tables in numbered lists::
@@ -40,7 +40,7 @@ This page documents these CSS rule changes with corresponding notes.
    paragraphs::
    
       .admonition table, .warning table, {
-        margin: .5em .5em .5em .5em;
+        margin: 0 0.5em 0.5em 0.5em;
       }
 
 Tests of Table Formatting
