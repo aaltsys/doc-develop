@@ -291,7 +291,7 @@ intersphinx_mapping = {
  'cloud': ('cloud', '../_deploy/cloud/objects.inv'),
  'ruby': ('ruby', '../_deploy/ruby/objects.inv'),
  'python': ('python', '../_deploy/python/objects.inv'),
- 'htmlcss': ('htmlcss', '../_deploy/html-css/objects.inv'),
+ 'htmlcss': ('htmlcss', '../_deploy/htmlcss/objects.inv'),
  'javascript': ('javascript', '../_deploy/javascript/objects.inv'),
  'bash': ('bash', '../_deploy/bash/objects.inv'),
  'servers': ('servers', '../_deploy/servers/objects.inv'),
