@@ -49,8 +49,8 @@
 <li><a class="reference internal" href="#">Using Cloud9</a><ul>
 <li><a class="reference internal" href="#clone-a-remote-project">Clone a Remote Project</a></li>
 <li><a class="reference internal" href="#git-and-github-integration">Git and GitHub Integration</a></li>
-<li><a class="reference internal" href="#upstream-repositories">Upstream Repositories</a></li>
 <li><a class="reference internal" href="#git-commands-guide">Git Commands Guide</a></li>
+<li><a class="reference internal" href="#upstream-repositories">Upstream Repositories</a></li>
 </ul>
 </li>
 </ul>
@@ -128,25 +128,25 @@ workspace menu. For example, Git functions can be run from there:</p>
 </div></blockquote>
 <p>Missing from the Git menu selections is the <tt class="docutils literal"><span class="pre">git</span> <span class="pre">add</span> <span class="pre">.</span></tt> command. Fortunately
 there is an embedded command line at the bottom of the Cloud9 workspace where
-one can type in commands. Following are git commands, most of which can be
-performed from the <em class="menuselection">Tools ‣ Git</em> menu.</p>
+one can type in commands.</p>
+</div>
+<div class="section" id="git-commands-guide">
+<h2>Git Commands Guide<a class="headerlink" href="#git-commands-guide" title="Permalink to this headline">¶</a></h2>
+<p>In Cloud9, common git commands can be performed from the
+<em class="menuselection">Tools ‣ Git</em> menu. For information on common git command
+syntax and usage, please see section <a class="reference external" href="../resources/04_git.html#git" title="(in Developer Documentation Resource Pages v0.5)"><em>Git Version Control</em></a>.</p>
 </div>
 <div class="section" id="upstream-repositories">
 <h2>Upstream Repositories<a class="headerlink" href="#upstream-repositories" title="Permalink to this headline">¶</a></h2>
 <p>When a repository is a fork of a master, changes to the master can be updated
 to the fork as follows. First, an <tt class="docutils literal"><span class="pre">upstream</span></tt> remote must be added:</p>
-<div class="highlight-python"><pre>git remote add upstream __remotename__</pre>
+<div class="highlight-python"><pre>git remote add upstream {_remotename_}</pre>
 </div>
 <p>Then synchronize the local repository with the commands:</p>
-<div class="highlight-python"><pre>git commit -a "commit current changes"
+<div class="highlight-python"><pre>git commit -a -m "commit current changes"
 git pull upstream master</pre>
 </div>
 <p>Finally, refresh the file tree view in cloud9 to show new or changed files.</p>
-</div>
-<div class="section" id="git-commands-guide">
-<h2>Git Commands Guide<a class="headerlink" href="#git-commands-guide" title="Permalink to this headline">¶</a></h2>
-<p>For information on common git command syntax and usage, please see the section
-on <a class="reference external" href="../resources/04_git.html#git" title="(in Developer Documentation Resource Pages v0.5)"><em>Git Version Control</em></a>.</p>
 </div>
 </div>
 

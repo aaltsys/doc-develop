@@ -40,8 +40,14 @@ workspace menu. For example, Git functions can be run from there:
 
 Missing from the Git menu selections is the ``git add .`` command. Fortunately
 there is an embedded command line at the bottom of the Cloud9 workspace where 
-one can type in commands. Following are git commands, most of which can be 
-performed from the :menuselection:`Tools --> Git` menu.
+one can type in commands.
+
+Git Commands Guide
+=============================
+ 
+In Cloud9, common git commands can be performed from the 
+:menuselection:`Tools --> Git` menu. For information on common git command 
+syntax and usage, please see section :ref:`resources:git`.
 
 Upstream Repositories
 =============================
@@ -49,17 +55,11 @@ Upstream Repositories
 When a repository is a fork of a master, changes to the master can be updated 
 to the fork as follows. First, an ``upstream`` remote must be added::
 
-   git remote add upstream __remotename__
+   git remote add upstream {_remotename_}
 
 Then synchronize the local repository with the commands::
 
-   git commit -a "commit current changes"
+   git commit -a -m "commit current changes"
    git pull upstream master
 
 Finally, refresh the file tree view in cloud9 to show new or changed files.
-
-Git Commands Guide
-=============================
-
-For information on common git command syntax and usage, please see the section 
-on :ref:`resources:git`.
