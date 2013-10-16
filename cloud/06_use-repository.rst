@@ -7,8 +7,6 @@
 Create a New Repository
 =============================
 
-.. note:: Replace ``__username__`` with your **username** in following commands. 
-
 .. sidebar:: GitHub user menu bar
 
    .. image:: _images/06_github-1.png

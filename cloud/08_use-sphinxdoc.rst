@@ -75,23 +75,23 @@ In your Cloud9 doc-journal workspace, open a terminal and type the command::
    two commands to be executed first::
 
       git init
-      git remote add origin git@github.com:__username__/__project__.git
+      git remote add origin git@github.com:{_username_}/{_project_}.git
 
 The Sphinxdoc quickstart asks these questions::
    
    Root path for the documentation [.]:
    Separate source and build directories (y/N) [n]:
    Name prefix for templates and static dir [_]:
-   Project name: __Cloud Development Journal__
-   Author name(s): __Your Name Here__
-   Project version: __1.0__
+   Project name: {_Cloud Development Journal_}
+   Author name(s): {_Your Name Here_}
+   Project version: {_1.0_}
    Project release [1.0]:
    Source file suffix [.rst]:
    Name of your master document (without suffix) [index]:
-   Do you want to use the epub builder (y/N) [n]: __y__
+   Do you want to use the epub builder (y/N) [n]: {_y_}
    autodoc: automatically insert docstringss from modules (y/N) [n]:
    doctest: automatically test code snippets in doctest blocks (y/N) [n]:
-   intersphinx link between Sphinx documentation of different projects (y/N) [n]: __y__
+   intersphinx link between Sphinx documentation of different projects (y/N) [n]: {_y_}
    todo: write "todo" entries that can be shown or hidden on build (y/N) [n]:
    coverage: checks for documentation coverage (y/N) [n]:
    pngmath: include math, rendered as PNG images (y/N) [n]:
@@ -99,7 +99,7 @@ The Sphinxdoc quickstart asks these questions::
    ifconfig: conditional inclusion of content based on config values (y/N) [n]:
    viewcode: include links to the source code of documented Python objects (y/N) [n]:
    Create Makefile? (Y/n) [y]:
-   Create Windows command file? (Y/n) [y]: __n__
+   Create Windows command file? (Y/n) [y]: {_n_}
 
 Be careful when answering these questions, as you get only one chance. Six 
 questions have suggested answers (surrounded by underlines); the rest are 
@@ -244,7 +244,7 @@ Now the sequence of steps to build and deploy output might be:
 +-------------------------------+---------------------------------------------+
 | Build and deploy gh-pages     | ``bash doc-deploy.sh``                      |
 +-------------------------------+---------------------------------------------+
-| View deployed site in browser | ``http:__yourname__.github.com/__project__``|
+| View deployed site in browser | ``http:{_yourname_}.github.com/{_project_}``|
 +-------------------------------+---------------------------------------------+
 
 ------
