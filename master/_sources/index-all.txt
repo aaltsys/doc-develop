@@ -22,8 +22,11 @@ of development are already mastered.
 #. :ref:`collaborate:index`.
 #. :ref:`cloud:index`.
 #. :ref:`ruby:index`.
+#. :ref:`python:index`.
 #. :ref:`htmlcss:index`.
+#. :ref:`javascript:index`.
 #. :ref:`bash:index`.
+#. :ref:`servers:index`.
 #. :ref:`resources:index`.
 
 ----------
