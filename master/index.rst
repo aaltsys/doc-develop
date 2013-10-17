@@ -19,6 +19,7 @@ guides cover methods and techniques of collaborative web development. Specific
 technologies are covered only after methods are introduced, when the processes 
 of development are already mastered.
 
+#. :ref:`publish:index`.
 #. :ref:`collaborate:index`.
 #. :ref:`cloud:index`.
 #. :ref:`ruby:index`.
