@@ -53,11 +53,20 @@ Upstream Repositories
 =============================
 
 When a repository is a fork of a master, changes to the master can be updated 
-to the fork as follows. First, an ``upstream`` remote must be added::
+to the fork as follows. First, an upstream remote must be added::
 
    git remote add upstream {_remotename_}
 
-Then synchronize the local repository with the commands::
+.. Note:: The ``{_remotename_}`` entry is made up of
+   ``git@github.com:{_username_}/{_projectname_}.git`` for Github repositories. 
+   For example, the    remote URL for AAltsys development documentation is: 
+   ``git@github.com:aaltsys/doc-develop.git``. When viewing a repository, 
+   the bottom of the right-side menu displays the remote URL and a button to 
+   copy the URL to the clipboard, as shown in the following image.
+   
+   .. image:: _images/07_cloud9-4.png
+   
+Then pull upstream remote changes to synchronize with the local repository::
 
    git commit -a -m "commit current changes"
    git pull upstream master

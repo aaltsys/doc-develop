@@ -139,10 +139,20 @@ syntax and usage, please see section <a class="reference external" href="../reso
 <div class="section" id="upstream-repositories">
 <h2>Upstream Repositories<a class="headerlink" href="#upstream-repositories" title="Permalink to this headline">¶</a></h2>
 <p>When a repository is a fork of a master, changes to the master can be updated
-to the fork as follows. First, an <tt class="docutils literal"><span class="pre">upstream</span></tt> remote must be added:</p>
+to the fork as follows. First, an upstream remote must be added:</p>
 <div class="highlight-python"><pre>git remote add upstream {_remotename_}</pre>
 </div>
-<p>Then synchronize the local repository with the commands:</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>The <tt class="docutils literal"><span class="pre">{_remotename_}</span></tt> entry is made up of
+<tt class="docutils literal"><span class="pre">git&#64;github.com:{_username_}/{_projectname_}.git</span></tt> for Github repositories.
+For example, the    remote URL for AAltsys development documentation is:
+<tt class="docutils literal"><span class="pre">git&#64;github.com:aaltsys/doc-develop.git</span></tt>. When viewing a repository,
+the bottom of the right-side menu displays the remote URL and a button to
+copy the URL to the clipboard, as shown in the following image.</p>
+<img alt="_images/07_cloud9-4.png" class="last" src="_images/07_cloud9-4.png" />
+</div>
+<p>Then pull upstream remote changes to synchronize with the local repository:</p>
 <div class="highlight-python"><pre>git commit -a -m "commit current changes"
 git pull upstream master</pre>
 </div>
