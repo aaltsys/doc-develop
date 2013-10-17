@@ -1,0 +1,283 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Right Configuration &mdash; Publish Yourself! 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/aaltsys.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Publish Yourself! 1.0 documentation" href="index.html" />
+    <link rel="next" title="Right Hosting" href="04_hosting.html" />
+    <link rel="prev" title="Right Installation" href="02_installation.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="04_hosting.html" title="Right Hosting"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="02_installation.html" title="Right Installation"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Publish Yourself! 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Right Configuration</a><ul>
+<li><a class="reference internal" href="#generate-missing-ssh-keys">Generate Missing SSH Keys</a></li>
+<li><a class="reference internal" href="#configure-git">Configure git</a></li>
+<li><a class="reference internal" href="#create-a-project-folder">Create a Project Folder</a></li>
+<li><a class="reference internal" href="#prepare-gitignore">Prepare .gitignore</a></li>
+<li><a class="reference internal" href="#add-sphinx-to-a-project">Add Sphinx to a Project</a></li>
+<li><a class="reference internal" href="#add-documentation-folders">Add Documentation Folders</a></li>
+<li><a class="reference internal" href="#add-changes-to-git">Add Changes to git</a></li>
+<li><a class="reference internal" href="#summary-configuration">Summary Configuration</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="02_installation.html"
+                        title="previous chapter">Right Installation</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="04_hosting.html"
+                        title="next chapter">Right Hosting</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/03_configuration.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="right-configuration">
+<span id="configure"></span><h1>Right Configuration<a class="headerlink" href="#right-configuration" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="generate-missing-ssh-keys">
+<h2>Generate Missing SSH Keys<a class="headerlink" href="#generate-missing-ssh-keys" title="Permalink to this headline">¶</a></h2>
+<p>The following command will generate missing <strong>ssh keys</strong> for a user:</p>
+<div class="highlight-python"><pre>if [ ! -f ~/.ssh/id_rsa ]; then ssh-keygen -N '' -f ~/.ssh/id_rsa; fi</pre>
+</div>
+</div>
+<div class="section" id="configure-git">
+<h2>Configure git<a class="headerlink" href="#configure-git" title="Permalink to this headline">¶</a></h2>
+<p>Publishing on the web is a form of coding, and code belongs in a repository.
+While there are many options for repositories, <strong>git</strong> <a class="footnote-reference" href="#id4" id="id1">[1]</a> has become a
+<em>de facto</em> standard for publicly exchanged projects. Enter the following
+console commands to configure git:</p>
+<div class="highlight-python"><pre>git config --global user.name "firstname lastname"
+git config --global user.email "email@domain"
+git config --global branch.master.remote origin
+git config --global branch.master.merge refs/heads/master
+git config --global --add color.ui true</pre>
+</div>
+<p>These global settings are recorded in home directory file <tt class="file docutils literal"><span class="pre">~/.gitconfig</span></tt>.</p>
+</div>
+<div class="section" id="create-a-project-folder">
+<h2>Create a Project Folder<a class="headerlink" href="#create-a-project-folder" title="Permalink to this headline">¶</a></h2>
+<p>Documentation is treated as a project. Work is divided into projects which are
+stored locally as sub-folders of a <tt class="file docutils literal"><span class="pre">Projects</span></tt> folder. Oddly, Linux
+desktops create folders for music, downloads, pictures, videos, and so forth,
+but a place to do actual work? Missing. Create the missing folder and start
+your first project with the following command:</p>
+<div class="highlight-python"><pre>git init ~/Projects/doc-firsttask</pre>
+</div>
+<p>This creates the directory <tt class="file docutils literal"><span class="pre">~/Projects/doc-firsttask/.git</span></tt> where
+repository information is kept for that project.</p>
+</div>
+<div class="section" id="prepare-gitignore">
+<span id="gitignore"></span><h2>Prepare .gitignore<a class="headerlink" href="#prepare-gitignore" title="Permalink to this headline">¶</a></h2>
+<p>Your project will contain files with content that you create, and other files
+which are generated by the system. The git repository should track content and
+not system files. Using <tt class="docutils literal"><span class="pre">nano</span></tt> or <tt class="docutils literal"><span class="pre">kate</span></tt>, create a <tt class="file docutils literal"><span class="pre">.gitignore</span></tt> file
+to identify untracked files to git. <a class="footnote-reference" href="#id5" id="id2">[2]</a> Here is some suggested content for
+<tt class="file docutils literal"><span class="pre">.gitignore</span></tt>:</p>
+<div class="highlight-python"><pre># ignore editor backup files
+*~
+*/*~
+# ignore compilation from make
+*build/*
+*/*build/*
+# ignore deployment content
+*deploy/*
+*/*deploy/*
+# keep hidden placeholder files which preserve directories
+!.gitkeep
+!*/.gitkeep</pre>
+</div>
+</div>
+<div class="section" id="add-sphinx-to-a-project">
+<h2>Add Sphinx to a Project<a class="headerlink" href="#add-sphinx-to-a-project" title="Permalink to this headline">¶</a></h2>
+<p>Add the Sphinx documentation features to your new project from the console as
+follows:</p>
+<div class="highlight-python"><pre>cd ~/Projects/doc-firsttask
+sphinx-quickstart</pre>
+</div>
+<p>Answer the resulting questions, which are:</p>
+<div class="highlight-python"><pre>Root path for the documentation [.]:
+Separate source and build directories (y/N) [n]:
+Name prefix for templates and static dir [_]:
+Project name: __First Project__
+Author name(s): __Your Name Here__
+Project version: __1.0__
+Project release [1.0]:
+Source file suffix [.rst]:
+Name of your master document (without suffix) [index]:
+Do you want to use the epub builder (y/N) [n]:
+autodoc: automatically insert docstringss from modules (y/N) [n]:
+doctest: automatically test code snippets in doctest blocks (y/N) [n]:
+intersphinx link between Sphinxx documentation of different projects (y/N) [n]:
+todo: write "todo" entries that can be shown or hidden on build (y/N) [n]:
+coverage: checks for documentation coverage (y/N) [n]:
+pngmath: include math, rendered as PNG images (y/N) [n]:
+mathjax: include math, rendered in the browser by MathJax (y/N) [n]:
+ifconfig: conditional inclusion of content based on config values (y/N) [n]:
+viewcode: include links to the source code of documented Python objects (y/N) [n]:
+Create Makefile? (Y/n) [y]:
+Create Windows command file? (Y/n) [y]: __n__</pre>
+</div>
+<p>Only four questions actually require answering; the rest are defaulted.</p>
+</div>
+<div class="section" id="add-documentation-folders">
+<h2>Add Documentation Folders<a class="headerlink" href="#add-documentation-folders" title="Permalink to this headline">¶</a></h2>
+<p>A publication may require additional folders to hold images, downloads, static
+content, web program includes, and deployed results. Following are commands to
+create these folders:</p>
+<div class="highlight-python"><pre>cd ~/Projects/doc-firsttask
+mkdir _build;     touch _build/.git_keep
+mkdir _deploy;    touch _deploy/.git_kep
+mkdir _downloads; touch _downloads/.git_keep
+mkdir _images;    touch _images/.git_keep
+mkdir _include;   touch _include/.git_keep
+mkdir _static;    touch _static/.git_keep</pre>
+</div>
+<p>You can avoid typing all these commands, however, by downloading the following
+two scripts to your <tt class="file docutils literal"><span class="pre">~/Projects</span></tt> folder:</p>
+<ul class="simple">
+<li><a class="reference download internal" href="_downloads/docproject-start.sh"><tt class="xref download docutils literal"><span class="pre">Documentation</span> <span class="pre">project</span> <span class="pre">startup</span> <span class="pre">script</span></tt></a></li>
+<li><a class="reference download internal" href="_downloads/docbranch-add.sh"><tt class="xref download docutils literal"><span class="pre">Add</span> <span class="pre">documentation</span> <span class="pre">to</span> <span class="pre">project</span> <span class="pre">script</span></tt></a></li>
+</ul>
+<p>To start a new documentation project, from <tt class="file docutils literal"><span class="pre">~/Projects</span></tt>, run the command:</p>
+<div class="highlight-python"><pre>bash docproject-start.sh {document_foldername}</pre>
+</div>
+<p>To add a documentation branch to a code project repository, from
+<tt class="file docutils literal"><span class="pre">~/Projects</span></tt>, run the command:</p>
+<div class="highlight-python"><pre>bash docbranch-add.sh {project_foldername}</pre>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">These scripts assume that you have already created the documentation
+or project folder, that <tt class="docutils literal"><span class="pre">git</span> <span class="pre">init</span></tt> has been run on the folder, and that a
+remote host repository is named using <tt class="docutils literal"><span class="pre">git</span> <span class="pre">remote</span> <span class="pre">add</span> <span class="pre">origin</span> <span class="pre">{remotename}</span></tt>.</p>
+</div>
+</div>
+<div class="section" id="add-changes-to-git">
+<h2>Add Changes to git<a class="headerlink" href="#add-changes-to-git" title="Permalink to this headline">¶</a></h2>
+<p>Now add your changes to git <a class="footnote-reference" href="#id6" id="id3">[3]</a> and view the results with the commands:</p>
+<div class="highlight-python"><pre>git add .
+git status
+git commit -m "Empty project directory for firsttask"</pre>
+</div>
+</div>
+<div class="section" id="summary-configuration">
+<h2>Summary Configuration<a class="headerlink" href="#summary-configuration" title="Permalink to this headline">¶</a></h2>
+<p>This section covered:</p>
+<ul class="simple">
+<li>Generating Missing SSH keys</li>
+<li>Configuring git</li>
+<li>Creating a Projects folder and the first project within it</li>
+<li>Initializing the project for git tracking</li>
+<li>Applying Sphinx documentation tools on the project</li>
+<li>Adding other folders for later use</li>
+<li>Performing the first git commit</li>
+</ul>
+<hr class="docutils" />
+<p class="rubric">Footnotes</p>
+<table class="docutils footnote" frame="void" id="id4" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>For information on git, see <a class="reference external" href="http://en.wikipedia.org/wiki/Git_(software">http://en.wikipedia.org/wiki/Git_(software</a>).
+A git online reference manual is at <a class="reference external" href="http://gitref.org/">http://gitref.org/</a>.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id5" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td><a class="reference external" href="http://help.github.com/ignore-files/">GitHub Help</a> has an excellent
+explanation of <tt class="file docutils literal"><span class="pre">.gitignore</span></tt>.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id6" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id3">[3]</a></td><td><a class="reference external" href="http://try.github.com/">Try GitHub</a> offers a quick tutorial on Git
+and GitHub to bring you up to speed.</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="04_hosting.html" title="Right Hosting"
+             >next</a></li>
+        <li class="right" >
+          <a href="02_installation.html" title="Right Installation"
+             >previous</a> |</li>
+        <li><a href="index.html">Publish Yourself! 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Gerald Lovel.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>
