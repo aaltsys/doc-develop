@@ -30,11 +30,6 @@ Table of Contents:
 ====================
 
 .. toctree::
-   :hidden:
-
-   404
-
-.. toctree::
    :maxdepth: 2
    :glob:
    
