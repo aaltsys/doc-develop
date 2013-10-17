@@ -287,6 +287,7 @@ epub_copyright = u'2013, Gerald Lovel, Julia Lovel, Keith Mattix II'
 # intersphinx_mapping = {'': None}
 
 intersphinx_mapping = {
+ 'publish': ('publish', '../_deploy/publish/objects.inv'),
  'collaborate': ('collaborate', '../_deploy/collaborate/objects.inv'),
  'cloud': ('cloud', '../_deploy/cloud/objects.inv'),
  'ruby': ('ruby', '../_deploy/ruby/objects.inv'),
