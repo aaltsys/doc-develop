@@ -4,6 +4,18 @@
  Ruby Programming Concepts
 ############################# 
 
+Install Ruby
+=============================
+
+Ruby is installed using :program:`RVM`, the Ruby Version Manager. Cloud9 
+provides a pre-installed emulation of RVM, which we will use.
+
+Open a terminal window in the rails sample app's Cloud9 project workspace.
+In the Terminal window, run the following command to check that RVM is 
+working, and also choose a ruby version to use in this project::
+
+  rvm use 1.9.3
+  
 Executing Ruby
 =============================
 
