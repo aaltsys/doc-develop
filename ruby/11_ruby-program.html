@@ -62,11 +62,15 @@
 <li><a class="reference internal" href="#if-else">If...Else</a></li>
 <li><a class="reference internal" href="#if-elsif">If...Elsif</a></li>
 <li><a class="reference internal" href="#unless">Unless</a></li>
+<li><a class="reference internal" href="#ternary-operator">Ternary Operator</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#methods">Methods</a></li>
+<li><a class="reference internal" href="#methods-blocks">Methods &amp; Blocks</a><ul>
+<li><a class="reference internal" href="#method-scope-and-return">Method Scope and Return</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#nil-and-blank">Nil and Blank</a></li>
-<li><a class="reference internal" href="#blocks-loops">Blocks &amp; Loops</a><ul>
+<li><a class="reference internal" href="#loops">Loops</a><ul>
 <li><a class="reference internal" href="#do-loop">Do Loop</a></li>
 <li><a class="reference internal" href="#while-loop">While Loop</a></li>
 </ul>
@@ -159,6 +163,7 @@ shell command prompt by typing <strong class="command">exit</strong>.</p>
 <div class="line-block">
 <div class="line">A variable is a named space in memory that stores some data.</div>
 <div class="line">A variable is identified by its name.</div>
+<div class="line">Variable names can include underscores but not spaces.</div>
 <div class="line">A variable exists within a scope, and is deleted by a garbage collector when
 it is no longer needed.</div>
 </div>
@@ -717,19 +722,57 @@ unless this one particular condition is met.</p>
 <div class="line"><br /></div>
 </div>
 </div>
-</div>
 <hr class="docutils" />
-<div class="section" id="methods">
-<h3>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
-<p>Methods are used to run multiple lines of code at one time.</p>
+<div class="section" id="ternary-operator">
+<h4>Ternary Operator<a class="headerlink" href="#ternary-operator" title="Permalink to this headline">¶</a></h4>
+<p>The ternary operator `` ? : `` is shorthand syntax for an if...else statement.:</p>
+<div class="highlight-python"><pre>(order[:sandwich] == "burger") ? puts "Burger" : puts "Not a burger!"</pre>
+</div>
+<p>First, write a statement that will return a boolean, such as a conditional.
+Follow it with a question mark. The first thing after the question mark is the code to
+execute if the statement returns true. Then there is a colon, and then the code to be
+executed if the statement in the parentheses returns false.</p>
+</div>
+</div>
+<div class="section" id="methods-blocks">
+<h3>Methods &amp; Blocks<a class="headerlink" href="#methods-blocks" title="Permalink to this headline">¶</a></h3>
+<div class="sidebar">
+<p class="first sidebar-title">Example Method</p>
+<p>Write a method that decides what drink comes with a combo. Then call the method.:</p>
+<div class="last highlight-python"><pre>def pick_drink(combo, combo_size)
+  if combo == true
+    "What kind of drink do you want with that combo?"
+    drink_input = gets
+    drink = size + drink_input
+    puts "Your drink is a #{drink}."
+  end
+end
+pick_drink(combo, size)</pre>
+</div>
+</div>
+<p>Methods are used to run multiple lines of code without having to repeat them.</p>
 <p>Variables can be passed in to methods using parentheses. In the method
 definition, you give the variable a name to be used within the method. Then,
 when the method is called, any value passed in that place will be
 used as the value of the variable. If a method is defined to take variables in
 Ruby, then you must pass values in to that method for those variables, or you
 will get an argument error.</p>
+<p>Methods are assigned in Ruby like so:</p>
+<div class="highlight-python"><pre>def method_name
+  ...
+end</pre>
+</div>
 <p>Methods can be called on objects in Ruby using object notation:
 <tt class="docutils literal"><span class="pre">object.method</span></tt>.</p>
+<div class="section" id="method-scope-and-return">
+<h4>Method Scope and Return<a class="headerlink" href="#method-scope-and-return" title="Permalink to this headline">¶</a></h4>
+<p>If a variable is defined inside of a method, it is limited to the scope of that method,
+meaning that the variable cannot be accessed anywhere outside of that method.</p>
+<p>A method must be defined within the current scope before it can be called.</p>
+<p>To pass data from inside of a method to outside of it, use <tt class="docutils literal"><span class="pre">return</span></tt>. If no <tt class="docutils literal"><span class="pre">return</span></tt>
+is specified in a method, the method will return the value of the last statement by
+default.</p>
+</div>
 </div>
 <hr class="docutils" />
 <div class="section" id="nil-and-blank">
@@ -742,8 +785,8 @@ conditional, <tt class="docutils literal"><span class="pre">nil</span></tt> is i
 used to check whether a variable is either an empty string or nil.</p>
 </div>
 <hr class="docutils" />
-<div class="section" id="blocks-loops">
-<h3>Blocks &amp; Loops<a class="headerlink" href="#blocks-loops" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="loops">
+<h3>Loops<a class="headerlink" href="#loops" title="Permalink to this headline">¶</a></h3>
 <p>Loops allow you to repeat a line or block of code.</p>
 <div class="sidebar">
 <p class="first sidebar-title">Do loop</p>
@@ -767,7 +810,13 @@ or collection of objects.</p>
 </div>
 <div class="section" id="while-loop">
 <h4>While Loop<a class="headerlink" href="#while-loop" title="Permalink to this headline">¶</a></h4>
-<p>The while loop repeats code as long as a given condition is true.</p>
+<p>The while loop repeats code as long as a given condition is true.:</p>
+<div class="highlight-python"><pre>x = 1
+while x &lt; 5 do
+  puts x
+  x += 1
+end</pre>
+</div>
 <div class="line-block">
 <div class="line"><br /></div>
 <div class="line"><br /></div>
@@ -798,8 +847,44 @@ or collection of objects.</p>
 <hr class="docutils" />
 <div class="section" id="put-it-all-together">
 <h3>Put it all together<a class="headerlink" href="#put-it-all-together" title="Permalink to this headline">¶</a></h3>
+<div class="sidebar">
+<p class="first sidebar-title">Take an Order</p>
+<p>Combine variables, loops or methods, conditionals, comparison, and user input to make a
+program that takes an order and responds to the user:</p>
+<div class="last highlight-python"><pre>puts "What kind of sandwich would you like?"
+    sandwich = gets.strip!
+    puts "Ok. Would you like a combo? (yes or no)"
+    combo_answer = gets.strip!
+
+    def assign_combo(combo_answer)
+      if combo_answer.downcase == "yes"
+            combo = true
+      elsif combo_answer.downcase == "no"
+            combo = false
+      else
+            puts "Please type yes or no:"
+            combo_answer = gets.strip!
+            assign_combo(combo_answer)
+      end
+    end
+    combo = assign_combo(combo_answer)
+
+    if combo == true
+      puts "Ok, what size combo would you like?"
+      size = gets.strip!
+    end
+    puts "Ok, you ordered a #{combo ? size + ' ' + sandwich + ' combo' : sandwich}. Thank you!"</pre>
+</div>
+</div>
 <p>See if you can write a ruby script in a .rb file that will take an order when it
 is run.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
 <hr class="docutils" />
 <p class="rubric">Footnotes</p>
 <ol class="arabic simple">

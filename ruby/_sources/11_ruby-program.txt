@@ -55,6 +55,7 @@ Variables
 
 | A variable is a named space in memory that stores some data. 
 | A variable is identified by its name.
+| Variable names can include underscores but not spaces.
 | A variable exists within a scope, and is deleted by a garbage collector when 
   it is no longer needed.
 
@@ -513,10 +514,36 @@ unless this one particular condition is met.
 
 ---------
 
-Methods
+Ternary Operator
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The ternary operator `` ? : `` is shorthand syntax for an if...else statement.::
+
+(order[:sandwich] == "burger") ? puts "Burger" : puts "Not a burger!"
+
+First, write a statement that will return a boolean, such as a conditional.
+Follow it with a question mark. The first thing after the question mark is the code to 
+execute if the statement returns true. Then there is a colon, and then the code to be 
+executed if the statement in the parentheses returns false. 
+
+Methods & Blocks
 -----------------------------
 
-Methods are used to run multiple lines of code at one time.
+.. sidebar :: Example Method
+
+  Write a method that decides what drink comes with a combo. Then call the method.::
+  
+    def pick_drink(combo, combo_size)
+      if combo == true
+        "What kind of drink do you want with that combo?"
+        drink_input = gets
+        drink = size + drink_input
+        puts "Your drink is a #{drink}."
+      end
+    end
+    pick_drink(combo, size)
+
+Methods are used to run multiple lines of code without having to repeat them.
 
 Variables can be passed in to methods using parentheses. In the method 
 definition, you give the variable a name to be used within the method. Then, 
@@ -525,8 +552,26 @@ used as the value of the variable. If a method is defined to take variables in
 Ruby, then you must pass values in to that method for those variables, or you 
 will get an argument error.
 
+Methods are assigned in Ruby like so::
+
+  def method_name
+    ...
+  end
+  
 Methods can be called on objects in Ruby using object notation: 
 ``object.method``. 
+
+Method Scope and Return
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If a variable is defined inside of a method, it is limited to the scope of that method, 
+meaning that the variable cannot be accessed anywhere outside of that method. 
+
+A method must be defined within the current scope before it can be called.
+
+To pass data from inside of a method to outside of it, use ``return``. If no ``return`` 
+is specified in a method, the method will return the value of the last statement by 
+default.
 
 ---------
 
@@ -543,7 +588,7 @@ used to check whether a variable is either an empty string or nil.
 
 ---------
 
-Blocks & Loops
+Loops
 -----------------------------
 
 Loops allow you to repeat a line or block of code.
@@ -574,7 +619,13 @@ or collection of objects.
 While Loop
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The while loop repeats code as long as a given condition is true.
+The while loop repeats code as long as a given condition is true.::
+
+  x = 1
+  while x < 5 do
+    puts x
+    x += 1
+  end
 
 |
 |
@@ -612,8 +663,43 @@ Don't Repeat Yourself
 Put it all together
 ------------------------------------
 
+.. sidebar :: Take an Order
+  
+  Combine variables, loops or methods, conditionals, comparison, and user input to make a 
+  program that takes an order and responds to the user::
+  
+    puts "What kind of sandwich would you like?"
+	sandwich = gets.strip!
+	puts "Ok. Would you like a combo? (yes or no)"
+	combo_answer = gets.strip!
+
+	def assign_combo(combo_answer)
+	  if combo_answer.downcase == "yes"
+		combo = true
+	  elsif combo_answer.downcase == "no"
+		combo = false
+	  else
+		puts "Please type yes or no:"
+		combo_answer = gets.strip!
+		assign_combo(combo_answer)
+	  end
+	end
+	combo = assign_combo(combo_answer)
+
+	if combo == true
+	  puts "Ok, what size combo would you like?"
+	  size = gets.strip!
+	end
+	puts "Ok, you ordered a #{combo ? size + ' ' + sandwich + ' combo' : sandwich}. Thank you!"
+      
 See if you can write a ruby script in a .rb file that will take an order when it
 is run.
+
+|
+|
+|
+|
+|
 
 ----------------
 

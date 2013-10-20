@@ -57,6 +57,7 @@ this file. The following global configuration settings are recommended::
    git config --global branch.master.remote origin
    git config --global branch.master.merge refs/heads/master
    git config --global --add color.ui true
+   git config --global remote.origin.push HEAD
 
 The following configuration is necessary when encased in the Microsoft Windows 
 coccoon::
