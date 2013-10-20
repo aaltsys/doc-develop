@@ -51,13 +51,17 @@ Configuration
 Git stores global settings for each user in home directory file 
 :file:`~/.gitconfig`. :command:`Git config` console commands change settings in 
 this file. The following global configuration settings are recommended:: 
-   
+
    git config --global user.name "{firstname lastname}"
    git config --global user.email "{email@domain}"
    git config --global branch.master.remote origin
    git config --global branch.master.merge refs/heads/master
    git config --global --add color.ui true
-   git config --global remote.origin.push HEAD
+   
+For git 2.0, push.default changes from matching to simple. If this is a problem, 
+add the following configuration command::
+
+   git config --global push.default matching
 
 The following configuration is necessary when encased in the Microsoft Windows 
 coccoon::
