@@ -22,7 +22,14 @@ Register for free:
 
 .. image:: _images/04_self-publish_signup.png
 
-Add an SSH Key:
+Copy SSH Key to Clipboard
+-----------------------------
+
+At your system console, copy your SSH key to the clipboard with the command::
+
+   cat ~/.ssh/id_rsa.pub | xclip``
+
+Add the SSH Key to Github:
 -----------------------------
 
 + Click the wrench to the right of your name, :guilabel:`Account Settings`,
@@ -31,9 +38,7 @@ Add an SSH Key:
 
 .. image:: _images/04_self-publish_accountsettings.png
 
-+ Switch to the console, and enter the command :command:`kate ~/.ssh/id_rsa.pub`.
-+ In Kate, press :kbd:`<Ctrl-A>,<Ctrl-C>`, then close without saving.
-+ Switch to the browser, click in :guilabel:`Key`, and press :kbd:`<Ctrl-V>`.
++ Click in :guilabel:`Key`, and press :kbd:`<Ctrl-V>`.
 + Click in :guilabel:`Title`, and enter the workstation@username and date.
 + Click the button :guilabel:`Add key` to finish.
 

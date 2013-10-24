@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -15,7 +13,7 @@
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '',
+        URL_ROOT:    './',
         VERSION:     '1.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
@@ -47,7 +45,12 @@
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Download Helper Files</a><ul>
-<li><a class="reference internal" href="#download-links-and-commands">Download links and commands</a><ul>
+<li><a class="reference internal" href="#linux-installation-scripts">Linux installation scripts</a><ul>
+<li><a class="reference internal" href="#first-install-sh">first-install.sh</a></li>
+<li><a class="reference internal" href="#rest-install-sh">rest-install.sh</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#rst-project-command-links">RST project command links</a><ul>
 <li><a class="reference internal" href="#doc-newproject-sh">doc-newproject.sh</a></li>
 <li><a class="reference internal" href="#doc-addbranch-sh">doc-addbranch.sh</a></li>
 <li><a class="reference internal" href="#doc-deploy-sh">doc-deploy.sh</a></li>
@@ -104,8 +107,40 @@ folder <tt class="file docutils literal"><span class="pre">~/Projects</span></tt
 project folders with the command format <strong class="command">../{scriptname}</strong>,
 omitting the <strong class="command">{project_folder_name}</strong> from the command.</p>
 </div>
-<div class="section" id="download-links-and-commands">
-<h2>Download links and commands<a class="headerlink" href="#download-links-and-commands" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="linux-installation-scripts">
+<h2>Linux installation scripts<a class="headerlink" href="#linux-installation-scripts" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="first-install-sh">
+<h3>first-install.sh<a class="headerlink" href="#first-install-sh" title="Permalink to this headline">¶</a></h3>
+<p>After installing Ubuntu Linux (or a derivative) on your computer, download one
+of the following scripts as appropriate, saving it to the desktop with the name
+<tt class="file docutils literal"><span class="pre">first-install.sh</span></tt>.</p>
+<div class="line-block">
+<div class="line">Gnome-Ubuntu_10.10: <a class="reference download internal" href="_downloads/Gnome-Ubuntu_10.10-desktop.sh"><tt class="xref download docutils literal"><span class="pre">_downloads/Gnome-Ubuntu_10.10-desktop.sh</span></tt></a></div>
+<div class="line">KDE-Mint_10: <a class="reference download internal" href="_downloads/KDE-Mint_10-desktop.sh"><tt class="xref download docutils literal"><span class="pre">_downloads/KDE-Mint_10-desktop.sh</span></tt></a></div>
+<div class="line">KDE-Mint_12: <a class="reference download internal" href="_downloads/KDE-Mint_12-desktop.sh"><tt class="xref download docutils literal"><span class="pre">_downloads/KDE-Mint_12-desktop.sh</span></tt></a></div>
+<div class="line">KUbuntu_12: <a class="reference download internal" href="_downloads/KUbuntu_12-desktop.sh"><tt class="xref download docutils literal"><span class="pre">_downloads/KUbuntu_12-desktop.sh</span></tt></a></div>
+<div class="line">KUbuntu_13: <tt class="xref download docutils literal"><span class="pre">_downloads/KUbuntu_13-desktop.sh</span></tt></div>
+</div>
+<p>Get the respective script from the command line via wget with:</p>
+<div class="highlight-python"><pre>wget -O first-install.sh http://develop.aaltsys.info/resources/_downloads/Gnome-Ubuntu_10.10-desktop.sh
+wget -O first-install.sh http://develop.aaltsys.info/resources/_downloads/KDE-Mint_10-desktop.sh
+wget -O first-install.sh http://develop.aaltsys.info/resources/_downloads/KDE-Mint_12-desktop.sh
+wget -O first-install.sh http://develop.aaltsys.info/resources/_downloads/KUbuntu_12-desktop.sh
+wget -O first-install.sh http://develop.aaltsys.info/resources/_downloads/KUbuntu_13-desktop.sh</pre>
+</div>
+<p>Execute the script with the command, <strong class="command">bash first-install.sh</strong>.</p>
+</div>
+<div class="section" id="rest-install-sh">
+<h3>rest-install.sh<a class="headerlink" href="#rest-install-sh" title="Permalink to this headline">¶</a></h3>
+<p>To install Restructured Text project support, download the script
+<tt class="xref download docutils literal"><span class="pre">rest-install.sh</span></tt> to the desktop and execute it with the command,
+<strong class="command">bash rest-install.sh</strong>. The download command to get the script is:</p>
+<div class="highlight-python"><pre>wget -O rest-install.sh http://develop.aaltsys.info/resources/_downloads/rest-install.sh</pre>
+</div>
+</div>
+</div>
+<div class="section" id="rst-project-command-links">
+<h2>RST project command links<a class="headerlink" href="#rst-project-command-links" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="doc-newproject-sh">
 <h3>doc-newproject.sh<a class="headerlink" href="#doc-newproject-sh" title="Permalink to this headline">¶</a></h3>
 <p>Start a new documentation project in your <tt class="file docutils literal"><span class="pre">~/Projects</span></tt> folder with the
@@ -203,7 +238,7 @@ Learn about basic authentication using <tt class="file docutils literal"><span c
     </div>
     <div class="footer">
         &copy; Copyright 2013, Gerald Lovel.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
     </div>
   </body>
 </html>

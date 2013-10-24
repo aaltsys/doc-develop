@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -15,7 +13,7 @@
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '',
+        URL_ROOT:    './',
         VERSION:     '1.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
@@ -49,7 +47,8 @@
 <li><a class="reference internal" href="#">Right Hosting</a><ul>
 <li><a class="reference internal" href="#register-a-github-account">Register a GitHub Account</a><ul>
 <li><a class="reference internal" href="#register-for-free">Register for free:</a></li>
-<li><a class="reference internal" href="#add-an-ssh-key">Add an SSH Key:</a></li>
+<li><a class="reference internal" href="#copy-ssh-key-to-clipboard">Copy SSH Key to Clipboard</a></li>
+<li><a class="reference internal" href="#add-the-ssh-key-to-github">Add the SSH Key to Github:</a></li>
 <li><a class="reference internal" href="#verify-ssh-with-login">Verify ssh with login</a></li>
 </ul>
 </li>
@@ -112,8 +111,14 @@ set. <a class="footnote-reference" href="#id2" id="id1">[1]</a></p>
 </ul>
 <img alt="_images/04_self-publish_signup.png" src="_images/04_self-publish_signup.png" />
 </div>
-<div class="section" id="add-an-ssh-key">
-<h3>Add an SSH Key:<a class="headerlink" href="#add-an-ssh-key" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="copy-ssh-key-to-clipboard">
+<h3>Copy SSH Key to Clipboard<a class="headerlink" href="#copy-ssh-key-to-clipboard" title="Permalink to this headline">¶</a></h3>
+<p>At your system console, copy your SSH key to the clipboard with the command:</p>
+<div class="highlight-python"><pre>cat ~/.ssh/id_rsa.pub | xclip``</pre>
+</div>
+</div>
+<div class="section" id="add-the-ssh-key-to-github">
+<h3>Add the SSH Key to Github:<a class="headerlink" href="#add-the-ssh-key-to-github" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Click the wrench to the right of your name, <em class="guilabel">Account Settings</em>,</li>
 <li>Then select <em class="guilabel">SSH Keys</em> from the settings menu on the left.</li>
@@ -121,9 +126,7 @@ set. <a class="footnote-reference" href="#id2" id="id1">[1]</a></p>
 </ul>
 <img alt="_images/04_self-publish_accountsettings.png" src="_images/04_self-publish_accountsettings.png" />
 <ul class="simple">
-<li>Switch to the console, and enter the command <strong class="command">kate ~/.ssh/id_rsa.pub</strong>.</li>
-<li>In Kate, press <tt class="kbd docutils literal"><span class="pre">&lt;Ctrl-A&gt;,&lt;Ctrl-C&gt;</span></tt>, then close without saving.</li>
-<li>Switch to the browser, click in <em class="guilabel">Key</em>, and press <tt class="kbd docutils literal"><span class="pre">&lt;Ctrl-V&gt;</span></tt>.</li>
+<li>Click in <em class="guilabel">Key</em>, and press <tt class="kbd docutils literal"><span class="pre">&lt;Ctrl-V&gt;</span></tt>.</li>
 <li>Click in <em class="guilabel">Title</em>, and enter the <a class="reference external" href="mailto:workstation&#37;&#52;&#48;username">workstation<span>&#64;</span>username</a> and date.</li>
 <li>Click the button <em class="guilabel">Add key</em> to finish.</li>
 </ul>
@@ -256,7 +259,7 @@ instead of pasting in <tt class="kbd docutils literal"><span class="pre">git&#64
     </div>
     <div class="footer">
         &copy; Copyright 2013, Gerald Lovel.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
     </div>
   </body>
 </html>

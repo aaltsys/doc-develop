@@ -4,7 +4,7 @@
  GitHub Repository Hosting
 ############################# 
 
-From the many options for free repository storage and hosting, one is enough. 
+There are many options for free repository storage and hosting, one is enough. 
 This guide recommends GitHub for its excellent documentation and good feature 
 set. [#]_
 
@@ -22,18 +22,30 @@ Register for free:
 
 .. image:: _images/05_publish_signup.png
 
-Add an SSH Key:
+Copy SSH Key to Clipboard
+-----------------------------
+
+.. note:: 
+
+   Each combination of user and workstation requires a different ssh key.
+   Use the following command will generate missing **ssh keys** for a user::
+   
+     if [ ! -f ~/.ssh/id_rsa ]; then ssh-keygen -N '' -f ~/.ssh/id_rsa; fi
+
+Copy your SSH key to the clipboard with the console command::
+
+   cat ~/.ssh/id_rsa.pub | xclip              |
+
+Add SSH Key on Github
 -----------------------------
 
 + Click the wrench to the right of your name, :guilabel:`Account Settings`,
 + Then select :guilabel:`SSH Keys` from the settings menu on the left.
-+ On the "SSH Keys" bar, click the :guilabel:`Add SSH key` button.
++ On the **SSH Keys** bar, click the :guilabel:`Add SSH key` button.
 
 .. image:: _images/05_publish_account.png
 
-+ Switch to the console, and enter the command :command:`kate ~/.ssh/id_rsa.pub`.
-+ In Kate, press :kbd:`<Ctrl-A>,<Ctrl-C>`, then close without saving.
-+ Switch to the browser, click in :guilabel:`Key`, and press :kbd:`<Ctrl-V>`.
++ Click in :guilabel:`Key`, and press :kbd:`<Ctrl-V>`.
 + Click in :guilabel:`Title`, and enter the workstation@username and date.
 + Click the button :guilabel:`Add key` to finish.
 
@@ -47,10 +59,6 @@ Verify ssh with login
 + You should get a response that you have successfully authenticated:
 
 .. image:: _images/05_publish_shell.png
-
-.. Note::
-
-  Each combination of user and workstation requires a different ssh key.
 
 Fork a Remote Project
 =============================

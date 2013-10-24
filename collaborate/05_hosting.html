@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -15,7 +13,7 @@
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '',
+        URL_ROOT:    './',
         VERSION:     '1.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
@@ -49,7 +47,8 @@
 <li><a class="reference internal" href="#">GitHub Repository Hosting</a><ul>
 <li><a class="reference internal" href="#register-a-github-account">Register a GitHub Account</a><ul>
 <li><a class="reference internal" href="#register-for-free">Register for free:</a></li>
-<li><a class="reference internal" href="#add-an-ssh-key">Add an SSH Key:</a></li>
+<li><a class="reference internal" href="#copy-ssh-key-to-clipboard">Copy SSH Key to Clipboard</a></li>
+<li><a class="reference internal" href="#add-ssh-key-on-github">Add SSH Key on Github</a></li>
 <li><a class="reference internal" href="#verify-ssh-with-login">Verify ssh with login</a></li>
 </ul>
 </li>
@@ -94,7 +93,7 @@
             
   <div class="section" id="github-repository-hosting">
 <span id="hosting"></span><h1>GitHub Repository Hosting<a class="headerlink" href="#github-repository-hosting" title="Permalink to this headline">¶</a></h1>
-<p>From the many options for free repository storage and hosting, one is enough.
+<p>There are many options for free repository storage and hosting, one is enough.
 This guide recommends GitHub for its excellent documentation and good feature
 set. <a class="footnote-reference" href="#id2" id="id1">[1]</a></p>
 <div class="section" id="register-a-github-account">
@@ -109,18 +108,29 @@ set. <a class="footnote-reference" href="#id2" id="id1">[1]</a></p>
 </ul>
 <img alt="_images/05_publish_signup.png" src="_images/05_publish_signup.png" />
 </div>
-<div class="section" id="add-an-ssh-key">
-<h3>Add an SSH Key:<a class="headerlink" href="#add-an-ssh-key" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="copy-ssh-key-to-clipboard">
+<h3>Copy SSH Key to Clipboard<a class="headerlink" href="#copy-ssh-key-to-clipboard" title="Permalink to this headline">¶</a></h3>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>Each combination of user and workstation requires a different ssh key.
+Use the following command will generate missing <strong>ssh keys</strong> for a user:</p>
+<div class="last highlight-python"><pre>if [ ! -f ~/.ssh/id_rsa ]; then ssh-keygen -N '' -f ~/.ssh/id_rsa; fi</pre>
+</div>
+</div>
+<p>Copy your SSH key to the clipboard with the console command:</p>
+<div class="highlight-python"><pre>cat ~/.ssh/id_rsa.pub | xclip              |</pre>
+</div>
+</div>
+<div class="section" id="add-ssh-key-on-github">
+<h3>Add SSH Key on Github<a class="headerlink" href="#add-ssh-key-on-github" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Click the wrench to the right of your name, <em class="guilabel">Account Settings</em>,</li>
 <li>Then select <em class="guilabel">SSH Keys</em> from the settings menu on the left.</li>
-<li>On the &#8220;SSH Keys&#8221; bar, click the <em class="guilabel">Add SSH key</em> button.</li>
+<li>On the <strong>SSH Keys</strong> bar, click the <em class="guilabel">Add SSH key</em> button.</li>
 </ul>
 <img alt="_images/05_publish_account.png" src="_images/05_publish_account.png" />
 <ul class="simple">
-<li>Switch to the console, and enter the command <strong class="command">kate ~/.ssh/id_rsa.pub</strong>.</li>
-<li>In Kate, press <tt class="kbd docutils literal"><span class="pre">&lt;Ctrl-A&gt;,&lt;Ctrl-C&gt;</span></tt>, then close without saving.</li>
-<li>Switch to the browser, click in <em class="guilabel">Key</em>, and press <tt class="kbd docutils literal"><span class="pre">&lt;Ctrl-V&gt;</span></tt>.</li>
+<li>Click in <em class="guilabel">Key</em>, and press <tt class="kbd docutils literal"><span class="pre">&lt;Ctrl-V&gt;</span></tt>.</li>
 <li>Click in <em class="guilabel">Title</em>, and enter the <a class="reference external" href="mailto:workstation&#37;&#52;&#48;username">workstation<span>&#64;</span>username</a> and date.</li>
 <li>Click the button <em class="guilabel">Add key</em> to finish.</li>
 </ul>
@@ -134,10 +144,6 @@ set. <a class="footnote-reference" href="#id2" id="id1">[1]</a></p>
 <li>You should get a response that you have successfully authenticated:</li>
 </ul>
 <img alt="_images/05_publish_shell.png" src="_images/05_publish_shell.png" />
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Each combination of user and workstation requires a different ssh key.</p>
-</div>
 </div>
 </div>
 <div class="section" id="fork-a-remote-project">
@@ -206,7 +212,7 @@ command:</p>
     </div>
     <div class="footer">
         &copy; Copyright 2013, Gerald Lovel.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
     </div>
   </body>
 </html>
