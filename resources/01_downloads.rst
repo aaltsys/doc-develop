@@ -43,8 +43,9 @@ rest-install.sh
 -----------------------------
 
 To install Restructured Text project support, download the script 
-:download:`rest-install.sh` to the desktop and execute it with the command, 
-:command:`bash rest-install.sh`. The download command to get the script is:: 
+:download:`_downloads/rest-install.sh` to the desktop and execute it with the 
+command, :command:`bash rest-install.sh`. The download command to get this 
+script is:: 
 
    wget -O rest-install.sh http://develop.aaltsys.info/resources/_downloads/rest-install.sh
 
