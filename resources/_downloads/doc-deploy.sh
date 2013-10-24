@@ -170,7 +170,7 @@ if [[ ! -d $DIR_DEPLOY/.git ]] ; then
   touch .gitkeep
   touch .gitignore
   touch .nojekyll
-  git add .
+  git add --ignore-removal .
   git commit -m "hidden control files"
   cd ..
 fi
@@ -246,7 +246,7 @@ fi
 # Deploy the repository branch
 if [[ -d $DIR_DEPLOY ]] ; then
   cd $DIR_DEPLOY
-  git add .
+  git add -A .
   git commit -m "Deployed documentation"
   git push -u origin $DEPLOY:$BRANCH_DEPLOY
 
