@@ -13,7 +13,42 @@ links and as :command:`wget` terminal commands.
    project folders with the command format :command:`../{scriptname}`, 
    omitting the :command:`{project_folder_name}` from the command.
 
-Download links and commands
+Linux installation scripts
+=============================
+
+first-install.sh
+-----------------------------
+
+After installing Ubuntu Linux (or a derivative) on your computer, download one 
+of the following scripts as appropriate, saving it to the desktop with the name 
+:file:`first-install.sh`.
+
+| Gnome-Ubuntu_10.10: :download:`_downloads/Gnome-Ubuntu_10.10-desktop.sh`
+| KDE-Mint_10: :download:`_downloads/KDE-Mint_10-desktop.sh`
+| KDE-Mint_12: :download:`_downloads/KDE-Mint_12-desktop.sh`
+| KUbuntu_12: :download:`_downloads/KUbuntu_12-desktop.sh`
+| KUbuntu_13: :download:`_downloads/KUbuntu_13-desktop.sh`
+
+Get the respective script from the command line via wget with::
+
+   wget -O first-install.sh http://develop.aaltsys.info/resources/_downloads/Gnome-Ubuntu_10.10-desktop.sh
+   wget -O first-install.sh http://develop.aaltsys.info/resources/_downloads/KDE-Mint_10-desktop.sh
+   wget -O first-install.sh http://develop.aaltsys.info/resources/_downloads/KDE-Mint_12-desktop.sh
+   wget -O first-install.sh http://develop.aaltsys.info/resources/_downloads/KUbuntu_12-desktop.sh
+   wget -O first-install.sh http://develop.aaltsys.info/resources/_downloads/KUbuntu_13-desktop.sh
+ 
+Execute the script with the command, :command:`bash first-install.sh`.
+
+rest-install.sh
+-----------------------------
+
+To install Restructured Text project support, download the script 
+:download:`rest-install.sh` to the desktop and execute it with the command, 
+:command:`bash rest-install.sh`. The download command to get the script is:: 
+
+   wget -O rest-install.sh http://develop.aaltsys.info/resources/_downloads/rest-install.sh
+
+RST project command links
 =============================
 
 doc-newproject.sh
