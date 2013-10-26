@@ -222,7 +222,7 @@ else
           if [[ $RC > 0 ]] ; then echo "$(pwd)$(tput setaf 1) $LINENO: cp -RH $DIR_OUT/.ht* ../$DIR_DEPLOY/ $(tput sgr0)" ; fi
           # If it exists, delete CNAME from master deploy subdirectory
           if [[ -e $DIR_OUT/CNAME ]] ; then
-            echo "CNAME $(<../$DIR_DEPLOY/$MASTER/CNAME) found in ../$DIR_DEPLOY/$MASTER/CNAME"
+            echo "CNAME $(<$DIR_OUT/CNAME) found in $DIR_OUT/CNAME"
             rm $DIR_OUT/CNAME
           fi
         fi
@@ -235,9 +235,10 @@ fi
 # if we are on gh-pages AND there exists a CNAME file
 if [[ $BRANCH_DEPLOY = $GITHUB ]] ; then
   if [[ -e $DIR_DEPLOY/CNAME ]] ; then
-    if [[ "$REMOTE_DEPLOY" != "${REMOTE_DEPLOY/$OWNER/}" ]] ; then
+    if [[ "$REMOTE_DEPLOY" == "${REMOTE_DEPLOY/$OWNER/}" ]] ; then
+      # removing $OWNER from remote leaves the remote unchanged, so:
       # if $GITHUB and CNAME owner != remote deployer, remove CNAME
-      echo owner="$OWNER", remote="$REMOTE_DEPLOY", and remote owner="${REMOTE_DEPLOY/$OWNER/}"
+      echo remote $REMOTE_DEPLOY does not belong to CNAME owner="$OWNER"
       rm $DIR_DEPLOY/CNAME
     fi
   fi
