@@ -236,8 +236,9 @@ fi
 if [[ $BRANCH_DEPLOY = $GITHUB ]] ; then
   if [[ -e $DIR_DEPLOY/CNAME ]] ; then
     if [[ "$REMOTE_DEPLOY" == "${REMOTE_DEPLOY/$OWNER/}" ]] ; then
+      # removing $OWNER from remote leaves the remote unchanged, so:
       # if $GITHUB and CNAME owner != remote deployer, remove CNAME
-      echo owner="$OWNER", remote="$REMOTE_DEPLOY", and remote owner="${REMOTE_DEPLOY/$OWNER/}"
+      echo remote $REMOTE_DEPLOY does not belong to CNAME owner="$OWNER"
       rm $DIR_DEPLOY/CNAME
     fi
   fi
