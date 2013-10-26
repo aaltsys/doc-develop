@@ -222,7 +222,7 @@ else
           if [[ $RC > 0 ]] ; then echo "$(pwd)$(tput setaf 1) $LINENO: cp -RH $DIR_OUT/.ht* ../$DIR_DEPLOY/ $(tput sgr0)" ; fi
           # If it exists, delete CNAME from master deploy subdirectory
           if [[ -e $DIR_OUT/CNAME ]] ; then
-            echo "CNAME $(<../$DIR_OUT/CNAME) found in ../$DIR_OUT/CNAME"
+            echo "CNAME $(<$DIR_OUT/CNAME) found in $DIR_OUT/CNAME"
             rm $DIR_OUT/CNAME
           fi
         fi
