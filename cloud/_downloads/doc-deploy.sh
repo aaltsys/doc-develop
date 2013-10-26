@@ -223,7 +223,7 @@ else
           # If it exists, delete CNAME from master deploy subdirectory
           if [[ -e $DIR_OUT/CNAME ]] ; then
             echo "CNAME $(<../$DIR_DEPLOY/$MASTER/CNAME) found in ../$DIR_DEPLOY/$MASTER/CNAME"
-            rm $DIR_OUT/CNAME
+            rm $DIR_DEPLOY/$MASTER/CNAME
           fi
         fi
       cd ..
