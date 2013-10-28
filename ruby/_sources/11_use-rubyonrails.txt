@@ -17,7 +17,7 @@ Get a sample rails app
 
 #. First, fork a sample rails application on GitHub. Go to:
 
-   https://github.com/alt-davenport/sample_app
+   https://github.com/aaltsys/payroll
 
    ...and click the :guilabel:`fork` button.
 
