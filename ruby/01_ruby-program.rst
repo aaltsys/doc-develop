@@ -390,21 +390,23 @@ Is equal to
 The ``Is Equal To`` comparison can be used on two values of *any type* to 
 determine if they equal each other.
 
-.. warning :: Do not confuse ``==`` with ``=``!
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
 
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
+.. warning :: Do not confuse ``==`` with ``=``!
 
 .. note:: Ruby has additional comparison operators for particular programming 
    uses:
