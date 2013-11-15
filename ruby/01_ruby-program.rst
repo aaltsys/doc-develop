@@ -4,11 +4,24 @@
  Ruby Programming Concepts
 ############################# 
 
+What is a Programming Language?
+================================
+
+A programming language gives instructions to a machine. It does more than a markup 
+language, like RST or HTML, because it has logic that it can use to manipulate data.
+Programming in a markup language, you can create a website with static content, 
+wherein you must change your source in order to change what is displayed. But using a 
+programming language you can create a dynamic website, which can take input from a user or
+another program and use it to change what is displayed.
+
 Install Ruby
 =============================
 
 Ruby is installed using :program:`RVM`, the Ruby Version Manager. Cloud9 
 provides a pre-installed emulation of RVM, which we will use.
+
+First, log in to Cloud9 and on your Dashboard in the left sidebar click 
+:guilabel:`Create New Workspace`.
 
 Open a terminal window in the rails sample app's Cloud9 project workspace.
 In the Terminal window, run the following command to check that RVM is 
@@ -377,21 +390,23 @@ Is equal to
 The ``Is Equal To`` comparison can be used on two values of *any type* to 
 determine if they equal each other.
 
-.. warning :: Do not confuse ``==`` with ``=``!
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
 
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
+.. warning :: Do not confuse ``==`` with ``=``!
 
 .. note:: Ruby has additional comparison operators for particular programming 
    uses:
