@@ -6,68 +6,79 @@
 # Not working lines with release of KUbuntu 13 are marked with !!
 # Problem packages are: chrome, cinelerra, adobe-flashplugin, sun-java6
 
-# add repositories
+echo "This script requires superuser privileges to run."
+echo "Enter your password when prompted by sudo."
 
-# universe/multiverse repositories
- sudo add-apt-repository "deb http://archive.ubuntu.com/ubuntu $(lsb_release -sc) main universe restricted multiverse"
-# repository for Ubuntu tweaks
-sudo apt-add-repository ppa:tualatrix/ppa
-# repository for working rails
-sudo apt-add-repository ppa:ubuntu-on-rails/ppa
-# repository for Cinelerra video editor
-# !! sudo apt-add-repository ppa:cinelerra-ppa/ppa
+# clear any previous sudo permission
+sudo -k
 
-# Install latest stable web browsers
+# run inside sudo
+sudo sh <<SCRIPT
 
-# Firefox -- upgrade to later version -- replaced transitional package latex-xft-fonts with ttf-lyx, add curl to satisfy Chrome requirements
-sudo apt-get -y install curl firefox ttf-lyx ubufox 
+   # add repositories
 
-# install Google Chrome stable
-if [ "`uname -i`" = "i386" ] 
-then
-  CHROMEVER="google-chrome-stable_current_i386.deb"
-else
-  CHROMEVER="google-chrome-stable_current_amd64.deb"
-fi
-# !! wget -O /tmp/chrome.deb https://dl-ssl.google.com/linux/direct/$CHROMEVER 
-# !! sudo dpkg -i /tmp/chrome.deb 
-# !! rm /tmp/chrome.deb 
+   # universe/multiverse repositories
+   add-apt-repository "deb http://archive.ubuntu.com/ubuntu $(lsb_release -sc) main universe restricted multiverse"
+   # repository for Ubuntu tweaks
+   apt-add-repository ppa:tualatrix/ppa
+   # repository for working rails
+   apt-add-repository ppa:ubuntu-on-rails/ppa
+   # repository for Cinelerra video editor
+   # !!    apt-add-repository ppa:cinelerra-ppa/ppa
 
-# update repository info
-sudo apt-get update
+   # Install latest stable web browsers
 
-# flush apt-get index updates
-sudo apt-get -f install
+   # Firefox -- upgrade to later version -- replaced transitional package latex-xft-fonts with ttf-lyx, add curl to satisfy Chrome requirements
+   apt-get -y install curl firefox ttf-lyx ubufox 
 
-# ######################################################################################
-# Install apps and tools
-# ######################################################################################
+   # install Google Chrome stable
+   if [ "`uname -i`" = "i386" ] 
+   then
+     CHROMEVER="google-chrome-stable_current_i386.deb"
+   else
+     CHROMEVER="google-chrome-stable_current_amd64.deb"
+   fi
+   # !! wget -O /tmp/chrome.deb https://dl-ssl.google.com/linux/direct/$CHROMEVER 
+   # !!    dpkg -i /tmp/chrome.deb 
+   # !! rm /tmp/chrome.deb 
 
-# install desktop productivity apps
-# !! sudo apt-get -y install blender cinelerra dia filezilla freemind gimp gnucash
-sudo apt-get -y install blender dia filezilla freemind gimp gnucash
-sudo apt-get -y install inkscape mypaint openshot scribus shotwell skanlite xaralx
+   # update repository info
+   apt-get update
 
-# install desktop utility apps
-# !! sudo apt-get -y install adobe-flashplugin aptitude byobu cifs-utils diffuse dosbox dosemu
-sudo apt-get -y install aptitude byobu cifs-utils diffuse dosbox dosemu
-sudo apt-get -y install gdebi hplip-gui keepassx krdc kubuntu-restricted-extras lftp mc
-sudo apt-get -y install nfs-common openvpn plasma-widget-lancelot playonlinux putty  
-sudo apt-get -y install recordmydesktop screen ubuntu-tweak unison vlc wine wireshark 
-sudo apt-get -y install xclip
+   # flush apt-get index updates
+   apt-get -f install
 
-# fix configuration problem so DOS programs will work
-sudo bash < <(echo 'echo "vm.mmap_min_addr=0" >> /etc/sysctl.conf')
+   # ######################################################################################
+   # Install apps and tools
+   # ######################################################################################
 
-# install Sun (Oracle) java
-# !! sudo apt-get -y install sun-java6-bin sun-java6-fonts sun-java6-javadb sun-java6-jdk sun-java6-jre sun-java6-plugin
+   # install desktop productivity apps
+   # !!    apt-get -y install blender cinelerra dia filezilla freemind gimp gnucash
+   apt-get -y install blender dia filezilla freemind gimp gnucash
+   apt-get -y install inkscape mypaint openshot scribus shotwell skanlite xaralx
 
-# ######################################################################################
-# clean up aptitude at end
-# ######################################################################################
+   # install desktop utility apps
+   # !!    apt-get -y install adobe-flashplugin aptitude byobu cifs-utils diffuse dosbox dosemu
+   apt-get -y install aptitude byobu cifs-utils diffuse dosbox dosemu
+   apt-get -y install gdebi hplip-gui keepassx krdc kubuntu-restricted-extras lftp mc
+   apt-get -y install nfs-common openvpn plasma-widget-lancelot playonlinux putty  
+   apt-get -y install recordmydesktop screen ubuntu-tweak unison vlc wine wireshark 
+   apt-get -y install xclip
 
-sudo apt-get clean
-sudo apt-get update
-sudo apt-get upgrade
+   # fix configuration problem so DOS programs will work
+   bash < <(echo 'echo "vm.mmap_min_addr=0" >> /etc/sysctl.conf')
 
-sudo reboot
+   # install Sun (Oracle) java
+   # !!    apt-get -y install sun-java6-bin sun-java6-fonts sun-java6-javadb sun-java6-jdk sun-java6-jre sun-java6-plugin
+
+   # ######################################################################################
+   # clean up aptitude at end
+   # ######################################################################################
+
+   apt-get clean
+   apt-get update
+   apt-get upgrade
+
+   reboot
+   
+SCRIPT
