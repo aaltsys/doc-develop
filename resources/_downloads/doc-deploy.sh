@@ -267,3 +267,4 @@ echo "Then commit and push source changes as well."
 # 12/17/2012 - GARL -- Added copy master folder contents to $DIR_DEPLOY root
 # 02/20/2013 - GARL -- Added support for deployment to Heroku, Github, ...
 # 03/10/2013 - GARL -- Embedded documentation in code projects added
+# 11/15/2013 - GARL -- Updated cnameowner mismatch error messages to display spaces
