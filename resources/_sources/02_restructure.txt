@@ -194,10 +194,11 @@ RST Publication Structuring
 #############################
 
 RST features extend beyond document markup to provide for structuring multiple
-document pages into sections, chapters, and entire publications or books. The 
-AAltsys scripts for managing git repositories of RST documents are designed to
-support multi-section documents, with automatic indexing and referencing between 
-sections. Follow this guide to setup a document in multiple sections.
+document pages into sections, chapters, and entire publications or books. 
+AAltsys scripts (:file:`doc-newproject.sh`, :file:`doc-deploy.sh`, and 
+:file:`doc-addproject.sh`) manage git repositories of RST documents with 
+multiple section folders, where indexing and referencing between sections is
+expected. Follow this guide to setup a document project in multiple sections.
 
 Identify Document Sections
 =============================
@@ -222,7 +223,7 @@ Create New Project
 From within the project folder, run the script command::
 
    ../doc-newproject.sh
-   
+
 This script will initialize a Sphinxdoc folder for each listed chapter section. 
 Sphinx will prompt you to use InterSphinx for each folder, and always answer 
 :kbd:`yes`. The :file:`doc-newproject.sh` script will link all the projects 
@@ -235,23 +236,27 @@ InterSphinx Mapping
 =============================
 
 For the project section list previously mentioned, the **master** folder would 
-contain a :file:`conf.py` program ending in the following statement::
-   
+contain a :file:`conf.py` program ending in the following statement:
+
+::
+
    intersphinx_mapping = {
-      \'resources\': (\'resources\', \'../_deploy/resources/objects.inv\'),
-      \'chapter01\': (\'chapter01\', \'../_deploy/chapter01/objects.inv\'),
-      \'chapter02\': (\'chapter02\', \'../_deploy/chapter02/objects.inv\'),
-      \'chapter03\': (\'chapter03\', \'../_deploy/chapter03/objects.inv\'),
+      'resources': ('resources', '../_deploy/resources/objects.inv'),
+      'chapter01': ('chapter01', '../_deploy/chapter01/objects.inv'),
+      'chapter02': ('chapter02', '../_deploy/chapter02/objects.inv'),
+      'chapter03': ('chapter03', '../_deploy/chapter03/objects.inv'),
    }
 
 Creating references between sections requires entering similar statements in 
 :file:`conf.py` programs for other chapters, with subtle differences. Suppose 
 **chapter02** needs to reference labels in **resources** and **chapter01**. Then 
-the mapping statement at the end of its :file:`conf.py` should read::
+the mapping statement at the end of its :file:`conf.py` should read:
+
+::
 
    intersphinx_mapping = {
-      \'resources\': (\'../resources\', \'../_deploy/resources/objects.inv\'),
-      \'chapter01\': (\'../chapter01\', \'../_deploy/chapter01/objects.inv\'),
+      'resources': ('../resources', '../_deploy/resources/objects.inv'),
+      'chapter01': ('../chapter01', '../_deploy/chapter01/objects.inv'),
    }
 
 Notice that for the chapters, the internal mapping names begin with a 
@@ -272,12 +277,14 @@ Sphinxdoc markup provides for linking references to labels within a document.
 Where labels precede a heading, the reference will be replaced with the section 
 heading text by default. Labels are entered as directives on blank lines, as 
 shown following. Note that label directives start with :kbd:`.. _` and end with 
-:kbd:`:`, as in::
+:kbd:`:`, as in:
+
+::
 
    .. _mylabel:
 
 Use the ``:ref:`` inline markup directive to reference a label within a 
-document. For example, the directive ``:ref:\`pubstructure\``` would take you to
+document. For example, the directive ``:ref:`pubstructure``` would take you to
 :ref:`pubstructure` at the start of this article.
 
 By extension, a label in another chapter section of a project is referenced by 
@@ -316,7 +323,9 @@ Master Index Document
 =============================
 
 The :file:`index.rst` file in the **master** section requires a hand-compiled 
-table of contents for the project chapters. 
+table of contents for the project chapters:
+
+:: 
 
    .. _index:
    
@@ -327,3 +336,6 @@ table of contents for the project chapters.
    #. :ref:`chapter02:index`.
    #. :ref:`chapter03:index`.
    #. :ref:`resources:index`.
+
+Again, other text and formatting directives may be included to fill out this 
+page.

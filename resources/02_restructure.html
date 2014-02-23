@@ -310,10 +310,11 @@ by usage. This is an example of simplifing a task by
 <div class="section" id="rst-publication-structuring">
 <span id="pubstructure"></span><h1>RST Publication Structuring<a class="headerlink" href="#rst-publication-structuring" title="Permalink to this headline">¶</a></h1>
 <p>RST features extend beyond document markup to provide for structuring multiple
-document pages into sections, chapters, and entire publications or books. The
-AAltsys scripts for managing git repositories of RST documents are designed to
-support multi-section documents, with automatic indexing and referencing between
-sections. Follow this guide to setup a document in multiple sections.</p>
+document pages into sections, chapters, and entire publications or books.
+AAltsys scripts (<tt class="file docutils literal"><span class="pre">doc-newproject.sh</span></tt>, <tt class="file docutils literal"><span class="pre">doc-deploy.sh</span></tt>, and
+<tt class="file docutils literal"><span class="pre">doc-addproject.sh</span></tt>) manage git repositories of RST documents with
+multiple section folders, where indexing and referencing between sections is
+expected. Follow this guide to setup a document project in multiple sections.</p>
 <div class="section" id="identify-document-sections">
 <h2>Identify Document Sections<a class="headerlink" href="#identify-document-sections" title="Permalink to this headline">¶</a></h2>
 <p>To create a document with chapters or sections, begin by creating a folder in
@@ -348,21 +349,23 @@ that is, reorder the section list, and add InterSphinx Mapping commands to the
 <h2>InterSphinx Mapping<a class="headerlink" href="#intersphinx-mapping" title="Permalink to this headline">¶</a></h2>
 <p>For the project section list previously mentioned, the <strong>master</strong> folder would
 contain a <tt class="file docutils literal"><span class="pre">conf.py</span></tt> program ending in the following statement:</p>
-<div class="highlight-python"><pre>intersphinx_mapping = {
-   \'resources\': (\'resources\', \'../_deploy/resources/objects.inv\'),
-   \'chapter01\': (\'chapter01\', \'../_deploy/chapter01/objects.inv\'),
-   \'chapter02\': (\'chapter02\', \'../_deploy/chapter02/objects.inv\'),
-   \'chapter03\': (\'chapter03\', \'../_deploy/chapter03/objects.inv\'),
-}</pre>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">intersphinx_mapping</span> <span class="o">=</span> <span class="p">{</span>
+   <span class="s">&#39;resources&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s">&#39;resources&#39;</span><span class="p">,</span> <span class="s">&#39;../_deploy/resources/objects.inv&#39;</span><span class="p">),</span>
+   <span class="s">&#39;chapter01&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s">&#39;chapter01&#39;</span><span class="p">,</span> <span class="s">&#39;../_deploy/chapter01/objects.inv&#39;</span><span class="p">),</span>
+   <span class="s">&#39;chapter02&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s">&#39;chapter02&#39;</span><span class="p">,</span> <span class="s">&#39;../_deploy/chapter02/objects.inv&#39;</span><span class="p">),</span>
+   <span class="s">&#39;chapter03&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s">&#39;chapter03&#39;</span><span class="p">,</span> <span class="s">&#39;../_deploy/chapter03/objects.inv&#39;</span><span class="p">),</span>
+<span class="p">}</span>
+</pre></div>
 </div>
 <p>Creating references between sections requires entering similar statements in
 <tt class="file docutils literal"><span class="pre">conf.py</span></tt> programs for other chapters, with subtle differences. Suppose
 <strong>chapter02</strong> needs to reference labels in <strong>resources</strong> and <strong>chapter01</strong>. Then
 the mapping statement at the end of its <tt class="file docutils literal"><span class="pre">conf.py</span></tt> should read:</p>
-<div class="highlight-python"><pre>intersphinx_mapping = {
-   \'resources\': (\'../resources\', \'../_deploy/resources/objects.inv\'),
-   \'chapter01\': (\'../chapter01\', \'../_deploy/chapter01/objects.inv\'),
-}</pre>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">intersphinx_mapping</span> <span class="o">=</span> <span class="p">{</span>
+   <span class="s">&#39;resources&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s">&#39;../resources&#39;</span><span class="p">,</span> <span class="s">&#39;../_deploy/resources/objects.inv&#39;</span><span class="p">),</span>
+   <span class="s">&#39;chapter01&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s">&#39;../chapter01&#39;</span><span class="p">,</span> <span class="s">&#39;../_deploy/chapter01/objects.inv&#39;</span><span class="p">),</span>
+<span class="p">}</span>
+</pre></div>
 </div>
 <p>Notice that for the chapters, the internal mapping names begin with a
 folder dereference (<tt class="file docutils literal"><span class="pre">../</span></tt>). This is not necessary for the <strong>master</strong>
@@ -386,7 +389,7 @@ shown following. Note that label directives start with <tt class="kbd docutils l
 <div class="highlight-python"><pre>.. _mylabel:</pre>
 </div>
 <p>Use the <tt class="docutils literal"><span class="pre">:ref:</span></tt> inline markup directive to reference a label within a
-document. For example, the directive <tt class="docutils literal"><span class="pre">:ref:\`pubstructure\`</span></tt> would take you to
+document. For example, the directive <tt class="docutils literal"><span class="pre">:ref:`pubstructure`</span></tt> would take you to
 <a class="reference internal" href="#pubstructure"><em>RST Publication Structuring</em></a> at the start of this article.</p>
 <p>By extension, a label in another chapter section of a project is referenced by
 adding the section name into the directive, as for example:</p>
@@ -422,15 +425,19 @@ all documents starting with a number, in sorted sequence.</p>
 <div class="section" id="master-index-document">
 <h2>Master Index Document<a class="headerlink" href="#master-index-document" title="Permalink to this headline">¶</a></h2>
 <p>The <tt class="file docutils literal"><span class="pre">index.rst</span></tt> file in the <strong>master</strong> section requires a hand-compiled
-table of contents for the project chapters.</p>
-<blockquote>
-<div><ol class="arabic simple">
-<li><em class="xref std std-ref">chapter01:index</em>.</li>
-<li><em class="xref std std-ref">chapter02:index</em>.</li>
-<li><em class="xref std std-ref">chapter03:index</em>.</li>
-<li><em class="xref std std-ref">resources:index</em>.</li>
-</ol>
-</div></blockquote>
+table of contents for the project chapters:</p>
+<div class="highlight-python"><pre>.. _index:
+
+Master Document Title
+=============================
+
+#. :ref:`chapter01:index`.
+#. :ref:`chapter02:index`.
+#. :ref:`chapter03:index`.
+#. :ref:`resources:index`.</pre>
+</div>
+<p>Again, other text and formatting directives may be included to fill out this
+page.</p>
 </div>
 </div>
 
