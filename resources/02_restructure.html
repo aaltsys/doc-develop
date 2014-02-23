@@ -55,6 +55,13 @@
 <li><a class="reference internal" href="#paragraph-directives">Paragraph Directives</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#rst-publication-structuring">RST Publication Structuring</a><ul>
+<li><a class="reference internal" href="#identify-document-sections">Identify Document Sections</a></li>
+<li><a class="reference internal" href="#create-new-project">Create New Project</a></li>
+<li><a class="reference internal" href="#intersphinx-mapping">InterSphinx Mapping</a></li>
+<li><a class="reference internal" href="#labels-and-reference-links">Labels and Reference Links</a></li>
+</ul>
+</li>
 </ul>
 
   <h4>Previous topic</h4>
@@ -296,6 +303,95 @@ by usage. This is an example of simplifing a task by
 <a class="reference external" href="http://en.wikipedia.org/wiki/Convention_over_configuration">Convention over Configuration</a>.</td></tr>
 </tbody>
 </table>
+</div>
+</div>
+<div class="section" id="rst-publication-structuring">
+<span id="pubstructure"></span><h1>RST Publication Structuring<a class="headerlink" href="#rst-publication-structuring" title="Permalink to this headline">¶</a></h1>
+<p>RST features extend beyond document markup to provide for structuring multiple
+document pages into sections, chapters, and entire publications or books. The
+AAltsys scripts for managing git repositories of RST documents are designed to
+support multi-section documents, with automatic indexing and referencing between
+sections. Follow this guide to setup a document in multiple sections.</p>
+<div class="section" id="identify-document-sections">
+<h2>Identify Document Sections<a class="headerlink" href="#identify-document-sections" title="Permalink to this headline">¶</a></h2>
+<p>To create a document with chapters or sections, begin by creating a folder in
+<tt class="file docutils literal"><span class="pre">~Projects</span></tt> to hold the entire project. Within this folder, edit text file
+<tt class="file docutils literal"><span class="pre">sections</span></tt>, entering one-word section names on consecutive lines. If your
+project will contain referenced material such as appendices, then make a
+<strong>resource</strong> section at the top of the list. The final line should be section
+<strong>master</strong>, which will contain the project master index. So the <tt class="file docutils literal"><span class="pre">sections</span></tt>
+text will look like:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">resources</span>
+<span class="n">chapter01</span>
+<span class="n">chapter02</span>
+<span class="n">chapter03</span>
+<span class="n">master</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="create-new-project">
+<h2>Create New Project<a class="headerlink" href="#create-new-project" title="Permalink to this headline">¶</a></h2>
+<p>From within the project folder, run the script command:</p>
+<div class="highlight-python"><pre>../doc-newproject.sh</pre>
+</div>
+<p>This script will initialize a Sphinxdoc folder for each listed chapter section.
+Sphinx will prompt you to use InterSphinx for each folder, and always answer
+<tt class="kbd docutils literal"><span class="pre">yes</span></tt>. The <tt class="file docutils literal"><span class="pre">doc-newproject.sh</span></tt> script will link all the projects
+together in the master section. However, the link statements will be missing in
+other sections. Later, you may need to reorganize the section compilation order,
+that is, reorder the section list, and add InterSphinx Mapping commands to the
+<tt class="file docutils literal"><span class="pre">conf.py</span></tt> program in the section folders.</p>
+</div>
+<div class="section" id="intersphinx-mapping">
+<h2>InterSphinx Mapping<a class="headerlink" href="#intersphinx-mapping" title="Permalink to this headline">¶</a></h2>
+<p>For the project section list previously mentioned, the <strong>master</strong> folder would
+contain a <tt class="file docutils literal"><span class="pre">conf.py</span></tt> program ending in the following statement:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">intersphinx_mapping</span> <span class="o">=</span> <span class="p">{</span>
+   <span class="s">&#39;resources&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s">&#39;resources&#39;</span><span class="p">,</span> <span class="s">&#39;../_deploy/resources/objects.inv&#39;</span><span class="p">),</span>
+   <span class="s">&#39;chapter01&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s">&#39;chapter01&#39;</span><span class="p">,</span> <span class="s">&#39;../_deploy/chapter01/objects.inv&#39;</span><span class="p">),</span>
+   <span class="s">&#39;chapter02&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s">&#39;chapter02&#39;</span><span class="p">,</span> <span class="s">&#39;../_deploy/chapter02/objects.inv&#39;</span><span class="p">),</span>
+   <span class="s">&#39;chapter03&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s">&#39;chapter03&#39;</span><span class="p">,</span> <span class="s">&#39;../_deploy/chapter03/objects.inv&#39;</span><span class="p">),</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Creating references between sections requires entering similar statements in
+<tt class="file docutils literal"><span class="pre">conf.py</span></tt> programs for other chapters, with subtle differences. Suppose
+<strong>chapter02</strong> needs to reference labels in <strong>resources</strong> and <strong>chapter01</strong>. Then
+the mapping statement at the end of its <tt class="file docutils literal"><span class="pre">conf.py</span></tt> should read:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">intersphinx_mapping</span> <span class="o">=</span> <span class="p">{</span>
+   <span class="s">&#39;resources&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s">&#39;../resources&#39;</span><span class="p">,</span> <span class="s">&#39;../_deploy/resources/objects.inv&#39;</span><span class="p">),</span>
+   <span class="s">&#39;chapter01&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s">&#39;../chapter01&#39;</span><span class="p">,</span> <span class="s">&#39;../_deploy/chapter01/objects.inv&#39;</span><span class="p">),</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Notice that for the chapters, the internal mapping names begin with a
+folder dereference (<tt class="file docutils literal"><span class="pre">../</span></tt>). This is not necessary for the <strong>master</strong>
+section because the compilation script moves this one index folder out one level
+when building the project deployment files.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Documentation for <strong>chapter02</strong> is compiled preceding <strong>chapter03</strong>.
+Therefore <strong>Chapter02</strong> will not be able to reference <strong>chapter03</strong>, and
+adding <strong>chapter03</strong> to the mapping in <strong>chapter02</strong> will trigger a
+compilation error message.</p>
+</div>
+</div>
+<div class="section" id="labels-and-reference-links">
+<h2>Labels and Reference Links<a class="headerlink" href="#labels-and-reference-links" title="Permalink to this headline">¶</a></h2>
+<p>Sphinxdoc markup provides for linking references to labels within a document.
+Where labels precede a heading, the reference will be replaced with the section
+heading text by default. Labels are entered as directives on blank lines, as
+shown following. Note that label directives start with <tt class="kbd docutils literal"><span class="pre">..</span> <span class="pre">_</span></tt> and end with
+<tt class="kbd docutils literal"><span class="pre">:</span></tt>:</p>
+<div class="highlight-python"><pre>.. _mylabel:</pre>
+</div>
+<p>Use the <tt class="docutils literal"><span class="pre">:ref:</span></tt> inline markup directive to reference a label within a
+document. For example, the directive <tt class="docutils literal"><span class="pre">:ref:\`pubstructure\`</span></tt> would take you to
+<a class="reference internal" href="#pubstructure"><em>RST Publication Structuring</em></a> at the start of this article.</p>
+<p>By extension, a label in another chapter section of a project is referenced by
+adding the section name into the directive, as for example:</p>
+<div class="highlight-python"><pre>:ref:`chapter01:mylabel`</pre>
+</div>
 </div>
 </div>
 
