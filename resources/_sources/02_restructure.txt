@@ -238,10 +238,10 @@ For the project section list previously mentioned, the **master** folder would
 contain a :file:`conf.py` program ending in the following statement::
    
    intersphinx_mapping = {
-      'resources': ('resources', '../_deploy/resources/objects.inv'),
-      'chapter01': ('chapter01', '../_deploy/chapter01/objects.inv'),
-      'chapter02': ('chapter02', '../_deploy/chapter02/objects.inv'),
-      'chapter03': ('chapter03', '../_deploy/chapter03/objects.inv'),
+      \'resources\': (\'resources\', \'../_deploy/resources/objects.inv\'),
+      \'chapter01\': (\'chapter01\', \'../_deploy/chapter01/objects.inv\'),
+      \'chapter02\': (\'chapter02\', \'../_deploy/chapter02/objects.inv\'),
+      \'chapter03\': (\'chapter03\', \'../_deploy/chapter03/objects.inv\'),
    }
 
 Creating references between sections requires entering similar statements in 
@@ -250,8 +250,8 @@ Creating references between sections requires entering similar statements in
 the mapping statement at the end of its :file:`conf.py` should read::
 
    intersphinx_mapping = {
-      'resources': ('../resources', '../_deploy/resources/objects.inv'),
-      'chapter01': ('../chapter01', '../_deploy/chapter01/objects.inv'),
+      \'resources\': (\'../resources\', \'../_deploy/resources/objects.inv\'),
+      \'chapter01\': (\'../chapter01\', \'../_deploy/chapter01/objects.inv\'),
    }
 
 Notice that for the chapters, the internal mapping names begin with a 
@@ -272,7 +272,7 @@ Sphinxdoc markup provides for linking references to labels within a document.
 Where labels precede a heading, the reference will be replaced with the section 
 heading text by default. Labels are entered as directives on blank lines, as 
 shown following. Note that label directives start with :kbd:`.. _` and end with 
-:kbd:`:`::
+:kbd:`:`, as in::
 
    .. _mylabel:
 
@@ -283,4 +283,47 @@ document. For example, the directive ``:ref:\`pubstructure\``` would take you to
 By extension, a label in another chapter section of a project is referenced by 
 adding the section name into the directive, as for example::
 
-   :ref:`chapter01:mylabel`
+   :ref:`resources:mylabel`
+
+Section Index Documents
+=============================
+
+Each chapter section of a document will contain an :file:`index.rst` file. 
+The directives in each index file except **master** should be organized as 
+follows::
+
+   .. _index:
+   
+   Chapter or Section Title
+   =============================
+   
+   .. toctree::
+      :maxdepth: 2
+      :glob:
+      
+      [0-9]*
+
+There may be other text, comments, or directives in the index page as well, of 
+course. 
+
+.. note::
+   In this example, a ``:glob:`` directive is used to automatically accumulate 
+   documentation files into an index. ``:glob:`` requires a further parameter 
+   indicating the files to be collected, the ``[0-9]*`` above. This will collect 
+   all documents starting with a number, in sorted sequence.
+
+Master Index Document
+=============================
+
+The :file:`index.rst` file in the **master** section requires a hand-compiled 
+table of contents for the project chapters. 
+
+   .. _index:
+   
+   Master Document Title
+   =============================
+   
+   #. :ref:`chapter01:index`.
+   #. :ref:`chapter02:index`.
+   #. :ref:`chapter03:index`.
+   #. :ref:`resources:index`.
