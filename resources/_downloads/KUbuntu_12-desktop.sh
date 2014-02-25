@@ -3,14 +3,13 @@
 # This desktop script installs general productivity apps and Ruby developer tools.
 # The default script interpreter is assumed to be bash, not zsh.
 
-echo "This script requires superuser privileges to run."
-echo "Enter your password when prompted by sudo."
+echo "Install packages for Kubuntu 12.xx or other Debian 5 KDE"
 
-# clear any previous sudo permission
+# if [[ $EUID -ne 0 ]] ; then echo 'try again using sudo' ; exit 1 ; fi
+# Clear and reestablish sudo privileges to run this program as root
 sudo -k
-
-# run inside sudo
-sudo sh <<SCRIPT
+echo -e "\e[1;31m Authentication required \e[0m"
+sudo bash << SCRIPT
 
    # add repositories
 
@@ -61,7 +60,9 @@ sudo sh <<SCRIPT
    apt-get -y install xclip
 
    # fix configuration problem so DOS programs will work
-   bash < <(echo 'echo "vm.mmap_min_addr=0" >> /etc/sysctl.conf')
+   if [[ -z "$(grep 'vm.mmap_min_addr=0' /etc/modules)" ]] ; then 
+      echo "vm.mmap_min_addr=0" >> /etc/modules
+   fi
 
    # install Sun (Oracle) java
    apt-get -y install sun-java6-bin sun-java6-fonts sun-java6-javadb sun-java6-jdk sun-java6-jre sun-java6-plugin

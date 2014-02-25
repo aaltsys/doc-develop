@@ -1,14 +1,12 @@
 #! /bin/bash
-# Install TeX and ReStructured Text documentation tools
 
-echo "This script requires superuser privileges to run."
-echo "Enter your password when prompted by sudo."
+echo "Install TeX and ReStructured Text documentation tools"
 
-# clear any previous sudo permission
+# if [[ $EUID -ne 0 ]] ; then echo 'try again using sudo' ; exit 1 ; fi
+# Clear and reestablish sudo privileges to run this program as root
 sudo -k
-
-# run inside sudo
-sudo sh <<SCRIPT
+echo -e "\e[1;31m Authentication required \e[0m"
+sudo bash << SCRIPT
 
    # install python and TeX tools
    apt-get -y install build-essential python-setuptools texlive-full

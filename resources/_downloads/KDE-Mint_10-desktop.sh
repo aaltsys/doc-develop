@@ -3,14 +3,13 @@
 # This desktop script installs general productivity apps and Ruby developer tools.
 # The default script interpreter is assumed to be bash, not zsh.
 
-echo "This script requires superuser privileges to run."
-echo "Enter your password when prompted by sudo."
+echo "Install packages for Mint 10 or other Debian KDE"
 
-# clear any previous sudo permission
+# if [[ $EUID -ne 0 ]] ; then echo 'try again using sudo' ; exit 1 ; fi
+# Clear and reestablish sudo privileges to run this program as root
 sudo -k
-
-# run inside sudo
-sudo sh <<SCRIPT
+echo -e "\e[1;31m Authentication required \e[0m"
+sudo bash << SCRIPT
 
    # get rid of openoffice
    apt-get purge openoffice*
@@ -58,8 +57,11 @@ sudo sh <<SCRIPT
    apt-get -y install adobe-flashplugin aptitude byobu cifs-utils diffuse dosbox dosemu gdebi
    apt-get -y install hplip-gui keepassx kubuntu-restricted-extras lftp mc nfs-common openvpn
    apt-get -y install playonlinux putty recordmydesktop screen ubuntu-tweak vlc wine wireshark xclip
+
    # fix configuration problem so DOS programs will work
-   bash < <(echo 'echo "vm.mmap_min_addr=0" >> /etc/sysctl.conf')
+   if [[ -z "$(grep 'vm.mmap_min_addr=0' /etc/modules)" ]] ; then 
+      echo "vm.mmap_min_addr=0" >> /etc/modules
+   fi
 
    # install developer tools
    apt-get -y install bluefish build-essential cream curl eclipse geany git jedit
