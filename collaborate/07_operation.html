@@ -136,7 +136,8 @@ repository using the commands described in this section.</p>
 <div class="section" id="track-current-changes">
 <h3>Track current changes<a class="headerlink" href="#track-current-changes" title="Permalink to this headline">¶</a></h3>
 <p>Make git aware of current changes with the command:</p>
-<div class="highlight-python"><pre>git add .</pre>
+<div class="highlight-python"><div class="highlight"><pre>git add .
+</pre></div>
 </div>
 <p>The &#8220;dot&#8221; means track everything in a project directory. Specify file names
 if everything is not desired. Exclude categories of files from tracking with
@@ -145,34 +146,39 @@ entries in <tt class="file docutils literal"><span class="pre">.gitignore</span>
 <div class="section" id="see-changes-being-tracked">
 <h3>See changes being tracked<a class="headerlink" href="#see-changes-being-tracked" title="Permalink to this headline">¶</a></h3>
 <p>Shows what git has staged to be committed:</p>
-<div class="highlight-python"><pre>git status</pre>
+<div class="highlight-python"><div class="highlight"><pre>git status
+</pre></div>
 </div>
 </div>
 <div class="section" id="undo-an-add">
 <h3>Undo an add<a class="headerlink" href="#undo-an-add" title="Permalink to this headline">¶</a></h3>
 <p>Clear staged content which you do not want to add with the command:</p>
-<div class="highlight-python"><pre>git reset</pre>
+<div class="highlight-python"><div class="highlight"><pre>git reset
+</pre></div>
 </div>
 </div>
 <div class="section" id="rename-a-document">
 <h3>Rename a document<a class="headerlink" href="#rename-a-document" title="Permalink to this headline">¶</a></h3>
 <p>Always use git to move or rename a tracked file. The syntax is the same as
 the Linux <strong class="command">mv</strong> command, but proceded with <strong class="command">git</strong>:</p>
-<div class="highlight-python"><pre>git mv old_filename.md new_filename.md</pre>
+<div class="highlight-python"><div class="highlight"><pre>git mv old_filename.md new_filename.md
+</pre></div>
 </div>
 </div>
 <div class="section" id="delete-a-document">
 <h3>Delete a document<a class="headerlink" href="#delete-a-document" title="Permalink to this headline">¶</a></h3>
 <p>As with moving a tracked file, use a <strong class="command">git</strong> command when deleting:</p>
-<div class="highlight-python"><pre>git rm bad_filename.md</pre>
+<div class="highlight-python"><div class="highlight"><pre>git rm bad_filename.md
+</pre></div>
 </div>
 </div>
 <div class="section" id="commit-changes-to-repository">
 <h3>Commit changes to repository<a class="headerlink" href="#commit-changes-to-repository" title="Permalink to this headline">¶</a></h3>
 <p>Periodically add and commit completed content to your local repository:</p>
-<div class="highlight-python"><pre>git add .
+<div class="highlight-python"><div class="highlight"><pre>git add .
 git status
-git commit -m "type a brief message here describing your changes"</pre>
+git commit -m &quot;type a brief message here describing your changes&quot;
+</pre></div>
 </div>
 </div>
 </div>
@@ -184,14 +190,16 @@ project repository. A programmer updates the central project with these steps.</
 <h3>Pull remote content<a class="headerlink" href="#pull-remote-content" title="Permalink to this headline">¶</a></h3>
 <p>Before starting a day&#8217;s work, synchronize your local repository copy to the
 central master repository:</p>
-<div class="highlight-python"><pre>git pull</pre>
+<div class="highlight-python"><div class="highlight"><pre>git pull
+</pre></div>
 </div>
 </div>
 <div class="section" id="push-local-content">
 <h3>Push local content<a class="headerlink" href="#push-local-content" title="Permalink to this headline">¶</a></h3>
 <p>When local content is synchronized with master changes, tested, and committed
 locally, then push the content commits to the central master:</p>
-<div class="highlight-python"><pre>git push</pre>
+<div class="highlight-python"><div class="highlight"><pre>git push
+</pre></div>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -239,7 +247,7 @@ git. A git online reference manual is at <a class="reference external" href="htt
     </div>
     <div class="footer">
         &copy; Copyright 2013, Gerald Lovel.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.1.
     </div>
   </body>
 </html>

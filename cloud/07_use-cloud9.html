@@ -138,7 +138,8 @@ syntax and usage, please see section <a class="reference external" href="../reso
 <h2>Upstream Repositories<a class="headerlink" href="#upstream-repositories" title="Permalink to this headline">¶</a></h2>
 <p>When a repository is a fork of a master, changes to the master can be updated
 to the fork as follows. First, an upstream remote must be added:</p>
-<div class="highlight-python"><pre>git remote add upstream {_remotename_}</pre>
+<div class="highlight-python"><div class="highlight"><pre>git remote add upstream {_remotename_}
+</pre></div>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -151,8 +152,9 @@ copy the URL to the clipboard, as shown in the following image.</p>
 <img alt="_images/07_cloud9-4.png" class="last" src="_images/07_cloud9-4.png" />
 </div>
 <p>Then pull upstream remote changes to synchronize with the local repository:</p>
-<div class="highlight-python"><pre>git commit -a -m "commit current changes"
-git pull upstream master</pre>
+<div class="highlight-python"><div class="highlight"><pre>git commit -a -m &quot;commit current changes&quot;
+git pull upstream master
+</pre></div>
 </div>
 <p>Finally, refresh the file tree view in cloud9 to show new or changed files.</p>
 </div>
@@ -178,7 +180,7 @@ git pull upstream master</pre>
     </div>
     <div class="footer">
         &copy; Copyright 2013, Gerald Lovel.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.1.
     </div>
   </body>
 </html>

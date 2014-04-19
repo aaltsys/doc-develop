@@ -103,10 +103,11 @@
 <div class="section" id="headings">
 <h2>Headings<a class="headerlink" href="#headings" title="Permalink to this headline">¶</a></h2>
 <p>Each document section is indicated with either a hash heading (#) or underlines:</p>
-<div class="highlight-python"><pre># An H1 Heading Goes Here, or #
+<div class="highlight-python"><div class="highlight"><pre># An H1 Heading Goes Here, or #
 
 H1 Headings are Underlined
-==========================</pre>
+==========================
+</pre></div>
 </div>
 </div>
 <div class="section" id="an-h1-heading-goes-here-or">
@@ -115,10 +116,11 @@ H1 Headings are Underlined
 <div class="section" id="h1-headings-are-underlined">
 <h2>H1 Headings are Underlined<a class="headerlink" href="#h1-headings-are-underlined" title="Permalink to this headline">¶</a></h2>
 <p>Subsections use hyphen underlining, or (##) heading:</p>
-<div class="highlight-python"><pre>## This is a sub-heading ##
+<div class="highlight-python"><div class="highlight"><pre>## This is a sub-heading ##
 
 And this is also a sub-heading
-------------------------------</pre>
+------------------------------
+</pre></div>
 </div>
 <div class="section" id="this-is-a-sub-heading">
 <h3>This is a sub-heading<a class="headerlink" href="#this-is-a-sub-heading" title="Permalink to this headline">¶</a></h3>
@@ -130,9 +132,10 @@ And this is also a sub-heading
 </pre></div>
 </div>
 <p>Break lines are inserted with three or more hyphens, asterisks, or underscores:</p>
-<div class="highlight-python"><pre>___
+<div class="highlight-python"><div class="highlight"><pre>___
 - - -
-*******</pre>
+*******
+</pre></div>
 </div>
 </div>
 </div>
@@ -174,20 +177,23 @@ And this is also a sub-heading
 <p>Paragraphs are indicated by entering two newlines, which shows as a blank line
 in the text. Spaces and single newlines are ignored except in lists or quotes.</p>
 <p>Code blocks are set off by indenting 4 or more spaces, or 1 tab:</p>
-<div class="highlight-python"><pre>|    This will be a code block or command
-|    This is another line in the code block</pre>
+<div class="highlight-python"><div class="highlight"><pre>|    This will be a code block or command
+|    This is another line in the code block
+</pre></div>
 </div>
-<div class="highlight-python"><pre>This will be a code block or command
-This is another line in the code block</pre>
+<div class="highlight-python"><div class="highlight"><pre>This will be a code block or command
+This is another line in the code block
+</pre></div>
 </div>
 </div>
 <div class="section" id="list-entries">
 <h2>List Entries<a class="headerlink" href="#list-entries" title="Permalink to this headline">¶</a></h2>
 <p>Use hyphens, asterisks, or plusses to create bulleted (unordered) lists:</p>
-<div class="highlight-python"><pre>| * This is a list with an embedded list
+<div class="highlight-python"><div class="highlight"><pre>| * This is a list with an embedded list
 | + + Here is an embedded line
 | + + This is the second embedded line
-| * This is the second main line of the list</pre>
+| * This is the second main line of the list
+</pre></div>
 </div>
 <ul class="simple">
 <li>This is a list with an embedded list</li>
@@ -202,9 +208,10 @@ This is another line in the code block</pre>
 <li>This is the second main line of the list</li>
 </ul>
 <p>Any numbered lines with periods will form an ordered list:</p>
-<div class="highlight-python"><pre>1. Use number 1. on the first line of the list.
+<div class="highlight-python"><div class="highlight"><pre>1. Use number 1. on the first line of the list.
 5. Follow the first line with additional numbered lines.
-3. The order of the lines matters, but the number sequence is irrelevant.</pre>
+3. The order of the lines matters, but the number sequence is irrelevant.
+</pre></div>
 </div>
 <ol class="arabic simple">
 <li>Use number 1. on the first line of the list.</li>
@@ -225,17 +232,19 @@ first line of each paragraph.</p>
 <p>Markdown supports two styles for links: inline and reference. With either
 style, use square brackets surrounding the name text you want to display.</p>
 <p>Inline-style links use parentheses immediately after the link text. For example:</p>
-<div class="highlight-python"><pre>This is an [example link](http://example.com/).</pre>
+<div class="highlight-python"><div class="highlight"><pre>This is an [example link](http://example.com/).
+</pre></div>
 </div>
 <p>This is an <a class="reference external" href="http://example.com/">example link</a></p>
 <p>Reference-style links allow you to refer to your links by names, which you
 define elsewhere in your document:</p>
-<div class="highlight-python"><pre>I get 10 times more traffic from [Google][1] than from
+<div class="highlight-python"><div class="highlight"><pre>I get 10 times more traffic from [Google][1] than from
 [Yahoo][2] or [MSN][3].
 
-[1]: http://google.com/        "Google"
-[2]: http://search.yahoo.com/  "Yahoo Search"
-[3]: http://search.msn.com/    "MSN Search"</pre>
+[1]: http://google.com/        &quot;Google&quot;
+[2]: http://search.yahoo.com/  &quot;Yahoo Search&quot;
+[3]: http://search.msn.com/    &quot;MSN Search&quot;
+</pre></div>
 </div>
 <p>I get 10 times more traffic from <a class="reference external" href="http://google.com/">Google</a> than from
 <a class="reference external" href="http://search.yahoo.com/">Yahoo Search</a> or <a class="reference external" href="http://search.msn.com/">MSN Search</a>.</p>
@@ -244,7 +253,8 @@ define elsewhere in your document:</p>
 <h3>Local Filesystem Links<a class="headerlink" href="#local-filesystem-links" title="Permalink to this headline">¶</a></h3>
 <p>To refer to a relative path on the local system or server, replace the
 protocol &#8220;<a class="reference external" href="http://">http://</a>&#8221; with a simple slash &#8220;/&#8221; in the preceding link format:</p>
-<div class="highlight-python"><pre>See my [About](/about/) page for details.</pre>
+<div class="highlight-python"><div class="highlight"><pre>See my [About](/about/) page for details.
+</pre></div>
 </div>
 <p>See my <a class="reference external" href="/about/">about</a> page for details.</p>
 </div>
@@ -252,10 +262,11 @@ protocol &#8220;<a class="reference external" href="http://">http://</a>&#8221; 
 <h3>Images<a class="headerlink" href="#images" title="Permalink to this headline">¶</a></h3>
 <p>Image syntax is very much like link syntax, with both inline and reference
 forms:</p>
-<div class="highlight-python"><pre>![alt text](/_images/00_testimg.jpg "Title")
+<div class="highlight-python"><div class="highlight"><pre>![alt text](/_images/00_testimg.jpg &quot;Title&quot;)
 
 ![alt text][id]
-[id]: /_images/00_testimg.jpg "Title"</pre>
+[id]: /_images/00_testimg.jpg &quot;Title&quot;
+</pre></div>
 </div>
 <p>Both of the above examples produce the same output:</p>
 <img alt="_images/404_toast.jpg" src="_images/404_toast.jpg" />
@@ -297,7 +308,7 @@ forms:</p>
     </div>
     <div class="footer">
         &copy; Copyright 2013, Gerald Lovel.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.1.
     </div>
   </body>
 </html>

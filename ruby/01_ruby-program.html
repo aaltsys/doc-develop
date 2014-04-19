@@ -140,7 +140,8 @@ provides a pre-installed emulation of RVM, which we will use.</p>
 <p>Open a terminal window in the rails sample app&#8217;s Cloud9 project workspace.
 In the Terminal window, run the following command to check that RVM is
 working, and also choose a ruby version to use in this project:</p>
-<div class="highlight-python"><pre>rvm use 1.9.3</pre>
+<div class="highlight-python"><div class="highlight"><pre>rvm use 1.9.3
+</pre></div>
 </div>
 </div>
 <div class="section" id="executing-ruby">
@@ -153,14 +154,16 @@ interactive ruby commands (irb), and embedded ruby (script.erb).</p>
 <p class="first sidebar-title">Example Ruby files</p>
 <p>Create an edit a file, <tt class="file docutils literal"><span class="pre">hello.rb</span></tt>.
 Enter the text and save the file:</p>
-<div class="highlight-python"><pre>#!/usr/bin/ruby
-puts 'Hello world'</pre>
+<div class="highlight-python"><div class="highlight"><pre>#!/usr/bin/ruby
+puts &#39;Hello world&#39;
+</pre></div>
 </div>
 <p class="last">Then click the <em class="guilabel">Run</em> button in the menu bar.</p>
 </div>
 <p>Ruby program files use the extension <tt class="file docutils literal"><span class="pre">.rb</span></tt>. Any ruby file may be executed
 with the command:</p>
-<div class="highlight-python"><pre>ruby filename</pre>
+<div class="highlight-python"><div class="highlight"><pre>ruby filename
+</pre></div>
 </div>
 <p>To avoid calling the ruby interpreter explicitly, a &#8220;shebang&#8221; statement may be
 added in the first line of the file:</p>
@@ -246,12 +249,14 @@ The <tt class="docutils literal"><span class="pre">=</span></tt> in ruby is know
 </pre></div>
 </div>
 <p>Assign a hash:</p>
-<div class="highlight-python"><pre>x = {:name =&gt; "variable x", :value =&gt; 1}</pre>
+<div class="highlight-python"><div class="highlight"><pre>x = {:name =&gt; &quot;variable x&quot;, :value =&gt; 1}
+</pre></div>
 </div>
 <p>Type a variable by assignment:</p>
-<div class="last highlight-python"><pre>x.is_a? Hash
+<div class="last highlight-python"><div class="highlight"><pre>x.is_a? Hash
 x = 1
-x.is_a? Hash</pre>
+x.is_a? Hash
+</pre></div>
 </div>
 </div>
 <p>Ruby uses the following basic types for variables:</p>
@@ -474,23 +479,27 @@ addition of numbers, and concatenation with strings.</p>
 </pre></div>
 </div>
 <p>Now place an order:</p>
-<div class="highlight-python"><pre>order = {
+<div class="highlight-python"><div class="highlight"><pre>order = {
   :sandwich =&gt; sandwich,
   :condiments =&gt; condiments,
   :combo =&gt; combo,
   :size =&gt; size,
   :drink_upsize =&gt; drink_upsize
-}</pre>
+}
+</pre></div>
 </div>
 <p>Does this order include a combo and an upsized drink?:</p>
-<div class="highlight-python"><pre>combo &amp;&amp; drink_upsize</pre>
+<div class="highlight-python"><div class="highlight"><pre>combo &amp;&amp; drink_upsize
+</pre></div>
 </div>
 <p>Now change the variable values, then compare with <strong>and</strong>:</p>
-<div class="highlight-python"><pre>drink_upsize = false
-combo &amp;&amp; drink_upsize</pre>
+<div class="highlight-python"><div class="highlight"><pre>drink_upsize = false
+combo &amp;&amp; drink_upsize
+</pre></div>
 </div>
 <p>Now compare using <strong>or</strong>:</p>
-<div class="highlight-python"><pre>combo || drink_upsize</pre>
+<div class="highlight-python"><div class="highlight"><pre>combo || drink_upsize
+</pre></div>
 </div>
 <p class="last">Results: <tt class="docutils literal"><span class="pre">true</span></tt>, <tt class="docutils literal"><span class="pre">false</span></tt>, <tt class="docutils literal"><span class="pre">true</span></tt></p>
 </div>
@@ -654,15 +663,16 @@ uses:</p>
 <div class="sidebar">
 <p class="first sidebar-title">If...Else</p>
 <p>For example:</p>
-<div class="last highlight-python"><pre>if order[:sandwich] == "cheeseburger"
-  puts "You ordered a cheeseburger"
+<div class="last highlight-python"><div class="highlight"><pre>if order[:sandwich] == &quot;cheeseburger&quot;
+  puts &quot;You ordered a cheeseburger&quot;
 end
 
-if order[:sandwich] == "cheeseburger"
-  puts "You ordered a cheeseburger!"
+if order[:sandwich] == &quot;cheeseburger&quot;
+  puts &quot;You ordered a cheeseburger!&quot;
 else
-  puts "You didn't order a cheeseburger."
-end</pre>
+  puts &quot;You didn&#39;t order a cheeseburger.&quot;
+end
+</pre></div>
 </div>
 </div>
 <div class="section" id="if-else">
@@ -674,11 +684,12 @@ do one thing, if it&#8217;s not, do another thing.</p>
 <tt class="docutils literal"><span class="pre">if</span></tt> is true. If it is, the code in the <tt class="docutils literal"><span class="pre">if</span></tt> section is run, and if it is
 false, the interpreter moves on to the code in the <tt class="docutils literal"><span class="pre">else</span></tt> section.</p>
 <p>The structure of the <tt class="docutils literal"><span class="pre">if...else</span></tt> statement is:</p>
-<div class="highlight-python"><pre>if conditional statement
+<div class="highlight-python"><div class="highlight"><pre>if conditional statement
   code to run if conditional returns true
 else
   code to run if conditional returns false
-end</pre>
+end
+</pre></div>
 </div>
 <p>Notice you always need an <tt class="docutils literal"><span class="pre">end</span></tt> after any conditional statement, to let the
 interpreter know where the code that belongs to your branch ends. If you don&#8217;t
@@ -686,20 +697,22 @@ have it, you will get an error.</p>
 <div class="sidebar">
 <p class="first sidebar-title">Elsif</p>
 <p>Check if either a burger or cheeseburger was ordered:</p>
-<div class="highlight-python"><pre>if order[:sandwich] == "cheeseburger"
-  puts "You ordered a cheeseburger!"
-elsif order[:sandwich] == "burger"
-  puts "You ordered a burger!"
-end</pre>
+<div class="highlight-python"><div class="highlight"><pre>if order[:sandwich] == &quot;cheeseburger&quot;
+  puts &quot;You ordered a cheeseburger!&quot;
+elsif order[:sandwich] == &quot;burger&quot;
+  puts &quot;You ordered a burger!&quot;
+end
+</pre></div>
 </div>
 <p>Add a branch for the case that something else was ordered:</p>
-<div class="last highlight-python"><pre>if order[:sandwich] == "cheeseburger"
-  puts "You ordered a cheeseburger!"
-elsif order[:sandwich] == "burger"
-  puts "You ordered a burger!"
+<div class="last highlight-python"><div class="highlight"><pre>if order[:sandwich] == &quot;cheeseburger&quot;
+  puts &quot;You ordered a cheeseburger!&quot;
+elsif order[:sandwich] == &quot;burger&quot;
+  puts &quot;You ordered a burger!&quot;
 else
-  puts "You didn't order a burger at all."
-end</pre>
+  puts &quot;You didn&#39;t order a burger at all.&quot;
+end
+</pre></div>
 </div>
 </div>
 </div>
@@ -724,14 +737,16 @@ checked.</p>
 <div class="sidebar">
 <p class="first sidebar-title">Unless</p>
 <p>Use <tt class="docutils literal"><span class="pre">unless</span></tt> with a comparison statement:</p>
-<div class="highlight-python"><pre>unless order[:combo] == false
-  puts "You get fries and a drink with that sammy!"
-end</pre>
+<div class="highlight-python"><div class="highlight"><pre>unless order[:combo] == false
+  puts &quot;You get fries and a drink with that sammy!&quot;
+end
+</pre></div>
 </div>
 <p>Use <tt class="docutils literal"><span class="pre">unless</span></tt> with a boolean variable:</p>
-<div class="last highlight-python"><pre>unless order[:drink_upsize]
-  puts "You get a" + order[:size] + " fries and drink with that sammy!"
-end</pre>
+<div class="last highlight-python"><div class="highlight"><pre>unless order[:drink_upsize]
+  puts &quot;You get a&quot; + order[:size] + &quot; fries and drink with that sammy!&quot;
+end
+</pre></div>
 </div>
 </div>
 </div>
@@ -756,7 +771,8 @@ unless this one particular condition is met.</p>
 <div class="section" id="ternary-operator">
 <h4>Ternary Operator<a class="headerlink" href="#ternary-operator" title="Permalink to this headline">¶</a></h4>
 <p>The ternary operator `` ? : `` is shorthand syntax for an if...else statement.:</p>
-<div class="highlight-python"><pre>(order[:sandwich] == "burger") ? puts "Burger" : puts "Not a burger!"</pre>
+<div class="highlight-python"><div class="highlight"><pre>(order[:sandwich] == &quot;burger&quot;) ? puts &quot;Burger&quot; : puts &quot;Not a burger!&quot;
+</pre></div>
 </div>
 <p>First, write a statement that will return a boolean, such as a conditional.
 Follow it with a question mark. The first thing after the question mark is the code to
@@ -769,15 +785,16 @@ executed if the statement in the parentheses returns false.</p>
 <div class="sidebar">
 <p class="first sidebar-title">Example Method</p>
 <p>Write a method that decides what drink comes with a combo. Then call the method.:</p>
-<div class="last highlight-python"><pre>def pick_drink(combo, combo_size)
+<div class="last highlight-python"><div class="highlight"><pre>def pick_drink(combo, combo_size)
   if combo == true
-    "What kind of drink do you want with that combo?"
+    &quot;What kind of drink do you want with that combo?&quot;
     drink_input = gets
     drink = size + drink_input
-    puts "Your drink is a #{drink}."
+    puts &quot;Your drink is a #{drink}.&quot;
   end
 end
-pick_drink(combo, size)</pre>
+pick_drink(combo, size)
+</pre></div>
 </div>
 </div>
 <p>Methods are used to run multiple lines of code without having to repeat them.</p>
@@ -788,9 +805,10 @@ used as the value of the variable. If a method is defined to take variables in
 Ruby, then you must pass values in to that method for those variables, or you
 will get an argument error.</p>
 <p>Methods are assigned in Ruby like so:</p>
-<div class="highlight-python"><pre>def method_name
+<div class="highlight-python"><div class="highlight"><pre>def method_name
   ...
-end</pre>
+end
+</pre></div>
 </div>
 <p>Methods can be called on objects in Ruby using object notation:
 <tt class="docutils literal"><span class="pre">object.method</span></tt>.</p>
@@ -821,15 +839,17 @@ used to check whether a variable is either an empty string or nil.</p>
 <div class="sidebar">
 <p class="first sidebar-title">Do loop</p>
 <p>Do something 3 times:</p>
-<div class="highlight-python"><pre>3.times do
+<div class="highlight-python"><div class="highlight"><pre>3.times do
   x += 1
-  puts "x is " + x
-end</pre>
+  puts &quot;x is &quot; + x
+end
+</pre></div>
 </div>
 <p>Do something for each object in an array:</p>
-<div class="last highlight-python"><pre>condiments.each do |condiment|
+<div class="last highlight-python"><div class="highlight"><pre>condiments.each do |condiment|
   puts condiment
-end</pre>
+end
+</pre></div>
 </div>
 </div>
 <div class="section" id="do-loop">
@@ -841,11 +861,12 @@ or collection of objects.</p>
 <div class="section" id="while-loop">
 <h4>While Loop<a class="headerlink" href="#while-loop" title="Permalink to this headline">¶</a></h4>
 <p>The while loop repeats code as long as a given condition is true.:</p>
-<div class="highlight-python"><pre>x = 1
+<div class="highlight-python"><div class="highlight"><pre>x = 1
 while x &lt; 5 do
   puts x
   x += 1
-end</pre>
+end
+</pre></div>
 </div>
 <div class="line-block">
 <div class="line"><br /></div>
@@ -881,18 +902,18 @@ end</pre>
 <p class="first sidebar-title">Take an Order</p>
 <p>Combine variables, loops or methods, conditionals, comparison, and user input to make a
 program that takes an order and responds to the user:</p>
-<div class="last highlight-python"><pre>puts "What kind of sandwich would you like?"
+<div class="last highlight-python"><div class="highlight"><pre>puts &quot;What kind of sandwich would you like?&quot;
     sandwich = gets.strip!
-    puts "Ok. Would you like a combo? (yes or no)"
+    puts &quot;Ok. Would you like a combo? (yes or no)&quot;
     combo_answer = gets.strip!
 
     def assign_combo(combo_answer)
-      if combo_answer.downcase == "yes"
+      if combo_answer.downcase == &quot;yes&quot;
             combo = true
-      elsif combo_answer.downcase == "no"
+      elsif combo_answer.downcase == &quot;no&quot;
             combo = false
       else
-            puts "Please type yes or no:"
+            puts &quot;Please type yes or no:&quot;
             combo_answer = gets.strip!
             assign_combo(combo_answer)
       end
@@ -900,10 +921,11 @@ program that takes an order and responds to the user:</p>
     combo = assign_combo(combo_answer)
 
     if combo == true
-      puts "Ok, what size combo would you like?"
+      puts &quot;Ok, what size combo would you like?&quot;
       size = gets.strip!
     end
-    puts "Ok, you ordered a #{combo ? size + ' ' + sandwich + ' combo' : sandwich}. Thank you!"</pre>
+    puts &quot;Ok, you ordered a #{combo ? size + &#39; &#39; + sandwich + &#39; combo&#39; : sandwich}. Thank you!&quot;
+</pre></div>
 </div>
 </div>
 <p>See if you can write a ruby script in a .rb file that will take an order when it
@@ -944,7 +966,7 @@ is run.</p>
     </div>
     <div class="footer">
         &copy; Copyright 2013, Julia Lovel.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.1.
     </div>
   </body>
 </html>

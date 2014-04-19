@@ -116,27 +116,31 @@ provides a pre-installed emulation of RVM, which we will use.</p>
 <p>Open a terminal window in the rails sample app&#8217;s Cloud9 project workspace.
 In the Terminal window, run the following command to check that RVM is
 working, and also choose a ruby version to use in this project:</p>
-<div class="highlight-python"><pre>rvm use 1.9.3</pre>
+<div class="highlight-python"><div class="highlight"><pre>rvm use 1.9.3
+</pre></div>
 </div>
 </div>
 <div class="section" id="install-gems">
 <h3>Install Gems<a class="headerlink" href="#install-gems" title="Permalink to this headline">¶</a></h3>
 <p>Run the command <strong class="command">bundle install</strong> to install all ruby gems from the
 project in your Gemfile:</p>
-<div class="highlight-python"><pre>bundle install</pre>
+<div class="highlight-python"><div class="highlight"><pre>bundle install
+</pre></div>
 </div>
 </div>
 <div class="section" id="set-up-the-database">
 <h3>Set up the database<a class="headerlink" href="#set-up-the-database" title="Permalink to this headline">¶</a></h3>
 <p>Use the <strong class="command">rake</strong> (Ruby make) command to set up the development database
 structure:</p>
-<div class="highlight-python"><pre>rake db:migrate</pre>
+<div class="highlight-python"><div class="highlight"><pre>rake db:migrate
+</pre></div>
 </div>
 </div>
 <div class="section" id="test-run-app-in-cloud9">
 <h3>Test run app in Cloud9<a class="headerlink" href="#test-run-app-in-cloud9" title="Permalink to this headline">¶</a></h3>
 <p>In the rails sample app&#8217;s Cloud9 Terminal window, run:</p>
-<div class="highlight-python"><pre>rails s -b $IP -p $PORT</pre>
+<div class="highlight-python"><div class="highlight"><pre>rails s -b $IP -p $PORT
+</pre></div>
 </div>
 <p>Your app will be running now, served locally for testing. View the running rails
 app at <tt class="file docutils literal"><span class="pre">http://__project-name__.__username__.c9.io</span></tt>.</p>
@@ -166,7 +170,7 @@ app.</p>
     </div>
     <div class="footer">
         &copy; Copyright 2013, Julia Lovel.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.1.
     </div>
   </body>
 </html>
