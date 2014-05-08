@@ -35,6 +35,8 @@ console commands::
   git config --global user.email "email@domain"
   git config --global branch.master.remote origin
   git config --global branch.master.merge refs/heads/master
+  git config --global push.default matching
+  git config --global color.ui auto
 
 Git global settings are recorded in home directory file :file:`~/.gitconfig`. 
 
