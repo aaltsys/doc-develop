@@ -136,9 +136,8 @@ package name here)_.&#8221; If so, the reader is not a developer (yet).</p>
 <h2>Edit reST Documents<a class="headerlink" href="#edit-rest-documents" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="create-a-text-document">
 <h3>Create a text document<a class="headerlink" href="#create-a-text-document" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-python"><div class="highlight"><pre>cd ~/Projects/doc-firsttask
-kate firstdoc.rst
-</pre></div>
+<div class="highlight-python"><pre>cd ~/Projects/doc-firsttask
+kate firstdoc.rst</pre>
 </div>
 <p>The extension <tt class="file docutils literal"><span class="pre">.rst</span></tt> identifies restructured text documents. Make Kate
 the default editor for this document type.</p>
@@ -157,8 +156,7 @@ right.</p>
 <div class="section" id="compile-html-test-output">
 <h3>Compile HTML test output<a class="headerlink" href="#compile-html-test-output" title="Permalink to this headline">¶</a></h3>
 <p>Compile a text document into HTML output with the command</p>
-<div class="highlight-python"><div class="highlight"><pre>make clean html
-</pre></div>
+<div class="highlight-python"><pre>make clean html</pre>
 </div>
 </div>
 <div class="section" id="view-local-compiled-html">
@@ -166,8 +164,7 @@ right.</p>
 <p>In a browser tab, substitute your username and the name of your project folder
 into the following URL to see the index of files in a local project, and to
 view the output of individual documents:</p>
-<div class="highlight-python"><div class="highlight"><pre>file:///home/__username__/Projects/__projectfolder__/_build/html/index.html
-</pre></div>
+<div class="highlight-python"><pre>file:///home/__username__/Projects/__projectfolder__/_build/html/index.html</pre>
 </div>
 </div>
 <div class="section" id="periodically-save-work">
@@ -180,8 +177,7 @@ view the output of individual documents:</p>
 <div class="section" id="track-current-changes">
 <h3>Track current changes<a class="headerlink" href="#track-current-changes" title="Permalink to this headline">¶</a></h3>
 <p>Make git aware of current changes with the command:</p>
-<div class="highlight-python"><div class="highlight"><pre>git add .
-</pre></div>
+<div class="highlight-python"><pre>git add .</pre>
 </div>
 <p>The &#8220;dot&#8221; means track everything in a project directory. Name specific files
 if everything is not desired. Exclude categories of files from tracking with
@@ -189,40 +185,35 @@ entries in <tt class="file docutils literal"><span class="pre">.gitignore</span>
 </div>
 <div class="section" id="see-changes-being-tracked">
 <h3>See changes being tracked<a class="headerlink" href="#see-changes-being-tracked" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-python"><div class="highlight"><pre>git status
-</pre></div>
+<div class="highlight-python"><pre>git status</pre>
 </div>
 <p>Shows what git has staged to be committed based on <strong class="command">add</strong> commands.</p>
 </div>
 <div class="section" id="undo-an-add">
 <h3>Undo an add<a class="headerlink" href="#undo-an-add" title="Permalink to this headline">¶</a></h3>
 <p>Clear staged content which you do not want to add with the command:</p>
-<div class="highlight-python"><div class="highlight"><pre>git reset
-</pre></div>
+<div class="highlight-python"><pre>git reset</pre>
 </div>
 </div>
 <div class="section" id="rename-a-project-file">
 <h3>Rename a project file<a class="headerlink" href="#rename-a-project-file" title="Permalink to this headline">¶</a></h3>
 <p>Always use git to move or rename a tracked file. The syntax is the same as
 Linux <strong class="command">mv</strong> command, but proceded with <strong class="command">git</strong>:</p>
-<div class="highlight-python"><div class="highlight"><pre>git mv old_filename.rst new_filename.rst
-</pre></div>
+<div class="highlight-python"><pre>git mv old_filename.rst new_filename.rst</pre>
 </div>
 </div>
 <div class="section" id="delete-a-project-file">
 <h3>Delete a project file<a class="headerlink" href="#delete-a-project-file" title="Permalink to this headline">¶</a></h3>
 <p>As with moving a tracked file, use a <strong class="command">git</strong> command when deleting:</p>
-<div class="highlight-python"><div class="highlight"><pre>git rm bad_filename.rst
-</pre></div>
+<div class="highlight-python"><pre>git rm bad_filename.rst</pre>
 </div>
 </div>
 <div class="section" id="commit-changes-to-repository">
 <h3>Commit changes to repository<a class="headerlink" href="#commit-changes-to-repository" title="Permalink to this headline">¶</a></h3>
 <p>Periodically add and commit completed content to your local repository:</p>
-<div class="highlight-python"><div class="highlight"><pre>git add .
+<div class="highlight-python"><pre>git add .
 git status
-git commit -m &quot;type a brief message here describing your changes&quot;
-</pre></div>
+git commit -m "type a brief message here describing your changes"</pre>
 </div>
 </div>
 </div>
@@ -232,16 +223,14 @@ git commit -m &quot;type a brief message here describing your changes&quot;
 <h3>Pull remote content<a class="headerlink" href="#pull-remote-content" title="Permalink to this headline">¶</a></h3>
 <p>Before starting a day&#8217;s work, synchronize your local repository copy to the
 remote master repository:</p>
-<div class="highlight-python"><div class="highlight"><pre>git pull
-</pre></div>
+<div class="highlight-python"><pre>git pull</pre>
 </div>
 </div>
 <div class="section" id="push-local-content">
 <h3>Push local content<a class="headerlink" href="#push-local-content" title="Permalink to this headline">¶</a></h3>
 <p>When local content is synchronized with master changes, tested, and committed
 locally, then push the content commits to the remote master:</p>
-<div class="highlight-python"><div class="highlight"><pre>git push
-</pre></div>
+<div class="highlight-python"><pre>git push</pre>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -273,8 +262,7 @@ steps are complete.</p>
 <p>Download script <a class="reference download internal" href="_downloads/github-deploy.sh"><tt class="xref download docutils literal"><span class="pre">github-deploy.sh</span></tt></a> to
 your <tt class="file docutils literal"><span class="pre">Projects</span></tt> folder, or inside of your project.</p>
 <p>Then deploy the site at GitHub with the command:</p>
-<div class="highlight-python"><div class="highlight"><pre>bash gitdeploy.sh {project_foldername}
-</pre></div>
+<div class="highlight-python"><pre>bash gitdeploy.sh {project_foldername}</pre>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -286,8 +274,7 @@ your <tt class="file docutils literal"><span class="pre">Projects</span></tt> fo
 <h3>View the deployed site<a class="headerlink" href="#view-the-deployed-site" title="Permalink to this headline">¶</a></h3>
 <p>In the web browser, substitute your GitHub <strong>username</strong> and <strong>repository</strong>
 name into the following URL to view the site:</p>
-<div class="highlight-python"><div class="highlight"><pre>http://_username_.github.com/_repository_
-</pre></div>
+<div class="highlight-python"><pre>http://_username_.github.com/_repository_</pre>
 </div>
 </div>
 <div class="section" id="view-displayed-page-source">
@@ -300,12 +287,11 @@ link in the side menu to display the original text source of the page.</p>
 <h2>Using the Browser<a class="headerlink" href="#using-the-browser" title="Permalink to this headline">¶</a></h2>
 <p>Firefox introduced tabs in the web browser, making life better for web
 developers. The following five tabs are useful all the time:</p>
-<div class="highlight-python"><div class="highlight"><pre>`Sphinx documentation &lt;http://sphinx.pocoo.org/contents.html&gt;`_
+<div class="highlight-python"><pre>`Sphinx documentation &lt;http://sphinx.pocoo.org/contents.html&gt;`_
 `Online rst Editor &lt;http://rst.ninjs.org/&gt;`_
 `Built HTML &lt;file://~/Projects/doc-firsttask/_build/html/index.html&gt;`_
 `Deployed project \&lt;http://_yourname_.github.com/_yourproject_/\&gt;`_
-`Your GitHub page \&lt;https://github.com/_yourname_\&gt;`_
-</pre></div>
+`Your GitHub page \&lt;https://github.com/_yourname_\&gt;`_</pre>
 </div>
 </div>
 </div>
@@ -330,7 +316,7 @@ developers. The following five tabs are useful all the time:</p>
     </div>
     <div class="footer">
         &copy; Copyright 2013, Gerald Lovel.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.1.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
     </div>
   </body>
 </html>

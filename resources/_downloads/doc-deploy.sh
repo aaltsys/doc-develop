@@ -27,6 +27,8 @@ HEROKU="master"
 
 # Compile fresh output for one or more books and copy to deployment folder
 makedeployment () {
+  echo "$(pwd)$(tput setaf 1) Making output -- $DIR_OUT -- $(tput sgr0)" 
+  
   make clean $MAKE_METHOD BUILDDIR=$DIR_BUILD
 
   cp -R $DIR_BUILD/$MAKE_METHOD/* $DIR_OUT/

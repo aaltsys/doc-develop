@@ -2,88 +2,84 @@
 
 echo "Install packages for Gnome Ubuntu 10.10 or other Debian Gnome"
 
-# if [[ $EUID -ne 0 ]] ; then echo 'try again using sudo' ; exit 1 ; fi
-# Clear and reestablish sudo privileges to run this program as root
-sudo -k
-echo -e "\e[1;31m Authentication required \e[0m"
-sudo bash << SCRIPT
+if [[ $EUID -ne 0 ]] ; then echo -e "\e[1;31m try again using sudo \e[0m" ; exit 1 ; fi
 
-   # for Ubuntu version 10.10 Gnome interface.
-   # This desktop script installs general productivity apps and Ruby developer tools.
-   # The default script interpreter is assumed to be bash, not zsh.
+# for Ubuntu version 10.10 Gnome interface.
+# This desktop script installs general productivity apps and Ruby developer tools.
+# The default script interpreter is assumed to be bash, not zsh.
 
-   # get rid of openoffice
-   apt-get purge openoffice*
+# get rid of openoffice
+apt-get purge openoffice*
 
-   # add repositories
+# add repositories
 
-   # universe/multiverse repositories
-    add-apt-repository "deb http://archive.ubuntu.com/ubuntu $(lsb_release -sc) main universe restricted multiverse"
-   # repository for Cinelerra video editor
-   apt-add-repository ppa:cinelerra-ppa/ppa
-   # repository for HP printer drivers and support
-   apt-add-repository ppa:hplip-isv/ppa
-   # libreoffice replacement for OpenOffice
-   apt-add-repository ppa:libreoffice/ppa
-   # repository for Ubuntu tweaks
-   apt-add-repository ppa:tualatrix/ppa
-   # repository for working rails
-   apt-add-repository ppa:ubuntu-on-rails/ppa
-   # repository for latest stable Firefox
-   add-apt-repository ppa:mozillateam/firefox-stable
+# universe/multiverse repositories
+	add-apt-repository "deb http://archive.ubuntu.com/ubuntu $(lsb_release -sc) main universe restricted multiverse"
+# repository for Cinelerra video editor
+apt-add-repository ppa:cinelerra-ppa/ppa
+# repository for HP printer drivers and support
+apt-add-repository ppa:hplip-isv/ppa
+# libreoffice replacement for OpenOffice
+apt-add-repository ppa:libreoffice/ppa
+# repository for Ubuntu tweaks
+apt-add-repository ppa:tualatrix/ppa
+# repository for working rails
+apt-add-repository ppa:ubuntu-on-rails/ppa
+# repository for latest stable Firefox
+add-apt-repository ppa:mozillateam/firefox-stable
 
-   # update repository info
-   apt-get update
+# update repository info
+apt-get update
 
-   # install latest stable web browsers
-   wget -O /tmp/chrome.deb https://dl-ssl.google.com/linux/direct/google-chrome-stable_current_i386.deb
-   dpkg -i /tmp/chrome.deb
-   rm /tmp/chrome.deb
-   # Firefox -- upgrade to later version
-   apt-get install firefox firefox-gnome-support latex-xft-fonts ubufox
+# install latest stable web browsers
+wget -O /tmp/chrome.deb https://dl-ssl.google.com/linux/direct/google-chrome-stable_current_i386.deb
+dpkg -i /tmp/chrome.deb
+rm /tmp/chrome.deb
+# Firefox -- upgrade to later version
+apt-get install firefox firefox-gnome-support latex-xft-fonts ubufox
 
-   # flush apt-get index updates
-   apt-get -f install
+# flush apt-get index updates
+apt-get -f install
 
-   # #############################################################################################
-   # Install apps and tools
-   # #############################################################################################
+# #############################################################################################
+# Install apps and tools
+# #############################################################################################
 
-   # install desktop productivity apps
-   apt-get -y install appinventor-setup blender cinelerra dia filezilla freemind gimp gnucash
-   apt-get -y install inkscape libreoffice mypaint openshot scribus shotwell simplescan xaralx
+# install desktop productivity apps
+apt-get -y install appinventor-setup blender cinelerra dia filezilla freemind gimp gnucash
+apt-get -y install inkscape libreoffice mypaint openshot scribus shotwell simplescan xaralx
 
-   # install desktop utility apps
-   apt-get -y install adobe-flashplugin aptitude byobu cifs-utils diffuse dosbox dosemu gdebi
-   apt-get -y install hplip-gui ubuntu-restricted-extras lftp mc nfs-common
-   apt-get -y install nautilus-gksu nautilus-open-terminal openvpn playonlinux putty
-   apt-get -y install recordmydesktop screen ubuntu-tweak vlc wine wireshark xclip
-  
-  # fix configuration problem so DOS programs will work
-   if [[ -z "$(grep 'vm.mmap_min_addr=0' /etc/modules)" ]] ; then 
-      echo "vm.mmap_min_addr=0" >> /etc/modules
-   fi
+# install desktop utility apps
+apt-get -y install adobe-flashplugin aptitude byobu cifs-utils diffuse dosbox dosemu gdebi
+apt-get -y install hplip-gui ubuntu-restricted-extras lftp mc nfs-common
+apt-get -y install nautilus-gksu nautilus-open-terminal openvpn playonlinux putty
+apt-get -y install recordmydesktop screen ubuntu-tweak vlc wine wireshark xclip
+	
+# fix configuration problem so DOS programs will work
+if [[ -z "$(grep 'vm.mmap_min_addr=0' /etc/modules)" ]] ; then 
+  echo "vm.mmap_min_addr=0" >> /etc/modules
+fi
 
-   # install developer tools
-   apt-get -y install bluefish build-essential cream curl eclipse geany git jedit
-   apt-get -y install libmysqlclient-dev libsqlite3-dev linux-headers-generic mysql-server
-   apt-get -y install netbeans okteta php5 ruby-full sqliteman subversion ubuntu-dev-tools
+# install developer tools
+apt-get -y install bluefish build-essential cream curl eclipse geany git jedit
+apt-get -y install libmysqlclient-dev libsqlite3-dev linux-headers-generic mysql-server
+apt-get -y install netbeans okteta php5 ruby-full sqliteman subversion ubuntu-dev-tools
 
-   # install Sun (Oracle) java
-   apt-get -y install sun-java6-bin sun-java6-fonts sun-java6-javadb sun-java6-jdk sun-java6-jre sun-java6-plugin
+# install Sun (Oracle) java
+apt-get -y install sun-java6-bin sun-java6-fonts sun-java6-javadb sun-java6-jdk sun-java6-jre sun-java6-plugin
 
-   # developer libraries
-   apt-get install zlib1g-dev libreadline5-dev libssl-dev libxml2-dev
+# developer libraries
+apt-get install zlib1g-dev libreadline5-dev libssl-dev libxml2-dev
 
-   # #############################################################################################
-   # clean up aptitude at end
-   # #############################################################################################
+# #############################################################################################
+# clean up aptitude at end
+# #############################################################################################
 
-   aptitude clean
-   aptitude update
-   aptitude upgrade
+aptitude clean
+aptitude update
+aptitude upgrade
 
-SCRIPT
+exit 0
 
 # #############################################################################################
 # Install web dev frameworks: Ruby --> Rails

@@ -114,13 +114,11 @@ set. <a class="footnote-reference" href="#id2" id="id1">[1]</a></p>
 <p class="first admonition-title">Note</p>
 <p>Each combination of user and workstation requires a different ssh key.
 Use the following command will generate missing <strong>ssh keys</strong> for a user:</p>
-<div class="last highlight-python"><div class="highlight"><pre>if [ ! -f ~/.ssh/id_rsa ]; then ssh-keygen -N &#39;&#39; -f ~/.ssh/id_rsa; fi
-</pre></div>
+<div class="last highlight-python"><pre>if [ ! -f ~/.ssh/id_rsa ]; then ssh-keygen -N '' -f ~/.ssh/id_rsa; fi</pre>
 </div>
 </div>
 <p>Copy your SSH key to the clipboard with the console command:</p>
-<div class="highlight-python"><div class="highlight"><pre>cat ~/.ssh/id_rsa.pub | xclip              |
-</pre></div>
+<div class="highlight-python"><pre>cat ~/.ssh/id_rsa.pub | xclip              |</pre>
 </div>
 </div>
 <div class="section" id="add-ssh-key-on-github">
@@ -167,8 +165,7 @@ copy.</p>
 <p>Once you own a repository on GitHub, you will want to clone it. The GitHub
 repository is remote, and cloning makes a local copy which you can edit.
 Here is the console command:</p>
-<div class="highlight-python"><div class="highlight"><pre>git clone (link_to_your_project) ~/Projects/doc-publish
-</pre></div>
+<div class="highlight-python"><pre>git clone (link_to_your_project) ~/Projects/doc-publish</pre>
 </div>
 <p>There are two parameters to the <strong class="command">git clone</strong> command. First is your
 project name, which is the text following &#8220;Git Read-Only&#8221; in the image below.
@@ -182,8 +179,7 @@ for the project.</p>
 <p>You may have noticed: <strong>doc-publish</strong> contains a repository from GitHub.
 Committed changes in the doc-publish folder are updated to GitHub with the
 command:</p>
-<div class="highlight-python"><div class="highlight"><pre>git push
-</pre></div>
+<div class="highlight-python"><pre>git push</pre>
 </div>
 <hr class="docutils" />
 <p class="rubric">Footnotes</p>
@@ -216,7 +212,7 @@ command:</p>
     </div>
     <div class="footer">
         &copy; Copyright 2013, Gerald Lovel.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.1.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
     </div>
   </body>
 </html>
