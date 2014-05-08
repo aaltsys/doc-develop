@@ -8,11 +8,7 @@
 
 echo "Install packages for Kubuntu 13.10 or other Debian 6 KDE"
 
-# if [[ $EUID -ne 0 ]] ; then echo 'try again using sudo' ; exit 1 ; fi
-# Clear and reestablish sudo privileges to run this program as root
-sudo -k
-echo -e "\e[1;31m Authentication required \e[0m"
-sudo bash << SCRIPT
+if [[ $EUID -ne 0 ]] ; then echo -e "\e[1;31m try again using sudo \e[0m" ; exit 1 ; fi
 
 # add repositories
 
@@ -81,5 +77,3 @@ apt-get update
 apt-get upgrade
 
 reboot
-
-SCRIPT
