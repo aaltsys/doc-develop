@@ -130,7 +130,8 @@
 <h3>Install Sphinxdoc in project<a class="headerlink" href="#install-sphinxdoc-in-project" title="Permalink to this headline">¶</a></h3>
 <p>Sphinxdoc documenation tools are installed using python package manager
 <tt class="docutils literal"><span class="pre">easy_install</span></tt>. Open a terminal to type in the command:</p>
-<div class="highlight-python"><pre>easy_install -U sphinx</pre>
+<div class="highlight-python"><div class="highlight"><pre>easy_install -U sphinx
+</pre></div>
 </div>
 </div>
 <div class="section" id="how-to-get-files">
@@ -147,10 +148,11 @@ them from the following links:</p>
 to the Cloud9 workspace. To return files to Cloud9, use the Linux command
 <strong class="command">wget</strong> instead. Copy and paste the following commands into a terminal
 window or into the console command line beneath an edit window:</p>
-<div class="highlight-python"><pre>wget http://develop.aaltsys.info/resources/_downloads/.gitignore
+<div class="highlight-python"><div class="highlight"><pre>wget http://develop.aaltsys.info/resources/_downloads/.gitignore
 wget http://develop.aaltsys.info/resources/_downloads/doc-addbranch.sh
 wget http://develop.aaltsys.info/resources/_downloads/doc-newproject.sh
-wget http://develop.aaltsys.info/resources/_downloads/doc-deploy.sh</pre>
+wget http://develop.aaltsys.info/resources/_downloads/doc-deploy.sh
+</pre></div>
 </div>
 <p>After getting the files, click the <em class="guilabel">gear icon</em> on top of the left
 sidebar, and choose <em class="guilabel">Refresh Project Tree</em> to see the additions.</p>
@@ -164,19 +166,21 @@ sidebar, and choose <em class="guilabel">Refresh Project Tree</em> to see the ad
 <div class="section" id="initialize-sphinxdoc">
 <h2>Initialize Sphinxdoc<a class="headerlink" href="#initialize-sphinxdoc" title="Permalink to this headline">¶</a></h2>
 <p>In your Cloud9 doc-journal workspace, open a terminal and type the command:</p>
-<div class="highlight-python"><pre>bash doc-newproject.sh</pre>
+<div class="highlight-python"><div class="highlight"><pre>bash doc-newproject.sh
+</pre></div>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p>The <strong class="program">doc-newproject.sh</strong> script runs right away in projects
 which are cloned from GitHub. Otherwise, the script requires the following
 two commands to be executed first:</p>
-<div class="last highlight-python"><pre>git init
-git remote add origin git@github.com:{_username_}/{_project_}.git</pre>
+<div class="last highlight-python"><div class="highlight"><pre>git init
+git remote add origin git@github.com:{_username_}/{_project_}.git
+</pre></div>
 </div>
 </div>
 <p>The Sphinxdoc quickstart asks these questions:</p>
-<div class="highlight-python"><pre>Root path for the documentation [.]:
+<div class="highlight-python"><div class="highlight"><pre>Root path for the documentation [.]:
 Separate source and build directories (y/N) [n]:
 Name prefix for templates and static dir [_]:
 Project name: {_Cloud Development Journal_}
@@ -189,14 +193,15 @@ Do you want to use the epub builder (y/N) [n]: {_y_}
 autodoc: automatically insert docstringss from modules (y/N) [n]:
 doctest: automatically test code snippets in doctest blocks (y/N) [n]:
 intersphinx link between Sphinx documentation of different projects (y/N) [n]: {_y_}
-todo: write "todo" entries that can be shown or hidden on build (y/N) [n]:
+todo: write &quot;todo&quot; entries that can be shown or hidden on build (y/N) [n]:
 coverage: checks for documentation coverage (y/N) [n]:
 pngmath: include math, rendered as PNG images (y/N) [n]:
 mathjax: include math, rendered in the browser by MathJax (y/N) [n]:
 ifconfig: conditional inclusion of content based on config values (y/N) [n]:
 viewcode: include links to the source code of documented Python objects (y/N) [n]:
 Create Makefile? (Y/n) [y]:
-Create Windows command file? (Y/n) [y]: {_n_}</pre>
+Create Windows command file? (Y/n) [y]: {_n_}
+</pre></div>
 </div>
 <p>Be careful when answering these questions, as you get only one chance. Six
 questions have suggested answers (surrounded by underlines); the rest are
@@ -289,14 +294,15 @@ following resources to learn about document syntax:</p>
 commands to organize a series of numbered documents and build a table of
 contents for the project. For example, this project uses the following
 instructions to build part of the Table of Contents page:</p>
-<div class="highlight-python"><pre>Table of Contents:
+<div class="highlight-python"><div class="highlight"><pre>Table of Contents:
 ====================
 
 .. toctree::
    :maxdepth: 2
    :glob:
 
-   [0-9]*</pre>
+   [0-9]*
+</pre></div>
 </div>
 </div>
 </div>
@@ -308,7 +314,8 @@ development.</p>
 <h3>Compiling and Previewing<a class="headerlink" href="#compiling-and-previewing" title="Permalink to this headline">¶</a></h3>
 <p>This works at Cloud9, too. The Sphinx command to compile HTML pages from your
 documentation project is:</p>
-<div class="highlight-python"><pre>make clean html</pre>
+<div class="highlight-python"><div class="highlight"><pre>make clean html
+</pre></div>
 </div>
 <p>To view the documents you have built, open the <tt class="file docutils literal"><span class="pre">_build/html/index.html</span></tt>
 file in your Cloud9 project workspace. Then select <em class="menuselection">Preview</em>
@@ -318,10 +325,11 @@ from the top menu.</p>
 <h3>Committing Repository<a class="headerlink" href="#committing-repository" title="Permalink to this headline">¶</a></h3>
 <p>At the end of a day, or when a portion of work is finished, it should be
 committed and pushed to the GitHub repository. <a class="footnote-reference" href="#id4" id="id2">[2]</a> Here are commands for that:</p>
-<div class="highlight-python"><pre>git add .
+<div class="highlight-python"><div class="highlight"><pre>git add .
 git status
-git commit -m "commit message"
-git push</pre>
+git commit -m &quot;commit message&quot;
+git push
+</pre></div>
 </div>
 <p>Most of these actions are available from the Cloud9 menu as well.</p>
 </div>
@@ -330,7 +338,8 @@ git push</pre>
 <p>Work should be deployed only when completed satisfactorily. Your project will be
 deployed at GitHub as a <strong>gh-pages</strong> repository branch. The command to deploy
 documentation in a <strong>gh-pages</strong> branch is:</p>
-<div class="highlight-python"><pre>bash doc-deploy.sh</pre>
+<div class="highlight-python"><div class="highlight"><pre>bash doc-deploy.sh
+</pre></div>
 </div>
 <p>Now the sequence of steps to build and deploy output might be:</p>
 <table border="1" class="docutils">
@@ -419,7 +428,7 @@ repository on GitHub: <a class="reference external" href="https://github.com/pro
     </div>
     <div class="footer">
         &copy; Copyright 2013, Gerald Lovel.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>
