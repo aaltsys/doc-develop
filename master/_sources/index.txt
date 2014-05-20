@@ -16,7 +16,7 @@ and more confusing. or was it more work and less confuisng? don't misinterpret,
 this isn't a "Become a developer in 3 easy steps" tutorial. But with A little 
 effort and a lot of patience, You can learn development.
 
-#. :ref:`cloud:index`.
+#. :ref:`1_cloud:index`.
 #. :ref:`linux:index`.
 #. :ref:`bash:index`.
 #. :ref:`develop:index`.
