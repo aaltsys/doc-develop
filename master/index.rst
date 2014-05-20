@@ -25,6 +25,7 @@ effort and a lot of patience, You can learn development.
 #. :ref:`ruby:index`.
 #. :ref:`javascript:index`.
 #. :ref:`deployment:index`.
+
 ----------
 
 Search the site text on this :ref:`search`.
