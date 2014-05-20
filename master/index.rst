@@ -6,27 +6,25 @@
 AAltsys Technology Web Development Guide
 ============================================
 
-"A poor workman blames his tools," it is said. The good workman, on the other 
-hand, respects his tools and uses them appropriately in combination to complete 
-his work. 
+"A poor workman blames his tools," it has been said. An unskilled workman, 
+on the other hand, doesn't know what his tools are or where to get them.
+That's why this guide is here.
 
-AAltsys Technology throws this guide into the face of the onslaught of videos  
-and tutorials regarding software development on the Internet. Why?
-A carpenter does not need separate guides for using a screwdriver and a hammer.  
-Yet guides for using specific programming tools are plentiful, while tutorials 
-on the practices for becoming a software developer are lacking. These AAltsys 
-guides cover methods and techniques of collaborative web development. Specific 
-technologies are covered only after methods are introduced, when the processes 
-of development are already mastered.
+AAltsys Technology offers this guide to those who think that becoming a developer
+is Too much work or Too confusing. With this guide, development can be less work 
+and more confusing. or was it more work and less confuisng? don't misinterpret, 
+this isn't a "Become a developer in 3 easy steps" tutorial. But with A little 
+effort and a lot of patience, You can learn development.
 
-#. :ref:`publish:index`.
-#. :ref:`collaborate:index`.
 #. :ref:`cloud:index`.
-#. :ref:`ruby:index`.
-#. :ref:`htmlcss:index`.
+#. :ref:`linux:index`.
 #. :ref:`bash:index`.
-#. :ref:`resources:index`.
-
+#. :ref:`develop:index`.
+#. :ref:`document:index`.
+#. :ref:`htmlcss:index`.
+#. :ref:`ruby:index`.
+#. :ref:`javascript:index`.
+#. :ref:`deployment:index`.
 ----------
 
 Search the site text on this :ref:`search`.
