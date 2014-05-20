@@ -1,1 +1,0 @@
-../../resources/_downloads/KDE-Mint_12-desktop.sh

@@ -287,14 +287,14 @@ epub_copyright = u'2013, Gerald Lovel, Julia Lovel, Keith Mattix II'
 # intersphinx_mapping = {'': None}
 
 intersphinx_mapping = {
- 'publish': ('publish', '../_deploy/publish/objects.inv'),
- 'collaborate': ('collaborate', '../_deploy/collaborate/objects.inv'),
- 'cloud': ('cloud', '../_deploy/cloud/objects.inv'),
- 'ruby': ('ruby', '../_deploy/ruby/objects.inv'),
- 'python': ('python', '../_deploy/python/objects.inv'),
- 'htmlcss': ('htmlcss', '../_deploy/htmlcss/objects.inv'),
- 'javascript': ('javascript', '../_deploy/javascript/objects.inv'),
- 'bash': ('bash', '../_deploy/bash/objects.inv'),
- 'servers': ('servers', '../_deploy/servers/objects.inv'),
  'resources': ('resources', '../_deploy/resources/objects.inv'),
+ 'cloud': ('cloud', '../_deploy/1_cloud/objects.inv'),
+ 'linux': ('linux', '../_deploy/2_linux/objects.inv'),
+ 'bash': ('bash', '../_deploy/3_bash/objects.inv'),
+ 'develop': ('develop', '../_deploy/4_develop/objects.inv'),
+ 'document': ('document', '../_deploy/5_document/objects.inv'),
+ 'htmlcss': ('htmlcss', '../_deploy/6_htmlcss/objects.inv'),
+ 'ruby': ('ruby', '../_deploy/7_ruby/objects.inv'),
+ 'javascript': ('javascript', '../_deploy/8_javascript/objects.inv'),
+ 'deployment': ('deployment', '../_deploy/9_deployment/objects.inv'),
 }
