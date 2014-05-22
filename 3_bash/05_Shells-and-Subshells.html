@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>&lt;no title&gt; &mdash; Linux BASH Commands Tutorial 1.0 documentation</title>
+    <title>Shells and Subshells in Bash &mdash; Linux BASH Commands Tutorial 1.0 documentation</title>
     
     <link rel="stylesheet" href="_static/aaltsys.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -74,7 +74,9 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <blockquote>
+  <div class="section" id="shells-and-subshells-in-bash">
+<h1>Shells and Subshells in Bash<a class="headerlink" href="#shells-and-subshells-in-bash" title="Permalink to this headline">¶</a></h1>
+<blockquote>
 <div><p>A shell, to put it simply, is a bash terminal. When you open the terminal, You&#8217;re running a shell. As stated previously, bash stands for Bourne Again Shell, so bash itself is a shell</p>
 <p>A subshell occurs when a shell script(A script ending in .sh) is run from a bash terminal. for instance:</p>
 <div class="highlight-python"><div class="highlight"><pre>(In a Terminal) Variable=&quot;this is my string&quot;
@@ -89,6 +91,7 @@ this is my string
 </div>
 </div></blockquote>
 <p>This concept is rather complicated. note that if you export a variable, but that Variable is already declared in your script, the value will be that of the script, and not that of the Export. so to futher explain, When you export a Variable from a Terminal, you can then run any script in that terminal which includes that variable, and the script will use the value of the exported variable from the console. so if you export the variable &#8220;18&#8221; then call 18 in a script and run that script in the Terminal, the result would be the given value of 18.</p>
+</div>
 
 
           </div>
