@@ -48,6 +48,7 @@
 <li><a class="reference internal" href="#variable-types">Variable Types</a></li>
 <li><a class="reference internal" href="#declared-variables">Declared Variables</a></li>
 <li><a class="reference internal" href="#environment-variables">Environment Variables</a></li>
+<li><a class="reference internal" href="#exported-variables">Exported Variables</a></li>
 </ul>
 </li>
 </ul>
@@ -122,7 +123,7 @@ then, when they&#8217;re called, the value they&#8217;ve been given is what is u
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Environment Variables</th>
-<th class="head">Varibale description of use.</th>
+<th class="head">Variable description of use.</th>
 </tr>
 </thead>
 <tbody valign="top">
@@ -145,7 +146,19 @@ then, when they&#8217;re called, the value they&#8217;ve been given is what is u
 /home/user: Is a directory
 </pre></div>
 </div>
-<p>That&#8217;s what happens when you call the pwd Variable from a freshly opened terminal.</p>
+<p>That&#8217;s what happens when you call the pwd Variable from a freshly opened terminal. However, if you were in the Downloads folder you might get</p>
+<div class="highlight-python"><div class="highlight"><pre>/home/user/Downloads: Is a directory
+</pre></div>
+</div>
+<p>It all depends on what folder you&#8217;re in.</p>
+</div>
+<div class="section" id="exported-variables">
+<h2>Exported Variables<a class="headerlink" href="#exported-variables" title="Permalink to this headline">¶</a></h2>
+<p>Exported Variables in bash are Variables that were locally defined(see local variables) and then, well, exported. example</p>
+<div class="highlight-python"><div class="highlight"><pre>export Variable1=&quot;This is an exported variable&quot;
+</pre></div>
+</div>
+<p>An exported Variable&#8217;s value is then uniform across a shell and all of it&#8217;s sub-shells.(more on those later)</p>
 </div>
 </div>
 

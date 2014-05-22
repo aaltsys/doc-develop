@@ -36,7 +36,7 @@ Environment Variables
 Environment Variables are those which are predeclared and can be called from any program, script, or terminal. here's a table of a few Environment Variables
 
 +----------------------+--------------------------------------------------------------+
-|Environment Variables | Varibale description of use.                                 |
+|Environment Variables | Variable description of use.                                 |
 +======================+==============================================================+
 | Euid                 | The ID number of the current user.                           |
 +----------------------+--------------------------------------------------------------+
@@ -52,4 +52,19 @@ Obviously these are just a few of the many Environment Variables, but just to gi
   $PWD
   /home/user: Is a directory
   
-That's what happens when you call the pwd Variable from a freshly opened terminal.  
+That's what happens when you call the pwd Variable from a freshly opened terminal. However, if you were in the Downloads folder you might get ::
+
+  /home/user/Downloads: Is a directory 
+  
+It all depends on what folder you're in.
+
+
+Exported Variables
+=====================
+
+Exported Variables in bash are Variables that were locally defined(see local variables) and then, well, exported. example ::
+
+  export Variable1="This is an exported variable"
+  
+An exported Variable's value is then uniform across a shell and all of it's sub-shells.(more on those later) 
+  
