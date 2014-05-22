@@ -23,6 +23,7 @@ Running Bash
 
 Bash can be run in two ways
 
-+Interactively
-+Shell-scripts
+Interactively
+
+Shell-scripts
 
