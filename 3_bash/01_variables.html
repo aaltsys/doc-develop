@@ -47,6 +47,7 @@
 <li><a class="reference internal" href="#">Variables</a><ul>
 <li><a class="reference internal" href="#variable-types">Variable Types</a></li>
 <li><a class="reference internal" href="#declared-variables">Declared Variables</a></li>
+<li><a class="reference internal" href="#environment-variables">Environment Variables</a></li>
 </ul>
 </li>
 </ul>
@@ -109,6 +110,42 @@ then, when they&#8217;re called, the value they&#8217;ve been given is what is u
 <div class="highlight-python"><div class="highlight"><pre><span class="n">Variable</span><span class="o">=</span><span class="s">&quot;This is now a different string&quot;</span>
 </pre></div>
 </div>
+<p>This can be done anywhere within the script after the original variable is declared.</p>
+</div>
+<div class="section" id="environment-variables">
+<h2>Environment Variables<a class="headerlink" href="#environment-variables" title="Permalink to this headline">¶</a></h2>
+<p>Environment Variables are those which are predeclared and can be called from any program, script, or terminal. here&#8217;s a table of a few Environment Variables</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="26%" />
+<col width="74%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Environment Variables</th>
+<th class="head">Varibale description of use.</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Euid</td>
+<td>The ID number of the current user.</td>
+</tr>
+<tr class="row-odd"><td>pwd</td>
+<td>when called, it returns the current directory</td>
+</tr>
+<tr class="row-even"><td>Echo</td>
+<td>The echo variable simply prints the following text.</td>
+</tr>
+<tr class="row-odd"><td>tput setaf 1-7</td>
+<td>A universal color selector.</td>
+</tr>
+</tbody>
+</table>
+<p>Obviously these are just a few of the many Environment Variables, but just to give you an idea of how it works</p>
+<div class="highlight-python"><div class="highlight"><pre>$PWD
+/home/user: Is a directory
+</pre></div>
+</div>
+<p>That&#8217;s what happens when you call the pwd Variable from a freshly opened terminal.</p>
 </div>
 </div>
 

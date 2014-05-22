@@ -28,3 +28,28 @@ then, when they're called, the value they've been given is what is used. the val
 
   Variable="This is now a different string"
  
+This can be done anywhere within the script after the original variable is declared.
+
+Environment Variables
+========================
+
+Environment Variables are those which are predeclared and can be called from any program, script, or terminal. here's a table of a few Environment Variables
+
++----------------------+--------------------------------------------------------------+
+|Environment Variables | Varibale description of use.                                 |
++======================+==============================================================+
+| Euid                 | The ID number of the current user.                           |
++----------------------+--------------------------------------------------------------+
+|pwd                   | when called, it returns the current directory                |
++----------------------+--------------------------------------------------------------+
+|Echo                  | The echo variable simply prints the following text.          |
++----------------------+--------------------------------------------------------------+
+|tput setaf 1-7        | A universal color selector.                                  |
++----------------------+--------------------------------------------------------------+ 
+
+Obviously these are just a few of the many Environment Variables, but just to give you an idea of how it works ::
+
+  $PWD
+  /home/user: Is a directory
+  
+That's what happens when you call the pwd Variable from a freshly opened terminal.  
