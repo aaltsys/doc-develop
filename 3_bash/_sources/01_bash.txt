@@ -27,3 +27,12 @@ Interactively
 
 Shell-scripts
 
+
+Interactive Bash means single line commands put in the terminal with immediate execution.
+
+Shell scripts are scripts that are written in a text editor, saved in .sh format, and run from the terminal.
+
+
+
+Ok, ready to start learning more? Lets talk about `Variables <http://develop.aaltsys.info/3_bash/01_variables.html>`_
+
