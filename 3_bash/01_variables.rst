@@ -3,8 +3,40 @@ Variables
 #############################
 
 
+Variable Types
+================
+
+There are several different variable types in bash.
+
++ Declared Local Variables
++ Environment Variables
++ Exported Variables
+
+Declared Variables
+=====================
+
+.. sidebar:: Example Declared Variable
+  
+  Thisvariable="A string"
+
+Declared Variables are those which are declared within a script. an example of a declared variable is: ::
+
+  Variable="This is a string"
+  
+They are usually declared at the beginning of the shell script.
+then, when they're called, the value they've been given is what is used. the value can be changed at any time by re-declaring it, I.E. ::
+
+  Variable="This is now a different string"
+ 
+This can be done anywhere within the script after the original variable is declared.
+
+Environment Variables
+========================
+
+Environment Variables are those which are predeclared and can be called from any program, script, or terminal. here's a table of a few Environment Variables
+
 +----------------------+--------------------------------------------------------------+
-|Environment Variables | Varibale description of use.                                 |
+|Environment Variables | Variable description of use.                                 |
 +======================+==============================================================+
 | Euid                 | The ID number of the current user.                           |
 +----------------------+--------------------------------------------------------------+
@@ -12,10 +44,27 @@ Variables
 +----------------------+--------------------------------------------------------------+
 |Echo                  | The echo variable simply prints the following text.          |
 +----------------------+--------------------------------------------------------------+
-|Color selectors       | description of selectors                                     |
-+----------------------+--------------------------------------------------------------+
-|\\e\[1;31m            | A color selector for a local system.                         |
-+----------------------+--------------------------------------------------------------+
 |tput setaf 1-7        | A universal color selector.                                  |
-+----------------------+--------------------------------------------------------------+
++----------------------+--------------------------------------------------------------+ 
 
+Obviously these are just a few of the many Environment Variables, but just to give you an idea of how it works ::
+
+  $PWD
+  /home/user: Is a directory
+  
+That's what happens when you call the pwd Variable from a freshly opened terminal. However, if you were in the Downloads folder you might get ::
+
+  /home/user/Downloads: Is a directory 
+  
+It all depends on what folder you're in.
+
+
+Exported Variables
+=====================
+
+Exported Variables in bash are Variables that were locally defined(see local variables) and then, well, exported. example ::
+
+  export Variable1="This is an exported variable"
+  
+An exported Variable's value is then uniform across a shell and all of it's sub-shells.(more on those later) 
+  

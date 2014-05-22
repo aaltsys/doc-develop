@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# Python Language Tutorial documentation build configuration file, created by
+# Linux Commands Overview  documentation build configuration file, created by
 # sphinx-quickstart on Sat Feb 23 09:27:39 2013.
 #
 # This file is execfile()d with the current directory set to its containing dir.
@@ -40,7 +40,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'Python Language Tutorial'
+project = u'Linux Commands Overview'
 copyright = u'2013, Julia Lovel'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -164,7 +164,7 @@ html_use_index = False
 #html_file_suffix = None
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'PythonLanguageTutorialdoc'
+htmlhelp_basename = 'LinuxCommandsOverviewdoc'
 
 
 # -- Options for LaTeX output --------------------------------------------------
@@ -183,7 +183,7 @@ latex_elements = {
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual]).
 latex_documents = [
-  ('index', 'PythonLanguageTutorial.tex', u'Python Language Tutorial Documentation',
+  ('index', 'LinuxCommandsOverview.tex', u'Linux Commands Overview Documentation',
    u'Julia Lovel', 'manual'),
 ]
 
@@ -213,7 +213,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', 'pythonlanguagetutorial', u'Python Language Tutorial Documentation',
+    ('index', 'linuxcommandsoverview', u'Linux Commands Overview Documentation',
      [u'Julia Lovel'], 1)
 ]
 
@@ -227,8 +227,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-  ('index', 'PythonLanguageTutorial', u'Python Language Tutorial Documentation',
-   u'Julia Lovel', 'PythonLanguageTutorial', 'One line description of project.',
+  ('index', 'LinuxCommandsOverview', u'Linux Commands Overview Documentation',
+   u'Julia Lovel', 'LinuxCommandsOverview', 'One line description of project.',
    'Miscellaneous'),
 ]
 
@@ -245,7 +245,7 @@ texinfo_documents = [
 # -- Options for Epub output ---------------------------------------------------
 
 # Bibliographic Dublin Core info.
-epub_title = u'Python Language Tutorial'
+epub_title = u'Linux Command Overview'
 epub_author = u'Julia Lovel'
 epub_publisher = u'Julia Lovel'
 epub_copyright = u'2013, Julia Lovel'

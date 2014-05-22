@@ -1,0 +1,24 @@
+##############################
+Shells and Subshells in Bash
+##############################
+ 
+ Shells
+ ============
+ 
+ A shell, to put it simply, is a bash terminal. When you open the terminal, You're running a shell. As stated previously, bash stands for Bourne Again Shell, so bash itself is a shell
+ 
+ Subshells
+ =============
+ 
+ A subshell occurs when a shell script(A script ending in .sh) is run from a bash terminal. for instance: ::
+ 
+  (In a Terminal) Variable="this is my string"
+  export $Variable
+  (now we write a test script)
+  echo $Variable
+  (now in the terminal we write)
+  bash Test_script.sh
+  and it prints the exported value of Variable, which is
+  this is my string
+  
+This concept is rather complicated. note that if you export a variable, but that Variable is already declared in your script, the value will be that of the script, and not that of the Export. so to futher explain, When you export a Variable from a Terminal, you can then run any script in that terminal which includes that variable, and the script will use the value of the exported variable from the console. so if you export the variable "18" then call 18 in a script and run that script in the Terminal, the result would be the given value of 18.  
