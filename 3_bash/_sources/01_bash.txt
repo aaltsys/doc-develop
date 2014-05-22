@@ -21,5 +21,8 @@ Bash is used for many different things. for instance, you can use bash to instal
 Running Bash
 =====================
 
+Bash can be run in two ways
 
++Interactively
++Shell-scripts
 
