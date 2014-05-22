@@ -21,13 +21,5 @@ Bash is used for many different things. for instance, you can use bash to instal
 Running Bash
 =====================
 
-Bash can be run in two ways
-
-|interactively
-|shell scripts
-
-Running Bash interactively consists of typing one command at a time with immediate execution and feedback.
-
-Running shell scripts consists of writing a Bash script (usually written in a text editor and saved as a .sh file) and then having the terminal execute that script.
 
 
