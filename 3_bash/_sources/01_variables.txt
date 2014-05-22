@@ -9,5 +9,22 @@ Variable Types
 There are several different variable types in bash.
 
 + Declared Local Variables
-+ Enviroment Variables
++ Environment Variables
 + Exported Variables
+
+Declared Variables
+=====================
+
+.. sidebar:: Example Declared Variable
+  
+  Thisvariable="A string"
+
+Declared Variables are those which are declared within a script. an example of a declared variable is: ::
+
+  Variable="This is a string"
+  
+They are usually declared at the beginning of the shell script.
+then, when they're called, the value they've been given is what is used. the value can be changed at any time by re-declaring it, I.E. ::
+
+  Variable="This is now a different string"
+ 

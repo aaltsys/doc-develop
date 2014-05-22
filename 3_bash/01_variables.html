@@ -46,6 +46,7 @@
   <ul>
 <li><a class="reference internal" href="#">Variables</a><ul>
 <li><a class="reference internal" href="#variable-types">Variable Types</a></li>
+<li><a class="reference internal" href="#declared-variables">Declared Variables</a></li>
 </ul>
 </li>
 </ul>
@@ -89,9 +90,25 @@
 <p>There are several different variable types in bash.</p>
 <ul class="simple">
 <li>Declared Local Variables</li>
-<li>Enviroment Variables</li>
+<li>Environment Variables</li>
 <li>Exported Variables</li>
 </ul>
+</div>
+<div class="section" id="declared-variables">
+<h2>Declared Variables<a class="headerlink" href="#declared-variables" title="Permalink to this headline">¶</a></h2>
+<div class="sidebar">
+<p class="first sidebar-title">Example Declared Variable</p>
+<p class="last">Thisvariable=&#8221;A string&#8221;</p>
+</div>
+<p>Declared Variables are those which are declared within a script. an example of a declared variable is:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">Variable</span><span class="o">=</span><span class="s">&quot;This is a string&quot;</span>
+</pre></div>
+</div>
+<p>They are usually declared at the beginning of the shell script.
+then, when they&#8217;re called, the value they&#8217;ve been given is what is used. the value can be changed at any time by re-declaring it, I.E.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">Variable</span><span class="o">=</span><span class="s">&quot;This is now a different string&quot;</span>
+</pre></div>
+</div>
 </div>
 </div>
 
