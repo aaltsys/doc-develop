@@ -21,10 +21,10 @@ Bash is used for many different things. for instance, you can use bash to instal
 Running Bash
 =====================
 
-Bash can be run in two ways:
+Bash can be run in two ways
 
-#.interactively
-#.shell scripts
+|interactively
+|shell scripts
 
 Running Bash interactively consists of typing one command at a time with immediate execution and feedback.
 
