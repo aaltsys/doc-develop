@@ -4,10 +4,30 @@
 Linux Commands and Utilities
 #############################
 
-What is Bash
+What is Bash?
 =============================
 
 Bash is, to put it simply, a shell. In fact, Bash stands for Bourne Again Shell.
 Bash is a type of shell which is widely supported and can be found on nearly every linux system.
-However, keep in mind that bash is a programming language, just like any other.
-It uses the same rules any other programming language does. it has Variables, Logic statements, and the like.
+Bash is in fact a command processor, meaning that it is the language of the linux terminal. Bash was origianally written by Brian Fox in 1988, and it is still in use today, 26 years later.
+However, bash is indeed a programming language, or, as some call it, a shell-scripting language.
+It has many  similarities to other programming languages. it has Variables, Logic statements, and functions.
+
+what is bash used for?
+=======================
+
+Bash is used for many different things. for instance, you can use bash to install packages on the Linux operating system, execute multi-line shell-scripts, 
+
+Running Bash
+=====================
+
+Bash can be run in two ways.
+
++interactively
++shell scripts
+
+Running Bash interactively consists of typing one command at a time with immediate execution and feedback.
+
+Running shell scripts consists of writing a Bash script (usually written in a text editor and saved as a .sh file) and then having the terminal execute that script.
+
+
