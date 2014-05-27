@@ -42,6 +42,15 @@
     </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Shells and Subshells in Bash</a><ul>
+<li><a class="reference internal" href="#shells">Shells</a></li>
+<li><a class="reference internal" href="#subshells">Subshells</a></li>
+</ul>
+</li>
+</ul>
+
   <h4>Previous topic</h4>
   <p class="topless"><a href="04_internal-commands.html"
                         title="previous chapter">Internal Commands.</a></p>
@@ -76,21 +85,16 @@
             
   <div class="section" id="shells-and-subshells-in-bash">
 <h1>Shells and Subshells in Bash<a class="headerlink" href="#shells-and-subshells-in-bash" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="shells">
+<h2>Shells<a class="headerlink" href="#shells" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><p>A shell, to put it simply, is a bash terminal. When you open the terminal, You&#8217;re running a shell. As stated previously, bash stands for Bourne Again Shell, so bash itself is a shell</p>
-<p>A subshell occurs when a shell script(A script ending in .sh) is run from a bash terminal. for instance:</p>
-<div class="highlight-python"><div class="highlight"><pre>(In a Terminal) Variable=&quot;this is my string&quot;
-export $Variable
-(now we write a test script)
-echo $Variable
-(now in the terminal we write)
-bash Test_script.sh
-and it prints the exported value of Variable, which is
-this is my string
-</pre></div>
+<div>A shell, to put it simply, is a bash terminal. When you open the terminal, You&#8217;re running a shell. As stated previously, bash stands for Bourne Again Shell, so bash itself is a shell</div></blockquote>
 </div>
-</div></blockquote>
-<p>This concept is rather complicated. note that if you export a variable, but that Variable is already declared in your script, the value will be that of the script, and not that of the Export. so to futher explain, When you export a Variable from a Terminal, you can then run any script in that terminal which includes that variable, and the script will use the value of the exported variable from the console. so if you export the variable &#8220;18&#8221; then call 18 in a script and run that script in the Terminal, the result would be the given value of 18.</p>
+<div class="section" id="subshells">
+<h2>Subshells<a class="headerlink" href="#subshells" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div>A subshell occurs when a shell script(A script ending in .sh) is run from a bash terminal. for instance, if you run a script called Subshell.sh then it&#8217;s a Subshell. Anything run out of that terminal is a subshell of that terminal.</div></blockquote>
+</div>
 </div>
 
 

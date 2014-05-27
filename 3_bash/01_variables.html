@@ -159,6 +159,47 @@ then, when they&#8217;re called, the value they&#8217;ve been given is what is u
 </pre></div>
 </div>
 <p>An exported Variable&#8217;s value is then uniform across a shell and all of it&#8217;s sub-shells.(more on those later)</p>
+<p>for instance:</p>
+<div class="highlight-python"><div class="highlight"><pre>(In a Terminal) Variable=&quot;this is my string&quot;
+export $Variable
+(now we write a test script)
+echo $Variable
+(now in the terminal we write)
+bash Test_script.sh
+and it prints the exported value of Variable, which is
+this is my string
+</pre></div>
+</div>
+<p>Here&#8217;s some things to try:</p>
+<div class="highlight-python"><div class="highlight"><pre>In a terminal, write
+Twelve=12
+Go ahead and type
+echo $Twelve (remember that the dollar sign means the value of the variable 12)
+Then type:
+export Twelve
+create a text document called Export.sh
+in the text document type:
+
+Four=4
+Sixteen=$(($Twelve+$Four))
+echo $Sixteen
+
+now back to the terminal and go to the folder in which you stored Export.sh Now type:
+
+bash Export.sh. you should get: 16
+</pre></div>
+</div>
+<p>Now you can see that an exported variable uses the same value across any script run from that terminal.
+But what happens if the exported variable already exists within the script?</p>
+<div class="highlight-python"><div class="highlight"><pre>In the Export.sh script, type:
+
+Twelve=4
+then go back to the terminal, inside the folder containing Export.sh, and type:
+bash Export.sh
+</pre></div>
+</div>
+<p>As you can see, when the variable is already declared in a script, bash uses the declared varibale rather than the exported one.
+Since an exported variable is only good for as long as the terminal is around, It maybe useful to write a script which exports a set of variables that run inside the other scripts.</p>
 </div>
 </div>
 
