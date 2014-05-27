@@ -1,0 +1,30 @@
+##############################
+Integer Manipulation 
+##############################
+
+Simple Mathematical operations
+================================
+
+So, you open the terminal, type 7 + 4, and out comes 11, right? Unfortunately not. Instead you'll get "7: command not found"
+Bash doesn't do math quite like your average programming language like ruby or python or javascript. but it does have alternate methods which you can use.
+
+In the Terminal
+==================
+There are several different ways of performing math in a command line. one is to define each variable as a number. for instance:
+
+Three=3
+Seven=7
+Nine=4
+
+Then in the terminal type ::
+
+    echo $(($Three+$Nine+$Seven))
+
+This will display the result of 3+4+7. If you should wish to do any other simple math like this simply declare a variable. Also note that bash does not use order of operations, so 2+2*2 will display as 8, not 6.
+
+If you prefer a simpler method, you can also type: ::
+
+   echo $[Three+Seven]
+   
+Which will return the value of 10
+
