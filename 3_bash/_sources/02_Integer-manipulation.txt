@@ -70,3 +70,21 @@ You can simply write ::
     let x=x+x
     
 and the result will be 14.    
+
+The Declare Command.
+========================
+
+The Declare Command is a useful tool if you want to set the a variable to be equal to an operation, or a series of operations. for instance. if you type::
+
+    n=6/3
+    echo $n
+    6/3
+    
+That's useless. however, if you type ::
+
+    
+    declare -i n
+    n=6/3
+    echo $n
+    
+Then you'll get 2 as the output    

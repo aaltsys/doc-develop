@@ -1,0 +1,2 @@
+symbols for strings 
+letters for characters

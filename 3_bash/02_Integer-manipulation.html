@@ -49,6 +49,7 @@
 <li><a class="reference internal" href="#simple-mathematical-operations">Simple Mathematical operations</a></li>
 <li><a class="reference internal" href="#in-the-terminal">In the Terminal</a></li>
 <li><a class="reference internal" href="#the-let-command">The Let Command</a></li>
+<li><a class="reference internal" href="#the-declare-command">The Declare Command.</a></li>
 </ul>
 </li>
 </ul>
@@ -138,6 +139,22 @@ however, the let command can even further simplify numerical operations. instead
 </pre></div>
 </div>
 <p>and the result will be 14.</p>
+</div>
+<div class="section" id="the-declare-command">
+<h2>The Declare Command.<a class="headerlink" href="#the-declare-command" title="Permalink to this headline">¶</a></h2>
+<p>The Declare Command is a useful tool if you want to set the a variable to be equal to an operation, or a series of operations. for instance. if you type:</p>
+<div class="highlight-python"><div class="highlight"><pre>n=6/3
+echo $n
+6/3
+</pre></div>
+</div>
+<p>That&#8217;s useless. however, if you type</p>
+<div class="highlight-python"><div class="highlight"><pre>declare -i n
+n=6/3
+echo $n
+</pre></div>
+</div>
+<p>Then you&#8217;ll get 2 as the output</p>
 </div>
 </div>
 

@@ -46,6 +46,11 @@
   <ul>
 <li><a class="reference internal" href="#">Logic Flow Control Functions</a><ul>
 <li><a class="reference internal" href="#if-else-statements">If Else Statements</a></li>
+<li><a class="reference internal" href="#for-while-until-loops-in-bash">For/While/Until Loops in bash.</a><ul>
+<li><a class="reference internal" href="#the-while-loop">The While Loop</a></li>
+<li><a class="reference internal" href="#the-until-loop">The Until Loop</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -126,6 +131,48 @@ fi
 <p>In the second, the statement checks for a condition, and if the condition is true, performs an action. if the condition is false, it performs a different action.</p>
 <p>In the third, the statement checks for a condition, and if it is true, performs an action. if the first condition is false, but the second condition is true, it performs a different action. if neither condition is true, it does nothing. (note that this could be extended to 5, 20, or even a hundred different conditions.)</p>
 <p>In the fourth, the statement checks for a condition, and if it is true, performs an action. if the first condition is false but the second condition is true, it performs a different action. if none of the conditions are true, it performs a different action.(once again, there could be more than 2 conditions)</p>
+</div>
+<div class="section" id="for-while-until-loops-in-bash">
+<h2>For/While/Until Loops in bash.<a class="headerlink" href="#for-while-until-loops-in-bash" title="Permalink to this headline">¶</a></h2>
+<p>This section deals with three types of loops. The while loop. the until loop. and the for loop.</p>
+<div class="section" id="the-while-loop">
+<h3>The While Loop<a class="headerlink" href="#the-while-loop" title="Permalink to this headline">¶</a></h3>
+<div class="sidebar">
+<p class="first sidebar-title">Avoiding Infinite Loops.</p>
+<p>Try to avoid Infininte loops whenever possible. An example of an Infininte Loop is</p>
+<div class="highlight-python"><div class="highlight"><pre>number=0
+while [ $number -lt 10 ]; do
+    echo &quot;Number = $number&quot;
+    number=$((number - 1))
+done
+</pre></div>
+</div>
+<p class="last">You&#8217;ll notice that Even though it has a condition, it sends it down, not up, meaning it will endlessly spiral downwards away from 10.</p>
+</div>
+<p>The while loop is used to perform an action for as long as a condition is met. for example</p>
+<div class="highlight-python"><div class="highlight"><pre>number=0
+while [ $number -lt 10 ]; do
+    echo &quot;Number = $number&quot;
+    number=$((number + 1))
+done
+</pre></div>
+</div>
+<p>In this example, a number is set to 0, and for as long as the number is less than 10(the -lt is less than), the value of the number is printed, and 1 is added to the number.
+as soon as the number reaches 10, the code stops performing</p>
+</div>
+<div class="section" id="the-until-loop">
+<h3>The Until Loop<a class="headerlink" href="#the-until-loop" title="Permalink to this headline">¶</a></h3>
+<p>The Until Loop is a lot like the while loop, except contrary to the while loop, instead of carrying out a piece of code while a condition is true, it carries out a piece of code while a condition is false.
+Here&#8217;s an example of an Until Loop</p>
+<div class="highlight-python"><div class="highlight"><pre>number=0
+until [ $number -ge 10 ]; do
+    echo &quot;Number = $number&quot;
+    number=$((number + 1))
+done
+</pre></div>
+</div>
+<p>In this example, you&#8217;ll notice that until the number is greater than or equal to 10(-ge is greater than or equal to), it echoes the number&#8217;s value and adds 1.</p>
+</div>
 </div>
 </div>
 
