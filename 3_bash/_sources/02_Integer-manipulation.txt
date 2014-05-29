@@ -2,6 +2,22 @@
 Integer Manipulation 
 ##############################
 
+Bash operational signs.
+===========================
+
+Bash has 6 main operational signs ::
+
+    + Addition
+    - Subtraction
+    / Division
+    * Multiplication
+    ** Exponentation
+    % Modulo
+    
+They probably all seem familiar except for those last two, Exponentation and Modulo.
+Exponentation is when a number is raised to that power, so 12**3 is 12*12*12
+Modulo is the remainder when a Division is finished, so 13%3 is 1.
+
 Simple Mathematical operations
 ================================
 
@@ -28,3 +44,29 @@ If you prefer a simpler method, you can also type: ::
    
 Which will return the value of 10
 
+The Let Command
+======================
+
+.. sideebar ::
+
+    An example of the let command ::
+    
+        let x=5
+        echo $x
+        5
+        let x=$x+2
+        echo $x
+        7
+
+The let command is a built in Bash command which is useful for integer Manipulation.
+If you look at the sidebar you'll probably think: "How is this different from the normal terminal?" well, in a couple ways.
+first, if you define x and then redefine it as itself plus 2 without let, it will echo $x+2 when called.
+however, the let command can even further simplify numerical operations. instead of typing ::
+
+    let x=$x+$x
+    
+You can simply write ::    
+
+    let x=x+x
+    
+and the result will be 14.    
