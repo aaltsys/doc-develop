@@ -47,7 +47,7 @@ Which will return the value of 10
 The Let Command
 ======================
 
-.. sideebar ::
+.. sidebar ::
 
     An example of the let command ::
     
