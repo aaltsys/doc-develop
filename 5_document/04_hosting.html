@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Right Hosting &mdash; Python 1.0 documentation</title>
+    <title>Right Hosting &mdash; Publish Yourself! 1.0 documentation</title>
     
     <link rel="stylesheet" href="_static/aaltsys.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -23,7 +23,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Python 1.0 documentation" href="index.html" />
+    <link rel="top" title="Publish Yourself! 1.0 documentation" href="index.html" />
     <link rel="next" title="Right Structure" href="05_structure.html" />
     <link rel="prev" title="Right Configuration" href="03_configuration.html" /> 
   </head>
@@ -37,7 +37,7 @@
         <li class="right" >
           <a href="03_configuration.html" title="Right Configuration"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Python 1.0 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Publish Yourself! 1.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
       <div class="sphinxsidebar">
@@ -114,8 +114,7 @@ set. <a class="footnote-reference" href="#id2" id="id1">[1]</a></p>
 <div class="section" id="copy-ssh-key-to-clipboard">
 <h3>Copy SSH Key to Clipboard<a class="headerlink" href="#copy-ssh-key-to-clipboard" title="Permalink to this headline">¶</a></h3>
 <p>At your system console, copy your SSH key to the clipboard with the command:</p>
-<div class="highlight-python"><div class="highlight"><pre>cat ~/.ssh/id_rsa.pub | xclip``
-</pre></div>
+<div class="highlight-python"><pre>cat ~/.ssh/id_rsa.pub | xclip``</pre>
 </div>
 </div>
 <div class="section" id="add-the-ssh-key-to-github">
@@ -166,8 +165,7 @@ to view your copy.</p>
 <p>Once you own a repository on GitHub, you will want to clone it. The GitHub
 repository is remote, and cloning makes a local copy which you can edit.
 Here is the console command:</p>
-<div class="highlight-python"><div class="highlight"><pre>git clone (link_to_your_project) ~/Projects/doc-publishself
-</pre></div>
+<div class="highlight-python"><pre>git clone (link_to_your_project) ~/Projects/doc-publishself</pre>
 </div>
 <p>There are two parameters to the <strong class="command">git clone</strong> command. First is your
 project name, which is the text following &#8220;Git Read-Only&#8221; in the image below.
@@ -180,9 +178,8 @@ for the project.</p>
 <h2>Ask Git a Question<a class="headerlink" href="#ask-git-a-question" title="Permalink to this headline">¶</a></h2>
 <p>Type the following commands to query git in the <tt class="file docutils literal"><span class="pre">doc-publishself</span></tt>
 project:</p>
-<div class="highlight-python"><div class="highlight"><pre>cd ~/Projects/doc-publishself
-git branch -a
-</pre></div>
+<div class="highlight-python"><pre>cd ~/Projects/doc-publishself
+git branch -a</pre>
 </div>
 <p>Git shows two branches in this project, <strong>gh-pages</strong> and <strong>master</strong>, and
 <strong>master</strong> is active. If the source is in branch <strong>master</strong>, then what is in
@@ -194,14 +191,13 @@ the <strong>gh-pages</strong> branch?</p>
 you are viewing.</p>
 <p>Now let&#8217;s create a gh-pages branch for your doc-firsttask repository. Here are
 the commands:</p>
-<div class="highlight-python"><div class="highlight"><pre>cd ~/Projects/doc-firsttask
+<div class="highlight-python"><pre>cd ~/Projects/doc-firsttask
 git add .
-git commit -m &quot;Commit all current changes before branching&quot;
+git commit -m "Commit all current changes before branching"
 git symbolic-ref HEAD refs/heads/gh-pages
 rm .git/index
 git clean -fdx
-git branch master
-</pre></div>
+git branch master</pre>
 </div>
 <p>Refer to the <strong>Project Pages Manually</strong> section of <a class="reference external" href="http://help.github.com/pages/">GitHub help</a> for more information.</p>
 </div>
@@ -223,10 +219,9 @@ repository on GitHub. On your GitHub home page, click the
 <tt class="kbd docutils literal"><span class="pre">git&#64;github.com:__username__/__repositoryname__.git</span></tt>. Using the following
 commands as a template, you can update your local repository to point to the
 new GitHub repository as a remote master:</p>
-<div class="highlight-python"><div class="highlight"><pre>cd ~/Projects/doc-firsttask
+<div class="highlight-python"><pre>cd ~/Projects/doc-firsttask
 git remote add origin git@github.com:_username_/_repository_.git
-git merge origin
-</pre></div>
+git merge origin</pre>
 </div>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
@@ -259,12 +254,12 @@ instead of pasting in <tt class="kbd docutils literal"><span class="pre">git&#64
         <li class="right" >
           <a href="03_configuration.html" title="Right Configuration"
              >previous</a> |</li>
-        <li><a href="index.html">Python 1.0 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Publish Yourself! 1.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
         &copy; Copyright 2013, Gerald Lovel.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
     </div>
   </body>
 </html>
