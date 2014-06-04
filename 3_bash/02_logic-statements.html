@@ -91,11 +91,13 @@
 <div class="sidebar">
 <p class="first sidebar-title">Example of a not equal to statement</p>
 <p>This is an example of a not equal to if/then statement.</p>
-<div class="highlight-python"><pre>if [[ $EUID -ne 0 ]] ; then echo -e "\e[1;31m try again using sudo \e[0m" ; exit 1 ; fi</pre>
+<div class="highlight-python"><div class="highlight"><pre>if [[ $EUID -ne 0 ]] ; then echo -e &quot;\e[1;31m try again using sudo \e[0m&quot; ; exit 1 ; fi
+</pre></div>
 </div>
 <p class="last">A simple not equal to if/then statement example.</p>
 </div>
-<div class="highlight-python"><pre>if [[ (variable) -ne (value) ]] ; then (perform action) fi</pre>
+<div class="highlight-python"><div class="highlight"><pre>if [[ (variable) -ne (value) ]] ; then (perform action) fi
+</pre></div>
 </div>
 <p>A logic statement which performs an action if a variable is not equal to a certain
 value, for instance if the length of a variable is not equal to 8, it performs the action, but if the length of the variable is equal to 8, it simply continues running the program.</p>
@@ -105,21 +107,23 @@ value, for instance if the length of a variable is not equal to 8, it performs t
 <div class="sidebar">
 <p class="first sidebar-title">Example of an equal to if/then/else statement</p>
 <p>This is an example of an if/then/else statement of equality:</p>
-<div class="highlight-python"><pre>if [ "`uname -i`" = "i386" ]
+<div class="highlight-python"><div class="highlight"><pre>if [ &quot;`uname -i`&quot; = &quot;i386&quot; ]
 then
-  CHROMEVER="google-chrome-stable_current_i386.deb"
+  CHROMEVER=&quot;google-chrome-stable_current_i386.deb&quot;
 else
-  CHROMEVER="google-chrome-stable_current_amd64.deb"
-fi</pre>
+  CHROMEVER=&quot;google-chrome-stable_current_amd64.deb&quot;
+fi
+</pre></div>
 </div>
 <p class="last">this is a simple if else statement.</p>
 </div>
-<div class="highlight-python"><pre>if [ variable = value ]
+<div class="highlight-python"><div class="highlight"><pre>if [ variable = value ]
 then
   (perform action)
 else
    (peform other action)
-fi</pre>
+fi
+</pre></div>
 </div>
 <p>A logic statement which performs an action if a variable is equal to a value, and
 performs another action if the variable is not equal to that value. for instance, if the length of a variable were equal to 8 it would carry out a certain action, but if the length were NOT equal to 8 it would carry out a different action.</p>
@@ -129,17 +133,19 @@ performs another action if the variable is not equal to that value. for instance
 <div class="sidebar">
 <p class="first sidebar-title">Example of a code search if/then statement</p>
 <p>This is an example of an if/then/else code search statement:</p>
-<div class="highlight-python"><pre>if [[ -z "$(grep 'vm.mmap_min_addr' /etc/modules)" ]] ; then
-   echo -e /n "vm.mmap_min_addr=0" &gt;&gt; /etc/modules ;
+<div class="highlight-python"><div class="highlight"><pre>if [[ -z &quot;$(grep &#39;vm.mmap_min_addr&#39; /etc/modules)&quot; ]] ; then
+   echo -e /n &quot;vm.mmap_min_addr=0&quot; &gt;&gt; /etc/modules ;
 else
-   sed -i '/vm.mmap_min_addr/c\vn.mmap_min_addr=0' ~/etc/modules ;
-fi</pre>
+   sed -i &#39;/vm.mmap_min_addr/c\vn.mmap_min_addr=0&#39; ~/etc/modules ;
+fi
+</pre></div>
 </div>
 <p class="last">This an if/then/else statement.</p>
 </div>
-<div class="highlight-python"><pre>if [[ -z "$(grep "(search term)" /folder/document)" ]] ; then
-   echo "(search term)" &gt;&gt; /folder/document
-fi</pre>
+<div class="highlight-python"><div class="highlight"><pre>if [[ -z &quot;$(grep &quot;(search term)&quot; /folder/document)&quot; ]] ; then
+   echo &quot;(search term)&quot; &gt;&gt; /folder/document
+fi
+</pre></div>
 </div>
 <p>A logic statement which searches a file for a specific term, and if it doesn&#8217;t find
 it it adds the text. note that the dash z means that instead of adding the echo if
@@ -167,7 +173,7 @@ the search term is found, the program adds the echo if the search term is NOT fo
     </div>
     <div class="footer">
         &copy; Copyright 2013, Gerald Lovel.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>

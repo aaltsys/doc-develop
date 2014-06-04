@@ -24,7 +24,7 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="Linux BASH Commands Tutorial 1.0 documentation" href="index.html" />
-    <link rel="next" title="Package management" href="02_Linux-commands.html" />
+    <link rel="next" title="Integer Manipulation" href="02_Integer-manipulation.html" />
     <link rel="prev" title="Linux Commands and Utilities" href="01_bash.html" /> 
   </head>
   <body>
@@ -32,7 +32,7 @@
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="02_Linux-commands.html" title="Package management"
+          <a href="02_Integer-manipulation.html" title="Integer Manipulation"
              accesskey="N">next</a></li>
         <li class="right" >
           <a href="01_bash.html" title="Linux Commands and Utilities"
@@ -42,12 +42,23 @@
     </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Variables</a><ul>
+<li><a class="reference internal" href="#variable-types">Variable Types</a></li>
+<li><a class="reference internal" href="#declared-variables">Declared Variables</a></li>
+<li><a class="reference internal" href="#environment-variables">Environment Variables</a></li>
+<li><a class="reference internal" href="#exported-variables">Exported Variables</a></li>
+</ul>
+</li>
+</ul>
+
   <h4>Previous topic</h4>
   <p class="topless"><a href="01_bash.html"
                         title="previous chapter">Linux Commands and Utilities</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="02_Linux-commands.html"
-                        title="next chapter">Package management</a></p>
+  <p class="topless"><a href="02_Integer-manipulation.html"
+                        title="next chapter">Integer Manipulation</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="_sources/01_variables.txt"
@@ -76,6 +87,35 @@
             
   <div class="section" id="variables">
 <h1>Variables<a class="headerlink" href="#variables" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="variable-types">
+<h2>Variable Types<a class="headerlink" href="#variable-types" title="Permalink to this headline">¶</a></h2>
+<p>There are several different variable types in bash.</p>
+<ul class="simple">
+<li>Declared Local Variables</li>
+<li>Environment Variables</li>
+<li>Exported Variables</li>
+</ul>
+</div>
+<div class="section" id="declared-variables">
+<h2>Declared Variables<a class="headerlink" href="#declared-variables" title="Permalink to this headline">¶</a></h2>
+<div class="sidebar">
+<p class="first sidebar-title">Example Declared Variable</p>
+<p class="last">Thisvariable=&#8221;A string&#8221;</p>
+</div>
+<p>Declared Variables are those which are declared within a script. an example of a declared variable is:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">Variable</span><span class="o">=</span><span class="s">&quot;This is a string&quot;</span>
+</pre></div>
+</div>
+<p>They are usually declared at the beginning of the shell script.
+then, when they&#8217;re called, the value they&#8217;ve been given is what is used. the value can be changed at any time by re-declaring it, I.E.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">Variable</span><span class="o">=</span><span class="s">&quot;This is now a different string&quot;</span>
+</pre></div>
+</div>
+<p>This can be done anywhere within the script after the original variable is declared.</p>
+</div>
+<div class="section" id="environment-variables">
+<h2>Environment Variables<a class="headerlink" href="#environment-variables" title="Permalink to this headline">¶</a></h2>
+<p>Environment Variables are those which are predeclared and can be called from any program, script, or terminal. here&#8217;s a table of a few Environment Variables</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="26%" />
@@ -83,7 +123,7 @@
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Environment Variables</th>
-<th class="head">Varibale description of use.</th>
+<th class="head">Variable description of use.</th>
 </tr>
 </thead>
 <tbody valign="top">
@@ -96,17 +136,71 @@
 <tr class="row-even"><td>Echo</td>
 <td>The echo variable simply prints the following text.</td>
 </tr>
-<tr class="row-odd"><td>Color selectors</td>
-<td>description of selectors</td>
-</tr>
-<tr class="row-even"><td>\e[1;31m</td>
-<td>A color selector for a local system.</td>
-</tr>
 <tr class="row-odd"><td>tput setaf 1-7</td>
 <td>A universal color selector.</td>
 </tr>
 </tbody>
 </table>
+<p>Obviously these are just a few of the many Environment Variables, but just to give you an idea of how it works</p>
+<div class="highlight-python"><div class="highlight"><pre>$PWD
+/home/user: Is a directory
+</pre></div>
+</div>
+<p>That&#8217;s what happens when you call the pwd Variable from a freshly opened terminal. However, if you were in the Downloads folder you might get</p>
+<div class="highlight-python"><div class="highlight"><pre>/home/user/Downloads: Is a directory
+</pre></div>
+</div>
+<p>It all depends on what folder you&#8217;re in.</p>
+</div>
+<div class="section" id="exported-variables">
+<h2>Exported Variables<a class="headerlink" href="#exported-variables" title="Permalink to this headline">¶</a></h2>
+<p>Exported Variables in bash are Variables that were locally defined(see local variables) and then, well, exported. example</p>
+<div class="highlight-python"><div class="highlight"><pre>export Variable1=&quot;This is an exported variable&quot;
+</pre></div>
+</div>
+<p>An exported Variable&#8217;s value is then uniform across a shell and all of it&#8217;s sub-shells.(more on those later)</p>
+<p>for instance:</p>
+<div class="highlight-python"><div class="highlight"><pre>(In a Terminal) Variable=&quot;this is my string&quot;
+export $Variable
+(now we write a test script)
+echo $Variable
+(now in the terminal we write)
+bash Test_script.sh
+and it prints the exported value of Variable, which is
+this is my string
+</pre></div>
+</div>
+<p>Here&#8217;s some things to try:</p>
+<div class="highlight-python"><div class="highlight"><pre>In a terminal, write
+Twelve=12
+Go ahead and type
+echo $Twelve (remember that the dollar sign means the value of the variable 12)
+Then type:
+export Twelve
+create a text document called Export.sh
+in the text document type:
+
+Four=4
+Sixteen=$(($Twelve+$Four))
+echo $Sixteen
+
+now back to the terminal and go to the folder in which you stored Export.sh Now type:
+
+bash Export.sh. you should get: 16
+</pre></div>
+</div>
+<p>Now you can see that an exported variable uses the same value across any script run from that terminal.
+But what happens if the exported variable already exists within the script?</p>
+<div class="highlight-python"><div class="highlight"><pre>In the Export.sh script, type:
+
+Twelve=4
+then go back to the terminal, inside the folder containing Export.sh, and type:
+bash Export.sh
+</pre></div>
+</div>
+<p>As you can see, when the variable is already declared in a script, bash uses the declared varibale rather than the exported one.
+Since an exported variable is only good for as long as the terminal is around, It maybe useful to write a script which exports a set of variables that run inside the other scripts.</p>
+</div>
 </div>
 
 
@@ -119,7 +213,7 @@
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="02_Linux-commands.html" title="Package management"
+          <a href="02_Integer-manipulation.html" title="Integer Manipulation"
              >next</a></li>
         <li class="right" >
           <a href="01_bash.html" title="Linux Commands and Utilities"
@@ -129,7 +223,7 @@
     </div>
     <div class="footer">
         &copy; Copyright 2013, Gerald Lovel.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>

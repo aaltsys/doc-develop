@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>&lt;no title&gt; &mdash; Linux BASH Commands Tutorial 1.0 documentation</title>
+    <title>Comparison Operators &mdash; Linux BASH Commands Tutorial 1.0 documentation</title>
     
     <link rel="stylesheet" href="_static/aaltsys.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -74,8 +74,94 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <p>symbols for strings
+  <div class="section" id="comparison-operators">
+<h1>Comparison Operators<a class="headerlink" href="#comparison-operators" title="Permalink to this headline">¶</a></h1>
+<p>symbols for strings
 letters for characters</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="29%" />
+<col width="71%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Integer Operator</th>
+<th class="head">description of Operator</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>-eq</td>
+<td>is equal to</td>
+</tr>
+<tr class="row-odd"><td>-ne</td>
+<td>is not equal to</td>
+</tr>
+<tr class="row-even"><td>-gt</td>
+<td>greater than</td>
+</tr>
+<tr class="row-odd"><td>-ge</td>
+<td>is greater than or equal to</td>
+</tr>
+<tr class="row-even"><td>-lt</td>
+<td>is less than</td>
+</tr>
+<tr class="row-odd"><td>-le</td>
+<td>is less than or equal to</td>
+</tr>
+<tr class="row-even"><td>&lt;</td>
+<td>is less than(within double parenthesis)</td>
+</tr>
+<tr class="row-odd"><td>&lt;=</td>
+<td>is less than or equal to( within (()) )</td>
+</tr>
+<tr class="row-even"><td>&gt;</td>
+<td>is greater than( within (()) )</td>
+</tr>
+<tr class="row-odd"><td>&gt;=</td>
+<td>is greater than or equal to within (())</td>
+</tr>
+</tbody>
+</table>
+<p>q
+is equal to</p>
+<p>if [ &#8220;$a&#8221; -eq &#8220;$b&#8221; ]</p>
+<p>-ne
+is not equal to</p>
+<p>if [ &#8220;$a&#8221; -ne &#8220;$b&#8221; ]</p>
+<p>-gt
+is greater than</p>
+<p>if [ &#8220;$a&#8221; -gt &#8220;$b&#8221; ]</p>
+<p>-ge
+is greater than or equal to</p>
+<p>if [ &#8220;$a&#8221; -ge &#8220;$b&#8221; ]</p>
+<p>-lt
+is less than</p>
+<p>if [ &#8220;$a&#8221; -lt &#8220;$b&#8221; ]</p>
+<p>-le
+is less than or equal to</p>
+<p>if [ &#8220;$a&#8221; -le &#8220;$b&#8221; ]</p>
+<p>&lt;
+is less than (within double parentheses)</p>
+<p>((&#8220;$a&#8221; &lt; &#8220;$b&#8221;))</p>
+<p>&lt;=
+is less than or equal to (within double parentheses)</p>
+<p>((&#8220;$a&#8221; &lt;= &#8220;$b&#8221;))</p>
+<p>&gt;
+is greater than (within double parentheses)</p>
+<p>((&#8220;$a&#8221; &gt; &#8220;$b&#8221;))</p>
+<p>&gt;=
+is greater than or equal to (within double parentheses)</p>
+<p>((&#8220;$a&#8221; &gt;= &#8220;$b&#8221;))</p>
+<p>string comparison</p>
+<p>=</p>
+<p>is equal to</p>
+<p>if [ &#8220;$a&#8221; = &#8220;$b&#8221; ]</p>
+<p>Caution
+Note the whitespace framing the =.</p>
+<p>if [ &#8220;$a&#8221;=&#8221;$b&#8221; ] is not equivalent to the above.</p>
+<p>==
+is equal to</p>
+<p>if [ &#8220;$a&#8221; == &#8220;$b&#8221; ]</p>
+</div>
 
 
           </div>

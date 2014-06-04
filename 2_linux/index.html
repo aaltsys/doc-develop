@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>AAltsys Python Language Tutorial &mdash; Python Language Tutorial 1.0 documentation</title>
+    <title>Linux Commands Overview &mdash; Linux Commands Overview 1.0 documentation</title>
     
     <link rel="stylesheet" href="_static/aaltsys.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -23,25 +23,30 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Python Language Tutorial 1.0 documentation" href="#" /> 
+    <link rel="top" title="Linux Commands Overview 1.0 documentation" href="#" />
+    <link rel="next" title="Desktop Configuration" href="01_desktop.html" /> 
   </head>
   <body>
     <div class="related">
       <h3>Navigation</h3>
       <ul>
-        <li><a href="#">Python Language Tutorial 1.0 documentation</a> &raquo;</li> 
+        <li class="right" style="margin-right: 10px">
+          <a href="01_desktop.html" title="Desktop Configuration"
+             accesskey="N">next</a></li>
+        <li><a href="#">Linux Commands Overview 1.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
   <h3><a href="#">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">AAltsys <strong>Python Language</strong> Tutorial</a><ul>
-</ul>
-</li>
+<li><a class="reference internal" href="#">Linux Commands Overview</a></li>
 <li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
 </ul>
 
+  <h4>Next topic</h4>
+  <p class="topless"><a href="01_desktop.html"
+                        title="next chapter">Desktop Configuration</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="_sources/index.txt"
@@ -68,11 +73,58 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="aaltsys-python-language-tutorial">
-<span id="index"></span><h1>AAltsys <strong>Python Language</strong> Tutorial<a class="headerlink" href="#aaltsys-python-language-tutorial" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="linux-commands-overview">
+<span id="index"></span><h1>Linux Commands Overview<a class="headerlink" href="#linux-commands-overview" title="Permalink to this headline">¶</a></h1>
 <p>Contents:</p>
 <div class="toctree-wrapper compound">
-<ul class="simple">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="01_desktop.html">Desktop Configuration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="01_desktop.html#software-installation">Software Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01_desktop.html#id1">Desktop Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01_desktop.html#clipboard-and-editor-configuration">Clipboard and Editor Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01_desktop.html#avoiding-vim">Avoiding VIM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01_desktop.html#turn-on-apple-keyboard-function-keys">Turn on Apple Keyboard function keys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01_desktop.html#fixing-bugs">Fixing bugs</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="02_secureshell.html">Remote Secure Shell Sessions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="02_secureshell.html#understanding-ssh-keys">Understanding SSH keys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02_secureshell.html#configuring-ssh-for-a-user">Configuring SSH for a user</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02_secureshell.html#managing-changed-ssh-keys">Managing Changed SSH Keys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02_secureshell.html#remote-logins-over-ssh">Remote logins over ssh</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="03_servershares.html">Mounting Network File Systems</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="03_servershares.html#using-sshfs-file-shares-in-linux">Using sshfs File Shares in Linux</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03_servershares.html#server-sshfs-configuration">Server SSHFS Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03_servershares.html#ssh-remote-consoles">SSH Remote Consoles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03_servershares.html#using-samba4-shares">Using SAMBA4 Shares</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="04_packages.html">Managing Software Packages</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="04_packages.html#general-package-rules">General package rules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04_packages.html#package-management-utilities">Package management utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04_packages.html#special-commands">Special commands</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="05_dosemu.html">DOS programs with dosemu</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="05_dosemu.html#installing-dos-emulation">Installing DOS emulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="05_dosemu.html#dos-performance-and-video">DOS performance and video</a></li>
+<li class="toctree-l2"><a class="reference internal" href="05_dosemu.html#running-dosemu">Running Dosemu</a></li>
+<li class="toctree-l2"><a class="reference internal" href="05_dosemu.html#accessing-linux-file-shares">Accessing Linux file shares</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="08_kde_tricks.html">KDE Desktop Management</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="08_kde_tricks.html#avoiding-vim">Avoiding VIM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="08_kde_tricks.html#apple-keyboard-function-keys">Apple Keyboard function keys</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="09_udevmount.html">Mounting Devices through udev</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="09_udevmount.html#esata-hot-mount-drive-setup">eSATA hot-mount drive setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="09_udevmount.html#disconnecting-a-hot-mounted-drive">Disconnecting a hot-mounted drive</a></li>
+<li class="toctree-l2"><a class="reference internal" href="09_udevmount.html#references">References</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -94,12 +146,15 @@
     <div class="related">
       <h3>Navigation</h3>
       <ul>
-        <li><a href="#">Python Language Tutorial 1.0 documentation</a> &raquo;</li> 
+        <li class="right" style="margin-right: 10px">
+          <a href="01_desktop.html" title="Desktop Configuration"
+             >next</a></li>
+        <li><a href="#">Linux Commands Overview 1.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
         &copy; Copyright 2013, Julia Lovel.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>
