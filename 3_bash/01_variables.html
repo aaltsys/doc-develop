@@ -99,23 +99,25 @@
 <div class="section" id="declared-variables">
 <h2>Declared Variables<a class="headerlink" href="#declared-variables" title="Permalink to this headline">¶</a></h2>
 <div class="sidebar">
-<p class="first sidebar-title">Example Declared Variable</p>
-<p class="last">Thisvariable=&#8221;A string&#8221;</p>
+<p class="first sidebar-title">Example Declared Variable ::</p>
+<blockquote>
+<div>THISVARIABLE=&#8221;A string&#8221;</div></blockquote>
+<dl class="last docutils">
+<dt>The value dan be changed by re-declaring it. ::</dt>
+<dd>THISVARIABLE=&#8221;a new string&#8221;</dd>
+</dl>
 </div>
-<p>Declared Variables are those which are declared within a script. an example of a declared variable is:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">Variable</span><span class="o">=</span><span class="s">&quot;This is a string&quot;</span>
-</pre></div>
-</div>
+<p>Declared Variables are those which are declared within a script.</p>
 <p>They are usually declared at the beginning of the shell script.
-then, when they&#8217;re called, the value they&#8217;ve been given is what is used. the value can be changed at any time by re-declaring it, I.E.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">Variable</span><span class="o">=</span><span class="s">&quot;This is now a different string&quot;</span>
-</pre></div>
-</div>
-<p>This can be done anywhere within the script after the original variable is declared.</p>
+then, when they&#8217;re called, the value they&#8217;ve been given is what is used. the
+value can be changed at any time by re-declaring it.
+This can be done anywhere within the script after the original variable is
+declared.</p>
 </div>
 <div class="section" id="environment-variables">
 <h2>Environment Variables<a class="headerlink" href="#environment-variables" title="Permalink to this headline">¶</a></h2>
-<p>Environment Variables are those which are predeclared and can be called from any program, script, or terminal. here&#8217;s a table of a few Environment Variables</p>
+<p>Environment Variables are those which are predeclared and can be called from any
+program, script, or terminal. here&#8217;s a table of a few Environment Variables</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="26%" />
@@ -127,79 +129,45 @@ then, when they&#8217;re called, the value they&#8217;ve been given is what is u
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>Euid</td>
+<tr class="row-even"><td>$EUID</td>
 <td>The ID number of the current user.</td>
 </tr>
-<tr class="row-odd"><td>pwd</td>
+<tr class="row-odd"><td>$PWD</td>
 <td>when called, it returns the current directory</td>
-</tr>
-<tr class="row-even"><td>Echo</td>
-<td>The echo variable simply prints the following text.</td>
-</tr>
-<tr class="row-odd"><td>tput setaf 1-7</td>
-<td>A universal color selector.</td>
 </tr>
 </tbody>
 </table>
-<p>Obviously these are just a few of the many Environment Variables, but just to give you an idea of how it works</p>
-<div class="highlight-python"><div class="highlight"><pre>$PWD
-/home/user: Is a directory
-</pre></div>
-</div>
-<p>That&#8217;s what happens when you call the pwd Variable from a freshly opened terminal. However, if you were in the Downloads folder you might get</p>
-<div class="highlight-python"><div class="highlight"><pre>/home/user/Downloads: Is a directory
-</pre></div>
-</div>
-<p>It all depends on what folder you&#8217;re in.</p>
 </div>
 <div class="section" id="exported-variables">
 <h2>Exported Variables<a class="headerlink" href="#exported-variables" title="Permalink to this headline">¶</a></h2>
-<p>Exported Variables in bash are Variables that were locally defined(see local variables) and then, well, exported. example</p>
-<div class="highlight-python"><div class="highlight"><pre>export Variable1=&quot;This is an exported variable&quot;
+<div class="sidebar">
+<p class="first sidebar-title">Example Exported Variable ::</p>
+<blockquote>
+<div>export EXPORT=&#8221;This is an exported variable&#8221;</div></blockquote>
+<p>Type these commands into the bash terminal:</p>
+<div class="highlight-python"><div class="highlight"><pre>export NUMBER=12
+echo &quot;echo $NUMBER&quot; &gt;&gt; Test-script.sh
+bash Test-script.sh
 </pre></div>
 </div>
-<p>An exported Variable&#8217;s value is then uniform across a shell and all of it&#8217;s sub-shells.(more on those later)</p>
-<p>for instance:</p>
-<div class="highlight-python"><div class="highlight"><pre>(In a Terminal) Variable=&quot;this is my string&quot;
-export $Variable
-(now we write a test script)
-echo $Variable
-(now in the terminal we write)
-bash Test_script.sh
-and it prints the exported value of Variable, which is
-this is my string
+<p>You should have gotten back 12 as the value. because NUMBER was exported,
+the
+script called the exported value, 12. now, type</p>
+<div class="highlight-python"><div class="highlight"><pre>echo &quot;NUMBER=4&quot; &gt; Test-script.sh
+echo &#39;echo $NUMBER&#39; &gt;&gt; test-script.sh
+bash Test-script.sh
 </pre></div>
 </div>
-<p>Here&#8217;s some things to try:</p>
-<div class="highlight-python"><div class="highlight"><pre>In a terminal, write
-Twelve=12
-Go ahead and type
-echo $Twelve (remember that the dollar sign means the value of the variable 12)
-Then type:
-export Twelve
-create a text document called Export.sh
-in the text document type:
-
-Four=4
-Sixteen=$(($Twelve+$Four))
-echo $Sixteen
-
-now back to the terminal and go to the folder in which you stored Export.sh Now type:
-
-bash Export.sh. you should get: 16
-</pre></div>
+<p class="last">You&#8217;ll notice that NUMBER is now equal to 4. the reason for this is that the
+value as defined in the script always supercedes the value as defined by the
+export</p>
 </div>
-<p>Now you can see that an exported variable uses the same value across any script run from that terminal.
-But what happens if the exported variable already exists within the script?</p>
-<div class="highlight-python"><div class="highlight"><pre>In the Export.sh script, type:
-
-Twelve=4
-then go back to the terminal, inside the folder containing Export.sh, and type:
-bash Export.sh
-</pre></div>
-</div>
-<p>As you can see, when the variable is already declared in a script, bash uses the declared varibale rather than the exported one.
-Since an exported variable is only good for as long as the terminal is around, It maybe useful to write a script which exports a set of variables that run inside the other scripts.</p>
+<p>Exported Variables are Variables that were defined and then exported. You can
+call any script which refrences an exported variable after exporting that
+variable, but the value of the exported variable is cleared when the terminal is
+closed. Note that if a variable is declared in the script which has the same
+name but a different value then the exported variable, the value from the
+script, not the exprted value, will be called.</p>
 </div>
 </div>
 

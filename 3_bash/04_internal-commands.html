@@ -42,6 +42,14 @@
     </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Internal Commands.</a><ul>
+<li><a class="reference internal" href="#environment-variables">Environment Variables</a></li>
+</ul>
+</li>
+</ul>
+
   <h4>Previous topic</h4>
   <p class="topless"><a href="04_comparison-operators.html"
                         title="previous chapter">Comparison Operators</a></p>
@@ -140,6 +148,45 @@
 </tr>
 </tbody>
 </table>
+<div class="section" id="environment-variables">
+<h2>Environment Variables<a class="headerlink" href="#environment-variables" title="Permalink to this headline">¶</a></h2>
+<p>Environment Variables are those which are predeclared and can be called from any program, script, or terminal. here&#8217;s a table of a few Environment Variables</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="26%" />
+<col width="74%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Environment Variables</th>
+<th class="head">Variable description of use.</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Euid</td>
+<td>The ID number of the current user.</td>
+</tr>
+<tr class="row-odd"><td>pwd</td>
+<td>when called, it returns the current directory</td>
+</tr>
+<tr class="row-even"><td>Echo</td>
+<td>The echo variable simply prints the following text.</td>
+</tr>
+<tr class="row-odd"><td>tput setaf 1-7</td>
+<td>A universal color selector.</td>
+</tr>
+</tbody>
+</table>
+<p>Obviously these are just a few of the many Environment Variables, but just to give you an idea of how it works</p>
+<div class="highlight-python"><div class="highlight"><pre>$PWD
+/home/user: Is a directory
+</pre></div>
+</div>
+<p>That&#8217;s what happens when you call the pwd Variable from a freshly opened terminal. However, if you were in the Downloads folder you might get</p>
+<div class="highlight-python"><div class="highlight"><pre>/home/user/Downloads: Is a directory
+</pre></div>
+</div>
+<p>It all depends on what folder you&#8217;re in.</p>
+</div>
 </div>
 
 
