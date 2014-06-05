@@ -1,0 +1,90 @@
+##############################
+Integer Manipulation 
+##############################
+
+Bash operational signs.
+===========================
+
+Bash has 6 main operational signs ::
+
+    + Addition
+    - Subtraction
+    / Division
+    * Multiplication
+    ** Exponentation
+    % Modulo
+    
+They probably all seem familiar except for those last two, Exponentation and Modulo.
+Exponentation is when a number is raised to that power, so 12**3 is 12*12*12
+Modulo is the remainder when a Division is finished, so 13%3 is 1.
+
+Simple Mathematical operations
+================================
+
+So, you open the terminal, type 7 + 4, and out comes 11, right? Unfortunately not. Instead you'll get "7: command not found"
+Bash doesn't do math quite like your average programming language like ruby or python or javascript. but it does have alternate methods which you can use.
+
+In the Terminal
+==================
+There are several different ways of performing math in a command line. one is to define each variable as a number. for instance:
+
+Three=3
+Seven=7
+Nine=4
+
+Then in the terminal type ::
+
+    echo $(($Three+$Nine+$Seven))
+
+This will display the result of 3+4+7. If you should wish to do any other simple math like this simply declare a variable. Also note that bash does not use order of operations, so 2+2*2 will display as 8, not 6.
+
+If you prefer a simpler method, you can also type: ::
+
+   echo $[Three+Seven]
+   
+Which will return the value of 10
+
+The Let Command
+======================
+
+.. sidebar :: Example of the Let Command
+
+    An example of the let command ::
+    
+        let x=5
+        echo $x
+        5
+        let x=$x+2
+        echo $x
+        7
+
+The let command is a built in Bash command which is useful for integer Manipulation.
+If you look at the sidebar you'll probably think: "How is this different from the normal terminal?" well, in a couple ways.
+first, if you define x and then redefine it as itself plus 2 without let, it will echo $x+2 when called.
+however, the let command can even further simplify numerical operations. instead of typing ::
+
+    let x=$x+$x
+    
+You can simply write ::    
+
+    let x=x+x
+    
+and the result will be 14.    
+
+The Declare Command.
+========================
+
+The Declare Command is a useful tool if you want to set the a variable to be equal to an operation, or a series of operations. for instance. if you type::
+
+    n=6/3
+    echo $n
+    6/3
+    
+That's useless. however, if you type ::
+
+    
+    declare -i n
+    n=6/3
+    echo $n
+    
+Then you'll get 2 as the output    

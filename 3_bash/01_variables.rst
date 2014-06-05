@@ -15,56 +15,62 @@ There are several different variable types in bash.
 Declared Variables
 =====================
 
-.. sidebar:: Example Declared Variable
+.. sidebar:: Example Declared Variable ::
   
-  Thisvariable="A string"
+      THISVARIABLE="A string"
+  
+  The value dan be changed by re-declaring it. ::
+      THISVARIABLE="a new string"
 
-Declared Variables are those which are declared within a script. an example of a declared variable is: ::
-
-  Variable="This is a string"
+Declared Variables are those which are declared within a script. 
   
 They are usually declared at the beginning of the shell script.
-then, when they're called, the value they've been given is what is used. the value can be changed at any time by re-declaring it, I.E. ::
-
-  Variable="This is now a different string"
- 
-This can be done anywhere within the script after the original variable is declared.
+then, when they're called, the value they've been given is what is used. the 
+value can be changed at any time by re-declaring it.
+This can be done anywhere within the script after the original variable is 
+declared.
 
 Environment Variables
 ========================
 
-Environment Variables are those which are predeclared and can be called from any program, script, or terminal. here's a table of a few Environment Variables
+Environment Variables are those which are predeclared and can be called from any
+program, script, or terminal. here's a table of a few Environment Variables
 
 +----------------------+--------------------------------------------------------------+
 |Environment Variables | Variable description of use.                                 |
 +======================+==============================================================+
-| Euid                 | The ID number of the current user.                           |
+| $EUID                | The ID number of the current user.                           |
 +----------------------+--------------------------------------------------------------+
-|pwd                   | when called, it returns the current directory                |
+|$PWD                  | when called, it returns the current directory                |
 +----------------------+--------------------------------------------------------------+
-|Echo                  | The echo variable simply prints the following text.          |
-+----------------------+--------------------------------------------------------------+
-|tput setaf 1-7        | A universal color selector.                                  |
-+----------------------+--------------------------------------------------------------+ 
-
-Obviously these are just a few of the many Environment Variables, but just to give you an idea of how it works ::
-
-  $PWD
-  /home/user: Is a directory
-  
-That's what happens when you call the pwd Variable from a freshly opened terminal. However, if you were in the Downloads folder you might get ::
-
-  /home/user/Downloads: Is a directory 
-  
-It all depends on what folder you're in.
-
 
 Exported Variables
 =====================
+.. sidebar:: Example Exported Variable ::
 
-Exported Variables in bash are Variables that were locally defined(see local variables) and then, well, exported. example ::
-
-  export Variable1="This is an exported variable"
-  
-An exported Variable's value is then uniform across a shell and all of it's sub-shells.(more on those later) 
-  
+        export EXPORT="This is an exported variable"
+    
+    Type these commands into the bash terminal: ::
+        
+        export NUMBER=12
+        echo "echo $NUMBER" >> Test-script.sh
+        bash Test-script.sh
+    
+    You should have gotten back 12 as the value. because NUMBER was exported, 
+    the 
+    script called the exported value, 12. now, type ::
+    
+        echo "NUMBER=4" > Test-script.sh
+        echo 'echo $NUMBER' >> test-script.sh
+        bash Test-script.sh
+        
+    You'll notice that NUMBER is now equal to 4. the reason for this is that the 
+    value as defined in the script always supercedes the value as defined by the 
+    export
+        
+Exported Variables are Variables that were defined and then exported. You can 
+call any script which refrences an exported variable after exporting that 
+variable, but the value of the exported variable is cleared when the terminal is
+closed. Note that if a variable is declared in the script which has the same 
+name but a different value then the exported variable, the value from the 
+script, not the exprted value, will be called.

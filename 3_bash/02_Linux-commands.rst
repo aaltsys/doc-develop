@@ -1,6 +1,6 @@
- 
-Package management
-=============================
+#############################
+Package Management
+#############################
 
 apt-get
 -----------------------------
@@ -45,3 +45,5 @@ Date and time
    useful Linux commands.
 
 .. [#] `Bash commands <http://ss64.com/bash/>`_
+
+.. [#] `A list of Windows commands for comparison. <http://ss64.com/nt/>`_
