@@ -1,6 +1,6 @@
-############################# 
+################################# 
 Logic Flow Control Functions
-#############################
+#################################
 
 Wow. Logic Flow Control Functions. That's a big name. looks complicated, right?
 Not terribly.
@@ -54,7 +54,7 @@ In the third, the statement checks for a condition, and if it is true, performs 
 In the fourth, the statement checks for a condition, and if it is true, performs an action. if the first condition is false but the second condition is true, it performs a different action. if none of the conditions are true, it performs a different action.(once again, there could be more than 2 conditions)
 
 For/While/Until Loops in bash.
-=========================
+===================================
 
 This section deals with three types of loops. The while loop. the until loop. and the for loop.
 
