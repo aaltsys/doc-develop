@@ -106,31 +106,41 @@ Modulo is the remainder when a Division is finished, so 13%3 is 1.</p>
 <div class="section" id="simple-mathematical-operations">
 <h2>Simple Mathematical operations<a class="headerlink" href="#simple-mathematical-operations" title="Permalink to this headline">¶</a></h2>
 <p>So, you open the terminal, type 7 + 4, and out comes 11, right? Unfortunately not. Instead you&#8217;ll get &#8220;7: command not found&#8221;
-Bash doesn&#8217;t do math quite like your average programming language like ruby or python or javascript. but it does have alternate methods which you can use.</p>
+Bash doesn&#8217;t do math quite like your average programming language. but it does
+have alternate methods which you can use.</p>
 </div>
 <div class="section" id="in-the-terminal">
 <h2>In the Terminal<a class="headerlink" href="#in-the-terminal" title="Permalink to this headline">¶</a></h2>
-<p>There are several different ways of performing math in a command line. one is to define each variable as a number. for instance:</p>
-<p>Three=3
-Seven=7
-Nine=4</p>
-<p>Then in the terminal type</p>
+<div class="sidebar">
+<p class="first sidebar-title">Bash terminal math</p>
+<dl class="docutils">
+<dt>in a terminal type: ::</dt>
+<dd>THREE=3
+SEVEN=7
+NINE=4</dd>
+</dl>
+<p>Then type</p>
 <div class="highlight-python"><div class="highlight"><pre>echo $(($Three+$Nine+$Seven))
 </pre></div>
 </div>
-<p>This will display the result of 3+4+7. If you should wish to do any other simple math like this simply declare a variable. Also note that bash does not use order of operations, so 2+2*2 will display as 8, not 6.</p>
-<p>If you prefer a simpler method, you can also type:</p>
-<div class="highlight-python"><div class="highlight"><pre>echo $[Three+Seven]
+<p>Alternatively, to do normal math, type</p>
+<div class="last highlight-python"><div class="highlight"><pre>echo $[3+4+5+7*6]
 </pre></div>
 </div>
-<p>Which will return the value of 10</p>
+</div>
+<p>There are different ways of performing math in a bash command line. one is to
+define each variable as a number.
+To do any other simple math like this simply declare a variable.
+Also note that bash does not use order of operations,
+so 2+2*2 will display as 8, not 6.
+If you prefer a simpler method, you can use the aquare brackets.</p>
 </div>
 <div class="section" id="the-let-command">
 <h2>The Let Command<a class="headerlink" href="#the-let-command" title="Permalink to this headline">¶</a></h2>
 <div class="sidebar">
 <p class="first sidebar-title">Example of the Let Command</p>
 <p>An example of the let command</p>
-<div class="last highlight-python"><div class="highlight"><pre>let x=5
+<div class="highlight-python"><div class="highlight"><pre>let x=5
 echo $x
 5
 let x=$x+2
@@ -138,35 +148,37 @@ echo $x
 7
 </pre></div>
 </div>
+<p>If you type</p>
+<div class="highlight-python"><div class="highlight"><pre>x=2
+x=$x+2
+echo $x
+</pre></div>
 </div>
-<p>The let command is a built in Bash command which is useful for integer Manipulation.
-If you look at the sidebar you&#8217;ll probably think: &#8220;How is this different from the normal terminal?&#8221; well, in a couple ways.
-first, if you define x and then redefine it as itself plus 2 without let, it will echo $x+2 when called.
-however, the let command can even further simplify numerical operations. instead of typing</p>
+<p>You&#8217;ll get $x+2
+However, typing</p>
+<div class="highlight-python"><div class="highlight"><pre>x=2
+let x=$x+2
+echo $x
+</pre></div>
+</div>
+<p>Will return 4
+But wait, there&#8217;s more! The let command can even further simplify numerical operations. rather than typing:</p>
 <div class="highlight-python"><div class="highlight"><pre>let x=$x+$x
 </pre></div>
 </div>
 <p>You can simply write</p>
-<div class="highlight-python"><div class="highlight"><pre>let x=x+x
+<div class="last highlight-python"><div class="highlight"><pre>let x=x+x
 </pre></div>
 </div>
+</div>
 <p>and the result will be 14.</p>
+<p>The let command is a built in Bash command which is useful for integer Manipulation.
+At the sidebar are some examples of the let command. The let command can be used to simplify operations invovling integers.</p>
 </div>
 <div class="section" id="the-declare-command">
 <h2>The Declare Command.<a class="headerlink" href="#the-declare-command" title="Permalink to this headline">¶</a></h2>
-<p>The Declare Command is a useful tool if you want to set the a variable to be equal to an operation, or a series of operations. for instance. if you type:</p>
-<div class="highlight-python"><div class="highlight"><pre>n=6/3
-echo $n
-6/3
-</pre></div>
-</div>
-<p>That&#8217;s useless. however, if you type</p>
-<div class="highlight-python"><div class="highlight"><pre>declare -i n
-n=6/3
-echo $n
-</pre></div>
-</div>
-<p>Then you&#8217;ll get 2 as the output</p>
+<p>The Declare Command is a useful tool if you want to set a variable to be equal to an operation or series of operations.
+In the example, declare -i is used to set n to the value of 6/3, but it could also be used to set n to the value of 6/3*8%9</p>
 </div>
 </div>
 

@@ -1,6 +1,4 @@
-#############################
-Logic Statements in bash
-#############################
+
 
 A not equal to if/then statement
 =================================

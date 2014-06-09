@@ -21,7 +21,7 @@ Part 1: Configure Filesystems
 
 This section configures the desktop to use remote filesystems by installing and 
 loading the kernel module **fuse**, which is not included by default. Save the 
-bash script :download:`fuse.sh <_downloads/fuse.sh>` to your home folder, 
+bash script :download:`fuse.sh <./_downloads/fuse.sh>` to your home folder, 
 open a console session, and execute the script with the command:: 
 
    sudo bash fuse.sh
