@@ -177,6 +177,21 @@ At the sidebar are some examples of the let command. The let command can be used
 </div>
 <div class="section" id="the-declare-command">
 <h2>The Declare Command.<a class="headerlink" href="#the-declare-command" title="Permalink to this headline">¶</a></h2>
+<div class="sidebar">
+<p class="first sidebar-title">Examples of The Declare Command</p>
+<p>In the terminal, type:</p>
+<div class="highlight-python"><div class="highlight"><pre>n=6/3
+echo $n
+</pre></div>
+</div>
+<p>Useless, right? now type:</p>
+<div class="highlight-python"><div class="highlight"><pre>declare -i n
+n=6/3
+echo $n
+</pre></div>
+</div>
+<p class="last">The declare paired with -i tells the terminal you want n to be equal to an integer.</p>
+</div>
 <p>The Declare Command is a useful tool if you want to set a variable to be equal to an operation or series of operations.
 In the example, declare -i is used to set n to the value of 6/3, but it could also be used to set n to the value of 6/3*8%9</p>
 </div>

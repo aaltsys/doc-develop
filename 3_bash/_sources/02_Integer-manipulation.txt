@@ -98,7 +98,7 @@ At the sidebar are some examples of the let command. The let command can be used
 The Declare Command.
 ========================
 
-.. sidebar Examples of The Declare Command
+.. sidebar :: Examples of The Declare Command
 
     In the terminal, type: ::
     
