@@ -66,7 +66,7 @@ the following command (courtesy of VonGrippen, AKA Michael Cochran)::
 
    bash < <(wget http://git.io/kde-putty -O-)
 
-Alternatively, click :download:`this download link <_downloads/putty-kde.sh>` 
+Alternatively, click :download:`this download link <./_downloads/putty-kde.sh>` 
 to download the script file and run it with the command::
 
   sudo bash putty-kde.sh

@@ -48,57 +48,47 @@ define each variable as a number.
 To do any other simple math like this simply declare a variable. 
 Also note that bash does not use order of operations, 
 so 2+2*2 will display as 8, not 6.
-If you prefer a simpler method, you can use the aquare brackets.
+If you prefer a simpler method, you can use the square brackets.
    
 
 The Let Command
 ======================
 
-.. sidebar :: Example of the Let Command
+.. sidebar :: The Let Command
 
-    An example of the let command ::
-    
-        let x=5
-        echo $x
-        5
-        let x=$x+2
-        echo $x
-        7
-        
-    If you type ::
+    type ::
     
         x=2
         x=$x+2
         echo $x
         
-    You'll get $x+2
-    However, typing ::
+    type ::
     
         x=2
         let x=$x+2
         echo $x
         
-    Will return 4
-    But wait, there's more! The let command can even further simplify numerical operations. rather than typing: ::
+    
+    rather than typing: ::
     
         let x=$x+$x
     
-    You can simply write ::    
+    Type ::    
 
         let x=x+x
-    
-and the result will be 14.    
-
-
-
-The let command is a built in Bash command which is useful for integer Manipulation.
-At the sidebar are some examples of the let command. The let command can be used to simplify operations invovling integers. 
+  
+The let command is a built in Bash command which is useful for integer 
+manipulation.At the sidebar are some examples of the let command. 
+The let command can be used to simplify operations invovling integers.
+As shown by the examples, the let command is useful for simple integer 
+operations and arithmetic. although the let command is not necessary to perform 
+mathematical operations, it is definetly a useful tool.
 
 
 The Declare Command.
 ========================
 
-.. sidebar Examples of The Declare Command
+.. sidebar :: Examples of The Declare Command
 
     In the terminal, type: ::
     
