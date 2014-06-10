@@ -121,7 +121,7 @@ letters for characters</p>
 </tr>
 </tbody>
 </table>
-<p>q
+<p>-eq
 is equal to</p>
 <p>if [ &#8220;$a&#8221; -eq &#8220;$b&#8221; ]</p>
 <p>-ne
@@ -161,6 +161,22 @@ Note the whitespace framing the =.</p>
 <p>==
 is equal to</p>
 <p>if [ &#8220;$a&#8221; == &#8220;$b&#8221; ]</p>
+<p>!=
+is not equal to</p>
+<p>if [ &#8220;$a&#8221; != &#8220;$b&#8221; ]</p>
+<p>&lt;
+is less than, in ASCII alphabetical order</p>
+<p>if [[ &#8220;$a&#8221; &lt; &#8220;$b&#8221; ]]</p>
+<p>if [ &#8220;$a&#8221; &lt; &#8220;$b&#8221; ]</p>
+<p>&gt;
+is greater than, in ASCII alphabetical order</p>
+<p>if [[ &#8220;$a&#8221; &gt; &#8220;$b&#8221; ]]</p>
+<p>if [ &#8220;$a&#8221; &gt; &#8220;$b&#8221; ]</p>
+<p>Note that the &#8220;&gt;&#8221; needs to be escaped within a [ ] construct.</p>
+<p>-z
+string is null, that is, has zero length</p>
+<p>-n
+string is not null.</p>
 </div>
 
 

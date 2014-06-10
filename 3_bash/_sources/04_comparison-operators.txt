@@ -29,7 +29,7 @@ letters for characters
 |>=              |is greater than or equal to within (())|
 +----------------+---------------------------------------+
 
-q
+-eq
 is equal to
 
 if [ "$a" -eq "$b" ]
@@ -96,3 +96,30 @@ if [ "$a"="$b" ] is not equivalent to the above.
 is equal to
 
 if [ "$a" == "$b" ]
+
+!=
+is not equal to
+
+if [ "$a" != "$b" ]
+
+<
+is less than, in ASCII alphabetical order
+
+if [[ "$a" < "$b" ]]
+
+if [ "$a" \< "$b" ]
+
+>
+is greater than, in ASCII alphabetical order
+
+if [[ "$a" > "$b" ]]
+
+if [ "$a" \> "$b" ]
+
+Note that the ">" needs to be escaped within a [ ] construct.
+
+-z
+string is null, that is, has zero length
+
+-n
+string is not null.
