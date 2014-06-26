@@ -6,7 +6,7 @@ Linux Commands and Utilities
 
 
 Bash is a command interpreter which is universally available on Linux and Unix.
-(For information about commands, visit section :ref:`commands<http://develop.aaltsys.info/2_linux/index.html#index>`.) Bash stands for
+(For information about commands, visit section `commands <http://develop.aaltsys.info/2_linux/index.html#index>`_ Bash stands for
 Bourne Again Shell, a revision of the original Bourne Shell.
 it is the language of the linux terminal. 
 Bash is a  shell programming language. It has many  similarities to other 

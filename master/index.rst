@@ -11,9 +11,9 @@ on the other hand, doesn't know what his tools are or where to get them.
 That's why this guide is here.
 
 AAltsys Technology offers this guide to those who think that becoming a developer
-is Too much work or Too confusing. With this guide, development can be less work 
-and more confusing. or was it more work and less confuisng? don't misinterpret, 
-this isn't a "Become a developer in 3 easy steps" tutorial. But with A little 
+is too much work or too confusing. With this guide, development can be less work 
+and more confusing. or was it more work and less confusing? don't misinterpret, 
+this isn't a "Become a developer in 3 easy steps" tutorial. But with a little 
 effort and a lot of patience, You can learn development.
 
 #. :ref:`cloud:index`.
