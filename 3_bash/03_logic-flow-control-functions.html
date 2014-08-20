@@ -102,25 +102,25 @@ fi</pre>
 </div>
 <p>Form 2:</p>
 <div class="highlight-python"><pre>if *condition* ; then
-    *commands*
+   *commands*
 else
-    *commands*
+   *commands*
 fi</pre>
 </div>
 <p>Form 3:</p>
 <div class="highlight-python"><pre>if *condition* ; then
-    *commands*
+   *commands*
 elif *condition* ; then
-      *commands*
+   *commands*
 fi</pre>
 </div>
 <p>Form 4:</p>
 <div class="highlight-python"><pre>if *condition* ; then
-    *commands*
+   *commands*
 elif *condition* ; then
-      *commands*
+     *commands*
 else
-    *commands*
+   *commands*
 fi</pre>
 </div>
 <p>Each if else statement has a specific purpose.</p>
@@ -148,58 +148,60 @@ and the for loop.</p>
 <div class="sidebar">
 <p class="first sidebar-title">Avoiding Infinite Loops.</p>
 <p>Try to avoid Infininte loops whenever possible. An example of an Infininte
-Loop is</p>
+Loop is:</p>
 <div class="highlight-python"><pre>number=0
 while [ $number -lt 10 ]; do
-    echo "Number = $number"
-    number=$((number - 1))
+   echo "Number = $number"
+   number=$((number - 1))
 done</pre>
 </div>
-<p class="last">You&#8217;ll notice that Even though it has a condition, it sends it down, not up, meaning it will endlessly spiral downwards away from 10.</p>
+<p class="last">You&#8217;ll notice that Even though it has a condition, it sends it down, not up,
+meaning it will endlessly spiral downwards away from 10.</p>
 </div>
 <p>The while loop is used to perform an action for as long as a condition is met.
-for example</p>
+for example:</p>
 <div class="highlight-python"><pre>number=0
-while [ $number -lt 10 ]; do
-    echo "Number = $number"
-    number=$((number + 1))
+while [ $number -lt 10 ]
+do
+   echo "Number = $number"
+   number=$((number + 1))
 done</pre>
 </div>
 <p>In this example, a number is set to 0, and for as long as the number is less
-than 10(the -lt is less than), the value of the number is printed, and 1 is
-added to the number. as soon as the number reaches 10, the code stops performing</p>
+than 10 (the -lt is less than), the value of the number is printed, and 1 is
+added to the number until the number reaches 10, when the loop exits.</p>
 </div>
 <div class="section" id="the-until-loop">
 <h3>The Until Loop<a class="headerlink" href="#the-until-loop" title="Permalink to this headline">¶</a></h3>
 <p>The Until Loop is a lot like the while loop, except contrary to the while loop,
-instead of carrying out a piece of code while a condition is true,
-it carries out a piece of code while a condition is false.
-Here&#8217;s an example of an Until Loop</p>
+instead of carrying out a piece of code while a condition is true, it carries
+out a piece of code while a condition is false. Here&#8217;s an example of an Until
+loop:</p>
 <div class="highlight-python"><pre>number=0
 until [ $number -ge 10 ]; do
-    echo "Number = $number"
-    number=$((number + 1))
+   echo "Number = $number"
+   number=$((number + 1))
 done</pre>
 </div>
 <p>In this example, you&#8217;ll notice that until the number is greater than or equal to
-10(-ge is greater than or equal to), it echoes the number&#8217;s value and adds 1.</p>
+10 (-ge is greater than or equal to), it echoes the number&#8217;s value and adds 1.</p>
 </div>
 <div class="section" id="the-for-loop">
 <h3>The For Loop<a class="headerlink" href="#the-for-loop" title="Permalink to this headline">¶</a></h3>
 <p>The for loop is designed to increment by one each time and perform a function.</p>
 <div class="sidebar">
 <p class="first sidebar-title">Example of a For Loop</p>
-<dl class="last docutils">
-<dt>example of for loop: ::</dt>
-<dd><p class="first">for((i=0;i&lt;${#TEST};i++))
-do</p>
-<blockquote>
-<div>let ADD=$ADD+${MUL[i]}</div></blockquote>
-<p class="last">done</p>
-</dd>
-</dl>
+<p>example for loop:</p>
+<div class="last highlight-python"><pre>for ((i=0;i&lt;${#TEST};i++))
+do
+   let ADD=$ADD+${MUL[i]}
+done</pre>
 </div>
-<p>In the sidebar there&#8217;s an example of a for loop which was used in a script for calculating modulo. As you can see, a for loop uses an iterator(i) and changes it&#8217;s value a little bit every time the loop repeats until the value meets the condition which has to be satisfied for the program to continue.</p>
+</div>
+<p>In the sidebar there&#8217;s an example of a for loop which was used in a script for
+calculating modulo. As you can see, a for loop uses an iterator(i) and changes
+it&#8217;s value a little bit every time the loop repeats until the value meets the
+condition which has to be satisfied for the program to continue.</p>
 </div>
 </div>
 </div>
