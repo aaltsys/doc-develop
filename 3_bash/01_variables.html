@@ -145,18 +145,16 @@ program, script, or terminal. here&#8217;s a table of a few Environment Variable
 <blockquote>
 <div>export EXPORT=&#8221;This is an exported variable&#8221;</div></blockquote>
 <p>Type these commands into the bash terminal:</p>
-<div class="highlight-python"><div class="highlight"><pre>export NUMBER=12
-echo &quot;echo $NUMBER&quot; &gt;&gt; Test-script.sh
-bash Test-script.sh
-</pre></div>
+<div class="highlight-python"><pre>export NUMBER=12
+echo "echo $NUMBER" &gt;&gt; Test-script.sh
+bash Test-script.sh</pre>
 </div>
 <p>You should have gotten back 12 as the value. because NUMBER was exported,
 the
 script called the exported value, 12. now, type</p>
-<div class="highlight-python"><div class="highlight"><pre>echo &quot;NUMBER=4&quot; &gt; Test-script.sh
-echo &#39;echo $NUMBER&#39; &gt;&gt; test-script.sh
-bash Test-script.sh
-</pre></div>
+<div class="highlight-python"><pre>echo "NUMBER=4" &gt; Test-script.sh
+echo 'echo $NUMBER' &gt;&gt; test-script.sh
+bash Test-script.sh</pre>
 </div>
 <p class="last">You&#8217;ll notice that NUMBER is now equal to 4. the reason for this is that the
 value as defined in the script always supercedes the value as defined by the
@@ -191,7 +189,7 @@ script, not the exprted value, will be called.</p>
     </div>
     <div class="footer">
         &copy; Copyright 2013, Gerald Lovel.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
     </div>
   </body>
 </html>

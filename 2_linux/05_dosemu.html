@@ -97,10 +97,9 @@
 <h2>Installing DOS emulation<a class="headerlink" href="#installing-dos-emulation" title="Permalink to this headline">¶</a></h2>
 <p>Install dosemu at a console, <em class="menuselection">Accessories ‣ Terminal</em>, with
 the commands:</p>
-<div class="highlight-python"><div class="highlight"><pre>sudo aptitude install dosemu xauth
+<div class="highlight-python"><pre>sudo aptitude install dosemu xauth
 sudo sysctl -w vm.mmap_min_addr=0
-sudo bash &lt; &lt;(echo &#39;echo &quot;vm.mmap_min_addr=0&quot; &gt;&gt; /etc/sysctl.conf&#39;)
-</pre></div>
+sudo bash &lt; &lt;(echo 'echo "vm.mmap_min_addr=0" &gt;&gt; /etc/sysctl.conf')</pre>
 </div>
 <p>The DOS system can be started from
 <em class="menuselection">Applications ‣ System Tools ‣ DOS emulator</em>.</p>
@@ -116,12 +115,10 @@ Ubuntu (8.04, for example) omit this package.</p>
 configuration file <strong class="command">sudoedit /etc/dosemu/dosemu.conf</strong> or user file
 <strong class="command">nano ~/.dosemurc</strong>.</p>
 <p>Emulate the DOS 640X480 EGA/VGA display with the command:</p>
-<div class="highlight-python"><div class="highlight"><pre>echo &#39;$_X_font = vga12x30&#39; &gt;&gt; ~/.dosemurc
-</pre></div>
+<div class="highlight-python"><pre>echo '$_X_font = vga12x30' &gt;&gt; ~/.dosemurc</pre>
 </div>
 <p>The following command would change this setting globally for all users:</p>
-<div class="highlight-python"><div class="highlight"><pre>sudo sed -ie &quot;/$_X_font/c\$_X_font = vga12x30&quot; /etc/dosemu/dosemu.conf
-</pre></div>
+<div class="highlight-python"><pre>sudo sed -ie "/$_X_font/c\$_X_font = vga12x30" /etc/dosemu/dosemu.conf</pre>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -129,8 +126,7 @@ configuration file <strong class="command">sudoedit /etc/dosemu/dosemu.conf</str
 <tt class="docutils literal"><span class="pre">vga,</span> <span class="pre">vga8x19,</span> <span class="pre">vga11x19,</span> <span class="pre">vga10x24,</span> <span class="pre">vga12x30,</span> <span class="pre">vga-cp866,</span> <span class="pre">and</span> <span class="pre">vga10x20-cp866</span></tt>.</p>
 </div>
 <p>To make dosemu run faster for the current user, add a command:</p>
-<div class="highlight-python"><div class="highlight"><pre>echo &#39;$_hogthreshold = (xx)&#39; &gt;&gt; ~/.dosemurc
-</pre></div>
+<div class="highlight-python"><pre>echo '$_hogthreshold = (xx)' &gt;&gt; ~/.dosemurc</pre>
 </div>
 <p>where <strong>xx</strong> is the percentage of CPU time to devote to dosemu, which defaults
 to 1 percent.</p>
@@ -166,9 +162,8 @@ shell script may perform the complete task. For example, suppose program
 executed by a user not in group <cite>__USERS__</cite>. Issuing a <strong class="command">chmod</strong>
 command after executing WARES would fix permissions. A script <tt class="file docutils literal"><span class="pre">wares.sh</span></tt>
 for this purpose could be created with command <strong class="command">nano ~/wares.sh</strong>:</p>
-<div class="highlight-python"><div class="highlight"><pre>dosemu C:\WARES.BAT
-sudo chmod -R 777 /home/samba/shares/wares/*
-</pre></div>
+<div class="highlight-python"><pre>dosemu C:\WARES.BAT
+sudo chmod -R 777 /home/samba/shares/wares/*</pre>
 </div>
 <p>Make the shell script executable with command <strong class="command">chmod +x ~/wares.sh</strong>.
 Finally, run the DOS session by typing <strong class="command">~/wares.sh</strong> at the console.</p>
@@ -178,19 +173,17 @@ Finally, run the DOS session by typing <strong class="command">~/wares.sh</stron
 <h2>Accessing Linux file shares<a class="headerlink" href="#accessing-linux-file-shares" title="Permalink to this headline">¶</a></h2>
 <p>The dosemu command <strong class="command">LREDIR</strong> will mount a Linux directory to a DOS
 drive letter; for example:</p>
-<div class="highlight-python"><div class="highlight"><pre>LREDIR W: LINUX\FS/home/samba/shares/wares
-LREDIR S: LINUX\FS/home/samba/shares/public
-</pre></div>
+<div class="highlight-python"><pre>LREDIR W: LINUX\FS/home/samba/shares/wares
+LREDIR S: LINUX\FS/home/samba/shares/public</pre>
 </div>
 <p>A DOS batch file within dosemu can incorporate mount commands and DOS program
 execution, as illustrated previously with <cite>C:\WARES.BAT</cite>. To create this batch
 file, start <strong class="command">dosemu</strong> and enter the file with the command
 <strong class="command">EDIT WARES.BAT</strong>:</p>
-<div class="highlight-python"><div class="highlight"><pre>LREDIR W: LINUX\FS/home/samba/shares/wares
+<div class="highlight-python"><pre>LREDIR W: LINUX\FS/home/samba/shares/wares
 LREDIR S: LINUX\FS/home/samba/shares/public
 W:
-WARES.BAT WARES
-</pre></div>
+WARES.BAT WARES</pre>
 </div>
 <p>Save the batch file and exit the editor with <tt class="kbd docutils literal"><span class="pre">&lt;Alt-F&gt;,S;&lt;Alt-F&gt;,X</span></tt>. Then
 type the name of the batch file to execute it.</p>
@@ -217,7 +210,7 @@ type the name of the batch file to execute it.</p>
     </div>
     <div class="footer">
         &copy; Copyright 2013, Julia Lovel.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
     </div>
   </body>
 </html>

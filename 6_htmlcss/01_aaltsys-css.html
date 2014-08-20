@@ -89,42 +89,37 @@ This page documents these CSS rule changes with corresponding notes.</p>
 <ol class="arabic">
 <li><p class="first">Eliminate the 80-pixel side borders on the Sphinx pages, using a 5px border
 around the entire page including at the top:</p>
-<div class="highlight-python"><div class="highlight"><pre>body {
+<div class="highlight-python"><pre>body {
     margin: 5px 5px 5px 5px;
-}
-</pre></div>
+}</pre>
 </div>
 </li>
 <li><p class="first">Change tables from collapsed borders to separate, with .25em spacing:</p>
-<div class="highlight-python"><div class="highlight"><pre>table, table.docutils {
+<div class="highlight-python"><pre>table, table.docutils {
   margin: 0.5em -0.5em 0.5em -0.5em;
   border-collapse: separate;
   border-spacing: 0.25em;
-}
-</pre></div>
+}</pre>
 </div>
 </li>
 <li><p class="first">Change table head and detail to display margins even with paragraphs in
 bulleted lists:</p>
-<div class="highlight-python"><div class="highlight"><pre>table th, table td, table.docutils th, table.docutils td {
+<div class="highlight-python"><pre>table th, table td, table.docutils th, table.docutils td {
   padding: 0 0.25em 0 0.25em;
-}
-</pre></div>
+}</pre>
 </div>
 </li>
 <li><p class="first">Fix margins for headings and detail in tables in numbered lists:</p>
-<div class="highlight-python"><div class="highlight"><pre>th p, td p, th p.first.last, td p.first.last {
+<div class="highlight-python"><pre>th p, td p, th p.first.last, td p.first.last {
   margin: 0 0 0 0;
-}
-</pre></div>
+}</pre>
 </div>
 </li>
 <li><p class="first">Change tables in admonitions and warnings to display margins even with
 paragraphs:</p>
-<div class="highlight-python"><div class="highlight"><pre>.admonition table, .warning table, {
+<div class="highlight-python"><pre>.admonition table, .warning table, {
   margin: 0 0.5em 0.5em 0.5em;
-}
-</pre></div>
+}</pre>
 </div>
 </li>
 </ol>
@@ -311,7 +306,7 @@ encloses table text which should align with the note paragraph.</p>
     </div>
     <div class="footer">
         &copy; Copyright 2013, Julia Lovel.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
     </div>
   </body>
 </html>

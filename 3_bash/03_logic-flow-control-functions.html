@@ -96,36 +96,32 @@ Not terribly.</p>
 <h2>If Else Statements<a class="headerlink" href="#if-else-statements" title="Permalink to this headline">¶</a></h2>
 <p>IF Else statements take on 1 of 4 forms.</p>
 <p>Form 1:</p>
-<div class="highlight-python"><div class="highlight"><pre>if *condition* ; then
+<div class="highlight-python"><pre>if *condition* ; then
    *commands*
-fi
-</pre></div>
+fi</pre>
 </div>
 <p>Form 2:</p>
-<div class="highlight-python"><div class="highlight"><pre>if *condition* ; then
+<div class="highlight-python"><pre>if *condition* ; then
     *commands*
 else
     *commands*
-fi
-</pre></div>
+fi</pre>
 </div>
 <p>Form 3:</p>
-<div class="highlight-python"><div class="highlight"><pre>if *condition* ; then
+<div class="highlight-python"><pre>if *condition* ; then
     *commands*
 elif *condition* ; then
       *commands*
-fi
-</pre></div>
+fi</pre>
 </div>
 <p>Form 4:</p>
-<div class="highlight-python"><div class="highlight"><pre>if *condition* ; then
+<div class="highlight-python"><pre>if *condition* ; then
     *commands*
 elif *condition* ; then
       *commands*
 else
     *commands*
-fi
-</pre></div>
+fi</pre>
 </div>
 <p>Each if else statement has a specific purpose.</p>
 <p>In the first one, the statement checks for a condition, and if the condition is
@@ -153,23 +149,21 @@ and the for loop.</p>
 <p class="first sidebar-title">Avoiding Infinite Loops.</p>
 <p>Try to avoid Infininte loops whenever possible. An example of an Infininte
 Loop is</p>
-<div class="highlight-python"><div class="highlight"><pre>number=0
+<div class="highlight-python"><pre>number=0
 while [ $number -lt 10 ]; do
-    echo &quot;Number = $number&quot;
+    echo "Number = $number"
     number=$((number - 1))
-done
-</pre></div>
+done</pre>
 </div>
 <p class="last">You&#8217;ll notice that Even though it has a condition, it sends it down, not up, meaning it will endlessly spiral downwards away from 10.</p>
 </div>
 <p>The while loop is used to perform an action for as long as a condition is met.
 for example</p>
-<div class="highlight-python"><div class="highlight"><pre>number=0
+<div class="highlight-python"><pre>number=0
 while [ $number -lt 10 ]; do
-    echo &quot;Number = $number&quot;
+    echo "Number = $number"
     number=$((number + 1))
-done
-</pre></div>
+done</pre>
 </div>
 <p>In this example, a number is set to 0, and for as long as the number is less
 than 10(the -lt is less than), the value of the number is printed, and 1 is
@@ -181,12 +175,11 @@ added to the number. as soon as the number reaches 10, the code stops performing
 instead of carrying out a piece of code while a condition is true,
 it carries out a piece of code while a condition is false.
 Here&#8217;s an example of an Until Loop</p>
-<div class="highlight-python"><div class="highlight"><pre>number=0
+<div class="highlight-python"><pre>number=0
 until [ $number -ge 10 ]; do
-    echo &quot;Number = $number&quot;
+    echo "Number = $number"
     number=$((number + 1))
-done
-</pre></div>
+done</pre>
 </div>
 <p>In this example, you&#8217;ll notice that until the number is greater than or equal to
 10(-ge is greater than or equal to), it echoes the number&#8217;s value and adds 1.</p>
@@ -231,7 +224,7 @@ do</p>
     </div>
     <div class="footer">
         &copy; Copyright 2013, Gerald Lovel.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
     </div>
   </body>
 </html>

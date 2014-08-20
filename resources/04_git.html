@@ -147,22 +147,19 @@ detailed explanation of Git packages, versions, and system requirements.</p>
 <p>Git stores global settings for each user in home directory file
 <tt class="file docutils literal"><span class="pre">~/.gitconfig</span></tt>. <strong class="command">Git config</strong> console commands change settings in
 this file. The following global configuration settings are recommended:</p>
-<div class="highlight-python"><div class="highlight"><pre>git config --global user.name &quot;{firstname lastname}&quot;
-git config --global user.email &quot;{email@domain}&quot;
+<div class="highlight-python"><pre>git config --global user.name "{firstname lastname}"
+git config --global user.email "{email@domain}"
 git config --global branch.master.remote origin
 git config --global branch.master.merge refs/heads/master
-git config --global --add color.ui true
-</pre></div>
+git config --global --add color.ui true</pre>
 </div>
 <p>For git 2.0, push.default changes from matching to simple. If this is a problem,
 add the following configuration command:</p>
-<div class="highlight-python"><div class="highlight"><pre>git config --global push.default matching
-</pre></div>
+<div class="highlight-python"><pre>git config --global push.default matching</pre>
 </div>
 <p>The following configuration is necessary when encased in the Microsoft Windows
 coccoon:</p>
-<div class="highlight-python"><div class="highlight"><pre>git config --global core.autocrlf true
-</pre></div>
+<div class="highlight-python"><pre>git config --global core.autocrlf true</pre>
 </div>
 <p>If the <strong class="command">&#8211;global</strong> option is omitted, then settings will apply to
 whichever project repository is open at the time. Most git information specific
@@ -216,23 +213,19 @@ folder in one of two ways:</p>
 <ol class="arabic">
 <li><p class="first">A git server or hosting service, such as Github, will generate a project
 resource URL. The project can be cloned to a local client with the command:</p>
-<div class="highlight-python"><div class="highlight"><pre>git clone {project_resource_URL} {folder_path}
-</pre></div>
+<div class="highlight-python"><pre>git clone {project_resource_URL} {folder_path}</pre>
 </div>
 <p>for example, clone this project from github into folder <tt class="file docutils literal"><span class="pre">doc-develop</span></tt>
 with the command:</p>
-<div class="highlight-python"><div class="highlight"><pre>git clone git@github.com:aaltsys/doc-develop.git ~/Projects/doc-develop
-</pre></div>
+<div class="highlight-python"><pre>git clone git@github.com:aaltsys/doc-develop.git ~/Projects/doc-develop</pre>
 </div>
 </li>
 <li><p class="first">A project is started on a local client and later pushed to a remote server.
 In this case, the local project is initialized with the command:</p>
-<div class="highlight-python"><div class="highlight"><pre>git init {folder_path}
-</pre></div>
+<div class="highlight-python"><pre>git init {folder_path}</pre>
 </div>
 <p>for example,</p>
-<div class="highlight-python"><div class="highlight"><pre>git init ~/Projects/doc-develop
-</pre></div>
+<div class="highlight-python"><pre>git init ~/Projects/doc-develop</pre>
 </div>
 </li>
 </ol>
@@ -245,7 +238,7 @@ should track user-created text content and not system files. Using <tt class="do
 <tt class="docutils literal"><span class="pre">kate</span></tt>, create a <tt class="file docutils literal"><span class="pre">.gitignore</span></tt> file to identify untracked files to git.
 <a class="footnote-reference" href="#id6" id="id3">[2]</a> Here are suggested entries for <tt class="file docutils literal"><span class="pre">.gitignore</span></tt> with a documentation
 project using the Linux Kate editor:</p>
-<div class="highlight-python"><div class="highlight"><pre># ignore editor backup files
+<div class="highlight-python"><pre># ignore editor backup files
 *~
 */*~
 # ignore make compilation
@@ -256,8 +249,7 @@ project using the Linux Kate editor:</p>
 */*deploy/*
 # keep hidden placeholder files which preserve directories
 !.gitkeep
-!*/.gitkeep
-</pre></div>
+!*/.gitkeep</pre>
 </div>
 <p>When creating a repository, most hosting services will include a
 <tt class="file docutils literal"><span class="pre">.gitignore</span></tt> file appropriate to the specified repository type.</p>
@@ -335,14 +327,12 @@ hosting site to add the missing key.</p>
 <div class="section" id="git-in-daily-workflow">
 <h3>Git in daily workflow<a class="headerlink" href="#git-in-daily-workflow" title="Permalink to this headline">¶</a></h3>
 <p>Start your day&#8217;s work with:</p>
-<div class="highlight-python"><div class="highlight"><pre>git pull
-</pre></div>
+<div class="highlight-python"><pre>git pull</pre>
 </div>
 <p>Add your local changes and view the results with the command sequence:</p>
-<div class="highlight-python"><div class="highlight"><pre>git add .
+<div class="highlight-python"><pre>git add .
 git status
-git commit -m &quot;{a brief description of the changes for this commit}&quot;
-</pre></div>
+git commit -m "{a brief description of the changes for this commit}"</pre>
 </div>
 <div class="admonition hint">
 <p class="first admonition-title">Hint</p>
@@ -350,13 +340,11 @@ git commit -m &quot;{a brief description of the changes for this commit}&quot;
 changes to documents in the editor before using git commands.</p>
 </div>
 <p>Rename files or delete them with git-specific commands:</p>
-<div class="highlight-python"><div class="highlight"><pre>git mv {old_filename} {new_filename}
-git rm {-rf} {path/filename}
-</pre></div>
+<div class="highlight-python"><pre>git mv {old_filename} {new_filename}
+git rm {-rf} {path/filename}</pre>
 </div>
 <p>Update the remote master repository with the command:</p>
-<div class="highlight-python"><div class="highlight"><pre>git push
-</pre></div>
+<div class="highlight-python"><pre>git push</pre>
 </div>
 <hr class="docutils" />
 <p class="rubric">Footnotes</p>
@@ -416,7 +404,7 @@ repository on GitHub: <a class="reference external" href="https://github.com/pro
     </div>
     <div class="footer">
         &copy; Copyright 2013, Gerald Lovel.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
     </div>
   </body>
 </html>

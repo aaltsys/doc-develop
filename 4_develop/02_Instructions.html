@@ -126,16 +126,14 @@ the web browser, console, and editor before starting.</p>
 <div class="section" id="create-a-project-folder">
 <h3>Create a Project Folder<a class="headerlink" href="#create-a-project-folder" title="Permalink to this headline">¶</a></h3>
 <p>To create a projects folder, at a terminal prompt type the following commands:</p>
-<div class="highlight-python"><div class="highlight"><pre>mkdir -p ~/Projects
-cd ~/Projects
-</pre></div>
+<div class="highlight-python"><pre>mkdir -p ~/Projects
+cd ~/Projects</pre>
 </div>
 </div>
 <div class="section" id="generate-missing-ssh-keys">
 <h3>Generate Missing SSH Keys<a class="headerlink" href="#generate-missing-ssh-keys" title="Permalink to this headline">¶</a></h3>
 <p>Type the following command to generate <strong>ssh keys</strong> for a user, if missing:</p>
-<div class="highlight-python"><div class="highlight"><pre>if [ ! -f ~/.ssh/id_rsa ]; then ssh-keygen -N &#39;&#39; -f ~/.ssh/id_rsa; fi
-</pre></div>
+<div class="highlight-python"><pre>if [ ! -f ~/.ssh/id_rsa ]; then ssh-keygen -N '' -f ~/.ssh/id_rsa; fi</pre>
 </div>
 </div>
 <div class="section" id="copy-ssh-key-to-clipboard">
@@ -196,8 +194,7 @@ cd ~/Projects
 <h3>Verify ssh with login<a class="headerlink" href="#verify-ssh-with-login" title="Permalink to this headline">¶</a></h3>
 <ul>
 <li><p class="first">Back to the console, enter command:</p>
-<div class="highlight-python"><div class="highlight"><pre>ssh -T git@github.com
-</pre></div>
+<div class="highlight-python"><pre>ssh -T git@github.com</pre>
 </div>
 </li>
 <li><p class="first">At the &#8220;Are you sure ... (yes/no)?&#8221; question, type <tt class="kbd docutils literal"><span class="pre">yes</span></tt>, press <tt class="kbd docutils literal"><span class="pre">&lt;Enter&gt;</span></tt>.</p>
@@ -235,8 +232,7 @@ then switch to view your copy.</p>
 <p>Once you own a repository on GitHub, you will want to clone it. The GitHub
 repository is remote, and cloning makes a local copy which you can edit.
 Here is the console command:</p>
-<div class="highlight-python"><div class="highlight"><pre>git clone (link_to_your_project) ~/Projects/sample-collaborate
-</pre></div>
+<div class="highlight-python"><pre>git clone (link_to_your_project) ~/Projects/sample-collaborate</pre>
 </div>
 <p>There are two parameters to the <strong class="command">git clone</strong> command. First is your
 project name, which is the text following &#8220;Git Read-Only&#8221; in the image below.
@@ -313,17 +309,15 @@ document.</li>
 <div class="section" id="commit-changes">
 <h3>Commit Changes<a class="headerlink" href="#commit-changes" title="Permalink to this headline">¶</a></h3>
 <p>At the command line, enter the following statements:</p>
-<div class="highlight-python"><div class="highlight"><pre>git add .
+<div class="highlight-python"><pre>git add .
 git status
-git commit -m &quot;Added my name to readme&quot;
-</pre></div>
+git commit -m "Added my name to readme"</pre>
 </div>
 </div>
 <div class="section" id="push-to-github">
 <h3>Push to GitHub<a class="headerlink" href="#push-to-github" title="Permalink to this headline">¶</a></h3>
 <p>Push your local repository changes to your remote repository on GitHub:</p>
-<div class="highlight-python"><div class="highlight"><pre>git push
-</pre></div>
+<div class="highlight-python"><pre>git push</pre>
 </div>
 </div>
 </div>
@@ -370,7 +364,7 @@ the request, as shown in the image below:</p>
     </div>
     <div class="footer">
         &copy; Copyright 2013, Gerald Lovel.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
     </div>
   </body>
 </html>

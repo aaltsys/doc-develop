@@ -13,7 +13,6 @@ REMOTE_DEPLOY=""
 MASTER="master"
 DEPLOY="deploy"
 FILE_SPHINX="index.rst"
-# DIR_DOC="doc"
 DIR_DOC="_doc"
 DIR_DOWNLOADS="_downloads"
 DIR_BUILD="_build"
@@ -22,6 +21,7 @@ DIR_STATIC="_static"
 MAKE_METHOD="html"
 GITHUB="gh-pages"
 HEROKU="master"
+BACKREF="backreference"
 
 # ===========function to build  github deployment in a folder==================
 
@@ -41,7 +41,6 @@ makedeployment () {
   # Add section-specific static content
   if [[ -d $DIR_STATIC ]] ; then
     cp -RH $DIR_STATIC/* $DIR_OUT/
-    # cp $DIR_STATIC/.ht* $DIR_OUT/ &>/dev/null || RC=$?
     cp -RH $DIR_STATIC/.ht* $DIR_OUT/ &>/dev/null || RC=$?
     if [[ $RC > 0 ]] ; then echo "$(pwd)$(tput setaf 1) $LINENO: cp -RH $DIR_STATIC/.ht* $DIR_OUT/ $(tput sgr0)" ; fi
   fi
@@ -232,6 +231,12 @@ else
     fi
   done
 
+fi
+
+# if there is a backreference document for the master index --
+if [[ -e $DIR_DEPLOY/$BACKREF ]] ; then
+  BACKTEXT=$(<$DIR_DEPLOY/$BACKREF)
+  sed -i s~'<li><a href=\"#\">.*</a>'~"<li>$BACKTEXT"~  $DIR_DEPLOY/index.html
 fi
 
 # if we are on gh-pages AND there exists a CNAME file

@@ -180,7 +180,7 @@ from the main document text.
 
 .. rubric:: Footnotes
 
-.. [#] For Sphinx documentation, see <http://sphinx.pocoo.org/contents.html>.
+.. [#] `Sphinx documentation <http://sphinx-doc.org/contents.html>`_.
 
 .. [#] Characters for marking headings are arbitrarily set within a project 
    by usage. This is an example of simplifing a task by

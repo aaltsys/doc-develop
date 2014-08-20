@@ -91,13 +91,12 @@
 <div class="section" id="bash-operational-signs">
 <h2>Bash operational signs.<a class="headerlink" href="#bash-operational-signs" title="Permalink to this headline">¶</a></h2>
 <p>Bash has 6 main operational signs</p>
-<div class="highlight-python"><div class="highlight"><pre>+ Addition
+<div class="highlight-python"><pre>+ Addition
 - Subtraction
 / Division
 * Multiplication
 ** Exponentation
-% Modulo
-</pre></div>
+% Modulo</pre>
 </div>
 <p>They probably all seem familiar except for those last two, Exponentation and Modulo.
 Exponentation is when a number is raised to that power, so 12**3 is 12*12*12
@@ -120,12 +119,10 @@ SEVEN=7
 NINE=4</dd>
 </dl>
 <p>Then type</p>
-<div class="highlight-python"><div class="highlight"><pre>echo $(($Three+$Nine+$Seven))
-</pre></div>
+<div class="highlight-python"><pre>echo $(($Three+$Nine+$Seven))</pre>
 </div>
 <p>Alternatively, to do normal math, type</p>
-<div class="last highlight-python"><div class="highlight"><pre>echo $[3+4+5+7*6]
-</pre></div>
+<div class="last highlight-python"><pre>echo $[3+4+5+7*6]</pre>
 </div>
 </div>
 <p>There are different ways of performing math in a bash command line. one is to
@@ -140,24 +137,20 @@ If you prefer a simpler method, you can use the square brackets.</p>
 <div class="sidebar">
 <p class="first sidebar-title">The Let Command</p>
 <p>type</p>
-<div class="highlight-python"><div class="highlight"><pre>x=2
+<div class="highlight-python"><pre>x=2
 x=$x+2
-echo $x
-</pre></div>
+echo $x</pre>
 </div>
 <p>type</p>
-<div class="highlight-python"><div class="highlight"><pre>x=2
+<div class="highlight-python"><pre>x=2
 let x=$x+2
-echo $x
-</pre></div>
+echo $x</pre>
 </div>
 <p>rather than typing:</p>
-<div class="highlight-python"><div class="highlight"><pre>let x=$x+$x
-</pre></div>
+<div class="highlight-python"><pre>let x=$x+$x</pre>
 </div>
 <p>Type</p>
-<div class="last highlight-python"><div class="highlight"><pre>let x=x+x
-</pre></div>
+<div class="last highlight-python"><pre>let x=x+x</pre>
 </div>
 </div>
 <p>The let command is a built in Bash command which is useful for integer
@@ -172,15 +165,13 @@ mathematical operations, it is definetly a useful tool.</p>
 <div class="sidebar">
 <p class="first sidebar-title">Examples of The Declare Command</p>
 <p>In the terminal, type:</p>
-<div class="highlight-python"><div class="highlight"><pre>n=6/3
-echo $n
-</pre></div>
+<div class="highlight-python"><pre>n=6/3
+echo $n</pre>
 </div>
 <p>Useless, right? now type:</p>
-<div class="highlight-python"><div class="highlight"><pre>declare -i n
+<div class="highlight-python"><pre>declare -i n
 n=6/3
-echo $n
-</pre></div>
+echo $n</pre>
 </div>
 <p class="last">The declare paired with -i tells the terminal you want n to be equal to an integer.</p>
 </div>
@@ -209,7 +200,7 @@ In the example, declare -i is used to set n to the value of 6/3, but it could al
     </div>
     <div class="footer">
         &copy; Copyright 2013, Gerald Lovel.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
     </div>
   </body>
 </html>
