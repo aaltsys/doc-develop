@@ -148,13 +148,13 @@ fi
 cd ..
 
 echo -e "\nFinished creating directories and files for project \"$PROJECT\".\n"
-echo "Edit main \".gitignore\" file to ignore \"_build\", \"_deploy\" folders."
+# echo "Edit main \".gitignore\" file to ignore \"_build\", \"_deploy\" folders."
 if [[ ! $SECTIONS = "" ]] ; then
   echo "Edit master index to reference"
   echo "$SECTIONS"
 fi
 echo "Start each indexable document with a numeric digit."
-echo "Edit index files to glob \"[0-9]*\"."
+# echo "Edit index files to glob \"[0-9]*\"."
 exit
 
 # Authors: Gerald Lovel, gerald@lovels.us
