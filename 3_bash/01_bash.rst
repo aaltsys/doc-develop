@@ -1,13 +1,37 @@
-.. _Bash:
+de.. _Bash:
 
 #############################
 Linux Commands and Utilities
 #############################
 
-What is Bash
-=============================
 
-Bash is, to put it simply, a shell. In fact, Bash stands for Bourne Again Shell.
-Bash is a type of shell which is widely supported and can be found on nearly every linux system.
-However, keep in mind that bash is a programming language, just like any other.
-It uses the same rules any other programming language does. it has Variables, Logic statements, and the like.
+Bash is a command interpreter which is universally available on Linux and Unix.
+(For information about commands, visit section `commands <http://develop.aaltsys.info/2_linux/index.html#index>`_ Bash stands for
+Bourne Again Shell, a revision of the original Bourne Shell.
+it is the language of the linux terminal. 
+Bash is a  shell programming language. It has many  similarities to other 
+programming languages. it has Variables, Logic statements, and functions.
+
+what is bash used for?
+=======================
+
+Lots of things. 
+
+Running Bash
+=====================
+
+Bash can be run in two ways
+
+Interactively
+
+Shell-scripts
+
+
+Interactive Bash means single line commands put in the terminal with immediate execution.
+
+Shell scripts are scripts that are written in a text editor, saved in .sh format, and run from the terminal.
+
+
+
+Ok, ready to start learning more? Lets talk about Variables 
+

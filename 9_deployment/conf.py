@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# Webserver Configuration Guides documentation build configuration file, created by
+# Deployment documentation build configuration file, created by
 # sphinx-quickstart on Sat Feb 23 09:33:41 2013.
 #
 # This file is execfile()d with the current directory set to its containing dir.
@@ -40,7 +40,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'Webserver Configuration Guides'
+project = u''
 copyright = u'2013, Julia Lovel'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -141,7 +141,7 @@ html_static_path = ['../_static']
 #html_domain_indices = True
 
 # If false, no index is generated.
-html_use_index = False
+#html_use_index = False
 
 # If true, the index is split into individual pages for each letter.
 #html_split_index = False
@@ -164,7 +164,7 @@ html_use_index = False
 #html_file_suffix = None
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'WebserverConfigurationGuidesdoc'
+##htmlhelp_basename = 'doc'
 
 
 # -- Options for LaTeX output --------------------------------------------------
@@ -173,17 +173,17 @@ latex_elements = {
 # The paper size ('letterpaper' or 'a4paper').
 #'papersize': 'letterpaper',
 
-# The font size ('10pt', '11pt' or '12pt').
+ #The font size ('10pt', '11pt' or '12pt').
 #'pointsize': '10pt',
 
-# Additional stuff for the LaTeX preamble.
+ #Additional stuff for the LaTeX preamble.
 #'preamble': '',
 }
 
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual]).
 latex_documents = [
-  ('index', 'WebserverConfigurationGuides.tex', u'Webserver Configuration Guides Documentation',
+  ('index', '.tex', u' Documentation',
    u'Julia Lovel', 'manual'),
 ]
 
@@ -213,7 +213,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', 'webserverconfigurationguides', u'Webserver Configuration Guides Documentation',
+    ('index', 'deployment', u' Documentation',
      [u'Julia Lovel'], 1)
 ]
 
@@ -227,8 +227,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-  ('index', 'WebserverConfigurationGuides', u'Webserver Configuration Guides Documentation',
-   u'Julia Lovel', 'WebserverConfigurationGuides', 'One line description of project.',
+  ('index', '', u' Documentation',
+   u'Julia Lovel', '', 'One line description of project.',
    'Miscellaneous'),
 ]
 
@@ -245,7 +245,7 @@ texinfo_documents = [
 # -- Options for Epub output ---------------------------------------------------
 
 # Bibliographic Dublin Core info.
-epub_title = u'Webserver Configuration Guides'
+epub_title = u'Deployment'
 epub_author = u'Julia Lovel'
 epub_publisher = u'Julia Lovel'
 epub_copyright = u'2013, Julia Lovel'

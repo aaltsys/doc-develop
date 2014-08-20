@@ -35,3 +35,21 @@ Internal Commands.
 +------------------+------------------------------------------------------------------+
 |move              | moves or renames files or directories                            |
 +------------------+------------------------------------------------------------------+
+|while             | is used as part of a while loop                                  |
++------------------+------------------------------------------------------------------+
+|read              | gets input from the user                                         |
++------------------+------------------------------------------------------------------+
+
+Environment Variables
+========================
+
+Environment Variables are those which are predeclared and can be called from any program, script, or terminal. here's a table of a few Environment Variables
+
++----------------------+--------------------------------------------------------------+
+|Environment Variables | Variable description of use.                                 |
++======================+==============================================================+
+|$EUID                 | The ID number of the current user.                           |
++----------------------+--------------------------------------------------------------+
+|$PWD                   | when called, it returns the current directory               |
++----------------------+--------------------------------------------------------------+
+
