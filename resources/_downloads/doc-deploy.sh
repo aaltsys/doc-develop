@@ -50,7 +50,7 @@ makedeployment () {
     cp -RH $DIR_STATIC/.ht* $DIR_OUT/ &>/dev/null || RC=$?
     if [[ -e ../$DIR_STATIC/$BACKREF ]] ; then
       # if there is a backreference document for the section index --
-      BACKTEXT=$(<$DIR_STATIC/$BACKREF)
+      BACKTEXT=$(<../$DIR_STATIC/$BACKREF)
       sed -i s~'<li><a href=\"#\">.*</a>'~"<li>$BACKTEXT"~  $DIR_OUT/index.html
     fi
     if [[ $RC > 0 ]] ; then echo "$(pwd)$(tput setaf 1) $LINENO: cp -RH $DIR_STATIC/.ht* $DIR_OUT/ $(tput sgr0)" ; fi
