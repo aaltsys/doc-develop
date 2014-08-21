@@ -42,9 +42,19 @@ makedeployment () {
   if [[ -d $DIR_STATIC ]] ; then
     cp -RH $DIR_STATIC/* $DIR_OUT/
     cp -RH $DIR_STATIC/.ht* $DIR_OUT/ &>/dev/null || RC=$?
+    # if there is a backreference document for the section index --
+    if [[ -e $DIR_STATIC/$BACKREF ]] ; then
+      BACKTEXT=$(<$DIR_STATIC/$BACKREF)
+      sed -i s~'<li><a href=\"#\">.*</a>'~"<li>$BACKTEXT"~  $DIR_OUT/index.html
+    fi
     if [[ $RC > 0 ]] ; then echo "$(pwd)$(tput setaf 1) $LINENO: cp -RH $DIR_STATIC/.ht* $DIR_OUT/ $(tput sgr0)" ; fi
+
+  elif [[ -e ../$DIR_STATIC/$BACKREF ]] ; then
+    # if there is a backreference document for the main index --
+    BACKTEXT=$(<../$DIR_STATIC/$BACKREF)
+    sed -i s~'<li><a href=\"#\">.*</a>'~"<li>$BACKTEXT"~  $DIR_OUT/index.html
   fi
-  
+ 
 }
 
 # =============================================================================
@@ -206,7 +216,7 @@ else
     cp -RH $DIR_STATIC/.ht* $DIR_DEPLOY/ &>/dev/null || RC=$?
     if [[ $RC > 0 ]] ; then echo "$(pwd)$(tput setaf 1) $LINENO: cp -RH $DIR_STATIC/.ht* $DIR_DEPLOY/ $(tput sgr0)" ; fi
   fi
-  
+
   # Make HTML, other deployment files
   for SECT in $SECTIONS ; do
     if [[ -d $SECT ]] ; then
@@ -231,12 +241,6 @@ else
     fi
   done
 
-fi
-
-# if there is a backreference document for the master index --
-if [[ -e $DIR_DEPLOY/$BACKREF ]] ; then
-  BACKTEXT=$(<$DIR_DEPLOY/$BACKREF)
-  sed -i s~'<li><a href=\"#\">.*</a>'~"<li>$BACKTEXT"~  $DIR_DEPLOY/index.html
 fi
 
 # if we are on gh-pages AND there exists a CNAME file
