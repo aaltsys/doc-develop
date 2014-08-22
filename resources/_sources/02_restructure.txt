@@ -339,3 +339,35 @@ table of contents for the project chapters:
 
 Again, other text and formatting directives may be included to fill out this 
 page.
+
+Master Index Back References
+=============================
+
+Since sections are compiled before the master document, there is no way for a 
+chapter or section to contain an internal reference to the corresponding master 
+index. The :program:`doc-deploy.sh` script can fix this by editing deployed 
+:file:`index.html` pages, replacing the "here links" at the top and bottom of 
+section index pages with external references to the corresponding project master 
+index page. 
+
+Implement this feature by adding a document named :file:`backreference` in the 
+:file:`_static` folder with the desired html link, such as::
+
+   <a class="external reference" href="../index.html">AAltsys Development Main Index</a> 
+
+Similar to section index backlinks, :program:`doc-deploy.sh` will add navigation 
+links to source URLs. This is helpful when multiple projects are published as 
+subdomains of an apex domain containing a documentation index page.
+
+Add these links with a :file:`master/_static/backreference` document in any 
+multi-section project, or with a :file:`_static/backreference` document in other 
+projects. The html link format should look like::
+
+   <a href="http://aaltsys.info">AAltsys Information Master Index</a> 
+
+Obviously you should use your own text to replace the "aaltsys.info" domain name 
+and the corresponding titles.
+
+.. tip::
+   :file:`doc-deploy.sh` inserts back reference links in folder :file:`_deploy`. 
+   The compiler output in :file:`_build` within chapters is unchanged.
