@@ -11,7 +11,7 @@ on the other hand, doesn't know what tools are, where to get them, or how to
 use them. That's why these guides are here.
 
 AAltsys Technology offers these guides to those who think that developer tools 
-are unavailable, costly, or too hard to use. The fact is that software 
+are unavailable, costly, or too hard to use. We believe that software 
 development tools are freely available on-line, and becoming a developer is an 
 easy process for those who are willing to invest the time to learn.
 
