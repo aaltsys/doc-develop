@@ -6,6 +6,12 @@
 AAltsys Developer **HTML and CSS** Guides
 =========================================
 
+.. note::
+   AAltsys endorses the **HTML**, **CSS**, and **Javascript** guides at 
+   `w3schools.com <http://www.w3schools.com/sitemap/default.asp>`_. This section 
+   supplements the w3schools guides with information specific to features used 
+   at AAltsys.
+
 Contents:
 
 .. toctree::
@@ -17,7 +23,5 @@ Contents:
 Indices and tables
 ==================
 
-* :ref:`genindex`
-* :ref:`modindex`
 * :ref:`search`
 
