@@ -1,0 +1,950 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Ruby Programming Concepts &mdash; Ruby Developer Tutorial 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/aaltsys.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Ruby Developer Tutorial 1.0 documentation" href="index.html" />
+    <link rel="next" title="Ruby on Rails Sample App" href="11_use-rubyonrails.html" />
+    <link rel="prev" title="AAltsys Ruby on Rails Tutorial" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="11_use-rubyonrails.html" title="Ruby on Rails Sample App"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="index.html" title="AAltsys Ruby on Rails Tutorial"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Ruby Developer Tutorial 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Ruby Programming Concepts</a><ul>
+<li><a class="reference internal" href="#what-is-a-programming-language">What is a Programming Language?</a></li>
+<li><a class="reference internal" href="#install-ruby">Install Ruby</a></li>
+<li><a class="reference internal" href="#executing-ruby">Executing Ruby</a><ul>
+<li><a class="reference internal" href="#ruby-files">Ruby Files</a></li>
+<li><a class="reference internal" href="#irb">IRB</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#variables">Variables</a><ul>
+<li><a class="reference internal" href="#assignment">Assignment</a></li>
+<li><a class="reference internal" href="#data-types">Data Types</a></li>
+<li><a class="reference internal" href="#arithmetic">Arithmetic</a></li>
+<li><a class="reference internal" href="#assignment-operators">Assignment Operators</a></li>
+<li><a class="reference internal" href="#string-concatenation">String Concatenation</a></li>
+<li><a class="reference internal" href="#comparison-operators">Comparison Operators</a><ul>
+<li><a class="reference internal" href="#is-equal-to">Is equal to</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#conditionals">Conditionals</a><ul>
+<li><a class="reference internal" href="#if-else">If...Else</a></li>
+<li><a class="reference internal" href="#if-elsif">If...Elsif</a></li>
+<li><a class="reference internal" href="#unless">Unless</a></li>
+<li><a class="reference internal" href="#ternary-operator">Ternary Operator</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#methods-blocks">Methods &amp; Blocks</a><ul>
+<li><a class="reference internal" href="#method-scope-and-return">Method Scope and Return</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#nil-and-blank">Nil and Blank</a></li>
+<li><a class="reference internal" href="#loops">Loops</a><ul>
+<li><a class="reference internal" href="#do-loop">Do Loop</a></li>
+<li><a class="reference internal" href="#while-loop">While Loop</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#get-user-input">Get User input</a></li>
+<li><a class="reference internal" href="#coding-best-practices-kiss-dry">Coding Best-Practices: KISS, DRY</a></li>
+<li><a class="reference internal" href="#put-it-all-together">Put it all together</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">AAltsys <strong>Ruby on Rails</strong> Tutorial</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="11_use-rubyonrails.html"
+                        title="next chapter">Ruby on Rails Sample App</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/01_ruby-program.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="ruby-programming-concepts">
+<span id="ruby-programming"></span><h1>Ruby Programming Concepts<a class="headerlink" href="#ruby-programming-concepts" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="what-is-a-programming-language">
+<h2>What is a Programming Language?<a class="headerlink" href="#what-is-a-programming-language" title="Permalink to this headline">¶</a></h2>
+<p>A programming language gives instructions to a machine. It does more than a markup
+language, like RST or HTML, because it has logic that it can use to manipulate data.
+Programming in a markup language, you can create a website with static content,
+wherein you must change your source in order to change what is displayed. But using a
+programming language you can create a dynamic website, which can take input from a user or
+another program and use it to change what is displayed.</p>
+</div>
+<div class="section" id="install-ruby">
+<h2>Install Ruby<a class="headerlink" href="#install-ruby" title="Permalink to this headline">¶</a></h2>
+<p>Ruby is installed using <strong class="program">RVM</strong>, the Ruby Version Manager. Cloud9
+provides a pre-installed emulation of RVM, which we will use.</p>
+<p>First, log in to Cloud9 and on your Dashboard in the left sidebar click
+<em class="guilabel">Create New Workspace</em>.</p>
+<p>Open a terminal window in the rails sample app&#8217;s Cloud9 project workspace.
+In the Terminal window, run the following command to check that RVM is
+working, and also choose a ruby version to use in this project:</p>
+<div class="highlight-python"><pre>rvm use 1.9.3</pre>
+</div>
+</div>
+<div class="section" id="executing-ruby">
+<h2>Executing Ruby<a class="headerlink" href="#executing-ruby" title="Permalink to this headline">¶</a></h2>
+<p>There are multiple ruby execution modes: script or program files (program.rb),
+interactive ruby commands (irb), and embedded ruby (script.erb).</p>
+<div class="section" id="ruby-files">
+<h3>Ruby Files<a class="headerlink" href="#ruby-files" title="Permalink to this headline">¶</a></h3>
+<div class="sidebar">
+<p class="first sidebar-title">Example Ruby files</p>
+<p>Create an edit a file, <tt class="file docutils literal"><span class="pre">hello.rb</span></tt>.
+Enter the text and save the file:</p>
+<div class="highlight-python"><pre>#!/usr/bin/ruby
+puts 'Hello world'</pre>
+</div>
+<p class="last">Then click the <em class="guilabel">Run</em> button in the menu bar.</p>
+</div>
+<p>Ruby program files use the extension <tt class="file docutils literal"><span class="pre">.rb</span></tt>. Any ruby file may be executed
+with the command:</p>
+<div class="highlight-python"><pre>ruby filename</pre>
+</div>
+<p>To avoid calling the ruby interpreter explicitly, a &#8220;shebang&#8221; statement may be
+added in the first line of the file:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c">#! /usr/bin/ruby</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="irb">
+<h3>IRB<a class="headerlink" href="#irb" title="Permalink to this headline">¶</a></h3>
+<div class="sidebar">
+<p class="first sidebar-title">Example interactive Ruby</p>
+<p>Open a Cloud9 terminal window, and type:</p>
+<div class="last highlight-python"><div class="highlight"><pre><span class="n">irb</span>
+</pre></div>
+</div>
+</div>
+<p>IRB, or interactive Ruby, is an interactive environment for Ruby scripting.
+IRB is a Ruby command line, run inside the system console. Exit IRB back to the
+shell command prompt by typing <strong class="command">exit</strong>.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="variables">
+<h2>Variables<a class="headerlink" href="#variables" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line">A variable is a named space in memory that stores some data.</div>
+<div class="line">A variable is identified by its name.</div>
+<div class="line">Variable names can include underscores but not spaces.</div>
+<div class="line">A variable exists within a scope, and is deleted by a garbage collector when
+it is no longer needed.</div>
+</div>
+<hr class="docutils" />
+<div class="sidebar">
+<p class="first sidebar-title">Assigning variables</p>
+<p>Look for a variable named <tt class="docutils literal"><span class="pre">x</span></tt>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">x</span>
+</pre></div>
+</div>
+<p>Assign a value to <tt class="docutils literal"><span class="pre">x</span></tt>:</p>
+<div class="last highlight-python"><div class="highlight"><pre><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="assignment">
+<h3>Assignment<a class="headerlink" href="#assignment" title="Permalink to this headline">¶</a></h3>
+<p>To create a variable in ruby, you assign it an initial value.
+The <tt class="docutils literal"><span class="pre">=</span></tt> in ruby is known as the assignment operator. It is used like:
+<tt class="docutils literal"><span class="pre">variable_name</span> <span class="pre">=</span> <span class="pre">variable_value</span></tt></p>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="data-types">
+<h3>Data Types<a class="headerlink" href="#data-types" title="Permalink to this headline">¶</a></h3>
+<div class="sidebar">
+<p class="first sidebar-title">Using data types</p>
+<p>Assign a boolean:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">x</span> <span class="o">=</span> <span class="n">true</span>
+</pre></div>
+</div>
+<p>Assign a string:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">x</span> <span class="o">=</span> <span class="s">&quot;This is a string&quot;</span>
+</pre></div>
+</div>
+<p>Assign an integer:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>Assign a float:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">x</span> <span class="o">=</span> <span class="mf">0.1</span>
+</pre></div>
+</div>
+<p>Assign an array:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;Item 1&quot;</span><span class="p">,</span> <span class="s">&quot;Item 2&quot;</span><span class="p">,</span> <span class="s">&quot;Item 3&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Assign a hash:</p>
+<div class="highlight-python"><pre>x = {:name =&gt; "variable x", :value =&gt; 1}</pre>
+</div>
+<p>Type a variable by assignment:</p>
+<div class="last highlight-python"><pre>x.is_a? Hash
+x = 1
+x.is_a? Hash</pre>
+</div>
+</div>
+<p>Ruby uses the following basic types for variables:</p>
+<ul class="simple">
+<li>Boolean</li>
+<li>String</li>
+<li>Integer</li>
+<li>Decimal / Float</li>
+<li>Array</li>
+<li>Hash</li>
+</ul>
+<p>The type of a variable is determined by syntax of the assigned data value.
+Ruby is a dynamically typed language. That means that changing the value of a
+variable implicitly changes its type, since a variable inherits its data type
+from its value.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="24%" />
+<col width="76%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Datatype</th>
+<th class="head">variable syntax</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Boolean</td>
+<td>unquoted <tt class="docutils literal"><span class="pre">true</span></tt> or <tt class="docutils literal"><span class="pre">false</span></tt></td>
+</tr>
+<tr class="row-odd"><td>String</td>
+<td>&#8220;Text enclosed in quotes&#8221;</td>
+</tr>
+<tr class="row-even"><td>Integer</td>
+<td>A number without a decimal point</td>
+</tr>
+<tr class="row-odd"><td>Float</td>
+<td>A number with a decimal point</td>
+</tr>
+<tr class="row-even"><td>Array</td>
+<td><div class="first last line-block">
+<div class="line">A comma-separated list of values</div>
+<div class="line">enclosed by square brackets</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>Hash</td>
+<td><div class="first last line-block">
+<div class="line">A comma-separated key-value pair</div>
+<div class="line">enclosed by curly braces</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="arithmetic">
+<h3>Arithmetic<a class="headerlink" href="#arithmetic" title="Permalink to this headline">¶</a></h3>
+<div class="sidebar">
+<p class="first sidebar-title">Arithmetic operations</p>
+<p>Enter the statements:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">x</span> <span class="o">-</span> <span class="mi">0</span> <span class="o">*</span> <span class="mi">2</span>
+</pre></div>
+</div>
+<p>Result: <tt class="docutils literal"><span class="pre">1</span></tt></p>
+<p>Enter the statement:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="mi">0</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span>
+</pre></div>
+</div>
+<p class="last">Result: <tt class="docutils literal"><span class="pre">2</span></tt></p>
+</div>
+<p>Ruby does all of the normal arithmetic operations on integer and
+decimal/float variables.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="40%" />
+<col width="22%" />
+<col width="38%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Operation</th>
+<th class="head">Operand</th>
+<th class="head">Sample Syntax</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Addition</td>
+<td><tt class="docutils literal"><span class="pre">+</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">x</span> <span class="pre">+</span> <span class="pre">2</span></tt></td>
+</tr>
+<tr class="row-odd"><td>Subtraction</td>
+<td><tt class="docutils literal"><span class="pre">-</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">x</span> <span class="pre">-</span> <span class="pre">2</span></tt></td>
+</tr>
+<tr class="row-even"><td>Multiplication</td>
+<td><tt class="docutils literal"><span class="pre">*</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">x</span> <span class="pre">*</span> <span class="pre">2</span></tt></td>
+</tr>
+<tr class="row-odd"><td>Division</td>
+<td><tt class="docutils literal"><span class="pre">/</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">x</span> <span class="pre">/</span> <span class="pre">2</span></tt></td>
+</tr>
+<tr class="row-even"><td>Exponentiation</td>
+<td><tt class="docutils literal"><span class="pre">**</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">x</span> <span class="pre">**</span> <span class="pre">2</span></tt></td>
+</tr>
+<tr class="row-odd"><td>Modulus</td>
+<td><tt class="docutils literal"><span class="pre">%</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">x</span> <span class="pre">%</span> <span class="pre">2</span></tt></td>
+</tr>
+</tbody>
+</table>
+<p>The order of operations is the same as in regular math. Parentheses, which
+group operations, have the highest order of precedence.</p>
+</div>
+<div class="section" id="assignment-operators">
+<h3>Assignment Operators<a class="headerlink" href="#assignment-operators" title="Permalink to this headline">¶</a></h3>
+<div class="sidebar">
+<p class="first sidebar-title">Arithmetic assignment</p>
+<p>Enter the statements:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">x</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">x</span> <span class="o">-=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>Result: <tt class="docutils literal"><span class="pre">1</span></tt></p>
+<p>Enter the statement:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">x</span> <span class="o">*=</span> <span class="mi">2</span>
+</pre></div>
+</div>
+<p class="last">Result: <tt class="docutils literal"><span class="pre">2</span></tt></p>
+</div>
+<p>Assignment may be combined with a single arithmetic operator which performs
+the given arithmetic operation on the variable, and assigns the result of that
+operation to the new value of the variable, replacing the old value.</p>
+<p>For example:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="22%" />
+<col width="24%" />
+<col width="31%" />
+<col width="22%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Operand</th>
+<th class="head">Initial x</th>
+<th class="head">Sample Use</th>
+<th class="head">Result x</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">+=</span></tt></td>
+<td>1</td>
+<td><tt class="docutils literal"><span class="pre">x</span> <span class="pre">+=</span> <span class="pre">2</span></tt></td>
+<td>3</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">-=</span></tt></td>
+<td>3</td>
+<td><tt class="docutils literal"><span class="pre">x</span> <span class="pre">-=</span> <span class="pre">2</span></tt></td>
+<td>1</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">*=</span></tt></td>
+<td>1</td>
+<td><tt class="docutils literal"><span class="pre">x</span> <span class="pre">*=</span> <span class="pre">2</span></tt></td>
+<td>2</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">/=</span></tt></td>
+<td>2</td>
+<td><tt class="docutils literal"><span class="pre">x</span> <span class="pre">/=</span> <span class="pre">2</span></tt></td>
+<td>1</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">%=</span></tt></td>
+<td>1</td>
+<td><tt class="docutils literal"><span class="pre">x</span> <span class="pre">%=</span> <span class="pre">1</span></tt></td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr class="docutils" />
+<div class="section" id="string-concatenation">
+<h3>String Concatenation<a class="headerlink" href="#string-concatenation" title="Permalink to this headline">¶</a></h3>
+<div class="sidebar">
+<p class="first sidebar-title">String concatenation</p>
+<p>In IRB, create a string variable called &#8220;formatted_x&#8221; that uses the value of
+the integer variable &#8220;x&#8221; in it:</p>
+<div class="last highlight-python"><div class="highlight"><pre><span class="n">formatted_x</span> <span class="o">=</span> <span class="s">&quot;$&quot;</span> <span class="o">+</span> <span class="n">x</span> <span class="o">+</span> <span class="s">&quot;.00&quot;</span>
+</pre></div>
+</div>
+</div>
+<p>Note that the string literals to be concatenated are surrounded by quotes, and
+anything not surrounded by quotes represents a variable or method&#8217;s <em>value</em>.</p>
+<p>Changing the value of x <em>will not</em> update the value of formatted_x, which is a
+separate variable. A <strong class="command">method</strong> is required to auto-update formatted_x
+every time that x is changed. Read on to find out how later.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The <tt class="docutils literal"><span class="pre">+</span></tt> operator is overloaded in Ruby to provide two operations:
+addition of numbers, and concatenation with strings.</p>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="comparison-operators">
+<h3>Comparison Operators<a class="headerlink" href="#comparison-operators" title="Permalink to this headline">¶</a></h3>
+<div class="sidebar">
+<p class="first sidebar-title">Sample comparisons</p>
+<p>Create some variables describing a fast food order:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">sandwich</span> <span class="o">=</span> <span class="s">&quot;cheeseburger&quot;</span>
+<span class="n">condiments</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;pickles&quot;</span><span class="p">,</span> <span class="s">&quot;mustard&quot;</span><span class="p">,</span> <span class="s">&quot;ketchup&quot;</span><span class="p">]</span>
+<span class="n">combo</span> <span class="o">=</span> <span class="n">true</span>
+<span class="n">size</span> <span class="o">=</span> <span class="s">&quot;medium&quot;</span>
+<span class="n">drink_upsize</span> <span class="o">=</span> <span class="n">true</span>
+</pre></div>
+</div>
+<p>Now place an order:</p>
+<div class="highlight-python"><pre>order = {
+  :sandwich =&gt; sandwich,
+  :condiments =&gt; condiments,
+  :combo =&gt; combo,
+  :size =&gt; size,
+  :drink_upsize =&gt; drink_upsize
+}</pre>
+</div>
+<p>Does this order include a combo and an upsized drink?:</p>
+<div class="highlight-python"><pre>combo &amp;&amp; drink_upsize</pre>
+</div>
+<p>Now change the variable values, then compare with <strong>and</strong>:</p>
+<div class="highlight-python"><pre>drink_upsize = false
+combo &amp;&amp; drink_upsize</pre>
+</div>
+<p>Now compare using <strong>or</strong>:</p>
+<div class="highlight-python"><pre>combo || drink_upsize</pre>
+</div>
+<p class="last">Results: <tt class="docutils literal"><span class="pre">true</span></tt>, <tt class="docutils literal"><span class="pre">false</span></tt>, <tt class="docutils literal"><span class="pre">true</span></tt></p>
+</div>
+<p>Comparison operators compare two values, and return a boolean result of <tt class="docutils literal"><span class="pre">true</span></tt>
+or <tt class="docutils literal"><span class="pre">false</span></tt>. Ruby syntax for standard comparisons are listed following:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="42%" />
+<col width="22%" />
+<col width="36%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Operation</th>
+<th class="head">Operand</th>
+<th class="head">Sample Syntax</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Equal To</td>
+<td><tt class="docutils literal"><span class="pre">==</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">x</span> <span class="pre">==</span> <span class="pre">y</span></tt></td>
+</tr>
+<tr class="row-odd"><td>Not equal To</td>
+<td><tt class="docutils literal"><span class="pre">!=</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">x</span> <span class="pre">!=</span> <span class="pre">y</span></tt></td>
+</tr>
+<tr class="row-even"><td>Greater than</td>
+<td><tt class="docutils literal"><span class="pre">&gt;</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">x</span> <span class="pre">&gt;</span> <span class="pre">y</span></tt></td>
+</tr>
+<tr class="row-odd"><td>Less than</td>
+<td><tt class="docutils literal"><span class="pre">&lt;</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">x</span> <span class="pre">&lt;</span> <span class="pre">y</span></tt></td>
+</tr>
+<tr class="row-even"><td>Equal or Greater</td>
+<td><tt class="docutils literal"><span class="pre">&gt;=</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">x</span> <span class="pre">&gt;=</span> <span class="pre">y</span></tt></td>
+</tr>
+<tr class="row-odd"><td>Equal or Lesser</td>
+<td><tt class="docutils literal"><span class="pre">&lt;=</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">x</span> <span class="pre">&lt;=</span> <span class="pre">y</span></tt></td>
+</tr>
+<tr class="row-even"><td>Boolean <tt class="docutils literal"><span class="pre">and</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">&amp;&amp;</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">x</span> <span class="pre">&amp;&amp;</span> <span class="pre">y</span></tt></td>
+</tr>
+<tr class="row-odd"><td>Boolean <tt class="docutils literal"><span class="pre">or</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">||</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">x</span> <span class="pre">||</span> <span class="pre">y</span></tt></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+<div class="section" id="is-equal-to">
+<h4>Is equal to<a class="headerlink" href="#is-equal-to" title="Permalink to this headline">¶</a></h4>
+<div class="sidebar">
+<p class="first sidebar-title">Comparisons with <tt class="docutils literal"><span class="pre">Is</span> <span class="pre">equal</span> <span class="pre">to</span></tt></p>
+<p>Compare a boolean variable&#8217;s value to a boolean:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">combo</span> <span class="o">==</span> <span class="n">true</span>
+</pre></div>
+</div>
+<p>Compare two boolean variables:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">combo</span> <span class="o">==</span> <span class="n">drink_upsize</span>
+</pre></div>
+</div>
+<p>Comparing a boolean to a string:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">combo</span> <span class="o">==</span> <span class="s">&quot;true&quot;</span>
+</pre></div>
+</div>
+<p>Compare two strings:</p>
+<div class="last highlight-python"><div class="highlight"><pre><span class="n">sandwich</span> <span class="o">==</span> <span class="s">&quot;burger&quot;</span>
+</pre></div>
+</div>
+</div>
+<p>The <tt class="docutils literal"><span class="pre">Is</span> <span class="pre">Equal</span> <span class="pre">To</span></tt> comparison can be used on two values of <em>any type</em> to
+determine if they equal each other.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Do not confuse <tt class="docutils literal"><span class="pre">==</span></tt> with <tt class="docutils literal"><span class="pre">=</span></tt>!</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>Ruby has additional comparison operators for particular programming
+uses:</p>
+<table border="1" class="last docutils">
+<colgroup>
+<col width="35%" />
+<col width="21%" />
+<col width="44%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Operation</th>
+<th class="head">Operand</th>
+<th class="head">Result</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Math comparison</td>
+<td><tt class="docutils literal"><span class="pre">&lt;=&gt;</span></tt></td>
+<td><div class="first last line-block">
+<div class="line"><tt class="docutils literal"><span class="pre">1</span></tt> if greater than</div>
+<div class="line"><tt class="docutils literal"><span class="pre">0</span></tt> if equal to</div>
+<div class="line"><tt class="docutils literal"><span class="pre">-1</span></tt> if less than</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>threequal method</td>
+<td><tt class="docutils literal"><span class="pre">===</span></tt></td>
+<td>when clause equality</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">.eql?</span></tt> method</td>
+<td><tt class="docutils literal"><span class="pre">.eql?</span></tt></td>
+<td>equal type and values</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">equal?</span></tt> method</td>
+<td><tt class="docutils literal"><span class="pre">equal?</span></tt></td>
+<td>equal object ids</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="conditionals">
+<h3>Conditionals<a class="headerlink" href="#conditionals" title="Permalink to this headline">¶</a></h3>
+<div class="sidebar">
+<p class="first sidebar-title">If...Else</p>
+<p>For example:</p>
+<div class="last highlight-python"><pre>if order[:sandwich] == "cheeseburger"
+  puts "You ordered a cheeseburger"
+end
+
+if order[:sandwich] == "cheeseburger"
+  puts "You ordered a cheeseburger!"
+else
+  puts "You didn't order a cheeseburger."
+end</pre>
+</div>
+</div>
+<div class="section" id="if-else">
+<h4>If...Else<a class="headerlink" href="#if-else" title="Permalink to this headline">¶</a></h4>
+<p>Conditional statements are the simplest form of branching in coding. The first
+condtional is the <tt class="docutils literal"><span class="pre">if...else</span></tt>. It&#8217;s used to say: if this codition is true,
+do one thing, if it&#8217;s not, do another thing.</p>
+<p>First, the interpreter checks to see if the conditional statement after the
+<tt class="docutils literal"><span class="pre">if</span></tt> is true. If it is, the code in the <tt class="docutils literal"><span class="pre">if</span></tt> section is run, and if it is
+false, the interpreter moves on to the code in the <tt class="docutils literal"><span class="pre">else</span></tt> section.</p>
+<p>The structure of the <tt class="docutils literal"><span class="pre">if...else</span></tt> statement is:</p>
+<div class="highlight-python"><pre>if conditional statement
+  code to run if conditional returns true
+else
+  code to run if conditional returns false
+end</pre>
+</div>
+<p>Notice you always need an <tt class="docutils literal"><span class="pre">end</span></tt> after any conditional statement, to let the
+interpreter know where the code that belongs to your branch ends. If you don&#8217;t
+have it, you will get an error.</p>
+<div class="sidebar">
+<p class="first sidebar-title">Elsif</p>
+<p>Check if either a burger or cheeseburger was ordered:</p>
+<div class="highlight-python"><pre>if order[:sandwich] == "cheeseburger"
+  puts "You ordered a cheeseburger!"
+elsif order[:sandwich] == "burger"
+  puts "You ordered a burger!"
+end</pre>
+</div>
+<p>Add a branch for the case that something else was ordered:</p>
+<div class="last highlight-python"><pre>if order[:sandwich] == "cheeseburger"
+  puts "You ordered a cheeseburger!"
+elsif order[:sandwich] == "burger"
+  puts "You ordered a burger!"
+else
+  puts "You didn't order a burger at all."
+end</pre>
+</div>
+</div>
+</div>
+<div class="section" id="if-elsif">
+<h4>If...Elsif<a class="headerlink" href="#if-elsif" title="Permalink to this headline">¶</a></h4>
+<p>Using <tt class="docutils literal"><span class="pre">elsif</span></tt> (short for &#8220;else if&#8221;, and used only in Ruby) allows you to add
+more than one conditional to the same statement as your if or <tt class="docutils literal"><span class="pre">if...else</span></tt>.</p>
+<p>The conditions are checked in order, and when a condition is met, the code in
+that branch is executed, then the block is exited, so no other conditions are
+checked.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+<div class="sidebar">
+<p class="first sidebar-title">Unless</p>
+<p>Use <tt class="docutils literal"><span class="pre">unless</span></tt> with a comparison statement:</p>
+<div class="highlight-python"><pre>unless order[:combo] == false
+  puts "You get fries and a drink with that sammy!"
+end</pre>
+</div>
+<p>Use <tt class="docutils literal"><span class="pre">unless</span></tt> with a boolean variable:</p>
+<div class="last highlight-python"><pre>unless order[:drink_upsize]
+  puts "You get a" + order[:size] + " fries and drink with that sammy!"
+end</pre>
+</div>
+</div>
+</div>
+<div class="section" id="unless">
+<h4>Unless<a class="headerlink" href="#unless" title="Permalink to this headline">¶</a></h4>
+<p><tt class="docutils literal"><span class="pre">Unless</span></tt> is just the opposite of <tt class="docutils literal"><span class="pre">if</span></tt>. Use it when you want some code to run
+unless this one particular condition is met.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="ternary-operator">
+<h4>Ternary Operator<a class="headerlink" href="#ternary-operator" title="Permalink to this headline">¶</a></h4>
+<p>The ternary operator `` ? : `` is shorthand syntax for an if...else statement.:</p>
+<div class="highlight-python"><pre>(order[:sandwich] == "burger") ? puts "Burger" : puts "Not a burger!"</pre>
+</div>
+<p>First, write a statement that will return a boolean, such as a conditional.
+Follow it with a question mark. The first thing after the question mark is the code to
+execute if the statement returns true. Then there is a colon, and then the code to be
+executed if the statement in the parentheses returns false.</p>
+</div>
+</div>
+<div class="section" id="methods-blocks">
+<h3>Methods &amp; Blocks<a class="headerlink" href="#methods-blocks" title="Permalink to this headline">¶</a></h3>
+<div class="sidebar">
+<p class="first sidebar-title">Example Method</p>
+<p>Write a method that decides what drink comes with a combo. Then call the method.:</p>
+<div class="last highlight-python"><pre>def pick_drink(combo, combo_size)
+  if combo == true
+    "What kind of drink do you want with that combo?"
+    drink_input = gets
+    drink = size + drink_input
+    puts "Your drink is a #{drink}."
+  end
+end
+pick_drink(combo, size)</pre>
+</div>
+</div>
+<p>Methods are used to run multiple lines of code without having to repeat them.</p>
+<p>Variables can be passed in to methods using parentheses. In the method
+definition, you give the variable a name to be used within the method. Then,
+when the method is called, any value passed in that place will be
+used as the value of the variable. If a method is defined to take variables in
+Ruby, then you must pass values in to that method for those variables, or you
+will get an argument error.</p>
+<p>Methods are assigned in Ruby like so:</p>
+<div class="highlight-python"><pre>def method_name
+  ...
+end</pre>
+</div>
+<p>Methods can be called on objects in Ruby using object notation:
+<tt class="docutils literal"><span class="pre">object.method</span></tt>.</p>
+<div class="section" id="method-scope-and-return">
+<h4>Method Scope and Return<a class="headerlink" href="#method-scope-and-return" title="Permalink to this headline">¶</a></h4>
+<p>If a variable is defined inside of a method, it is limited to the scope of that method,
+meaning that the variable cannot be accessed anywhere outside of that method.</p>
+<p>A method must be defined within the current scope before it can be called.</p>
+<p>To pass data from inside of a method to outside of it, use <tt class="docutils literal"><span class="pre">return</span></tt>. If no <tt class="docutils literal"><span class="pre">return</span></tt>
+is specified in a method, the method will return the value of the last statement by
+default.</p>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="nil-and-blank">
+<h3>Nil and Blank<a class="headerlink" href="#nil-and-blank" title="Permalink to this headline">¶</a></h3>
+<p>Nil represents something that has not yet been given a value. When used in a
+conditional, <tt class="docutils literal"><span class="pre">nil</span></tt> is interpreted like <tt class="docutils literal"><span class="pre">false</span></tt>. However nil is not equal to
+<tt class="docutils literal"><span class="pre">false</span></tt> or <tt class="docutils literal"><span class="pre">0</span></tt>. To check whether a variable has a value or not, use
+<tt class="docutils literal"><span class="pre">object.nil?</span></tt>.</p>
+<p>Blank represents nil or an empty string. The <tt class="docutils literal"><span class="pre">object.blank?</span></tt> method can be
+used to check whether a variable is either an empty string or nil.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="loops">
+<h3>Loops<a class="headerlink" href="#loops" title="Permalink to this headline">¶</a></h3>
+<p>Loops allow you to repeat a line or block of code.</p>
+<div class="sidebar">
+<p class="first sidebar-title">Do loop</p>
+<p>Do something 3 times:</p>
+<div class="highlight-python"><pre>3.times do
+  x += 1
+  puts "x is " + x
+end</pre>
+</div>
+<p>Do something for each object in an array:</p>
+<div class="last highlight-python"><pre>condiments.each do |condiment|
+  puts condiment
+end</pre>
+</div>
+</div>
+<div class="section" id="do-loop">
+<h4>Do Loop<a class="headerlink" href="#do-loop" title="Permalink to this headline">¶</a></h4>
+<p>The <tt class="docutils literal"><span class="pre">do</span></tt> loop is used to repeat code a specified number of times.</p>
+<p>Do can be used in combinatio with the <tt class="docutils literal"><span class="pre">each</span></tt> method to iterate over an array
+or collection of objects.</p>
+</div>
+<div class="section" id="while-loop">
+<h4>While Loop<a class="headerlink" href="#while-loop" title="Permalink to this headline">¶</a></h4>
+<p>The while loop repeats code as long as a given condition is true.:</p>
+<div class="highlight-python"><pre>x = 1
+while x &lt; 5 do
+  puts x
+  x += 1
+end</pre>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="get-user-input">
+<h3>Get User input<a class="headerlink" href="#get-user-input" title="Permalink to this headline">¶</a></h3>
+<p>Use <tt class="docutils literal"><span class="pre">gets</span></tt> to take user input from the console in Ruby.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="coding-best-practices-kiss-dry">
+<h3>Coding Best-Practices: KISS, DRY<a class="headerlink" href="#coding-best-practices-kiss-dry" title="Permalink to this headline">¶</a></h3>
+<p>These acronyms are handy for remembering two important coding concepts:</p>
+<p>Keep It Simple Stupid</p>
+<p>and</p>
+<p>Don&#8217;t Repeat Yourself</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="put-it-all-together">
+<h3>Put it all together<a class="headerlink" href="#put-it-all-together" title="Permalink to this headline">¶</a></h3>
+<div class="sidebar">
+<p class="first sidebar-title">Take an Order</p>
+<p>Combine variables, loops or methods, conditionals, comparison, and user input to make a
+program that takes an order and responds to the user:</p>
+<div class="last highlight-python"><pre>puts "What kind of sandwich would you like?"
+    sandwich = gets.strip!
+    puts "Ok. Would you like a combo? (yes or no)"
+    combo_answer = gets.strip!
+
+    def assign_combo(combo_answer)
+      if combo_answer.downcase == "yes"
+            combo = true
+      elsif combo_answer.downcase == "no"
+            combo = false
+      else
+            puts "Please type yes or no:"
+            combo_answer = gets.strip!
+            assign_combo(combo_answer)
+      end
+    end
+    combo = assign_combo(combo_answer)
+
+    if combo == true
+      puts "Ok, what size combo would you like?"
+      size = gets.strip!
+    end
+    puts "Ok, you ordered a #{combo ? size + ' ' + sandwich + ' combo' : sandwich}. Thank you!"</pre>
+</div>
+</div>
+<p>See if you can write a ruby script in a .rb file that will take an order when it
+is run.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+<hr class="docutils" />
+<p class="rubric">Footnotes</p>
+<ol class="arabic simple">
+<li><a class="reference external" href="http://en.wikibooks.org/wiki/Ruby_Programming">Wiki books guide to Ruby Programming</a></li>
+</ol>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="11_use-rubyonrails.html" title="Ruby on Rails Sample App"
+             >next</a></li>
+        <li class="right" >
+          <a href="index.html" title="AAltsys Ruby on Rails Tutorial"
+             >previous</a> |</li>
+        <li><a href="index.html">Ruby Developer Tutorial 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Julia Lovel.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
+    </div>
+  </body>
+</html>
