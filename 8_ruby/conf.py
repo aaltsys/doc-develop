@@ -284,6 +284,7 @@ epub_copyright = u'2013, Julia Lovel'
 # Allow duplicate toc entries.
 #epub_tocdup = True
 
+
 intersphinx_mapping = {
  'resources': ('resources', '../_deploy/resources/objects.inv'),
  'cloud': ('cloud', '../_deploy/1_cloud/objects.inv'),
@@ -292,4 +293,5 @@ intersphinx_mapping = {
  'develop': ('develop', '../_deploy/4_develop/objects.inv'),
  'document': ('document', '../_deploy/5_document/objects.inv'),
  'htmlcss': ('htmlcss', '../_deploy/6_htmlcss/objects.inv'),
+ 'javascript': ('javascript', '../_deploy/8_javascript/objects.inv'),
 }
