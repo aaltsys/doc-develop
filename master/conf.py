@@ -294,7 +294,7 @@ intersphinx_mapping = {
  'develop': ('4_develop', '../_deploy/4_develop/objects.inv'),
  'document': ('5_document', '../_deploy/5_document/objects.inv'),
  'htmlcss': ('6_htmlcss', '../_deploy/6_htmlcss/objects.inv'),
- 'ruby': ('7_ruby', '../_deploy/7_ruby/objects.inv'),
- 'javascript': ('8_javascript', '../_deploy/8_javascript/objects.inv'),
+ 'javascript': ('7_javascript', '../_deploy/8_javascript/objects.inv'),
+ 'ruby': ('8_ruby', '../_deploy/7_ruby/objects.inv'),
  'deployment': ('9_deployment', '../_deploy/9_deployment/objects.inv'),
 }
