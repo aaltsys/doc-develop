@@ -3,18 +3,17 @@
 
 .. _index:
 
-AAltsys Technology Web Development Guide
-============================================
+AAltsys Web Developer Guides
+=============================
 
 "A poor workman blames his tools," it has been said. An unskilled workman, 
-on the other hand, doesn't know what his tools are or where to get them.
-That's why this guide is here.
+on the other hand, doesn't know what tools are, where to get them, or how to 
+use them. That's why these guides are here.
 
-AAltsys Technology offers this guide to those who think that becoming a developer
-is too much work or too confusing. With this guide, development can be less work 
-and more confusing. or was it more work and less confusing? don't misinterpret, 
-this isn't a "Become a developer in 3 easy steps" tutorial. But with a little 
-effort and a lot of patience, You can learn development.
+AAltsys Technology offers these guides to those who think that developer tools 
+are unavailable, costly, or too hard to use. The fact is that software 
+development tools are freely available on-line, and becoming a developer is an 
+easy process for those who are willing to invest the time to learn.
 
 #. :ref:`cloud:index`.
 #. :ref:`linux:index`.
@@ -22,8 +21,8 @@ effort and a lot of patience, You can learn development.
 #. :ref:`develop:index`.
 #. :ref:`document:index`.
 #. :ref:`htmlcss:index`.
-#. :ref:`ruby:index`.
 #. :ref:`javascript:index`.
+#. :ref:`ruby:index`.
 #. :ref:`deployment:index`.
 #. :ref:`resources:index`.
 
