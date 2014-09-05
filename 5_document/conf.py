@@ -331,6 +331,6 @@ intersphinx_mapping = {
  'resources': ('resources', '../_deploy/resources/objects.inv'),
  'cloud': ('cloud', '../_deploy/1_cloud/objects.inv'),
  'linux': ('linux', '../_deploy/2_linux/objects.inv'),
- 'bash': ('bash', '../_deploy/3_bash/objects.inv'),
+ 'learn': ('learn', '../_deploy/3_learn/objects.inv'),
  'develop': ('develop', '../_deploy/4_develop/objects.inv'),
 }
