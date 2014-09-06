@@ -17,12 +17,11 @@ easy process for those who are willing to invest the time to learn.
 
 #. :ref:`cloud:index`.
 #. :ref:`linux:index`.
-#. :ref:`bash:index`.
+#. :ref:`learn:index`.
 #. :ref:`develop:index`.
 #. :ref:`document:index`.
-#. :ref:`htmlcss:index`.
-#. :ref:`javascript:index`.
-#. :ref:`ruby:index`.
+#. :ref:`browser:index`.
+#. :ref:`server:index`.
 #. :ref:`deployment:index`.
 #. :ref:`resources:index`.
 
