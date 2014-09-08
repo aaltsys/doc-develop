@@ -27,7 +27,7 @@ Copy SSH Key to Clipboard
 
 At your system console, copy your SSH key to the clipboard with the command::
 
-   cat ~/.ssh/id_rsa.pub | xclip``
+   cat ~/.ssh/id_rsa.pub | xclip
 
 Add the SSH Key to Github:
 -----------------------------
