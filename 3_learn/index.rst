@@ -3,7 +3,7 @@
 
 .. _index:
    
-AAltsys Developer **Linux BASH Commands** Guide
+Learn Like a Developer
 ===============================================
 
 Contents:

@@ -5,7 +5,7 @@
 
 .. _index:
 
-AAltsys Developer **Javascript** Guides
+Ruby, PHP, Python, Java
 =======================================
 
 Contents:
