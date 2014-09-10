@@ -61,31 +61,28 @@ makedeployment () {
 
 ########## CHECK FOR OPTIONS, ASSIGN INPUTS
 
-while [[ $# > 1 ]]
+for OPT in "$@"
 do
-key="$1"
-shift
-
-case $key in
+case $OPT in
     -h|--help)
     echo -e "\ndoc-deploy.sh [projectname] [options]"
-    echo -e "projectname  defaults to name of working directory (pwd)"
-    echo -e "options      -h, --help displays this text"
-    echo -e "             -n, --nodeploy builds the deployment but does not push it\n"
+    echo -e "   projectname  defaults to name of working directory (pwd)"
+    echo -e "   options      -h, --help - displays this text"
+    echo -e "                -n, --nodeploy - builds _deploy but does not push it\n"
+    shift
+    exit
     ;;
     -n|--nodeploy)
-    EXTENSION="$1"
+    NODEPLOY='YES'
+    echo "No deploy: $NODEPLOY"
     shift
     ;;
     *)
     PROJECT=$key
+    shift
     ;;
 esac
 done
-
-echo "No deploy: $NODEPLOY"
-echo "Project: $PROJECT"
-# =============================================================================
 
 ######### PRE-EXECUTION TESTS
 
@@ -284,14 +281,14 @@ if [[ $BRANCH_DEPLOY = $GITHUB ]] ; then
 fi
 
 # Deploy the repository branch
-if [[ -d $DIR_DEPLOY ]] ; then
+if [[ $NODEPLOY == "YES" ]] ; then
+  exit
+elif [[ -d $DIR_DEPLOY ]] ; then
   cd $DIR_DEPLOY
   git add -A .
   git commit -m "Deployed documentation"
   git push -u origin $DEPLOY:$BRANCH_DEPLOY
-
   echo -e "\npushed to origin branch $DEPLOY:$BRANCH_DEPLOY\n"
-
   cd ..
 fi
 
