@@ -3,8 +3,6 @@
 
 ######### VARIABLES
 
-PROJECT=$1
-
 OWNER=""
 REMOTE=""
 SECTIONS=""
@@ -22,8 +20,10 @@ MAKE_METHOD="html"
 GITHUB="gh-pages"
 HEROKU="master"
 BACKREF="backreference"
+NODEPLOY=""
+PROJECT=""
 
-# ===========function to build  github deployment in a folder==================
+# ===========function to build deployment in a folder==========================
 
 # Compile fresh output for one or more books and copy to deployment folder
 makedeployment () {
@@ -58,6 +58,31 @@ makedeployment () {
 }
 
 # =============================================================================
+
+########## CHECK FOR OPTIONS, ASSIGN INPUTS
+
+for OPT in "$@"
+do
+case $OPT in
+    -h|--help)
+    echo -e "\ndoc-deploy.sh [projectname] [options]"
+    echo -e "   projectname  defaults to name of working directory (pwd)"
+    echo -e "   options      -h, --help - displays this text"
+    echo -e "                -n, --nodeploy - builds _deploy but does not push it\n"
+    shift
+    exit
+    ;;
+    -n|--nodeploy)
+    NODEPLOY='YES'
+    echo "No deploy: $NODEPLOY"
+    shift
+    ;;
+    *)
+    PROJECT=$key
+    shift
+    ;;
+esac
+done
 
 ######### PRE-EXECUTION TESTS
 
@@ -256,14 +281,14 @@ if [[ $BRANCH_DEPLOY = $GITHUB ]] ; then
 fi
 
 # Deploy the repository branch
-if [[ -d $DIR_DEPLOY ]] ; then
+if [[ $NODEPLOY == "YES" ]] ; then
+  exit
+elif [[ -d $DIR_DEPLOY ]] ; then
   cd $DIR_DEPLOY
   git add -A .
   git commit -m "Deployed documentation"
   git push -u origin $DEPLOY:$BRANCH_DEPLOY
-
   echo -e "\npushed to origin branch $DEPLOY:$BRANCH_DEPLOY\n"
-
   cd ..
 fi
 
@@ -279,3 +304,5 @@ echo "Then commit and push source changes as well."
 # 02/20/2013 - GARL -- Added support for deployment to Heroku, Github, ...
 # 03/10/2013 - GARL -- Embedded documentation in code projects added
 # 11/15/2013 - GARL -- Updated cnameowner mismatch error messages to display spaces
+# 08/20/2014 - GARL -- Added link backreference insertion in HTML output
+# 09/10/2014 - GARL -- Added option checking for NODEPLOY, PROJECT

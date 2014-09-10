@@ -286,12 +286,12 @@ epub_copyright = u'2013, Julia Lovel'
 
 
 intersphinx_mapping = {
- 'resources': ('resources', '../_deploy/resources/objects.inv'),
- 'cloud': ('cloud', '../_deploy/1_cloud/objects.inv'),
- 'linux': ('linux', '../_deploy/2_linux/objects.inv'),
- 'learn': ('learn', '../_deploy/3_learn/objects.inv'),
- 'develop': ('develop', '../_deploy/4_develop/objects.inv'),
- 'document': ('document', '../_deploy/5_document/objects.inv'),
- 'browser': ('browser', '../_deploy/6_browser/objects.inv'),
- 'server': ('server', '../_deploy/7_server/objects.inv'),
+ 'resources': ('../resources', '../_deploy/resources/objects.inv'),
+ 'cloud': ('../cloud', '../_deploy/1_cloud/objects.inv'),
+ 'linux': ('../linux', '../_deploy/2_linux/objects.inv'),
+ 'learn': ('../learn', '../_deploy/3_learn/objects.inv'),
+ 'develop': ('../develop', '../_deploy/4_develop/objects.inv'),
+ 'document': ('../document', '../_deploy/5_document/objects.inv'),
+ 'browser': ('../browser', '../_deploy/6_browser/objects.inv'),
+ 'server': ('../server', '../_deploy/7_server/objects.inv'),
 }
