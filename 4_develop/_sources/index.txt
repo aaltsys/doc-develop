@@ -1,6 +1,6 @@
 .. _index:
 
-AAltsys Development Tutorial
+Working Like a Developer
 ==============================================
 
 Contents:

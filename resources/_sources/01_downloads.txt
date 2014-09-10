@@ -28,6 +28,7 @@ of the following scripts as appropriate, saving it to the desktop with the name
 | KDE-Mint_12: :download:`_downloads/KDE-Mint_12-desktop.sh`
 | KUbuntu_12: :download:`_downloads/KUbuntu_12-desktop.sh`
 | KUbuntu_13: :download:`_downloads/KUbuntu_13-desktop.sh`
+| KUbuntu_14: :download:`_downloads/KUbuntu_14-desktop.sh`
 
 Get the respective script from the command line via wget with::
 
@@ -36,6 +37,7 @@ Get the respective script from the command line via wget with::
    wget -O first-install.sh http://develop.aaltsys.info/resources/_downloads/KDE-Mint_12-desktop.sh
    wget -O first-install.sh http://develop.aaltsys.info/resources/_downloads/KUbuntu_12-desktop.sh
    wget -O first-install.sh http://develop.aaltsys.info/resources/_downloads/KUbuntu_13-desktop.sh
+   wget -O first-install.sh http://develop.aaltsys.info/resources/_downloads/KUbuntu_14-desktop.sh
  
 Execute the script with the command, :command:`bash first-install.sh`.
 
