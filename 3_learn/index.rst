@@ -2,8 +2,8 @@
    sphinx-quickstart on Sat Feb 23 09:32:20 2013.
 
 .. _index:
-   
-AAltsys Learn to Develop 
+
+Learn Like a Developer
 =============================
 
 Contents:
@@ -18,4 +18,3 @@ Indices and tables
 ==================
 
 * :ref:`search`
-

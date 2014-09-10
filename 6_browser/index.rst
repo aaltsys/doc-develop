@@ -3,7 +3,7 @@
 
 .. _index:
 
-AAltsys Developer **HTML and CSS** Guides
+HTML, CSS, and Javascript
 =========================================
 
 .. note::

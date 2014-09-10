@@ -1,6 +1,6 @@
 .. _index:
 
-Linux Commands Overview
+Getting Linux
 ====================================
 
 Contents:

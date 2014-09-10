@@ -19,7 +19,8 @@
 
 # deployment folder content
 *deploy/*
-*/*deploy/*
+*_deploy/*
+*/_deploy/*
 
 # keep directories which include .gitkeep
 !.gitkeep
