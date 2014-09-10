@@ -3,8 +3,6 @@
 
 ######### VARIABLES
 
-PROJECT=$1
-
 OWNER=""
 REMOTE=""
 SECTIONS=""
@@ -22,8 +20,10 @@ MAKE_METHOD="html"
 GITHUB="gh-pages"
 HEROKU="master"
 BACKREF="backreference"
+NODEPLOY=""
+PROJECT=""
 
-# ===========function to build  github deployment in a folder==================
+# ===========function to build deployment in a folder==========================
 
 # Compile fresh output for one or more books and copy to deployment folder
 makedeployment () {
@@ -57,6 +57,34 @@ makedeployment () {
  
 }
 
+# =============================================================================
+
+########## CHECK FOR OPTIONS, ASSIGN INPUTS
+
+while [[ $# > 1 ]]
+do
+key="$1"
+shift
+
+case $key in
+    -h|--help)
+    echo -e "\ndoc-deploy.sh [projectname] [options]"
+    echo -e "projectname  defaults to name of working directory (pwd)"
+    echo -e "options      -h, --help displays this text"
+    echo -e "             -n, --nodeploy builds the deployment but does not push it\n"
+    ;;
+    -n|--nodeploy)
+    EXTENSION="$1"
+    shift
+    ;;
+    *)
+    PROJECT=$key
+    ;;
+esac
+done
+
+echo "No deploy: $NODEPLOY"
+echo "Project: $PROJECT"
 # =============================================================================
 
 ######### PRE-EXECUTION TESTS
@@ -279,3 +307,5 @@ echo "Then commit and push source changes as well."
 # 02/20/2013 - GARL -- Added support for deployment to Heroku, Github, ...
 # 03/10/2013 - GARL -- Embedded documentation in code projects added
 # 11/15/2013 - GARL -- Updated cnameowner mismatch error messages to display spaces
+# 08/20/2014 - GARL -- Added link backreference insertion in HTML output
+# 09/10/2014 - GARL -- Added option checking for NODEPLOY, PROJECT
