@@ -1,11 +1,10 @@
 resources
 1_cloud
 2_linux
-3_bash
+3_learn
 4_develop
 5_document
-6_htmlcss
-7_javascript
-8_ruby
-9_deployment
+6_browser
+7_server
+8_deployment
 master
