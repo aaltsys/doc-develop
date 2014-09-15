@@ -1,4 +1,4 @@
-.. _Command:
+.. _command:
 
 #############################
 Common commands
@@ -52,6 +52,6 @@ Environment Variables are those which are predeclared and can be called from any
 +======================+==============================================================+
 |$EUID                 | The ID number of the current user.                           |
 +----------------------+--------------------------------------------------------------+
-|$PWD                   | when called, it returns the current directory               |
+|$PWD                  | when called, it returns the current directory                |
 +----------------------+--------------------------------------------------------------+
 

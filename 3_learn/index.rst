@@ -6,12 +6,13 @@
 Learn Like a Developer
 =============================
 
-This section is designed to teach you to understand the mindset of a developer, and to really start to learn like a developer would.
+This section is designed to teach you to understand the mindset of a developer, 
+and to really start to learn like a developer would.
 
 #. :ref:`bash`.
 #. :ref:`program`.
 #. :ref: `prolinux`.
-#. :ref: `Command`.
+#. :ref: `command`.
 
 Indices and tables
 ==================
