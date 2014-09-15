@@ -1,4 +1,4 @@
-.. program:
+.. _program:
 
 #############################
 What Constitutes a Program?

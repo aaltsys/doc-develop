@@ -11,8 +11,8 @@ and to really start to learn like a developer would.
 
 #. :ref:`bash`.
 #. :ref:`program`.
-#. :ref: `prolinux`.
-#. :ref: `command`.
+#. :ref:`prolinux`.
+#. :ref:`command`.
 
 Indices and tables
 ==================
