@@ -1,8 +1,13 @@
-de.. _Bash:
+.. _bash:
 
 #############################
-Linux Commands and Utilities
+What are we doing?
 #############################
+
+What are we doing?
+======================
+
+We are teaching people linux, and, specifically, how to program in linux. The language you will be using is called bash.
 
 
 Bash is a command interpreter which is universally available on Linux and Unix.
@@ -33,5 +38,5 @@ Shell scripts are scripts that are written in a text editor, saved in .sh format
 
 
 
-Ok, ready to start learning more? Lets talk about Variables 
+Ok, ready to start learning more? Let's talk about programs. 
 

@@ -1,4 +1,4 @@
-.. _Bash:
+.. _expansions:
 
 #############################
 Command Expansions

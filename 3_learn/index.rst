@@ -6,13 +6,12 @@
 Learn Like a Developer
 =============================
 
-Contents:
+This section is designed to teach you to understand the mindset of a developer, and to really start to learn like a developer would.
 
-.. toctree::
-   :maxdepth: 2
-   :glob:
-
-   [0-9]*
+#. :ref:`bash`.
+#. :ref:`program`.
+#. :ref: `prolinux`.
+#. :ref: `Command`.
 
 Indices and tables
 ==================
