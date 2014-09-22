@@ -16,90 +16,107 @@ some sites that offer free trials for public web servers:
 * http://aws.amazon.com/free/ - Free for 12 months at lowest tier
 * https://www.digitalocean.com/ - Free for 2 months at lowest tier with promo code
 
+Setup a server on Amazon, by browsing to::
 
-Server set-up on Amazon:
-http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstancesLinux.html
-ssh -i keyfile ubuntu@servername
-sudo useradd developer -G sudo
+   http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstancesLinux.html
 
-Edit /etc/ssh/sshd_config setting:
-PasswordAuthentication yes
+Open a console on your desktop, and run the commands::
 
-sudo service sshd restart
-sudo service ssh restart
+   ssh -i keyfile ubuntu@servername
+   sudo useradd developer -G sudo
+
+Edit :file:`/etc/ssh/sshd_config` to allow password authentication, using the 
+commands::
+
+   (replace ``PasswordAuthentication yes`` with a sed command)
+   sudo service sshd restart
+   sudo service ssh restart
 
 
-To install the software necessary for a basic webserver on Ubuntu:
+To install the software necessary for a basic webserver on Ubuntu::
 
-``sudo apt-get install apache2 git``
+   sudo apt-get install apache2 git
 
-We can visit our server at:
+We can visit our server at::
 
-http://54.68.232.191/
+   http://54.68.232.191/
 
-or
+or ::
 
-http://ec2-54-68-232-191.us-west-2.compute.amazonaws.com/
+   http://ec2-54-68-232-191.us-west-2.compute.amazonaws.com/
 
 And see the default ubuntu Apache installation's welcome page.
 
-As this page explains, it is located in the /var/www/html folder on the server.
-This folder is known as the "DocRoot". 
+*** Insert screenshot here ***
 
-The file itself is called "index.html". When Apache gets a request for a folder path, 
-it looks first for an index.html file in that folder, and serves that if it exists.
+As this page explains, it is located in the :file:`/var/www/html` folder on the 
+server. This folder is known as the "DocRoot". 
 
-In order to see our own files, we should
-place them within the DocRoot. 
-So, the process of deployment will require us to 
-move our code to within the DocRoot on this server.
+The file itself is called :file:`index.html`. When Apache gets a request for a 
+folder path, it looks first for an :file:`index.html` file in that folder, and 
+serves that file if it exists.
 
+In order to see our own files, we should place them within the DocRoot. 
+So, the process of deployment will require us to move our code to within the 
+DocRoot on the server.
 
 Create a Code Project
 =======================
 
-Fork from https://github.com/JuliaLovel/html-demo
+*** change to AAltsys account ***
 
-In GitHub, edit the index.html file.
-    Put your name in the h1 tag.
+In your browser, login to your Github account. Fork the project from 
+https://github.com/JuliaLovel/html-demo.
+
+*** Look at where Github takess you after the fork. ***
+
+Then under "Your Repositories" on the right, click on the link to your fork
+of "html-demo".
+
+In GitHub, edit the :file:`index.html` file, putting your name in the ``<h1>`` 
+tag.
+
+*** Include screenshot ***
 
 Move Code to the Server
 =======================
 
 Locate your code on GitHub:
 
-Log in to GitHub
-Under "Your Repositories" on the right, click on the link to your fork
-of "html-demo".
-
 In the right sidebar, copy the URL of your repository to clone from (HTTPS version).
 (For example, https://github.com/JuliaLovel/html-demo.git)
 
+SSH to the server::
 
-SSH to the server:
+   ssh developer@54.68.232.191
 
-``ssh developer@54.68.232.191``
+   password: techC@mp
 
-password: techC@mp
+.. note:
+   To avoid the complication of PKI keys, password authentication is used. 
 
+Create a unique directory in the DocRoot::
 
-Create a unique directory in the DocRoot:
+*** Define [your-directory-name] as [your-Github-id] ***
 
-cd /var/www/html
-sudo mkdir [your-directory-name]
+   cd /var/www/html
+   sudo mkdir [your-directory-name]
 
+Clone to your directory::
 
-Clone to your directory:
+   sudo git clone https://github.com/JuliaLovel/html-demo.git [your-directory-name]
 
-sudo git clone https://github.com/JuliaLovel/html-demo.git [your-directory-name]
-
+*** Again, change the repo source ***
+   
 View your page:
 
-Now your page can be viewed at:
-[our-server-address]/[your-directory-name]
+Now your page can be viewed at::
 
-For example:
-http://ec2-54-68-232-191.us-west-2.compute.amazonaws.com/html-demo
+   [our-server-address]/[your-directory-name]
+
+For example::
+
+   http://ec2-54-68-232-191.us-west-2.compute.amazonaws.com/html-demo
 
 
 What's Missing?
