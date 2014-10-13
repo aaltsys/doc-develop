@@ -1,0 +1,169 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Shell Scripting Exercise &mdash; Linux Shell Script Programming 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/aaltsys.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Linux Shell Script Programming 1.0 documentation" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li><a href="index.html">Linux Shell Script Programming 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Shell Scripting Exercise</a><ul>
+<li><a class="reference internal" href="#first-script-steps">First Script Steps</a><ul>
+<li><a class="reference internal" href="#make-a-text-file">Make a text file</a></li>
+<li><a class="reference internal" href="#hello-world">Hello World</a></li>
+<li><a class="reference internal" href="#user-confirmation">User Confirmation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/03_lesson1.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="shell-scripting-exercise">
+<span id="exercise"></span><h1>Shell Scripting Exercise<a class="headerlink" href="#shell-scripting-exercise" title="Permalink to this headline">¶</a></h1>
+<p>When learning to program, 80% of all work is intelligent copying, 10% is
+learning general programming conventions, and 10% is learning specific details
+of a programming language or an environment. The biggest difficulty in
+learning to program is that the last 10%, specific details, is often required
+first.</p>
+<p>In this exercise, use the 80% copying approach to create a script and add
+features incrementally to achieve a final result.</p>
+<div class="section" id="first-script-steps">
+<h2>First Script Steps<a class="headerlink" href="#first-script-steps" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="make-a-text-file">
+<h3>Make a text file<a class="headerlink" href="#make-a-text-file" title="Permalink to this headline">¶</a></h3>
+<p>Open a file viewer window (<strong class="program">Dolphin</strong>), and check the
+<em class="menuselection">Control ‣ Panels ‣ Terminal</em> selection to include the
+terminal console in the display. Create a text file from the console command
+line, and edit the file using <strong class="program">Kate</strong>:</p>
+<div class="highlight-python"><div class="highlight"><pre>touch first-script.sh
+kate first-script.sh
+</pre></div>
+</div>
+</div>
+<div class="section" id="hello-world">
+<h3>Hello World<a class="headerlink" href="#hello-world" title="Permalink to this headline">¶</a></h3>
+<p>Based on script samples shown previously, edit your script to display
+&#8220;Hello world.&#8221; Save your work, and test run the script from the command line.</p>
+<div class="admonition hint">
+<p class="first admonition-title">Hint</p>
+<ol class="last arabic">
+<li><p class="first">Use file properties to set permissions and check &#8220;Is executable.&#8221;</p>
+</li>
+<li><p class="first">Scripts are text files, but using the filename extension <tt class="kbd docutils literal"><span class="pre">.sh</span></tt> helps
+to identify script files to the user.</p>
+</li>
+<li><p class="first">Sidebar examples from the previous page demonstrate commands to use.</p>
+</li>
+<li><p class="first">These on-line resources provide reference documentation:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="24%" />
+<col width="29%" />
+<col width="47%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Resource</th>
+<th class="head">Example</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong class="command">help</strong></td>
+<td><tt class="docutils literal"><span class="pre">command</span> <span class="pre">--help</span></tt></td>
+<td>Built-in command documentation</td>
+</tr>
+<tr class="row-odd"><td><strong class="command">man</strong></td>
+<td><tt class="docutils literal"><span class="pre">man</span> <span class="pre">command</span></tt></td>
+<td>Manual page(s) for command</td>
+</tr>
+<tr class="row-even"><td><strong class="command">info</strong></td>
+<td><tt class="docutils literal"><span class="pre">info</span> <span class="pre">command</span></tt></td>
+<td>or, Info page(s) for command</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ol>
+</div>
+</div>
+<div class="section" id="user-confirmation">
+<h3>User Confirmation<a class="headerlink" href="#user-confirmation" title="Permalink to this headline">¶</a></h3>
+<p>Add statements to your script to: (1) prompt the user to run the script, and
+(2) process the user&#8217;s response.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li><a href="index.html">Linux Shell Script Programming 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Gerald Lovel.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

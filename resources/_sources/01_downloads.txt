@@ -16,6 +16,16 @@ links and as :command:`wget` terminal commands.
 Linux installation scripts
 =============================
 
+apt-fast.sh
+-----------------------------
+
+For existing installs of Ubuntu (14.04 or later), download and install 
+:file:`apt-fast.sh` to speed up :command:`apt-` processes. The 
+:file:`first-install.sh` and :file`rest-install.sh` scripts described following 
+are optimized using :command:`apt-fast`. [#]_
+
+| KUbuntu_14: :download:`_downloads/apt-fast.sh`
+
 first-install.sh
 -----------------------------
 
@@ -126,3 +136,9 @@ Heroku, add the following :file:`.htaccess` server directive file:
    
 .. note:: An :file:`.htpasswd` file is also required, in the same directory.
    Learn about basic authentication using :file:`.htaccess`
+
+------
+
+.. rubric:: Footnotes
+
+.. [#] `Dan Nanni, Xmodulo, shows us how to speed up apt-get. <http://xmodulo.com/speed-slow-apt-get-install-debian-ubuntu.html>`_
