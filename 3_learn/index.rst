@@ -1,17 +1,25 @@
-.. Learn to Develop documentation master file, created by
+.. Learn Linux Command Scripting documentation master file, created by
    sphinx-quickstart on Sat Feb 23 09:32:20 2013.
 
 .. _index:
 
-Learn Like a Developer
+Learn Linux Scripting
 =============================
 
-This section is designed to teach you to understand the mindset of a developer, 
-and to really start to learn like a developer would.
+Learning computer programming is a daunting challenge. However, every Unix/Linux 
+computer system has a built-in shell scripting language which is designed for 
+managing the computer, and learning to program in shell scripts is not hard. 
+Shell commands are interactive, and the results from commands are immediate.
 
-#. :ref:`bash`.
+The best part of learning shell scripting is, everything you learn to do well in 
+shell is part of the programming skill required in any programming language. 
+Not to say that shell programming is not a replacement for other programming 
+languages, but shell is powerful enough that Linus Torvalds used shell scripting 
+to write the first versions of the :program:`git` repository.
+
+#. :ref:`shell`.
 #. :ref:`program`.
-#. :ref:`prolinux`.
+#. :ref:`exercise`.
 #. :ref:`command`.
 
 Indices and tables

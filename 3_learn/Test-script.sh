@@ -1,2 +1,0 @@
-NUMBER=4
-echo $NUMBER
