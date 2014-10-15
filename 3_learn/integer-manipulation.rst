@@ -13,7 +13,9 @@ Bash has 6 main operational signs ::
     * Multiplication
     ** Exponentation
     % Modulo
-    
+    , links a series of arithmetic operations: ex: let "t2 = ((a = 9, 15 / 3))"
+
+
 They probably all seem familiar except for those last two, Exponentation and Modulo.
 Exponentation is when a number is raised to that power, so 12**3 is 12*12*12
 Modulo is the remainder when a Division is finished, so 13%3 is 1.
@@ -21,8 +23,9 @@ Modulo is the remainder when a Division is finished, so 13%3 is 1.
 Simple Mathematical operations
 ================================
 
-So, you open the terminal, type 7 + 4, and out comes 11, right? Unfortunately not. Instead you'll get "7: command not found"
-Bash doesn't do math quite like your average programming language. but it does
+So, you open the terminal, type 7 + 4, and out comes 11, right? Unfortunately 
+not. Instead you'll get "7: command not found."
+Bash doesn't do math quite like your average programming language, but it does
 have alternate methods which you can use.
 
 In the Terminal

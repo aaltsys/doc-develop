@@ -1,34 +1,100 @@
-#! /bin/bash
-# Script to deploy .rst documents in a git repository
+.. _statements:
 
-######### VARIABLES
+#############################
+Shell Program Statements
+#############################
 
-OWNER=""
-REMOTE=""
-SECTIONS=""
-BRANCH_DEPLOY=""
-REMOTE_DEPLOY=""
-MASTER="master"
-DEPLOY="deploy"
-FILE_SPHINX="index.rst"
-DIR_DOC="_doc"
-DIR_DOWNLOADS="_downloads"
-DIR_BUILD="_build"
-DIR_DEPLOY="_deploy"
-DIR_STATIC="_static"
-MAKE_METHOD="html"
-GITHUB="gh-pages"
-HEROKU="master"
-BACKREF="backreference"
-NODEPLOY=""
-PROJECT=""
+Program Heading
+=============================
+
+Each shell script should start with an interpreter declaration, optionally 
+followed by a comment to describe the purpose of the script. The declaration
+begins with the three characters :keyboard:`#! `, followed by the interpreter 
+path. Comments start with :keyboard:`# `. Here is an example::
+
+   #! /bin/bash
+   # Script to deploy .rst documents in a git repository
+
+Variable Assignments
+=============================
+
+Each variable assignment statement begins with a variable name concatenated 
+with an equals sign::
+
+   OWNER=""
+   SECTIONS=""
+
+Input and Output
+=============================
+
+Shell commands assume input comes from virtual device **STDIN** and output goes 
+to virtual device **STDOUT**. When working at a console, by default the keyboard 
+is directed to **STDIN**, and **STDOUT** is directed to the console display.
+
+Redirect arguments change the source input or output destination of a command::
+
+   cp -RH $DIR_STATIC/.ht* $DIR_DEPLOY/ &>/dev/null
+
+A pipe passes **STDOUT** of a command to **STDIN** of the following command::
+
+   ls | egrep 'test.txt'
+
+The distinction between redirects and pipes is:
+
+   *  a redirect is an argument to a single command, while 
+   *  a pipe passes data from the output of one command to the input of another.
+
+
+Logic Tests, Flow Control
+=============================
+
+
+
+   if [[ -d $DIR_DOWNLOADS ]] ; then
+     cp -R $DIR_DOWNLOADS $DIR_OUT/
+   fi
+
+   if [[ ! -d .git ]] ; then
+     echo "No git project name given. Exiting ... "
+     exit 1
+   else
+     PROJECT=${PWD##*/}
+   fi
+
+Repeating and Conditions
+=============================
+
+for OPT in "$@"
+do
+  case $OPT in
+    -h|--help)
+      echo -e "\ndoc-deploy.sh [projectname] [options]"
+      echo -e "   projectname  defaults to name of working directory (pwd)"
+      echo -e "   options      -h, --help - displays this text"
+      echo -e "                -n, --nodeploy - builds _deploy but does not push it\n"
+      shift
+      exit
+    ;;
+    -n|--nodeploy)
+      NODEPLOY='YES'
+      echo "No deploy: $NODEPLOY"
+      shift
+    ;;
+    *)
+      PROJECT=$key
+      shift
+    ;;
+  esac
+done
+
 
 # ===========function to build deployment in a folder==========================
 
 # Compile fresh output for one or more books and copy to deployment folder
+
 makedeployment () {
   echo "$(pwd)$(tput setaf 1) Making output -- $DIR_OUT -- $(tput sgr0)" 
-  
+
   make clean $MAKE_METHOD BUILDDIR=$DIR_BUILD
 
   cp -R $DIR_BUILD/$MAKE_METHOD/* $DIR_OUT/
@@ -63,25 +129,25 @@ makedeployment () {
 
 for OPT in "$@"
 do
-case $OPT in
+  case $OPT in
     -h|--help)
-    echo -e "\ndoc-deploy.sh [projectname] [options]"
-    echo -e "   projectname  defaults to name of working directory (pwd)"
-    echo -e "   options      -h, --help - displays this text"
-    echo -e "                -n, --nodeploy - builds _deploy but does not push it\n"
-    shift
-    exit
+      echo -e "\ndoc-deploy.sh [projectname] [options]"
+      echo -e "   projectname  defaults to name of working directory (pwd)"
+      echo -e "   options      -h, --help - displays this text"
+      echo -e "                -n, --nodeploy - builds _deploy but does not push it\n"
+      shift
+      exit
     ;;
     -n|--nodeploy)
-    NODEPLOY='YES'
-    echo "No deploy: $NODEPLOY"
-    shift
+      NODEPLOY='YES'
+      echo "No deploy: $NODEPLOY"
+      shift
     ;;
     *)
-    PROJECT=$key
-    shift
+      PROJECT=$key
+      shift
     ;;
-esac
+  esac
 done
 
 ######### PRE-EXECUTION TESTS

@@ -48,7 +48,7 @@ copyright = u'2013, Gerald Lovel'
 # built documents.
 #
 # The short X.Y version.
-version = '0.1'
+version = '1.0'
 # The full version, including alpha/beta/rc tags.
 release = '1.0'
 
@@ -164,7 +164,7 @@ html_use_index = False
 #html_file_suffix = None
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'LinuxShellScriptProgramming.doc'
+htmlhelp_basename = 'LinuxShellScriptProgrammingdoc'
 
 
 # -- Options for LaTeX output --------------------------------------------------
