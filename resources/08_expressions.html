@@ -79,24 +79,50 @@
 <span id="expressions"></span><h1>Routines and Expressions<a class="headerlink" href="#routines-and-expressions" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="logical-expression-blocks">
 <h2>Logical expression blocks<a class="headerlink" href="#logical-expression-blocks" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre>for name in [wordlist]
+do
+  command list
+done
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre>for (( expr1; expr2; ... ))
+do
+   command list
+done
+</pre></div>
+</div>
 <div class="highlight-python"><div class="highlight"><pre>while [ logical expr ]
 do
-  code statements
+  command list
 done
 </pre></div>
 </div>
 <div class="highlight-python"><div class="highlight"><pre>until [ logical expr ]
 do
-  code statements
+  command list
 done
 </pre></div>
 </div>
 <div class="highlight-python"><div class="highlight"><pre>case &quot;$variable&quot; in
   value1)
-    code statements ;;
+    command list ;;
   value2)
-    code statements ;;
+    command list ;;
 esac
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre>if [ logical expr ]
+then
+  command list
+elif [ logical expr ]
+then
+  command list
+else
+  command list
+fi
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre>::
 </pre></div>
 </div>
 </div>

@@ -110,12 +110,12 @@ declared.</p>
 </div>
 <div class="section" id="environment-variables">
 <h2>Environment Variables<a class="headerlink" href="#environment-variables" title="Permalink to this headline">¶</a></h2>
-<p>Environment Variables are those which are predeclared and can be called from any
-program, script, or terminal. here&#8217;s a table of a few Environment Variables</p>
+<p>Environment Variables are predeclared and can be called from any program,
+script, or terminal session. A few Environment Variables are listed following:</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="26%" />
-<col width="74%" />
+<col width="29%" />
+<col width="71%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Environment Variables</th>
@@ -123,11 +123,41 @@ program, script, or terminal. here&#8217;s a table of a few Environment Variable
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>$EUID</td>
-<td>The ID number of the current user.</td>
+<tr class="row-even"><td>$BASH</td>
+<td>full filename used to invoke bash</td>
 </tr>
-<tr class="row-odd"><td>$PWD</td>
+<tr class="row-odd"><td>$EUID</td>
+<td>effective user ID (number) of the current user</td>
+</tr>
+<tr class="row-even"><td>$GROUPS</td>
+<td>array of groups the current user is a member of</td>
+</tr>
+<tr class="row-odd"><td>$HOSTNAME</td>
+<td>the name of the current host</td>
+</tr>
+<tr class="row-even"><td>$IFS</td>
+<td>characters treated as white space</td>
+</tr>
+<tr class="row-odd"><td>$LINENO</td>
+<td>sequential number of executing line in a script</td>
+</tr>
+<tr class="row-even"><td>$MACHTYPE</td>
+<td>GNU cpu-company-system machine type description</td>
+</tr>
+<tr class="row-odd"><td>$OSTYPE</td>
+<td>string describing the operating system</td>
+</tr>
+<tr class="row-even"><td>$PATH</td>
+<td>search path for commands</td>
+</tr>
+<tr class="row-odd"><td>$PPID</td>
+<td>process id of the shell&#8217;s parent</td>
+</tr>
+<tr class="row-even"><td>$PWD</td>
 <td>when called, it returns the current directory</td>
+</tr>
+<tr class="row-odd"><td>$UID</td>
+<td>user ID of the current user</td>
 </tr>
 </tbody>
 </table>
@@ -136,25 +166,24 @@ program, script, or terminal. here&#8217;s a table of a few Environment Variable
 <h2>Exported Variables<a class="headerlink" href="#exported-variables" title="Permalink to this headline">¶</a></h2>
 <div class="sidebar">
 <p class="first sidebar-title">Example Exported Variable ::</p>
-<blockquote>
-<div>export EXPORT=&#8221;This is an exported variable&#8221;</div></blockquote>
+<p>export EXPORT=&#8221;This is an exported variable&#8221;</p>
 <p>Type these commands into the bash terminal:</p>
-<div class="highlight-python"><div class="highlight"><pre>export NUMBER=12
-echo &quot;echo $NUMBER&quot; &gt;&gt; Test-script.sh
-bash Test-script.sh
-</pre></div>
-</div>
-<p>You should have gotten back 12 as the value. because NUMBER was exported,
-the
-script called the exported value, 12. now, type</p>
-<div class="highlight-python"><div class="highlight"><pre>echo &quot;NUMBER=4&quot; &gt; Test-script.sh
-echo &#39;echo $NUMBER&#39; &gt;&gt; test-script.sh
-bash Test-script.sh
-</pre></div>
-</div>
-<p class="last">You&#8217;ll notice that NUMBER is now equal to 4. the reason for this is that the
+<div class="last highlight-python"><div class="highlight"><pre>  export NUMBER=12
+  echo &quot;echo $NUMBER&quot; &gt;&gt; Test-script.sh
+  bash Test-script.sh
+
+You should get back 12 as the value. because NUMBER was exported, the
+script called the exported value, 12. now, type::
+
+    echo &quot;NUMBER=4&quot; &gt; Test-script.sh
+    echo &#39;echo $NUMBER&#39; &gt;&gt; test-script.sh
+    bash Test-script.sh
+
+You&#39;ll notice that NUMBER is now equal to 4. the reason for this is that the
 value as defined in the script always supercedes the value as defined by the
-export</p>
+export
+</pre></div>
+</div>
 </div>
 <p>Exported Variables are Variables that were defined and then exported. You can
 call any script which refrences an exported variable after exporting that
