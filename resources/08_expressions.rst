@@ -9,24 +9,55 @@ Logical expression blocks
 
 ::
 
+   for name in [wordlist] 
+   do
+     command list
+   done
+
+::
+
+   for (( expr1; expr2; ... ))
+   do
+      command list
+   done
+
+::
+
    while [ logical expr ]
    do
-     code statements
+     command list
    done
 
 ::
  
    until [ logical expr ]
    do
-     code statements
+     command list
    done
 
 ::
  
    case "$variable" in
      value1)
-       code statements ;;
+       command list ;;
      value2)
-       code statements ;;
+       command list ;;
    esac
- 
+
+::
+
+   if [ logical expr ] 
+   then
+     command list
+   elif [ logical expr ]
+   then
+     command list
+   else
+     command list
+   fi
+
+::
+
+
+
+::
