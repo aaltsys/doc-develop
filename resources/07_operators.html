@@ -96,7 +96,7 @@
   <div class="section" id="operators-characters">
 <span id="operators"></span><h1>Operators &amp; Characters<a class="headerlink" href="#operators-characters" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="special-characters">
-<h2>Special characters <a class="footnote-reference" href="#id24" id="id1">[1]</a><a class="headerlink" href="#special-characters" title="Permalink to this headline">¶</a></h2>
+<h2>Special characters <a class="footnote-reference" href="#id10" id="id1">[1]</a><a class="headerlink" href="#special-characters" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
 <colgroup>
 <col width="14%" />
@@ -184,9 +184,9 @@
 </td>
 </tr>
 <tr class="row-odd"><td><div class="first last line-block">
-<div class="line"><a href="#id2"><span class="problematic" id="id3">*</span></a></div>
-<div class="line"><a href="#id4"><span class="problematic" id="id5">*</span></a>text</div>
-<div class="line"><a href="#id6"><span class="problematic" id="id7">**</span></a></div>
+<div class="line">*</div>
+<div class="line">*text</div>
+<div class="line">**</div>
 <div class="line">,</div>
 </div>
 </td>
@@ -252,7 +252,7 @@
 <div class="line">in a regular expression, <tt class="docutils literal"><span class="pre">$</span></tt> represents end of line of text</div>
 <div class="line">in parameter substitution, evaluates a variable or expression</div>
 <div class="line">in quoted string, expands octal/hex values into ASCII/Unicode</div>
-<div class="line">the <a href="#id8"><span class="problematic" id="id9">``</span></a>n``th positional parameter</div>
+<div class="line">the <a href="#id2"><span class="problematic" id="id3">``</span></a>n``th positional parameter</div>
 <div class="line">all positional parameters, seen together as single word</div>
 <div class="line">list of positional parameters, each one quoted</div>
 <div class="line">exit status of a command, function, or script</div>
@@ -293,10 +293,7 @@
 </td>
 <td>minus</td>
 </tr>
-<tr class="row-odd"><td><ul class="first last simple">
-<li></li>
-</ul>
-</td>
+<tr class="row-odd"><td>*</td>
 <td>multiply</td>
 </tr>
 <tr class="row-even"><td>/</td>
@@ -305,7 +302,7 @@
 <tr class="row-odd"><td>%</td>
 <td>modulo</td>
 </tr>
-<tr class="row-even"><td><a href="#id10"><span class="problematic" id="id11">**</span></a></td>
+<tr class="row-even"><td>**</td>
 <td>exponentiate</td>
 </tr>
 </tbody>
@@ -347,12 +344,15 @@
 <tr class="row-even"><td>$[3+4+5]</td>
 <td>evaluate an integer math expression (deprecated)</td>
 </tr>
-<tr class="row-odd"><td><a href="#id12"><span class="problematic" id="id13">|</span></a>{var}
-<a href="#id14"><span class="problematic" id="id15">|</span></a>{02..8..2}
-<a href="#id16"><span class="problematic" id="id17">|</span></a>{expr...}</td>
-<td><a href="#id18"><span class="problematic" id="id19">|</span></a>brace expansion: <tt class="docutils literal"><span class="pre">echo</span> <span class="pre">\&quot;1,2,3\&quot;</span></tt> shows <tt class="docutils literal"><span class="pre">\&quot;1\&quot;</span> <span class="pre">\&quot;2\&quot;</span> <span class="pre">\&quot;3\&quot;</span></tt>
-<a href="#id20"><span class="problematic" id="id21">|</span></a>expand series starting <tt class="docutils literal"><span class="pre">02</span></tt> step <tt class="docutils literal"><span class="pre">2</span></tt> with <tt class="docutils literal"><span class="pre">0</span></tt> padding
-<a href="#id22"><span class="problematic" id="id23">|</span></a>code block: inline group commands into local anonymous function</td>
+<tr class="row-odd"><td><a href="#id4"><span class="problematic" id="id5">|</span></a>{var}
+<a href="#id6"><span class="problematic" id="id7">|</span></a>{02..8..2}
+<a href="#id8"><span class="problematic" id="id9">|</span></a>{expr...}</td>
+<td><div class="first last line-block">
+<div class="line">brace expansion: <tt class="docutils literal"><span class="pre">echo</span> <span class="pre">\&quot;1,2,3\&quot;</span></tt> shows <tt class="docutils literal"><span class="pre">\&quot;1\&quot;</span> <span class="pre">\&quot;2\&quot;</span> <span class="pre">\&quot;3\&quot;</span></tt></div>
+<div class="line">expand series starting <tt class="docutils literal"><span class="pre">02</span></tt> step <tt class="docutils literal"><span class="pre">2</span></tt> with <tt class="docutils literal"><span class="pre">0</span></tt> padding</div>
+<div class="line">code block: inline group commands into local anonymous function</div>
+</div>
+</td>
 </tr>
 <tr class="row-even"><td>${var:n:l}</td>
 <td>extract <tt class="docutils literal"><span class="pre">l</span></tt> chars starting at <tt class="docutils literal"><span class="pre">n</span></tt> (negatives reference end)</td>
@@ -417,9 +417,11 @@
 <tr class="row-even"><td>&amp;</td>
 <td>at end of command, detach and run command in background</td>
 </tr>
-<tr class="row-odd"><td><ul class="first last simple">
+<tr class="row-odd"><td><ul class="first simple">
 <li></li>
 </ul>
+<p class="last">&#8211;
+&#8211;</p>
 </td>
 <td>command option prefix: `` ls -al``
 verbose option prefix: <tt class="docutils literal"><span class="pre">ls</span> <span class="pre">--all</span> <span class="pre">--list</span></tt>
@@ -665,7 +667,7 @@ verbose option prefix: <tt class="docutils literal"><span class="pre">ls</span> 
 </table>
 <hr class="docutils" />
 <p class="rubric">Footnotes</p>
-<table class="docutils footnote" frame="void" id="id24" rules="none">
+<table class="docutils footnote" frame="void" id="id10" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td><a class="reference external" href="http://tldp.org/LDP/abs/html/special-chars.html">Shell scripting special characters.</a></td></tr>

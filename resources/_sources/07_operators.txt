@@ -37,9 +37,9 @@ Special characters [#]_
 || ..       || directory ``..`` represents the parent directory of ``PWD``     |
 || \/       || file path directory separator (forward slash)                   |
 +-----------+------------------------------------------------------------------+
-|| *        || return all visible files in the current directory               |
-|| *text    || return all files ending in "text" in current directory          |
-|| **       || recursively return files in directory tree (shopt -s globstar)  |
+|| \*       || return all visible files in the current directory               |
+|| \*text   || return all files ending in "text" in current directory          |
+|| \*\*     || recursively return files in directory tree (shopt -s globstar)  |
 || ,        || concatenate string results: ``for file in /{,usr/}bin/*calc``   |
 +-----------+------------------------------------------------------------------+
 || ~        || user home directory path: corresponds to $HOME                  |
@@ -58,7 +58,7 @@ Special characters [#]_
 || ${}      || in parameter substitution, evaluates a variable or expression   |
 || $' ..'   || in quoted string, expands octal/hex values into ASCII/Unicode   |
 || $n       || the ``n``th positional parameter                                |
-|| \"$*\"   || all positional parameters, seen together as single word         |
+|| \"$\*\"  || all positional parameters, seen together as single word         |
 || \"$@\"   || list of positional parameters, each one quoted                  |
 || $?       || exit status of a command, function, or script                   |
 || $$       || process id of running script                                    |
@@ -79,68 +79,68 @@ Arithmetic operators
 +-------------+----------------------------------------------------------------+
 |  -          | minus                                                          |
 +-------------+----------------------------------------------------------------+
-|  *          | multiply                                                       |
+|  \*         | multiply                                                       |
 +-------------+----------------------------------------------------------------+
 |  \/         | divide                                                         |
 +-------------+----------------------------------------------------------------+
 |  %          | modulo                                                         |
 +-------------+----------------------------------------------------------------+
-|  **         | exponentiate                                                   |
+|  \*\*       | exponentiate                                                   |
 +-------------+----------------------------------------------------------------+
 
 Expression constructs
 -----------------------------
 
-+-------------+----------------------------------------------------------------+
-| Construct   | Description                                                    |
-+=============+================================================================+
-|| (a b ... n)|| assign an array of ``n`` elements: ``array=(1 2 3 4)``        |
-|| (expr...)  || group commands ``(expr1; expr2; ...)`` to execute in subshell |
-+-------------+----------------------------------------------------------------+
-| (( expr ))  | double-parentheses math construct: ``var = var1 + var2``       |
-+-------------+----------------------------------------------------------------+
-| $(expr)     | evaluate command expression (creates subshell)                 |
-+-------------+----------------------------------------------------------------+
-| $((expr))   | evaluate an (C-style) integer arithmetic expression            |
-+-------------+----------------------------------------------------------------+
-| $[3+4+5]    | evaluate an integer math expression (deprecated)               |
-+-------------+----------------------------------------------------------------+
-||{var}       ||brace expansion: ``echo \"1,2,3\"`` shows ``\"1\" \"2\" \"3\"``|
-||{02..8..2}  ||expand series starting ``02`` step ``2`` with ``0`` padding    |
-||{expr...}   ||code block: inline group commands into local anonymous function|
-+-------------+----------------------------------------------------------------+
-| ${var:n:l}  | extract ``l`` chars starting at ``n`` (negatives reference end)|
-+-------------+----------------------------------------------------------------+
-| ${@:0}      |                                                                |
-+-------------+----------------------------------------------------------------+
-| ${!var}     | indirect reference (eval) to value of variable                 |
-+-------------+----------------------------------------------------------------+
-| [logical]   | builtin shell logical test                                     |
-+-------------+----------------------------------------------------------------+
-| [[logical]] | shell keyword construct for logical test                       |
-+-------------+----------------------------------------------------------------+
-| array[index]| (de)reference an element of an array                           |
-+-------------+----------------------------------------------------------------+
-| [c d e]     | delineates a range of characters to match in regular expression|
-+-------------+----------------------------------------------------------------+
-|| >          || redirect output (stdout): ``ls > filename``                   |
-|| &>         || redirect errors, output (stdout, stderr): ``ls &> filename``  |
-|| >&2        || redirect output to error (stdout > stderr)                    |
-|| >>         || append output (stdout) to filename: ``ls >> filename``        |
-|| <          || redirect input from expression: ``filename < ls``             |
-|| <>         || open file and assign file descriptor: ``[i]<>filename``       |
-+-------------+----------------------------------------------------------------+
-|| \|         || pipe output (stdout) of one process to input (stdin) of next  |
-+-------------+----------------------------------------------------------------+
-|| <(commands)|| substitutes output of one process into another process        |
-|| >(commands)||                                                               |
-+-------------+----------------------------------------------------------------+
-|  &          | at end of command, detach and run command in background        |
-+-------------+----------------------------------------------------------------+
-|  -          | command option prefix: `` ls -al``                             |
-|  --         | verbose option prefix: ``ls --all --list``                     |
-|  --         | (builtin) end of options ``rm -- -badname*``                   |
-+-------------+----------------------------------------------------------------+
++-------------+-----------------------------------------------------------------+
+| Construct   | Description                                                     |
++=============+=================================================================+
+|| (a b ... n)|| assign an array of ``n`` elements: ``array=(1 2 3 4)``         |
+|| (expr...)  || group commands ``(expr1; expr2; ...)`` to execute in subshell  |
++-------------+-----------------------------------------------------------------+
+| (( expr ))  | double-parentheses math construct: ``var = var1 + var2``        |
++-------------+-----------------------------------------------------------------+
+| $(expr)     | evaluate command expression (creates subshell)                  |
++-------------+-----------------------------------------------------------------+
+| $((expr))   | evaluate an (C-style) integer arithmetic expression             |
++-------------+-----------------------------------------------------------------+
+| $[3+4+5]    | evaluate an integer math expression (deprecated)                |
++-------------+-----------------------------------------------------------------+
+||{var}       || brace expansion: ``echo \"1,2,3\"`` shows ``\"1\" \"2\" \"3\"``|
+||{02..8..2}  || expand series starting ``02`` step ``2`` with ``0`` padding    |
+||{expr...}   || code block: inline group commands into local anonymous function|
++-------------+-----------------------------------------------------------------+
+| ${var:n:l}  | extract ``l`` chars starting at ``n`` (negatives reference end) |
++-------------+-----------------------------------------------------------------+
+| ${@:0}      |                                                                 |
++-------------+-----------------------------------------------------------------+
+| ${!var}     | indirect reference (eval) to value of variable                  |
++-------------+-----------------------------------------------------------------+
+| [logical]   | builtin shell logical test                                      |
++-------------+-----------------------------------------------------------------+
+| [[logical]] | shell keyword construct for logical test                        |
++-------------+-----------------------------------------------------------------+
+| array[index]| (de)reference an element of an array                            |
++-------------+-----------------------------------------------------------------+
+| [c d e]     | delineates a range of characters to match in regular expression |
++-------------+-----------------------------------------------------------------+
+|| >          || redirect output (stdout): ``ls > filename``                    |
+|| &>         || redirect errors, output (stdout, stderr): ``ls &> filename``   |
+|| >&2        || redirect output to error (stdout > stderr)                     |
+|| >>         || append output (stdout) to filename: ``ls >> filename``         |
+|| <          || redirect input from expression: ``filename < ls``              |
+|| <>         || open file and assign file descriptor: ``[i]<>filename``        |
++-------------+-----------------------------------------------------------------+
+|| \|         || pipe output (stdout) of one process to input (stdin) of next   |
++-------------+-----------------------------------------------------------------+
+|| <(commands)|| substitutes output of one process into another process         |
+|| >(commands)||                                                                |
++-------------+-----------------------------------------------------------------+
+|  &          | at end of command, detach and run command in background         |
++-------------+-----------------------------------------------------------------+
+|  -          | command option prefix: `` ls -al``                              |
+|  \-\-       | verbose option prefix: ``ls --all --list``                      |
+|  \-\-       | (builtin) end of options ``rm -- -badname*``                    |
++-------------+-----------------------------------------------------------------+
 
 .. _comparison:
 
