@@ -17,12 +17,18 @@ Not to say that shell programming is not a replacement for other programming
 languages, but shell is powerful enough that Linus Torvalds used shell scripting 
 to write the first versions of the :program:`git` repository.
 
-#. :ref:`shell`.
-#. :ref:`program`.
-#. :ref:`exercise`.
-#. :ref:`command`.
+Contents:
+=============================
+
+.. toctree::
+   :maxdepth: 2
+
+   01_shell
+   02_program
+   03_lesson1
+   04_commands
 
 Indices and tables
-==================
+=============================
 
 * :ref:`search`

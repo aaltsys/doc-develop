@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Parameters &mdash; Linux Shell Script Programming 1.0 documentation</title>
+    <title>Routines and Expressions &mdash; Developer Documentation Resource Pages 1.0 documentation</title>
     
     <link rel="stylesheet" href="_static/aaltsys.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -23,20 +23,35 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Linux Shell Script Programming 1.0 documentation" href="index.html" /> 
+    <link rel="top" title="Developer Documentation Resource Pages 1.0 documentation" href="index.html" />
+    <link rel="prev" title="Operators &amp; Characters" href="07_operators.html" /> 
   </head>
   <body>
     <div class="related">
       <h3>Navigation</h3>
       <ul>
-        <li><a href="index.html">Linux Shell Script Programming 1.0 documentation</a> &raquo;</li> 
+        <li class="right" style="margin-right: 10px">
+          <a href="07_operators.html" title="Operators &amp; Characters"
+             accesskey="P">previous</a></li>
+        <li><a href="index.html">Developer Documentation Resource Pages 1.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Routines and Expressions</a><ul>
+<li><a class="reference internal" href="#logical-expression-blocks">Logical expression blocks</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="07_operators.html"
+                        title="previous chapter">Operators &amp; Characters</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
-    <li><a href="_sources/parameters.txt"
+    <li><a href="_sources/08_expressions.txt"
            rel="nofollow">Show Source</a></li>
   </ul>
 <div id="searchbox" style="display: none">
@@ -60,38 +75,33 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="parameters">
-<h1>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h1>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">orphan:</th><td class="field-body"></td>
-</tr>
-</tbody>
-</table>
-<table border="1" class="docutils">
-<colgroup>
-<col width="29%" />
-<col width="71%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Name of command</th>
-<th class="head">Description of command</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td>-e</td>
-<td>the -e is used to check that a file exists.</td>
-</tr>
-<tr class="row-odd"><td>-z</td>
-<td>-z is used to check if something does not contain a value</td>
-</tr>
-<tr class="row-even"><td>-d</td>
-<td>checks that a file is a directory</td>
-</tr>
-</tbody>
-</table>
+  <div class="section" id="routines-and-expressions">
+<span id="expressions"></span><h1>Routines and Expressions<a class="headerlink" href="#routines-and-expressions" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="logical-expression-blocks">
+<h2>Logical expression blocks<a class="headerlink" href="#logical-expression-blocks" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre>while [ logical expr ]
+do
+  code statements
+done
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre>until [ logical expr ]
+do
+  code statements
+done
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre>case &quot;$variable&quot; in
+  value1)
+    code statements ;;
+  value2)
+    code statements ;;
+esac
+</pre></div>
+</div>
+</div></blockquote>
+</div>
 </div>
 
 
@@ -103,7 +113,10 @@
     <div class="related">
       <h3>Navigation</h3>
       <ul>
-        <li><a href="index.html">Linux Shell Script Programming 1.0 documentation</a> &raquo;</li> 
+        <li class="right" style="margin-right: 10px">
+          <a href="07_operators.html" title="Operators &amp; Characters"
+             >previous</a></li>
+        <li><a href="index.html">Developer Documentation Resource Pages 1.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

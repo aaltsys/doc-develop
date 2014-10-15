@@ -24,8 +24,9 @@ Open a file viewer window (:program:`Dolphin`), and check the
 terminal console in the display. Create a text file from the console command 
 line, and edit the file using :program:`Kate`::
 
-   touch first-script.sh
-   kate first-script.sh
+   touch hello-world.sh
+   chmod u+x hello_world.sh
+   kate hello-world.sh
 
 Hello World
 -----------------------------
@@ -35,7 +36,8 @@ Based on script samples shown previously, edit your script to display
 
 .. hint::
 
-   #. Use file properties to set permissions and check "Is executable." 
+   #. In dolphin, right-click the file and check 
+      :menuselection:`Properties --> Permissions --> Is executable`.
    #. Scripts are text files, but using the filename extension :kbd:`.sh` helps 
       to identify script files to the user.
    #. Sidebar examples from the previous page demonstrate commands to use.

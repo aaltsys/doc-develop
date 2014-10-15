@@ -1,0 +1,701 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Operators &amp; Characters &mdash; Developer Documentation Resource Pages 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/aaltsys.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Developer Documentation Resource Pages 1.0 documentation" href="index.html" />
+    <link rel="next" title="Routines and Expressions" href="08_expressions.html" />
+    <link rel="prev" title="Commands and Variables" href="06_commands.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="08_expressions.html" title="Routines and Expressions"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="06_commands.html" title="Commands and Variables"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Developer Documentation Resource Pages 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Operators &amp; Characters</a><ul>
+<li><a class="reference internal" href="#special-characters">Special characters </a></li>
+<li><a class="reference internal" href="#operators-and-constructs">Operators and constructs</a><ul>
+<li><a class="reference internal" href="#arithmetic-operators">Arithmetic operators</a></li>
+<li><a class="reference internal" href="#expression-constructs">Expression constructs</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#comparison-operators">Comparison operators</a><ul>
+<li><a class="reference internal" href="#string-comparisons">String comparisons</a></li>
+<li><a class="reference internal" href="#integer-comparisons">Integer comparisons</a></li>
+<li><a class="reference internal" href="#logical-comparisons">Logical comparisons</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="06_commands.html"
+                        title="previous chapter">Commands and Variables</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="08_expressions.html"
+                        title="next chapter">Routines and Expressions</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/07_operators.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="operators-characters">
+<span id="operators"></span><h1>Operators &amp; Characters<a class="headerlink" href="#operators-characters" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="special-characters">
+<h2>Special characters <a class="footnote-reference" href="#id24" id="id1">[1]</a><a class="headerlink" href="#special-characters" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="14%" />
+<col width="86%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Character</th>
+<th class="head">&nbsp;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><div class="first last line-block">
+<div class="line">&#8220;X&#8221;</div>
+<div class="line">&#8216;X&#8217;</div>
+<div class="line">\X</div>
+<div class="line">`X`</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">partial quoting interprets embedded expressions (quotes)</div>
+<div class="line">full quoting preserves literal contents of text</div>
+<div class="line">escape single character to display literal value (like <cite>X</cite>)</div>
+<div class="line">back-tick quote command to assign output to a variable</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>!</td>
+<td>negates a conditional test result or exit status</td>
+</tr>
+<tr class="row-even"><td>:</td>
+<td>synonym for <tt class="docutils literal"><span class="pre">true</span></tt> conditional result</td>
+</tr>
+<tr class="row-odd"><td>;</td>
+<td><dl class="first last docutils">
+<dt>semicolons separate commands appearing on one line::</dt>
+<dd>if [ -x &#8220;$filename&#8221; ] ; then cp $filename $dir/ ; fi</dd>
+</dl>
+</td>
+</tr>
+<tr class="row-even"><td>#</td>
+<td><div class="first last line-block">
+<div class="line">&#8220;#&#8221; after a newline or a command separator denotes a comment::</div>
+<div class="line-block">
+<div class="line"># this is a comment line</div>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><div class="first last line-block">
+<div class="line">;;</div>
+<div class="line">also</div>
+<div class="line">;;&amp;</div>
+<div class="line">;&amp;</div>
+<div class="line"><br /></div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">double-semicolons terminate an option in case statements::</div>
+<div class="line-block">
+<div class="line">case &#8220;$variable&#8221; in</div>
+<div class="line-block">
+<div class="line">abc)  echo &#8220;$variable = abc&#8221; ;;</div>
+<div class="line">xyz)  echo &#8220;$variable = xyz&#8221; ;;</div>
+</div>
+<div class="line">esac</div>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><div class="first last line-block">
+<div class="line">.</div>
+<div class="line">.filename</div>
+<div class="line">. or ./</div>
+<div class="line">..</div>
+<div class="line">/</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">period by itself indicates a source</div>
+<div class="line">period as a filename prefix indicates a hidden file</div>
+<div class="line">directory name <tt class="docutils literal"><span class="pre">.</span></tt> represents the working directory <tt class="docutils literal"><span class="pre">PWD</span></tt></div>
+<div class="line">directory <tt class="docutils literal"><span class="pre">..</span></tt> represents the parent directory of <tt class="docutils literal"><span class="pre">PWD</span></tt></div>
+<div class="line">file path directory separator (forward slash)</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><div class="first last line-block">
+<div class="line"><a href="#id2"><span class="problematic" id="id3">*</span></a></div>
+<div class="line"><a href="#id4"><span class="problematic" id="id5">*</span></a>text</div>
+<div class="line"><a href="#id6"><span class="problematic" id="id7">**</span></a></div>
+<div class="line">,</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">return all visible files in the current directory</div>
+<div class="line">return all files ending in &#8220;text&#8221; in current directory</div>
+<div class="line">recursively return files in directory tree (shopt -s globstar)</div>
+<div class="line">concatenate string results: <tt class="docutils literal"><span class="pre">for</span> <span class="pre">file</span> <span class="pre">in</span> <span class="pre">/{,usr/}bin/*calc</span></tt></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><div class="first last line-block">
+<div class="line">~</div>
+<div class="line">~+</div>
+<div class="line">~-</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">user home directory path: corresponds to $HOME</div>
+<div class="line">present working directory: corresponds to $PWD</div>
+<div class="line">previous working directory: corresponds to $OLDPWD</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><div class="first last line-block">
+<div class="line">^</div>
+<div class="line">^^</div>
+<div class="line">,</div>
+<div class="line">,,</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">parameter substitution: <tt class="docutils literal"><span class="pre">echo</span> <span class="pre">${var^}</span></tt> uppercase first char</div>
+<div class="line">parameter substitution: <tt class="docutils literal"><span class="pre">echo</span> <span class="pre">${var^^}</span></tt> uppercase string</div>
+<div class="line">parameter substitution: <tt class="docutils literal"><span class="pre">echo</span> <span class="pre">${var,}</span></tt> lowercase first char</div>
+<div class="line">parameter substitution: <tt class="docutils literal"><span class="pre">echo</span> <span class="pre">${var,,}</span></tt> lowercase string</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><div class="first last line-block">
+<div class="line">?</div>
+<div class="line"><br /></div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">in globbing and regex, represents a single wild-card character</div>
+<div class="line">operator in double-parentheses construct, parameter substitution</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><div class="first last line-block">
+<div class="line">$</div>
+<div class="line">${}</div>
+<div class="line">$&#8217; ..&#8217;</div>
+<div class="line">$n</div>
+<div class="line">&#8220;$*&#8221;</div>
+<div class="line">&#8220;$&#64;&#8221;</div>
+<div class="line">$?</div>
+<div class="line">$$</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">in a regular expression, <tt class="docutils literal"><span class="pre">$</span></tt> represents end of line of text</div>
+<div class="line">in parameter substitution, evaluates a variable or expression</div>
+<div class="line">in quoted string, expands octal/hex values into ASCII/Unicode</div>
+<div class="line">the <a href="#id8"><span class="problematic" id="id9">``</span></a>n``th positional parameter</div>
+<div class="line">all positional parameters, seen together as single word</div>
+<div class="line">list of positional parameters, each one quoted</div>
+<div class="line">exit status of a command, function, or script</div>
+<div class="line">process id of running script</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="operators-and-constructs">
+<h2>Operators and constructs<a class="headerlink" href="#operators-and-constructs" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="arithmetic-operators">
+<h3>Arithmetic operators<a class="headerlink" href="#arithmetic-operators" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="17%" />
+<col width="83%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Operator</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>=</td>
+<td>equals</td>
+</tr>
+<tr class="row-odd"><td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>plus</td>
+</tr>
+<tr class="row-even"><td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>minus</td>
+</tr>
+<tr class="row-odd"><td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>multiply</td>
+</tr>
+<tr class="row-even"><td>/</td>
+<td>divide</td>
+</tr>
+<tr class="row-odd"><td>%</td>
+<td>modulo</td>
+</tr>
+<tr class="row-even"><td><a href="#id10"><span class="problematic" id="id11">**</span></a></td>
+<td>exponentiate</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="expression-constructs">
+<h3>Expression constructs<a class="headerlink" href="#expression-constructs" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="17%" />
+<col width="83%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Construct</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><div class="first last line-block">
+<div class="line">(a b ... n)</div>
+<div class="line">(expr...)</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">assign an array of <tt class="docutils literal"><span class="pre">n</span></tt> elements: <tt class="docutils literal"><span class="pre">array=(1</span> <span class="pre">2</span> <span class="pre">3</span> <span class="pre">4)</span></tt></div>
+<div class="line">group commands <tt class="docutils literal"><span class="pre">(expr1;</span> <span class="pre">expr2;</span> <span class="pre">...)</span></tt> to execute in subshell</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>(( expr ))</td>
+<td>double-parentheses math construct: <tt class="docutils literal"><span class="pre">var</span> <span class="pre">=</span> <span class="pre">var1</span> <span class="pre">+</span> <span class="pre">var2</span></tt></td>
+</tr>
+<tr class="row-even"><td>$(expr)</td>
+<td>evaluate command expression (creates subshell)</td>
+</tr>
+<tr class="row-odd"><td>$((expr))</td>
+<td>evaluate an (C-style) integer arithmetic expression</td>
+</tr>
+<tr class="row-even"><td>$[3+4+5]</td>
+<td>evaluate an integer math expression (deprecated)</td>
+</tr>
+<tr class="row-odd"><td><a href="#id12"><span class="problematic" id="id13">|</span></a>{var}
+<a href="#id14"><span class="problematic" id="id15">|</span></a>{02..8..2}
+<a href="#id16"><span class="problematic" id="id17">|</span></a>{expr...}</td>
+<td><a href="#id18"><span class="problematic" id="id19">|</span></a>brace expansion: <tt class="docutils literal"><span class="pre">echo</span> <span class="pre">\&quot;1,2,3\&quot;</span></tt> shows <tt class="docutils literal"><span class="pre">\&quot;1\&quot;</span> <span class="pre">\&quot;2\&quot;</span> <span class="pre">\&quot;3\&quot;</span></tt>
+<a href="#id20"><span class="problematic" id="id21">|</span></a>expand series starting <tt class="docutils literal"><span class="pre">02</span></tt> step <tt class="docutils literal"><span class="pre">2</span></tt> with <tt class="docutils literal"><span class="pre">0</span></tt> padding
+<a href="#id22"><span class="problematic" id="id23">|</span></a>code block: inline group commands into local anonymous function</td>
+</tr>
+<tr class="row-even"><td>${var:n:l}</td>
+<td>extract <tt class="docutils literal"><span class="pre">l</span></tt> chars starting at <tt class="docutils literal"><span class="pre">n</span></tt> (negatives reference end)</td>
+</tr>
+<tr class="row-odd"><td>${&#64;:0}</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>${!var}</td>
+<td>indirect reference (eval) to value of variable</td>
+</tr>
+<tr class="row-odd"><td>[logical]</td>
+<td>builtin shell logical test</td>
+</tr>
+<tr class="row-even"><td>[[logical]]</td>
+<td>shell keyword construct for logical test</td>
+</tr>
+<tr class="row-odd"><td>array[index]</td>
+<td>(de)reference an element of an array</td>
+</tr>
+<tr class="row-even"><td>[c d e]</td>
+<td>delineates a range of characters to match in regular expression</td>
+</tr>
+<tr class="row-odd"><td><div class="first last line-block">
+<div class="line">&gt;</div>
+<div class="line">&amp;&gt;</div>
+<div class="line">&gt;&amp;2</div>
+<div class="line">&gt;&gt;</div>
+<div class="line">&lt;</div>
+<div class="line">&lt;&gt;</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">redirect output (stdout): <tt class="docutils literal"><span class="pre">ls</span> <span class="pre">&gt;</span> <span class="pre">filename</span></tt></div>
+<div class="line">redirect errors, output (stdout, stderr): <tt class="docutils literal"><span class="pre">ls</span> <span class="pre">&amp;&gt;</span> <span class="pre">filename</span></tt></div>
+<div class="line">redirect output to error (stdout &gt; stderr)</div>
+<div class="line">append output (stdout) to filename: <tt class="docutils literal"><span class="pre">ls</span> <span class="pre">&gt;&gt;</span> <span class="pre">filename</span></tt></div>
+<div class="line">redirect input from expression: <tt class="docutils literal"><span class="pre">filename</span> <span class="pre">&lt;</span> <span class="pre">ls</span></tt></div>
+<div class="line">open file and assign file descriptor: <tt class="docutils literal"><span class="pre">[i]&lt;&gt;filename</span></tt></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><div class="first last line-block">
+<div class="line">|</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">pipe output (stdout) of one process to input (stdin) of next</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><div class="first last line-block">
+<div class="line">&lt;(commands)</div>
+<div class="line">&gt;(commands)</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">substitutes output of one process into another process</div>
+<div class="line"><br /></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>&amp;</td>
+<td>at end of command, detach and run command in background</td>
+</tr>
+<tr class="row-odd"><td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>command option prefix: `` ls -al``
+verbose option prefix: <tt class="docutils literal"><span class="pre">ls</span> <span class="pre">--all</span> <span class="pre">--list</span></tt>
+(builtin) end of options <tt class="docutils literal"><span class="pre">rm</span> <span class="pre">--</span> <span class="pre">-badname*</span></tt></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="comparison-operators">
+<span id="comparison"></span><h2>Comparison operators<a class="headerlink" href="#comparison-operators" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="string-comparisons">
+<h3>String comparisons<a class="headerlink" href="#string-comparisons" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="17%" />
+<col width="83%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Operator</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><div class="first last line-block">
+<div class="line-block">
+<div class="line">=</div>
+<div class="line">==</div>
+</div>
+<div class="line">!=</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">is equal to (requires whitespace around operator)</div>
+<div class="line">is equal to, literal matching within [[ test ]]</div>
+<div class="line">is not equal to, uses pattern matching within [[ test ]]</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><div class="first last line-block">
+<div class="line">&lt;</div>
+<div class="line">&gt;</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">is less than in ASCII order, must be escaped in [ test ]</div>
+<div class="line">is greater than in ASCII order, must be escaped in [ test]</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><div class="first last line-block">
+<div class="line">-z</div>
+<div class="line">-n</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">is null (zero length)</div>
+<div class="line">is not null (has length &gt; zero)</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="integer-comparisons">
+<h3>Integer comparisons<a class="headerlink" href="#integer-comparisons" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="17%" />
+<col width="83%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Operator</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td colspan="2">&#8211; WITHIN TEST COMMAND (SINGLE BRACKET) OR DOUBLE BRACKETS &#8211;</td>
+</tr>
+<tr class="row-odd"><td><div class="first last line-block">
+<div class="line">-eq</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">is equal to: <tt class="docutils literal"><span class="pre">[</span> <span class="pre">number1</span> <span class="pre">-eq</span> <span class="pre">number2</span> <span class="pre">]</span></tt></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><div class="first last line-block">
+<div class="line">-ne</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">is not equal to: <tt class="docutils literal"><span class="pre">[</span> <span class="pre">number1</span> <span class="pre">-ne</span> <span class="pre">number2</span> <span class="pre">]</span></tt></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><div class="first last line-block">
+<div class="line">-gt</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">is greater than: <tt class="docutils literal"><span class="pre">[</span> <span class="pre">number1</span> <span class="pre">-gt</span> <span class="pre">number2</span> <span class="pre">]</span></tt></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><div class="first last line-block">
+<div class="line">-ge</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">is greater than or equal to: <tt class="docutils literal"><span class="pre">[</span> <span class="pre">number1</span> <span class="pre">-ge</span> <span class="pre">number2</span> <span class="pre">]</span></tt></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><div class="first last line-block">
+<div class="line">-lt</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">is less than: <tt class="docutils literal"><span class="pre">[</span> <span class="pre">number1</span> <span class="pre">-lt</span> <span class="pre">number2</span> <span class="pre">]</span></tt></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><div class="first last line-block">
+<div class="line">-le</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">is less than or equal to: <tt class="docutils literal"><span class="pre">[</span> <span class="pre">number1</span> <span class="pre">-le</span> <span class="pre">number2</span> <span class="pre">]</span></tt></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td colspan="2">&#8211; WITHIN DOUBLE PARENTHESES ONLY &#8211;</td>
+</tr>
+<tr class="row-even"><td><div class="first last line-block">
+<div class="line">=</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">is equal to: <tt class="docutils literal"><span class="pre">((</span> <span class="pre">number1</span> <span class="pre">=</span> <span class="pre">expr2</span> <span class="pre">))</span></tt></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><div class="first last line-block">
+<div class="line">&lt;&gt;</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">is not equal to: <tt class="docutils literal"><span class="pre">((</span> <span class="pre">number1</span> <span class="pre">&lt;&gt;</span> <span class="pre">expr2</span> <span class="pre">))</span></tt> (maybe <tt class="docutils literal"><span class="pre">!=</span></tt>)</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><div class="first last line-block">
+<div class="line">&lt;</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">is less than: <tt class="docutils literal"><span class="pre">((</span> <span class="pre">number1</span> <span class="pre">&lt;</span> <span class="pre">expr2</span> <span class="pre">))</span></tt></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><div class="first last line-block">
+<div class="line">&lt;=</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">is less than or equal to: <tt class="docutils literal"><span class="pre">((</span> <span class="pre">number1</span> <span class="pre">,=</span> <span class="pre">expr2</span> <span class="pre">))</span></tt></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><div class="first last line-block">
+<div class="line">&gt;</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">is greater than: <tt class="docutils literal"><span class="pre">((</span> <span class="pre">number1</span> <span class="pre">&gt;</span> <span class="pre">expr2</span> <span class="pre">))</span></tt></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><div class="first last line-block">
+<div class="line">&gt;=</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">is greater than or equal to: <tt class="docutils literal"><span class="pre">((</span> <span class="pre">number1</span> <span class="pre">&gt;=</span> <span class="pre">expr2</span> <span class="pre">))</span></tt></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="logical-comparisons">
+<h3>Logical comparisons<a class="headerlink" href="#logical-comparisons" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="17%" />
+<col width="83%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Operator</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><div class="first last line-block">
+<div class="line">-a</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">logical and within test command: <tt class="docutils literal"><span class="pre">[</span> <span class="pre">expr1</span> <span class="pre">-a</span> <span class="pre">expr2</span> <span class="pre">]</span></tt></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><div class="first last line-block">
+<div class="line">-o</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">logical or within test command: <tt class="docutils literal"><span class="pre">[</span> <span class="pre">expr1</span> <span class="pre">-o</span> <span class="pre">expr2</span> <span class="pre">]</span></tt></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><div class="first last line-block">
+<div class="line">&amp;&amp;</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">logical and within double brackets: <tt class="docutils literal"><span class="pre">[[</span> <span class="pre">expr1</span> <span class="pre">&amp;&amp;</span> <span class="pre">expr2</span> <span class="pre">]]</span></tt></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><div class="first last line-block">
+<div class="line">||</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">logical or within double brackets: <tt class="docutils literal"><span class="pre">[[</span> <span class="pre">expr1</span> <span class="pre">||</span> <span class="pre">expr2</span> <span class="pre">]]</span></tt></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<hr class="docutils" />
+<p class="rubric">Footnotes</p>
+<table class="docutils footnote" frame="void" id="id24" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td><a class="reference external" href="http://tldp.org/LDP/abs/html/special-chars.html">Shell scripting special characters.</a></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="08_expressions.html" title="Routines and Expressions"
+             >next</a></li>
+        <li class="right" >
+          <a href="06_commands.html" title="Commands and Variables"
+             >previous</a> |</li>
+        <li><a href="index.html">Developer Documentation Resource Pages 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Gerald Lovel.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

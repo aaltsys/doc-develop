@@ -1,0 +1,507 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Shell Program Statements &mdash; Linux Shell Script Programming 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/aaltsys.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Linux Shell Script Programming 1.0 documentation" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li><a href="index.html">Linux Shell Script Programming 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Shell Program Statements</a><ul>
+<li><a class="reference internal" href="#program-heading">Program Heading</a></li>
+<li><a class="reference internal" href="#variable-assignments">Variable Assignments</a></li>
+<li><a class="reference internal" href="#input-and-output">Input and Output</a></li>
+<li><a class="reference internal" href="#logic-tests-flow-control">Logic Tests, Flow Control</a></li>
+<li><a class="reference internal" href="#repeating-and-conditions">Repeating and Conditions</a></li>
+</ul>
+</li>
+</ul>
+
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/o1_statements.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="shell-program-statements">
+<span id="statements"></span><h1>Shell Program Statements<a class="headerlink" href="#shell-program-statements" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="program-heading">
+<h2>Program Heading<a class="headerlink" href="#program-heading" title="Permalink to this headline">¶</a></h2>
+<p>Each shell script should start with an interpreter declaration, optionally
+followed by a comment to describe the purpose of the script. The declaration
+begins with the three characters :keyboard:<a href="#id1"><span class="problematic" id="id2">`</span></a>#! <a href="#id3"><span class="problematic" id="id4">`</span></a>, followed by the interpreter
+path. Comments start with :keyboard:<a href="#id5"><span class="problematic" id="id6">`</span></a># <a href="#id7"><span class="problematic" id="id8">`</span></a>. Here is an example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c">#! /bin/bash</span>
+<span class="c"># Script to deploy .rst documents in a git repository</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="variable-assignments">
+<h2>Variable Assignments<a class="headerlink" href="#variable-assignments" title="Permalink to this headline">¶</a></h2>
+<p>Each variable assignment statement begins with a variable name concatenated
+with an equals sign:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">OWNER</span><span class="o">=</span><span class="s">&quot;&quot;</span>
+<span class="n">SECTIONS</span><span class="o">=</span><span class="s">&quot;&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="input-and-output">
+<h2>Input and Output<a class="headerlink" href="#input-and-output" title="Permalink to this headline">¶</a></h2>
+<p>Shell commands assume input comes from virtual device <strong>STDIN</strong> and output goes
+to virtual device <strong>STDOUT</strong>. When working at a console, by default the keyboard
+is directed to <strong>STDIN</strong>, and <strong>STDOUT</strong> is directed to the console display.</p>
+<p>Redirect arguments change the source input or output destination of a command:</p>
+<div class="highlight-python"><div class="highlight"><pre>cp -RH $DIR_STATIC/.ht* $DIR_DEPLOY/ &amp;&gt;/dev/null
+</pre></div>
+</div>
+<p>A pipe passes <strong>STDOUT</strong> of a command to <strong>STDIN</strong> of the following command:</p>
+<div class="highlight-python"><div class="highlight"><pre>ls | egrep &#39;test.txt&#39;
+</pre></div>
+</div>
+<p>The distinction between redirects and pipes is:</p>
+<blockquote>
+<div><ul class="simple">
+<li>a redirect is an argument to a single command, while</li>
+<li>a pipe passes data from the output of one command to the input of another.</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="logic-tests-flow-control">
+<h2>Logic Tests, Flow Control<a class="headerlink" href="#logic-tests-flow-control" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><dl class="docutils">
+<dt>if [[ -d $DIR_DOWNLOADS ]] ; then</dt>
+<dd>cp -R $DIR_DOWNLOADS $DIR_OUT/</dd>
+</dl>
+<p>fi</p>
+<dl class="docutils">
+<dt>if [[ ! -d .git ]] ; then</dt>
+<dd>echo &#8220;No git project name given. Exiting ... &#8221;
+exit 1</dd>
+<dt>else</dt>
+<dd>PROJECT=${PWD##*/}</dd>
+</dl>
+<p>fi</p>
+</div></blockquote>
+</div>
+<div class="section" id="repeating-and-conditions">
+<h2>Repeating and Conditions<a class="headerlink" href="#repeating-and-conditions" title="Permalink to this headline">¶</a></h2>
+<p>for OPT in &#8220;$&#64;&#8221;
+do</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>case $OPT in</dt>
+<dd><dl class="first docutils">
+<dt>-h|&#8211;help)</dt>
+<dd>echo -e &#8220;ndoc-deploy.sh [projectname] [options]&#8221;
+echo -e &#8221;   projectname  defaults to name of working directory (pwd)&#8221;
+echo -e &#8221;   options      -h, &#8211;help - displays this text&#8221;
+echo -e &#8221;                -n, &#8211;nodeploy - builds _deploy but does not push itn&#8221;
+shift
+exit</dd>
+</dl>
+<p>;;
+-n|&#8211;nodeploy)</p>
+<blockquote>
+<div>NODEPLOY=&#8217;YES&#8217;
+echo &#8220;No deploy: $NODEPLOY&#8221;
+shift</div></blockquote>
+<p>;;
+<a href="#id9"><span class="problematic" id="id10">*</span></a>)</p>
+<blockquote>
+<div>PROJECT=$key
+shift</div></blockquote>
+<p class="last">;;</p>
+</dd>
+</dl>
+<p>esac</p>
+</div></blockquote>
+<p>done</p>
+<p># ===========function to build deployment in a folder==========================</p>
+<p># Compile fresh output for one or more books and copy to deployment folder</p>
+<dl class="docutils">
+<dt>makedeployment () {</dt>
+<dd><p class="first">echo &#8220;$(pwd)$(tput setaf 1) Making output &#8211; $DIR_OUT &#8211; $(tput sgr0)&#8221;</p>
+<p>make clean $MAKE_METHOD BUILDDIR=$DIR_BUILD</p>
+<p>cp -R $DIR_BUILD/$MAKE_METHOD/* $DIR_OUT/</p>
+<p># Add downloads if they exist
+if [[ -d $DIR_DOWNLOADS ]] ; then</p>
+<blockquote>
+<div>cp -R $DIR_DOWNLOADS $DIR_OUT/</div></blockquote>
+<p>fi</p>
+<p># Add section-specific static content
+if [[ -d $DIR_STATIC ]] ; then</p>
+<blockquote>
+<div><p>cp -RH $DIR_STATIC/* $DIR_OUT/
+cp -RH $DIR_STATIC/.ht* $DIR_OUT/ &amp;&gt;/dev/null || RC=$?
+# if there is a backreference document for the section index &#8211;
+if [[ -e $DIR_STATIC/$BACKREF ]] ; then</p>
+<blockquote>
+<div>BACKTEXT=$(&lt;$DIR_STATIC/$BACKREF)
+sed -i s~&#8217;&lt;li&gt;&lt;a href=&#8221;#&#8221;&gt;.*&lt;/a&gt;&#8217;~&#8221;&lt;li&gt;$BACKTEXT&#8221;~  $DIR_OUT/index.html</div></blockquote>
+<p>fi
+if [[ $RC &gt; 0 ]] ; then echo &#8220;$(pwd)$(tput setaf 1) $LINENO: cp -RH $DIR_STATIC/.ht* $DIR_OUT/ $(tput sgr0)&#8221; ; fi</p>
+</div></blockquote>
+<dl class="docutils">
+<dt>elif [[ -e ../$DIR_STATIC/$BACKREF ]] ; then</dt>
+<dd># if there is a backreference document for the main index &#8211;
+BACKTEXT=$(&lt;../$DIR_STATIC/$BACKREF)
+sed -i s~&#8217;&lt;li&gt;&lt;a href=&#8221;#&#8221;&gt;.*&lt;/a&gt;&#8217;~&#8221;&lt;li&gt;$BACKTEXT&#8221;~  $DIR_OUT/index.html</dd>
+</dl>
+<p class="last">fi</p>
+</dd>
+</dl>
+<p>}</p>
+<p># =============================================================================</p>
+<p>########## CHECK FOR OPTIONS, ASSIGN INPUTS</p>
+<p>for OPT in &#8220;$&#64;&#8221;
+do</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>case $OPT in</dt>
+<dd><dl class="first docutils">
+<dt>-h|&#8211;help)</dt>
+<dd>echo -e &#8220;ndoc-deploy.sh [projectname] [options]&#8221;
+echo -e &#8221;   projectname  defaults to name of working directory (pwd)&#8221;
+echo -e &#8221;   options      -h, &#8211;help - displays this text&#8221;
+echo -e &#8221;                -n, &#8211;nodeploy - builds _deploy but does not push itn&#8221;
+shift
+exit</dd>
+</dl>
+<p>;;
+-n|&#8211;nodeploy)</p>
+<blockquote>
+<div>NODEPLOY=&#8217;YES&#8217;
+echo &#8220;No deploy: $NODEPLOY&#8221;
+shift</div></blockquote>
+<p>;;
+<a href="#id11"><span class="problematic" id="id12">*</span></a>)</p>
+<blockquote>
+<div>PROJECT=$key
+shift</div></blockquote>
+<p class="last">;;</p>
+</dd>
+</dl>
+<p>esac</p>
+</div></blockquote>
+<p>done</p>
+<p>######### PRE-EXECUTION TESTS</p>
+<p># test for no project name entered and not in a project already
+if [[ $PROJECT = &#8220;&#8221; ]] ; then</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>if [[ ! -d .git ]] ; then</dt>
+<dd># not in a project and no project name given
+echo &#8220;Not in a project, or no project name given. Exiting ... &#8221;
+exit 1</dd>
+<dt>else</dt>
+<dd># set project folder to present working directory
+PROJECT=${PWD##*/}</dd>
+</dl>
+<p>fi</p>
+</div></blockquote>
+<dl class="docutils">
+<dt>else</dt>
+<dd><dl class="first docutils">
+<dt>if [[ ! -d $PROJECT ]] ; then</dt>
+<dd># project folder does not exist
+echo &#8220;Project folder &#8220;$PROJECT&#8221; does not exist. Exiting ... &#8221;
+exit 1</dd>
+<dt>elif [[ ! -d $PROJECT/.git ]] ; then</dt>
+<dd># no git repository in project
+echo &#8220;Folder &#8220;$PROJECT&#8221; is not a git repository. Exiting ... &#8221;
+exit 1</dd>
+<dt>else</dt>
+<dd># open project folder to set present working directory
+cd $PROJECT</dd>
+</dl>
+<p class="last">fi</p>
+</dd>
+</dl>
+<p>fi</p>
+<p># test for type of remote in main project
+set &#8211; $(git remote -v)
+if [[ $2 = &#8220;&#8221; ]] ; then</p>
+<blockquote>
+<div># project has no remote
+echo &#8220;Project &#8220;$PROJECT&#8221; has no remote. Exiting ... &#8221;
+exit 1</div></blockquote>
+<dl class="docutils">
+<dt>else</dt>
+<dd># save remote name
+REMOTE=$1</dd>
+</dl>
+<p>fi</p>
+<p># test for embedded documentation project folder or main documentation project
+if [[ -e $DIR_DOC/$FILE_SPHINX ]] ; then</p>
+<blockquote>
+<div># embedded sphinx documentation project found; set directory to it
+PROJECT=$PROJECT/$DIR_DOC
+cd $DIR_DOC</div></blockquote>
+<dl class="docutils">
+<dt>elif [[ ! -e $FILE_SPHINX ]] ; then</dt>
+<dd># no embedded sphinx and not a sphinx project
+echo &#8220;No sphinxdoc configuration or document folder missing, Exiting ...&#8221;
+exit 1</dd>
+</dl>
+<p>fi</p>
+<p># test for or create remote in documentation (sub)project
+set &#8211; $(git remote -v)
+TEST=$1
+REMOTE_DEPLOY=$2
+if [[ &#8220;${TEST#*$REMOTE}&#8221; = &#8220;$TEST&#8221; ]] ; then</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>if [[ $REMOTE = &#8220;heroku&#8221; ]] ; then</dt>
+<dd># project is deployed on Heroku, create documentation deployment there too
+echo -e &#8220;nCreating new heroku remote deployment for documentationn&#8221;
+heroku create
+echo &#8220;$(git remote -v)&#8221;
+set &#8211; $(git remote -v)
+REMOTE_DEPLOY=$2</dd>
+<dt>else</dt>
+<dd># main project deployed somewhere and documentation remote not set
+echo -e &#8220;Use &#8220;git remote ... &#8221; to set deployment for $PROJECT. Exiting ...&#8221;
+exit 1</dd>
+</dl>
+<p>fi
+# project has a remote; use it</p>
+</div></blockquote>
+<p>fi</p>
+<p># set branch name for deploy pull and push
+case $REMOTE_DEPLOY in</p>
+<blockquote>
+<div><dl class="docutils">
+<dt><em>&#8220;github&#8221;</em>)</dt>
+<dd>BRANCH_DEPLOY=$GITHUB
+;;</dd>
+<dt><em>&#8220;heroku&#8221;</em>)</dt>
+<dd>BRANCH_DEPLOY=$HEROKU
+;;</dd>
+<dt><a href="#id13"><span class="problematic" id="id14">**</span></a>)</dt>
+<dd># this script does not know how to deploy to the specified remote
+echo &#8220;Script does not support remote $REMOTE_DEPLOY. Exiting ...&#8221;
+exit 1
+;;</dd>
+</dl>
+</div></blockquote>
+<p>esac</p>
+<p>#  Project folder, supported remote, (embedded) sphinxdoc index.rst</p>
+<p>echo -e &#8220;nDocumentation project folder is $PROJECT&#8221;
+echo -e &#8220;Remote for documentation is at $REMOTE_DEPLOY&#8221;
+echo -e &#8220;Documentation branches:n$(git branch -a)&#8221;
+echo -e &#8220;Documentation remotes:n$(git remote -v) n&#8221;</p>
+<p>########## CONFIGURING DEPLOYMENT FOLDER</p>
+<p>echo &#8221;  &#8212; CONFIGURING DEPLOYMENT &#8212;&#8221;</p>
+<p># Read CNAME owner for github deployment, in case there is one
+if [[ -e cnameowner ]] ; then</p>
+<blockquote>
+<div>OWNER=$(&lt;cnameowner)</div></blockquote>
+<p>fi</p>
+<p># in the event it is missing, create a git project deployment folder
+if [[ ! -d $DIR_DEPLOY ]] ; then</p>
+<blockquote>
+<div>mkdir -p $DIR_DEPLOY</div></blockquote>
+<p>fi
+if [[ ! -d $DIR_DEPLOY/.git ]] ; then</p>
+<blockquote>
+<div>echo -e &#8220;nCreating deployment folder $DIR_DEPLOYn&#8221;
+cd $DIR_DEPLOY
+git init
+git commit &#8211;allow-empty -m &#8220;empty first commit&#8221;
+set &#8211; $(git branch)
+git branch -m $2 $DEPLOY
+# ##
+echo &#8220;git remote add origin $REMOTE_DEPLOY&#8221;
+# ##
+git remote add origin $REMOTE_DEPLOY
+echo &#8220;BRANCH is &#8220;$(git branch -a)&#8221;&#8221;
+git fetch origin
+# git checkout -B $DEPLOY
+# Save directory in git and Prevent jekyll markup interpretation
+touch .gitkeep
+touch .gitignore
+touch .nojekyll
+git add &#8211;ignore-removal .
+git commit -m &#8220;hidden control files&#8221;
+cd ..</div></blockquote>
+<p>fi</p>
+<p># Clean the deployment folder and pull the repository branch
+rm -rf $DIR_DEPLOY/*
+cd $DIR_DEPLOY
+# fatal error returned if remote site does not include the deploy branch
+TEST=$(git branch -a)
+if [[ &#8220;$TEST&#8221; != &#8220;${TEST/$BRANCH_DEPLOY/}&#8221; ]] ; then</p>
+<blockquote>
+<div>git pull -f origin $BRANCH_DEPLOY:$DEPLOY</div></blockquote>
+<p>fi
+cd ..</p>
+<p>echo &#8221;  &#8212;&#8211; CREATING OUTPUT &#8212;&#8211;&#8221;</p>
+<p># if no sections specified, look for a file &#8220;sections&#8221; listing sections
+if [[ -e sections ]] ; then</p>
+<blockquote>
+<div>SECTIONS+=&#8221; &#8220;$(&lt;sections)</div></blockquote>
+<p>fi</p>
+<p># Compile fresh output for one or more books and copy to deployment folder
+if [[ &#8220;$SECTIONS&#8221; = &#8220;&#8221; ]] ; then</p>
+<blockquote>
+<div>DIR_OUT=$DIR_DEPLOY
+makedeployment</div></blockquote>
+<p>else</p>
+<blockquote>
+<div><p># Add shared static content
+if [[ -d $DIR_STATIC ]] ; then</p>
+<blockquote>
+<div>cp -RH $DIR_STATIC/* $DIR_DEPLOY/
+# cp $DIR_STATIC/.ht* $DIR_DEPLOY/ &amp;&gt;/dev/null || RC=$?
+cp -RH $DIR_STATIC/.ht* $DIR_DEPLOY/ &amp;&gt;/dev/null || RC=$?
+if [[ $RC &gt; 0 ]] ; then echo &#8220;$(pwd)$(tput setaf 1) $LINENO: cp -RH $DIR_STATIC/.ht* $DIR_DEPLOY/ $(tput sgr0)&#8221; ; fi</div></blockquote>
+<p>fi</p>
+<p># Make HTML, other deployment files
+for SECT in $SECTIONS ; do</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>if [[ -d $SECT ]] ; then</dt>
+<dd><p class="first">DIR_OUT=../$DIR_DEPLOY/$SECT
+cd $SECT</p>
+<blockquote>
+<div><p>echo -e &#8220;$(tput setaf 2)n Making section $SECT n$(tput sgr0)&#8221;
+mkdir -p $DIR_OUT
+makedeployment
+# Copy MASTER from its deploy subdirectory
+if [[ $SECT == $MASTER ]] ; then</p>
+<blockquote>
+<div><p>cp -RH $DIR_OUT/* ../$DIR_DEPLOY/
+# cp $DIR_OUT/.ht* ../$DIR_DEPLOY/ &amp;&gt;/dev/null || RC=$?
+cp -RH $DIR_OUT/.ht* ../$DIR_DEPLOY/ &amp;&gt;/dev/null || RC=$?
+if [[ $RC &gt; 0 ]] ; then echo &#8220;$(pwd)$(tput setaf 1) $LINENO: cp -RH $DIR_OUT/.ht* ../$DIR_DEPLOY/ $(tput sgr0)&#8221; ; fi
+# If it exists, delete CNAME from master deploy subdirectory
+if [[ -e $DIR_OUT/CNAME ]] ; then</p>
+<blockquote>
+<div>echo &#8220;CNAME $(&lt;$DIR_OUT/CNAME) found in $DIR_OUT/CNAME&#8221;
+rm $DIR_OUT/CNAME</div></blockquote>
+<p>fi</p>
+</div></blockquote>
+<p>fi</p>
+</div></blockquote>
+<p class="last">cd ..</p>
+</dd>
+</dl>
+<p>fi</p>
+</div></blockquote>
+<p>done</p>
+</div></blockquote>
+<p>fi</p>
+<p># if we are on gh-pages AND there exists a CNAME file
+if [[ $BRANCH_DEPLOY = $GITHUB ]] ; then</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>if [[ -e $DIR_DEPLOY/CNAME ]] ; then</dt>
+<dd><dl class="first docutils">
+<dt>if [[ &#8220;$REMOTE_DEPLOY&#8221; == &#8220;${REMOTE_DEPLOY/$OWNER/}&#8221; ]] ; then</dt>
+<dd># removing $OWNER from remote leaves the remote unchanged, so:
+# if $GITHUB and CNAME owner != remote deployer, remove CNAME
+echo remote ^^$REMOTE_DEPLOY^^ does not belong to CNAME owner=^^&#8221;$OWNER&#8221;^^
+rm $DIR_DEPLOY/CNAME</dd>
+</dl>
+<p class="last">fi</p>
+</dd>
+</dl>
+<p>fi</p>
+</div></blockquote>
+<p>fi</p>
+<p># Deploy the repository branch
+if [[ $NODEPLOY == &#8220;YES&#8221; ]] ; then</p>
+<blockquote>
+<div>exit</div></blockquote>
+<dl class="docutils">
+<dt>elif [[ -d $DIR_DEPLOY ]] ; then</dt>
+<dd>cd $DIR_DEPLOY
+git add -A .
+git commit -m &#8220;Deployed documentation&#8221;
+git push -u origin $DEPLOY:$BRANCH_DEPLOY
+echo -e &#8220;npushed to origin branch $DEPLOY:$BRANCH_DEPLOYn&#8221;
+cd ..</dd>
+</dl>
+<p>fi</p>
+<p>######### NORMAL EXIT</p>
+<p>echo &#8221;  &#8212; FINISHED &#8212;&#8221;
+echo &#8220;Check all messages for possible errors.&#8221;
+echo &#8220;Then commit and push source changes as well.&#8221;</p>
+<p># Authors: Gerald Lovel, <a class="reference external" href="mailto:glovel&#37;&#52;&#48;aaltsys&#46;com">glovel<span>&#64;</span>aaltsys<span>&#46;</span>com</a>; Julia Lovel, <a class="reference external" href="mailto:jlovel&#37;&#52;&#48;aaltsys&#46;com">jlovel<span>&#64;</span>aaltsys<span>&#46;</span>com</a></p>
+<p># 12/17/2012 - GARL &#8211; Added copy master folder contents to $DIR_DEPLOY root
+# 02/20/2013 - GARL &#8211; Added support for deployment to Heroku, Github, ...
+# 03/10/2013 - GARL &#8211; Embedded documentation in code projects added
+# 11/15/2013 - GARL &#8211; Updated cnameowner mismatch error messages to display spaces
+# 08/20/2014 - GARL &#8211; Added link backreference insertion in HTML output
+# 09/10/2014 - GARL &#8211; Added option checking for NODEPLOY, PROJECT</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li><a href="index.html">Linux Shell Script Programming 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Gerald Lovel.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>
