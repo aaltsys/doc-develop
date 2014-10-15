@@ -53,7 +53,7 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#the-program-or-script-body">The Program or Script Body</a></li>
-<li><a class="reference internal" href="#making-scripts-comprehensible">Making Scripts Comprehensible</a><ul>
+<li><a class="reference internal" href="#comprehensible-scripts">Comprehensible Scripts</a><ul>
 <li><a class="reference internal" href="#embed-documentation-comments">Embed documentation comments</a></li>
 <li><a class="reference internal" href="#display-results">Display results</a></li>
 <li><a class="reference internal" href="#inputs-and-logic-tests">Inputs and Logic tests</a></li>
@@ -210,8 +210,8 @@ should start by asking the user to confirm the change.</p>
 <p>The main body of a program should end with an exit section which tells the user
 what the script has done.</p>
 </div>
-<div class="section" id="making-scripts-comprehensible">
-<h2>Making Scripts Comprehensible<a class="headerlink" href="#making-scripts-comprehensible" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="comprehensible-scripts">
+<h2>Comprehensible Scripts<a class="headerlink" href="#comprehensible-scripts" title="Permalink to this headline">¶</a></h2>
 <p>Programming syntax seems obfuscatory by design, and it is the programmer&#8217;s duty
 to clarify her work through comments and messages.</p>
 <div class="section" id="embed-documentation-comments">
@@ -219,7 +219,7 @@ to clarify her work through comments and messages.</p>
 <div class="sidebar">
 <p class="first sidebar-title">Comments</p>
 <div class="last highlight-python"><div class="highlight"><pre># Makedeployment creates _build contents
-makedeployment () {
+makedeployment() {
   make clean $MAKE_METHOD BUILDDIR=$DIR_BUILD
   cp -R $DIR_BUILD/$MAKE_METHOD/* $DIR_OUT/
 
@@ -232,8 +232,13 @@ makedeployment () {
 </div>
 </div>
 <p>If the first non-whitespace character in a statement is the hash mark (<tt class="docutils literal"><span class="pre">#</span></tt>),
-then the statement is a comment and is not interpreted. Comment code to explain
-its purpose.</p>
+then the statement is a comment and is not interpreted. Use code comments to:</p>
+<ul class="simple">
+<li>explain the purpose of a particular command or code section</li>
+<li>provide example values and results for testing</li>
+<li>include notes on program purpose and practice</li>
+<li>retain disabled command alternatives when testing code during programming</li>
+</ul>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
 <p class="last">A good way to write scripts is to begin by writing only comments. Then, fill
@@ -287,6 +292,12 @@ system .</p>
 In the sidebar example, any input other than <tt class="kbd docutils literal"><span class="pre">y</span></tt> will cause the script to
 exit. If the script had been written to exit on <tt class="kbd docutils literal"><span class="pre">n</span></tt>, then any key other
 than <tt class="kbd docutils literal"><span class="pre">n</span></tt> would result in executing the script.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">It may seem obvious, but logic errors are very common when multiple responses
+or numeric options are used, and a <strong class="command">case</strong> statement processes the
+input.</p>
+</div>
 </div>
 </div>
 </div>

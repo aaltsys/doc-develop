@@ -96,7 +96,7 @@
   <div class="section" id="operators-characters">
 <span id="operators"></span><h1>Operators &amp; Characters<a class="headerlink" href="#operators-characters" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="special-characters">
-<h2>Special characters <a class="footnote-reference" href="#id10" id="id1">[1]</a><a class="headerlink" href="#special-characters" title="Permalink to this headline">¶</a></h2>
+<h2>Special characters <a class="footnote-reference" href="#id2" id="id1">[1]</a><a class="headerlink" href="#special-characters" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
 <colgroup>
 <col width="14%" />
@@ -137,31 +137,25 @@
 </td>
 </tr>
 <tr class="row-even"><td>#</td>
-<td><div class="first last line-block">
-<div class="line">&#8220;#&#8221; after a newline or a command separator denotes a comment::</div>
-<div class="line-block">
-<div class="line"># this is a comment line</div>
-</div>
-</div>
-</td>
+<td><tt class="docutils literal"><span class="pre">#</span></tt> after a newline or a command separator denotes a comment</td>
 </tr>
 <tr class="row-odd"><td><div class="first last line-block">
 <div class="line">;;</div>
-<div class="line">also</div>
+<div class="line"><br /></div>
 <div class="line">;;&amp;</div>
 <div class="line">;&amp;</div>
 <div class="line"><br /></div>
 </div>
 </td>
 <td><div class="first last line-block">
-<div class="line">double-semicolons terminate an option in case statements::</div>
+<div class="line">double-semicolons terminate an option in case statements</div>
 <div class="line-block">
-<div class="line">case &#8220;$variable&#8221; in</div>
+<div class="line"><tt class="docutils literal"><span class="pre">case</span> <span class="pre">&quot;$variable&quot;</span> <span class="pre">in</span></tt></div>
 <div class="line-block">
-<div class="line">abc)  echo &#8220;$variable = abc&#8221; ;;</div>
-<div class="line">xyz)  echo &#8220;$variable = xyz&#8221; ;;</div>
+<div class="line"><tt class="docutils literal"><span class="pre">abc)</span>&nbsp; <span class="pre">echo</span> <span class="pre">&quot;\$variable</span> <span class="pre">=</span> <span class="pre">abc&quot;</span> <span class="pre">;;</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">xyz)</span>&nbsp; <span class="pre">echo</span> <span class="pre">&quot;\$variable</span> <span class="pre">=</span> <span class="pre">xyz&quot;</span> <span class="pre">;;</span></tt></div>
 </div>
-<div class="line">esac</div>
+<div class="line"><tt class="docutils literal"><span class="pre">esac</span></tt></div>
 </div>
 </div>
 </td>
@@ -252,7 +246,7 @@
 <div class="line">in a regular expression, <tt class="docutils literal"><span class="pre">$</span></tt> represents end of line of text</div>
 <div class="line">in parameter substitution, evaluates a variable or expression</div>
 <div class="line">in quoted string, expands octal/hex values into ASCII/Unicode</div>
-<div class="line">the <a href="#id2"><span class="problematic" id="id3">``</span></a>n``th positional parameter</div>
+<div class="line">the n-th positional parameter input to a command or script</div>
 <div class="line">all positional parameters, seen together as single word</div>
 <div class="line">list of positional parameters, each one quoted</div>
 <div class="line">exit status of a command, function, or script</div>
@@ -281,16 +275,10 @@
 <tr class="row-even"><td>=</td>
 <td>equals</td>
 </tr>
-<tr class="row-odd"><td><ul class="first last simple">
-<li></li>
-</ul>
-</td>
+<tr class="row-odd"><td>+</td>
 <td>plus</td>
 </tr>
-<tr class="row-even"><td><ul class="first last simple">
-<li></li>
-</ul>
-</td>
+<tr class="row-even"><td>-</td>
 <td>minus</td>
 </tr>
 <tr class="row-odd"><td>*</td>
@@ -344,11 +332,14 @@
 <tr class="row-even"><td>$[3+4+5]</td>
 <td>evaluate an integer math expression (deprecated)</td>
 </tr>
-<tr class="row-odd"><td><a href="#id4"><span class="problematic" id="id5">|</span></a>{var}
-<a href="#id6"><span class="problematic" id="id7">|</span></a>{02..8..2}
-<a href="#id8"><span class="problematic" id="id9">|</span></a>{expr...}</td>
+<tr class="row-odd"><td><div class="first last line-block">
+<div class="line">{var}</div>
+<div class="line">{02..8..2}</div>
+<div class="line">{expr...}</div>
+</div>
+</td>
 <td><div class="first last line-block">
-<div class="line">brace expansion: <tt class="docutils literal"><span class="pre">echo</span> <span class="pre">\&quot;1,2,3\&quot;</span></tt> shows <tt class="docutils literal"><span class="pre">\&quot;1\&quot;</span> <span class="pre">\&quot;2\&quot;</span> <span class="pre">\&quot;3\&quot;</span></tt></div>
+<div class="line">brace expansion: <tt class="docutils literal"><span class="pre">echo</span> <span class="pre">\1,2,3\</span></tt> shows <tt class="docutils literal"><span class="pre">&quot;1&quot;</span> <span class="pre">&quot;2&quot;</span> <span class="pre">&quot;3&quot;</span></tt></div>
 <div class="line">expand series starting <tt class="docutils literal"><span class="pre">02</span></tt> step <tt class="docutils literal"><span class="pre">2</span></tt> with <tt class="docutils literal"><span class="pre">0</span></tt> padding</div>
 <div class="line">code block: inline group commands into local anonymous function</div>
 </div>
@@ -417,15 +408,18 @@
 <tr class="row-even"><td>&amp;</td>
 <td>at end of command, detach and run command in background</td>
 </tr>
-<tr class="row-odd"><td><ul class="first simple">
-<li></li>
-</ul>
-<p class="last">&#8211;
-&#8211;</p>
+<tr class="row-odd"><td><div class="first last line-block">
+<div class="line">-</div>
+<div class="line">&#8211;</div>
+<div class="line">&#8211;</div>
+</div>
 </td>
-<td>command option prefix: `` ls -al``
-verbose option prefix: <tt class="docutils literal"><span class="pre">ls</span> <span class="pre">--all</span> <span class="pre">--list</span></tt>
-(builtin) end of options <tt class="docutils literal"><span class="pre">rm</span> <span class="pre">--</span> <span class="pre">-badname*</span></tt></td>
+<td><div class="first last line-block">
+<div class="line">command option prefix: `` ls -al``</div>
+<div class="line">verbose option prefix: <tt class="docutils literal"><span class="pre">ls</span> <span class="pre">--all</span> <span class="pre">--list</span></tt></div>
+<div class="line">(builtin) end of options <tt class="docutils literal"><span class="pre">rm</span> <span class="pre">--</span> <span class="pre">-badname*</span></tt></div>
+</div>
+</td>
 </tr>
 </tbody>
 </table>
@@ -447,10 +441,8 @@ verbose option prefix: <tt class="docutils literal"><span class="pre">ls</span> 
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td><div class="first last line-block">
-<div class="line-block">
 <div class="line">=</div>
 <div class="line">==</div>
-</div>
 <div class="line">!=</div>
 </div>
 </td>
@@ -501,115 +493,43 @@ verbose option prefix: <tt class="docutils literal"><span class="pre">ls</span> 
 <tbody valign="top">
 <tr class="row-even"><td colspan="2">&#8211; WITHIN TEST COMMAND (SINGLE BRACKET) OR DOUBLE BRACKETS &#8211;</td>
 </tr>
-<tr class="row-odd"><td><div class="first last line-block">
-<div class="line">-eq</div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">is equal to: <tt class="docutils literal"><span class="pre">[</span> <span class="pre">number1</span> <span class="pre">-eq</span> <span class="pre">number2</span> <span class="pre">]</span></tt></div>
-</div>
-</td>
+<tr class="row-odd"><td>-eq</td>
+<td>is equal to: <tt class="docutils literal"><span class="pre">[</span> <span class="pre">number1</span> <span class="pre">-eq</span> <span class="pre">number2</span> <span class="pre">]</span></tt></td>
 </tr>
-<tr class="row-even"><td><div class="first last line-block">
-<div class="line">-ne</div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">is not equal to: <tt class="docutils literal"><span class="pre">[</span> <span class="pre">number1</span> <span class="pre">-ne</span> <span class="pre">number2</span> <span class="pre">]</span></tt></div>
-</div>
-</td>
+<tr class="row-even"><td>-ne</td>
+<td>is not equal to: <tt class="docutils literal"><span class="pre">[</span> <span class="pre">number1</span> <span class="pre">-ne</span> <span class="pre">number2</span> <span class="pre">]</span></tt></td>
 </tr>
-<tr class="row-odd"><td><div class="first last line-block">
-<div class="line">-gt</div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">is greater than: <tt class="docutils literal"><span class="pre">[</span> <span class="pre">number1</span> <span class="pre">-gt</span> <span class="pre">number2</span> <span class="pre">]</span></tt></div>
-</div>
-</td>
+<tr class="row-odd"><td>-gt</td>
+<td>is greater than: <tt class="docutils literal"><span class="pre">[</span> <span class="pre">number1</span> <span class="pre">-gt</span> <span class="pre">number2</span> <span class="pre">]</span></tt></td>
 </tr>
-<tr class="row-even"><td><div class="first last line-block">
-<div class="line">-ge</div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">is greater than or equal to: <tt class="docutils literal"><span class="pre">[</span> <span class="pre">number1</span> <span class="pre">-ge</span> <span class="pre">number2</span> <span class="pre">]</span></tt></div>
-</div>
-</td>
+<tr class="row-even"><td>-ge</td>
+<td>is greater than or equal to: <tt class="docutils literal"><span class="pre">[</span> <span class="pre">number1</span> <span class="pre">-ge</span> <span class="pre">number2</span> <span class="pre">]</span></tt></td>
 </tr>
-<tr class="row-odd"><td><div class="first last line-block">
-<div class="line">-lt</div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">is less than: <tt class="docutils literal"><span class="pre">[</span> <span class="pre">number1</span> <span class="pre">-lt</span> <span class="pre">number2</span> <span class="pre">]</span></tt></div>
-</div>
-</td>
+<tr class="row-odd"><td>-lt</td>
+<td>is less than: <tt class="docutils literal"><span class="pre">[</span> <span class="pre">number1</span> <span class="pre">-lt</span> <span class="pre">number2</span> <span class="pre">]</span></tt></td>
 </tr>
-<tr class="row-even"><td><div class="first last line-block">
-<div class="line">-le</div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">is less than or equal to: <tt class="docutils literal"><span class="pre">[</span> <span class="pre">number1</span> <span class="pre">-le</span> <span class="pre">number2</span> <span class="pre">]</span></tt></div>
-</div>
-</td>
+<tr class="row-even"><td>-le</td>
+<td>is less than or equal to: <tt class="docutils literal"><span class="pre">[</span> <span class="pre">number1</span> <span class="pre">-le</span> <span class="pre">number2</span> <span class="pre">]</span></tt></td>
 </tr>
 <tr class="row-odd"><td colspan="2">&#8211; WITHIN DOUBLE PARENTHESES ONLY &#8211;</td>
 </tr>
-<tr class="row-even"><td><div class="first last line-block">
-<div class="line">=</div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">is equal to: <tt class="docutils literal"><span class="pre">((</span> <span class="pre">number1</span> <span class="pre">=</span> <span class="pre">expr2</span> <span class="pre">))</span></tt></div>
-</div>
-</td>
+<tr class="row-even"><td>=</td>
+<td>is equal to: <tt class="docutils literal"><span class="pre">((</span> <span class="pre">number1</span> <span class="pre">=</span> <span class="pre">expr2</span> <span class="pre">))</span></tt></td>
 </tr>
-<tr class="row-odd"><td><div class="first last line-block">
-<div class="line">&lt;&gt;</div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">is not equal to: <tt class="docutils literal"><span class="pre">((</span> <span class="pre">number1</span> <span class="pre">&lt;&gt;</span> <span class="pre">expr2</span> <span class="pre">))</span></tt> (maybe <tt class="docutils literal"><span class="pre">!=</span></tt>)</div>
-</div>
-</td>
+<tr class="row-odd"><td>&lt;&gt;</td>
+<td>is not equal to: <tt class="docutils literal"><span class="pre">((</span> <span class="pre">number1</span> <span class="pre">&lt;&gt;</span> <span class="pre">expr2</span> <span class="pre">))</span></tt> (maybe <tt class="docutils literal"><span class="pre">!=</span></tt>)</td>
 </tr>
-<tr class="row-even"><td><div class="first last line-block">
-<div class="line">&lt;</div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">is less than: <tt class="docutils literal"><span class="pre">((</span> <span class="pre">number1</span> <span class="pre">&lt;</span> <span class="pre">expr2</span> <span class="pre">))</span></tt></div>
-</div>
-</td>
+<tr class="row-even"><td>&lt;</td>
+<td>is less than: <tt class="docutils literal"><span class="pre">((</span> <span class="pre">number1</span> <span class="pre">&lt;</span> <span class="pre">expr2</span> <span class="pre">))</span></tt></td>
 </tr>
-<tr class="row-odd"><td><div class="first last line-block">
-<div class="line">&lt;=</div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">is less than or equal to: <tt class="docutils literal"><span class="pre">((</span> <span class="pre">number1</span> <span class="pre">,=</span> <span class="pre">expr2</span> <span class="pre">))</span></tt></div>
-</div>
-</td>
+<tr class="row-odd"><td>&lt;=</td>
+<td>is less than or equal to: <tt class="docutils literal"><span class="pre">((</span> <span class="pre">number1</span> <span class="pre">,=</span> <span class="pre">expr2</span> <span class="pre">))</span></tt></td>
 </tr>
-<tr class="row-even"><td><div class="first last line-block">
-<div class="line">&gt;</div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">is greater than: <tt class="docutils literal"><span class="pre">((</span> <span class="pre">number1</span> <span class="pre">&gt;</span> <span class="pre">expr2</span> <span class="pre">))</span></tt></div>
-</div>
-</td>
+<tr class="row-even"><td>&gt;</td>
+<td>is greater than: <tt class="docutils literal"><span class="pre">((</span> <span class="pre">number1</span> <span class="pre">&gt;</span> <span class="pre">expr2</span> <span class="pre">))</span></tt></td>
 </tr>
-<tr class="row-odd"><td><div class="first last line-block">
-<div class="line">&gt;=</div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">is greater than or equal to: <tt class="docutils literal"><span class="pre">((</span> <span class="pre">number1</span> <span class="pre">&gt;=</span> <span class="pre">expr2</span> <span class="pre">))</span></tt></div>
-</div>
-</td>
+<tr class="row-odd"><td>&gt;=</td>
+<td>is greater than or equal to: <tt class="docutils literal"><span class="pre">((</span> <span class="pre">number1</span> <span class="pre">&gt;=</span> <span class="pre">expr2</span> <span class="pre">))</span></tt></td>
 </tr>
 </tbody>
 </table>
@@ -627,47 +547,23 @@ verbose option prefix: <tt class="docutils literal"><span class="pre">ls</span> 
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><div class="first last line-block">
-<div class="line">-a</div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">logical and within test command: <tt class="docutils literal"><span class="pre">[</span> <span class="pre">expr1</span> <span class="pre">-a</span> <span class="pre">expr2</span> <span class="pre">]</span></tt></div>
-</div>
-</td>
+<tr class="row-even"><td>-a</td>
+<td>logical and within test command: <tt class="docutils literal"><span class="pre">[</span> <span class="pre">expr1</span> <span class="pre">-a</span> <span class="pre">expr2</span> <span class="pre">]</span></tt></td>
 </tr>
-<tr class="row-odd"><td><div class="first last line-block">
-<div class="line">-o</div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">logical or within test command: <tt class="docutils literal"><span class="pre">[</span> <span class="pre">expr1</span> <span class="pre">-o</span> <span class="pre">expr2</span> <span class="pre">]</span></tt></div>
-</div>
-</td>
+<tr class="row-odd"><td>-o</td>
+<td>logical or within test command: <tt class="docutils literal"><span class="pre">[</span> <span class="pre">expr1</span> <span class="pre">-o</span> <span class="pre">expr2</span> <span class="pre">]</span></tt></td>
 </tr>
-<tr class="row-even"><td><div class="first last line-block">
-<div class="line">&amp;&amp;</div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">logical and within double brackets: <tt class="docutils literal"><span class="pre">[[</span> <span class="pre">expr1</span> <span class="pre">&amp;&amp;</span> <span class="pre">expr2</span> <span class="pre">]]</span></tt></div>
-</div>
-</td>
+<tr class="row-even"><td>&amp;&amp;</td>
+<td>logical and within double brackets: <tt class="docutils literal"><span class="pre">[[</span> <span class="pre">expr1</span> <span class="pre">&amp;&amp;</span> <span class="pre">expr2</span> <span class="pre">]]</span></tt></td>
 </tr>
-<tr class="row-odd"><td><div class="first last line-block">
-<div class="line">||</div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">logical or within double brackets: <tt class="docutils literal"><span class="pre">[[</span> <span class="pre">expr1</span> <span class="pre">||</span> <span class="pre">expr2</span> <span class="pre">]]</span></tt></div>
-</div>
-</td>
+<tr class="row-odd"><td>||</td>
+<td>logical or within double brackets: <tt class="docutils literal"><span class="pre">[[</span> <span class="pre">expr1</span> <span class="pre">||</span> <span class="pre">expr2</span> <span class="pre">]]</span></tt></td>
 </tr>
 </tbody>
 </table>
 <hr class="docutils" />
 <p class="rubric">Footnotes</p>
-<table class="docutils footnote" frame="void" id="id10" rules="none">
+<table class="docutils footnote" frame="void" id="id2" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td><a class="reference external" href="http://tldp.org/LDP/abs/html/special-chars.html">Shell scripting special characters.</a></td></tr>

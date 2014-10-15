@@ -22,14 +22,13 @@ Special characters [#]_
 |  ;        | semicolons separate commands appearing on one line::             |
 |           |    if [ -x "$filename" ] ; then cp $filename $dir/ ; fi          |
 +-----------+------------------------------------------------------------------+
-|  #        || "#" after a newline or a command separator denotes a comment::  |
-|           ||    # this is a comment line                                     |
+|  #        | ``#`` after a newline or a command separator denotes a comment   |
 +-----------+------------------------------------------------------------------+
-||  ;;      || double-semicolons terminate an option in case statements::      |
-||  also    ||   case "$variable" in                                           |
-||  ;;&     ||     abc)  echo "\$variable = abc" ;;                            |
-||  ;&      ||     xyz)  echo "\$variable = xyz" ;;                            |
-||          ||   esac                                                          |
+||  ;;      || double-semicolons terminate an option in case statements        |
+||          ||   ``case "$variable" in``                                       |
+||  ;;&     ||     ``abc)  echo "\$variable = abc" ;;``                        |
+||  ;&      ||     ``xyz)  echo "\$variable = xyz" ;;``                        |
+||          ||   ``esac``                                                      |
 +-----------+------------------------------------------------------------------+
 || .        || period by itself indicates a source                             |
 || .filename|| period as a filename prefix indicates a hidden file             |
@@ -57,7 +56,7 @@ Special characters [#]_
 || $        || in a regular expression, ``$`` represents end of line of text   |
 || ${}      || in parameter substitution, evaluates a variable or expression   |
 || $' ..'   || in quoted string, expands octal/hex values into ASCII/Unicode   |
-|| $n       || the ``n``th positional parameter                                |
+|| $n       || the n-th positional parameter input to a command or script      |
 || \"$\*\"  || all positional parameters, seen together as single word         |
 || \"$@\"   || list of positional parameters, each one quoted                  |
 || $?       || exit status of a command, function, or script                   |
@@ -75,9 +74,9 @@ Arithmetic operators
 +=============+================================================================+
 |  =          | equals                                                         |
 +-------------+----------------------------------------------------------------+
-|  +          | plus                                                           |
+|  \+         | plus                                                           |
 +-------------+----------------------------------------------------------------+
-|  -          | minus                                                          |
+|  \-         | minus                                                          |
 +-------------+----------------------------------------------------------------+
 |  \*         | multiply                                                       |
 +-------------+----------------------------------------------------------------+
@@ -105,9 +104,9 @@ Expression constructs
 +-------------+-----------------------------------------------------------------+
 | $[3+4+5]    | evaluate an integer math expression (deprecated)                |
 +-------------+-----------------------------------------------------------------+
-||{var}       || brace expansion: ``echo \"1,2,3\"`` shows ``\"1\" \"2\" \"3\"``|
-||{02..8..2}  || expand series starting ``02`` step ``2`` with ``0`` padding    |
-||{expr...}   || code block: inline group commands into local anonymous function|
+|| {var}      || brace expansion: ``echo \1,2,3\`` shows ``"1" "2" "3"``        |
+|| {02..8..2} || expand series starting ``02`` step ``2`` with ``0`` padding    |
+|| {expr...}  || code block: inline group commands into local anonymous function|
 +-------------+-----------------------------------------------------------------+
 | ${var:n:l}  | extract ``l`` chars starting at ``n`` (negatives reference end) |
 +-------------+-----------------------------------------------------------------+
@@ -137,9 +136,9 @@ Expression constructs
 +-------------+-----------------------------------------------------------------+
 |  &          | at end of command, detach and run command in background         |
 +-------------+-----------------------------------------------------------------+
-|  -          | command option prefix: `` ls -al``                              |
-|  \-\-       | verbose option prefix: ``ls --all --list``                      |
-|  \-\-       | (builtin) end of options ``rm -- -badname*``                    |
+|| \-         || command option prefix: `` ls -al``                             |
+|| \-\-       || verbose option prefix: ``ls --all --list``                     |
+|| \-\-       || (builtin) end of options ``rm -- -badname*``                   |
 +-------------+-----------------------------------------------------------------+
 
 .. _comparison:
@@ -153,8 +152,8 @@ String comparisons
 +-------------+----------------------------------------------------------------+
 | Operator    | Description                                                    |
 +=============+================================================================+
-||  =         || is equal to (requires whitespace around operator)             |
-||  ==        || is equal to, literal matching within [[ test ]]               |
+|| =          || is equal to (requires whitespace around operator)             |
+|| ==         || is equal to, literal matching within [[ test ]]               |
 || !=         || is not equal to, uses pattern matching within [[ test ]]      |
 +-------------+----------------------------------------------------------------+
 || <          || is less than in ASCII order, must be escaped in [ test ]      |
@@ -172,31 +171,31 @@ Integer comparisons
 +=============+================================================================+
 |  -- WITHIN TEST COMMAND (SINGLE BRACKET) OR DOUBLE BRACKETS --               |
 +-------------+----------------------------------------------------------------+
-|| -eq        || is equal to: ``[ number1 -eq number2 ]``                      |
+| -eq         | is equal to: ``[ number1 -eq number2 ]``                       |
 +-------------+----------------------------------------------------------------+
-|| -ne        || is not equal to: ``[ number1 -ne number2 ]``                  |
+| -ne         | is not equal to: ``[ number1 -ne number2 ]``                   |
 +-------------+----------------------------------------------------------------+
-|| -gt        || is greater than: ``[ number1 -gt number2 ]``                  |
+| -gt         | is greater than: ``[ number1 -gt number2 ]``                   |
 +-------------+----------------------------------------------------------------+
-|| -ge        || is greater than or equal to: ``[ number1 -ge number2 ]``      |
+| -ge         | is greater than or equal to: ``[ number1 -ge number2 ]``       |
 +-------------+----------------------------------------------------------------+
-|| -lt        || is less than: ``[ number1 -lt number2 ]``                     |
+| -lt         | is less than: ``[ number1 -lt number2 ]``                      |
 +-------------+----------------------------------------------------------------+
-|| -le        || is less than or equal to: ``[ number1 -le number2 ]``         |
+| -le         | is less than or equal to: ``[ number1 -le number2 ]``          |
 +-------------+----------------------------------------------------------------+
 |  -- WITHIN DOUBLE PARENTHESES ONLY --                                        |
 +-------------+----------------------------------------------------------------+
-|| =          || is equal to: ``(( number1 = expr2 ))``                        |
+| =           | is equal to: ``(( number1 = expr2 ))``                         |
 +-------------+----------------------------------------------------------------+
-|| <>         || is not equal to: ``(( number1 <> expr2 ))`` (maybe ``!=``)    |
+| <>          | is not equal to: ``(( number1 <> expr2 ))`` (maybe ``!=``)     |
 +-------------+----------------------------------------------------------------+
-|| <          || is less than: ``(( number1 < expr2 ))``                       |
+| <           | is less than: ``(( number1 < expr2 ))``                        |
 +-------------+----------------------------------------------------------------+
-|| <=         || is less than or equal to: ``(( number1 ,= expr2 ))``          |
+| <=          | is less than or equal to: ``(( number1 ,= expr2 ))``           |
 +-------------+----------------------------------------------------------------+
-|| >          || is greater than: ``(( number1 > expr2 ))``                    |
+| >           | is greater than: ``(( number1 > expr2 ))``                     |
 +-------------+----------------------------------------------------------------+
-|| >=         || is greater than or equal to: ``(( number1 >= expr2 ))``       |
+| >=          | is greater than or equal to: ``(( number1 >= expr2 ))``        |
 +-------------+----------------------------------------------------------------+
 
 Logical comparisons
@@ -205,13 +204,13 @@ Logical comparisons
 +-------------+----------------------------------------------------------------+
 | Operator    | Description                                                    |
 +=============+================================================================+
-|| -a         || logical and within test command: ``[ expr1 -a expr2 ]``       |
+| -a          | logical and within test command: ``[ expr1 -a expr2 ]``        |
 +-------------+----------------------------------------------------------------+
-|| -o         || logical or within test command: ``[ expr1 -o expr2 ]``        |
+| -o          | logical or within test command: ``[ expr1 -o expr2 ]``         |
 +-------------+----------------------------------------------------------------+
-|| &&         || logical and within double brackets: ``[[ expr1 && expr2 ]]``  |
+| &&          | logical and within double brackets: ``[[ expr1 && expr2 ]]``   |
 +-------------+----------------------------------------------------------------+
-|| \|\|       || logical or within double brackets: ``[[ expr1 || expr2 ]]``   |
+| \|\|        | logical or within double brackets: ``[[ expr1 || expr2 ]]``    |
 +-------------+----------------------------------------------------------------+
 
 ---------

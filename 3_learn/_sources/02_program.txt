@@ -125,7 +125,7 @@ script would have variable declarations and subroutines ahead of the main event.
 The main body of a program should end with an exit section which tells the user 
 what the script has done.
 
-Making Scripts Comprehensible
+Comprehensible Scripts
 =============================
 
 Programming syntax seems obfuscatory by design, and it is the programmer's duty 
@@ -139,7 +139,7 @@ Embed documentation comments
  ::
  
    # Makedeployment creates _build contents
-   makedeployment () {
+   makedeployment() {
      make clean $MAKE_METHOD BUILDDIR=$DIR_BUILD
      cp -R $DIR_BUILD/$MAKE_METHOD/* $DIR_OUT/
 
@@ -150,8 +150,12 @@ Embed documentation comments
    }
 
 If the first non-whitespace character in a statement is the hash mark (``#``), 
-then the statement is a comment and is not interpreted. Comment code to explain 
-its purpose. 
+then the statement is a comment and is not interpreted. Use code comments to:
+
+*  explain the purpose of a particular command or code section
+*  provide example values and results for testing
+*  include notes on program purpose and practice
+*  retain disabled command alternatives when testing code during programming
 
 .. tip::
    A good way to write scripts is to begin by writing only comments. Then, fill 
@@ -209,7 +213,7 @@ In the sidebar example, any input other than :kbd:`y` will cause the script to
 exit. If the script had been written to exit on :kbd:`n`, then any key other 
 than :kbd:`n` would result in executing the script. 
 
-.. warnng::
+.. warning::
    It may seem obvious, but logic errors are very common when multiple responses 
    or numeric options are used, and a :command:`case` statement processes the 
    input.
