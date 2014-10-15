@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Programming Overview &mdash; Linux Shell Script Programming 1.0 documentation</title>
+    <title>Script / Program Organization &mdash; Linux Shell Script Programming 1.0 documentation</title>
     
     <link rel="stylesheet" href="_static/aaltsys.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -25,7 +25,7 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="Linux Shell Script Programming 1.0 documentation" href="index.html" />
     <link rel="next" title="Shell Scripting Exercise" href="03_lesson1.html" />
-    <link rel="prev" title="Shell Script Programming" href="01_shell.html" /> 
+    <link rel="prev" title="Meet the Linux Shell" href="01_shell.html" /> 
   </head>
   <body>
     <div class="related">
@@ -35,7 +35,7 @@
           <a href="03_lesson1.html" title="Shell Scripting Exercise"
              accesskey="N">next</a></li>
         <li class="right" >
-          <a href="01_shell.html" title="Shell Script Programming"
+          <a href="01_shell.html" title="Meet the Linux Shell"
              accesskey="P">previous</a> |</li>
         <li><a href="index.html">Linux Shell Script Programming 1.0 documentation</a> &raquo;</li> 
       </ul>
@@ -44,12 +44,16 @@
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">Programming Overview</a><ul>
-<li><a class="reference internal" href="#program-layout">Program Layout</a><ul>
-<li><a class="reference internal" href="#program-declaration">Program declaration</a></li>
-<li><a class="reference internal" href="#initialize-variables">Initialize variables</a></li>
-<li><a class="reference internal" href="#assign-parameters">Assign Parameters</a></li>
-<li><a class="reference internal" href="#define-subroutines">Define Subroutines</a></li>
+<li><a class="reference internal" href="#">Script / Program Organization</a><ul>
+<li><a class="reference internal" href="#declarations-go-first">Declarations Go First</a><ul>
+<li><a class="reference internal" href="#declare-the-program-language">Declare the program language</a></li>
+<li><a class="reference internal" href="#assign-variables-before-use">Assign variables before use</a></li>
+<li><a class="reference internal" href="#assign-script-parameters">Assign script parameters</a></li>
+<li><a class="reference internal" href="#define-subroutine-sections">Define subroutine sections</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#the-program-or-script-body">The Program or Script Body</a></li>
+<li><a class="reference internal" href="#making-scripts-comprehensible">Making Scripts Comprehensible</a><ul>
 <li><a class="reference internal" href="#embed-documentation-comments">Embed documentation comments</a></li>
 <li><a class="reference internal" href="#display-results">Display results</a></li>
 <li><a class="reference internal" href="#inputs-and-logic-tests">Inputs and Logic tests</a></li>
@@ -61,7 +65,7 @@
 
   <h4>Previous topic</h4>
   <p class="topless"><a href="01_shell.html"
-                        title="previous chapter">Shell Script Programming</a></p>
+                        title="previous chapter">Meet the Linux Shell</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="03_lesson1.html"
                         title="next chapter">Shell Scripting Exercise</a></p>
@@ -91,26 +95,26 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="programming-overview">
-<span id="program"></span><h1>Programming Overview<a class="headerlink" href="#programming-overview" title="Permalink to this headline">¶</a></h1>
-<p>There are logical proofs regarding the nature of
+  <div class="section" id="script-program-organization">
+<span id="overview"></span><h1>Script / Program Organization<a class="headerlink" href="#script-program-organization" title="Permalink to this headline">¶</a></h1>
+<p>This article ignores logical proofs regarding the nature of
 <a class="reference external" href="http://en.wikipedia.org/wiki/Structured_programming">structured programming</a>,
-and significant research into object-oriented development, but that is not the
-purpose of this article. Instead, program design is presented here as a
-hueristic: organize your work to look a certain way, and others will be able to
-understand what you have done.</p>
+and research into object-oriented development. Instead, program design is
+presented here as a hueristic: organize your work to look a certain way, and
+others will be able to understand what you have done.</p>
 <p>Beyond the unique purpose of each program, all programs can share a consistent
 overall layout. Further, each independent section of a master program can use
-this same design logic. Along the way, warnings will introduce safety rules to
-prevent system programming from going awry with disastrous consequences. Tips
-will describe good programming practice to make code general and reuseable.</p>
-<div class="section" id="program-layout">
-<h2>Program Layout<a class="headerlink" href="#program-layout" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="program-declaration">
-<h3>Program declaration<a class="headerlink" href="#program-declaration" title="Permalink to this headline">¶</a></h3>
+this same design logic. Along the way, warnings introduce safety rules to prevent
+system programming from going awry. Tips describe good programming practice to
+generalize code so it will be reuseable. Sidebars present code examples which
+can be modified to build your own scripts.</p>
+<div class="section" id="declarations-go-first">
+<h2>Declarations Go First<a class="headerlink" href="#declarations-go-first" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="declare-the-program-language">
+<h3>Declare the program language<a class="headerlink" href="#declare-the-program-language" title="Permalink to this headline">¶</a></h3>
 <div class="sidebar">
 <p class="first sidebar-title">Program declaration</p>
-<div class="last highlight-python"><div class="highlight"><pre><span class="c">#! /bin/dash</span>
+<div class="last highlight-python"><div class="highlight"><pre><span class="c">#! /bin/sh</span>
 <span class="c"># This program sets video resolution ...</span>
 </pre></div>
 </div>
@@ -123,8 +127,8 @@ naming the executable shell. (Scripts lacking these requirements can still be
 executed by calling the shell interpreter directly and passing the script name
 as a parameter, as in <tt class="docutils literal"><span class="pre">bash</span> <span class="pre">myscript</span> <span class="pre">parameters</span></tt>.)</p>
 </div>
-<div class="section" id="initialize-variables">
-<h3>Initialize variables<a class="headerlink" href="#initialize-variables" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="assign-variables-before-use">
+<h3>Assign variables before use<a class="headerlink" href="#assign-variables-before-use" title="Permalink to this headline">¶</a></h3>
 <div class="sidebar">
 <p class="first sidebar-title">Variable initialization</p>
 <div class="last highlight-python"><div class="highlight"><pre><span class="n">DIR_STATIC</span><span class="o">=</span><span class="s">&#39;_static&#39;</span>
@@ -139,13 +143,16 @@ as a parameter, as in <tt class="docutils literal"><span class="pre">bash</span>
 default value or a null. The form of an assignment statement is the name of the
 variable immediately followed by an equals sign (=), and then followed by a
 quoted value. No space is allowed between the name and =.</p>
-<p>Writing variables in uppercase is a common scripting convention. Linux commands
-and other syntax are written in lowercase, as defined in the system. Linux is
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">By convention, script variables commonly use uppercase. Linux commands and
+other syntax are written in lowercase, as defined in the system. Linux is
 entirely case-sensitive, making variable <tt class="docutils literal"><span class="pre">HEROKU</span></tt> different from variable
 <tt class="docutils literal"><span class="pre">Heroku</span></tt>.</p>
 </div>
-<div class="section" id="assign-parameters">
-<h3>Assign Parameters<a class="headerlink" href="#assign-parameters" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="assign-script-parameters">
+<h3>Assign script parameters<a class="headerlink" href="#assign-script-parameters" title="Permalink to this headline">¶</a></h3>
 <div class="sidebar">
 <p class="first sidebar-title">Parameter assignment</p>
 <div class="last highlight-python"><div class="highlight"><pre>PROJECT=&#39;default&#39;
@@ -157,17 +164,17 @@ fi
 </div>
 <p>Assign command parameters to named variables, provided the parameters are being
 passed. Notice that variables are assigned by name with an <tt class="docutils literal"><span class="pre">=</span></tt> suffixed, but
-when used the variable name is prefixed with a dollar sign (<tt class="docutils literal"><span class="pre">$</span></tt>).</p>
+a variable is evaluated by prefixing the name with a dollar sign (<tt class="docutils literal"><span class="pre">$</span></tt>).</p>
 <p>Scripts receive command line parameters as variables numbered <tt class="docutils literal"><span class="pre">1</span></tt> through
 <tt class="docutils literal"><span class="pre">n</span></tt>, passed by value to the script. This means that position matters. For
 instance, a script expecting 2 or 3 parameters, with a default value for the
 third parameter, should test to see that <tt class="docutils literal"><span class="pre">$2</span></tt> has a value before proceeding.</p>
 </div>
-<div class="section" id="define-subroutines">
-<h3>Define Subroutines<a class="headerlink" href="#define-subroutines" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="define-subroutine-sections">
+<h3>Define subroutine sections<a class="headerlink" href="#define-subroutine-sections" title="Permalink to this headline">¶</a></h3>
 <div class="sidebar">
-<p class="first sidebar-title">Declaring subroutines</p>
-<div class="last highlight-python"><div class="highlight"><pre>makedeployment () {
+<p class="first sidebar-title">Defining subroutines</p>
+<div class="last highlight-python"><div class="highlight"><pre>makedeployment() {
   make clean $MAKE_METHOD BUILDDIR=$DIR_BUILD
   cp -R $DIR_BUILD/$MAKE_METHOD/* $DIR_OUT/
   if [[ -d $DIR_DOWNLOADS ]] ; then
@@ -179,12 +186,34 @@ third parameter, should test to see that <tt class="docutils literal"><span clas
 </div>
 <p>Code which may be executed repeatedly in a program, with each execution
 differing only by assigned values, should be placed in subroutines.</p>
-<p>As the example code shows, variables are global and pass by name to subroutines.
-Therefore subroutines should appear after variables are declared and assigned
-but before any other code which might call them. A subroutine is declared with a
-name followed by empty parentheses <tt class="docutils literal"><span class="pre">()</span></tt>. The code for the subroutine is then
-listed enclosed in braces <tt class="docutils literal"><span class="pre">{}</span></tt>. A subroutine is called just by using its name.</p>
+<p>As the example shows, variables are global and pass by name to subroutines.
+A subroutine is declared with a name followed by empty parentheses <tt class="docutils literal"><span class="pre">()</span></tt>. The
+commands for the subroutine is then listed enclosed in braces <tt class="docutils literal"><span class="pre">{}</span></tt>. A
+subroutine is called by using its name as a command.</p>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">Place subroutines after variables are declared and assigned but before any
+other code which might call them.</p>
 </div>
+</div>
+</div>
+<div class="section" id="the-program-or-script-body">
+<h2>The Program or Script Body<a class="headerlink" href="#the-program-or-script-body" title="Permalink to this headline">¶</a></h2>
+<p>The main body of a program should contain commands and logic to achieve the
+program purpose. Short scripts may have only a main section, but a typical
+script would have variable declarations and subroutines ahead of the main event.</p>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">Programs which make important changes, say altering system configuration,
+should start by asking the user to confirm the change.</p>
+</div>
+<p>The main body of a program should end with an exit section which tells the user
+what the script has done.</p>
+</div>
+<div class="section" id="making-scripts-comprehensible">
+<h2>Making Scripts Comprehensible<a class="headerlink" href="#making-scripts-comprehensible" title="Permalink to this headline">¶</a></h2>
+<p>Programming syntax seems obfuscatory by design, and it is the programmer&#8217;s duty
+to clarify her work through comments and messages.</p>
 <div class="section" id="embed-documentation-comments">
 <h3>Embed documentation comments<a class="headerlink" href="#embed-documentation-comments" title="Permalink to this headline">¶</a></h3>
 <div class="sidebar">
@@ -203,13 +232,13 @@ makedeployment () {
 </div>
 </div>
 <p>If the first non-whitespace character in a statement is the hash mark (<tt class="docutils literal"><span class="pre">#</span></tt>),
-then the statement is a comment and is not interpreted.</p>
-<p>Comment code to explain its purpose. A good way to write scripts is to begin
-by writing only comments. Then, fill in code around the comments to achieve the
-described functionality of the program.</p>
-<p>Similarly, when a script will write data, comment out the writing statements and
-echo results to the display instead. Once the script behavior is tested and
-verified, uncomment the writing statements and comment out the echo statements.</p>
+then the statement is a comment and is not interpreted. Comment code to explain
+its purpose.</p>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">A good way to write scripts is to begin by writing only comments. Then, fill
+in code to achieve the functionality described in the comments.</p>
+</div>
 </div>
 <div class="section" id="display-results">
 <h3>Display results<a class="headerlink" href="#display-results" title="Permalink to this headline">¶</a></h3>
@@ -227,6 +256,15 @@ monitor.</p>
 <p>Echo a result to document every exit point of the script or program. Similarly,
 when writing a program, generate every exit condition to verify that exit
 behavior is working correctly.</p>
+<p>Routines which change data on disk, such as modifying file permissions or
+deleting files, must be tested thoroughly before publishing the script.</p>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">To test a script while programming: for each command which will write data,
+comment out the actual command and add a statement to echo the results to the
+display instead. Once the script behavior is tested and verified, uncomment
+the writing commands and comment out the echo statements.</p>
+</div>
 </div>
 <div class="section" id="inputs-and-logic-tests">
 <h3>Inputs and Logic tests<a class="headerlink" href="#inputs-and-logic-tests" title="Permalink to this headline">¶</a></h3>
@@ -248,9 +286,7 @@ system .</p>
 <p>Test all possible responses to prevent erroneous or redundant script execution.
 In the sidebar example, any input other than <tt class="kbd docutils literal"><span class="pre">y</span></tt> will cause the script to
 exit. If the script had been written to exit on <tt class="kbd docutils literal"><span class="pre">n</span></tt>, then any key other
-than <tt class="kbd docutils literal"><span class="pre">n</span></tt> would result in executing the script. You may think this is
-obvious, but logic errors are very common when multiple responses or numeric
-options are used, and a <strong class="command">case</strong> statement processes the input.</p>
+than <tt class="kbd docutils literal"><span class="pre">n</span></tt> would result in executing the script.</p>
 </div>
 </div>
 </div>
@@ -268,7 +304,7 @@ options are used, and a <strong class="command">case</strong> statement processe
           <a href="03_lesson1.html" title="Shell Scripting Exercise"
              >next</a></li>
         <li class="right" >
-          <a href="01_shell.html" title="Shell Script Programming"
+          <a href="01_shell.html" title="Meet the Linux Shell"
              >previous</a> |</li>
         <li><a href="index.html">Linux Shell Script Programming 1.0 documentation</a> &raquo;</li> 
       </ul>

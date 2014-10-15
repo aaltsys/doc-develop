@@ -1,33 +1,33 @@
-.. _program:
+.. _overview:
 
 #############################
-Programming Overview
+Script / Program Organization
 #############################
 
-There are logical proofs regarding the nature of 
+This article ignores logical proofs regarding the nature of 
 `structured programming <http://en.wikipedia.org/wiki/Structured_programming>`_, 
-and significant research into object-oriented development, but that is not the 
-purpose of this article. Instead, program design is presented here as a 
-hueristic: organize your work to look a certain way, and others will be able to 
-understand what you have done. 
+and research into object-oriented development. Instead, program design is 
+presented here as a hueristic: organize your work to look a certain way, and 
+others will be able to understand what you have done. 
 
 Beyond the unique purpose of each program, all programs can share a consistent 
 overall layout. Further, each independent section of a master program can use 
-this same design logic. Along the way, warnings will introduce safety rules to 
-prevent system programming from going awry with disastrous consequences. Tips 
-will describe good programming practice to make code general and reuseable. 
+this same design logic. Along the way, warnings introduce safety rules to prevent 
+system programming from going awry. Tips describe good programming practice to 
+generalize code so it will be reuseable. Sidebars present code examples which 
+can be modified to build your own scripts.
 
-Program Layout
+Declarations Go First 
 =============================
 
-Program declaration
+Declare the program language
 -----------------------------
 
 .. sidebar:: Program declaration 
 
  ::
  
-   #! /bin/dash
+   #! /bin/sh
    # This program sets video resolution ...
 
 Head each script with a declaration, followed by comments describing the 
@@ -39,7 +39,7 @@ naming the executable shell. (Scripts lacking these requirements can still be
 executed by calling the shell interpreter directly and passing the script name 
 as a parameter, as in ``bash myscript parameters``.)
 
-Initialize variables
+Assign variables before use
 -----------------------------
 
 .. sidebar:: Variable initialization 
@@ -57,12 +57,13 @@ default value or a null. The form of an assignment statement is the name of the
 variable immediately followed by an equals sign (=), and then followed by a 
 quoted value. No space is allowed between the name and =.
 
-Writing variables in uppercase is a common scripting convention. Linux commands 
-and other syntax are written in lowercase, as defined in the system. Linux is 
-entirely case-sensitive, making variable ``HEROKU`` different from variable 
-``Heroku``. 
+.. tip::
+   By convention, script variables commonly use uppercase. Linux commands and 
+   other syntax are written in lowercase, as defined in the system. Linux is 
+   entirely case-sensitive, making variable ``HEROKU`` different from variable 
+   ``Heroku``. 
 
-Assign Parameters
+Assign script parameters
 -----------------------------
 
 .. sidebar:: Parameter assignment 
@@ -76,21 +77,21 @@ Assign Parameters
 
 Assign command parameters to named variables, provided the parameters are being 
 passed. Notice that variables are assigned by name with an ``=`` suffixed, but 
-when used the variable name is prefixed with a dollar sign (``$``). 
+a variable is evaluated by prefixing the name with a dollar sign (``$``).
 
 Scripts receive command line parameters as variables numbered ``1`` through 
 ``n``, passed by value to the script. This means that position matters. For 
 instance, a script expecting 2 or 3 parameters, with a default value for the 
 third parameter, should test to see that ``$2`` has a value before proceeding.
 
-Define Subroutines
+Define subroutine sections
 -----------------------------
 
-.. sidebar:: Declaring subroutines
+.. sidebar:: Defining subroutines
 
  ::
  
-   makedeployment () {
+   makedeployment() {
      make clean $MAKE_METHOD BUILDDIR=$DIR_BUILD
      cp -R $DIR_BUILD/$MAKE_METHOD/* $DIR_OUT/
      if [[ -d $DIR_DOWNLOADS ]] ; then
@@ -101,11 +102,34 @@ Define Subroutines
 Code which may be executed repeatedly in a program, with each execution 
 differing only by assigned values, should be placed in subroutines. 
 
-As the example code shows, variables are global and pass by name to subroutines. 
-Therefore subroutines should appear after variables are declared and assigned 
-but before any other code which might call them. A subroutine is declared with a 
-name followed by empty parentheses ``()``. The code for the subroutine is then 
-listed enclosed in braces ``{}``. A subroutine is called just by using its name. 
+As the example shows, variables are global and pass by name to subroutines. 
+A subroutine is declared with a name followed by empty parentheses ``()``. The 
+commands for the subroutine is then listed enclosed in braces ``{}``. A 
+subroutine is called by using its name as a command. 
+
+.. tip::
+   Place subroutines after variables are declared and assigned but before any 
+   other code which might call them.
+
+The Program or Script Body
+=============================
+
+The main body of a program should contain commands and logic to achieve the 
+program purpose. Short scripts may have only a main section, but a typical 
+script would have variable declarations and subroutines ahead of the main event.
+
+.. tip::
+   Programs which make important changes, say altering system configuration, 
+   should start by asking the user to confirm the change.
+   
+The main body of a program should end with an exit section which tells the user 
+what the script has done.
+
+Making Scripts Comprehensible
+=============================
+
+Programming syntax seems obfuscatory by design, and it is the programmer's duty 
+to clarify her work through comments and messages.
 
 Embed documentation comments
 -----------------------------
@@ -126,15 +150,12 @@ Embed documentation comments
    }
 
 If the first non-whitespace character in a statement is the hash mark (``#``), 
-then the statement is a comment and is not interpreted.
+then the statement is a comment and is not interpreted. Comment code to explain 
+its purpose. 
 
-Comment code to explain its purpose. A good way to write scripts is to begin 
-by writing only comments. Then, fill in code around the comments to achieve the 
-described functionality of the program. 
-
-Similarly, when a script will write data, comment out the writing statements and 
-echo results to the display instead. Once the script behavior is tested and 
-verified, uncomment the writing statements and comment out the echo statements. 
+.. tip::
+   A good way to write scripts is to begin by writing only comments. Then, fill 
+   in code to achieve the functionality described in the comments.
 
 Display results
 -----------------------------
@@ -154,6 +175,15 @@ monitor.
 Echo a result to document every exit point of the script or program. Similarly, 
 when writing a program, generate every exit condition to verify that exit 
 behavior is working correctly. 
+
+Routines which change data on disk, such as modifying file permissions or 
+deleting files, must be tested thoroughly before publishing the script. 
+
+.. tip::
+   To test a script while programming: for each command which will write data, 
+   comment out the actual command and add a statement to echo the results to the 
+   display instead. Once the script behavior is tested and verified, uncomment 
+   the writing commands and comment out the echo statements. 
 
 Inputs and Logic tests
 -----------------------------
@@ -177,7 +207,10 @@ system .
 Test all possible responses to prevent erroneous or redundant script execution.
 In the sidebar example, any input other than :kbd:`y` will cause the script to 
 exit. If the script had been written to exit on :kbd:`n`, then any key other 
-than :kbd:`n` would result in executing the script. You may think this is 
-obvious, but logic errors are very common when multiple responses or numeric 
-options are used, and a :command:`case` statement processes the input.
+than :kbd:`n` would result in executing the script. 
+
+.. warnng::
+   It may seem obvious, but logic errors are very common when multiple responses 
+   or numeric options are used, and a :command:`case` statement processes the 
+   input.
 

@@ -24,14 +24,14 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="Linux Shell Script Programming 1.0 documentation" href="index.html" />
-    <link rel="prev" title="Programming Overview" href="02_program.html" /> 
+    <link rel="prev" title="Script / Program Organization" href="02_program.html" /> 
   </head>
   <body>
     <div class="related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="02_program.html" title="Programming Overview"
+          <a href="02_program.html" title="Script / Program Organization"
              accesskey="P">previous</a></li>
         <li><a href="index.html">Linux Shell Script Programming 1.0 documentation</a> &raquo;</li> 
       </ul>
@@ -53,7 +53,7 @@
 
   <h4>Previous topic</h4>
   <p class="topless"><a href="02_program.html"
-                        title="previous chapter">Programming Overview</a></p>
+                        title="previous chapter">Script / Program Organization</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="_sources/03_lesson1.txt"
@@ -88,17 +88,18 @@ of a programming language or an environment. The biggest difficulty in
 learning to program is that the last 10%, specific details, is often required
 first.</p>
 <p>In this exercise, use the 80% copying approach to create a script and add
-features incrementally to achieve a final result.</p>
+features incrementally to achieve a final result. Hopefully this approach will
+delay that final 10%.</p>
 <div class="section" id="first-script-steps">
 <h2>First Script Steps<a class="headerlink" href="#first-script-steps" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="make-a-text-file">
 <h3>Make a text file<a class="headerlink" href="#make-a-text-file" title="Permalink to this headline">¶</a></h3>
-<p>Open a file viewer window (<strong class="program">Dolphin</strong>), and check the
-<em class="menuselection">Control ‣ Panels ‣ Terminal</em> selection to include the
-terminal console in the display. Create a text file from the console command
-line, and edit the file using <strong class="program">Kate</strong>:</p>
+<p>Open a file viewer window (<strong class="program">Dolphin</strong>), and check the menu option
+<em class="menuselection">Control ‣ Panels ‣ Terminal</em> to include the terminal console
+in the display. Create a text file from the console command line, and edit the
+file using <strong class="program">Kate</strong>:</p>
 <div class="highlight-python"><div class="highlight"><pre>touch hello-world.sh
-chmod u+x hello_world.sh
+chmod u+x hello-world.sh
 kate hello-world.sh
 </pre></div>
 </div>
@@ -110,15 +111,15 @@ kate hello-world.sh
 <div class="admonition hint">
 <p class="first admonition-title">Hint</p>
 <ol class="last arabic">
-<li><p class="first">In dolphin, right-click the file and check
-<em class="menuselection">Properties ‣ Permissions ‣ Is executable</em>.</p>
+<li><p class="first">Instead of using <strong class="command">chmod</strong>, right-click the file icon in dolphin
+and check <em class="menuselection">Properties ‣ Permissions ‣ Is executable</em>.</p>
 </li>
 <li><p class="first">Scripts are text files, but using the filename extension <tt class="kbd docutils literal"><span class="pre">.sh</span></tt> helps
 to identify script files to the user.</p>
 </li>
 <li><p class="first">Sidebar examples from the previous page demonstrate commands to use.</p>
 </li>
-<li><p class="first">These on-line resources provide reference documentation:</p>
+<li><p class="first">All Unixes include on-line resources to provide reference documentation:</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="24%" />
@@ -168,7 +169,7 @@ to identify script files to the user.</p>
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="02_program.html" title="Programming Overview"
+          <a href="02_program.html" title="Script / Program Organization"
              >previous</a></li>
         <li><a href="index.html">Linux Shell Script Programming 1.0 documentation</a> &raquo;</li> 
       </ul>

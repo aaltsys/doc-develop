@@ -11,7 +11,8 @@ learning to program is that the last 10%, specific details, is often required
 first. 
 
 In this exercise, use the 80% copying approach to create a script and add 
-features incrementally to achieve a final result. 
+features incrementally to achieve a final result. Hopefully this approach will 
+delay that final 10%.
 
 First Script Steps
 =============================
@@ -19,13 +20,13 @@ First Script Steps
 Make a text file
 -----------------------------
 
-Open a file viewer window (:program:`Dolphin`), and check the 
-:menuselection:`Control --> Panels --> Terminal` selection to include the 
-terminal console in the display. Create a text file from the console command 
-line, and edit the file using :program:`Kate`::
+Open a file viewer window (:program:`Dolphin`), and check the menu option
+:menuselection:`Control --> Panels --> Terminal` to include the terminal console 
+in the display. Create a text file from the console command line, and edit the 
+file using :program:`Kate`::
 
    touch hello-world.sh
-   chmod u+x hello_world.sh
+   chmod u+x hello-world.sh
    kate hello-world.sh
 
 Hello World
@@ -36,12 +37,12 @@ Based on script samples shown previously, edit your script to display
 
 .. hint::
 
-   #. In dolphin, right-click the file and check 
-      :menuselection:`Properties --> Permissions --> Is executable`.
+   #. Instead of using :command:`chmod`, right-click the file icon in dolphin 
+      and check :menuselection:`Properties --> Permissions --> Is executable`.
    #. Scripts are text files, but using the filename extension :kbd:`.sh` helps 
       to identify script files to the user.
    #. Sidebar examples from the previous page demonstrate commands to use.
-   #. These on-line resources provide reference documentation:
+   #. All Unixes include on-line resources to provide reference documentation:
    
       +-----------------+--------------------+---------------------------------+
       | Resource        | Example            | Description                     |
