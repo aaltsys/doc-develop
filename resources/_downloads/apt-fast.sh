@@ -47,7 +47,7 @@ apt-repos() {
     APT=1
     apt-add-repository $i
   done
-   
+
   # verify installation and update packages indexes
   if [ $APT -ne 0 ] 
   then

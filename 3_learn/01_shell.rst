@@ -1,23 +1,23 @@
 .. _shell:
 
 #############################
-Shell Script Programming
+Meet the Linux Shell
 #############################
 
-The Linux Shell
+What Shell Does All Day
 =============================
 
-Every operating system has an interpreter loop which does one of two things: it 
-receives user input events and processes them, and/or it interprets and executes 
-text commands. A Linux/Unix **shell** is a system program which interprets and 
-executes commands which may be input at a console, read from a file, or passed 
-through a data stream.
+Every interactive operating system has a program which does one of two things: 
+it receives user input events and processes them, and/or it interprets and 
+executes commands. A Linux/Unix **shell** is a system program which interprets 
+and executes commands which may be input at a console, read from a file, or 
+passed through a data stream.
 
 Command shells are not necessarily interpreted programming languages: 
 Microsoft's COMMAND.COM for MS_DOS certainly is not. But it so happens that Unix 
 terminal shells are examples of structured REPL programming languages (see 
-:ref:`history`). So learning shell scripting is a good way to learn programming 
-in general, provided you do not whack your operating system in the process. 
+:ref:`history`). Learning shell scripting is a good way to learn programming in 
+general. (Just don't whack your operating system in the process.) 
 
 Why You Should Care
 =============================
@@ -25,9 +25,9 @@ Why You Should Care
 Unix-like operating systems have experienced a public domain rebirth in Linux,
 where Linux servers now account for a large majority of all active web servers. 
 Also, Apple's OS-X operating system for the Macintosh is a Unix, and these 
-computers are wildly popular in the programming community. As a result, any 
-programmer doing collaborative web development is almost certain to be working 
-with shell programming either on the desktop, or on servers, or both.
+computers are quite popular in the programming community. As a result, anyone 
+doing collaborative web development is almost certain to be working with shell 
+programming either on the desktop, or on servers, or both.
 
 .. _history:
 
