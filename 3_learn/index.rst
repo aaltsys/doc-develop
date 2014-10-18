@@ -3,7 +3,7 @@
 
 .. _index:
 
-Learn Linux Scripting
+Learn Shell Scripting
 =============================
 
 Learning computer programming is a daunting challenge. However, every Unix/Linux 
@@ -13,9 +13,9 @@ Shell commands are interactive, and the results from commands are immediate.
 
 The best part of learning shell scripting is, everything you learn to do well in 
 shell is part of the programming skill required in any programming language. 
-Not to say that shell programming is not a replacement for other programming 
-languages, but shell is powerful enough that Linus Torvalds used shell scripting 
-to write the first versions of the :program:`git` repository.
+Shell programming is not a replacement for other programming languages, but 
+it is powerful enough that Linus Torvalds used shell scripting to write the 
+first versions of the :program:`git` repository.
 
 Contents:
 =============================
@@ -24,9 +24,14 @@ Contents:
    :maxdepth: 2
 
    01_shell
-   02_program
+   02_organize
    03_lesson1
-   04_commands
+   04_convention
+   05_lesson2
+   06_logic
+   07_lesson3
+   08_methods
+   09_lesson4
 
 Indices and tables
 =============================
