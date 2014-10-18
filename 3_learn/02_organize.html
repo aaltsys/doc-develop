@@ -25,7 +25,7 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="Linux Shell Script Programming 1.0 documentation" href="index.html" />
     <link rel="next" title="Shell Scripting Exercise" href="03_lesson1.html" />
-    <link rel="prev" title="Meet the Linux Shell" href="01_shell.html" /> 
+    <link rel="prev" title="Linux Lives in a Shell" href="01_shell.html" /> 
   </head>
   <body>
     <div class="related">
@@ -35,7 +35,7 @@
           <a href="03_lesson1.html" title="Shell Scripting Exercise"
              accesskey="N">next</a></li>
         <li class="right" >
-          <a href="01_shell.html" title="Meet the Linux Shell"
+          <a href="01_shell.html" title="Linux Lives in a Shell"
              accesskey="P">previous</a> |</li>
         <li><a href="index.html">Linux Shell Script Programming 1.0 documentation</a> &raquo;</li> 
       </ul>
@@ -46,14 +46,14 @@
   <ul>
 <li><a class="reference internal" href="#">Script / Program Organization</a><ul>
 <li><a class="reference internal" href="#declarations-go-first">Declarations Go First</a><ul>
-<li><a class="reference internal" href="#declare-the-program-language">Declare the program language</a></li>
+<li><a class="reference internal" href="#declare-the-script-language">Declare the script language</a></li>
 <li><a class="reference internal" href="#assign-variables-before-use">Assign variables before use</a></li>
 <li><a class="reference internal" href="#assign-script-parameters">Assign script parameters</a></li>
-<li><a class="reference internal" href="#define-subroutine-sections">Define subroutine sections</a></li>
+<li><a class="reference internal" href="#define-function-sections">Define function sections</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#the-program-or-script-body">The Program or Script Body</a></li>
-<li><a class="reference internal" href="#comprehensible-scripts">Comprehensible Scripts</a><ul>
+<li><a class="reference internal" href="#comprehendable-scripts">Comprehendable Scripts</a><ul>
 <li><a class="reference internal" href="#embed-documentation-comments">Embed documentation comments</a></li>
 <li><a class="reference internal" href="#display-results">Display results</a></li>
 <li><a class="reference internal" href="#inputs-and-logic-tests">Inputs and Logic tests</a></li>
@@ -65,13 +65,13 @@
 
   <h4>Previous topic</h4>
   <p class="topless"><a href="01_shell.html"
-                        title="previous chapter">Meet the Linux Shell</a></p>
+                        title="previous chapter">Linux Lives in a Shell</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="03_lesson1.html"
                         title="next chapter">Shell Scripting Exercise</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
-    <li><a href="_sources/02_program.txt"
+    <li><a href="_sources/02_organize.txt"
            rel="nofollow">Show Source</a></li>
   </ul>
 <div id="searchbox" style="display: none">
@@ -96,7 +96,7 @@
           <div class="body">
             
   <div class="section" id="script-program-organization">
-<span id="overview"></span><h1>Script / Program Organization<a class="headerlink" href="#script-program-organization" title="Permalink to this headline">¶</a></h1>
+<span id="organize"></span><h1>Script / Program Organization<a class="headerlink" href="#script-program-organization" title="Permalink to this headline">¶</a></h1>
 <p>This article ignores logical proofs regarding the nature of
 <a class="reference external" href="http://en.wikipedia.org/wiki/Structured_programming">structured programming</a>,
 and research into object-oriented development. Instead, program design is
@@ -110,8 +110,8 @@ generalize code so it will be reuseable. Sidebars present code examples which
 can be modified to build your own scripts.</p>
 <div class="section" id="declarations-go-first">
 <h2>Declarations Go First<a class="headerlink" href="#declarations-go-first" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="declare-the-program-language">
-<h3>Declare the program language<a class="headerlink" href="#declare-the-program-language" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="declare-the-script-language">
+<h3>Declare the script language<a class="headerlink" href="#declare-the-script-language" title="Permalink to this headline">¶</a></h3>
 <div class="sidebar">
 <p class="first sidebar-title">Program declaration</p>
 <div class="last highlight-python"><div class="highlight"><pre><span class="c">#! /bin/sh</span>
@@ -170,10 +170,10 @@ a variable is evaluated by prefixing the name with a dollar sign (<tt class="doc
 instance, a script expecting 2 or 3 parameters, with a default value for the
 third parameter, should test to see that <tt class="docutils literal"><span class="pre">$2</span></tt> has a value before proceeding.</p>
 </div>
-<div class="section" id="define-subroutine-sections">
-<h3>Define subroutine sections<a class="headerlink" href="#define-subroutine-sections" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="define-function-sections">
+<h3>Define function sections<a class="headerlink" href="#define-function-sections" title="Permalink to this headline">¶</a></h3>
 <div class="sidebar">
-<p class="first sidebar-title">Defining subroutines</p>
+<p class="first sidebar-title">Defining functions</p>
 <div class="last highlight-python"><div class="highlight"><pre>makedeployment() {
   make clean $MAKE_METHOD BUILDDIR=$DIR_BUILD
   cp -R $DIR_BUILD/$MAKE_METHOD/* $DIR_OUT/
@@ -185,14 +185,14 @@ third parameter, should test to see that <tt class="docutils literal"><span clas
 </div>
 </div>
 <p>Code which may be executed repeatedly in a program, with each execution
-differing only by assigned values, should be placed in subroutines.</p>
-<p>As the example shows, variables are global and pass by name to subroutines.
-A subroutine is declared with a name followed by empty parentheses <tt class="docutils literal"><span class="pre">()</span></tt>. The
-commands for the subroutine is then listed enclosed in braces <tt class="docutils literal"><span class="pre">{}</span></tt>. A
-subroutine is called by using its name as a command.</p>
+differing only by assigned values, should be placed in functions.</p>
+<p>As the example shows, variables are global and pass by name to functions.
+A function is declared with a name followed by empty parentheses <tt class="docutils literal"><span class="pre">()</span></tt>. The
+commands for the function are then listed enclosed in braces <tt class="docutils literal"><span class="pre">{}</span></tt>. A
+function is called by using its name as a command.</p>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
-<p class="last">Place subroutines after variables are declared and assigned but before any
+<p class="last">Place functions after variables are declared and assigned but before any
 other code which might call them.</p>
 </div>
 </div>
@@ -201,17 +201,17 @@ other code which might call them.</p>
 <h2>The Program or Script Body<a class="headerlink" href="#the-program-or-script-body" title="Permalink to this headline">¶</a></h2>
 <p>The main body of a program should contain commands and logic to achieve the
 program purpose. Short scripts may have only a main section, but a typical
-script would have variable declarations and subroutines ahead of the main event.</p>
+script would have variable declarations and functions ahead of the main event.</p>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
 <p class="last">Programs which make important changes, say altering system configuration,
 should start by asking the user to confirm the change.</p>
 </div>
 <p>The main body of a program should end with an exit section which tells the user
-what the script has done.</p>
+what the script has done, or reports any errors on exit.</p>
 </div>
-<div class="section" id="comprehensible-scripts">
-<h2>Comprehensible Scripts<a class="headerlink" href="#comprehensible-scripts" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="comprehendable-scripts">
+<h2>Comprehendable Scripts<a class="headerlink" href="#comprehendable-scripts" title="Permalink to this headline">¶</a></h2>
 <p>Programming syntax seems obfuscatory by design, and it is the programmer&#8217;s duty
 to clarify her work through comments and messages.</p>
 <div class="section" id="embed-documentation-comments">
@@ -315,7 +315,7 @@ input.</p>
           <a href="03_lesson1.html" title="Shell Scripting Exercise"
              >next</a></li>
         <li class="right" >
-          <a href="01_shell.html" title="Meet the Linux Shell"
+          <a href="01_shell.html" title="Linux Lives in a Shell"
              >previous</a> |</li>
         <li><a href="index.html">Linux Shell Script Programming 1.0 documentation</a> &raquo;</li> 
       </ul>

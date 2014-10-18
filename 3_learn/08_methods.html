@@ -1,0 +1,128 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Methods for Objectives &mdash; Linux Shell Script Programming 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/aaltsys.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Linux Shell Script Programming 1.0 documentation" href="index.html" />
+    <link rel="next" title="Useful Scripting Methods" href="09_lesson4.html" />
+    <link rel="prev" title="Logic &amp; Flow Control Exercise" href="07_lesson3.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="09_lesson4.html" title="Useful Scripting Methods"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="07_lesson3.html" title="Logic &amp; Flow Control Exercise"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Linux Shell Script Programming 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Methods for Objectives</a><ul>
+<li><a class="reference internal" href="#highly-quotable">Highly quotable</a></li>
+<li><a class="reference internal" href="#colorful-language">Colorful language</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="07_lesson3.html"
+                        title="previous chapter">Logic &amp; Flow Control Exercise</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="09_lesson4.html"
+                        title="next chapter">Useful Scripting Methods</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/08_methods.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="methods-for-objectives">
+<span id="methods"></span><h1>Methods for Objectives<a class="headerlink" href="#methods-for-objectives" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="highly-quotable">
+<h2>Highly quotable<a class="headerlink" href="#highly-quotable" title="Permalink to this headline">¶</a></h2>
+<p>Partial quoting (&#8220;<tt class="docutils literal"><span class="pre">textstring</span></tt>&#8221;) is required to evaluate embedded code in
+quoted text.</p>
+</div>
+<div class="section" id="colorful-language">
+<h2>Colorful language<a class="headerlink" href="#colorful-language" title="Permalink to this headline">¶</a></h2>
+<p>Embedded color commands, are a function of the <strong class="command">echo</strong> command, however,
+and the option <tt class="docutils literal"><span class="pre">-e</span></tt> is required to translate the colors.</p>
+<p>TEXT=&#8221;Color my words&#8221;
+echo -e &#8220;e[1;31m $TEXT e[0m&#8221;  ; # partial quoting
+echo -e &#8216;e[1;31m $TEXT e[0m&#8217;  ; # full quoting
+echo &#8220;e[1;31m $TEXT e[0m&#8221;     ; # omitting -e option</p>
+<p>if [[ $EUID -ne 0 ]] ; then echo -e &#8220;e[1;31m try again using sudo e[0m&#8221; ; exit 1 ; fi</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="09_lesson4.html" title="Useful Scripting Methods"
+             >next</a></li>
+        <li class="right" >
+          <a href="07_lesson3.html" title="Logic &amp; Flow Control Exercise"
+             >previous</a> |</li>
+        <li><a href="index.html">Linux Shell Script Programming 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Gerald Lovel.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

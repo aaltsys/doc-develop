@@ -1,10 +1,10 @@
 .. _shell:
 
 #############################
-Meet the Linux Shell
+Linux Lives in a Shell
 #############################
 
-What Shell Does All Day
+What a Shell Does All Day
 =============================
 
 Every interactive operating system has a program which does one of two things: 
@@ -16,10 +16,20 @@ passed through a data stream.
 Command shells are not necessarily interpreted programming languages: 
 Microsoft's COMMAND.COM for MS_DOS certainly is not. But it so happens that Unix 
 terminal shells are examples of structured REPL programming languages (see 
-:ref:`history`). Learning shell scripting is a good way to learn programming in 
-general. (Just don't whack your operating system in the process.) 
+:ref:`history`), and learning shell scripting is a good way to learn computer 
+programming. 
 
-Why You Should Care
+How to Collect Shells
+=============================
+
+Computer operations are easily automated through shell scripts, as this guide 
+will demonstrate for your Linux computer. (What -- You don't have a Linux 
+system? `What are you waiting for? <http://www.kubuntu.org/getkubuntu>`_) 
+Lacking a Linux computer to practice on, there are on-line alternatives -- 
+c9.io, koding.com, and others -- where one can practice programming skills with 
+just an Internet connection. These guides will show how this is done.
+
+Caring for Shells
 =============================
 
 Unix-like operating systems have experienced a public domain rebirth in Linux,
@@ -27,7 +37,8 @@ where Linux servers now account for a large majority of all active web servers.
 Also, Apple's OS-X operating system for the Macintosh is a Unix, and these 
 computers are quite popular in the programming community. As a result, anyone 
 doing collaborative web development is almost certain to be working with shell 
-programming either on the desktop, or on servers, or both.
+programming either on the desktop, or on servers, or both. So, developers care 
+for shells because their livelihood depends on them.
 
 .. _history:
 
@@ -54,18 +65,3 @@ But, LISP was not a Bell Labs project, so shell programming syntax was
 ripped from ALGOL, C, and UNIX commands instead. History is replete with 
 mistakes, of which this was one. This one example is enough to justify the open 
 source programming paradigm.
-
-Despite the awful syntax, Linux computer operations are easily automated through 
-shell scripts, as this guide will demonstrate for your Linux computer. 
-(What -- You don't have a Linux system? 
-`What are you waiting for? <http://www.kubuntu.org/getkubuntu>`_)
-
------------
-
-References:
-
-http://steve-parker.org/sh/sh.shtml
-
-https://developer.apple.com/library/mac/documentation/opensource/Conceptual/ShellScripting/shell_scripts/shell_scripts.html
-
-http://tldp.org/HOWTO/Bash-Prog-Intro-HOWTO.html

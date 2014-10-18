@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Learn Linux Scripting &mdash; Linux Shell Script Programming 1.0 documentation</title>
+    <title>Learn Shell Scripting &mdash; Linux Shell Script Programming 1.0 documentation</title>
     
     <link rel="stylesheet" href="_static/aaltsys.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -24,14 +24,14 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="Linux Shell Script Programming 1.0 documentation" href="#" />
-    <link rel="next" title="Meet the Linux Shell" href="01_shell.html" /> 
+    <link rel="next" title="Linux Lives in a Shell" href="01_shell.html" /> 
   </head>
   <body>
     <div class="related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="01_shell.html" title="Meet the Linux Shell"
+          <a href="01_shell.html" title="Linux Lives in a Shell"
              accesskey="N">next</a></li>
         <li><a class="external reference" href="../index.html">AAltsys Project Main Index</a>  &raquo;</li> 
       </ul>
@@ -40,14 +40,14 @@
         <div class="sphinxsidebarwrapper">
   <h3><a href="#">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">Learn Linux Scripting</a></li>
+<li><a class="reference internal" href="#">Learn Shell Scripting</a></li>
 <li><a class="reference internal" href="#contents">Contents:</a></li>
 <li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
 </ul>
 
   <h4>Next topic</h4>
   <p class="topless"><a href="01_shell.html"
-                        title="next chapter">Meet the Linux Shell</a></p>
+                        title="next chapter">Linux Lives in a Shell</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="_sources/index.txt"
@@ -74,38 +74,61 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="learn-linux-scripting">
-<span id="index"></span><h1>Learn Linux Scripting<a class="headerlink" href="#learn-linux-scripting" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="learn-shell-scripting">
+<span id="index"></span><h1>Learn Shell Scripting<a class="headerlink" href="#learn-shell-scripting" title="Permalink to this headline">¶</a></h1>
 <p>Learning computer programming is a daunting challenge. However, every Unix/Linux
 computer system has a built-in shell scripting language which is designed for
 managing the computer, and learning to program in shell scripts is not hard.
 Shell commands are interactive, and the results from commands are immediate.</p>
 <p>The best part of learning shell scripting is, everything you learn to do well in
 shell is part of the programming skill required in any programming language.
-Not to say that shell programming is not a replacement for other programming
-languages, but shell is powerful enough that Linus Torvalds used shell scripting
-to write the first versions of the <strong class="program">git</strong> repository.</p>
+Shell programming is not a replacement for other programming languages, but
+it is powerful enough that Linus Torvalds used shell scripting to write the
+first versions of the <strong class="program">git</strong> repository.</p>
 </div>
 <div class="section" id="contents">
 <h1>Contents:<a class="headerlink" href="#contents" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="01_shell.html">Meet the Linux Shell</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="01_shell.html#what-shell-does-all-day">What Shell Does All Day</a></li>
-<li class="toctree-l2"><a class="reference internal" href="01_shell.html#why-you-should-care">Why You Should Care</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01_shell.html">Linux Lives in a Shell</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="01_shell.html#what-a-shell-does-all-day">What a Shell Does All Day</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01_shell.html#how-to-collect-shells">How to Collect Shells</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01_shell.html#caring-for-shells">Caring for Shells</a></li>
 <li class="toctree-l2"><a class="reference internal" href="01_shell.html#the-history-of-repl">The History of REPL</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="02_program.html">Script / Program Organization</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="02_program.html#declarations-go-first">Declarations Go First</a></li>
-<li class="toctree-l2"><a class="reference internal" href="02_program.html#the-program-or-script-body">The Program or Script Body</a></li>
-<li class="toctree-l2"><a class="reference internal" href="02_program.html#comprehensible-scripts">Comprehensible Scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_organize.html">Script / Program Organization</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="02_organize.html#declarations-go-first">Declarations Go First</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02_organize.html#the-program-or-script-body">The Program or Script Body</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02_organize.html#comprehendable-scripts">Comprehendable Scripts</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="03_lesson1.html">Shell Scripting Exercise</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="03_lesson1.html#first-script-steps">First Script Steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03_lesson1.html#example-script-layout">Example Script Layout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03_lesson1.html#create-a-first-script">Create a First Script</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03_lesson1.html#adding-sections">Adding Sections</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="05_lesson2.html">Attending Conventions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06_logic.html">Logic and Flow Control</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="06_logic.html#a-not-equal-to-if-then-statement">A not equal to if/then statement</a></li>
+<li class="toctree-l2"><a class="reference internal" href="06_logic.html#an-equal-to-if-then-else-statement">An equal to if/then/else statement</a></li>
+<li class="toctree-l2"><a class="reference internal" href="06_logic.html#a-code-search-statement">A code search statement</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="06_logic.html#logic-flow-control-functions">Logic Flow Control Functions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="06_logic.html#if-else-statements">If Else Statements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="06_logic.html#for-while-until-loops-in-bash">For/While/Until Loops in bash.</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="06_logic.html#comparison-operators">Comparison Operators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_lesson3.html">Logic &amp; Flow Control Exercise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08_methods.html">Methods for Objectives</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="08_methods.html#highly-quotable">Highly quotable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="08_methods.html#colorful-language">Colorful language</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="09_lesson4.html">Useful Scripting Methods</a></li>
 </ul>
 </div>
 </div>
@@ -126,7 +149,7 @@ to write the first versions of the <strong class="program">git</strong> reposito
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="01_shell.html" title="Meet the Linux Shell"
+          <a href="01_shell.html" title="Linux Lives in a Shell"
              >next</a></li>
         <li><a class="external reference" href="../index.html">AAltsys Project Main Index</a>  &raquo;</li> 
       </ul>

@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Meet the Linux Shell &mdash; Linux Shell Script Programming 1.0 documentation</title>
+    <title>Linux Lives in a Shell &mdash; Linux Shell Script Programming 1.0 documentation</title>
     
     <link rel="stylesheet" href="_static/aaltsys.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -24,18 +24,18 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="Linux Shell Script Programming 1.0 documentation" href="index.html" />
-    <link rel="next" title="Script / Program Organization" href="02_program.html" />
-    <link rel="prev" title="Learn Linux Scripting" href="index.html" /> 
+    <link rel="next" title="Script / Program Organization" href="02_organize.html" />
+    <link rel="prev" title="Learn Shell Scripting" href="index.html" /> 
   </head>
   <body>
     <div class="related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="02_program.html" title="Script / Program Organization"
+          <a href="02_organize.html" title="Script / Program Organization"
              accesskey="N">next</a></li>
         <li class="right" >
-          <a href="index.html" title="Learn Linux Scripting"
+          <a href="index.html" title="Learn Shell Scripting"
              accesskey="P">previous</a> |</li>
         <li><a href="index.html">Linux Shell Script Programming 1.0 documentation</a> &raquo;</li> 
       </ul>
@@ -44,9 +44,10 @@
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">Meet the Linux Shell</a><ul>
-<li><a class="reference internal" href="#what-shell-does-all-day">What Shell Does All Day</a></li>
-<li><a class="reference internal" href="#why-you-should-care">Why You Should Care</a></li>
+<li><a class="reference internal" href="#">Linux Lives in a Shell</a><ul>
+<li><a class="reference internal" href="#what-a-shell-does-all-day">What a Shell Does All Day</a></li>
+<li><a class="reference internal" href="#how-to-collect-shells">How to Collect Shells</a></li>
+<li><a class="reference internal" href="#caring-for-shells">Caring for Shells</a></li>
 <li><a class="reference internal" href="#the-history-of-repl">The History of REPL</a></li>
 </ul>
 </li>
@@ -54,9 +55,9 @@
 
   <h4>Previous topic</h4>
   <p class="topless"><a href="index.html"
-                        title="previous chapter">Learn Linux Scripting</a></p>
+                        title="previous chapter">Learn Shell Scripting</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="02_program.html"
+  <p class="topless"><a href="02_organize.html"
                         title="next chapter">Script / Program Organization</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
@@ -84,10 +85,10 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="meet-the-linux-shell">
-<span id="shell"></span><h1>Meet the Linux Shell<a class="headerlink" href="#meet-the-linux-shell" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="what-shell-does-all-day">
-<h2>What Shell Does All Day<a class="headerlink" href="#what-shell-does-all-day" title="Permalink to this headline">¶</a></h2>
+  <div class="section" id="linux-lives-in-a-shell">
+<span id="shell"></span><h1>Linux Lives in a Shell<a class="headerlink" href="#linux-lives-in-a-shell" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="what-a-shell-does-all-day">
+<h2>What a Shell Does All Day<a class="headerlink" href="#what-a-shell-does-all-day" title="Permalink to this headline">¶</a></h2>
 <p>Every interactive operating system has a program which does one of two things:
 it receives user input events and processes them, and/or it interprets and
 executes commands. A Linux/Unix <strong>shell</strong> is a system program which interprets
@@ -96,17 +97,27 @@ passed through a data stream.</p>
 <p>Command shells are not necessarily interpreted programming languages:
 Microsoft&#8217;s COMMAND.COM for MS_DOS certainly is not. But it so happens that Unix
 terminal shells are examples of structured REPL programming languages (see
-<a class="reference internal" href="#history"><em>The History of REPL</em></a>). Learning shell scripting is a good way to learn programming in
-general. (Just don&#8217;t whack your operating system in the process.)</p>
+<a class="reference internal" href="#history"><em>The History of REPL</em></a>), and learning shell scripting is a good way to learn computer
+programming.</p>
 </div>
-<div class="section" id="why-you-should-care">
-<h2>Why You Should Care<a class="headerlink" href="#why-you-should-care" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="how-to-collect-shells">
+<h2>How to Collect Shells<a class="headerlink" href="#how-to-collect-shells" title="Permalink to this headline">¶</a></h2>
+<p>Computer operations are easily automated through shell scripts, as this guide
+will demonstrate for your Linux computer. (What &#8211; You don&#8217;t have a Linux
+system? <a class="reference external" href="http://www.kubuntu.org/getkubuntu">What are you waiting for?</a>)
+Lacking a Linux computer to practice on, there are on-line alternatives &#8211;
+c9.io, koding.com, and others &#8211; where one can practice programming skills with
+just an Internet connection. These guides will show how this is done.</p>
+</div>
+<div class="section" id="caring-for-shells">
+<h2>Caring for Shells<a class="headerlink" href="#caring-for-shells" title="Permalink to this headline">¶</a></h2>
 <p>Unix-like operating systems have experienced a public domain rebirth in Linux,
 where Linux servers now account for a large majority of all active web servers.
 Also, Apple&#8217;s OS-X operating system for the Macintosh is a Unix, and these
 computers are quite popular in the programming community. As a result, anyone
 doing collaborative web development is almost certain to be working with shell
-programming either on the desktop, or on servers, or both.</p>
+programming either on the desktop, or on servers, or both. So, developers care
+for shells because their livelihood depends on them.</p>
 </div>
 <div class="section" id="the-history-of-repl">
 <span id="history"></span><h2>The History of REPL<a class="headerlink" href="#the-history-of-repl" title="Permalink to this headline">¶</a></h2>
@@ -128,15 +139,6 @@ But, LISP was not a Bell Labs project, so shell programming syntax was
 ripped from ALGOL, C, and UNIX commands instead. History is replete with
 mistakes, of which this was one. This one example is enough to justify the open
 source programming paradigm.</p>
-<p>Despite the awful syntax, Linux computer operations are easily automated through
-shell scripts, as this guide will demonstrate for your Linux computer.
-(What &#8211; You don&#8217;t have a Linux system?
-<a class="reference external" href="http://www.kubuntu.org/getkubuntu">What are you waiting for?</a>)</p>
-<hr class="docutils" />
-<p>References:</p>
-<p><a class="reference external" href="http://steve-parker.org/sh/sh.shtml">http://steve-parker.org/sh/sh.shtml</a></p>
-<p><a class="reference external" href="https://developer.apple.com/library/mac/documentation/opensource/Conceptual/ShellScripting/shell_scripts/shell_scripts.html">https://developer.apple.com/library/mac/documentation/opensource/Conceptual/ShellScripting/shell_scripts/shell_scripts.html</a></p>
-<p><a class="reference external" href="http://tldp.org/HOWTO/Bash-Prog-Intro-HOWTO.html">http://tldp.org/HOWTO/Bash-Prog-Intro-HOWTO.html</a></p>
 </div>
 </div>
 
@@ -150,10 +152,10 @@ shell scripts, as this guide will demonstrate for your Linux computer.
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="02_program.html" title="Script / Program Organization"
+          <a href="02_organize.html" title="Script / Program Organization"
              >next</a></li>
         <li class="right" >
-          <a href="index.html" title="Learn Linux Scripting"
+          <a href="index.html" title="Learn Shell Scripting"
              >previous</a> |</li>
         <li><a href="index.html">Linux Shell Script Programming 1.0 documentation</a> &raquo;</li> 
       </ul>

@@ -166,15 +166,17 @@ from the main document text.
 
 \.\. tip \:\: This paragraph is the text of a short tip.
 
+\.\. hint \:\: This paragraph is a hint.
+
 \.\. note \:\: This paragraph is the text of a note.
 
 \.\. warning \:\: This paragraph is (not) a warning.
 
-\.\. sidebar \:\: The following paragraph will appear in a sidebar.
+\.\. sidebar \:\: The following (titled) paragraph will appear in a sidebar.
 
-\.\. rubric \:\: This heading is not in the Table of Contents
+\.\. rubric \:\: This heading is not in the Table of Contents.
 
-\.\. centered \:\: THIS TEXT IS BOLD CENTERED
+\.\. centered \:\: THIS TEXT IS CENTERED.
 
 ----------------
 

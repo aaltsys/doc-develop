@@ -24,15 +24,19 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="Linux Shell Script Programming 1.0 documentation" href="index.html" />
-    <link rel="prev" title="Script / Program Organization" href="02_program.html" /> 
+    <link rel="next" title="Attending Conventions" href="05_lesson2.html" />
+    <link rel="prev" title="Script / Program Organization" href="02_organize.html" /> 
   </head>
   <body>
     <div class="related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="02_program.html" title="Script / Program Organization"
-             accesskey="P">previous</a></li>
+          <a href="05_lesson2.html" title="Attending Conventions"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="02_organize.html" title="Script / Program Organization"
+             accesskey="P">previous</a> |</li>
         <li><a href="index.html">Linux Shell Script Programming 1.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
@@ -41,9 +45,13 @@
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Shell Scripting Exercise</a><ul>
-<li><a class="reference internal" href="#first-script-steps">First Script Steps</a><ul>
+<li><a class="reference internal" href="#example-script-layout">Example Script Layout</a></li>
+<li><a class="reference internal" href="#create-a-first-script">Create a First Script</a><ul>
 <li><a class="reference internal" href="#make-a-text-file">Make a text file</a></li>
 <li><a class="reference internal" href="#hello-world">Hello World</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#adding-sections">Adding Sections</a><ul>
 <li><a class="reference internal" href="#user-confirmation">User Confirmation</a></li>
 </ul>
 </li>
@@ -52,8 +60,11 @@
 </ul>
 
   <h4>Previous topic</h4>
-  <p class="topless"><a href="02_program.html"
+  <p class="topless"><a href="02_organize.html"
                         title="previous chapter">Script / Program Organization</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="05_lesson2.html"
+                        title="next chapter">Attending Conventions</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="_sources/03_lesson1.txt"
@@ -81,7 +92,7 @@
           <div class="body">
             
   <div class="section" id="shell-scripting-exercise">
-<span id="exercise"></span><h1>Shell Scripting Exercise<a class="headerlink" href="#shell-scripting-exercise" title="Permalink to this headline">¶</a></h1>
+<span id="organize-lesson"></span><h1>Shell Scripting Exercise<a class="headerlink" href="#shell-scripting-exercise" title="Permalink to this headline">¶</a></h1>
 <p>When learning to program, 80% of all work is intelligent copying, 10% is
 learning general programming conventions, and 10% is learning specific details
 of a programming language or an environment. The biggest difficulty in
@@ -90,14 +101,41 @@ first.</p>
 <p>In this exercise, use the 80% copying approach to create a script and add
 features incrementally to achieve a final result. Hopefully this approach will
 delay that final 10%.</p>
-<div class="section" id="first-script-steps">
-<h2>First Script Steps<a class="headerlink" href="#first-script-steps" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="example-script-layout">
+<h2>Example Script Layout<a class="headerlink" href="#example-script-layout" title="Permalink to this headline">¶</a></h2>
+<p>Warm up the Xerox by highlighting and copying the following code outline, which
+can become the basis of scripts written throughout these exercises.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c">#! /bin/sh</span>
+<span class="c"># Describe program&#39;s principal objective</span>
+<span class="c">#</span>
+<span class="c"># Initialize variables</span>
+<span class="c">#</span>
+<span class="c"># User execution confirmation (location varies)</span>
+<span class="c">#</span>
+<span class="c"># Assign parameters ($n) to named variables</span>
+<span class="c">#</span>
+<span class="c"># Declare repeated code functions</span>
+<span class="c">#</span>
+<span class="c"># !! MAIN SECTION !!</span>
+<span class="c">#</span>
+<span class="c"># Validity tests (setting exit status)</span>
+<span class="c">#</span>
+<span class="c"># Main code, if Valid</span>
+<span class="c">#</span>
+<span class="c"># Exit section: echo results, log errors</span>
+<span class="c">#</span>
+</pre></div>
+</div>
+<p>Then paste the code into a script file to be created in the following section.</p>
+</div>
+<div class="section" id="create-a-first-script">
+<h2>Create a First Script<a class="headerlink" href="#create-a-first-script" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="make-a-text-file">
 <h3>Make a text file<a class="headerlink" href="#make-a-text-file" title="Permalink to this headline">¶</a></h3>
-<p>Open a file viewer window (<strong class="program">Dolphin</strong>), and check the menu option
-<em class="menuselection">Control ‣ Panels ‣ Terminal</em> to include the terminal console
-in the display. Create a text file from the console command line, and edit the
-file using <strong class="program">Kate</strong>:</p>
+<p>On the Linux desktop, open a file viewer window (<strong class="program">Dolphin</strong>), and check
+the menu option <em class="menuselection">Control ‣ Panels ‣ Terminal</em> to include the
+terminal console in the display. Create a text file from the console command
+line, and edit the file using <strong class="program">Kate</strong>:</p>
 <div class="highlight-python"><div class="highlight"><pre>touch hello-world.sh
 chmod u+x hello-world.sh
 kate hello-world.sh
@@ -108,15 +146,18 @@ kate hello-world.sh
 <h3>Hello World<a class="headerlink" href="#hello-world" title="Permalink to this headline">¶</a></h3>
 <p>Based on script samples shown previously, edit your script to display
 &#8220;Hello world.&#8221; Save your work, and test run the script from the command line.</p>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<ol class="last arabic simple">
+<li>Scripts are text files, but using the filename extension <tt class="kbd docutils literal"><span class="pre">.sh</span></tt> helps
+to identify script files to the user.</li>
+<li>Instead of using <strong class="command">chmod</strong>, right-click the file icon in dolphin
+and check <em class="menuselection">Properties ‣ Permissions ‣ Is executable</em>.</li>
+</ol>
+</div>
 <div class="admonition hint">
 <p class="first admonition-title">Hint</p>
 <ol class="last arabic">
-<li><p class="first">Instead of using <strong class="command">chmod</strong>, right-click the file icon in dolphin
-and check <em class="menuselection">Properties ‣ Permissions ‣ Is executable</em>.</p>
-</li>
-<li><p class="first">Scripts are text files, but using the filename extension <tt class="kbd docutils literal"><span class="pre">.sh</span></tt> helps
-to identify script files to the user.</p>
-</li>
 <li><p class="first">Sidebar examples from the previous page demonstrate commands to use.</p>
 </li>
 <li><p class="first">All Unixes include on-line resources to provide reference documentation:</p>
@@ -151,10 +192,18 @@ to identify script files to the user.</p>
 </ol>
 </div>
 </div>
+</div>
+<div class="section" id="adding-sections">
+<h2>Adding Sections<a class="headerlink" href="#adding-sections" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="user-confirmation">
 <h3>User Confirmation<a class="headerlink" href="#user-confirmation" title="Permalink to this headline">¶</a></h3>
 <p>Add statements to your script to: (1) prompt the user to run the script, and
 (2) process the user&#8217;s response.</p>
+<div class="admonition hint">
+<p class="first admonition-title">Hint</p>
+<p class="last">On the previous page, look for an example of the <strong class="command">read</strong> command for
+guidance.</p>
+</div>
 </div>
 </div>
 </div>
@@ -169,8 +218,11 @@ to identify script files to the user.</p>
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="02_program.html" title="Script / Program Organization"
-             >previous</a></li>
+          <a href="05_lesson2.html" title="Attending Conventions"
+             >next</a></li>
+        <li class="right" >
+          <a href="02_organize.html" title="Script / Program Organization"
+             >previous</a> |</li>
         <li><a href="index.html">Linux Shell Script Programming 1.0 documentation</a> &raquo;</li> 
       </ul>
     </div>

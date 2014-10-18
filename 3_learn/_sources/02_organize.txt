@@ -1,4 +1,4 @@
-.. _overview:
+.. _organize:
 
 #############################
 Script / Program Organization
@@ -20,7 +20,7 @@ can be modified to build your own scripts.
 Declarations Go First 
 =============================
 
-Declare the program language
+Declare the script language
 -----------------------------
 
 .. sidebar:: Program declaration 
@@ -84,10 +84,10 @@ Scripts receive command line parameters as variables numbered ``1`` through
 instance, a script expecting 2 or 3 parameters, with a default value for the 
 third parameter, should test to see that ``$2`` has a value before proceeding.
 
-Define subroutine sections
+Define function sections
 -----------------------------
 
-.. sidebar:: Defining subroutines
+.. sidebar:: Defining functions
 
  ::
  
@@ -100,15 +100,15 @@ Define subroutine sections
    }
 
 Code which may be executed repeatedly in a program, with each execution 
-differing only by assigned values, should be placed in subroutines. 
+differing only by assigned values, should be placed in functions. 
 
-As the example shows, variables are global and pass by name to subroutines. 
-A subroutine is declared with a name followed by empty parentheses ``()``. The 
-commands for the subroutine is then listed enclosed in braces ``{}``. A 
-subroutine is called by using its name as a command. 
+As the example shows, variables are global and pass by name to functions. 
+A function is declared with a name followed by empty parentheses ``()``. The 
+commands for the function are then listed enclosed in braces ``{}``. A 
+function is called by using its name as a command. 
 
 .. tip::
-   Place subroutines after variables are declared and assigned but before any 
+   Place functions after variables are declared and assigned but before any 
    other code which might call them.
 
 The Program or Script Body
@@ -116,16 +116,16 @@ The Program or Script Body
 
 The main body of a program should contain commands and logic to achieve the 
 program purpose. Short scripts may have only a main section, but a typical 
-script would have variable declarations and subroutines ahead of the main event.
+script would have variable declarations and functions ahead of the main event.
 
 .. tip::
    Programs which make important changes, say altering system configuration, 
    should start by asking the user to confirm the change.
    
 The main body of a program should end with an exit section which tells the user 
-what the script has done.
+what the script has done, or reports any errors on exit.
 
-Comprehensible Scripts
+Comprehendable Scripts
 =============================
 
 Programming syntax seems obfuscatory by design, and it is the programmer's duty 
