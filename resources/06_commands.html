@@ -45,11 +45,16 @@
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Commands and Variables</a><ul>
+<li><a class="reference internal" href="#commands">Commands</a><ul>
 <li><a class="reference internal" href="#operating-system-commands">Operating system commands</a></li>
 <li><a class="reference internal" href="#file-system-commands">File system commands</a></li>
 <li><a class="reference internal" href="#text-editing-services">Text editing services</a></li>
-<li><a class="reference internal" href="#shell-scripting-commands">Shell scripting commands</a><ul>
-<li><a class="reference internal" href="#environment-variables">Environment Variables</a></li>
+<li><a class="reference internal" href="#shell-scripting-commands">Shell scripting commands</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#variables">Variables</a><ul>
+<li><a class="reference internal" href="#environment-variables">Environment variables</a></li>
+<li><a class="reference internal" href="#ansi-vt100-color-codes">ANSI/VT100 color codes</a></li>
 </ul>
 </li>
 </ul>
@@ -90,8 +95,10 @@
             
   <div class="section" id="commands-and-variables">
 <span id="command"></span><h1>Commands and Variables<a class="headerlink" href="#commands-and-variables" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="commands">
+<h2>Commands<a class="headerlink" href="#commands" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="operating-system-commands">
-<span id="command-os"></span><h2>Operating system commands<a class="headerlink" href="#operating-system-commands" title="Permalink to this headline">¶</a></h2>
+<span id="command-os"></span><h3>Operating system commands<a class="headerlink" href="#operating-system-commands" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="docutils">
 <colgroup>
 <col width="18%" />
@@ -116,7 +123,7 @@
 </table>
 </div>
 <div class="section" id="file-system-commands">
-<span id="command-fs"></span><h2>File system commands<a class="headerlink" href="#file-system-commands" title="Permalink to this headline">¶</a></h2>
+<span id="command-fs"></span><h3>File system commands<a class="headerlink" href="#file-system-commands" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="docutils">
 <colgroup>
 <col width="18%" />
@@ -162,7 +169,7 @@
 </table>
 </div>
 <div class="section" id="text-editing-services">
-<span id="command-text"></span><h2>Text editing services<a class="headerlink" href="#text-editing-services" title="Permalink to this headline">¶</a></h2>
+<span id="command-text"></span><h3>Text editing services<a class="headerlink" href="#text-editing-services" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="docutils">
 <colgroup>
 <col width="18%" />
@@ -187,7 +194,7 @@
 </table>
 </div>
 <div class="section" id="shell-scripting-commands">
-<span id="command-sh"></span><h2>Shell scripting commands<a class="headerlink" href="#shell-scripting-commands" title="Permalink to this headline">¶</a></h2>
+<span id="command-sh"></span><h3>Shell scripting commands<a class="headerlink" href="#shell-scripting-commands" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="docutils">
 <colgroup>
 <col width="18%" />
@@ -213,8 +220,12 @@
 </tr>
 </tbody>
 </table>
+</div>
+</div>
+<div class="section" id="variables">
+<span id="id1"></span><h2>Variables<a class="headerlink" href="#variables" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="environment-variables">
-<span id="variables-env"></span><h3>Environment Variables<a class="headerlink" href="#environment-variables" title="Permalink to this headline">¶</a></h3>
+<span id="variables-env"></span><h3>Environment variables<a class="headerlink" href="#environment-variables" title="Permalink to this headline">¶</a></h3>
 <p>Environment Variables are those which are predeclared and can be called from any
 program, script, or terminal.</p>
 <table border="1" class="docutils">
@@ -236,6 +247,154 @@ program, script, or terminal.</p>
 </tr>
 </tbody>
 </table>
+</div>
+<div class="section" id="ansi-vt100-color-codes">
+<span id="variables-color"></span><h3>ANSI/VT100 color codes<a class="headerlink" href="#ansi-vt100-color-codes" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="20%" />
+<col width="0%" />
+<col width="7%" />
+<col width="7%" />
+<col width="20%" />
+<col width="0%" />
+<col width="7%" />
+<col width="7%" />
+<col width="20%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Code</th>
+<th class="head">Color</th>
+<th class="head">&nbsp;</th>
+<th class="head">FG</th>
+<th class="head">BG</th>
+<th class="head">Color</th>
+<th class="head">&nbsp;</th>
+<th class="head">FG</th>
+<th class="head">BG</th>
+<th class="head">Color</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>0</td>
+<td>Normal</td>
+<td>&nbsp;</td>
+<td>30</td>
+<td>40</td>
+<td>Black</td>
+<td>&nbsp;</td>
+<td>90</td>
+<td>100</td>
+<td>Dark Gray</td>
+</tr>
+<tr class="row-odd"><td>1</td>
+<td>Bold</td>
+<td>&nbsp;</td>
+<td>31</td>
+<td>41</td>
+<td>Red</td>
+<td>&nbsp;</td>
+<td>91</td>
+<td>101</td>
+<td>Light Red</td>
+</tr>
+<tr class="row-even"><td>2</td>
+<td>Dim</td>
+<td>&nbsp;</td>
+<td>32</td>
+<td>42</td>
+<td>Green</td>
+<td>&nbsp;</td>
+<td>92</td>
+<td>102</td>
+<td>Light Green</td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>33</td>
+<td>43</td>
+<td>Brown/Orange</td>
+<td>&nbsp;</td>
+<td>93</td>
+<td>103</td>
+<td>Light Yellow</td>
+</tr>
+<tr class="row-even"><td>4</td>
+<td>Underlined</td>
+<td>&nbsp;</td>
+<td>34</td>
+<td>44</td>
+<td>Blue</td>
+<td>&nbsp;</td>
+<td>94</td>
+<td>104</td>
+<td>Light Blue</td>
+</tr>
+<tr class="row-odd"><td>5</td>
+<td>Blink</td>
+<td>&nbsp;</td>
+<td>35</td>
+<td>45</td>
+<td>Magenta</td>
+<td>&nbsp;</td>
+<td>95</td>
+<td>105</td>
+<td>Light Magenta</td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>36</td>
+<td>46</td>
+<td>Cyan</td>
+<td>&nbsp;</td>
+<td>96</td>
+<td>106</td>
+<td>Light Cyan</td>
+</tr>
+<tr class="row-odd"><td>7</td>
+<td>Inverted</td>
+<td>&nbsp;</td>
+<td>37</td>
+<td>47</td>
+<td>Light Gray</td>
+<td>&nbsp;</td>
+<td>97</td>
+<td>107</td>
+<td>White</td>
+</tr>
+<tr class="row-even"><td>8</td>
+<td>Hidden</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>39</td>
+<td>49</td>
+<td>Default</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<p>Commands <strong class="command">echo -e</strong> and <strong class="command">printf</strong> will process embedded escape
+sequences, int the form <tt class="docutils literal"><span class="pre">\e[xx;yy;zzm</span></tt>, to produce formatted or colored text.
+For example,</p>
+<div class="highlight-python"><div class="highlight"><pre>echo -e &quot;\e[1;42;95m Some text \e[0m&quot; ;# print Bold;FG Light Magenta;BG Green
+</pre></div>
+</div>
 </div>
 </div>
 </div>

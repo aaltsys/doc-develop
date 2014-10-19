@@ -58,6 +58,20 @@ Logical expression blocks
 
 ::
 
-
+   # assigning an array to variables using "printf -v VARNAME VALUE"
+   if [[ -s "$VARS-FILE" ]]
+   then
+     SAVEIFS=$IFS
+     IFS=$'\n'
+     VARLIST=($(<"$VARS-FILE"))
+     IFS=$SAVEIFS
+     # assign array to named variables using printf --
+     for (( i=0; i<${#VARLIST[@]}; i++ ))
+     do
+       VAR-NAME=${VARLIST[i]%%=*}
+       VAR-VALUE=${VARLIST[i]##*=}
+       printf -v $VAR-NAME $VAR-VALUE
+     done
+   fi
 
 ::

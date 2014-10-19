@@ -122,7 +122,21 @@ else
 fi
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre>::
+<div class="highlight-python"><div class="highlight"><pre># assigning an array to variables using &quot;printf -v VARNAME VALUE&quot;
+if [[ -s &quot;$VARS-FILE&quot; ]]
+then
+  SAVEIFS=$IFS
+  IFS=$&#39;\n&#39;
+  VARLIST=($(&lt;&quot;$VARS-FILE&quot;))
+  IFS=$SAVEIFS
+  # assign array to named variables using printf --
+  for (( i=0; i&lt;${#VARLIST[@]}; i++ ))
+  do
+    VAR-NAME=${VARLIST[i]%%=*}
+    VAR-VALUE=${VARLIST[i]##*=}
+    printf -v $VAR-NAME $VAR-VALUE
+  done
+fi
 </pre></div>
 </div>
 </div>

@@ -42,6 +42,15 @@
     </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Logic &amp; Flow Control Exercise</a><ul>
+<li><a class="reference internal" href="#inputs-and-logic-tests">Inputs and Logic tests</a></li>
+<li><a class="reference internal" href="#program-flow-control">Program flow control</a></li>
+</ul>
+</li>
+</ul>
+
   <h4>Previous topic</h4>
   <p class="topless"><a href="06_logic.html"
                         title="previous chapter">Logic and Flow Control</a></p>
@@ -76,6 +85,73 @@
             
   <div class="section" id="logic-flow-control-exercise">
 <h1>Logic &amp; Flow Control Exercise<a class="headerlink" href="#logic-flow-control-exercise" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="inputs-and-logic-tests">
+<h2>Inputs and Logic tests<a class="headerlink" href="#inputs-and-logic-tests" title="Permalink to this headline">¶</a></h2>
+<div class="sidebar">
+<p class="first sidebar-title">Decision logic</p>
+<div class="last highlight-python"><div class="highlight"><pre>echo -e &quot;\n Install apt-fast?&quot;
+read -n 1 -p &quot;(y/n)&quot; RESP
+if [ &quot;$RESP&quot; != &#39;y&#39; ]; then
+  echo -e &quot;\n Canceled&quot;
+  exit 1
+fi
+</pre></div>
+</div>
+</div>
+<p>Use a read statement to get a single user response at the command line. Use this
+to have the user confirm whenever a script will permanently affect a system.</p>
+<p>Test all possible responses to prevent erroneous or redundant script execution.
+In the sidebar example, any input other than <tt class="kbd docutils literal"><span class="pre">y</span></tt> will cause the script to
+exit. If the script had been written to exit on <tt class="kbd docutils literal"><span class="pre">n</span></tt>, then any key other
+than <tt class="kbd docutils literal"><span class="pre">n</span></tt> would result in executing the script.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">It may seem obvious, but logic errors are very common when multiple responses
+or numeric options are used, and a <strong class="command">case</strong> statement processes the
+input.</p>
+</div>
+</div>
+<div class="section" id="program-flow-control">
+<h2>Program flow control<a class="headerlink" href="#program-flow-control" title="Permalink to this headline">¶</a></h2>
+<div class="sidebar">
+<p class="first sidebar-title">Program flow</p>
+<div class="last highlight-python"><div class="highlight"><pre>for OPT in &quot;$@&quot;
+do
+  case $OPT in
+    -h|--help)
+      display-help
+      exit
+      ;;
+    -n|--nodeploy)
+      NODEPLOY=&#39;YES&#39;
+      shift
+      ;;
+    *)
+      PROJECT=$OPT
+      shift
+      ;;
+  esac
+done
+</pre></div>
+</div>
+</div>
+<p>Speaking of case statements, the sidebar code demonstrates how a relatively
+complex task, reading and processing a list of items entered in arbitrary order,
+can be addressed with a case branching test enveloped within a looping control.
+Let&#8217;s break this down.</p>
+<ul class="simple">
+<li>The expression <tt class="docutils literal"><span class="pre">$&#64;</span></tt> is an array of all input parameters, <tt class="docutils literal"><span class="pre">$1</span> <span class="pre">...</span> <span class="pre">$n</span></tt>.</li>
+<li>The first statement, <tt class="docutils literal"><span class="pre">for</span> <span class="pre">OPT</span> <span class="pre">in</span> <span class="pre">&quot;$&#64;&quot;</span></tt>, iteratively assigns elements of
+<tt class="docutils literal"><span class="pre">$&#64;</span></tt> to variable <tt class="docutils literal"><span class="pre">OPT</span></tt>.</li>
+<li>The second and last statements, <tt class="docutils literal"><span class="pre">do</span> <span class="pre">...</span> <span class="pre">done</span></tt>, bound the statements to be
+iterated with respect to <tt class="docutils literal"><span class="pre">OPT</span></tt>.</li>
+<li>The statement <tt class="docutils literal"><span class="pre">case</span> <span class="pre">$OPT</span> <span class="pre">in</span></tt> specifies to test the values of <tt class="docutils literal"><span class="pre">OPT</span></tt>.</li>
+<li>Each test ends with a closing parenthesis <tt class="docutils literal"><span class="pre">)</span></tt>. The tests are,
+#. -h or &#8211;help: display help, then exit
+#. -n or &#8211;nodeploy: set variable NODEPLOY=&#8217;YES&#8217;
+#. Any other input: assign the input value to variable <tt class="docutils literal"><span class="pre">PROJECT</span></tt></li>
+</ul>
+</div>
 </div>
 
 

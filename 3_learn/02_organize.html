@@ -52,11 +52,12 @@
 <li><a class="reference internal" href="#define-function-sections">Define function sections</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#the-program-or-script-body">The Program or Script Body</a></li>
+<li><a class="reference internal" href="#program-or-script-body">Program or Script Body</a></li>
 <li><a class="reference internal" href="#comprehendable-scripts">Comprehendable Scripts</a><ul>
 <li><a class="reference internal" href="#embed-documentation-comments">Embed documentation comments</a></li>
 <li><a class="reference internal" href="#display-results">Display results</a></li>
 <li><a class="reference internal" href="#inputs-and-logic-tests">Inputs and Logic tests</a></li>
+<li><a class="reference internal" href="#program-flow-control">Program flow control</a></li>
 </ul>
 </li>
 </ul>
@@ -197,8 +198,8 @@ other code which might call them.</p>
 </div>
 </div>
 </div>
-<div class="section" id="the-program-or-script-body">
-<h2>The Program or Script Body<a class="headerlink" href="#the-program-or-script-body" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="program-or-script-body">
+<h2>Program or Script Body<a class="headerlink" href="#program-or-script-body" title="Permalink to this headline">¶</a></h2>
 <p>The main body of a program should contain commands and logic to achieve the
 program purpose. Short scripts may have only a main section, but a typical
 script would have variable declarations and functions ahead of the main event.</p>
@@ -274,20 +275,18 @@ the writing commands and comment out the echo statements.</p>
 <div class="section" id="inputs-and-logic-tests">
 <h3>Inputs and Logic tests<a class="headerlink" href="#inputs-and-logic-tests" title="Permalink to this headline">¶</a></h3>
 <div class="sidebar">
-<p class="first sidebar-title">Logic tests</p>
-<div class="last highlight-python"><div class="highlight"><pre>echo -e &quot;\e[1;31m Install apt-fast?&quot;
+<p class="first sidebar-title">Decision logic</p>
+<div class="last highlight-python"><div class="highlight"><pre>echo -e &quot;\n Install apt-fast?&quot;
 read -n 1 -p &quot;(y/n)&quot; RESP
-echo -e &quot;\e[0m&quot;
 if [ &quot;$RESP&quot; != &#39;y&#39; ]; then
-  echo -e &quot;\nCanceled&quot;
+  echo -e &quot;\n Canceled&quot;
   exit 1
 fi
 </pre></div>
 </div>
 </div>
-<p>Use a read statement to get a single user response at the command line. This is
-most useful to get a confirmation whenever a script will permanently effect a
-system .</p>
+<p>Use a read statement to get a single user response at the command line. Use this
+to have the user confirm whenever a script will permanently affect a system.</p>
 <p>Test all possible responses to prevent erroneous or redundant script execution.
 In the sidebar example, any input other than <tt class="kbd docutils literal"><span class="pre">y</span></tt> will cause the script to
 exit. If the script had been written to exit on <tt class="kbd docutils literal"><span class="pre">n</span></tt>, then any key other
@@ -298,6 +297,49 @@ than <tt class="kbd docutils literal"><span class="pre">n</span></tt> would resu
 or numeric options are used, and a <strong class="command">case</strong> statement processes the
 input.</p>
 </div>
+</div>
+<div class="section" id="program-flow-control">
+<h3>Program flow control<a class="headerlink" href="#program-flow-control" title="Permalink to this headline">¶</a></h3>
+<div class="sidebar">
+<p class="first sidebar-title">Program flow</p>
+<div class="last highlight-python"><div class="highlight"><pre>for OPT in &quot;$@&quot;
+do
+  case $OPT in
+    -h|--help)
+      display-help
+      exit
+      ;;
+    -n|--nodeploy)
+      NODEPLOY=&#39;YES&#39;
+      shift
+      ;;
+    *)
+      PROJECT=$OPT
+      shift
+      ;;
+  esac
+done
+</pre></div>
+</div>
+</div>
+<p>Speaking of case statements, the sidebar code demonstrates how a relatively
+complex task, reading and processing a list of items entered in arbitrary order,
+can be addressed with a case branching test enveloped within a looping control.
+Let&#8217;s break this down.</p>
+<ul class="simple">
+<li>The expression <tt class="docutils literal"><span class="pre">$&#64;</span></tt> is an array of all input parameters, <tt class="docutils literal"><span class="pre">$1</span> <span class="pre">...</span> <span class="pre">$n</span></tt>.</li>
+<li>The first statement, <tt class="docutils literal"><span class="pre">for</span> <span class="pre">OPT</span> <span class="pre">in</span> <span class="pre">&quot;$&#64;&quot;</span></tt>, iteratively assigns elements of
+<tt class="docutils literal"><span class="pre">$&#64;</span></tt> to variable <tt class="docutils literal"><span class="pre">OPT</span></tt>.</li>
+<li>The second and last statements, <tt class="docutils literal"><span class="pre">do</span> <span class="pre">...</span> <span class="pre">done</span></tt>, bound the statements to be
+iterated with respect to <tt class="docutils literal"><span class="pre">OPT</span></tt>.</li>
+<li>The statement <tt class="docutils literal"><span class="pre">case</span> <span class="pre">$OPT</span> <span class="pre">in</span></tt> specifies to test the values of <tt class="docutils literal"><span class="pre">OPT</span></tt>.</li>
+<li>Each test ends with a closing parenthesis <tt class="docutils literal"><span class="pre">)</span></tt>. The tests are,<ol class="arabic">
+<li><tt class="docutils literal"><span class="pre">-h</span></tt> or <tt class="docutils literal"><span class="pre">--help</span></tt>: display help, then exit</li>
+<li><tt class="docutils literal"><span class="pre">-n</span></tt> or <tt class="docutils literal"><span class="pre">--nodeploy</span></tt>: set variable <tt class="docutils literal"><span class="pre">NODEPLOY='YES'</span></tt></li>
+<li>Any other input: assign the input value to variable <tt class="docutils literal"><span class="pre">PROJECT</span></tt></li>
+</ol>
+</li>
+</ul>
 </div>
 </div>
 </div>
