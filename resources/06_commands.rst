@@ -4,6 +4,9 @@
 Commands and Variables
 #############################
 
+Commands
+=============================
+
 .. _command-os:
 
 Operating system commands
@@ -79,10 +82,15 @@ Shell scripting commands
 | read         | reads a line from standard input; gets user input             |
 +--------------+---------------------------------------------------------------+
 
+.. _variables:
+
+Variables
+=============================
+
 .. _variables-env:
 
-Environment Variables
-=============================
+Environment variables
+-----------------------------
 
 Environment Variables are those which are predeclared and can be called from any 
 program, script, or terminal. 
@@ -94,3 +102,38 @@ program, script, or terminal.
 +--------------+---------------------------------------------------------------+
 | PWD          | when called, it returns the current directory                 |
 +--------------+---------------------------------------------------------------+
+
+.. _variables-color:
+
+ANSI/VT100 color codes 
+-----------------------------
+
++-------+--------------++-----+-----+--------------++-----+-----+--------------+
+| Code  | Color        || FG  | BG  | Color        || FG  | BG  |   Color      |
++=======+==============++=====+=====+==============++=====+=====+==============+
+|  0    | Normal       ||  30 |  40 | Black        ||  90 | 100 | Dark Gray    |
++-------+--------------++-----+-----+--------------++-----+-----+--------------+
+|  1    | Bold         ||  31 |  41 | Red          ||  91 | 101 | Light Red    |
++-------+--------------++-----+-----+--------------++-----+-----+--------------+
+|  2    | Dim          ||  32 |  42 | Green        ||  92 | 102 | Light Green  |
++-------+--------------++-----+-----+--------------++-----+-----+--------------+
+|       |              ||  33 |  43 | Brown/Orange ||  93 | 103 | Light Yellow |
++-------+--------------++-----+-----+--------------++-----+-----+--------------+
+|  4    | Underlined   ||  34 |  44 | Blue         ||  94 | 104 | Light Blue   |
++-------+--------------++-----+-----+--------------++-----+-----+--------------+
+|  5    | Blink        ||  35 |  45 | Magenta      ||  95 | 105 | Light Magenta|
++-------+--------------++-----+-----+--------------++-----+-----+--------------+
+|       |              ||  36 |  46 | Cyan         ||  96 | 106 | Light Cyan   |
++-------+--------------++-----+-----+--------------++-----+-----+--------------+
+|  7    | Inverted     ||  37 |  47 | Light Gray   ||  97 | 107 | White        |
++-------+--------------++-----+-----+--------------++-----+-----+--------------+
+|  8    | Hidden       ||     |     |              ||     |     |              |
++-------+--------------++-----+-----+--------------++-----+-----+--------------+
+|       |              ||  39 |  49 | Default      ||     |     |              |
++-------+--------------++-----+-----+--------------++-----+-----+--------------+
+
+Commands :command:`echo -e` and :command:`printf` will process embedded escape 
+sequences, int the form ``\e[xx;yy;zzm``, to produce formatted or colored text.
+For example, ::
+
+   echo -e "\e[1;42;95m Some text \e[0m" ;# print Bold;FG Light Magenta;BG Green

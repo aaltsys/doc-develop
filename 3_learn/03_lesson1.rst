@@ -25,9 +25,9 @@ can become the basis of scripts written throughout these exercises. ::
    # 
    # Initialize variables
    # 
-   # User execution confirmation (location varies)
-   # 
    # Assign parameters ($n) to named variables
+   # 
+   # User execution confirmation (location varies)
    # 
    # Declare repeated code functions
    # 
@@ -61,7 +61,7 @@ Hello World
 -----------------------------
 
 Based on script samples shown previously, edit your script to display 
-"Hello world." Save your work, and test run the script from the command line.
+"Hello World." Save your work, and test run the script from the command line.
 
 .. tip::
    #. Scripts are text files, but using the filename extension :kbd:`.sh` helps 
@@ -86,7 +86,68 @@ Based on script samples shown previously, edit your script to display
 Adding Sections
 =============================
 
-User Confirmation
+Assign a variable
+-----------------------------
+
+Declare a variable named :kbd:`DISPLAY` by assigning it the value :kbd:`World`.
+In the :command:`echo` statement which displays :kbd:`Hello World`, replace the 
+text :kbd:`World` with this new variable. Test the script by executing it in the 
+terminal::
+
+   **$** ``./hello-world.sh``
+
+.. tip::
+   The :kbd:`./` is required in front of the script name, so that the command
+   interpreter knows the path to the script.
+
+Edit the :program:`hello-world.sh` script to include all four versions of the 
+:command:`echo` statement as follows::
+
+   echo 'Hello DISPLAY'  ; # full quoting
+   echo "hello DISPLAY"  ; # partial quoting
+   echo 'Hello $DISPLAY' ; # $-operator for evaluation
+   echo "Hello $DISPLAY" ; # $ evaluation in partial quotes
+
+Execute script :program:`hello-world.sh`. Which version of the :command:`echo` 
+statement worked correctly? Now place a :kbd:`#` symbol at the beginning of 
+each faulty statement to comment it. Execute the script again to see that only 
+the desired result displays.
+
+.. tip::
+   Learning comes from a process of evaluating alternatives, and seeing which 
+   one produces a desired result. In aphorisms, "We learn from our mistakes." 
+   This guide will present working code examples, but incorrect code will also 
+   be used to help demonstrate correct programming conventions.
+
+Read and assign an input
+-----------------------------
+
+Based on examples from the previous page, add statements to evaluate input 
+parameter 1 and, if it is not blank, assign the value of parameter 1 to the 
+variable :kbd:`DISPLAY`. Run the changed script with the following commands::
+
+   ./hello-world.sh
+   ./hello-world.sh Ebola
+
+Now include the following four logic test statements preceding your then 
+statement, so your code reads::
+
+   # if [$1 != '']      ; # without spaces around [ ]
+   # if [ $1 != '' ]    ; # with !# and single [ ]
+   # if [ ! $1 == '' ]  ; # to (!) negate the expression
+   # if [[ $1 != '' ]]  ; # w/ single [ and double [[ 
+   then DISPLAY=$1
+   fi
+
+One at a time: uncomment a statement, test run the script, and note the result 
+in the comments (either :kbd:`works` or :kbd:`fails`). 
+
+.. warning::
+   Unlike with quoting and variable evaluation, scripting permits several 
+   acceptable forms for simple logic expressions. However, complex tests may not 
+   work right with just any syntax. To verify results, logic must be tested.
+
+User confirmation
 -----------------------------
 
 Add statements to your script to: (1) prompt the user to run the script, and 
@@ -96,4 +157,13 @@ Add statements to your script to: (1) prompt the user to run the script, and
    On the previous page, look for an example of the :command:`read` command for 
    guidance.
 
+Example Finished Program
+=============================
+
+Download the :download:`hello-world.sh <_downloads/hello-world.sh>` example code 
+or just view the code below for one solution to this exercise. 
+
+.. literalinclude:: _downloads/hello-world.sh
+   :language: bash
+   :linenos:
 

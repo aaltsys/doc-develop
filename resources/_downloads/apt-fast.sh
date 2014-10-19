@@ -51,7 +51,7 @@ apt-repos() {
   # verify installation and update packages indexes
   if [ $APT -ne 0 ] 
   then
-    echo -e  "\e[1;31m Updating system repository indexes \e[0m"
+    echo -e  "\e[1;94m Updating system repository indexes \e[0m"
     $APTMGR -y -f install && $APTMGR -y update 
   fi
 
@@ -77,7 +77,7 @@ apt-pkgs() {
 
   # verify installation and update packages indexes
   if [ $APT -ne 0 ] ; then
-    echo -e "\e[1;31m Updating system packages, this may take a while \e[0m"
+    echo -e "\e[1;94m Updating system packages, this may take a while \e[0m"
     $APTMGR -y -f install && $APTMGR -y update 
   fi
 
@@ -86,16 +86,20 @@ apt-pkgs() {
 # !!!!!!!!!!  MAIN PROGRAM !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 # =============================================================================
 
+# test for package already installed
 apt-manager
 if [ "$APTMGR" = 'apt-fast' ] ; then
-  echo -e "\e[1;31m apt-fast is already installed, exiting ... \e[0m"
+  echo -e "\e[1;32m apt-fast is already installed, exiting ... \e[0m"
   exit 0
 fi
 
+# add repository
 REPOS='ppa:saiarcot895/myppa'
 apt-repos
+# add package
 PKGS='apt-fast'
 apt-pkgs
+# update configuration file
 MIRRORS='MIRRORS=("http://us.archive.ubuntu.com/ubuntu,'
 MIRRORS+='http://mirror.cc.columbia.edu/pub/linux/ubuntu/archive/,'
 MIRRORS+='http://mirror.cc.vt.edu/pub2/ubuntu/,'
@@ -103,3 +107,12 @@ MIRRORS+='http://mirror.umd.edu/ubuntu/,'
 MIRRORS+='http://mirrors.mit.edu/ubuntu/")'
 sed -r "/MIRRORS=.*$/d" -i /etc/apt-fast.conf
 sed -r "$ a\$MIRRORS" -i /etc/apt-fast.conf 
+# test installation and provide exit messages
+apt-manager
+if [ "$APTMGR" = 'apt-fast' ] ; then
+  echo -e "\e[1;32m apt-fast installation was successful. \e[0m"
+  exit 0
+else
+  echo -e "\e[1;31m apt-fast installation failed for some reason. \e[0m"
+  exit 1
+fi

@@ -1,6 +1,12 @@
 .. _convention:
 
 #############################
-Script Program Conventions
+Programming Conventions
 #############################
+
+Program Idempotence
+=============================
+
+Display Colorization
+=============================
 
