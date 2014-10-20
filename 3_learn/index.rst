@@ -26,7 +26,7 @@ Contents:
    01_shell
    02_organize
    03_lesson1
-   04_conventions
+   04_considerations
    05_lesson2
    06_logic
    07_lesson3

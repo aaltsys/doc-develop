@@ -18,7 +18,9 @@ Example Script Layout
 =============================
 
 Warm up the Xerox by highlighting and copying the following code outline, which 
-can become the basis of scripts written throughout these exercises. ::
+can become the basis of scripts written throughout these exercises. 
+
+.. code-block:: bash
 
    #! /bin/sh
    # Describe program's principal objective
@@ -101,7 +103,9 @@ terminal::
    interpreter knows the path to the script.
 
 Edit the :program:`hello-world.sh` script to include all four versions of the 
-:command:`echo` statement as follows::
+:command:`echo` statement as follows:
+
+.. code-block:: bash
 
    echo 'Hello DISPLAY'  ; # full quoting
    echo "hello DISPLAY"  ; # partial quoting
@@ -130,7 +134,9 @@ variable :kbd:`DISPLAY`. Run the changed script with the following commands::
    ./hello-world.sh Ebola
 
 Now include the following four logic test statements preceding your then 
-statement, so your code reads::
+statement, so your code reads:
+
+.. code-block:: bash
 
    # if [$1 != '']      ; # without spaces around [ ]
    # if [ $1 != '' ]    ; # with !# and single [ ]
@@ -156,6 +162,23 @@ Add statements to your script to: (1) prompt the user to run the script, and
 .. hint::
    On the previous page, look for an example of the :command:`read` command for 
    guidance.
+
+Just for Fun(ctionality)
+-----------------------------
+
+Replace your user confirmation code with the following statements:
+
+.. code-block:: bash
+
+   echo -e -n '\n\e[1;31m Say Hello'
+   read -n 1 -p ' (y/n)?' RESP 
+   echo -e '\e[0m' 
+
+Play around (that means test run) these statements. On the :command:`echo` 
+statement, remove the option parameters ``-e`` or ``-n`` and observe the effect. 
+Similarly, try removing ``-n 1`` from the :command:`read` statement. Finally, 
+why would full quoting (with \') or partial quoting (with \") have the same
+result here?
 
 Example Finished Program
 =============================
