@@ -24,7 +24,7 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="Developer Documentation Resource Pages 1.0 documentation" href="index.html" />
-    <link rel="next" title="Operators &amp; Characters" href="07_operators.html" />
+    <link rel="next" title="Operators &amp; Other Characters" href="07_operators.html" />
     <link rel="prev" title="Programming Tutorials Sites" href="05_tutorials.html" /> 
   </head>
   <body>
@@ -32,7 +32,7 @@
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="07_operators.html" title="Operators &amp; Characters"
+          <a href="07_operators.html" title="Operators &amp; Other Characters"
              accesskey="N">next</a></li>
         <li class="right" >
           <a href="05_tutorials.html" title="Programming Tutorials Sites"
@@ -53,8 +53,14 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#variables">Variables</a><ul>
-<li><a class="reference internal" href="#environment-variables">Environment variables</a></li>
+<li><a class="reference internal" href="#global-environment-variables">Global environment variables</a></li>
+<li><a class="reference internal" href="#local-environment-variables">Local environment variables</a></li>
 <li><a class="reference internal" href="#ansi-vt100-color-codes">ANSI/VT100 color codes</a></li>
+<li><a class="reference internal" href="#terminfo-color-commands">Terminfo color commands</a><ul>
+<li><a class="reference internal" href="#tput-command-arguments">tput command arguments</a></li>
+<li><a class="reference internal" href="#setaf-setab-xterm-color-values">setaf/setab xterm color values</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -66,7 +72,7 @@
                         title="previous chapter">Programming Tutorials Sites</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="07_operators.html"
-                        title="next chapter">Operators &amp; Characters</a></p>
+                        title="next chapter">Operators &amp; Other Characters</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="_sources/06_commands.txt"
@@ -113,11 +119,11 @@
 <tr class="row-even"><td>uname</td>
 <td>provides information about the computer/system.</td>
 </tr>
-<tr class="row-odd"><td>wget</td>
-<td>retrieves web pages and/or files.</td>
-</tr>
-<tr class="row-even"><td>wait</td>
+<tr class="row-odd"><td>wait</td>
 <td>wait until process completes and returns a termination status</td>
+</tr>
+<tr class="row-even"><td>wget</td>
+<td>retrieves web pages and/or files.</td>
 </tr>
 </tbody>
 </table>
@@ -206,14 +212,14 @@
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>&nbsp;</td>
+<tr class="row-even"><td>echo</td>
 <td>&nbsp;</td>
 </tr>
-<tr class="row-odd"><td>shopt</td>
+<tr class="row-odd"><td>printf</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>shopt</td>
 <td>set SHell OPTions</td>
-</tr>
-<tr class="row-even"><td>printf</td>
-<td>&nbsp;</td>
 </tr>
 <tr class="row-odd"><td>read</td>
 <td>reads a line from standard input; gets user input</td>
@@ -224,8 +230,8 @@
 </div>
 <div class="section" id="variables">
 <span id="id1"></span><h2>Variables<a class="headerlink" href="#variables" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="environment-variables">
-<span id="variables-env"></span><h3>Environment variables<a class="headerlink" href="#environment-variables" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="global-environment-variables">
+<span id="variables-env"></span><h3>Global environment variables<a class="headerlink" href="#global-environment-variables" title="Permalink to this headline">¶</a></h3>
 <p>Environment Variables are those which are predeclared and can be called from any
 program, script, or terminal.</p>
 <table border="1" class="docutils">
@@ -239,38 +245,111 @@ program, script, or terminal.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>EUID</td>
-<td>The ID number of the current user.</td>
+<tr class="row-even"><td>DISPLAY</td>
+<td>The id of the working primary display</td>
 </tr>
-<tr class="row-odd"><td>PWD</td>
-<td>when called, it returns the current directory</td>
+<tr class="row-odd"><td>HOME</td>
+<td>Returns the present working directory</td>
+</tr>
+<tr class="row-even"><td>LANGUAGE</td>
+<td>Returns the present working directory</td>
+</tr>
+<tr class="row-odd"><td>LINENO</td>
+<td>The line number of the statement being processed</td>
+</tr>
+<tr class="row-even"><td>LOGNAME</td>
+<td>name of the user logged into the terminal</td>
+</tr>
+<tr class="row-odd"><td>PATH</td>
+<td>The search path for system commands</td>
+</tr>
+<tr class="row-even"><td>PWD</td>
+<td>Returns the present working directory</td>
+</tr>
+<tr class="row-odd"><td>SHELL</td>
+<td>path to the active shell interpreter</td>
+</tr>
+<tr class="row-even"><td>TERM</td>
+<td>terminfo database terminal definition</td>
+</tr>
+<tr class="row-odd"><td>USER</td>
+<td>name of the current user (different from LOGNAME due to su)</td>
 </tr>
 </tbody>
 </table>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">Type <strong class="command">env</strong> at the terminal to list global variables.</p>
+</div>
+</div>
+<div class="section" id="local-environment-variables">
+<h3>Local environment variables<a class="headerlink" href="#local-environment-variables" title="Permalink to this headline">¶</a></h3>
+<p>Below is a table of some of the variables exported by the BASH terminal.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="18%" />
+<col width="82%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Variable</th>
+<th class="head">Variable description of use.</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>BASH</td>
+<td>path to BASH command interpreter</td>
+</tr>
+<tr class="row-odd"><td>COLUMNS</td>
+<td>Character columns defined in a terminal line</td>
+</tr>
+<tr class="row-even"><td>EUID</td>
+<td>The ID number of the current user</td>
+</tr>
+<tr class="row-odd"><td>IFS</td>
+<td>string of characters to be treated as white space</td>
+</tr>
+<tr class="row-even"><td>LINES</td>
+<td>rows (lines) of characters in a terminal line</td>
+</tr>
+<tr class="row-odd"><td>MACHTYPE</td>
+<td>string describing system type in GNU form CPU-COMPANY-SYSTEM</td>
+</tr>
+<tr class="row-even"><td>OSTYPE</td>
+<td>string describing the operating system</td>
+</tr>
+<tr class="row-odd"><td>PS1</td>
+<td>The primary prompt string, defaults to &#8220;&#8216;s-v$&#8217;&#8221;</td>
+</tr>
+<tr class="row-even"><td>UID</td>
+<td>The login ID number of the current login</td>
+</tr>
+</tbody>
+</table>
+<p>Source: <a class="reference external" href="http://www.tldp.org/LDP/Bash-Beginners-Guide/html/sect_03_02.html">Bash Beginners Guide</a></p>
 </div>
 <div class="section" id="ansi-vt100-color-codes">
 <span id="variables-color"></span><h3>ANSI/VT100 color codes<a class="headerlink" href="#ansi-vt100-color-codes" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="docutils">
 <colgroup>
-<col width="10%" />
-<col width="20%" />
-<col width="0%" />
+<col width="8%" />
+<col width="16%" />
+<col width="5%" />
 <col width="7%" />
 <col width="7%" />
-<col width="20%" />
-<col width="0%" />
+<col width="19%" />
+<col width="5%" />
 <col width="7%" />
 <col width="7%" />
-<col width="20%" />
+<col width="19%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Code</th>
 <th class="head">Color</th>
-<th class="head">&nbsp;</th>
+<th class="head">|</th>
 <th class="head">FG</th>
 <th class="head">BG</th>
 <th class="head">Color</th>
-<th class="head">&nbsp;</th>
+<th class="head">|</th>
 <th class="head">FG</th>
 <th class="head">BG</th>
 <th class="head">Color</th>
@@ -279,110 +358,110 @@ program, script, or terminal.</p>
 <tbody valign="top">
 <tr class="row-even"><td>0</td>
 <td>Normal</td>
-<td>&nbsp;</td>
+<td>|</td>
 <td>30</td>
 <td>40</td>
 <td>Black</td>
-<td>&nbsp;</td>
+<td>|</td>
 <td>90</td>
 <td>100</td>
 <td>Dark Gray</td>
 </tr>
 <tr class="row-odd"><td>1</td>
 <td>Bold</td>
-<td>&nbsp;</td>
+<td>|</td>
 <td>31</td>
 <td>41</td>
 <td>Red</td>
-<td>&nbsp;</td>
+<td>|</td>
 <td>91</td>
 <td>101</td>
 <td>Light Red</td>
 </tr>
 <tr class="row-even"><td>2</td>
 <td>Dim</td>
-<td>&nbsp;</td>
+<td>|</td>
 <td>32</td>
 <td>42</td>
 <td>Green</td>
-<td>&nbsp;</td>
+<td>|</td>
 <td>92</td>
 <td>102</td>
 <td>Light Green</td>
 </tr>
 <tr class="row-odd"><td>&nbsp;</td>
 <td>&nbsp;</td>
-<td>&nbsp;</td>
+<td>|</td>
 <td>33</td>
 <td>43</td>
 <td>Brown/Orange</td>
-<td>&nbsp;</td>
+<td>|</td>
 <td>93</td>
 <td>103</td>
 <td>Light Yellow</td>
 </tr>
 <tr class="row-even"><td>4</td>
 <td>Underlined</td>
-<td>&nbsp;</td>
+<td>|</td>
 <td>34</td>
 <td>44</td>
 <td>Blue</td>
-<td>&nbsp;</td>
+<td>|</td>
 <td>94</td>
 <td>104</td>
 <td>Light Blue</td>
 </tr>
 <tr class="row-odd"><td>5</td>
 <td>Blink</td>
-<td>&nbsp;</td>
+<td>|</td>
 <td>35</td>
 <td>45</td>
 <td>Magenta</td>
-<td>&nbsp;</td>
+<td>|</td>
 <td>95</td>
 <td>105</td>
 <td>Light Magenta</td>
 </tr>
 <tr class="row-even"><td>&nbsp;</td>
 <td>&nbsp;</td>
-<td>&nbsp;</td>
+<td>|</td>
 <td>36</td>
 <td>46</td>
 <td>Cyan</td>
-<td>&nbsp;</td>
+<td>|</td>
 <td>96</td>
 <td>106</td>
 <td>Light Cyan</td>
 </tr>
 <tr class="row-odd"><td>7</td>
 <td>Inverted</td>
-<td>&nbsp;</td>
+<td>|</td>
 <td>37</td>
 <td>47</td>
 <td>Light Gray</td>
-<td>&nbsp;</td>
+<td>|</td>
 <td>97</td>
 <td>107</td>
 <td>White</td>
 </tr>
 <tr class="row-even"><td>8</td>
 <td>Hidden</td>
+<td>|</td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
+<td>|</td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 </tr>
 <tr class="row-odd"><td>&nbsp;</td>
 <td>&nbsp;</td>
-<td>&nbsp;</td>
+<td>|</td>
 <td>39</td>
 <td>49</td>
 <td>Default</td>
-<td>&nbsp;</td>
+<td>|</td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
@@ -394,6 +473,120 @@ sequences, int the form <tt class="docutils literal"><span class="pre">\e[xx;yy;
 For example,</p>
 <div class="highlight-python"><div class="highlight"><pre>echo -e &quot;\e[1;42;95m Some text \e[0m&quot; ;# print Bold;FG Light Magenta;BG Green
 </pre></div>
+</div>
+</div>
+<div class="section" id="terminfo-color-commands">
+<h3>Terminfo color commands<a class="headerlink" href="#terminfo-color-commands" title="Permalink to this headline">¶</a></h3>
+<p>Instead of using embedded <tt class="docutils literal"><span class="pre">VT100</span></tt> codes, the <strong class="command">tput</strong> command can set
+terminal colors using a variety of arguments.</p>
+<div class="section" id="tput-command-arguments">
+<h4>tput command arguments<a class="headerlink" href="#tput-command-arguments" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="docutils">
+<colgroup>
+<col width="46%" />
+<col width="54%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Command</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>tput setab (color code)</td>
+<td>Set background color</td>
+</tr>
+<tr class="row-odd"><td>tput setaf (color code)</td>
+<td>Set foreground color</td>
+</tr>
+<tr class="row-even"><td>tput bold</td>
+<td>Set bold mode</td>
+</tr>
+<tr class="row-odd"><td>tput dim</td>
+<td>Set half-bright mode</td>
+</tr>
+<tr class="row-even"><td>tput smul</td>
+<td>Set underline mode</td>
+</tr>
+<tr class="row-odd"><td>tput rmul</td>
+<td>Exit underline mode</td>
+</tr>
+<tr class="row-even"><td>tput rev</td>
+<td>Reverse mode</td>
+</tr>
+<tr class="row-odd"><td>tput smso</td>
+<td>Set standout mode</td>
+</tr>
+<tr class="row-even"><td>tput rmso</td>
+<td>Exit standout mode</td>
+</tr>
+<tr class="row-odd"><td>tput sgr0</td>
+<td>Reset all attributes</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="setaf-setab-xterm-color-values">
+<h4>setaf/setab xterm color values<a class="headerlink" href="#setaf-setab-xterm-color-values" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="docutils">
+<colgroup>
+<col width="19%" />
+<col width="36%" />
+<col width="44%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Code</th>
+<th class="head">Color</th>
+<th class="head">RGB values</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>0</td>
+<td>black</td>
+<td>0, 0, 0</td>
+</tr>
+<tr class="row-odd"><td>1</td>
+<td>red</td>
+<td>max,0,0</td>
+</tr>
+<tr class="row-even"><td>2</td>
+<td>green</td>
+<td>0,max,0</td>
+</tr>
+<tr class="row-odd"><td>3</td>
+<td>yellow</td>
+<td>max,max,0</td>
+</tr>
+<tr class="row-even"><td>4</td>
+<td>blue</td>
+<td>0,0,max</td>
+</tr>
+<tr class="row-odd"><td>5</td>
+<td>magenta</td>
+<td>max,0,max</td>
+</tr>
+<tr class="row-even"><td>6</td>
+<td>cyan</td>
+<td>0,max,max</td>
+</tr>
+<tr class="row-odd"><td>7</td>
+<td>white</td>
+<td>max,max,max</td>
+</tr>
+</tbody>
+</table>
+<p>The <strong class="command">tput</strong> command uses a <tt class="docutils literal"><span class="pre">terminfo</span></tt> terminal definition, of which
+the default <tt class="file docutils literal"><span class="pre">xterm</span></tt> definition serves the 8 colors listed above. For more
+colors, you can load <tt class="file docutils literal"><span class="pre">xterm-256color</span></tt>. Commands demonstrating this
+color set follow:</p>
+<div class="highlight-python"><div class="highlight"><pre>.. code-block:: bash
+</pre></div>
+</div>
+<blockquote>
+<div>export TERM=&#8217;xterm-256color&#8217;
+tput colors
+for i in {0..255}; do tput setab $i; echo -n &#8221;  $i  &#8221;; done; tput setab 0; echo
+export TERM=&#8217;xterm&#8217;</div></blockquote>
+<p>For more information, see the manpage for <tt class="docutils literal"><span class="pre">terminfo</span></tt>.</p>
 </div>
 </div>
 </div>
@@ -409,7 +602,7 @@ For example,</p>
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="07_operators.html" title="Operators &amp; Characters"
+          <a href="07_operators.html" title="Operators &amp; Other Characters"
              >next</a></li>
         <li class="right" >
           <a href="05_tutorials.html" title="Programming Tutorials Sites"

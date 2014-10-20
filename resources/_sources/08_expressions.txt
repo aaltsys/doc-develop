@@ -7,35 +7,35 @@ Routines and Expressions
 Logical expression blocks
 =============================
 
-::
+.. code-block:: bash
 
    for name in [wordlist] 
    do
      command list
    done
 
-::
+.. code-block:: bash
 
    for (( expr1; expr2; ... ))
    do
       command list
    done
 
-::
+.. code-block:: bash
 
    while [ logical expr ]
    do
      command list
    done
 
-::
+.. code-block:: bash
  
    until [ logical expr ]
    do
      command list
    done
 
-::
+.. code-block:: bash
  
    case "$variable" in
      value1)
@@ -44,7 +44,7 @@ Logical expression blocks
        command list ;;
    esac
 
-::
+.. code-block:: bash
 
    if [ logical expr ] 
    then
@@ -56,7 +56,7 @@ Logical expression blocks
      command list
    fi
 
-::
+.. code-block:: bash
 
    # assigning an array to variables using "printf -v VARNAME VALUE"
    if [[ -s "$VARS-FILE" ]]
@@ -73,5 +73,3 @@ Logical expression blocks
        printf -v $VAR-NAME $VAR-VALUE
      done
    fi
-
-::

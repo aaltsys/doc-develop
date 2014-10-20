@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Operators &amp; Characters &mdash; Developer Documentation Resource Pages 1.0 documentation</title>
+    <title>Operators &amp; Other Characters &mdash; Developer Documentation Resource Pages 1.0 documentation</title>
     
     <link rel="stylesheet" href="_static/aaltsys.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -44,17 +44,17 @@
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">Operators &amp; Characters</a><ul>
-<li><a class="reference internal" href="#special-characters">Special characters </a></li>
-<li><a class="reference internal" href="#operators-and-constructs">Operators and constructs</a><ul>
+<li><a class="reference internal" href="#">Operators &amp; Other Characters</a><ul>
+<li><a class="reference internal" href="#special-characters">Special characters </a><ul>
 <li><a class="reference internal" href="#arithmetic-operators">Arithmetic operators</a></li>
 <li><a class="reference internal" href="#expression-constructs">Expression constructs</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#comparison-operators">Comparison operators</a><ul>
+<li><a class="reference internal" href="#comparison-tests">Comparison tests</a><ul>
 <li><a class="reference internal" href="#string-comparisons">String comparisons</a></li>
 <li><a class="reference internal" href="#integer-comparisons">Integer comparisons</a></li>
 <li><a class="reference internal" href="#logical-comparisons">Logical comparisons</a></li>
+<li><a class="reference internal" href="#file-test-operators">File test operators</a></li>
 </ul>
 </li>
 </ul>
@@ -93,8 +93,8 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="operators-characters">
-<span id="operators"></span><h1>Operators &amp; Characters<a class="headerlink" href="#operators-characters" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="operators-other-characters">
+<span id="operators"></span><h1>Operators &amp; Other Characters<a class="headerlink" href="#operators-other-characters" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="special-characters">
 <h2>Special characters <a class="footnote-reference" href="#id2" id="id1">[1]</a><a class="headerlink" href="#special-characters" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
@@ -262,11 +262,8 @@
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="operators-and-constructs">
-<h2>Operators and constructs<a class="headerlink" href="#operators-and-constructs" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="arithmetic-operators">
-<h3>Arithmetic operators<a class="headerlink" href="#arithmetic-operators" title="Permalink to this headline">¶</a></h3>
+<span id="arithmetic"></span><h3>Arithmetic operators<a class="headerlink" href="#arithmetic-operators" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="docutils">
 <colgroup>
 <col width="17%" />
@@ -333,7 +330,7 @@
 <td>evaluate command expression (creates subshell)</td>
 </tr>
 <tr class="row-odd"><td>$((expr))</td>
-<td>evaluate an (C-style) integer arithmetic expression</td>
+<td>evaluate an integer arithmetic expression (C-style)</td>
 </tr>
 <tr class="row-even"><td>$[3+4+5]</td>
 <td>evaluate an integer math expression (deprecated)</td>
@@ -341,7 +338,7 @@
 <tr class="row-odd"><td><div class="first last line-block">
 <div class="line">{var}</div>
 <div class="line">{02..8..2}</div>
-<div class="line">{ expr... }</div>
+<div class="line">{expr... }</div>
 </div>
 </td>
 <td><div class="first last line-block">
@@ -358,29 +355,26 @@
 </td>
 <td><div class="first last line-block">
 <div class="line">at <tt class="docutils literal"><span class="pre">l</span></tt> from left extract <tt class="docutils literal"><span class="pre">n</span></tt> characters</div>
-<div class="line">negatives start at right, extract by position, not count</div>
+<div class="line">negatives start at right and extract by position, not count</div>
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td>${&#64;:0}</td>
-<td>&nbsp;</td>
-</tr>
-<tr class="row-even"><td>${!var}</td>
+<tr class="row-odd"><td>${!var}</td>
 <td>indirect reference (eval) to value of variable</td>
 </tr>
-<tr class="row-odd"><td>[ logical ]</td>
-<td>builtin shell logical test</td>
+<tr class="row-even"><td>[ logical ]</td>
+<td>builtin shell logical test (<tt class="docutils literal"><span class="pre">[</span></tt> is the &#8220;test&#8221; operator)</td>
 </tr>
-<tr class="row-even"><td>[[ logic ]]</td>
+<tr class="row-odd"><td>[[ logic ]]</td>
 <td>shell keyword construct for logical test</td>
 </tr>
-<tr class="row-odd"><td>array[index]</td>
+<tr class="row-even"><td>array[index]</td>
 <td>(de)reference an element of an array</td>
 </tr>
-<tr class="row-even"><td>[c d e]</td>
+<tr class="row-odd"><td>[c d e]</td>
 <td>delineates a range of characters to match in regular expression</td>
 </tr>
-<tr class="row-odd"><td><div class="first last line-block">
+<tr class="row-even"><td><div class="first last line-block">
 <div class="line">&gt;</div>
 <div class="line">&amp;&gt;</div>
 <div class="line">&gt;&amp;2</div>
@@ -399,7 +393,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><div class="first last line-block">
+<tr class="row-odd"><td><div class="first last line-block">
 <div class="line">|</div>
 </div>
 </td>
@@ -408,7 +402,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><div class="first last line-block">
+<tr class="row-even"><td><div class="first last line-block">
 <div class="line">&lt;(commands)</div>
 <div class="line">&gt;(commands)</div>
 </div>
@@ -419,7 +413,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><div class="first last line-block">
+<tr class="row-odd"><td><div class="first last line-block">
 <div class="line">&amp;</div>
 <div class="line">&amp;&amp;</div>
 <div class="line">||</div>
@@ -432,7 +426,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><div class="first last line-block">
+<tr class="row-even"><td><div class="first last line-block">
 <div class="line">-</div>
 <div class="line">&#8211;</div>
 <div class="line">&#8211;</div>
@@ -449,10 +443,10 @@
 </table>
 </div>
 </div>
-<div class="section" id="comparison-operators">
-<span id="comparison"></span><h2>Comparison operators<a class="headerlink" href="#comparison-operators" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="comparison-tests">
+<span id="comparison"></span><h2>Comparison tests<a class="headerlink" href="#comparison-tests" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="string-comparisons">
-<h3>String comparisons<a class="headerlink" href="#string-comparisons" title="Permalink to this headline">¶</a></h3>
+<span id="test-string"></span><h3>String comparisons<a class="headerlink" href="#string-comparisons" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="docutils">
 <colgroup>
 <col width="17%" />
@@ -505,7 +499,7 @@
 </table>
 </div>
 <div class="section" id="integer-comparisons">
-<h3>Integer comparisons<a class="headerlink" href="#integer-comparisons" title="Permalink to this headline">¶</a></h3>
+<span id="test-math"></span><h3>Integer comparisons<a class="headerlink" href="#integer-comparisons" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="docutils">
 <colgroup>
 <col width="17%" />
@@ -561,7 +555,7 @@
 </table>
 </div>
 <div class="section" id="logical-comparisons">
-<h3>Logical comparisons<a class="headerlink" href="#logical-comparisons" title="Permalink to this headline">¶</a></h3>
+<span id="test-logic"></span><h3>Logical comparisons<a class="headerlink" href="#logical-comparisons" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="docutils">
 <colgroup>
 <col width="17%" />
@@ -587,6 +581,119 @@
 </tr>
 </tbody>
 </table>
+</div>
+<div class="section" id="file-test-operators">
+<span id="test-file"></span><h3>File test operators<a class="headerlink" href="#file-test-operators" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="17%" />
+<col width="83%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Operator</th>
+<th class="head">Condition which returns true</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><div class="first last line-block">
+<div class="line">-e</div>
+<div class="line">-a</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">file exists</div>
+<div class="line">file exists (deprecated usage)</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>-f</td>
+<td>file is a regular file (not a directory or device file)</td>
+</tr>
+<tr class="row-even"><td>-s</td>
+<td>file is not zero size</td>
+</tr>
+<tr class="row-odd"><td>-d</td>
+<td>file is a directory</td>
+</tr>
+<tr class="row-even"><td>-b</td>
+<td>file is a block device</td>
+</tr>
+<tr class="row-odd"><td>-c</td>
+<td>file is a character device</td>
+</tr>
+<tr class="row-even"><td>-p</td>
+<td>file is a pipe</td>
+</tr>
+<tr class="row-odd"><td><div class="first last line-block">
+<div class="line">-h</div>
+<div class="line">-L</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">file is a symbolic link</div>
+<div class="line">file is a symbolic link</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>-S</td>
+<td>file is a socket</td>
+</tr>
+<tr class="row-odd"><td>-t</td>
+<td><div class="first last line-block">
+<div class="line">file (descriptor) is associated with a terminal device</div>
+<div class="line">In a script, this test option can check whether the</div>
+<div class="line">stdin [ -t 0 ] or stdout [ -t 1 ] is a terminal.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>-r</td>
+<td>file has read permission (for the user running the test)</td>
+</tr>
+<tr class="row-odd"><td>-w</td>
+<td>file has write permission (for the user running the test)</td>
+</tr>
+<tr class="row-even"><td>-x</td>
+<td>file has execute permission (for the user running the test)</td>
+</tr>
+<tr class="row-odd"><td>-g</td>
+<td><div class="first last line-block">
+<div class="line">set-group-id (sgid) flag set on file or directory</div>
+<div class="line">If sgid flag is set on a directory, then files created within</div>
+<div class="line">that directory belong to the group that owns the directory,</div>
+<div class="line">not to the group of the user who created the file.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>-u</td>
+<td>set-user-id (suid) flag set on file</td>
+</tr>
+<tr class="row-odd"><td>-k</td>
+<td>sticky bit set</td>
+</tr>
+<tr class="row-even"><td>-O</td>
+<td>you are owner of file</td>
+</tr>
+<tr class="row-odd"><td>-G</td>
+<td>group-id of file same as yours</td>
+</tr>
+<tr class="row-even"><td>-N</td>
+<td>file modified since it was last read</td>
+</tr>
+<tr class="row-odd"><td>f1 -nt f2</td>
+<td>file f1 is newer than f2</td>
+</tr>
+<tr class="row-even"><td>f1 -ot f2</td>
+<td>file f1 is older than f2</td>
+</tr>
+<tr class="row-odd"><td>f1 -ef f2</td>
+<td>files f1 and f2 are hard links to the same file</td>
+</tr>
+<tr class="row-even"><td>!</td>
+<td>&#8220;not&#8221; &#8211; reverses the sense of the tests above</td>
+</tr>
+</tbody>
+</table>
+<p>Reference: <a class="reference external" href="http://tldp.org/LDP/abs/html/fto.html">Advanced Bash Scripting Guide</a></p>
 <hr class="docutils" />
 <p class="rubric">Footnotes</p>
 <table class="docutils footnote" frame="void" id="id2" rules="none">

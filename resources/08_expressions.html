@@ -24,14 +24,14 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="Developer Documentation Resource Pages 1.0 documentation" href="index.html" />
-    <link rel="prev" title="Operators &amp; Characters" href="07_operators.html" /> 
+    <link rel="prev" title="Operators &amp; Other Characters" href="07_operators.html" /> 
   </head>
   <body>
     <div class="related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="07_operators.html" title="Operators &amp; Characters"
+          <a href="07_operators.html" title="Operators &amp; Other Characters"
              accesskey="P">previous</a></li>
         <li><a href="index.html">Developer Documentation Resource Pages 1.0 documentation</a> &raquo;</li> 
       </ul>
@@ -48,7 +48,7 @@
 
   <h4>Previous topic</h4>
   <p class="topless"><a href="07_operators.html"
-                        title="previous chapter">Operators &amp; Characters</a></p>
+                        title="previous chapter">Operators &amp; Other Characters</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="_sources/08_expressions.txt"
@@ -79,64 +79,64 @@
 <span id="expressions"></span><h1>Routines and Expressions<a class="headerlink" href="#routines-and-expressions" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="logical-expression-blocks">
 <h2>Logical expression blocks<a class="headerlink" href="#logical-expression-blocks" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python"><div class="highlight"><pre>for name in [wordlist]
-do
-  command list
-done
+<div class="highlight-bash"><div class="highlight"><pre><span class="k">for </span>name in <span class="o">[</span>wordlist<span class="o">]</span>
+<span class="k">do</span>
+<span class="k">  </span><span class="nb">command </span>list
+<span class="k">done</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre>for (( expr1; expr2; ... ))
-do
-   command list
-done
+<div class="highlight-bash"><div class="highlight"><pre><span class="k">for</span> <span class="o">((</span> expr1; expr2; ... <span class="o">))</span>
+<span class="k">do</span>
+<span class="k">   </span><span class="nb">command </span>list
+<span class="k">done</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre>while [ logical expr ]
-do
-  command list
-done
+<div class="highlight-bash"><div class="highlight"><pre><span class="k">while</span> <span class="o">[</span> logical expr <span class="o">]</span>
+<span class="k">do</span>
+<span class="k">  </span><span class="nb">command </span>list
+<span class="k">done</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre>until [ logical expr ]
-do
-  command list
-done
+<div class="highlight-bash"><div class="highlight"><pre><span class="k">until</span> <span class="o">[</span> logical expr <span class="o">]</span>
+<span class="k">do</span>
+<span class="k">  </span><span class="nb">command </span>list
+<span class="k">done</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre>case &quot;$variable&quot; in
-  value1)
-    command list ;;
-  value2)
-    command list ;;
-esac
+<div class="highlight-bash"><div class="highlight"><pre><span class="k">case</span> <span class="s2">&quot;$variable&quot;</span> in
+  value1<span class="o">)</span>
+    <span class="nb">command </span>list ;;
+  value2<span class="o">)</span>
+    <span class="nb">command </span>list ;;
+<span class="k">esac</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre>if [ logical expr ]
-then
-  command list
-elif [ logical expr ]
-then
-  command list
-else
-  command list
-fi
+<div class="highlight-bash"><div class="highlight"><pre><span class="k">if</span> <span class="o">[</span> logical expr <span class="o">]</span>
+<span class="k">then</span>
+<span class="k">  </span><span class="nb">command </span>list
+<span class="k">elif</span> <span class="o">[</span> logical expr <span class="o">]</span>
+<span class="k">then</span>
+<span class="k">  </span><span class="nb">command </span>list
+<span class="k">else</span>
+<span class="k">  </span><span class="nb">command </span>list
+<span class="k">fi</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre># assigning an array to variables using &quot;printf -v VARNAME VALUE&quot;
-if [[ -s &quot;$VARS-FILE&quot; ]]
-then
-  SAVEIFS=$IFS
-  IFS=$&#39;\n&#39;
-  VARLIST=($(&lt;&quot;$VARS-FILE&quot;))
-  IFS=$SAVEIFS
-  # assign array to named variables using printf --
-  for (( i=0; i&lt;${#VARLIST[@]}; i++ ))
-  do
-    VAR-NAME=${VARLIST[i]%%=*}
-    VAR-VALUE=${VARLIST[i]##*=}
-    printf -v $VAR-NAME $VAR-VALUE
-  done
-fi
+<div class="highlight-bash"><div class="highlight"><pre><span class="c"># assigning an array to variables using &quot;printf -v VARNAME VALUE&quot;</span>
+<span class="k">if</span> <span class="o">[[</span> -s <span class="s2">&quot;$VARS-FILE&quot;</span> <span class="o">]]</span>
+<span class="k">then</span>
+<span class="k">  </span><span class="nv">SAVEIFS</span><span class="o">=</span><span class="nv">$IFS</span>
+  <span class="nv">IFS</span><span class="o">=</span><span class="s1">$&#39;\n&#39;</span>
+  <span class="nv">VARLIST</span><span class="o">=(</span><span class="k">$(</span>&lt;<span class="s2">&quot;$VARS-FILE&quot;</span><span class="k">)</span><span class="o">)</span>
+  <span class="nv">IFS</span><span class="o">=</span><span class="nv">$SAVEIFS</span>
+  <span class="c"># assign array to named variables using printf --</span>
+  <span class="k">for</span> <span class="o">((</span> <span class="nv">i</span><span class="o">=</span>0; i&lt;<span class="k">${#</span><span class="nv">VARLIST</span><span class="p">[@]</span><span class="k">}</span>; i++ <span class="o">))</span>
+  <span class="k">do</span>
+<span class="k">    </span>VAR-NAME<span class="o">=</span><span class="k">${</span><span class="nv">VARLIST</span><span class="p">[i]%%=*</span><span class="k">}</span>
+    VAR-VALUE<span class="o">=</span><span class="k">${</span><span class="nv">VARLIST</span><span class="p">[i]##*=</span><span class="k">}</span>
+    <span class="nb">printf</span> -v <span class="nv">$VAR</span>-NAME <span class="nv">$VAR</span>-VALUE
+  <span class="k">done</span>
+<span class="k">fi</span>
 </pre></div>
 </div>
 </div>
@@ -152,7 +152,7 @@ fi
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="07_operators.html" title="Operators &amp; Characters"
+          <a href="07_operators.html" title="Operators &amp; Other Characters"
              >previous</a></li>
         <li><a href="index.html">Developer Documentation Resource Pages 1.0 documentation</a> &raquo;</li> 
       </ul>

@@ -17,10 +17,9 @@ fi
 # User execution confirmation (location varies)
 # echo "Say Hello?" 
 # echo "\n\e[1;31m Say Hello?"
-# read -n 1 -p "(y/n)" RESP 
-echo -e '\n\e[1;31m Say Hello?'
-read -n 1 -p "      (y/n)" RESP 
-echo -e "\e[0m" 
+echo -e -n '\n\e[1;31m Say Hello'
+read -n 1 -p ' (y/n)?' RESP 
+echo -e '\e[0m'
 case $RESP in
   y|Y)
     EXIT='0' ;;

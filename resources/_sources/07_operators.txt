@@ -1,8 +1,10 @@
 .. _operators:
 
 #############################
-Operators & Characters
+Operators & Other Characters
 #############################
+
+.. characters:
 
 Special characters [#]_
 =============================
@@ -63,8 +65,7 @@ Special characters [#]_
 || $$       || process id of running script                                    |
 +-----------+------------------------------------------------------------------+
 
-Operators and constructs
-=============================
+.. _arithmetic:
 
 Arithmetic operators
 -----------------------------
@@ -87,6 +88,8 @@ Arithmetic operators
 |  \*\*       | exponentiate                                                   |
 +-------------+----------------------------------------------------------------+
 
+.. constructs:
+
 Expression constructs
 -----------------------------
 
@@ -100,22 +103,20 @@ Expression constructs
 +-------------+-----------------------------------------------------------------+
 | $(expr)     | evaluate command expression (creates subshell)                  |
 +-------------+-----------------------------------------------------------------+
-| $((expr))   | evaluate an (C-style) integer arithmetic expression             |
+| $((expr))   | evaluate an integer arithmetic expression (C-style)             |
 +-------------+-----------------------------------------------------------------+
 | $[3+4+5]    | evaluate an integer math expression (deprecated)                |
 +-------------+-----------------------------------------------------------------+
 || {var}      || brace expansion: ``echo {1,2,3}`` shows ``1 2 3``              |
 || {02..8..2} || expand series starting ``02`` step ``2`` with ``0`` padding    |
-|| { expr... }|| code block: inline group commands into local anonymous function|
+|| {expr... } || code block: inline group commands into local anonymous function|
 +-------------+-----------------------------------------------------------------+
 || ${var:l:n} || at ``l`` from left extract ``n`` characters                    |
-||            || negatives start at right, extract by position, not count       |
-+-------------+-----------------------------------------------------------------+
-| ${@:0}      |                                                                 |
+||            || negatives start at right and extract by position, not count    |
 +-------------+-----------------------------------------------------------------+
 | ${!var}     | indirect reference (eval) to value of variable                  |
 +-------------+-----------------------------------------------------------------+
-| [ logical ] | builtin shell logical test                                      |
+| [ logical ] | builtin shell logical test (``[`` is the "test" operator)       |
 +-------------+-----------------------------------------------------------------+
 | [[ logic ]] | shell keyword construct for logical test                        |
 +-------------+-----------------------------------------------------------------+
@@ -146,8 +147,10 @@ Expression constructs
 
 .. _comparison:
 
-Comparison operators
+Comparison tests
 =============================
+
+.. _test-string:
 
 String comparisons
 -----------------------------
@@ -166,6 +169,8 @@ String comparisons
 || -z         || is null (zero length)                                         |
 || -n         || is not null (has length > zero)                               |
 +-------------+----------------------------------------------------------------+
+
+.. _test-math:
 
 Integer comparisons
 -----------------------------
@@ -202,6 +207,8 @@ Integer comparisons
 | >=          | is greater than or equal to: ``(( number1 >= expr2 ))``        |
 +-------------+----------------------------------------------------------------+
 
+.. _test-logic:
+
 Logical comparisons
 -----------------------------
 
@@ -216,6 +223,70 @@ Logical comparisons
 +-------------+----------------------------------------------------------------+
 | \|\|        | logical or within double brackets: ``[[ expr1 || expr2 ]]``    |
 +-------------+----------------------------------------------------------------+
+
+.. _test-file:
+
+File test operators
+-----------------------------
+
++-------------+----------------------------------------------------------------+
+| Operator    | Condition which returns true                                   |
++=============+================================================================+
+|| -e         || file exists                                                   |
+|| -a         || file exists (deprecated usage)                                |
++-------------+----------------------------------------------------------------+
+|  -f         | file is a regular file (not a directory or device file)        |
++-------------+----------------------------------------------------------------+
+|  -s         | file is not zero size                                          |
++-------------+----------------------------------------------------------------+
+|  -d         | file is a directory                                            |
++-------------+----------------------------------------------------------------+
+|  -b         | file is a block device                                         |
++-------------+----------------------------------------------------------------+
+|  -c         | file is a character device                                     |
++-------------+----------------------------------------------------------------+
+|  -p         | file is a pipe                                                 |
++-------------+----------------------------------------------------------------+
+|| -h         || file is a symbolic link                                       |
+|| -L         || file is a symbolic link                                       |
++-------------+----------------------------------------------------------------+
+|  -S         | file is a socket                                               |
++-------------+----------------------------------------------------------------+
+|  -t         || file (descriptor) is associated with a terminal device        |
+|             || In a script, this test option can check whether the           |
+|             || stdin [ -t 0 ] or stdout [ -t 1 ] is a terminal.              |
++-------------+----------------------------------------------------------------+
+|  -r         | file has read permission (for the user running the test)       |
++-------------+----------------------------------------------------------------+
+|  -w         | file has write permission (for the user running the test)      |
++-------------+----------------------------------------------------------------+
+|  -x         | file has execute permission (for the user running the test)    |
++-------------+----------------------------------------------------------------+
+|  -g         || set-group-id (sgid) flag set on file or directory             |
+|             || If sgid flag is set on a directory, then files created within |
+|             || that directory belong to the group that owns the directory,   |
+|             || not to the group of the user who created the file.            |
++-------------+----------------------------------------------------------------+
+|  -u         | set-user-id (suid) flag set on file                            |
++-------------+----------------------------------------------------------------+
+|  -k         | sticky bit set                                                 |
++-------------+----------------------------------------------------------------+
+|  -O         | you are owner of file                                          |
++-------------+----------------------------------------------------------------+
+|  -G         | group-id of file same as yours                                 |
++-------------+----------------------------------------------------------------+
+|  -N         | file modified since it was last read                           |
++-------------+----------------------------------------------------------------+
+|  f1 -nt f2  | file f1 is newer than f2                                       |
++-------------+----------------------------------------------------------------+
+|  f1 -ot f2  | file f1 is older than f2                                       |
++-------------+----------------------------------------------------------------+
+|  f1 -ef f2  | files f1 and f2 are hard links to the same file                |
++-------------+----------------------------------------------------------------+
+|  !          | "not" -- reverses the sense of the tests above                 |
++-------------+----------------------------------------------------------------+
+
+Reference: `Advanced Bash Scripting Guide <http://tldp.org/LDP/abs/html/fto.html>`_
 
 ---------
 

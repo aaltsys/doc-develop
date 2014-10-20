@@ -25,10 +25,10 @@ Declare the script language
 
 .. sidebar:: Program declaration 
 
- ::
+   .. code-block:: bash
  
-   #! /bin/sh
-   # This program sets video resolution ...
+      #! /bin/sh
+      # This program sets video resolution ...
 
 Head each script with a declaration, followed by comments describing the 
 program's purpose. 
@@ -44,13 +44,13 @@ Assign variables before use
 
 .. sidebar:: Variable initialization 
 
- ::
+   .. code-block:: bash
  
-   DIR_STATIC='_static'
-   MAKE_METHOD='html'
-   GITHUB='gh-pages'
-   HEROKU='master'
-   NODEPLOY=''
+      DIR_STATIC='_static'
+      MAKE_METHOD='html'
+      GITHUB='gh-pages'
+      HEROKU='master'
+      NODEPLOY=''
 
 Initialize all variables at the top of a script by assigning each variable a 
 default value or a null. The form of an assignment statement is the name of the 
@@ -68,12 +68,12 @@ Assign script parameters
 
 .. sidebar:: Parameter assignment 
 
- ::
+   .. code-block:: bash
  
-   PROJECT='default'
-   if [ $1 != '' ] ; then
-     PROJECT=$1
-   fi
+      PROJECT='default'
+      if [ $1 != '' ] ; then
+        PROJECT=$1
+      fi
 
 Assign command parameters to named variables, provided the parameters are being 
 passed. Notice that variables are assigned by name with an ``=`` suffixed, but 
@@ -89,15 +89,15 @@ Define function sections
 
 .. sidebar:: Defining functions
 
- ::
- 
-   makedeployment() {
-     make clean $MAKE_METHOD BUILDDIR=$DIR_BUILD
-     cp -R $DIR_BUILD/$MAKE_METHOD/* $DIR_OUT/
-     if [[ -d $DIR_DOWNLOADS ]] ; then
-       cp -R $DIR_DOWNLOADS $DIR_OUT/
-     fi
-   }
+   .. code-block:: bash
+
+      makedeployment() {
+        make clean $MAKE_METHOD BUILDDIR=$DIR_BUILD
+        cp -R $DIR_BUILD/$MAKE_METHOD/* $DIR_OUT/
+        if [[ -d $DIR_DOWNLOADS ]] ; then
+          cp -R $DIR_DOWNLOADS $DIR_OUT/
+        fi
+      }
 
 Code which may be executed repeatedly in a program, with each execution 
 differing only by assigned values, should be placed in functions. 
@@ -136,18 +136,18 @@ Embed documentation comments
 
 .. sidebar:: Comments
 
- ::
+   .. code-block:: bash
  
-   # Makedeployment creates _build contents
-   makedeployment() {
-     make clean $MAKE_METHOD BUILDDIR=$DIR_BUILD
-     cp -R $DIR_BUILD/$MAKE_METHOD/* $DIR_OUT/
-
-     # add download files provided they exist
-     if [[ -d $DIR_DOWNLOADS ]] ; then
-       cp -R $DIR_DOWNLOADS $DIR_OUT/
-     fi
-   }
+      # Makedeployment creates _build contents
+      makedeployment() {
+        make clean $MAKE_METHOD BUILDDIR=$DIR_BUILD
+        cp -R $DIR_BUILD/$MAKE_METHOD/* $DIR_OUT/
+   
+        # add download files provided they exist
+        if [[ -d $DIR_DOWNLOADS ]] ; then
+          cp -R $DIR_DOWNLOADS $DIR_OUT/
+        fi
+      }
 
 If the first non-whitespace character in a statement is the hash mark (``#``), 
 then the statement is a comment and is not interpreted. Use code comments to:
@@ -166,12 +166,12 @@ Display results
 
 .. sidebar:: Echo results
 
- ::
+   .. code-block:: bash
  
-   if [[ ! -d $PROJECT ]] ; then
-     echo "No Project folder \"$PROJECT\". Exiting ... "
-     exit 1
-   fi
+      if [[ ! -d $PROJECT ]] ; then
+        echo "No Project folder \"$PROJECT\". Exiting ... "
+        exit 1
+      fi
 
 Use echo commands to display text on an output device, typically on the console 
 monitor.
@@ -194,14 +194,14 @@ Inputs and Logic tests
 
 .. sidebar:: Decision logic
 
- ::
+   .. code-block:: bash
  
-   echo -e "\n Install apt-fast?" 
-   read -n 1 -p "(y/n)" RESP  
-   if [ "$RESP" != 'y' ]; then
-     echo -e "\n Canceled"
-     exit 1
-   fi
+      echo -e "\n Install apt-fast?" 
+      read -n 1 -p "(y/n)" RESP  
+      if [ "$RESP" != 'y' ]; then
+        echo -e "\n Canceled"
+        exit 1
+      fi
 
 Use a read statement to get a single user response at the command line. Use this 
 to have the user confirm whenever a script will permanently affect a system. 
@@ -221,25 +221,25 @@ Program flow control
 
 .. sidebar:: Program flow
 
- ::
+   .. code-block:: bash
 
-   for OPT in "$@"
-   do
-     case $OPT in
-       -h|--help)
-         display-help
-         exit
-         ;;
-       -n|--nodeploy)
-         NODEPLOY='YES'
-         shift
-         ;;
-       *)
-         PROJECT=$OPT
-         shift
-         ;;
-     esac
-   done
+      for OPT in "$@"
+        do
+          case $OPT in
+            -h|--help)
+              display-help
+              exit
+              ;;
+            -n|--nodeploy)
+              NODEPLOY='YES'
+              shift
+              ;;
+            *)
+              PROJECT=$OPT
+              shift
+              ;;
+          esac
+        done
 
 Speaking of case statements, the sidebar code demonstrates how a relatively 
 complex task, reading and processing a list of items entered in arbitrary order, 

@@ -1,4 +1,4 @@
-.. _logic-lesson.rst
+.. _logic-lesson:
 
 #############################
 Logic & Flow Control Exercise
@@ -10,14 +10,14 @@ Inputs and Logic tests
 
 .. sidebar:: Decision logic
 
- ::
- 
-   echo -e "\n Install apt-fast?" 
-   read -n 1 -p "(y/n)" RESP  
-   if [ "$RESP" != 'y' ]; then
-     echo -e "\n Canceled"
-     exit 1
-   fi
+   .. code-block:: bash
+
+      echo -e "\n Install apt-fast?" 
+      read -n 1 -p "(y/n)" RESP  
+      if [ "$RESP" != 'y' ]; then
+        echo -e "\n Canceled"
+        exit 1
+      fi
 
 Use a read statement to get a single user response at the command line. Use this 
 to have the user confirm whenever a script will permanently affect a system. 
@@ -37,25 +37,25 @@ Program flow control
 
 .. sidebar:: Program flow
 
- ::
+   .. code-block:: bash
 
-   for OPT in "$@"
-   do
-     case $OPT in
-       -h|--help)
-         display-help
-         exit
-         ;;
-       -n|--nodeploy)
-         NODEPLOY='YES'
-         shift
-         ;;
-       *)
-         PROJECT=$OPT
-         shift
-         ;;
-     esac
-   done
+      for OPT in "$@"
+      do
+        case $OPT in
+          -h|--help)
+            display-help
+            exit
+            ;;
+          -n|--nodeploy)
+            NODEPLOY='YES'
+            shift
+            ;;
+          *)
+            PROJECT=$OPT
+            shift
+            ;;
+        esac
+      done
 
 Speaking of case statements, the sidebar code demonstrates how a relatively 
 complex task, reading and processing a list of items entered in arbitrary order, 

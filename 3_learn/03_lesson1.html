@@ -24,7 +24,7 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="Linux Shell Script Programming 1.0 documentation" href="index.html" />
-    <link rel="next" title="Programming Conventions" href="04_conventions.html" />
+    <link rel="next" title="Programming Considerations" href="04_considerations.html" />
     <link rel="prev" title="Script / Program Organization" href="02_organize.html" /> 
   </head>
   <body>
@@ -32,7 +32,7 @@
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="04_conventions.html" title="Programming Conventions"
+          <a href="04_considerations.html" title="Programming Considerations"
              accesskey="N">next</a></li>
         <li class="right" >
           <a href="02_organize.html" title="Script / Program Organization"
@@ -55,6 +55,7 @@
 <li><a class="reference internal" href="#assign-a-variable">Assign a variable</a></li>
 <li><a class="reference internal" href="#read-and-assign-an-input">Read and assign an input</a></li>
 <li><a class="reference internal" href="#user-confirmation">User confirmation</a></li>
+<li><a class="reference internal" href="#just-for-fun-ctionality">Just for Fun(ctionality)</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#example-finished-program">Example Finished Program</a></li>
@@ -66,8 +67,8 @@
   <p class="topless"><a href="02_organize.html"
                         title="previous chapter">Script / Program Organization</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="04_conventions.html"
-                        title="next chapter">Programming Conventions</a></p>
+  <p class="topless"><a href="04_considerations.html"
+                        title="next chapter">Programming Considerations</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="_sources/03_lesson1.txt"
@@ -108,7 +109,7 @@ delay that final 10%.</p>
 <h2>Example Script Layout<a class="headerlink" href="#example-script-layout" title="Permalink to this headline">¶</a></h2>
 <p>Warm up the Xerox by highlighting and copying the following code outline, which
 can become the basis of scripts written throughout these exercises.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c">#! /bin/sh</span>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c">#! /bin/sh</span>
 <span class="c"># Describe program&#39;s principal objective</span>
 <span class="c">#</span>
 <span class="c"># Initialize variables</span>
@@ -214,10 +215,10 @@ interpreter knows the path to the script.</p>
 </div>
 <p>Edit the <strong class="program">hello-world.sh</strong> script to include all four versions of the
 <strong class="command">echo</strong> statement as follows:</p>
-<div class="highlight-python"><div class="highlight"><pre>echo &#39;Hello DISPLAY&#39;  ; # full quoting
-echo &quot;hello DISPLAY&quot;  ; # partial quoting
-echo &#39;Hello $DISPLAY&#39; ; # $-operator for evaluation
-echo &quot;Hello $DISPLAY&quot; ; # $ evaluation in partial quotes
+<div class="highlight-bash"><div class="highlight"><pre><span class="nb">echo</span> <span class="s1">&#39;Hello DISPLAY&#39;</span>  ; <span class="c"># full quoting</span>
+<span class="nb">echo</span> <span class="s2">&quot;hello DISPLAY&quot;</span>  ; <span class="c"># partial quoting</span>
+<span class="nb">echo</span> <span class="s1">&#39;Hello $DISPLAY&#39;</span> ; <span class="c"># $-operator for evaluation</span>
+<span class="nb">echo</span> <span class="s2">&quot;Hello $DISPLAY&quot;</span> ; <span class="c"># $ evaluation in partial quotes</span>
 </pre></div>
 </div>
 <p>Execute script <strong class="program">hello-world.sh</strong>. Which version of the <strong class="command">echo</strong>
@@ -243,12 +244,12 @@ variable <tt class="kbd docutils literal"><span class="pre">DISPLAY</span></tt>.
 </div>
 <p>Now include the following four logic test statements preceding your then
 statement, so your code reads:</p>
-<div class="highlight-python"><div class="highlight"><pre># if [$1 != &#39;&#39;]      ; # without spaces around [ ]
-# if [ $1 != &#39;&#39; ]    ; # with !# and single [ ]
-# if [ ! $1 == &#39;&#39; ]  ; # to (!) negate the expression
-# if [[ $1 != &#39;&#39; ]]  ; # w/ single [ and double [[
-then DISPLAY=$1
-fi
+<div class="highlight-bash"><div class="highlight"><pre><span class="c"># if [$1 != &#39;&#39;]      ; # without spaces around [ ]</span>
+<span class="c"># if [ $1 != &#39;&#39; ]    ; # with !# and single [ ]</span>
+<span class="c"># if [ ! $1 == &#39;&#39; ]  ; # to (!) negate the expression</span>
+<span class="c"># if [[ $1 != &#39;&#39; ]]  ; # w/ single [ and double [[</span>
+<span class="k">then </span><span class="nv">DISPLAY</span><span class="o">=</span><span class="nv">$1</span>
+<span class="k">fi</span>
 </pre></div>
 </div>
 <p>One at a time: uncomment a statement, test run the script, and note the result
@@ -269,6 +270,20 @@ work right with just any syntax. To verify results, logic must be tested.</p>
 <p class="last">On the previous page, look for an example of the <strong class="command">read</strong> command for
 guidance.</p>
 </div>
+</div>
+<div class="section" id="just-for-fun-ctionality">
+<h3>Just for Fun(ctionality)<a class="headerlink" href="#just-for-fun-ctionality" title="Permalink to this headline">¶</a></h3>
+<p>Replace your user confirmation code with the following statements:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nb">echo</span> -e -n <span class="s1">&#39;\n\e[1;31m Say Hello&#39;</span>
+<span class="nb">read</span> -n 1 -p <span class="s1">&#39; (y/n)?&#39;</span> RESP
+<span class="nb">echo</span> -e <span class="s1">&#39;\e[0m&#39;</span>
+</pre></div>
+</div>
+<p>Play around (that means test run) these statements. On the <strong class="command">echo</strong>
+statement, remove the option parameters <tt class="docutils literal"><span class="pre">-e</span></tt> or <tt class="docutils literal"><span class="pre">-n</span></tt> and observe the effect.
+Similarly, try removing <tt class="docutils literal"><span class="pre">-n</span> <span class="pre">1</span></tt> from the <strong class="command">read</strong> statement. Finally,
+why would full quoting (with &#8216;) or partial quoting (with &#8221;) have the same
+result here?</p>
 </div>
 </div>
 <div class="section" id="example-finished-program">
@@ -332,8 +347,7 @@ or just view the code below for one solution to this exercise.</p>
 55
 56
 57
-58
-59</pre></div></td><td class="code"><div class="highlight"><pre><span class="c">#! /bin/bash</span>
+58</pre></div></td><td class="code"><div class="highlight"><pre><span class="c">#! /bin/bash</span>
 <span class="c"># My first script, presenting programming to the world</span>
 <span class="c"># </span>
 <span class="c"># Initialize variables</span>
@@ -352,10 +366,9 @@ or just view the code below for one solution to this exercise.</p>
 <span class="c"># User execution confirmation (location varies)</span>
 <span class="c"># echo &quot;Say Hello?&quot; </span>
 <span class="c"># echo &quot;\n\e[1;31m Say Hello?&quot;</span>
-<span class="c"># read -n 1 -p &quot;(y/n)&quot; RESP </span>
-<span class="nb">echo</span> -e <span class="s1">&#39;\n\e[1;31m Say Hello?&#39;</span>
-<span class="nb">read</span> -n 1 -p <span class="s2">&quot;      (y/n)&quot;</span> RESP 
-<span class="nb">echo</span> -e <span class="s2">&quot;\e[0m&quot;</span> 
+<span class="nb">echo</span> -e -n <span class="s1">&#39;\n\e[1;31m Say Hello&#39;</span>
+<span class="nb">read</span> -n 1 -p <span class="s1">&#39; (y/n)?&#39;</span> RESP 
+<span class="nb">echo</span> -e <span class="s1">&#39;\e[0m&#39;</span>
 <span class="k">case</span> <span class="nv">$RESP</span> in
   y|Y<span class="o">)</span>
     <span class="nv">EXIT</span><span class="o">=</span><span class="s1">&#39;0&#39;</span> ;;
@@ -407,7 +420,7 @@ or just view the code below for one solution to this exercise.</p>
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="04_conventions.html" title="Programming Conventions"
+          <a href="04_considerations.html" title="Programming Considerations"
              >next</a></li>
         <li class="right" >
           <a href="02_organize.html" title="Script / Program Organization"

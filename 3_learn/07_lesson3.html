@@ -84,17 +84,17 @@
           <div class="body">
             
   <div class="section" id="logic-flow-control-exercise">
-<h1>Logic &amp; Flow Control Exercise<a class="headerlink" href="#logic-flow-control-exercise" title="Permalink to this headline">¶</a></h1>
+<span id="logic-lesson"></span><h1>Logic &amp; Flow Control Exercise<a class="headerlink" href="#logic-flow-control-exercise" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="inputs-and-logic-tests">
 <h2>Inputs and Logic tests<a class="headerlink" href="#inputs-and-logic-tests" title="Permalink to this headline">¶</a></h2>
 <div class="sidebar">
 <p class="first sidebar-title">Decision logic</p>
-<div class="last highlight-python"><div class="highlight"><pre>echo -e &quot;\n Install apt-fast?&quot;
-read -n 1 -p &quot;(y/n)&quot; RESP
-if [ &quot;$RESP&quot; != &#39;y&#39; ]; then
-  echo -e &quot;\n Canceled&quot;
-  exit 1
-fi
+<div class="last highlight-bash"><div class="highlight"><pre><span class="nb">echo</span> -e <span class="s2">&quot;\n Install apt-fast?&quot;</span>
+<span class="nb">read</span> -n 1 -p <span class="s2">&quot;(y/n)&quot;</span> RESP
+<span class="k">if</span> <span class="o">[</span> <span class="s2">&quot;$RESP&quot;</span> !<span class="o">=</span> <span class="s1">&#39;y&#39;</span> <span class="o">]</span>; <span class="k">then</span>
+<span class="k">  </span><span class="nb">echo</span> -e <span class="s2">&quot;\n Canceled&quot;</span>
+  <span class="nb">exit </span>1
+<span class="k">fi</span>
 </pre></div>
 </div>
 </div>
@@ -115,23 +115,23 @@ input.</p>
 <h2>Program flow control<a class="headerlink" href="#program-flow-control" title="Permalink to this headline">¶</a></h2>
 <div class="sidebar">
 <p class="first sidebar-title">Program flow</p>
-<div class="last highlight-python"><div class="highlight"><pre>for OPT in &quot;$@&quot;
-do
-  case $OPT in
-    -h|--help)
+<div class="last highlight-bash"><div class="highlight"><pre><span class="k">for </span>OPT in <span class="s2">&quot;$@&quot;</span>
+<span class="k">do</span>
+<span class="k">  case</span> <span class="nv">$OPT</span> in
+    -h|--help<span class="o">)</span>
       display-help
-      exit
+      <span class="nb">exit</span>
       ;;
-    -n|--nodeploy)
-      NODEPLOY=&#39;YES&#39;
-      shift
+    -n|--nodeploy<span class="o">)</span>
+      <span class="nv">NODEPLOY</span><span class="o">=</span><span class="s1">&#39;YES&#39;</span>
+      <span class="nb">shift</span>
       ;;
-    *)
-      PROJECT=$OPT
-      shift
+    *<span class="o">)</span>
+      <span class="nv">PROJECT</span><span class="o">=</span><span class="nv">$OPT</span>
+      <span class="nb">shift</span>
       ;;
-  esac
-done
+  <span class="k">esac</span>
+<span class="k">done</span>
 </pre></div>
 </div>
 </div>
