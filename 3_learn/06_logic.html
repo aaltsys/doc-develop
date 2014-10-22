@@ -45,6 +45,12 @@
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Logic and Flow Control</a><ul>
+<li><a class="reference internal" href="#logic-operations">Logic operations</a><ul>
+<li><a class="reference internal" href="#explaining-unary">Explaining <em>unary</em></a></li>
+<li><a class="reference internal" href="#explaining-binary">Explaining <em>binary</em></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#test-constructs">Test Constructs</a></li>
 <li><a class="reference internal" href="#a-not-equal-to-if-then-statement">A not equal to if/then statement</a></li>
 <li><a class="reference internal" href="#an-equal-to-if-then-else-statement">An equal to if/then/else statement</a></li>
 <li><a class="reference internal" href="#a-code-search-statement">A code search statement</a></li>
@@ -97,9 +103,115 @@
             
   <div class="section" id="logic-and-flow-control">
 <span id="logic"></span><h1>Logic and Flow Control<a class="headerlink" href="#logic-and-flow-control" title="Permalink to this headline">¶</a></h1>
-<p>There are two parts to programming logic: test expressions, and flow control
-statements.</p>
+<p>It is said that the beauty of Unix standards comes from their wide variety, and
+the logical expressions and tests in Linux scripting proves this aphorism.</p>
+<div class="section" id="logic-operations">
+<h2>Logic operations<a class="headerlink" href="#logic-operations" title="Permalink to this headline">¶</a></h2>
+<p>A word about programming logic. Typically, logic tests produce one of two
+results: <tt class="docutils literal"><span class="pre">true</span></tt> (<tt class="docutils literal"><span class="pre">1</span></tt>), or <tt class="docutils literal"><span class="pre">false</span></tt> (<tt class="docutils literal"><span class="pre">0</span></tt>). (Right here, those old
+FORTRAN geezers can stop screaming about <tt class="docutils literal"><span class="pre">arithmetic</span> <span class="pre">if</span></tt>.) The operators in a
+logic test are mostly either <em>unary</em> or <em>binary</em>, meaning that a test either
+evaluates a condition of one term, or compares two terms. Lets examine what this
+means.</p>
+<div class="section" id="explaining-unary">
+<h3>Explaining <em>unary</em><a class="headerlink" href="#explaining-unary" title="Permalink to this headline">¶</a></h3>
+<p>File entries may point to either directories or data. The unary operator <tt class="docutils literal"><span class="pre">-d</span></tt>,
+when applied to a file, returns <tt class="docutils literal"><span class="pre">true</span></tt> if the entry is a directory, and
+<tt class="docutils literal"><span class="pre">false</span></tt> if it is some data file type. Now suppose the file in question does
+not exist; what should the operator return? Well, a non-entry for a file clearly
+is not a directory, so the test returns <tt class="docutils literal"><span class="pre">false</span></tt>. A different operator, <tt class="docutils literal"><span class="pre">-e</span></tt>,
+would test whether the file exists. So: a unary operator should return <tt class="docutils literal"><span class="pre">true</span></tt>
+with respect to a single condition only.</p>
+</div>
+<div class="section" id="explaining-binary">
+<h3>Explaining <em>binary</em><a class="headerlink" href="#explaining-binary" title="Permalink to this headline">¶</a></h3>
+<p>Comparison operators are binary, meaning that two terms must be compared. These
+tests might be thought of as arithmetic in nature, even when applied to strings
+of text. It is easy to determine if one string equals another, but what does it
+mean for one string to be greater than another? Should we compare the length of
+the strings, or their alphabetic order?</p>
+<p>One might suppose that, having defined the meaning of comparisons, only one set
+of comparison operators would be needed and there would be one way to perform a
+logic test. Well, that is not shell scripting.</p>
+</div>
+</div>
+<div class="section" id="test-constructs">
+<h2>Test Constructs<a class="headerlink" href="#test-constructs" title="Permalink to this headline">¶</a></h2>
+<p>There are multiple ways to construct a logical test expression:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="21%" />
+<col width="79%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">if</span> <span class="pre">...</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">if</span></tt> uses the <strong>exit status</strong> of any expression(s)</td>
+</tr>
+<tr class="row-even"><td><div class="first last line-block">
+<div class="line"><tt class="docutils literal"><span class="pre">[</span></tt> or</div>
+<div class="line"><tt class="docutils literal"><span class="pre">test</span></tt></div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">built-in logical evaluation commands</div>
+<div class="line">lexicographical string comparisons using ASCII ordering</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">[[</span> <span class="pre">...</span> <span class="pre">]]</span></tt></td>
+<td>keyword for extended test command</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p>To be certain of how an expression will evaluate, test it in an
+<tt class="docutils literal"><span class="pre">if</span> <span class="pre">...</span> <span class="pre">then</span></tt> statement:</p>
+<div class="highlight-python"><div class="highlight"><pre>.. code-block:: bash
+</pre></div>
+</div>
+<blockquote class="last">
+<div>if expression(s)
+then echo &#8220;Result true&#8221;
+else echo &#8220;Result false&#8221;
+fi</div></blockquote>
+</div>
+<p>Rules apply to tests and comparisons. Not every situation requires each rule, as
+there are many exceptions. But failure to use these conventions will certainly
+lead to trouble when it is least expected.</p>
+<ol class="arabic simple">
+<li>Initialize every string variable which will be used in a test</li>
+<li>Partial-quote (&#8221;) variables and strings inside logic tests</li>
+<li>Set off brackets (<tt class="docutils literal"><span class="pre">[</span></tt> or <tt class="docutils literal"><span class="pre">[[</span></tt>) with spaces</li>
+<li>Set off logic comparison operators with spaces</li>
+<li>Match comparison operators to the logic test being used: <tt class="docutils literal"><span class="pre">[</span></tt> or <tt class="docutils literal"><span class="pre">[[</span></tt>.</li>
+<li>Match comparison operators to the type of data being tested.</li>
+</ol>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>Rule 1. There is a test difference between strings which have been
+initialized with zero length, and strings which have never been assigned.
+Testing <tt class="docutils literal"><span class="pre">[</span> <span class="pre">&quot;$STRING&quot;</span> <span class="pre">=</span> <span class="pre">&quot;&quot;</span>&nbsp; <span class="pre">]</span></tt> may produce an unexpected result if
+<tt class="docutils literal"><span class="pre">$STRING</span></tt> is not assigned (null).</p>
+<p>Rule 2. Partial-quoting will evaluate embedded variables or expressions in
+strings.</p>
+<p>Rule 3. <tt class="docutils literal"><span class="pre">[</span></tt> is an operator and <tt class="docutils literal"><span class="pre">[[</span></tt> is a keyword; neither one is a
+grouping enclosure; operators must be surrounded with spaces.</p>
+<p>Rule 4. Logic comparisons are operators which must be surrounded by spaces.</p>
+<p>Rule 5. Much of the operator list for <tt class="docutils literal"><span class="pre">[[</span></tt> does not apply to <tt class="docutils literal"><span class="pre">[</span></tt>.</p>
+<p class="last">Rule 6. Separate lists of operators apply to string, integer, and file
+expressions. See <a class="reference external" href="../resources/07_operators.html#operators" title="(in Developer Documentation Resource Pages v0.5)"><em>Operators &amp; Other Characters</em></a> to check the consistency of operator usage.</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Some operators, notably <tt class="docutils literal"><span class="pre">!=</span></tt> and <tt class="docutils literal"><span class="pre">==</span></tt>, have rather different meanings
+when used within <tt class="docutils literal"><span class="pre">[</span></tt> rather than <tt class="docutils literal"><span class="pre">[[</span></tt>. This may produce confusing results
+when comparing variables which evaluate to integers. BASH variables are
+vaguely typed, and variables may be evaluated (integer) or not (string)
+depending on whether or not the variables are quoted.</p>
+</div>
 <p>&#8212;</p>
+</div>
 <div class="section" id="a-not-equal-to-if-then-statement">
 <h2>A not equal to if/then statement<a class="headerlink" href="#a-not-equal-to-if-then-statement" title="Permalink to this headline">¶</a></h2>
 <div class="sidebar">

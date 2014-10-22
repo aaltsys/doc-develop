@@ -73,7 +73,7 @@ layouts. Therefore any path or filename used in a script must be validated
 before file or directory operations. 
 
 Some popular test logic operators for files are shown below. See 
-:ref:`../resources/test-file` for a detailed list.
+:ref:`test-file` for a detailed list.
 
 +-------------+------------------------------------------------+
 | Test        | File condition which returns true              |

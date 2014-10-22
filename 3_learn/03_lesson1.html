@@ -131,6 +131,13 @@ can become the basis of scripts written throughout these exercises.</p>
 </pre></div>
 </div>
 <p>Then paste the code into a script file to be created in the following section.</p>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">Use <strong class="program">dolphin</strong> or other file viewer to display your home folder, and
+create or open your <tt class="file docutils literal"><span class="pre">Projects</span></tt> folder. Then create a folder inside
+<tt class="file docutils literal"><span class="pre">Projects</span></tt>, maybe called <tt class="file docutils literal"><span class="pre">linux-scripts</span></tt>, where you can store
+your work.</p>
+</div>
 </div>
 <div class="section" id="create-a-first-script">
 <h2>Create a First Script<a class="headerlink" href="#create-a-first-script" title="Permalink to this headline">¶</a></h2>
@@ -168,8 +175,8 @@ and check <em class="menuselection">Properties ‣ Permissions ‣ Is executable
 <table border="1" class="docutils">
 <colgroup>
 <col width="24%" />
-<col width="29%" />
-<col width="47%" />
+<col width="28%" />
+<col width="49%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Resource</th>
@@ -205,7 +212,7 @@ and check <em class="menuselection">Properties ‣ Permissions ‣ Is executable
 In the <strong class="command">echo</strong> statement which displays <tt class="kbd docutils literal"><span class="pre">Hello</span> <span class="pre">World</span></tt>, replace the
 text <tt class="kbd docutils literal"><span class="pre">World</span></tt> with this new variable. Test the script by executing it in the
 terminal:</p>
-<div class="highlight-python"><div class="highlight"><pre>**$** ``./hello-world.sh``
+<div class="highlight-python"><div class="highlight"><pre>./hello-world.sh
 </pre></div>
 </div>
 <div class="admonition tip">
@@ -279,7 +286,7 @@ guidance.</p>
 <span class="nb">echo</span> -e <span class="s1">&#39;\e[0m&#39;</span>
 </pre></div>
 </div>
-<p>Play around (that means test run) these statements. On the <strong class="command">echo</strong>
+<p>Play around with (that means test run) these statements. On the <strong class="command">echo</strong>
 statement, remove the option parameters <tt class="docutils literal"><span class="pre">-e</span></tt> or <tt class="docutils literal"><span class="pre">-n</span></tt> and observe the effect.
 Similarly, try removing <tt class="docutils literal"><span class="pre">-n</span> <span class="pre">1</span></tt> from the <strong class="command">read</strong> statement. Finally,
 why would full quoting (with &#8216;) or partial quoting (with &#8221;) have the same
