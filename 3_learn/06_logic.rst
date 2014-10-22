@@ -4,8 +4,105 @@
 Logic and Flow Control
 #############################
 
-There are two parts to programming logic: test expressions, and flow control 
-statements.
+It is said that the beauty of Unix standards comes from their wide variety, and 
+the logical expressions and tests in Linux scripting proves this aphorism. 
+
+Logic operations
+=============================
+
+A word about programming logic. Typically, logic tests produce one of two 
+results: ``true`` (``1``), or ``false`` (``0``). (Right here, those old 
+FORTRAN geezers can stop screaming about ``arithmetic if``.) The operators in a 
+logic test are mostly either *unary* or *binary*, meaning that a test either 
+evaluates a condition of one term, or compares two terms. Lets examine what this 
+means. 
+
+Explaining *unary*
+-----------------------------
+
+File entries may point to either directories or data. The unary operator ``-d``, 
+when applied to a file, returns ``true`` if the entry is a directory, and 
+``false`` if it is some data file type. Now suppose the file in question does 
+not exist; what should the operator return? Well, a non-entry for a file clearly 
+is not a directory, so the test returns ``false``. A different operator, ``-e``, 
+would test whether the file exists. So: a unary operator should return ``true`` 
+with respect to a single condition only.
+
+Explaining *binary*
+-----------------------------
+
+Comparison operators are binary, meaning that two terms must be compared. These 
+tests might be thought of as arithmetic in nature, even when applied to strings 
+of text. It is easy to determine if one string equals another, but what does it 
+mean for one string to be greater than another? Should we compare the length of 
+the strings, or their alphabetic order?
+
+One might suppose that, having defined the meaning of comparisons, only one set 
+of comparison operators would be needed and there would be one way to perform a 
+logic test. Well, that is not shell scripting.
+
+Test Constructs
+=============================
+
+There are multiple ways to construct a logical test expression: 
+
++----------------+-----------------------------------------------------------+
+|  ``if ...``    |  ``if`` uses the **exit status** of any expression(s)     |
++----------------+-----------------------------------------------------------+
+|| ``[`` or      || built-in logical evaluation commands                     |
+|| ``test``      || lexicographical string comparisons using ASCII ordering  |
++----------------+-----------------------------------------------------------+
+|  ``[[ ... ]]`` |  keyword for extended test command                        |
++----------------+-----------------------------------------------------------+
+
+.. tip::
+   To be certain of how an expression will evaluate, test it in an 
+   ``if ... then`` statement::
+   
+   .. code-block:: bash
+   
+      if expression(s)
+      then echo "Result true"
+      else echo "Result false"
+      fi
+
+Rules apply to tests and comparisons. Not every situation requires each rule, as 
+there are many exceptions. But failure to use these conventions will certainly 
+lead to trouble when it is least expected.
+
+#. Initialize every string variable which will be used in a test
+#. Partial-quote (") variables and strings inside logic tests
+#. Set off brackets (``[`` or ``[[``) with spaces
+#. Set off logic comparison operators with spaces
+#. Match comparison operators to the logic test being used: ``[`` or ``[[``.
+#. Match comparison operators to the type of data being tested.
+
+.. note::
+   Rule 1. There is a test difference between strings which have been 
+   initialized with zero length, and strings which have never been assigned. 
+   Testing ``[ "$STRING" = ""  ]`` may produce an unexpected result if 
+   ``$STRING`` is not assigned (null).
+   
+   Rule 2. Partial-quoting will evaluate embedded variables or expressions in 
+   strings. 
+   
+   Rule 3. ``[`` is an operator and ``[[`` is a keyword; neither one is a 
+   grouping enclosure; operators must be surrounded with spaces.
+   
+   Rule 4. Logic comparisons are operators which must be surrounded by spaces.
+   
+   Rule 5. Much of the operator list for ``[[`` does not apply to ``[``. 
+   
+   Rule 6. Separate lists of operators apply to string, integer, and file 
+   expressions. See :ref:`operators` to check the consistency of operator usage.
+   
+.. warning::
+   Some operators, notably ``!=`` and ``==``, have rather different meanings 
+   when used within ``[`` rather than ``[[``. This may produce confusing results 
+   when comparing variables which evaluate to integers. BASH variables are 
+   vaguely typed, and variables may be evaluated (integer) or not (string) 
+   depending on whether or not the variables are quoted.
+
 
 ---
 

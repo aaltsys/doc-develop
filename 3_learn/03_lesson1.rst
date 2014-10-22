@@ -44,6 +44,12 @@ can become the basis of scripts written throughout these exercises.
 
 Then paste the code into a script file to be created in the following section.
 
+.. tip::
+   Use :program:`dolphin` or other file viewer to display your home folder, and 
+   create or open your :file:`Projects` folder. Then create a folder inside 
+   :file:`Projects`, maybe called :file:`linux-scripts`, where you can store 
+   your work.
+
 Create a First Script
 =============================
 
@@ -75,15 +81,15 @@ Based on script samples shown previously, edit your script to display
    #. Sidebar examples from the previous page demonstrate commands to use.
    #. All Unixes include on-line resources to provide reference documentation:
 
-      +-----------------+--------------------+---------------------------------+
-      | Resource        | Example            | Description                     |
-      +=================+====================+=================================+
-      | :command:`help` | ``command --help`` | Built-in command documentation  |
-      +-----------------+--------------------+---------------------------------+
-      | :command:`man`  | ``man command``    | Manual page(s) for command      |
-      +-----------------+--------------------+---------------------------------+
-      | :command:`info` | ``info command``   | or, Info page(s) for command    |
-      +-----------------+--------------------+---------------------------------+
+      +-----------------+--------------------+-----------------------------------+
+      | Resource        | Example            | Description                       |
+      +=================+====================+===================================+
+      | :command:`help` | ``command --help`` | Built-in command documentation    |
+      +-----------------+--------------------+-----------------------------------+
+      | :command:`man`  | ``man command``    | Manual page(s) for command        |
+      +-----------------+--------------------+-----------------------------------+
+      | :command:`info` | ``info command``   | or, Info page(s) for command      |
+      +-----------------+--------------------+-----------------------------------+
 
 Adding Sections
 =============================
@@ -96,7 +102,7 @@ In the :command:`echo` statement which displays :kbd:`Hello World`, replace the
 text :kbd:`World` with this new variable. Test the script by executing it in the 
 terminal::
 
-   **$** ``./hello-world.sh``
+   ./hello-world.sh
 
 .. tip::
    The :kbd:`./` is required in front of the script name, so that the command
@@ -174,7 +180,7 @@ Replace your user confirmation code with the following statements:
    read -n 1 -p ' (y/n)?' RESP 
    echo -e '\e[0m' 
 
-Play around (that means test run) these statements. On the :command:`echo` 
+Play around with (that means test run) these statements. On the :command:`echo` 
 statement, remove the option parameters ``-e`` or ``-n`` and observe the effect. 
 Similarly, try removing ``-n 1`` from the :command:`read` statement. Finally, 
 why would full quoting (with \') or partial quoting (with \") have the same
