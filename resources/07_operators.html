@@ -59,7 +59,7 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#expression-constructs">Expression constructs</a></li>
-<li><a class="reference internal" href="#special-characters">Special characters </a></li>
+<li><a class="reference internal" href="#special-characters">Special characters</a></li>
 </ul>
 </li>
 </ul>
@@ -102,10 +102,14 @@
 <h2>Operations<a class="headerlink" href="#operations" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="arithmetic-operators">
 <span id="arithmetic"></span><h3>Arithmetic operators<a class="headerlink" href="#arithmetic-operators" title="Permalink to this headline">¶</a></h3>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The arithmetic operators are listed grouped in order of precedence.</p>
+</div>
 <table border="1" class="docutils">
 <colgroup>
-<col width="14%" />
-<col width="86%" />
+<col width="23%" />
+<col width="77%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Operator</th>
@@ -113,59 +117,142 @@
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>!</td>
-<td>logical negation</td>
+<tr class="row-even"><td><div class="first last line-block">
+<div class="line">id++</div>
+<div class="line">id&#8211;</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">post-increment</div>
+<div class="line">post-decrement</div>
+</div>
+</td>
 </tr>
-<tr class="row-odd"><td>id++</td>
-<td>post-increment</td>
+<tr class="row-odd"><td><div class="first last line-block">
+<div class="line-block">
+<div class="line">++id</div>
+</div>
+<div class="line">&#8211;id</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">pre-increment</div>
+<div class="line">pre-decrement</div>
+</div>
+</td>
 </tr>
-<tr class="row-even"><td>id&#8211;</td>
-<td>post-decrement</td>
+<tr class="row-even"><td><div class="first last line-block">
+<div class="line">+</div>
+<div class="line">-</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">unary plus (positive number)</div>
+<div class="line">unary minus (negative number)</div>
+</div>
+</td>
 </tr>
-<tr class="row-odd"><td>++id</td>
-<td>pre-increment</td>
+<tr class="row-odd"><td><div class="first last line-block">
+<div class="line">!</div>
+<div class="line">~</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">logical negation</div>
+<div class="line">bit-wise negation</div>
+</div>
+</td>
 </tr>
-<tr class="row-even"><td>&#8211;id</td>
-<td>pre-decrement</td>
+<tr class="row-even"><td>**</td>
+<td>exponentiation</td>
 </tr>
-<tr class="row-odd"><td>=</td>
-<td>equals</td>
+<tr class="row-odd"><td><div class="first last line-block">
+<div class="line">*</div>
+<div class="line">/</div>
+<div class="line">%</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">multiplication</div>
+<div class="line">division</div>
+<div class="line">remainder (modulus)</div>
+</div>
+</td>
 </tr>
-<tr class="row-even"><td>+</td>
-<td>plus</td>
+<tr class="row-even"><td><div class="first last line-block">
+<div class="line">+</div>
+<div class="line">-</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">addition</div>
+<div class="line">subtraction</div>
+</div>
+</td>
 </tr>
-<tr class="row-odd"><td>-</td>
-<td>minus</td>
+<tr class="row-odd"><td><div class="first last line-block">
+<div class="line">&lt;&lt;</div>
+<div class="line">&gt;&gt;</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">bit-wise shift left</div>
+<div class="line">bit-wise shift right</div>
+</div>
+</td>
 </tr>
-<tr class="row-even"><td>*</td>
-<td>multiply</td>
+<tr class="row-even"><td><div class="first last line-block">
+<div class="line">&lt;=</div>
+<div class="line">&gt;=</div>
+<div class="line">&lt;</div>
+<div class="line">&gt;</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">comparison less than or equal to</div>
+<div class="line">comparison greater than or equal to</div>
+<div class="line">comparison less than</div>
+<div class="line">comparison greater than</div>
+</div>
+</td>
 </tr>
-<tr class="row-odd"><td>/</td>
-<td>divide</td>
+<tr class="row-odd"><td><div class="first last line-block">
+<div class="line">==</div>
+<div class="line">!=</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">equality</div>
+<div class="line">inequality</div>
+</div>
+</td>
 </tr>
-<tr class="row-even"><td>%</td>
-<td>modulo</td>
-</tr>
-<tr class="row-odd"><td>**</td>
-<td>exponentiate</td>
-</tr>
-<tr class="row-even"><td>~</td>
-<td>bit-wise negation</td>
-</tr>
-<tr class="row-odd"><td>&amp;</td>
+<tr class="row-even"><td>&amp;</td>
 <td>bit-wise AND</td>
 </tr>
-<tr class="row-even"><td>^</td>
+<tr class="row-odd"><td>^</td>
 <td>bit-wise XOR (exclusive or)</td>
 </tr>
-<tr class="row-odd"><td>|</td>
+<tr class="row-even"><td>|</td>
 <td>bit-wise OR</td>
 </tr>
-<tr class="row-even"><td>&lt;&lt;</td>
-<td>bit-wise left shift</td>
+<tr class="row-odd"><td>&amp;&amp;</td>
+<td>logical AND</td>
 </tr>
-<tr class="row-odd"><td>&gt;&gt;</td>
-<td>bit-wise shift right</td>
+<tr class="row-even"><td>||</td>
+<td>logical OR</td>
+</tr>
+<tr class="row-odd"><td><div class="first last line-block">
+<div class="line">expr?expr:expr</div>
+</div>
+</td>
+<td>conditional operator</td>
+</tr>
+<tr class="row-even"><td>assignment</td>
+<td>(see following table)</td>
+</tr>
+<tr class="row-odd"><td>expr1 , expr2</td>
+<td>comma assignment</td>
 </tr>
 </tbody>
 </table>
@@ -787,7 +874,7 @@ the pattern on the right. See Bash documentation for pattern description.</li>
 </table>
 </div>
 <div class="section" id="special-characters">
-<h2>Special characters <a class="footnote-reference" href="#id2" id="id1">[1]</a><a class="headerlink" href="#special-characters" title="Permalink to this headline">¶</a></h2>
+<h2>Special characters<a class="headerlink" href="#special-characters" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
 <colgroup>
 <col width="14%" />
@@ -953,14 +1040,9 @@ the pattern on the right. See Bash documentation for pattern description.</li>
 </tr>
 </tbody>
 </table>
-<p>&#8212;</p>
-<p class="rubric">Footnotes</p>
-<table class="docutils footnote" frame="void" id="id2" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td><a class="reference external" href="http://tldp.org/LDP/abs/html/special-chars.html">Shell scripting special characters.</a></td></tr>
-</tbody>
-</table>
+<p class="rubric">References</p>
+<p>Online documentation at <tt class="docutils literal"><span class="pre">man</span> <span class="pre">bash</span></tt></p>
+<p><a class="reference external" href="http://tldp.org/LDP/abs/html/special-chars.html">Shell scripting special characters.</a></p>
 </div>
 </div>
 
