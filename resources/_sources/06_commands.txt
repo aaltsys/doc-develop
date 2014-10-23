@@ -255,4 +255,4 @@ color set follow::
    for i in {0..255}; do tput setab $i; echo -n "  $i  "; done; tput setab 0; echo
    export TERM='xterm'
 
-For more information, see the manpage for ``terminfo``.
+For more information, see the ``terminfo`` manpage.

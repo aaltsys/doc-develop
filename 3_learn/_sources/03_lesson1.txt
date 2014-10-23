@@ -1,7 +1,7 @@
 .. _organize_lesson:
 
 #############################
-Shell Scripting Exercise
+Exercise 1: Organization
 #############################
 
 When learning to program, 80% of all work is intelligent copying, 10% is 

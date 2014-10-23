@@ -1,0 +1,158 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Reusable Method Code &mdash; Developer Documentation Resource Pages 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/aaltsys.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Developer Documentation Resource Pages 1.0 documentation" href="index.html" />
+    <link rel="prev" title="Routines and Expressions" href="08_expressions.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="08_expressions.html" title="Routines and Expressions"
+             accesskey="P">previous</a></li>
+        <li><a href="index.html">Developer Documentation Resource Pages 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Reusable Method Code</a><ul>
+<li><a class="reference internal" href="#get-user-confirmation">Get User Confirmation</a></li>
+<li><a class="reference internal" href="#assign-variables-from-file">Assign Variables from File</a></li>
+<li><a class="reference internal" href="#here-document">Here Document</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="08_expressions.html"
+                        title="previous chapter">Routines and Expressions</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/09_methods.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="reusable-method-code">
+<span id="methods"></span><h1>Reusable Method Code<a class="headerlink" href="#reusable-method-code" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="get-user-confirmation">
+<h2>Get User Confirmation<a class="headerlink" href="#get-user-confirmation" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-bash"><div class="highlight"><pre>MSG-CONFIRM<span class="o">=</span><span class="s1">&#39;Say Hello&#39;</span>
+<span class="c"># ...</span>
+<span class="c"># User Confirmation:</span>
+<span class="c"># requires MSG-CONFIRM, assigns EXIT</span>
+<span class="nb">echo</span> -e -n <span class="s1">&#39;\n\e[1;31m $MSG-CONFIRM&#39;</span>
+<span class="nb">read</span> -n 1 -p <span class="s1">&#39; (y/n)?&#39;</span> RESP
+<span class="nb">echo</span> -e <span class="s1">&#39;\e[0m&#39;</span>
+<span class="k">case</span> <span class="nv">$RESP</span> in
+  y|Y<span class="o">)</span>
+    <span class="nv">EXIT</span><span class="o">=</span><span class="s1">&#39;0&#39;</span>
+  n|N<span class="o">)</span>
+    <span class="nv">EXIT</span><span class="o">=</span><span class="s1">&#39;1&#39;</span>
+  *<span class="o">)</span>
+    <span class="nv">EXIT</span><span class="o">=</span><span class="s1">&#39;2&#39;</span>
+<span class="k">esac</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="assign-variables-from-file">
+<h2>Assign Variables from File<a class="headerlink" href="#assign-variables-from-file" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c"># assign configuration to variables</span>
+<span class="c"># config-file lines format: VAR-NAME=VAR-VALUE</span>
+<span class="c"># uses &quot;printf -v VAR-NAME VAR-VALUE&quot;</span>
+<span class="c">#</span>
+<span class="c"># requires FILE-CONFIG, assigns VAR-NAME, VAR-VALUE</span>
+<span class="k">if</span> <span class="o">[</span> -s <span class="s2">&quot;$FILE-CONFIG&quot;</span> <span class="o">]</span>
+<span class="k">then</span>
+  <span class="c"># read configuration into array</span>
+  <span class="nv">SAVEIFS</span><span class="o">=</span><span class="nv">$IFS</span>
+  <span class="nv">IFS</span><span class="o">=</span><span class="s1">$&#39;\n&#39;</span>
+  <span class="nv">VARLIST</span><span class="o">=(</span><span class="k">$(</span>&lt;<span class="s2">&quot;$FILE-CONFIG&quot;</span><span class="k">)</span><span class="o">)</span>
+  <span class="nv">IFS</span><span class="o">=</span><span class="nv">$SAVEIFS</span>
+  <span class="c"># assign array to named variables using printf -v</span>
+  <span class="k">for</span> <span class="o">((</span> <span class="nv">i</span><span class="o">=</span>0; i&lt;<span class="k">${#</span><span class="nv">VARLIST</span><span class="p">[@]</span><span class="k">}</span>; i++ <span class="o">))</span>
+  <span class="k">do</span>
+<span class="k">    </span>VAR-NAME<span class="o">=</span><span class="k">${</span><span class="nv">VARLIST</span><span class="p">[i]%%=*</span><span class="k">}</span>
+    VAR-VALUE<span class="o">=</span><span class="k">${</span><span class="nv">VARLIST</span><span class="p">[i]##*=</span><span class="k">}</span>
+    <span class="nb">printf</span> -v <span class="nv">$VAR</span>-NAME <span class="nv">$VAR</span>-VALUE
+  <span class="k">done</span>
+<span class="k">fi</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="here-document">
+<h2>Here Document<a class="headerlink" href="#here-document" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-bash"><div class="highlight"><pre><span class="s">&lt;&lt;-docname</span>
+<span class="s">   here-document statements</span>
+<span class="s">   ...</span>
+<span class="s">docname</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="08_expressions.html" title="Routines and Expressions"
+             >previous</a></li>
+        <li><a href="index.html">Developer Documentation Resource Pages 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Gerald Lovel.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

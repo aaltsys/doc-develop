@@ -24,6 +24,7 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="Developer Documentation Resource Pages 1.0 documentation" href="index.html" />
+    <link rel="next" title="Reusable Method Code" href="09_methods.html" />
     <link rel="prev" title="Operators &amp; Other Characters" href="07_operators.html" /> 
   </head>
   <body>
@@ -31,8 +32,11 @@
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
+          <a href="09_methods.html" title="Reusable Method Code"
+             accesskey="N">next</a></li>
+        <li class="right" >
           <a href="07_operators.html" title="Operators &amp; Other Characters"
-             accesskey="P">previous</a></li>
+             accesskey="P">previous</a> |</li>
         <li><a href="index.html">Developer Documentation Resource Pages 1.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
@@ -42,6 +46,7 @@
   <ul>
 <li><a class="reference internal" href="#">Routines and Expressions</a><ul>
 <li><a class="reference internal" href="#logical-expression-blocks">Logical expression blocks</a></li>
+<li><a class="reference internal" href="#arithmetic-evaluation">Arithmetic Evaluation</a></li>
 </ul>
 </li>
 </ul>
@@ -49,6 +54,9 @@
   <h4>Previous topic</h4>
   <p class="topless"><a href="07_operators.html"
                         title="previous chapter">Operators &amp; Other Characters</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="09_methods.html"
+                        title="next chapter">Reusable Method Code</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="_sources/08_expressions.txt"
@@ -122,23 +130,72 @@
 <span class="k">fi</span>
 </pre></div>
 </div>
-<div class="highlight-bash"><div class="highlight"><pre><span class="c"># assigning an array to variables using &quot;printf -v VARNAME VALUE&quot;</span>
-<span class="k">if</span> <span class="o">[[</span> -s <span class="s2">&quot;$VARS-FILE&quot;</span> <span class="o">]]</span>
-<span class="k">then</span>
-<span class="k">  </span><span class="nv">SAVEIFS</span><span class="o">=</span><span class="nv">$IFS</span>
-  <span class="nv">IFS</span><span class="o">=</span><span class="s1">$&#39;\n&#39;</span>
-  <span class="nv">VARLIST</span><span class="o">=(</span><span class="k">$(</span>&lt;<span class="s2">&quot;$VARS-FILE&quot;</span><span class="k">)</span><span class="o">)</span>
-  <span class="nv">IFS</span><span class="o">=</span><span class="nv">$SAVEIFS</span>
-  <span class="c"># assign array to named variables using printf --</span>
-  <span class="k">for</span> <span class="o">((</span> <span class="nv">i</span><span class="o">=</span>0; i&lt;<span class="k">${#</span><span class="nv">VARLIST</span><span class="p">[@]</span><span class="k">}</span>; i++ <span class="o">))</span>
-  <span class="k">do</span>
-<span class="k">    </span>VAR-NAME<span class="o">=</span><span class="k">${</span><span class="nv">VARLIST</span><span class="p">[i]%%=*</span><span class="k">}</span>
-    VAR-VALUE<span class="o">=</span><span class="k">${</span><span class="nv">VARLIST</span><span class="p">[i]##*=</span><span class="k">}</span>
-    <span class="nb">printf</span> -v <span class="nv">$VAR</span>-NAME <span class="nv">$VAR</span>-VALUE
-  <span class="k">done</span>
-<span class="k">fi</span>
-</pre></div>
 </div>
+<div class="section" id="arithmetic-evaluation">
+<span id="arithmetic"></span><h2>Arithmetic Evaluation<a class="headerlink" href="#arithmetic-evaluation" title="Permalink to this headline">¶</a></h2>
+<p>The shell evaluates arithmetic expressions under certain circumstances (see the
+let and declare builtin commands and Arithmetic Expansion). Evaluation is done
+in fixed-width integers with no check for overflow, though division by 0 is
+trapped and flagged as an error. The operators and their precedence,
+associativity, and values are the same as in the C language. The following list
+of operators is grouped into levels of equal-precedence operators. The levels
+are listed in order of decreasing precedence.</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>id++ id&#8211;</dt>
+<dd>variable post-increment and post-decrement</dd>
+<dt>++id &#8211;id</dt>
+<dd>variable pre-increment and pre-decrement</dd>
+</dl>
+<ul class="simple">
+<li><ul class="first">
+<li>unary minus and plus</li>
+</ul>
+</li>
+</ul>
+<p>! ~    logical and bitwise negation
+**     exponentiation
+* / %  multiplication, division, remainder
++ -    addition, subtraction
+&lt;&lt; &gt;&gt;  left and right bitwise shifts
+&lt;= &gt;= &lt; &gt;</p>
+<blockquote>
+<div>comparison</div></blockquote>
+<p>== !=  equality and inequality
+&amp;      bitwise AND
+^      bitwise exclusive OR
+|      bitwise OR
+&amp;&amp;     logical AND
+||     logical OR
+expr?expr:expr</p>
+<blockquote>
+<div>conditional operator</div></blockquote>
+<dl class="docutils">
+<dt>= <a href="#id1"><span class="problematic" id="id2">*</span></a>= /= %= += -= &lt;&lt;= &gt;&gt;= &amp;= ^= <a href="#id3"><span class="problematic" id="id4">|</span></a>=</dt>
+<dd>assignment</dd>
+<dt>expr1 , expr2</dt>
+<dd>comma</dd>
+</dl>
+</div></blockquote>
+<p>Shell variables are allowed as operands; parameter expansion is performed before
+the expression is evaluated.  Within an expression, shell variables may also be
+referenced by name without using the parameter expansion syntax. A shell
+variable that is null or unset evaluates to 0 when referenced by name without
+using the parameter expansion syntax. The value of a variable is evaluated as an
+arithmetic expression when it is referenced, or when a variable which has been
+given the integer attribute using declare -i is assigned a value. A null value
+evaluates to 0. A shell variable need not have its integer attribute turned on
+to  be used in an expression.</p>
+<p>Constants with a leading 0 are interpreted as octal numbers. A leading 0x or 0X
+denotes hexadecimal. Otherwise, numbers take the form [base#]n, where the
+optional base is a decimal number between 2 and 64 representing the arithmetic
+base, and n is a number in that base. If base# is omitted, then base 10 is used.
+When specifying n, the digits greater&lt; than 9 are represented by the lowercase
+letters, the uppercase letters, &#64;, and _, in that order. If base is less than or
+equal to 36, lowercase and uppercase letters may be used interchangeably to
+represent numbers between 10 and 35.</p>
+<p>Operators are evaluated in order of precedence. Sub-expressions in parentheses
+are evaluated first and may override the precedence rules above.</p>
 </div>
 </div>
 
@@ -152,8 +209,11 @@
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
+          <a href="09_methods.html" title="Reusable Method Code"
+             >next</a></li>
+        <li class="right" >
           <a href="07_operators.html" title="Operators &amp; Other Characters"
-             >previous</a></li>
+             >previous</a> |</li>
         <li><a href="index.html">Developer Documentation Resource Pages 1.0 documentation</a> &raquo;</li> 
       </ul>
     </div>

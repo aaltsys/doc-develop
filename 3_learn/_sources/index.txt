@@ -26,12 +26,10 @@ Contents:
    01_shell
    02_organize
    03_lesson1
-   04_considerations
+   04_logic
    05_lesson2
-   06_logic
+   06_considerations
    07_lesson3
-   08_methods
-   09_lesson4
 
 Indices and tables
 =============================
