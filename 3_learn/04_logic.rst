@@ -1,11 +1,11 @@
 .. _logic:
 
 #############################
-Logic and Flow Control
+Logic and Decisions
 #############################
 
 It is said that the beauty of Unix standards comes from their wide variety, and 
-the logical expressions and tests in Linux scripting proves this aphorism. 
+the logical expressions and tests in Linux scripting prove this aphorism. 
 
 Logic operations
 =============================
@@ -24,9 +24,9 @@ File entries may point to either directories or data. The unary operator ``-d``,
 when applied to a file, returns ``true`` if the entry is a directory, and 
 ``false`` if it is some data file type. Now suppose the file in question does 
 not exist; what should the operator return? Well, a non-entry for a file clearly 
-is not a directory, so the test returns ``false``. A different operator, ``-e``, 
-would test whether the file exists. So: a unary operator should return ``true`` 
-with respect to a single condition only.
+is not a directory, so the test returns ``false``. (Another operator, ``-e``, 
+would test whether the file exists.) So: a unary operator should return ``true`` 
+or ``false`` with respect to a single condition only.
 
 Explaining *binary*
 -----------------------------
@@ -34,11 +34,11 @@ Explaining *binary*
 Comparison operators are binary, meaning that two terms must be compared. These 
 tests might be thought of as arithmetic in nature, even when applied to strings 
 of text. It is easy to determine if one string equals another, but what does it 
-mean for one string to be greater than another? Should we compare the length of 
-the strings, or their alphabetic order?
+mean for one string to be greater than another? Do we compare the lengths of 
+the strings, or their alphabetic order? We compare alphabetic ordering.
 
 One might suppose that, having defined the meaning of comparisons, only one set 
-of comparison operators would be needed and there would be one way to perform a 
+of comparison operators would be needed, and there would be one way to perform a 
 logic test. Well, that is not shell scripting.
 
 Test Constructs
@@ -52,12 +52,13 @@ There are multiple ways to construct a logical test expression:
 || ``[`` or      || built-in logical evaluation commands                     |
 || ``test``      || lexicographical string comparisons using ASCII ordering  |
 +----------------+-----------------------------------------------------------+
-|  ``[[ ... ]]`` |  keyword for extended test command                        |
+|| ``[[ ... ]]`` ||  keyword for extended test command                       |
+||               || Uses lexographical order of locale language              |
 +----------------+-----------------------------------------------------------+
 
 .. tip::
    To be certain of how an expression will evaluate, test it in an 
-   ``if ... then`` statement::
+   ``if ... then`` statement:
    
    .. code-block:: bash
    
@@ -74,8 +75,10 @@ lead to trouble when it is least expected.
 #. Partial-quote (") variables and strings inside logic tests
 #. Set off brackets (``[`` or ``[[``) with spaces
 #. Set off logic comparison operators with spaces
-#. Match comparison operators to the logic test being used: ``[`` or ``[[``.
-#. Match comparison operators to the type of data being tested.
+#. Match comparison operators to the logic test, ``[`` or ``[[``, per 
+   :ref:`operators`.
+#. Match comparison operators to the type of data being tested, per 
+   :ref:`operators`.
 
 .. note::
    Rule 1. There is a test difference between strings which have been 
@@ -91,20 +94,225 @@ lead to trouble when it is least expected.
    
    Rule 4. Logic comparisons are operators which must be surrounded by spaces.
    
-   Rule 5. Much of the operator list for ``[[`` does not apply to ``[``. 
+   Rule 5. Operators listed for ``[[`` only do not apply to ``[``. 
    
    Rule 6. Separate lists of operators apply to string, integer, and file 
-   expressions. See :ref:`operators` to check the consistency of operator usage.
-   
+   expressions. 
+
 .. warning::
    Some operators, notably ``!=`` and ``==``, have rather different meanings 
    when used within ``[`` rather than ``[[``. This may produce confusing results 
    when comparing variables which evaluate to integers. BASH variables are 
    vaguely typed, and variables may be evaluated (integer) or not (string) 
-   depending on whether or not the variables are quoted.
+   depending on how the variables are quoted. Then strings may be compared 
+   literally or by Bash pattern matching, depending on which test is used.
 
+.. seealso::
+
+   `Bash Conditional Expressions <http://www.gnu.org/software/bash/manual/html_node/Bash-Conditional-Expressions.html>`_
+
+   `Advanced Bash-Scripting Guide <http://tldp.org/LDP/abs/html/tests.html>`_
+
+   On-line bash documentation, ``man bash``.
+
+Decisions &  Flow Control
+=============================
+
+Logic is only useful when it is applied to decision making. (Back in the FORTRAN 
+days this was called flow control, although it may have a different name now.) 
+Bash has six compound expression forms which perform iteration or branching 
+based on logic or decisions, as shown following:
+
++---------------------------------------------------------------------------+
+| Canonical documentation of bash compound expressions                      |
+|===========================================================================+
+| ``for name [ [ in [ word ... ] ] ; ] do list ; done``                     |
++---------------------------------------------------------------------------+
+| ``for (( expr1 ; expr2 ; expr3 )) ; do list ; done``                      |
++---------------------------------------------------------------------------+
+| ``select name [ in word ] ; do list ; done``                              |
++---------------------------------------------------------------------------+
+| ``case word in [ [(] pattern [ | pattern ] ... ) list ;; ] ... esac``     |
++---------------------------------------------------------------------------+
+| ``if list; then list; [ elif list; then list; ] ... [ else list; ] fi``   |
++---------------------------------------------------------------------------+
+| ``while list-1; do list-2; done``                                         |
+| ``until list-1; do list-2; done``                                         |
++---------------------------------------------------------------------------+
+
+List Iterative *for*
+-----------------------------
+
+.. code-block:: bash
+
+   for name [ in [ word ... ] ]
+   do
+     statement list
+   done
+
+The  list of words following in is expanded, generating a list of items.  The variable
+name is set to each element of this list in turn, and list is executed each time.   If
+the in word is omitted, the for command executes list once for each positional parame‐
+ter that is set (see PARAMETERS below).  The return status is the exit status  of  the
+last  command that executes.  If the expansion of the items following in results in an
+empty list, no commands are executed, and the return status is 0.
+
+
+Algebraic Iterative ``for``
+-----------------------------
+
+.. code-block:: bash
+
+   for (( expression1 ; expression2 ; expression3 ))
+   do
+     statement list
+   done
+
+Arithmetic expression1 is evaluated by the rules of :ref:`arithmetic`. Then
+arithmetic expression2 is evaluated repeatedly until it evaluates to ``0``.  
+Each time expression2 evaluates to a non-zero value, the statement list is
+executed and arithmetic expression3 is evaluated. If any expression is omitted, 
+it behaves as if it evaluates to ``1``. The return value is the exit status of 
+the last statement list command that is executed, or false if any of the 
+test expressions is invalid.
+
+
+List Interactive *select*
+-----------------------------
+
+.. code-block:: bash
+
+   select name [ in word ]
+   do
+     statement list
+   done
+
+
+The list of words following ``in`` is expanded, generating a list of items. The 
+set  of expanded words is printed on the standard error, each preceded by a 
+number.  If the ``in`` word is omitted, the positional parameters are printed 
+(see PARAMETERS below). The ``PS3`` prompt is then displayed and a line read 
+from the standard input. If the line consists of a number corresponding to one 
+of the displayed words, then the value of name is set to that word. If the line 
+is empty, the words and prompt are displayed again. If ``EOF`` is read, the 
+command completes. Any other value read causes name to be set to ``null``. The 
+line read is saved in the variable ``REPLY``. The list is executed after each 
+selection until a break command is executed.
+
+
+Branching *case*
+-----------------------------
+
+.. code-block:: bash
+
+   case word in 
+     pattern|pattern)
+       statement list ;;
+     pattern2|pattern2)
+       statement list ;;
+     *)
+       statement list ;;
+   esac
+
+A case command first expands **word** (see note 1), and tries to match it 
+against each **pattern** in turn, using pathname pattern matching rules (see 
+note 2). Once the first match is found, the associated list of statements is 
+executed, up to the termination operator, which is processed as follows:
+
++----------+-----------------------------------------------------------------+
+| Operator | Termination result                                              |
++==========+=================================================================+
+| ``;;``   | The case statement exits at ``esac``.                           |
++----------+-----------------------------------------------------------------+
+| ``;&``   | Execution continues with the statement list of next code block. |
++----------+-----------------------------------------------------------------+
+| ``;;&``  | Pattern match testing continues with the next code block.       |
++----------+-----------------------------------------------------------------+
+
+.. tip::
+   #. When shell option -nocasematch is enabled, the match is performed without 
+      regard to the case of  alphabetic characters.
+
+Branching *if*
+-----------------------------
+
+.. code-block:: bash
+
+   if testexpressions
+   then
+     statement list ;
+   elif testexpressions
+   then
+     statement list ;
+     ...
+   else testexpressions
+     statement list ;
+   fi
+
+
+The ``if`` test expressions list is executed. If its exit status is ``0``, the 
+``then`` list is executed.  Otherwise, each ``elif`` test list is executed in 
+turn, and if its exit status is ``0``, the corresponding ``then`` list is 
+executed and the command completes. Otherwise, the ``else`` list is executed, if 
+present. 
+
+   
+Iterative *while* & *until*
+-----------------------------
+
+.. code-block:: bash
+
+   while testexpressions
+   do
+     statement list
+   done
+
+   until expressionlist
+   do
+     statement list
+   done
+
+The ``while`` command continuously executes the statement list as long as the 
+last command in the test expressions list returns an exit status of ``0``. 
+The ``until`` command is identical to the ``while`` command, except that the 
+test is negated; the statement list is executed as long as the last command in 
+the test expressions list returns a non-zero exit status.  
 
 ---
+
+.. note::
+   #. Seven types of command expansion, in order of performance, are: brace 
+      expansion; tilde expansion; parameter and variable expansion; arithmetic 
+      substitution; command substitution (done in a left-to-right fashion); 
+      word splitting; and pathname expansion.
+   #. Before evaluation, **word**, **pattern**, ... are expanded by: tilde 
+      expansion, parameter and variable expansion, arithmetic substitution, 
+      command substitution, followed by process substitution and quote removal.
+   #. Arithmetic expressions are evaluated according to the rules described
+      below under :ref:`arithmetic`.
+   #. Pathname pattern matching rules include the following:
+
+      +----------------+----------------------------------------------------+
+      | ``*``          | any string of 0 or more characters                 |
+      +----------------+----------------------------------------------------+
+      | ``?``          | any string of 0 or 1 character                     |
+      +----------------+----------------------------------------------------+
+      | ``X`` or ``\X``| where ``X`` represents any (special) character     |
+      +----------------+----------------------------------------------------+
+      |  ``[XYZ]``     | where ``XYZ`` is a set of permitted characters     |
+      +----------------+----------------------------------------------------+
+      |  ``[x..z]``    | where ``x..z`` is a range of permitted characters  |
+      +----------------+----------------------------------------------------+
+
+   #. The exit status of any compound statement is the exit status of the last 
+      command executed in a list, or ``0`` when no list statements are executed.
+
+
+.. seealso::
+
+   online manual, terminal command ``man bash``.
+
+-----------------------------------------------------------------------------
 
 A not equal to if/then statement
 =================================
@@ -321,130 +529,3 @@ calculating modulo. As you can see, a for loop uses an iterator(i) and changes
 it's value a little bit every time the loop repeats until the value meets the 
 condition which has to be satisfied for the program to continue.
 
--------------------------------------------------------------------------------
-
-#############################
-Comparison Operators
-#############################
-
-symbols for strings 
-letters for characters
-
-+----------------+---------------------------------------+
-|Integer Operator| description of Operator               |
-+================+=======================================+
-| -eq            | is equal to                           |
-+----------------+---------------------------------------+
-|-ne             | is not equal to                       |
-+----------------+---------------------------------------+
-| -gt            | greater than                          |
-+----------------+---------------------------------------+
-|-ge             | is greater than or equal to           |
-+----------------+---------------------------------------+
-|-lt             | is less than                          |
-+----------------+---------------------------------------+
-|-le             | is less than or equal to              |
-+----------------+---------------------------------------+
-|<               |is less than(within double parenthesis)|
-+----------------+---------------------------------------+
-|<=              |is less than or equal to( within (()) )|
-+----------------+---------------------------------------+
-|>               |is greater than( within (()) )         |
-+----------------+---------------------------------------+
-|>=              |is greater than or equal to within (())|
-+----------------+---------------------------------------+
-
--eq
-is equal to
-
-if [ "$a" -eq "$b" ]
-
--ne
-is not equal to
-
-if [ "$a" -ne "$b" ]
-
--gt
-is greater than
-
-if [ "$a" -gt "$b" ]
-
--ge
-is greater than or equal to
-
-if [ "$a" -ge "$b" ]
-
--lt
-is less than
-
-if [ "$a" -lt "$b" ]
-
--le
-is less than or equal to
-
-if [ "$a" -le "$b" ]
-
-<
-is less than (within double parentheses)
-
-(("$a" < "$b"))
-
-<=
-is less than or equal to (within double parentheses)
-
-(("$a" <= "$b"))
-
->
-is greater than (within double parentheses)
-
-(("$a" > "$b"))
-
->=
-is greater than or equal to (within double parentheses)
-
-(("$a" >= "$b"))
-
-string comparison
-
-=
-
-is equal to
-
-if [ "$a" = "$b" ]
-
-Caution	
-Note the whitespace framing the =.
-
-if [ "$a"="$b" ] is not equivalent to the above.
-
-==
-is equal to
-
-if [ "$a" == "$b" ]
-
-!=
-is not equal to
-
-if [ "$a" != "$b" ]
-
-<
-is less than, in ASCII alphabetical order
-
-if [[ "$a" < "$b" ]]
-
-if [ "$a" \< "$b" ]
-
->
-is greater than, in ASCII alphabetical order
-
-if [[ "$a" > "$b" ]]
-
-if [ "$a" \> "$b" ]
-
-Note that the ">" needs to be escaped within a [ ] construct.
-
--z
-string is null, that is, has zero length
-
--n
-string is not null.
