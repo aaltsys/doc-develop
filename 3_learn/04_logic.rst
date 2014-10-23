@@ -124,8 +124,8 @@ Bash has six compound expression forms which perform iteration or branching
 based on logic or decisions, as shown following:
 
 +---------------------------------------------------------------------------+
-| Canonical documentation of bash compound expressions                      |
-|===========================================================================+
+| Bash compound expressions syntax                                          |
++===========================================================================+
 | ``for name [ [ in [ word ... ] ] ; ] do list ; done``                     |
 +---------------------------------------------------------------------------+
 | ``for (( expr1 ; expr2 ; expr3 )) ; do list ; done``                      |
@@ -136,8 +136,8 @@ based on logic or decisions, as shown following:
 +---------------------------------------------------------------------------+
 | ``if list; then list; [ elif list; then list; ] ... [ else list; ] fi``   |
 +---------------------------------------------------------------------------+
-| ``while list-1; do list-2; done``                                         |
-| ``until list-1; do list-2; done``                                         |
+|| ``while list-1; do list-2; done``                                        |
+|| ``until list-1; do list-2; done``                                        |
 +---------------------------------------------------------------------------+
 
 List Iterative *for*
