@@ -246,14 +246,13 @@ based on logic or decisions, as shown following:</p>
 <colgroup>
 <col width="100%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td rowspan="2"><blockquote class="first">
-<div>Canonical documentation of bash compound expressions</div></blockquote>
-<blockquote class="last">
-<div><tt class="docutils literal"><span class="pre">for</span> <span class="pre">name</span> <span class="pre">[</span> <span class="pre">[</span> <span class="pre">in</span> <span class="pre">[</span> <span class="pre">word</span> <span class="pre">...</span> <span class="pre">]</span> <span class="pre">]</span> <span class="pre">;</span> <span class="pre">]</span> <span class="pre">do</span> <span class="pre">list</span> <span class="pre">;</span> <span class="pre">done</span></tt></div></blockquote>
-</td>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Bash compound expressions syntax</th>
 </tr>
-<tr class="row-even"></tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">for</span> <span class="pre">name</span> <span class="pre">[</span> <span class="pre">[</span> <span class="pre">in</span> <span class="pre">[</span> <span class="pre">word</span> <span class="pre">...</span> <span class="pre">]</span> <span class="pre">]</span> <span class="pre">;</span> <span class="pre">]</span> <span class="pre">do</span> <span class="pre">list</span> <span class="pre">;</span> <span class="pre">done</span></tt></td>
+</tr>
 <tr class="row-odd"><td><tt class="docutils literal"><span class="pre">for</span> <span class="pre">((</span> <span class="pre">expr1</span> <span class="pre">;</span> <span class="pre">expr2</span> <span class="pre">;</span> <span class="pre">expr3</span> <span class="pre">))</span> <span class="pre">;</span> <span class="pre">do</span> <span class="pre">list</span> <span class="pre">;</span> <span class="pre">done</span></tt></td>
 </tr>
 <tr class="row-even"><td><tt class="docutils literal"><span class="pre">select</span> <span class="pre">name</span> <span class="pre">[</span> <span class="pre">in</span> <span class="pre">word</span> <span class="pre">]</span> <span class="pre">;</span> <span class="pre">do</span> <span class="pre">list</span> <span class="pre">;</span> <span class="pre">done</span></tt></td>
@@ -262,8 +261,11 @@ based on logic or decisions, as shown following:</p>
 </tr>
 <tr class="row-even"><td><tt class="docutils literal"><span class="pre">if</span> <span class="pre">list;</span> <span class="pre">then</span> <span class="pre">list;</span> <span class="pre">[</span> <span class="pre">elif</span> <span class="pre">list;</span> <span class="pre">then</span> <span class="pre">list;</span> <span class="pre">]</span> <span class="pre">...</span> <span class="pre">[</span> <span class="pre">else</span> <span class="pre">list;</span> <span class="pre">]</span> <span class="pre">fi</span></tt></td>
 </tr>
-<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">while</span> <span class="pre">list-1;</span> <span class="pre">do</span> <span class="pre">list-2;</span> <span class="pre">done</span></tt>
-<tt class="docutils literal"><span class="pre">until</span> <span class="pre">list-1;</span> <span class="pre">do</span> <span class="pre">list-2;</span> <span class="pre">done</span></tt></td>
+<tr class="row-odd"><td><div class="first last line-block">
+<div class="line"><tt class="docutils literal"><span class="pre">while</span> <span class="pre">list-1;</span> <span class="pre">do</span> <span class="pre">list-2;</span> <span class="pre">done</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">until</span> <span class="pre">list-1;</span> <span class="pre">do</span> <span class="pre">list-2;</span> <span class="pre">done</span></tt></div>
+</div>
+</td>
 </tr>
 </tbody>
 </table>
