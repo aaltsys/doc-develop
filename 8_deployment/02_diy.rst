@@ -4,38 +4,18 @@ DIY Deployment
 Create a Server
 =======================
 
+For the purpose of this lesson, we will make a server which is publicly 
+accessible.
 Servers are made publicly accessible through a public IP address.
 
 (Usually you visit a website by typing its domain name, and DNS translates
 this domain name to the server's public IP address, but you can also visit
 a site by going straight to the IP.)
 
-For the purposes of TechCamp, we have created a demo server, but here are 
-some sites that offer free trials for public web servers:
-
-* http://aws.amazon.com/free/ - Free for 12 months at lowest tier
-* https://www.digitalocean.com/ - Free for 2 months at lowest tier with promo code
-
-Setup a server on Amazon, by browsing to::
-
-   http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstancesLinux.html
-
-Open a console on your desktop, and run the commands::
-
-   ssh -i keyfile ubuntu@servername
-   sudo useradd developer -G sudo
-
-Edit :file:`/etc/ssh/sshd_config` to allow password authentication, using the 
-commands::
-
-   (replace ``PasswordAuthentication yes`` with a sed command)
-   sudo service sshd restart
-   sudo service ssh restart
-
-
-To install the software necessary for a basic webserver on Ubuntu::
-
-   sudo apt-get install apache2 git
+.. note: 
+   For the purposes of this lesson, we have already created a demo server.
+   For more information on how to create your own server, see here:
+   ***Link to 07/21_free-cloud-web-server
 
 We can visit our server at::
 
@@ -46,8 +26,9 @@ or ::
    http://ec2-54-68-232-191.us-west-2.compute.amazonaws.com/
 
 And see the default ubuntu Apache installation's welcome page.
+Apache is the software which directs web requests to our application.
 
-*** Insert screenshot here ***
+.. image :: apache-welcome-page.png
 
 As this page explains, it is located in the :file:`/var/www/html` folder on the 
 server. This folder is known as the "DocRoot". 
@@ -68,23 +49,26 @@ Create a Code Project
 In your browser, login to your Github account. Fork the project from 
 https://github.com/JuliaLovel/html-demo.
 
-*** Look at where Github takess you after the fork. ***
-
-Then under "Your Repositories" on the right, click on the link to your fork
-of "html-demo".
+After you fork the project, you will be taken to the GitHub page for 
+your fork.
 
 In GitHub, edit the :file:`index.html` file, putting your name in the ``<h1>`` 
 tag.
 
-*** Include screenshot ***
+.. image:: github-edit-index.png
+
+Commit your changes.
 
 Move Code to the Server
 =======================
 
-Locate your code on GitHub:
+After you have finished editing and committing the :file:`index.html` 
+file, click the :file:`html-demo` link at the top of your page to 
+return to the main page for your fork.
 
-In the right sidebar, copy the URL of your repository to clone from (HTTPS version).
-(For example, https://github.com/JuliaLovel/html-demo.git)
+In the right sidebar, copy the URL of your repository to clone from 
+(HTTPS version) into your clipboard.
+(For example, https://github.com/AAltSys/html-demo.git)
 
 SSH to the server::
 
@@ -104,9 +88,9 @@ Create a unique directory in the DocRoot::
 
 Clone to your directory::
 
-   sudo git clone https://github.com/JuliaLovel/html-demo.git [your-directory-name]
+   sudo git clone https://github.com/[your-Github-id]/html-demo.git [your-directory-name]
 
-*** Again, change the repo source ***
+(Paste the correct URL for your fork of the GitHub repository).
    
 View your page:
 
