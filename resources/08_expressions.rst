@@ -56,7 +56,7 @@ Logical expression blocks
      command list
    fi
 
-.. _arithmetic:
+.. _arithmetic_eval:
 
 Arithmetic Evaluation
 =============================

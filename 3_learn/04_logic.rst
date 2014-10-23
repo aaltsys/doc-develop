@@ -168,7 +168,7 @@ Algebraic Iterative ``for``
      statement list
    done
 
-Arithmetic expression1 is evaluated by the rules of :ref:`arithmetic`. Then
+Arithmetic expression1 is evaluated by the rules of :ref:`arithmetic_eval`. Then
 arithmetic expression2 is evaluated repeatedly until it evaluates to ``0``.  
 Each time expression2 evaluates to a non-zero value, the statement list is
 executed and arithmetic expression3 is evaluated. If any expression is omitted, 
