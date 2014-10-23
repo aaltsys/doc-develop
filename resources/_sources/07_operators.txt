@@ -4,7 +4,7 @@
 Operators & Other Characters
 #############################
 
-Operations
+Operators by Type
 =============================
 
 .. _arithmetic:
@@ -96,6 +96,10 @@ Arithmetic assignment
 | \|=      | assign bit-wise OR                                             |
 +----------+----------------------------------------------------------------+
 
+.. seealso::
+
+   Online documentation at ``man bash``
+
 .. _logic:
 
 Logical reversal operator
@@ -182,7 +186,7 @@ Integer comparisons
 +----------+-------+-----+-----------------------------------------------------+
 | =        | ``[[``|  B  | equal to: ``(( number1 = expr2 ))``                 |
 +----------+-------+-----+-----------------------------------------------------+
-| <>       | ``[[``|  B  | not equal to: ``(( number1 <> expr2 ))``            |
+| !=       | ``[[``|  B  | not equal to: ``(( number1 <> expr2 ))``            |
 +----------+-------+-----+-----------------------------------------------------+
 | <        | ``[[``|  B  | less than: ``(( number1 < expr2 ))``                |
 +----------+-------+-----+-----------------------------------------------------+
@@ -253,7 +257,9 @@ File test operators
 | f1 -ef f2|  all  |  B  | files f1 and f2 are hard links to the same file     |
 +----------+-------+-----+-----------------------------------------------------+
 
-Reference: `Advanced Bash Scripting Guide <http://tldp.org/LDP/abs/html/fto.html>`_
+.. seealso::
+
+   `Advanced Bash Scripting Guide <http://tldp.org/LDP/abs/html/fto.html>`_
 
 .. constructs:
 
@@ -373,9 +379,7 @@ Special characters
 || $$       || process id of running script                                    |
 +-----------+------------------------------------------------------------------+
 
-.. rubric:: References
+.. seealso::
 
-Online documentation at ``man bash``
-
-`Shell scripting special characters. <http://tldp.org/LDP/abs/html/special-chars.html>`_
+   `Shell scripting special characters. <http://tldp.org/LDP/abs/html/special-chars.html>`_
  

@@ -113,6 +113,8 @@ lead to trouble when it is least expected.
 
    `Advanced Bash-Scripting Guide <http://tldp.org/LDP/abs/html/tests.html>`_
 
+   `Bash Hackers Wiki <http://wiki.bash-hackers.org/start>`_
+
    On-line bash documentation, ``man bash``.
 
 Decisions &  Flow Control
@@ -147,34 +149,35 @@ List Iterative *for*
 
    for name [ in [ word ... ] ]
    do
-     statement list
+     command list
    done
 
-The  list of words following in is expanded, generating a list of items.  The variable
-name is set to each element of this list in turn, and list is executed each time.   If
-the in word is omitted, the for command executes list once for each positional parame‐
-ter that is set (see PARAMETERS below).  The return status is the exit status  of  the
-last  command that executes.  If the expansion of the items following in results in an
-empty list, no commands are executed, and the return status is 0.
+The  ``word`` list following ``in`` is expanded, generating a list of items. 
+The variable ``name`` is set to each element of the expanded ``word`` list in 
+turn, and the ``command`` list is executed for each turn. 
+
+.. tip::
+   #. If operator ``in`` is omitted, the ``for`` command executes the 
+      ``command`` list once for each positional parameter that is set.
+   #. If the expansion of the ``word`` list (following ``in``) results in an
+      empty list, no commands are executed.
 
 
-Algebraic Iterative ``for``
+Algebraic Iterative *for*
 -----------------------------
 
 .. code-block:: bash
 
    for (( expression1 ; expression2 ; expression3 ))
    do
-     statement list
+     command list
    done
 
 Arithmetic expression1 is evaluated by the rules of :ref:`arithmetic_eval`. Then
 arithmetic expression2 is evaluated repeatedly until it evaluates to ``0``.  
-Each time expression2 evaluates to a non-zero value, the statement list is
+Each time expression2 evaluates to a non-zero value, the command list is
 executed and arithmetic expression3 is evaluated. If any expression is omitted, 
-it behaves as if it evaluates to ``1``. The return value is the exit status of 
-the last statement list command that is executed, or false if any of the 
-test expressions is invalid.
+it behaves as if it evaluates to ``1``.
 
 
 List Interactive *select*
@@ -184,7 +187,7 @@ List Interactive *select*
 
    select name [ in word ]
    do
-     statement list
+     command list
    done
 
 
@@ -199,7 +202,6 @@ command completes. Any other value read causes name to be set to ``null``. The
 line read is saved in the variable ``REPLY``. The list is executed after each 
 selection until a break command is executed.
 
-
 Branching *case*
 -----------------------------
 
@@ -207,16 +209,16 @@ Branching *case*
 
    case word in 
      pattern|pattern)
-       statement list ;;
+       command list ;;
      pattern2|pattern2)
-       statement list ;;
+       command list ;;
      *)
-       statement list ;;
+       command list ;;
    esac
 
 A case command first expands **word** (see note 1), and tries to match it 
 against each **pattern** in turn, using pathname pattern matching rules (see 
-note 2). Once the first match is found, the associated list of statements is 
+note 2). Once the first match is found, the associated list of commands is 
 executed, up to the termination operator, which is processed as follows:
 
 +----------+-----------------------------------------------------------------+
@@ -224,7 +226,7 @@ executed, up to the termination operator, which is processed as follows:
 +==========+=================================================================+
 | ``;;``   | The case statement exits at ``esac``.                           |
 +----------+-----------------------------------------------------------------+
-| ``;&``   | Execution continues with the statement list of next code block. |
+| ``;&``   | Execution continues with the command list of next code block.   |
 +----------+-----------------------------------------------------------------+
 | ``;;&``  | Pattern match testing continues with the next code block.       |
 +----------+-----------------------------------------------------------------+
@@ -238,23 +240,23 @@ Branching *if*
 
 .. code-block:: bash
 
-   if testexpressions
+   if expression list
    then
-     statement list ;
-   elif testexpressions
+     command list ;
+   elif expression list
    then
-     statement list ;
+     command list ;
      ...
-   else testexpressions
-     statement list ;
+   else expression list
+     command list ;
    fi
 
 
-The ``if`` test expressions list is executed. If its exit status is ``0``, the 
-``then`` list is executed.  Otherwise, each ``elif`` test list is executed in 
-turn, and if its exit status is ``0``, the corresponding ``then`` list is 
-executed and the command completes. Otherwise, the ``else`` list is executed, if 
-present. 
+The ``if`` test ``expression`` list is executed. If its exit status is ``0``, 
+the ``then`` list is executed.  Otherwise, each ``elif`` test list is executed 
+in turn, and if its exit status is ``0``, the corresponding ``then`` list is 
+executed and the command completes. Otherwise, the ``else`` list is executed, 
+if present, to complete the execution. 
 
    
 Iterative *while* & *until*
@@ -262,21 +264,21 @@ Iterative *while* & *until*
 
 .. code-block:: bash
 
-   while testexpressions
+   while expression list
    do
-     statement list
+     command list
    done
 
-   until expressionlist
+   until expression list
    do
-     statement list
+     command list
    done
 
-The ``while`` command continuously executes the statement list as long as the 
-last command in the test expressions list returns an exit status of ``0``. 
+The ``while`` command continuously executes the ``command`` list as long as the 
+last statement in the ``expression`` list returns an exit status of ``0``. 
 The ``until`` command is identical to the ``while`` command, except that the 
-test is negated; the statement list is executed as long as the last command in 
-the test expressions list returns a non-zero exit status.  
+test is negated; the ``command`` list is executed as long as the last statement 
+in the test ``expression`` list returns a non-zero exit status.  
 
 ---
 
@@ -289,7 +291,7 @@ the test expressions list returns a non-zero exit status.
       expansion, parameter and variable expansion, arithmetic substitution, 
       command substitution, followed by process substitution and quote removal.
    #. Arithmetic expressions are evaluated according to the rules described
-      below under :ref:`arithmetic`.
+      under :ref:`arithmetic_eval`.
    #. Pathname pattern matching rules include the following:
 
       +----------------+----------------------------------------------------+
@@ -304,228 +306,11 @@ the test expressions list returns a non-zero exit status.
       |  ``[x..z]``    | where ``x..z`` is a range of permitted characters  |
       +----------------+----------------------------------------------------+
 
-   #. The exit status of any compound statement is the exit status of the last 
-      command executed in a list, or ``0`` when no list statements are executed.
-
+   #. If any condition expression for a compound statement is invalid, or if
+      evaluation results in no commands executed, then the exit status of the
+      compound statement will be ``0``. Otherwise, the exit status of a compound 
+      statement is the exit status of the last command executed in a list.
 
 .. seealso::
 
    online manual, terminal command ``man bash``.
-
------------------------------------------------------------------------------
-
-A not equal to if/then statement
-=================================
-
-.. sidebar:: Example of a not equal to statement
-   
-   This is an example of a not equal to if/then statement. ::
-    
-      if [[ $EUID -ne 0 ]] ; then echo -e "\e[1;31m try again using sudo \e[0m" ; exit 1 ; fi
-    
-   A simple not equal to if/then statement example.
-
-::
-
-   if [[ (variable) -ne (value) ]] ; then (perform action) fi
-
-A logic statement which performs an action if a variable is not equal to a certain  
-value, for instance if the length of a variable is not equal to 8, it performs the action, but if the length of the variable is equal to 8, it simply continues running the program.
-
-An equal to if/then/else statement
-===================================
-
-.. sidebar:: Example of an equal to if/then/else statement  
-   
-   This is an example of an if/then/else statement of equality::
-    
-      if [ "`uname -i`" = "i386" ] 
-      then
-        CHROMEVER="google-chrome-stable_current_i386.deb"
-      else
-        CHROMEVER="google-chrome-stable_current_amd64.deb"
-      fi
-      
-   this is a simple if else statement.  
-
-::
-    
-   if [ variable = value ]                                                               
-   then
-     (perform action)                                                                                                                                                                  
-   else
-      (peform other action)                                                                                                                                                                                                                                                                                                                 
-   fi                                                                                   
-                                                                                  
-
-A logic statement which performs an action if a variable is equal to a value, and     
-performs another action if the variable is not equal to that value. for instance, if the length of a variable were equal to 8 it would carry out a certain action, but if the length were NOT equal to 8 it would carry out a different action.                  
-
-
-A code search statement
-========================
-
-.. sidebar:: Example of a code search if/then statement
-   
-   This is an example of an if/then/else code search statement::
-   
-      if [[ -z "$(grep 'vm.mmap_min_addr' /etc/modules)" ]] ; then 
-         echo -e /n "vm.mmap_min_addr=0" >> /etc/modules ;
-      else
-         sed -i '/vm.mmap_min_addr/c\vn.mmap_min_addr=0' ~/etc/modules ;
-      fi
-      
-   This an if/then/else statement.
-
-::
-
-   if [[ -z "$(grep "(search term)" /folder/document)" ]] ; then
-      echo "(search term)" >> /folder/document
-   fi                                                                                   
-                                                                      
-                                                                                     
-A logic statement which searches a file for a specific term, and if it doesn't find   
-it it adds the text. note that the dash z means that instead of adding the echo if   
-the search term is found, the program adds the echo if the search term is NOT found. Also, the added code in the example which starts with the command "sed" is designed to look for code and replace the line with a new line.   
-
-
---------------------------------------------------------------------------------
-
-################################# 
-Logic Flow Control Functions
-#################################
-
-Wow. Logic Flow Control Functions. That's a big name. looks complicated, right?
-Not terribly.
-
-If Else Statements
-=====================
-
-IF Else statements take on 1 of 4 forms. 
-
-
-Form 1::
-
-   if *condition* ; then
-      *commands*
-   fi
-
-Form 2::
-
-   if *condition* ; then
-      *commands*
-   else
-      *commands*
-   fi
-
-Form 3::
-
-   if *condition* ; then
-      *commands* 
-   elif *condition* ; then
-      *commands*
-   fi
- 
-Form 4::
-
-   if *condition* ; then
-      *commands* 
-   elif *condition* ; then
-        *commands*
-   else
-      *commands*
-   fi    
- 
-Each if else statement has a specific purpose. 
-
-In the first one, the statement checks for a condition, and if the condition is 
-true, it performs an action. otherwise, it does nothing
-
-In the second, the statement checks for a condition, and if the condition is 
-true, performs an action. if the condition is false, it performs a different 
-action.
-
-In the third, the statement checks for a condition, and if it is true, performs 
-an action. if the first condition is false, but the second condition is true, it
-performs a different action. if neither condition is true, it does nothing.
-(note that this could be extended to 5, 20, or even a hundred different
-conditions.)
-
-In the fourth, the statement checks for a condition, and if it is true, performs
-an action. if the first condition is false but the second condition is true, 
-it performs a different action. if none of the conditions are true, it performs 
-a different action.(once again, there could be more than 2 conditions)
-
-For/While/Until Loops in bash.
-===================================
-
-This section deals with three types of loops. The while loop. the until loop. 
-and the for loop.
-
-The While Loop
--------------------
-
-.. sidebar :: Avoiding Infinite Loops.
-
-   Try to avoid Infininte loops whenever possible. An example of an Infininte 
-   Loop is::
-     
-      number=0
-      while [ $number -lt 10 ]; do
-         echo "Number = $number"
-         number=$((number - 1))
-      done
-    
-   You'll notice that Even though it has a condition, it sends it down, not up, 
-   meaning it will endlessly spiral downwards away from 10.    
-
-The while loop is used to perform an action for as long as a condition is met. 
-for example::
-
-   number=0
-   while [ $number -lt 10 ]
-   do
-      echo "Number = $number"
-      number=$((number + 1))
-   done
-
-In this example, a number is set to 0, and for as long as the number is less 
-than 10 (the -lt is less than), the value of the number is printed, and 1 is 
-added to the number until the number reaches 10, when the loop exits.
-
-The Until Loop
----------------------
-
-The Until Loop is a lot like the while loop, except contrary to the while loop,
-instead of carrying out a piece of code while a condition is true, it carries 
-out a piece of code while a condition is false. Here's an example of an Until 
-loop::
-
-   number=0
-   until [ $number -ge 10 ]; do
-      echo "Number = $number"
-      number=$((number + 1))
-   done
-    
-In this example, you'll notice that until the number is greater than or equal to
-10 (-ge is greater than or equal to), it echoes the number's value and adds 1.  
-
-The For Loop
-----------------
-
-The for loop is designed to increment by one each time and perform a function.
-
-.. sidebar:: Example of a For Loop
-
-   example for loop::
-      
-     for ((i=0;i<${#TEST};i++))
-     do 
-        let ADD=$ADD+${MUL[i]}
-     done
-
-In the sidebar there's an example of a for loop which was used in a script for 
-calculating modulo. As you can see, a for loop uses an iterator(i) and changes 
-it's value a little bit every time the loop repeats until the value meets the 
-condition which has to be satisfied for the program to continue.
-

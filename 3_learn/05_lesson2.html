@@ -46,7 +46,18 @@
   <ul>
 <li><a class="reference internal" href="#">Exercise 2: Logic and Control</a><ul>
 <li><a class="reference internal" href="#inputs-and-logic-tests">Inputs and Logic tests</a></li>
-<li><a class="reference internal" href="#program-flow-control">Program flow control</a></li>
+<li><a class="reference internal" href="#program-flow-control">Program flow control</a><ul>
+<li><a class="reference internal" href="#a-not-equal-to-if-then-statement">A not equal to if/then statement</a></li>
+<li><a class="reference internal" href="#an-equal-to-if-then-else-statement">An equal to if/then/else statement</a></li>
+<li><a class="reference internal" href="#a-code-search-statement">A code search statement</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#logic-flow-control-functions">Logic Flow Control Functions</a><ul>
+<li><a class="reference internal" href="#the-while-loop">The While Loop</a></li>
+<li><a class="reference internal" href="#the-until-loop">The Until Loop</a></li>
+<li><a class="reference internal" href="#the-for-loop">The For Loop</a></li>
 </ul>
 </li>
 </ul>
@@ -151,6 +162,192 @@ iterated with respect to <tt class="docutils literal"><span class="pre">OPT</spa
 #. -n or &#8211;nodeploy: set variable NODEPLOY=&#8217;YES&#8217;
 #. Any other input: assign the input value to variable <tt class="docutils literal"><span class="pre">PROJECT</span></tt></li>
 </ul>
+<hr class="docutils" />
+<div class="section" id="a-not-equal-to-if-then-statement">
+<h3>A not equal to if/then statement<a class="headerlink" href="#a-not-equal-to-if-then-statement" title="Permalink to this headline">¶</a></h3>
+<div class="sidebar">
+<p class="first sidebar-title">Example of a not equal to statement</p>
+<p>This is an example of a not equal to if/then statement.</p>
+<div class="highlight-python"><div class="highlight"><pre>if [[ $EUID -ne 0 ]] ; then echo -e &quot;\e[1;31m try again using sudo \e[0m&quot; ; exit 1 ; fi
+</pre></div>
+</div>
+<p class="last">A simple not equal to if/then statement example.</p>
+</div>
+<div class="highlight-python"><div class="highlight"><pre>if [[ (variable) -ne (value) ]] ; then (perform action) fi
+</pre></div>
+</div>
+<p>A logic statement which performs an action if a variable is not equal to a certain
+value, for instance if the length of a variable is not equal to 8, it performs the action, but if the length of the variable is equal to 8, it simply continues running the program.</p>
+</div>
+<div class="section" id="an-equal-to-if-then-else-statement">
+<h3>An equal to if/then/else statement<a class="headerlink" href="#an-equal-to-if-then-else-statement" title="Permalink to this headline">¶</a></h3>
+<div class="sidebar">
+<p class="first sidebar-title">Example of an equal to if/then/else statement</p>
+<p>This is an example of an if/then/else statement of equality:</p>
+<div class="highlight-python"><div class="highlight"><pre>if [ &quot;`uname -i`&quot; = &quot;i386&quot; ]
+then
+  CHROMEVER=&quot;google-chrome-stable_current_i386.deb&quot;
+else
+  CHROMEVER=&quot;google-chrome-stable_current_amd64.deb&quot;
+fi
+</pre></div>
+</div>
+<p class="last">this is a simple if else statement.</p>
+</div>
+<div class="highlight-python"><div class="highlight"><pre>if [ variable = value ]
+then
+  (perform action)
+else
+   (peform other action)
+fi
+</pre></div>
+</div>
+<p>A logic statement which performs an action if a variable is equal to a value, and
+performs another action if the variable is not equal to that value. for instance, if the length of a variable were equal to 8 it would carry out a certain action, but if the length were NOT equal to 8 it would carry out a different action.</p>
+</div>
+<div class="section" id="a-code-search-statement">
+<h3>A code search statement<a class="headerlink" href="#a-code-search-statement" title="Permalink to this headline">¶</a></h3>
+<div class="sidebar">
+<p class="first sidebar-title">Example of a code search if/then statement</p>
+<p>This is an example of an if/then/else code search statement:</p>
+<div class="highlight-python"><div class="highlight"><pre>if [[ -z &quot;$(grep &#39;vm.mmap_min_addr&#39; /etc/modules)&quot; ]] ; then
+   echo -e /n &quot;vm.mmap_min_addr=0&quot; &gt;&gt; /etc/modules ;
+else
+   sed -i &#39;/vm.mmap_min_addr/c\vn.mmap_min_addr=0&#39; ~/etc/modules ;
+fi
+</pre></div>
+</div>
+<p class="last">This an if/then/else statement.</p>
+</div>
+<div class="highlight-python"><div class="highlight"><pre>if [[ -z &quot;$(grep &quot;(search term)&quot; /folder/document)&quot; ]] ; then
+   echo &quot;(search term)&quot; &gt;&gt; /folder/document
+fi
+</pre></div>
+</div>
+<p>A logic statement which searches a file for a specific term, and if it doesn&#8217;t find
+it it adds the text. note that the dash z means that instead of adding the echo if
+the search term is found, the program adds the echo if the search term is NOT found. Also, the added code in the example which starts with the command &#8220;sed&#8221; is designed to look for code and replace the line with a new line.</p>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="logic-flow-control-functions">
+<h1>Logic Flow Control Functions<a class="headerlink" href="#logic-flow-control-functions" title="Permalink to this headline">¶</a></h1>
+<p>Wow. Logic Flow Control Functions. That&#8217;s a big name. looks complicated, right?
+Not terribly.</p>
+<p>IF Else statements take on 1 of 4 forms.</p>
+<p>Form 1:</p>
+<div class="highlight-python"><div class="highlight"><pre>if *condition* ; then
+   *commands*
+fi
+</pre></div>
+</div>
+<p>Form 2:</p>
+<div class="highlight-python"><div class="highlight"><pre>if *condition* ; then
+   *commands*
+else
+   *commands*
+fi
+</pre></div>
+</div>
+<p>Form 3:</p>
+<div class="highlight-python"><div class="highlight"><pre>if *condition* ; then
+   *commands*
+elif *condition* ; then
+   *commands*
+fi
+</pre></div>
+</div>
+<p>Form 4:</p>
+<div class="highlight-python"><div class="highlight"><pre>if *condition* ; then
+   *commands*
+elif *condition* ; then
+     *commands*
+else
+   *commands*
+fi
+</pre></div>
+</div>
+<p>Each if else statement has a specific purpose.</p>
+<p>In the first one, the statement checks for a condition, and if the condition is
+true, it performs an action. otherwise, it does nothing</p>
+<p>In the second, the statement checks for a condition, and if the condition is
+true, performs an action. if the condition is false, it performs a different
+action.</p>
+<p>In the third, the statement checks for a condition, and if it is true, performs
+an action. if the first condition is false, but the second condition is true, it
+performs a different action. if neither condition is true, it does nothing.
+(note that this could be extended to 5, 20, or even a hundred different
+conditions.)</p>
+<p>In the fourth, the statement checks for a condition, and if it is true, performs
+an action. if the first condition is false but the second condition is true,
+it performs a different action. if none of the conditions are true, it performs
+a different action.(once again, there could be more than 2 conditions)</p>
+<p>This section deals with three types of loops. The while loop. the until loop.
+and the for loop.</p>
+<div class="section" id="the-while-loop">
+<h2>The While Loop<a class="headerlink" href="#the-while-loop" title="Permalink to this headline">¶</a></h2>
+<div class="sidebar">
+<p class="first sidebar-title">Avoiding Infinite Loops.</p>
+<p>Try to avoid Infininte loops whenever possible. An example of an Infininte
+Loop is:</p>
+<div class="highlight-python"><div class="highlight"><pre>number=0
+while [ $number -lt 10 ]; do
+   echo &quot;Number = $number&quot;
+   number=$((number - 1))
+done
+</pre></div>
+</div>
+<p class="last">You&#8217;ll notice that Even though it has a condition, it sends it down, not up,
+meaning it will endlessly spiral downwards away from 10.</p>
+</div>
+<p>The while loop is used to perform an action for as long as a condition is met.
+for example:</p>
+<div class="highlight-python"><div class="highlight"><pre>number=0
+while [ $number -lt 10 ]
+do
+   echo &quot;Number = $number&quot;
+   number=$((number + 1))
+done
+</pre></div>
+</div>
+<p>In this example, a number is set to 0, and for as long as the number is less
+than 10 (the -lt is less than), the value of the number is printed, and 1 is
+added to the number until the number reaches 10, when the loop exits.</p>
+</div>
+<div class="section" id="the-until-loop">
+<h2>The Until Loop<a class="headerlink" href="#the-until-loop" title="Permalink to this headline">¶</a></h2>
+<p>The Until Loop is a lot like the while loop, except contrary to the while loop,
+instead of carrying out a piece of code while a condition is true, it carries
+out a piece of code while a condition is false. Here&#8217;s an example of an Until
+loop:</p>
+<div class="highlight-python"><div class="highlight"><pre>number=0
+until [ $number -ge 10 ]; do
+   echo &quot;Number = $number&quot;
+   number=$((number + 1))
+done
+</pre></div>
+</div>
+<p>In this example, you&#8217;ll notice that until the number is greater than or equal to
+10 (-ge is greater than or equal to), it echoes the number&#8217;s value and adds 1.</p>
+</div>
+<div class="section" id="the-for-loop">
+<h2>The For Loop<a class="headerlink" href="#the-for-loop" title="Permalink to this headline">¶</a></h2>
+<p>The for loop is designed to increment by one each time and perform a function.</p>
+<div class="sidebar">
+<p class="first sidebar-title">Example of a For Loop</p>
+<p>example for loop:</p>
+<div class="last highlight-python"><div class="highlight"><pre>for ((i=0;i&lt;${#TEST};i++))
+do
+   let ADD=$ADD+${MUL[i]}
+done
+</pre></div>
+</div>
+</div>
+<p>In the sidebar there&#8217;s an example of a for loop which was used in a script for
+calculating modulo. As you can see, a for loop uses an iterator(i) and changes
+it&#8217;s value a little bit every time the loop repeats until the value meets the
+condition which has to be satisfied for the program to continue.</p>
 </div>
 </div>
 

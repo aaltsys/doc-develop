@@ -53,24 +53,11 @@
 <li><a class="reference internal" href="#test-constructs">Test Constructs</a></li>
 <li><a class="reference internal" href="#decisions-flow-control">Decisions &amp;  Flow Control</a><ul>
 <li><a class="reference internal" href="#list-iterative-for">List Iterative <em>for</em></a></li>
-<li><a class="reference internal" href="#algebraic-iterative-for">Algebraic Iterative <tt class="docutils literal"><span class="pre">for</span></tt></a></li>
+<li><a class="reference internal" href="#algebraic-iterative-for">Algebraic Iterative <em>for</em></a></li>
 <li><a class="reference internal" href="#list-interactive-select">List Interactive <em>select</em></a></li>
 <li><a class="reference internal" href="#branching-case">Branching <em>case</em></a></li>
 <li><a class="reference internal" href="#branching-if">Branching <em>if</em></a></li>
 <li><a class="reference internal" href="#iterative-while-until">Iterative <em>while</em> &amp; <em>until</em></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#a-not-equal-to-if-then-statement">A not equal to if/then statement</a></li>
-<li><a class="reference internal" href="#an-equal-to-if-then-else-statement">An equal to if/then/else statement</a></li>
-<li><a class="reference internal" href="#a-code-search-statement">A code search statement</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#logic-flow-control-functions">Logic Flow Control Functions</a><ul>
-<li><a class="reference internal" href="#if-else-statements">If Else Statements</a></li>
-<li><a class="reference internal" href="#for-while-until-loops-in-bash">For/While/Until Loops in bash.</a><ul>
-<li><a class="reference internal" href="#the-while-loop">The While Loop</a></li>
-<li><a class="reference internal" href="#the-until-loop">The Until Loop</a></li>
-<li><a class="reference internal" href="#the-for-loop">The For Loop</a></li>
 </ul>
 </li>
 </ul>
@@ -233,6 +220,7 @@ literally or by Bash pattern matching, depending on which test is used.</p>
 <p class="first admonition-title">See also</p>
 <p><a class="reference external" href="http://www.gnu.org/software/bash/manual/html_node/Bash-Conditional-Expressions.html">Bash Conditional Expressions</a></p>
 <p><a class="reference external" href="http://tldp.org/LDP/abs/html/tests.html">Advanced Bash-Scripting Guide</a></p>
+<p><a class="reference external" href="http://wiki.bash-hackers.org/start">Bash Hackers Wiki</a></p>
 <p class="last">On-line bash documentation, <tt class="docutils literal"><span class="pre">man</span> <span class="pre">bash</span></tt>.</p>
 </div>
 </div>
@@ -273,38 +261,42 @@ based on logic or decisions, as shown following:</p>
 <h3>List Iterative <em>for</em><a class="headerlink" href="#list-iterative-for" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-bash"><div class="highlight"><pre><span class="k">for </span>name <span class="o">[</span> in <span class="o">[</span> word ... <span class="o">]</span> <span class="o">]</span>
 <span class="k">do</span>
-<span class="k">  </span>statement list
+<span class="k">  </span><span class="nb">command </span>list
 <span class="k">done</span>
 </pre></div>
 </div>
-<p>The  list of words following in is expanded, generating a list of items.  The variable
-name is set to each element of this list in turn, and list is executed each time.   If
-the in word is omitted, the for command executes list once for each positional parame‐
-ter that is set (see PARAMETERS below).  The return status is the exit status  of  the
-last  command that executes.  If the expansion of the items following in results in an
-empty list, no commands are executed, and the return status is 0.</p>
+<p>The  <tt class="docutils literal"><span class="pre">word</span></tt> list following <tt class="docutils literal"><span class="pre">in</span></tt> is expanded, generating a list of items.
+The variable <tt class="docutils literal"><span class="pre">name</span></tt> is set to each element of the expanded <tt class="docutils literal"><span class="pre">word</span></tt> list in
+turn, and the <tt class="docutils literal"><span class="pre">command</span></tt> list is executed for each turn.</p>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<ol class="last arabic simple">
+<li>If operator <tt class="docutils literal"><span class="pre">in</span></tt> is omitted, the <tt class="docutils literal"><span class="pre">for</span></tt> command executes the
+<tt class="docutils literal"><span class="pre">command</span></tt> list once for each positional parameter that is set.</li>
+<li>If the expansion of the <tt class="docutils literal"><span class="pre">word</span></tt> list (following <tt class="docutils literal"><span class="pre">in</span></tt>) results in an
+empty list, no commands are executed.</li>
+</ol>
+</div>
 </div>
 <div class="section" id="algebraic-iterative-for">
-<h3>Algebraic Iterative <tt class="docutils literal"><span class="pre">for</span></tt><a class="headerlink" href="#algebraic-iterative-for" title="Permalink to this headline">¶</a></h3>
+<h3>Algebraic Iterative <em>for</em><a class="headerlink" href="#algebraic-iterative-for" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-bash"><div class="highlight"><pre><span class="k">for</span> <span class="o">((</span> expression1 ; expression2 ; expression3 <span class="o">))</span>
 <span class="k">do</span>
-<span class="k">  </span>statement list
+<span class="k">  </span><span class="nb">command </span>list
 <span class="k">done</span>
 </pre></div>
 </div>
 <p>Arithmetic expression1 is evaluated by the rules of <a class="reference external" href="../resources/08_expressions.html#arithmetic-eval" title="(in Developer Documentation Resource Pages v0.5)"><em>Arithmetic Evaluation</em></a>. Then
 arithmetic expression2 is evaluated repeatedly until it evaluates to <tt class="docutils literal"><span class="pre">0</span></tt>.
-Each time expression2 evaluates to a non-zero value, the statement list is
+Each time expression2 evaluates to a non-zero value, the command list is
 executed and arithmetic expression3 is evaluated. If any expression is omitted,
-it behaves as if it evaluates to <tt class="docutils literal"><span class="pre">1</span></tt>. The return value is the exit status of
-the last statement list command that is executed, or false if any of the
-test expressions is invalid.</p>
+it behaves as if it evaluates to <tt class="docutils literal"><span class="pre">1</span></tt>.</p>
 </div>
 <div class="section" id="list-interactive-select">
 <h3>List Interactive <em>select</em><a class="headerlink" href="#list-interactive-select" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-bash"><div class="highlight"><pre><span class="k">select </span>name <span class="o">[</span> in word <span class="o">]</span>
 <span class="k">do</span>
-<span class="k">  </span>statement list
+<span class="k">  </span><span class="nb">command </span>list
 <span class="k">done</span>
 </pre></div>
 </div>
@@ -323,17 +315,17 @@ selection until a break command is executed.</p>
 <h3>Branching <em>case</em><a class="headerlink" href="#branching-case" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-bash"><div class="highlight"><pre><span class="k">case </span>word in
   pattern|pattern<span class="o">)</span>
-    statement list ;;
+    <span class="nb">command </span>list ;;
   pattern2|pattern2<span class="o">)</span>
-    statement list ;;
+    <span class="nb">command </span>list ;;
   *<span class="o">)</span>
-    statement list ;;
+    <span class="nb">command </span>list ;;
 <span class="k">esac</span>
 </pre></div>
 </div>
 <p>A case command first expands <strong>word</strong> (see note 1), and tries to match it
 against each <strong>pattern</strong> in turn, using pathname pattern matching rules (see
-note 2). Once the first match is found, the associated list of statements is
+note 2). Once the first match is found, the associated list of commands is
 executed, up to the termination operator, which is processed as follows:</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -350,7 +342,7 @@ executed, up to the termination operator, which is processed as follows:</p>
 <td>The case statement exits at <tt class="docutils literal"><span class="pre">esac</span></tt>.</td>
 </tr>
 <tr class="row-odd"><td><tt class="docutils literal"><span class="pre">;&amp;</span></tt></td>
-<td>Execution continues with the statement list of next code block.</td>
+<td>Execution continues with the command list of next code block.</td>
 </tr>
 <tr class="row-even"><td><tt class="docutils literal"><span class="pre">;;&amp;</span></tt></td>
 <td>Pattern match testing continues with the next code block.</td>
@@ -367,42 +359,42 @@ regard to the case of  alphabetic characters.</li>
 </div>
 <div class="section" id="branching-if">
 <h3>Branching <em>if</em><a class="headerlink" href="#branching-if" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-bash"><div class="highlight"><pre><span class="k">if </span>testexpressions
+<div class="highlight-bash"><div class="highlight"><pre><span class="k">if </span>expression list
 <span class="k">then</span>
-<span class="k">  </span>statement list ;
-<span class="k">elif </span>testexpressions
+<span class="k">  </span><span class="nb">command </span>list ;
+<span class="k">elif </span>expression list
 <span class="k">then</span>
-<span class="k">  </span>statement list ;
+<span class="k">  </span><span class="nb">command </span>list ;
   ...
-<span class="k">else </span>testexpressions
-  statement list ;
+<span class="k">else </span>expression list
+  <span class="nb">command </span>list ;
 <span class="k">fi</span>
 </pre></div>
 </div>
-<p>The <tt class="docutils literal"><span class="pre">if</span></tt> test expressions list is executed. If its exit status is <tt class="docutils literal"><span class="pre">0</span></tt>, the
-<tt class="docutils literal"><span class="pre">then</span></tt> list is executed.  Otherwise, each <tt class="docutils literal"><span class="pre">elif</span></tt> test list is executed in
-turn, and if its exit status is <tt class="docutils literal"><span class="pre">0</span></tt>, the corresponding <tt class="docutils literal"><span class="pre">then</span></tt> list is
-executed and the command completes. Otherwise, the <tt class="docutils literal"><span class="pre">else</span></tt> list is executed, if
-present.</p>
+<p>The <tt class="docutils literal"><span class="pre">if</span></tt> test <tt class="docutils literal"><span class="pre">expression</span></tt> list is executed. If its exit status is <tt class="docutils literal"><span class="pre">0</span></tt>,
+the <tt class="docutils literal"><span class="pre">then</span></tt> list is executed.  Otherwise, each <tt class="docutils literal"><span class="pre">elif</span></tt> test list is executed
+in turn, and if its exit status is <tt class="docutils literal"><span class="pre">0</span></tt>, the corresponding <tt class="docutils literal"><span class="pre">then</span></tt> list is
+executed and the command completes. Otherwise, the <tt class="docutils literal"><span class="pre">else</span></tt> list is executed,
+if present, to complete the execution.</p>
 </div>
 <div class="section" id="iterative-while-until">
 <h3>Iterative <em>while</em> &amp; <em>until</em><a class="headerlink" href="#iterative-while-until" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-bash"><div class="highlight"><pre><span class="k">while </span>testexpressions
+<div class="highlight-bash"><div class="highlight"><pre><span class="k">while </span>expression list
 <span class="k">do</span>
-<span class="k">  </span>statement list
+<span class="k">  </span><span class="nb">command </span>list
 <span class="k">done</span>
 
-<span class="k">until </span>expressionlist
+<span class="k">until </span>expression list
 <span class="k">do</span>
-<span class="k">  </span>statement list
+<span class="k">  </span><span class="nb">command </span>list
 <span class="k">done</span>
 </pre></div>
 </div>
-<p>The <tt class="docutils literal"><span class="pre">while</span></tt> command continuously executes the statement list as long as the
-last command in the test expressions list returns an exit status of <tt class="docutils literal"><span class="pre">0</span></tt>.
+<p>The <tt class="docutils literal"><span class="pre">while</span></tt> command continuously executes the <tt class="docutils literal"><span class="pre">command</span></tt> list as long as the
+last statement in the <tt class="docutils literal"><span class="pre">expression</span></tt> list returns an exit status of <tt class="docutils literal"><span class="pre">0</span></tt>.
 The <tt class="docutils literal"><span class="pre">until</span></tt> command is identical to the <tt class="docutils literal"><span class="pre">while</span></tt> command, except that the
-test is negated; the statement list is executed as long as the last command in
-the test expressions list returns a non-zero exit status.</p>
+test is negated; the <tt class="docutils literal"><span class="pre">command</span></tt> list is executed as long as the last statement
+in the test <tt class="docutils literal"><span class="pre">expression</span></tt> list returns a non-zero exit status.</p>
 <p>&#8212;</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -417,7 +409,7 @@ expansion, parameter and variable expansion, arithmetic substitution,
 command substitution, followed by process substitution and quote removal.</p>
 </li>
 <li><p class="first">Arithmetic expressions are evaluated according to the rules described
-below under <a class="reference external" href="../resources/07_operators.html#arithmetic" title="(in Developer Documentation Resource Pages v0.5)"><em>Arithmetic operators</em></a>.</p>
+under <a class="reference external" href="../resources/08_expressions.html#arithmetic-eval" title="(in Developer Documentation Resource Pages v0.5)"><em>Arithmetic Evaluation</em></a>.</p>
 </li>
 <li><p class="first">Pathname pattern matching rules include the following:</p>
 <table border="1" class="docutils">
@@ -444,8 +436,10 @@ below under <a class="reference external" href="../resources/07_operators.html#a
 </tbody>
 </table>
 </li>
-<li><p class="first">The exit status of any compound statement is the exit status of the last
-command executed in a list, or <tt class="docutils literal"><span class="pre">0</span></tt> when no list statements are executed.</p>
+<li><p class="first">If any condition expression for a compound statement is invalid, or if
+evaluation results in no commands executed, then the exit status of the
+compound statement will be <tt class="docutils literal"><span class="pre">0</span></tt>. Otherwise, the exit status of a compound
+statement is the exit status of the last command executed in a list.</p>
 </li>
 </ol>
 </div>
@@ -453,198 +447,6 @@ command executed in a list, or <tt class="docutils literal"><span class="pre">0<
 <p class="first admonition-title">See also</p>
 <p class="last">online manual, terminal command <tt class="docutils literal"><span class="pre">man</span> <span class="pre">bash</span></tt>.</p>
 </div>
-</div>
-</div>
-<hr class="docutils" />
-<div class="section" id="a-not-equal-to-if-then-statement">
-<h2>A not equal to if/then statement<a class="headerlink" href="#a-not-equal-to-if-then-statement" title="Permalink to this headline">¶</a></h2>
-<div class="sidebar">
-<p class="first sidebar-title">Example of a not equal to statement</p>
-<p>This is an example of a not equal to if/then statement.</p>
-<div class="highlight-python"><div class="highlight"><pre>if [[ $EUID -ne 0 ]] ; then echo -e &quot;\e[1;31m try again using sudo \e[0m&quot; ; exit 1 ; fi
-</pre></div>
-</div>
-<p class="last">A simple not equal to if/then statement example.</p>
-</div>
-<div class="highlight-python"><div class="highlight"><pre>if [[ (variable) -ne (value) ]] ; then (perform action) fi
-</pre></div>
-</div>
-<p>A logic statement which performs an action if a variable is not equal to a certain
-value, for instance if the length of a variable is not equal to 8, it performs the action, but if the length of the variable is equal to 8, it simply continues running the program.</p>
-</div>
-<div class="section" id="an-equal-to-if-then-else-statement">
-<h2>An equal to if/then/else statement<a class="headerlink" href="#an-equal-to-if-then-else-statement" title="Permalink to this headline">¶</a></h2>
-<div class="sidebar">
-<p class="first sidebar-title">Example of an equal to if/then/else statement</p>
-<p>This is an example of an if/then/else statement of equality:</p>
-<div class="highlight-python"><div class="highlight"><pre>if [ &quot;`uname -i`&quot; = &quot;i386&quot; ]
-then
-  CHROMEVER=&quot;google-chrome-stable_current_i386.deb&quot;
-else
-  CHROMEVER=&quot;google-chrome-stable_current_amd64.deb&quot;
-fi
-</pre></div>
-</div>
-<p class="last">this is a simple if else statement.</p>
-</div>
-<div class="highlight-python"><div class="highlight"><pre>if [ variable = value ]
-then
-  (perform action)
-else
-   (peform other action)
-fi
-</pre></div>
-</div>
-<p>A logic statement which performs an action if a variable is equal to a value, and
-performs another action if the variable is not equal to that value. for instance, if the length of a variable were equal to 8 it would carry out a certain action, but if the length were NOT equal to 8 it would carry out a different action.</p>
-</div>
-<div class="section" id="a-code-search-statement">
-<h2>A code search statement<a class="headerlink" href="#a-code-search-statement" title="Permalink to this headline">¶</a></h2>
-<div class="sidebar">
-<p class="first sidebar-title">Example of a code search if/then statement</p>
-<p>This is an example of an if/then/else code search statement:</p>
-<div class="highlight-python"><div class="highlight"><pre>if [[ -z &quot;$(grep &#39;vm.mmap_min_addr&#39; /etc/modules)&quot; ]] ; then
-   echo -e /n &quot;vm.mmap_min_addr=0&quot; &gt;&gt; /etc/modules ;
-else
-   sed -i &#39;/vm.mmap_min_addr/c\vn.mmap_min_addr=0&#39; ~/etc/modules ;
-fi
-</pre></div>
-</div>
-<p class="last">This an if/then/else statement.</p>
-</div>
-<div class="highlight-python"><div class="highlight"><pre>if [[ -z &quot;$(grep &quot;(search term)&quot; /folder/document)&quot; ]] ; then
-   echo &quot;(search term)&quot; &gt;&gt; /folder/document
-fi
-</pre></div>
-</div>
-<p>A logic statement which searches a file for a specific term, and if it doesn&#8217;t find
-it it adds the text. note that the dash z means that instead of adding the echo if
-the search term is found, the program adds the echo if the search term is NOT found. Also, the added code in the example which starts with the command &#8220;sed&#8221; is designed to look for code and replace the line with a new line.</p>
-</div>
-</div>
-<hr class="docutils" />
-<div class="section" id="logic-flow-control-functions">
-<h1>Logic Flow Control Functions<a class="headerlink" href="#logic-flow-control-functions" title="Permalink to this headline">¶</a></h1>
-<p>Wow. Logic Flow Control Functions. That&#8217;s a big name. looks complicated, right?
-Not terribly.</p>
-<div class="section" id="if-else-statements">
-<h2>If Else Statements<a class="headerlink" href="#if-else-statements" title="Permalink to this headline">¶</a></h2>
-<p>IF Else statements take on 1 of 4 forms.</p>
-<p>Form 1:</p>
-<div class="highlight-python"><div class="highlight"><pre>if *condition* ; then
-   *commands*
-fi
-</pre></div>
-</div>
-<p>Form 2:</p>
-<div class="highlight-python"><div class="highlight"><pre>if *condition* ; then
-   *commands*
-else
-   *commands*
-fi
-</pre></div>
-</div>
-<p>Form 3:</p>
-<div class="highlight-python"><div class="highlight"><pre>if *condition* ; then
-   *commands*
-elif *condition* ; then
-   *commands*
-fi
-</pre></div>
-</div>
-<p>Form 4:</p>
-<div class="highlight-python"><div class="highlight"><pre>if *condition* ; then
-   *commands*
-elif *condition* ; then
-     *commands*
-else
-   *commands*
-fi
-</pre></div>
-</div>
-<p>Each if else statement has a specific purpose.</p>
-<p>In the first one, the statement checks for a condition, and if the condition is
-true, it performs an action. otherwise, it does nothing</p>
-<p>In the second, the statement checks for a condition, and if the condition is
-true, performs an action. if the condition is false, it performs a different
-action.</p>
-<p>In the third, the statement checks for a condition, and if it is true, performs
-an action. if the first condition is false, but the second condition is true, it
-performs a different action. if neither condition is true, it does nothing.
-(note that this could be extended to 5, 20, or even a hundred different
-conditions.)</p>
-<p>In the fourth, the statement checks for a condition, and if it is true, performs
-an action. if the first condition is false but the second condition is true,
-it performs a different action. if none of the conditions are true, it performs
-a different action.(once again, there could be more than 2 conditions)</p>
-</div>
-<div class="section" id="for-while-until-loops-in-bash">
-<h2>For/While/Until Loops in bash.<a class="headerlink" href="#for-while-until-loops-in-bash" title="Permalink to this headline">¶</a></h2>
-<p>This section deals with three types of loops. The while loop. the until loop.
-and the for loop.</p>
-<div class="section" id="the-while-loop">
-<h3>The While Loop<a class="headerlink" href="#the-while-loop" title="Permalink to this headline">¶</a></h3>
-<div class="sidebar">
-<p class="first sidebar-title">Avoiding Infinite Loops.</p>
-<p>Try to avoid Infininte loops whenever possible. An example of an Infininte
-Loop is:</p>
-<div class="highlight-python"><div class="highlight"><pre>number=0
-while [ $number -lt 10 ]; do
-   echo &quot;Number = $number&quot;
-   number=$((number - 1))
-done
-</pre></div>
-</div>
-<p class="last">You&#8217;ll notice that Even though it has a condition, it sends it down, not up,
-meaning it will endlessly spiral downwards away from 10.</p>
-</div>
-<p>The while loop is used to perform an action for as long as a condition is met.
-for example:</p>
-<div class="highlight-python"><div class="highlight"><pre>number=0
-while [ $number -lt 10 ]
-do
-   echo &quot;Number = $number&quot;
-   number=$((number + 1))
-done
-</pre></div>
-</div>
-<p>In this example, a number is set to 0, and for as long as the number is less
-than 10 (the -lt is less than), the value of the number is printed, and 1 is
-added to the number until the number reaches 10, when the loop exits.</p>
-</div>
-<div class="section" id="the-until-loop">
-<h3>The Until Loop<a class="headerlink" href="#the-until-loop" title="Permalink to this headline">¶</a></h3>
-<p>The Until Loop is a lot like the while loop, except contrary to the while loop,
-instead of carrying out a piece of code while a condition is true, it carries
-out a piece of code while a condition is false. Here&#8217;s an example of an Until
-loop:</p>
-<div class="highlight-python"><div class="highlight"><pre>number=0
-until [ $number -ge 10 ]; do
-   echo &quot;Number = $number&quot;
-   number=$((number + 1))
-done
-</pre></div>
-</div>
-<p>In this example, you&#8217;ll notice that until the number is greater than or equal to
-10 (-ge is greater than or equal to), it echoes the number&#8217;s value and adds 1.</p>
-</div>
-<div class="section" id="the-for-loop">
-<h3>The For Loop<a class="headerlink" href="#the-for-loop" title="Permalink to this headline">¶</a></h3>
-<p>The for loop is designed to increment by one each time and perform a function.</p>
-<div class="sidebar">
-<p class="first sidebar-title">Example of a For Loop</p>
-<p>example for loop:</p>
-<div class="last highlight-python"><div class="highlight"><pre>for ((i=0;i&lt;${#TEST};i++))
-do
-   let ADD=$ADD+${MUL[i]}
-done
-</pre></div>
-</div>
-</div>
-<p>In the sidebar there&#8217;s an example of a for loop which was used in a script for
-calculating modulo. As you can see, a for loop uses an iterator(i) and changes
-it&#8217;s value a little bit every time the loop repeats until the value meets the
-condition which has to be satisfied for the program to continue.</p>
 </div>
 </div>
 </div>
