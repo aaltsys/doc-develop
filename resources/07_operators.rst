@@ -4,13 +4,10 @@
 Operators & Other Characters
 #############################
 
-Operators by Type
-=============================
-
 .. _arithmetic:
 
 Arithmetic operators
------------------------------
+=============================
 
 .. note::
    The arithmetic operators are listed grouped in order of precedence. 
@@ -19,10 +16,10 @@ Arithmetic operators
 | Operator        | Description                                             |
 +=================+=========================================================+
 ||  id++          || post-increment                                         |
-||  id--          || post-decrement                                         |
+||  id\-\-        || post-decrement                                         |
 +-----------------+---------------------------------------------------------+
 ||  ++id          || pre-increment                                          |
-|| --id           || pre-decrement                                          |
+|| \-\-id         || pre-decrement                                          |
 +-----------------+---------------------------------------------------------+
 ||  \+            || unary plus (positive number)                           |
 ||  \-            || unary minus (negative number)                          |
@@ -37,7 +34,7 @@ Arithmetic operators
 ||  %             || remainder (modulus)                                    |
 +-----------------+---------------------------------------------------------+
 ||  +             || addition                                               |
-||  -             || subtraction                                            |
+||  \-            || subtraction                                            |
 +-----------------+---------------------------------------------------------+
 ||  <<            || bit-wise shift left                                    |
 ||  >>            || bit-wise shift right                                   |
@@ -60,7 +57,7 @@ Arithmetic operators
 +-----------------+---------------------------------------------------------+
 |  \|\|           | logical OR                                              |
 +-----------------+---------------------------------------------------------+
-|| expr?expr:expr | conditional operator                                    |
+| expr?expr:expr  | conditional operator                                    |
 +-----------------+---------------------------------------------------------+
 | assignment      | (see following table)                                   |
 +-----------------+---------------------------------------------------------+
@@ -102,6 +99,20 @@ Arithmetic assignment
 
 .. _logic:
 
+Logic Operators
+=============================
+
+.. legend::
+
+   +--------+------------------------------------------------------------------+
+   | Test   | Column **Test** indicates which type of logic test this          |
+   |        | operator applies to. Values might be ``[``, ``[[`` or ``all``.   |
+   +--------+------------------------------------------------------------------+
+   | U/B    | The **U/B** column refers to the type of test: ``U`` for         |
+   |        | *unary*, or ``B`` for *binary*.                                  |
+   +--------+------------------------------------------------------------------+
+   
+
 Logical reversal operator
 -----------------------------
 
@@ -117,17 +128,20 @@ Compound comparison operators
 +----------+-------+-----+-----------------------------------------------------+
 | Operator | Test  | U/B | Description                                         |
 +==========+=======+=====+=====================================================+
-| -a       | ``[`` |  B  | logical AND within test: ``[ expr1 -a expr2 ]``     |
+| \-a      | ``[`` |  B  | logical AND within test: ``[ expr1 -a expr2 ]``     |
 +----------+-------+-----+-----------------------------------------------------+
-| -o       | ``[`` |  B  | logical OR within test: ``[ expr1 -o expr2 ]``      |
+| \-o      | ``[`` |  B  | logical OR within test: ``[ expr1 -o expr2 ]``      |
 +----------+-------+-----+-----------------------------------------------------+
 | &&       | ``[[``|  B  | logical AND double-bracket: ``[[ expr1 && expr2 ]]``|
 +----------+-------+-----+-----------------------------------------------------+
 | \|\|     | ``[[``|  B  | logical OR double-bracket: ``[[ expr1 || expr2 ]]`` |
 +----------+-------+-----+-----------------------------------------------------+
 
-Test constructs
+Comparison Tests
 =============================
+
+Generally, comparison tests are of three types: string comparisons, integer 
+comparisons, and file status tests.
 
 .. _compare-string:
 
@@ -162,7 +176,7 @@ String comparisons
    #. Lexicographical sort order for ``test`` or ``[`` construct is ASCII; 
       for ``[[`` construct the ordering is determined using the current locale.
    #. Construct ``[[`` uses ``==``, ``!=``, and ``=~`` to match by pattern, with
-      the pattern on the right. See Bash documentation for pattern description.
+      the pattern on the right. See :ref:`glob`.
 
 .. _compare-math:
 
@@ -197,7 +211,7 @@ Integer comparisons
 | >=       | ``[[``|  B  | greater than or equal to: ``(( number1 >= expr2 ))``|
 +----------+-------+-----+-----------------------------------------------------+
 
-.. _test-file:
+.. _compare-file:
 
 File test operators
 -----------------------------
@@ -261,7 +275,7 @@ File test operators
 
    `Advanced Bash Scripting Guide <http://tldp.org/LDP/abs/html/fto.html>`_
 
-.. constructs:
+.. _constructs:
 
 Expression constructs
 =============================
@@ -318,7 +332,29 @@ Expression constructs
 || \-\-       || (builtin) end of options ``rm -- -badname*``                   |
 +-------------+-----------------------------------------------------------------+
 
-.. characters:
+.. _glob:
+
+Glob Pattern Matching
+=============================
+
+Some entries, such as file system paths, may be written as expressions to be 
+expanded by substitution and pattern matching. 
+
++----------------+-----------------------------------------------------------+
+| Expression     | Interpretation                                            |
++================+===========================================================+
+| ``*``          | any string of 0 or more characters                        |
++----------------+-----------------------------------------------------------+
+| ``?``          | any string of 0 or 1 character                            |
++----------------+-----------------------------------------------------------+
+| ``X`` or ``\X``| where ``X`` represents any (special) character            |
++----------------+-----------------------------------------------------------+
+|  ``[XYZ]``     | where ``XYZ`` is a set of permitted characters            |
++----------------+-----------------------------------------------------------+
+|  ``[x..z]``    | where ``x..z`` is a range of permitted characters         |
++----------------+-----------------------------------------------------------+
+
+.. _characters:
 
 Special characters 
 =============================
@@ -359,7 +395,7 @@ Special characters
 +-----------+------------------------------------------------------------------+
 || ~        || user home directory path: corresponds to $HOME                  |
 || ~+       || present working directory: corresponds to $PWD                  |
-|| ~-       || previous working directory: corresponds to $OLDPWD              |
+|| ~\-      || previous working directory: corresponds to $OLDPWD              |
 +-----------+------------------------------------------------------------------+
 || \^       || parameter substitution: ``echo ${var^}`` uppercase first char   |
 || \^\^     || parameter substitution: ``echo ${var^^}`` uppercase string      |

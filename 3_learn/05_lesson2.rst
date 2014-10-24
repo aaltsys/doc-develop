@@ -4,6 +4,11 @@
 Exercise 2: Logic and Control
 #############################
 
+Programming with Logic
+=============================
+
+This exercise will focus on assembling a program with various compound logic 
+commands.
 
 Inputs and Logic tests
 -----------------------------
@@ -72,7 +77,11 @@ Let's break this down.
    #. -h or --help: display help, then exit
    #. -n or --nodeploy: set variable NODEPLOY='YES'
    #. Any other input: assign the input value to variable ``PROJECT``
-   
+
+.. warning::
+   It may seem obvious, but logic errors are very common when multiple responses 
+   or numeric options are used, and a :command:`case` statement processes the 
+   input.
 
 -----------------------------------------------------------------------------
 

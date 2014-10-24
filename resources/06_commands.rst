@@ -150,7 +150,8 @@ Below is a table of some of the variables exported by the BASH terminal.
 | UID          | The login ID number of the current login                      |
 +--------------+---------------------------------------------------------------+
 
-Source: `Bash Beginners Guide <http://www.tldp.org/LDP/Bash-Beginners-Guide/html/sect_03_02.html>`_
+.. seealso::
+   `Bash Beginners Guide <http://www.tldp.org/LDP/Bash-Beginners-Guide/html/sect_03_02.html>`_
 
 .. _variables-color:
 
@@ -246,13 +247,24 @@ setaf/setab xterm color values
 The :command:`tput` command uses a ``terminfo`` terminal definition, of which 
 the default :file:`xterm` definition serves the 8 colors listed above. For more 
 colors, you can load :file:`xterm-256color`. Commands demonstrating this 
-color set follow::
+color set follow:
 
 .. code-block:: bash
 
    export TERM='xterm-256color'
    tput colors
-   for i in {0..255}; do tput setab $i; echo -n "  $i  "; done; tput setab 0; echo
+   for i in {0..255}
+   do
+     tput setab $i
+     echo -n "  $i  "
+   done
+   tput setab 0
+   echo
    export TERM='xterm'
 
-For more information, see the ``terminfo`` manpage.
+or, this could be executed at the terminal as a single command::
+
+   export TERM=’xterm-256color’; tput colors; for i in {0..255}; do tput setab $i; echo -n ” $i ”; done; tput setab 0; echo; export TERM=’xterm’
+
+.. seealso::
+   For more information, see the ``terminfo`` manpage.
