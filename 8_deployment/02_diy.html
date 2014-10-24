@@ -86,15 +86,19 @@
           <div class="body">
             
   <div class="section" id="diy-deployment">
-<h1>DIY Deployment<a class="headerlink" href="#diy-deployment" title="Permalink to this headline">¶</a></h1>
+<span id="deployment"></span><h1>DIY Deployment<a class="headerlink" href="#diy-deployment" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="create-a-server">
 <h2>Create a Server<a class="headerlink" href="#create-a-server" title="Permalink to this headline">¶</a></h2>
-<p>For the purpose of this lesson, we will make a server which is publicly
-accessible.
-Servers are made publicly accessible through a public IP address.</p>
-<p>(Usually you visit a website by typing its domain name, and DNS translates
-this domain name to the server&#8217;s public IP address, but you can also visit
-a site by going straight to the IP.)</p>
+<p>This lesson will make a web application server which is publicly accessible.
+Servers are made publicly accessible through a public IP address, and
+optionally, a DNS entry pointing to the IP address.</p>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">The usual way to browse the web is to type website domain names for
+addresses, relying on DNS to translate the domain name to the server&#8217;s
+public IP address. but you can also visit a site by going straight to the
+IP, skipping DNS.</p>
+</div>
 <p>We can visit our server at:</p>
 <div class="highlight-python"><div class="highlight"><pre>http://54.68.232.191/
 </pre></div>
@@ -103,11 +107,15 @@ a site by going straight to the IP.)</p>
 <div class="highlight-python"><div class="highlight"><pre>http://ec2-54-68-232-191.us-west-2.compute.amazonaws.com/
 </pre></div>
 </div>
-<p>And see the default ubuntu Apache installation&#8217;s welcome page.
-Apache is the software which directs web requests to our application.</p>
-<img alt="apache-welcome-page.png" src="apache-welcome-page.png" />
+<p>or</p>
+<div class="highlight-python"><div class="highlight"><pre>http::/ec2demo.aaltsys.info/
+</pre></div>
+</div>
+<p>The default Ubuntu Apache installation&#8217;s welcome page should display.
+Apache is the webserver software which directs web requests to our application.</p>
+<img alt="_images/apache-welcome-page.png" src="_images/apache-welcome-page.png" />
 <p>As this page explains, it is located in the <tt class="file docutils literal"><span class="pre">/var/www/html</span></tt> folder on the
-server. This folder is known as the &#8220;DocRoot&#8221;.</p>
+server. This folder is known as the <em>DocRoot</em>.</p>
 <p>The file itself is called <tt class="file docutils literal"><span class="pre">index.html</span></tt>. When Apache gets a request for a
 folder path, it looks first for an <tt class="file docutils literal"><span class="pre">index.html</span></tt> file in that folder, and
 serves that file if it exists.</p>
@@ -118,13 +126,12 @@ DocRoot on the server.</p>
 <div class="section" id="create-a-code-project">
 <h2>Create a Code Project<a class="headerlink" href="#create-a-code-project" title="Permalink to this headline">¶</a></h2>
 <p><strong>* change to AAltsys account *</strong></p>
-<p>In your browser, login to your Github account. Fork the project from
-<a class="reference external" href="https://github.com/JuliaLovel/html-demo">https://github.com/JuliaLovel/html-demo</a>.</p>
-<p>After you fork the project, you will be taken to the GitHub page for
-your fork.</p>
+<p>In the web browser, login to your Github account. Fork the project from
+<a class="reference external" href="https://github.com/aaltsys/html-demo">https://github.com/aaltsys/html-demo</a>. After forking the project, Github will
+take you to the GitHub page for your fork.</p>
 <p>In GitHub, edit the <tt class="file docutils literal"><span class="pre">index.html</span></tt> file, putting your name in the <tt class="docutils literal"><span class="pre">&lt;h1&gt;</span></tt>
 tag.</p>
-<img alt="github-edit-index.png" src="github-edit-index.png" />
+<img alt="_images/github-edit-index.png" src="_images/github-edit-index.png" />
 <p>Commit your changes.</p>
 </div>
 <div class="section" id="move-code-to-the-server">
@@ -137,24 +144,21 @@ return to the main page for your fork.</p>
 (For example, <a class="reference external" href="https://github.com/AAltSys/html-demo.git">https://github.com/AAltSys/html-demo.git</a>)</p>
 <p>SSH to the server:</p>
 <div class="highlight-python"><div class="highlight"><pre>ssh developer@54.68.232.191
-
 password: techC@mp
 </pre></div>
 </div>
-<p>Create a unique directory in the DocRoot:</p>
-<div class="highlight-python"><div class="highlight"><pre>*** Define [your-directory-name] as [your-Github-id] ***
+<p>Using [your-Github-id] as [your-directory-name], create a unique directory in
+the DocRoot:</p>
+<div class="highlight-python"><div class="highlight"><pre>cd /var/www/html
+sudo mkdir [your-directory-name]
 </pre></div>
 </div>
-<blockquote>
-<div>cd /var/www/html
-sudo mkdir [your-directory-name]</div></blockquote>
-<p>Clone to your directory:</p>
+<p>Clone to your directory, pasting in the correct URL for your Github repository
+fork:</p>
 <div class="highlight-python"><div class="highlight"><pre>sudo git clone https://github.com/[your-Github-id]/html-demo.git [your-directory-name]
 </pre></div>
 </div>
-<p>(Paste the correct URL for your fork of the GitHub repository).</p>
-<p>View your page:</p>
-<p>Now your page can be viewed at:</p>
+<p>View your page at:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="p">[</span><span class="n">our</span><span class="o">-</span><span class="n">server</span><span class="o">-</span><span class="n">address</span><span class="p">]</span><span class="o">/</span><span class="p">[</span><span class="n">your</span><span class="o">-</span><span class="n">directory</span><span class="o">-</span><span class="n">name</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -165,17 +169,19 @@ sudo mkdir [your-directory-name]</div></blockquote>
 </div>
 <div class="section" id="what-s-missing">
 <h2>What&#8217;s Missing?<a class="headerlink" href="#what-s-missing" title="Permalink to this headline">¶</a></h2>
-<p>The DIY approach to deployment isn&#8217;t bad, but for a full-fledged code application,
-it does leave some things to be desired:</p>
+<p>The DIY approach to deployment isn&#8217;t bad for management. But there is a
+one-to-one relationship between the code repository and the public server, with
+no provision for testing, staging, and so forth. For a full-fledged code
+application, DIY leave some things to be desired:</p>
 <ul class="simple">
 <li>One-step automation</li>
-<li>Changing of configuration for different environments (locations of dependencies, database</li>
-</ul>
-<p>connection, etc.)</p>
-<ul class="simple">
-<li>Keeping different versions for easy rollback</li>
+<li>Configuring the application for different servers or server environments
+(locations of dependencies, database connection, etc.)</li>
+<li>Keeping different application versions for easy rollback</li>
 <li>Restarting server processes after a deployment</li>
 </ul>
+<p>So click <em class="guilabel">Next</em> to go on to a more advanced approach to application
+deployment.</p>
 </div>
 </div>
 

@@ -44,6 +44,7 @@
 <li><a class="reference internal" href="#install-capistrano">Install Capistrano</a></li>
 <li><a class="reference internal" href="#configure-capistrano">Configure Capistrano</a></li>
 <li><a class="reference internal" href="#deploy">Deploy!</a></li>
+<li><a class="reference internal" href="#now-what-s-missing">Now What&#8217;s Missing?</a></li>
 </ul>
 </li>
 </ul>
@@ -78,45 +79,67 @@
           <div class="body">
             
   <div class="section" id="deploy-with-capistrano">
-<h1>Deploy with Capistrano<a class="headerlink" href="#deploy-with-capistrano" title="Permalink to this headline">¶</a></h1>
+<span id="capistrano"></span><h1>Deploy with Capistrano<a class="headerlink" href="#deploy-with-capistrano" title="Permalink to this headline">¶</a></h1>
 <p>Capistrano is a tool for automating deployment.</p>
 <div class="section" id="install-capistrano">
 <h2>Install Capistrano<a class="headerlink" href="#install-capistrano" title="Permalink to this headline">¶</a></h2>
-<dl class="docutils">
-<dt>Install RVM::</dt>
-<dd>curl -L get.rvm.io | bash -s stable</dd>
-<dt>Install Ruby::</dt>
-<dd>rvm install 2.1.2
-rvm use 2.1.2 &#8211;default</dd>
-<dt>Install RubyGems::</dt>
-<dd>rvm rubygems current
-rvm use &#8211;create <a class="reference external" href="mailto:2&#46;1&#46;2&#37;&#52;&#48;demo">2<span>&#46;</span>1<span>&#46;</span>2<span>&#64;</span>demo</a></dd>
-<dt>Install Capistrano::</dt>
-<dd>gem install capistrano</dd>
-<dt>Capify Project::</dt>
-<dd>cap install</dd>
-</dl>
+<p>Install RVM:</p>
+<div class="highlight-python"><div class="highlight"><pre>curl -L get.rvm.io | bash -s stable
+</pre></div>
+</div>
+<p>Install Ruby:</p>
+<div class="highlight-python"><div class="highlight"><pre>rvm install 2.1.2
+rvm use 2.1.2 --default
+</pre></div>
+</div>
+<p>Install RubyGems:</p>
+<div class="highlight-python"><div class="highlight"><pre>rvm rubygems current
+rvm use --create 2.1.2@demo
+</pre></div>
+</div>
+<p>Install Capistrano:</p>
+<div class="highlight-python"><div class="highlight"><pre>gem install capistrano
+</pre></div>
+</div>
+<p>Capify Project:</p>
+<div class="highlight-python"><div class="highlight"><pre>cap install
+</pre></div>
+</div>
 </div>
 <div class="section" id="configure-capistrano">
 <h2>Configure Capistrano<a class="headerlink" href="#configure-capistrano" title="Permalink to this headline">¶</a></h2>
-<p>Edit <tt class="file docutils literal"><span class="pre">config/deploy.rb</span></tt> :</p>
-<ul class="simple">
+<p>Edit <tt class="file docutils literal"><span class="pre">config/deploy.rb</span></tt>:</p>
+<ol class="arabic simple">
 <li>Change the <cite>server</cite> setting to the correct server address,</li>
 <li>Change <cite>repo_url</cite> to the correct URL for your fork,</li>
 <li>Change <cite>deploy_to</cite> to the folder on the server where the code will be
 hosted (/var/www/html/[your-github-id])</li>
 <li>Change <cite>user</cite> to the user who has SSH access to the server (developer)</li>
-</ul>
-<p>Example::
-set :server, &#8216;ec2-54-68-232-191.us-west-2.compute.amazonaws.com&#8217;
-set :repo_url, &#8216;<a class="reference external" href="https://github.com/[your-github-id]/html-demo.git">https://github.com/[your-github-id]/html-demo.git</a>&#8216;
-set :deploy_to, &#8216;/var/www/html/[your-github-id]&#8217;
-set :user, &#8216;developer&#8217;</p>
+</ol>
+<p>Example:</p>
+<div class="highlight-python"><div class="highlight"><pre>set :server, &#39;ec2-54-68-232-191.us-west-2.compute.amazonaws.com&#39;
+set :repo_url, &#39;https://github.com/[your-github-id]/html-demo.git&#39;
+set :deploy_to, &#39;/var/www/html/[your-github-id]&#39;
+set :user, &#39;developer&#39;
+</pre></div>
+</div>
 </div>
 <div class="section" id="deploy">
 <h2>Deploy!<a class="headerlink" href="#deploy" title="Permalink to this headline">¶</a></h2>
-<p><cite>cap production deploy:check</cite></p>
-<p><cite>cap production deploy</cite></p>
+<p>Deploy your application with the following commands:</p>
+<div class="highlight-python"><div class="highlight"><pre>cap production deploy:check
+cap production deploy
+</pre></div>
+</div>
+</div>
+<div class="section" id="now-what-s-missing">
+<h2>Now What&#8217;s Missing?<a class="headerlink" href="#now-what-s-missing" title="Permalink to this headline">¶</a></h2>
+<p>We still have only one deployment environment, the production server. We would
+like to be able to test our code locally, then deploy to a shared testing server
+for collaborative development, then deploy to a staging server which mimics the
+production environment. At each of stage of this process, we would want to use
+an automated test set for the application and conformance testing for the client
+browsers. Only then would we deploy to a production server.</p>
 </div>
 </div>
 

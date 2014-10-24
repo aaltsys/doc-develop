@@ -51,8 +51,10 @@
 <li><a class="reference internal" href="#generalize-for-recycling">Generalize for Recycling</a></li>
 <li><a class="reference internal" href="#file-configurations">File Configurations</a></li>
 <li><a class="reference internal" href="#colorize-my-output-world">Colorize My Output World</a></li>
+<li><a class="reference internal" href="#colorful-language">Colorful language</a></li>
 <li><a class="reference internal" href="#debugging-statements">Debugging Statements</a></li>
 <li><a class="reference internal" href="#readable-code">Readable Code</a></li>
+<li><a class="reference internal" href="#highly-quotable">Highly quotable</a></li>
 </ul>
 </li>
 </ul>
@@ -156,7 +158,7 @@ directory (<tt class="docutils literal"><span class="pre">$PWD</span></tt>). A s
 layouts. Therefore any path or filename used in a script must be validated
 before file or directory operations.</p>
 <p>Some popular test logic operators for files are shown below. See
-<em class="xref std std-ref">test-file</em> for a detailed list.</p>
+<a class="reference external" href="../resources/07_operators.html#compare-file" title="(in Developer Documentation Resource Pages v0.5)"><em>File test operators</em></a> for a detailed list.</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="21%" />
@@ -291,6 +293,15 @@ platforms, the guide will discuss <strong class="command">echo</strong>.</p>
 <p>Similarly, there are two Unix conventions for formatting terminal text: embedded
 <tt class="docutils literal"><span class="pre">VT100</span> <span class="pre">Codes</span></tt>, and <strong class="command">tput</strong> commands.</p>
 </div>
+<div class="section" id="colorful-language">
+<h3>Colorful language<a class="headerlink" href="#colorful-language" title="Permalink to this headline">¶</a></h3>
+<p>Embedded color commands, are a function of the <strong class="command">echo</strong> command, however,
+and the option <tt class="docutils literal"><span class="pre">-e</span></tt> is required to translate the colors.</p>
+<p>TEXT=&#8221;Color my words&#8221;
+echo -e &#8220;e[1;31m $TEXT e[0m&#8221;  ; # partial quoting
+echo -e &#8216;e[1;31m $TEXT e[0m&#8217;  ; # full quoting
+echo &#8220;e[1;31m $TEXT e[0m&#8221;     ; # omitting -e option</p>
+</div>
 <div class="section" id="debugging-statements">
 <h3>Debugging Statements<a class="headerlink" href="#debugging-statements" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-bash"><div class="highlight"><pre><span class="nb">echo</span> <span class="s2">&quot;$PWD$(tput setaf 1) $LINENO: $MSG-COMMAND $(tput sgr0)&quot;</span>
@@ -299,6 +310,14 @@ platforms, the guide will discuss <strong class="command">echo</strong>.</p>
 </div>
 <div class="section" id="readable-code">
 <h3>Readable Code<a class="headerlink" href="#readable-code" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-bash"><div class="highlight"><pre><span class="k">if</span> <span class="o">[[</span> <span class="nv">$EUID</span> -ne 0 <span class="o">]]</span> ; <span class="k">then </span><span class="nb">echo</span> -e <span class="s2">&quot;\e[1;31m try again using sudo \e[0m&quot;</span> ; <span class="nb">exit </span>1 ; <span class="k">fi</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="highly-quotable">
+<h3>Highly quotable<a class="headerlink" href="#highly-quotable" title="Permalink to this headline">¶</a></h3>
+<p>Partial quoting (&#8220;<tt class="docutils literal"><span class="pre">textstring</span></tt>&#8221;) is required to evaluate embedded code in
+quoted text.</p>
 </div>
 </div>
 </div>

@@ -1,3 +1,9 @@
+.. _free-webserver:
+
+#############################
+Free Cloud Web Servers
+#############################
+
 Here are some sites that offer free trials for public web servers:
 
 * http://aws.amazon.com/free/ - Free for 12 months at lowest tier

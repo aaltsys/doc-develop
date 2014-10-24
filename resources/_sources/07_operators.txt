@@ -95,23 +95,24 @@ Arithmetic assignment
 
 .. seealso::
 
-   Online documentation at ``man bash``
+   Online documentation at ``man bash``.
 
 .. _logic:
 
 Logic Operators
 =============================
 
-.. legend::
+.. note::
 
-   +--------+------------------------------------------------------------------+
+   +---------------------------------------------------------------------------+
+   |      Legend                                                               |
+   +========+==================================================================+
    | Test   | Column **Test** indicates which type of logic test this          |
    |        | operator applies to. Values might be ``[``, ``[[`` or ``all``.   |
    +--------+------------------------------------------------------------------+
    | U/B    | The **U/B** column refers to the type of test: ``U`` for         |
    |        | *unary*, or ``B`` for *binary*.                                  |
    +--------+------------------------------------------------------------------+
-   
 
 Logical reversal operator
 -----------------------------
