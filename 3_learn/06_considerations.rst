@@ -73,7 +73,7 @@ layouts. Therefore any path or filename used in a script must be validated
 before file or directory operations. 
 
 Some popular test logic operators for files are shown below. See 
-:ref:`test-file` for a detailed list.
+:ref:`compare-file` for a detailed list.
 
 +-------------+------------------------------------------------+
 | Test        | File condition which returns true              |
@@ -203,10 +203,20 @@ platforms, the guide will discuss :command:`echo`.
 Similarly, there are two Unix conventions for formatting terminal text: embedded 
 ``VT100 Codes``, and :command:`tput` commands. 
 
-Debugging Statements
+Colorful language 
 -----------------------------
 
+Embedded color commands, are a function of the :command:`echo` command, however,
+and the option ``-e`` is required to translate the colors. 
 
+TEXT="Color my words"
+echo -e "\e[1;31m $TEXT \e[0m"  ; # partial quoting
+echo -e '\e[1;31m $TEXT \e[0m'  ; # full quoting
+echo "\e[1;31m $TEXT \e[0m"     ; # omitting -e option
+
+
+Debugging Statements
+-----------------------------
 
 .. code-block:: bash
 
@@ -214,3 +224,15 @@ Debugging Statements
 
 Readable Code
 -----------------------------
+
+.. code-block:: bash
+
+   if [[ $EUID -ne 0 ]] ; then echo -e "\e[1;31m try again using sudo \e[0m" ; exit 1 ; fi
+
+
+
+Highly quotable
+-----------------------------
+
+Partial quoting (\"``textstring``\") is required to evaluate embedded code in 
+quoted text. 
