@@ -1,7 +1,7 @@
-.. program:
+.. _program:
 
 #############################
-What Constitutes a Program?
+Constitutes a Program
 #############################
 
 

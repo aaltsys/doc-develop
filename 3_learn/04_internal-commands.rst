@@ -1,4 +1,4 @@
-.. _Command:
+.. _command:
 
 #############################
 Common commands

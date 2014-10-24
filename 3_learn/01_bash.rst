@@ -1,17 +1,17 @@
 .. _bash:
 
 #############################
-What are we doing?
+Linux Shell Commands
 #############################
 
 What are we doing?
 ======================
 
-We are teaching people linux, and, specifically, how to program in linux. The language you will be using is called bash.
+We are teaching people linux shell scripting. 
 
 
 Bash is a command interpreter which is universally available on Linux and Unix.
-(For information about commands, visit section `commands <http://develop.aaltsys.info/2_linux/index.html#index>`_ Bash stands for
+(For information about commands, visit section commands) Bash stands for
 Bourne Again Shell, a revision of the original Bourne Shell.
 it is the language of the linux terminal. 
 Bash is a  shell programming language. It has many  similarities to other 
@@ -34,7 +34,7 @@ Shell-scripts
 
 Interactive Bash means single line commands put in the terminal with immediate execution.
 
-Shell scripts are scripts that are written in a text editor, saved in .sh format, and run from the terminal.
+Shell scripts are scripts that are interpreted by a command processor.
 
 
 
