@@ -89,36 +89,12 @@
 <h1>DIY Deployment<a class="headerlink" href="#diy-deployment" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="create-a-server">
 <h2>Create a Server<a class="headerlink" href="#create-a-server" title="Permalink to this headline">¶</a></h2>
-<p>Servers are made publicly accessible through a public IP address.</p>
+<p>For the purpose of this lesson, we will make a server which is publicly
+accessible.
+Servers are made publicly accessible through a public IP address.</p>
 <p>(Usually you visit a website by typing its domain name, and DNS translates
 this domain name to the server&#8217;s public IP address, but you can also visit
 a site by going straight to the IP.)</p>
-<p>For the purposes of TechCamp, we have created a demo server, but here are
-some sites that offer free trials for public web servers:</p>
-<ul class="simple">
-<li><a class="reference external" href="http://aws.amazon.com/free/">http://aws.amazon.com/free/</a> - Free for 12 months at lowest tier</li>
-<li><a class="reference external" href="https://www.digitalocean.com/">https://www.digitalocean.com/</a> - Free for 2 months at lowest tier with promo code</li>
-</ul>
-<p>Setup a server on Amazon, by browsing to:</p>
-<div class="highlight-python"><div class="highlight"><pre>http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstancesLinux.html
-</pre></div>
-</div>
-<p>Open a console on your desktop, and run the commands:</p>
-<div class="highlight-python"><div class="highlight"><pre>ssh -i keyfile ubuntu@servername
-sudo useradd developer -G sudo
-</pre></div>
-</div>
-<p>Edit <tt class="file docutils literal"><span class="pre">/etc/ssh/sshd_config</span></tt> to allow password authentication, using the
-commands:</p>
-<div class="highlight-python"><div class="highlight"><pre>(replace ``PasswordAuthentication yes`` with a sed command)
-sudo service sshd restart
-sudo service ssh restart
-</pre></div>
-</div>
-<p>To install the software necessary for a basic webserver on Ubuntu:</p>
-<div class="highlight-python"><div class="highlight"><pre>sudo apt-get install apache2 git
-</pre></div>
-</div>
 <p>We can visit our server at:</p>
 <div class="highlight-python"><div class="highlight"><pre>http://54.68.232.191/
 </pre></div>
@@ -127,8 +103,9 @@ sudo service ssh restart
 <div class="highlight-python"><div class="highlight"><pre>http://ec2-54-68-232-191.us-west-2.compute.amazonaws.com/
 </pre></div>
 </div>
-<p>And see the default ubuntu Apache installation&#8217;s welcome page.</p>
-<p><strong>* Insert screenshot here *</strong></p>
+<p>And see the default ubuntu Apache installation&#8217;s welcome page.
+Apache is the software which directs web requests to our application.</p>
+<img alt="apache-welcome-page.png" src="apache-welcome-page.png" />
 <p>As this page explains, it is located in the <tt class="file docutils literal"><span class="pre">/var/www/html</span></tt> folder on the
 server. This folder is known as the &#8220;DocRoot&#8221;.</p>
 <p>The file itself is called <tt class="file docutils literal"><span class="pre">index.html</span></tt>. When Apache gets a request for a
@@ -143,18 +120,21 @@ DocRoot on the server.</p>
 <p><strong>* change to AAltsys account *</strong></p>
 <p>In your browser, login to your Github account. Fork the project from
 <a class="reference external" href="https://github.com/JuliaLovel/html-demo">https://github.com/JuliaLovel/html-demo</a>.</p>
-<p><strong>* Look at where Github takess you after the fork. *</strong></p>
-<p>Then under &#8220;Your Repositories&#8221; on the right, click on the link to your fork
-of &#8220;html-demo&#8221;.</p>
+<p>After you fork the project, you will be taken to the GitHub page for
+your fork.</p>
 <p>In GitHub, edit the <tt class="file docutils literal"><span class="pre">index.html</span></tt> file, putting your name in the <tt class="docutils literal"><span class="pre">&lt;h1&gt;</span></tt>
 tag.</p>
-<p><strong>* Include screenshot *</strong></p>
+<img alt="github-edit-index.png" src="github-edit-index.png" />
+<p>Commit your changes.</p>
 </div>
 <div class="section" id="move-code-to-the-server">
 <h2>Move Code to the Server<a class="headerlink" href="#move-code-to-the-server" title="Permalink to this headline">¶</a></h2>
-<p>Locate your code on GitHub:</p>
-<p>In the right sidebar, copy the URL of your repository to clone from (HTTPS version).
-(For example, <a class="reference external" href="https://github.com/JuliaLovel/html-demo.git">https://github.com/JuliaLovel/html-demo.git</a>)</p>
+<p>After you have finished editing and committing the <tt class="file docutils literal"><span class="pre">index.html</span></tt>
+file, click the <tt class="file docutils literal"><span class="pre">html-demo</span></tt> link at the top of your page to
+return to the main page for your fork.</p>
+<p>In the right sidebar, copy the URL of your repository to clone from
+(HTTPS version) into your clipboard.
+(For example, <a class="reference external" href="https://github.com/AAltSys/html-demo.git">https://github.com/AAltSys/html-demo.git</a>)</p>
 <p>SSH to the server:</p>
 <div class="highlight-python"><div class="highlight"><pre>ssh developer@54.68.232.191
 
@@ -169,10 +149,10 @@ password: techC@mp
 <div>cd /var/www/html
 sudo mkdir [your-directory-name]</div></blockquote>
 <p>Clone to your directory:</p>
-<div class="highlight-python"><div class="highlight"><pre>sudo git clone https://github.com/JuliaLovel/html-demo.git [your-directory-name]
+<div class="highlight-python"><div class="highlight"><pre>sudo git clone https://github.com/[your-Github-id]/html-demo.git [your-directory-name]
 </pre></div>
 </div>
-<p><strong>* Again, change the repo source *</strong></p>
+<p>(Paste the correct URL for your fork of the GitHub repository).</p>
 <p>View your page:</p>
 <p>Now your page can be viewed at:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="p">[</span><span class="n">our</span><span class="o">-</span><span class="n">server</span><span class="o">-</span><span class="n">address</span><span class="p">]</span><span class="o">/</span><span class="p">[</span><span class="n">your</span><span class="o">-</span><span class="n">directory</span><span class="o">-</span><span class="n">name</span><span class="p">]</span>

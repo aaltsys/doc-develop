@@ -82,19 +82,41 @@
 <p>Capistrano is a tool for automating deployment.</p>
 <div class="section" id="install-capistrano">
 <h2>Install Capistrano<a class="headerlink" href="#install-capistrano" title="Permalink to this headline">¶</a></h2>
-<p>Install RVM:</p>
-<p>Install Ruby:</p>
-<p>Install RubyGems:</p>
-<p>Install Capistrano:</p>
-<p>Capify Project:</p>
+<dl class="docutils">
+<dt>Install RVM::</dt>
+<dd>curl -L get.rvm.io | bash -s stable</dd>
+<dt>Install Ruby::</dt>
+<dd>rvm install 2.1.2
+rvm use 2.1.2 &#8211;default</dd>
+<dt>Install RubyGems::</dt>
+<dd>rvm rubygems current
+rvm use &#8211;create <a class="reference external" href="mailto:2&#46;1&#46;2&#37;&#52;&#48;demo">2<span>&#46;</span>1<span>&#46;</span>2<span>&#64;</span>demo</a></dd>
+<dt>Install Capistrano::</dt>
+<dd>gem install capistrano</dd>
+<dt>Capify Project::</dt>
+<dd>cap install</dd>
+</dl>
 </div>
 <div class="section" id="configure-capistrano">
 <h2>Configure Capistrano<a class="headerlink" href="#configure-capistrano" title="Permalink to this headline">¶</a></h2>
+<p>Edit <tt class="file docutils literal"><span class="pre">config/deploy.rb</span></tt> :</p>
+<ul class="simple">
+<li>Change the <cite>server</cite> setting to the correct server address,</li>
+<li>Change <cite>repo_url</cite> to the correct URL for your fork,</li>
+<li>Change <cite>deploy_to</cite> to the folder on the server where the code will be
+hosted (/var/www/html/[your-github-id])</li>
+<li>Change <cite>user</cite> to the user who has SSH access to the server (developer)</li>
+</ul>
+<p>Example::
+set :server, &#8216;ec2-54-68-232-191.us-west-2.compute.amazonaws.com&#8217;
+set :repo_url, &#8216;<a class="reference external" href="https://github.com/[your-github-id]/html-demo.git">https://github.com/[your-github-id]/html-demo.git</a>&#8216;
+set :deploy_to, &#8216;/var/www/html/[your-github-id]&#8217;
+set :user, &#8216;developer&#8217;</p>
 </div>
 <div class="section" id="deploy">
 <h2>Deploy!<a class="headerlink" href="#deploy" title="Permalink to this headline">¶</a></h2>
-<p>cap production deploy:check</p>
-<p>cap production deploy</p>
+<p><cite>cap production deploy:check</cite></p>
+<p><cite>cap production deploy</cite></p>
 </div>
 </div>
 

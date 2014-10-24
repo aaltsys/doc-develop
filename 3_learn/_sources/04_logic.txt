@@ -53,7 +53,7 @@ There are multiple ways to construct a logical test expression:
 || ``test``      || lexicographical string comparisons using ASCII ordering  |
 +----------------+-----------------------------------------------------------+
 || ``[[ ... ]]`` ||  keyword for extended test command                       |
-||               || Uses lexographical order of locale language              |
+||               || Uses lexicographical language order of locale            |
 +----------------+-----------------------------------------------------------+
 
 .. tip::
@@ -104,8 +104,8 @@ lead to trouble when it is least expected.
    when used within ``[`` rather than ``[[``. This may produce confusing results 
    when comparing variables which evaluate to integers. BASH variables are 
    vaguely typed, and variables may be evaluated (integer) or not (string) 
-   depending on how the variables are quoted. Then strings may be compared 
-   literally or by Bash pattern matching, depending on which test is used.
+   depending on how the variables are quoted. On top of this, strings may be 
+   compared literally or by pattern matching, depending on which test is used.
 
 .. seealso::
 
@@ -292,20 +292,7 @@ in the test ``expression`` list returns a non-zero exit status.
       command substitution, followed by process substitution and quote removal.
    #. Arithmetic expressions are evaluated according to the rules described
       under :ref:`arithmetic_eval`.
-   #. Pathname pattern matching rules include the following:
-
-      +----------------+----------------------------------------------------+
-      | ``*``          | any string of 0 or more characters                 |
-      +----------------+----------------------------------------------------+
-      | ``?``          | any string of 0 or 1 character                     |
-      +----------------+----------------------------------------------------+
-      | ``X`` or ``\X``| where ``X`` represents any (special) character     |
-      +----------------+----------------------------------------------------+
-      |  ``[XYZ]``     | where ``XYZ`` is a set of permitted characters     |
-      +----------------+----------------------------------------------------+
-      |  ``[x..z]``    | where ``x..z`` is a range of permitted characters  |
-      +----------------+----------------------------------------------------+
-
+   #. Pathname pattern matching rules are given in :ref:`glob`.
    #. If any condition expression for a compound statement is invalid, or if
       evaluation results in no commands executed, then the exit status of the
       compound statement will be ``0``. Otherwise, the exit status of a compound 

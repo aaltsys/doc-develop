@@ -325,7 +325,10 @@ program, script, or terminal.</p>
 </tr>
 </tbody>
 </table>
-<p>Source: <a class="reference external" href="http://www.tldp.org/LDP/Bash-Beginners-Guide/html/sect_03_02.html">Bash Beginners Guide</a></p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference external" href="http://www.tldp.org/LDP/Bash-Beginners-Guide/html/sect_03_02.html">Bash Beginners Guide</a></p>
+</div>
 </div>
 <div class="section" id="ansi-vt100-color-codes">
 <span id="variables-color"></span><h3>ANSI/VT100 color codes<a class="headerlink" href="#ansi-vt100-color-codes" title="Permalink to this headline">¶</a></h3>
@@ -578,15 +581,26 @@ terminal colors using a variety of arguments.</p>
 the default <tt class="file docutils literal"><span class="pre">xterm</span></tt> definition serves the 8 colors listed above. For more
 colors, you can load <tt class="file docutils literal"><span class="pre">xterm-256color</span></tt>. Commands demonstrating this
 color set follow:</p>
-<div class="highlight-python"><div class="highlight"><pre>.. code-block:: bash
+<div class="highlight-bash"><div class="highlight"><pre><span class="nb">export </span><span class="nv">TERM</span><span class="o">=</span><span class="s1">&#39;xterm-256color&#39;</span>
+tput colors
+<span class="k">for </span>i in <span class="o">{</span>0..255<span class="o">}</span>
+<span class="k">do</span>
+<span class="k">  </span>tput setab <span class="nv">$i</span>
+  <span class="nb">echo</span> -n <span class="s2">&quot;  $i  &quot;</span>
+<span class="k">done</span>
+tput setab 0
+<span class="nb">echo</span>
+<span class="nb">export </span><span class="nv">TERM</span><span class="o">=</span><span class="s1">&#39;xterm&#39;</span>
 </pre></div>
 </div>
-<blockquote>
-<div>export TERM=&#8217;xterm-256color&#8217;
-tput colors
-for i in {0..255}; do tput setab $i; echo -n &#8221;  $i  &#8221;; done; tput setab 0; echo
-export TERM=&#8217;xterm&#8217;</div></blockquote>
-<p>For more information, see the <tt class="docutils literal"><span class="pre">terminfo</span></tt> manpage.</p>
+<p>or, this could be executed at the terminal as a single command:</p>
+<div class="highlight-python"><div class="highlight"><pre>export TERM=’xterm-256color’; tput colors; for i in {0..255}; do tput setab $i; echo -n ” $i ”; done; tput setab 0; echo; export TERM=’xterm’
+</pre></div>
+</div>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">For more information, see the <tt class="docutils literal"><span class="pre">terminfo</span></tt> manpage.</p>
+</div>
 </div>
 </div>
 </div>

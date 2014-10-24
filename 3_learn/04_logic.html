@@ -162,7 +162,7 @@ logic test. Well, that is not shell scripting.</p>
 <div class="line-block">
 <div class="line">keyword for extended test command</div>
 </div>
-<div class="line">Uses lexographical order of locale language</div>
+<div class="line">Uses lexicographical language order of locale</div>
 </div>
 </td>
 </tr>
@@ -213,8 +213,8 @@ expressions.</p>
 when used within <tt class="docutils literal"><span class="pre">[</span></tt> rather than <tt class="docutils literal"><span class="pre">[[</span></tt>. This may produce confusing results
 when comparing variables which evaluate to integers. BASH variables are
 vaguely typed, and variables may be evaluated (integer) or not (string)
-depending on how the variables are quoted. Then strings may be compared
-literally or by Bash pattern matching, depending on which test is used.</p>
+depending on how the variables are quoted. On top of this, strings may be
+compared literally or by pattern matching, depending on which test is used.</p>
 </div>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
@@ -398,49 +398,21 @@ in the test <tt class="docutils literal"><span class="pre">expression</span></tt
 <p>&#8212;</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<ol class="last arabic">
-<li><p class="first">Seven types of command expansion, in order of performance, are: brace
+<ol class="last arabic simple">
+<li>Seven types of command expansion, in order of performance, are: brace
 expansion; tilde expansion; parameter and variable expansion; arithmetic
 substitution; command substitution (done in a left-to-right fashion);
-word splitting; and pathname expansion.</p>
-</li>
-<li><p class="first">Before evaluation, <strong>word</strong>, <strong>pattern</strong>, ... are expanded by: tilde
+word splitting; and pathname expansion.</li>
+<li>Before evaluation, <strong>word</strong>, <strong>pattern</strong>, ... are expanded by: tilde
 expansion, parameter and variable expansion, arithmetic substitution,
-command substitution, followed by process substitution and quote removal.</p>
-</li>
-<li><p class="first">Arithmetic expressions are evaluated according to the rules described
-under <a class="reference external" href="../resources/08_expressions.html#arithmetic-eval" title="(in Developer Documentation Resource Pages v0.5)"><em>Arithmetic Evaluation</em></a>.</p>
-</li>
-<li><p class="first">Pathname pattern matching rules include the following:</p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="24%" />
-<col width="76%" />
-</colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">*</span></tt></td>
-<td>any string of 0 or more characters</td>
-</tr>
-<tr class="row-even"><td><tt class="docutils literal"><span class="pre">?</span></tt></td>
-<td>any string of 0 or 1 character</td>
-</tr>
-<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">X</span></tt> or <tt class="docutils literal"><span class="pre">\X</span></tt></td>
-<td>where <tt class="docutils literal"><span class="pre">X</span></tt> represents any (special) character</td>
-</tr>
-<tr class="row-even"><td><tt class="docutils literal"><span class="pre">[XYZ]</span></tt></td>
-<td>where <tt class="docutils literal"><span class="pre">XYZ</span></tt> is a set of permitted characters</td>
-</tr>
-<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">[x..z]</span></tt></td>
-<td>where <tt class="docutils literal"><span class="pre">x..z</span></tt> is a range of permitted characters</td>
-</tr>
-</tbody>
-</table>
-</li>
-<li><p class="first">If any condition expression for a compound statement is invalid, or if
+command substitution, followed by process substitution and quote removal.</li>
+<li>Arithmetic expressions are evaluated according to the rules described
+under <a class="reference external" href="../resources/08_expressions.html#arithmetic-eval" title="(in Developer Documentation Resource Pages v0.5)"><em>Arithmetic Evaluation</em></a>.</li>
+<li>Pathname pattern matching rules are given in <a class="reference external" href="../resources/07_operators.html#glob" title="(in Developer Documentation Resource Pages v0.5)"><em>Glob Pattern Matching</em></a>.</li>
+<li>If any condition expression for a compound statement is invalid, or if
 evaluation results in no commands executed, then the exit status of the
 compound statement will be <tt class="docutils literal"><span class="pre">0</span></tt>. Otherwise, the exit status of a compound
-statement is the exit status of the last command executed in a list.</p>
-</li>
+statement is the exit status of the last command executed in a list.</li>
 </ol>
 </div>
 <div class="admonition seealso">

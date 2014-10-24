@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Overview &mdash; Ruby Developer Tutorial 1.0 documentation</title>
+    <title>&lt;no title&gt; &mdash; Javascript Development Tutorial 1.0 documentation</title>
     
     <link rel="stylesheet" href="_static/aaltsys.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -23,42 +23,27 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Ruby Developer Tutorial 1.0 documentation" href="index.html" />
-    <link rel="next" title="DIY Deployment" href="02_diy.html" />
-    <link rel="prev" title="Deployment" href="index.html" /> 
+    <link rel="top" title="Javascript Development Tutorial 1.0 documentation" href="index.html" />
+    <link rel="prev" title="Ruby on Rails Sample App" href="11_use-rubyonrails.html" /> 
   </head>
   <body>
     <div class="related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="02_diy.html" title="DIY Deployment"
-             accesskey="N">next</a></li>
-        <li class="right" >
-          <a href="index.html" title="Deployment"
-             accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Ruby Developer Tutorial 1.0 documentation</a> &raquo;</li> 
+          <a href="11_use-rubyonrails.html" title="Ruby on Rails Sample App"
+             accesskey="P">previous</a></li>
+        <li><a href="index.html">Javascript Development Tutorial 1.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
-  <h3><a href="index.html">Table Of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">Overview</a><ul>
-<li><a class="reference internal" href="#what-is-deployment">What is Deployment?</a></li>
-</ul>
-</li>
-</ul>
-
   <h4>Previous topic</h4>
-  <p class="topless"><a href="index.html"
-                        title="previous chapter">Deployment</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="02_diy.html"
-                        title="next chapter">DIY Deployment</a></p>
+  <p class="topless"><a href="11_use-rubyonrails.html"
+                        title="previous chapter">Ruby on Rails Sample App</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
-    <li><a href="_sources/01_overview.txt"
+    <li><a href="_sources/21_free-cloud-web-server.txt"
            rel="nofollow">Show Source</a></li>
   </ul>
 <div id="searchbox" style="display: none">
@@ -82,24 +67,30 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="overview">
-<h1>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="what-is-deployment">
-<h2>What is Deployment?<a class="headerlink" href="#what-is-deployment" title="Permalink to this headline">¶</a></h2>
-<p>According to Wikipedia:</p>
-<blockquote>
-<div><em>&#8220;Software deployment is all of the activities that make a software system
-available for use.&#8221;</em></div></blockquote>
-<p>In web development, this usually means:</p>
+  <p>Here are some sites that offer free trials for public web servers:</p>
 <ul class="simple">
-<li>Creating a server that is accessible to all of the users of the software
-- Consider whether the software should be accessible publicly on the
-internet, on an intranet or other network
-- The server which hosts the code that is used by the end-user is
-commonly known as the &#8220;production&#8221; server.</li>
-<li>Moving the application code to this server</li>
+<li><a class="reference external" href="http://aws.amazon.com/free/">http://aws.amazon.com/free/</a> - Free for 12 months at lowest tier</li>
+<li><a class="reference external" href="https://www.digitalocean.com/">https://www.digitalocean.com/</a> - Free for 2 months at lowest tier with promo code</li>
 </ul>
+<p>Setup a server on Amazon, by browsing to:</p>
+<div class="highlight-python"><div class="highlight"><pre>http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstancesLinux.html
+</pre></div>
 </div>
+<p>Open a console on your desktop, and run the commands:</p>
+<div class="highlight-python"><div class="highlight"><pre>ssh -i keyfile ubuntu@servername
+sudo useradd developer -G sudo
+</pre></div>
+</div>
+<p>Edit <tt class="file docutils literal"><span class="pre">/etc/ssh/sshd_config</span></tt> to allow password authentication, using the
+commands:</p>
+<div class="highlight-python"><div class="highlight"><pre>(replace ``PasswordAuthentication yes`` with a sed command)
+sudo service sshd restart
+sudo service ssh restart
+</pre></div>
+</div>
+<p>To install the software necessary for a basic webserver on Ubuntu:</p>
+<div class="highlight-python"><div class="highlight"><pre>sudo apt-get install apache2 git
+</pre></div>
 </div>
 
 
@@ -112,12 +103,9 @@ commonly known as the &#8220;production&#8221; server.</li>
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="02_diy.html" title="DIY Deployment"
-             >next</a></li>
-        <li class="right" >
-          <a href="index.html" title="Deployment"
-             >previous</a> |</li>
-        <li><a href="index.html">Ruby Developer Tutorial 1.0 documentation</a> &raquo;</li> 
+          <a href="11_use-rubyonrails.html" title="Ruby on Rails Sample App"
+             >previous</a></li>
+        <li><a href="index.html">Javascript Development Tutorial 1.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

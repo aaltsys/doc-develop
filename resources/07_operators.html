@@ -45,20 +45,23 @@
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Operators &amp; Other Characters</a><ul>
-<li><a class="reference internal" href="#operators-by-type">Operators by Type</a><ul>
-<li><a class="reference internal" href="#arithmetic-operators">Arithmetic operators</a></li>
+<li><a class="reference internal" href="#arithmetic-operators">Arithmetic operators</a><ul>
 <li><a class="reference internal" href="#arithmetic-assignment">Arithmetic assignment</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#logic-operators">Logic Operators</a><ul>
 <li><a class="reference internal" href="#logical-reversal-operator">Logical reversal operator</a></li>
 <li><a class="reference internal" href="#compound-comparison-operators">Compound comparison operators</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#test-constructs">Test constructs</a><ul>
+<li><a class="reference internal" href="#comparison-tests">Comparison Tests</a><ul>
 <li><a class="reference internal" href="#string-comparisons">String comparisons</a></li>
 <li><a class="reference internal" href="#integer-comparisons">Integer comparisons</a></li>
 <li><a class="reference internal" href="#file-test-operators">File test operators</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#expression-constructs">Expression constructs</a></li>
+<li><a class="reference internal" href="#glob-pattern-matching">Glob Pattern Matching</a></li>
 <li><a class="reference internal" href="#special-characters">Special characters</a></li>
 </ul>
 </li>
@@ -98,10 +101,8 @@
             
   <div class="section" id="operators-other-characters">
 <span id="operators"></span><h1>Operators &amp; Other Characters<a class="headerlink" href="#operators-other-characters" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="operators-by-type">
-<h2>Operators by Type<a class="headerlink" href="#operators-by-type" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="arithmetic-operators">
-<span id="arithmetic"></span><h3>Arithmetic operators<a class="headerlink" href="#arithmetic-operators" title="Permalink to this headline">¶</a></h3>
+<span id="arithmetic"></span><h2>Arithmetic operators<a class="headerlink" href="#arithmetic-operators" title="Permalink to this headline">¶</a></h2>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">The arithmetic operators are listed grouped in order of precedence.</p>
@@ -242,10 +243,7 @@
 <tr class="row-even"><td>||</td>
 <td>logical OR</td>
 </tr>
-<tr class="row-odd"><td><div class="first last line-block">
-<div class="line">expr?expr:expr</div>
-</div>
-</td>
+<tr class="row-odd"><td>expr?expr:expr</td>
 <td>conditional operator</td>
 </tr>
 <tr class="row-even"><td>assignment</td>
@@ -256,7 +254,6 @@
 </tr>
 </tbody>
 </table>
-</div>
 <div class="section" id="arithmetic-assignment">
 <h3>Arithmetic assignment<a class="headerlink" href="#arithmetic-assignment" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="docutils">
@@ -310,8 +307,11 @@
 <p class="last">Online documentation at <tt class="docutils literal"><span class="pre">man</span> <span class="pre">bash</span></tt></p>
 </div>
 </div>
+</div>
+<div class="section" id="logic-operators">
+<span id="logic"></span><h2>Logic Operators<a class="headerlink" href="#logic-operators" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="logical-reversal-operator">
-<span id="logic"></span><h3>Logical reversal operator<a class="headerlink" href="#logical-reversal-operator" title="Permalink to this headline">¶</a></h3>
+<h3>Logical reversal operator<a class="headerlink" href="#logical-reversal-operator" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="docutils">
 <colgroup>
 <col width="13%" />
@@ -376,8 +376,10 @@
 </table>
 </div>
 </div>
-<div class="section" id="test-constructs">
-<h2>Test constructs<a class="headerlink" href="#test-constructs" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="comparison-tests">
+<h2>Comparison Tests<a class="headerlink" href="#comparison-tests" title="Permalink to this headline">¶</a></h2>
+<p>Generally, comparison tests are of three types: string comparisons, integer
+comparisons, and file status tests.</p>
 <div class="section" id="string-comparisons">
 <span id="compare-string"></span><h3>String comparisons<a class="headerlink" href="#string-comparisons" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="docutils">
@@ -453,7 +455,7 @@
 <li>Lexicographical sort order for <tt class="docutils literal"><span class="pre">test</span></tt> or <tt class="docutils literal"><span class="pre">[</span></tt> construct is ASCII;
 for <tt class="docutils literal"><span class="pre">[[</span></tt> construct the ordering is determined using the current locale.</li>
 <li>Construct <tt class="docutils literal"><span class="pre">[[</span></tt> uses <tt class="docutils literal"><span class="pre">==</span></tt>, <tt class="docutils literal"><span class="pre">!=</span></tt>, and <tt class="docutils literal"><span class="pre">=~</span></tt> to match by pattern, with
-the pattern on the right. See Bash documentation for pattern description.</li>
+the pattern on the right. See <a class="reference internal" href="#glob"><em>Glob Pattern Matching</em></a>.</li>
 </ol>
 </div>
 </div>
@@ -538,7 +540,7 @@ the pattern on the right. See Bash documentation for pattern description.</li>
 </table>
 </div>
 <div class="section" id="file-test-operators">
-<span id="test-file"></span><h3>File test operators<a class="headerlink" href="#file-test-operators" title="Permalink to this headline">¶</a></h3>
+<span id="compare-file"></span><h3>File test operators<a class="headerlink" href="#file-test-operators" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="docutils">
 <colgroup>
 <col width="13%" />
@@ -738,7 +740,7 @@ the pattern on the right. See Bash documentation for pattern description.</li>
 </div>
 </div>
 <div class="section" id="expression-constructs">
-<h2>Expression constructs<a class="headerlink" href="#expression-constructs" title="Permalink to this headline">¶</a></h2>
+<span id="constructs"></span><h2>Expression constructs<a class="headerlink" href="#expression-constructs" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
 <colgroup>
 <col width="17%" />
@@ -880,8 +882,41 @@ the pattern on the right. See Bash documentation for pattern description.</li>
 </tbody>
 </table>
 </div>
+<div class="section" id="glob-pattern-matching">
+<span id="glob"></span><h2>Glob Pattern Matching<a class="headerlink" href="#glob-pattern-matching" title="Permalink to this headline">¶</a></h2>
+<p>Some entries, such as file system paths, may be written as expressions to be
+expanded by substitution and pattern matching.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="21%" />
+<col width="79%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Expression</th>
+<th class="head">Interpretation</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">*</span></tt></td>
+<td>any string of 0 or more characters</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">?</span></tt></td>
+<td>any string of 0 or 1 character</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">X</span></tt> or <tt class="docutils literal"><span class="pre">\X</span></tt></td>
+<td>where <tt class="docutils literal"><span class="pre">X</span></tt> represents any (special) character</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">[XYZ]</span></tt></td>
+<td>where <tt class="docutils literal"><span class="pre">XYZ</span></tt> is a set of permitted characters</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">[x..z]</span></tt></td>
+<td>where <tt class="docutils literal"><span class="pre">x..z</span></tt> is a range of permitted characters</td>
+</tr>
+</tbody>
+</table>
+</div>
 <div class="section" id="special-characters">
-<h2>Special characters<a class="headerlink" href="#special-characters" title="Permalink to this headline">¶</a></h2>
+<span id="characters"></span><h2>Special characters<a class="headerlink" href="#special-characters" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
 <colgroup>
 <col width="14%" />
