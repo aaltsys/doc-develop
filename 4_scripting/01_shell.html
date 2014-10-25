@@ -1,0 +1,168 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Linux Lives in a Shell &mdash; Linux Shell Script Programming 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/aaltsys.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Linux Shell Script Programming 1.0 documentation" href="index.html" />
+    <link rel="next" title="Script / Program Organization" href="02_organize.html" />
+    <link rel="prev" title="Learn Shell Scripting" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="02_organize.html" title="Script / Program Organization"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="index.html" title="Learn Shell Scripting"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Linux Shell Script Programming 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Linux Lives in a Shell</a><ul>
+<li><a class="reference internal" href="#what-a-shell-does-all-day">What a Shell Does All Day</a></li>
+<li><a class="reference internal" href="#how-to-collect-shells">How to Collect Shells</a></li>
+<li><a class="reference internal" href="#caring-for-shells">Caring for Shells</a></li>
+<li><a class="reference internal" href="#the-history-of-repl">The History of REPL</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">Learn Shell Scripting</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="02_organize.html"
+                        title="next chapter">Script / Program Organization</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/01_shell.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="linux-lives-in-a-shell">
+<span id="shell"></span><h1>Linux Lives in a Shell<a class="headerlink" href="#linux-lives-in-a-shell" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="what-a-shell-does-all-day">
+<h2>What a Shell Does All Day<a class="headerlink" href="#what-a-shell-does-all-day" title="Permalink to this headline">¶</a></h2>
+<p>Every interactive operating system has a program which does one of two things:
+it receives user input events and processes them, and/or it interprets and
+executes commands. A Linux/Unix <strong>shell</strong> is a system program which interprets
+and executes commands which may be input at a console, read from a file, or
+passed through a data stream.</p>
+<p>Command shells are not necessarily interpreted programming languages:
+Microsoft&#8217;s COMMAND.COM for MS_DOS certainly is not. But it so happens that Unix
+terminal shells are examples of structured REPL programming languages (see
+<a class="reference internal" href="#history"><em>The History of REPL</em></a>), and learning shell scripting is a good way to learn computer
+programming.</p>
+</div>
+<div class="section" id="how-to-collect-shells">
+<h2>How to Collect Shells<a class="headerlink" href="#how-to-collect-shells" title="Permalink to this headline">¶</a></h2>
+<p>Computer operations are easily automated through shell scripts, as this guide
+will demonstrate for your Linux computer. (What &#8211; You don&#8217;t have a Linux
+system? <a class="reference external" href="http://www.kubuntu.org/getkubuntu">What are you waiting for?</a>)
+Lacking a Linux computer to practice on, there are on-line alternatives &#8211;
+c9.io, koding.com, and others &#8211; where one can practice programming skills with
+just an Internet connection. These guides will show how this is done.</p>
+</div>
+<div class="section" id="caring-for-shells">
+<h2>Caring for Shells<a class="headerlink" href="#caring-for-shells" title="Permalink to this headline">¶</a></h2>
+<p>Unix-like operating systems have experienced a public domain rebirth in Linux,
+where Linux servers now account for a large majority of all active web servers.
+Also, Apple&#8217;s OS-X operating system for the Macintosh is a Unix, and these
+computers are quite popular in the programming community. As a result, anyone
+doing collaborative web development is almost certain to be working with shell
+programming either on the desktop, or on servers, or both. So, developers care
+for shells because their livelihood depends on them.</p>
+</div>
+<div class="section" id="the-history-of-repl">
+<span id="history"></span><h2>The History of REPL<a class="headerlink" href="#the-history-of-repl" title="Permalink to this headline">¶</a></h2>
+<p>Once there was a company, AT&amp;T, whose Bell Labs division conducted extensive
+research into computer operating systems and programming languages. This
+produced stuff like UNIX, ALGOL, C, PLAN9, and various other computer softwares
+which are mostly no longer around in their original form, if at all. The AT&amp;T
+phone service monopoly was divested in 1982, and intellectual property from Bell
+Labs became redundant over time.</p>
+<p>In the stew of Bell Labs projects was a command shell for UNIX, an interpreter
+to execute commands which might be obtained through user input, or read from a
+file or a data stream.</p>
+<p>The idea of an command interpreter may have come from the LISP programming
+language. While ALGOL and C are compiled languages, LISP can be interpreted. A
+LISP interpreter processes each statement in four steps: Read, Eval, Print, and
+Loop; whence comes the acronym
+<a class="reference external" href="http://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop">REPL</a>.
+But, LISP was not a Bell Labs project, so shell programming syntax was
+ripped from ALGOL, C, and UNIX commands instead. History is replete with
+mistakes, of which this was one. This one example is enough to justify the open
+source programming paradigm.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="02_organize.html" title="Script / Program Organization"
+             >next</a></li>
+        <li class="right" >
+          <a href="index.html" title="Learn Shell Scripting"
+             >previous</a> |</li>
+        <li><a href="index.html">Linux Shell Script Programming 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Gerald Lovel.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,461 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Exercise 1: Organization &mdash; Linux Shell Script Programming 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/aaltsys.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Linux Shell Script Programming 1.0 documentation" href="index.html" />
+    <link rel="next" title="Logic and Decisions" href="04_logic.html" />
+    <link rel="prev" title="Script / Program Organization" href="02_organize.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="04_logic.html" title="Logic and Decisions"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="02_organize.html" title="Script / Program Organization"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Linux Shell Script Programming 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Exercise 1: Organization</a><ul>
+<li><a class="reference internal" href="#example-script-layout">Example Script Layout</a></li>
+<li><a class="reference internal" href="#create-a-first-script">Create a First Script</a><ul>
+<li><a class="reference internal" href="#make-a-text-file">Make a text file</a></li>
+<li><a class="reference internal" href="#hello-world">Hello World</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#adding-sections">Adding Sections</a><ul>
+<li><a class="reference internal" href="#assign-a-variable">Assign a variable</a></li>
+<li><a class="reference internal" href="#read-and-assign-an-input">Read and assign an input</a></li>
+<li><a class="reference internal" href="#user-confirmation">User confirmation</a></li>
+<li><a class="reference internal" href="#just-for-fun-ctionality">Just for Fun(ctionality)</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#example-finished-program">Example Finished Program</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="02_organize.html"
+                        title="previous chapter">Script / Program Organization</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="04_logic.html"
+                        title="next chapter">Logic and Decisions</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/03_lesson1.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="exercise-1-organization">
+<span id="organize-lesson"></span><h1>Exercise 1: Organization<a class="headerlink" href="#exercise-1-organization" title="Permalink to this headline">¶</a></h1>
+<p>When learning to program, 80% of all work is intelligent copying, 10% is
+learning general programming conventions, and 10% is learning specific details
+of a programming language or an environment. The biggest difficulty in
+learning to program is that the last 10%, specific details, is often required
+first.</p>
+<p>In this exercise, use the 80% copying approach to create a script and add
+features incrementally to achieve a final result. Hopefully this approach will
+delay that final 10%.</p>
+<div class="section" id="example-script-layout">
+<h2>Example Script Layout<a class="headerlink" href="#example-script-layout" title="Permalink to this headline">¶</a></h2>
+<p>Warm up the Xerox by highlighting and copying the following code outline, which
+can become the basis of scripts written throughout these exercises.</p>
+<div class="highlight-bash"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19</pre></div></td><td class="code"><div class="highlight"><pre><span class="c">#! /bin/sh</span>
+<span class="c"># Describe program&#39;s principal objective</span>
+<span class="c"># </span>
+<span class="c"># Initialize variables</span>
+<span class="c"># </span>
+<span class="c"># Assign parameters ($n) to named variables</span>
+<span class="c"># </span>
+<span class="c"># User execution confirmation (location varies)</span>
+<span class="c"># </span>
+<span class="c"># Declare repeated code functions</span>
+<span class="c"># </span>
+<span class="c"># !! MAIN SECTION !!</span>
+<span class="c"># </span>
+<span class="c"># Validity tests (setting exit status)</span>
+<span class="c"># </span>
+<span class="c"># Main code, if Valid</span>
+<span class="c"># </span>
+<span class="c"># Exit section: echo results, log errors</span>
+<span class="c"># </span>
+</pre></div>
+</td></tr></table></div>
+<p>Then paste the code into a script file to be created in the following section.</p>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">Use <strong class="program">dolphin</strong> or other file viewer to display your home folder, and
+create or open your <tt class="file docutils literal"><span class="pre">Projects</span></tt> folder. Then create a folder inside
+<tt class="file docutils literal"><span class="pre">Projects</span></tt>, maybe called <tt class="file docutils literal"><span class="pre">linux-scripts</span></tt>, where you can store
+your work.</p>
+</div>
+</div>
+<div class="section" id="create-a-first-script">
+<h2>Create a First Script<a class="headerlink" href="#create-a-first-script" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="make-a-text-file">
+<h3>Make a text file<a class="headerlink" href="#make-a-text-file" title="Permalink to this headline">¶</a></h3>
+<p>On the Linux desktop, open a file viewer window (<strong class="program">Dolphin</strong>), and check
+the menu option <em class="menuselection">Control ‣ Panels ‣ Terminal</em> to include the
+terminal console in the display. Create a text file from the console command
+line, and edit the file using <strong class="program">Kate</strong>:</p>
+<div class="highlight-python"><div class="highlight"><pre>touch hello-world.sh
+chmod u+x hello-world.sh
+kate hello-world.sh
+</pre></div>
+</div>
+</div>
+<div class="section" id="hello-world">
+<h3>Hello World<a class="headerlink" href="#hello-world" title="Permalink to this headline">¶</a></h3>
+<p>Based on script samples shown previously, edit your script to display
+&#8220;Hello World.&#8221; Save your work, and test run the script from the command line.</p>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<ol class="last arabic simple">
+<li>Scripts are text files, but using the filename extension <tt class="kbd docutils literal"><span class="pre">.sh</span></tt> helps
+to identify script files to the user.</li>
+<li>Instead of using <strong class="command">chmod</strong>, right-click the file icon in dolphin
+and check <em class="menuselection">Properties ‣ Permissions ‣ Is executable</em>.</li>
+</ol>
+</div>
+<div class="admonition hint">
+<p class="first admonition-title">Hint</p>
+<ol class="last arabic">
+<li><p class="first">Sidebar examples from the previous page demonstrate commands to use.</p>
+</li>
+<li><p class="first">All Unixes include on-line resources to provide reference documentation:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="24%" />
+<col width="28%" />
+<col width="49%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Resource</th>
+<th class="head">Example</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong class="command">help</strong></td>
+<td><tt class="docutils literal"><span class="pre">command</span> <span class="pre">--help</span></tt></td>
+<td>Built-in command documentation</td>
+</tr>
+<tr class="row-odd"><td><strong class="command">man</strong></td>
+<td><tt class="docutils literal"><span class="pre">man</span> <span class="pre">command</span></tt></td>
+<td>Manual page(s) for command</td>
+</tr>
+<tr class="row-even"><td><strong class="command">info</strong></td>
+<td><tt class="docutils literal"><span class="pre">info</span> <span class="pre">command</span></tt></td>
+<td>or, Info page(s) for command</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="section" id="adding-sections">
+<h2>Adding Sections<a class="headerlink" href="#adding-sections" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="assign-a-variable">
+<h3>Assign a variable<a class="headerlink" href="#assign-a-variable" title="Permalink to this headline">¶</a></h3>
+<p>Declare a variable named <tt class="kbd docutils literal"><span class="pre">DISPLAY</span></tt> by assigning it the value <tt class="kbd docutils literal"><span class="pre">World</span></tt>.
+In the <strong class="command">echo</strong> statement which displays <tt class="kbd docutils literal"><span class="pre">Hello</span> <span class="pre">World</span></tt>, replace the
+text <tt class="kbd docutils literal"><span class="pre">World</span></tt> with this new variable. Test the script by executing it in the
+terminal:</p>
+<div class="highlight-python"><div class="highlight"><pre>./hello-world.sh
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">The <tt class="kbd docutils literal"><span class="pre">./</span></tt> is required in front of the script name, so that the command
+interpreter knows the path to the script.</p>
+</div>
+<p>Edit the <strong class="program">hello-world.sh</strong> script to include all four versions of the
+<strong class="command">echo</strong> statement as follows:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nb">echo</span> <span class="s1">&#39;Hello DISPLAY&#39;</span>  ; <span class="c"># full quoting</span>
+<span class="nb">echo</span> <span class="s2">&quot;hello DISPLAY&quot;</span>  ; <span class="c"># partial quoting</span>
+<span class="nb">echo</span> <span class="s1">&#39;Hello $DISPLAY&#39;</span> ; <span class="c"># $-operator for evaluation</span>
+<span class="nb">echo</span> <span class="s2">&quot;Hello $DISPLAY&quot;</span> ; <span class="c"># $ evaluation in partial quotes</span>
+</pre></div>
+</div>
+<p>Execute script <strong class="program">hello-world.sh</strong>. Which version of the <strong class="command">echo</strong>
+statement worked correctly? Now place a <tt class="kbd docutils literal"><span class="pre">#</span></tt> symbol at the beginning of
+each faulty statement to comment it. Execute the script again to see that only
+the desired result displays.</p>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">Learning comes from a process of evaluating alternatives, and seeing which
+one produces a desired result. In aphorisms, &#8220;We learn from our mistakes.&#8221;
+This guide will present working code examples, but incorrect code will also
+be used to help demonstrate correct programming conventions.</p>
+</div>
+</div>
+<div class="section" id="read-and-assign-an-input">
+<h3>Read and assign an input<a class="headerlink" href="#read-and-assign-an-input" title="Permalink to this headline">¶</a></h3>
+<p>Based on examples from the previous page, add statements to evaluate input
+parameter 1 and, if it is not blank, assign the value of parameter 1 to the
+variable <tt class="kbd docutils literal"><span class="pre">DISPLAY</span></tt>. Run the changed script with the following commands:</p>
+<div class="highlight-python"><div class="highlight"><pre>./hello-world.sh
+./hello-world.sh Ebola
+</pre></div>
+</div>
+<p>Now include the following four logic test statements preceding your then
+statement, so your code reads:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c"># if [$1 != &#39;&#39;]      ; # without spaces around [ ]</span>
+<span class="c"># if [ $1 != &#39;&#39; ]    ; # with !# and single [ ]</span>
+<span class="c"># if [ ! $1 == &#39;&#39; ]  ; # to (!) negate the expression</span>
+<span class="c"># if [[ $1 != &#39;&#39; ]]  ; # w/ single [ and double [[</span>
+<span class="k">then </span><span class="nv">DISPLAY</span><span class="o">=</span><span class="nv">$1</span>
+<span class="k">fi</span>
+</pre></div>
+</div>
+<p>One at a time: uncomment a statement, test run the script, and note the result
+in the comments (either <tt class="kbd docutils literal"><span class="pre">works</span></tt> or <tt class="kbd docutils literal"><span class="pre">fails</span></tt>).</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Unlike with quoting and variable evaluation, scripting permits several
+acceptable forms for simple logic expressions. However, complex tests may not
+work right with just any syntax. To verify results, logic must be tested.</p>
+</div>
+</div>
+<div class="section" id="user-confirmation">
+<h3>User confirmation<a class="headerlink" href="#user-confirmation" title="Permalink to this headline">¶</a></h3>
+<p>Add statements to your script to: (1) prompt the user to run the script, and
+(2) process the user&#8217;s response.</p>
+<div class="admonition hint">
+<p class="first admonition-title">Hint</p>
+<p class="last">On the previous page, look for an example of the <strong class="command">read</strong> command for
+guidance.</p>
+</div>
+</div>
+<div class="section" id="just-for-fun-ctionality">
+<h3>Just for Fun(ctionality)<a class="headerlink" href="#just-for-fun-ctionality" title="Permalink to this headline">¶</a></h3>
+<p>Replace your user confirmation code with the following statements:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nb">echo</span> -e -n <span class="s1">&#39;\n\e[1;31m Say Hello&#39;</span>
+<span class="nb">read</span> -n 1 -p <span class="s1">&#39; (y/n)?&#39;</span> RESP
+<span class="nb">echo</span> -e <span class="s1">&#39;\e[0m&#39;</span>
+</pre></div>
+</div>
+<p>Play around with (that means test run) these statements. On the <strong class="command">echo</strong>
+statement, remove the option parameters <tt class="docutils literal"><span class="pre">-e</span></tt> or <tt class="docutils literal"><span class="pre">-n</span></tt> and observe the effect.
+Similarly, try removing <tt class="docutils literal"><span class="pre">-n</span> <span class="pre">1</span></tt> from the <strong class="command">read</strong> statement. Finally,
+why would full quoting (with <tt class="docutils literal"><span class="pre">'</span></tt>) or partial quoting (with <tt class="docutils literal"><span class="pre">&quot;</span></tt>) have the
+same result here?</p>
+</div>
+</div>
+<div class="section" id="example-finished-program">
+<h2>Example Finished Program<a class="headerlink" href="#example-finished-program" title="Permalink to this headline">¶</a></h2>
+<p>Download the <a class="reference download internal" href="_downloads/hello-world.sh"><tt class="xref download docutils literal"><span class="pre">hello-world.sh</span></tt></a> example code
+or just view the code below for one solution to this exercise.</p>
+<div class="highlight-bash"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58</pre></div></td><td class="code"><div class="highlight"><pre><span class="c">#! /bin/bash</span>
+<span class="c"># My first script, presenting programming to the world</span>
+<span class="c"># </span>
+<span class="c"># Initialize variables</span>
+<span class="nv">DISPLAY</span><span class="o">=</span><span class="s1">&#39;World&#39;</span>
+<span class="nv">EXIT</span><span class="o">=</span><span class="s1">&#39;0&#39;</span>
+<span class="nv">RESP</span><span class="o">=</span><span class="s1">&#39;n&#39;</span>
+<span class="c"># </span>
+<span class="c"># Assign parameters ($n) to named variables</span>
+<span class="c"># if [$1 != &#39;&#39;]      ; # fails without spaces around [ ]</span>
+<span class="c"># if [ $1 != &#39;&#39; ]    ; # works with !# and single [ ]</span>
+<span class="c"># if [ ! $1 == &#39;&#39; ]  ; # works to (!) negate the expression</span>
+<span class="k">if</span> <span class="o">[[</span> <span class="nv">$1</span> !<span class="o">=</span> <span class="s1">&#39;&#39;</span> <span class="o">]]</span>    ; <span class="c"># works w/ single [ and double [[ </span>
+<span class="k">then </span><span class="nv">DISPLAY</span><span class="o">=</span><span class="nv">$1</span>
+<span class="k">fi</span>
+<span class="c"># </span>
+<span class="c"># User execution confirmation (location varies)</span>
+<span class="c"># echo &quot;Say Hello?&quot; </span>
+<span class="c"># echo &quot;\n\e[1;31m Say Hello?&quot;</span>
+<span class="nb">echo</span> -e -n <span class="s1">&#39;\n\e[1;31m Say Hello&#39;</span>
+<span class="nb">read</span> -n 1 -p <span class="s1">&#39; (y/n)?&#39;</span> RESP 
+<span class="nb">echo</span> -e <span class="s1">&#39;\e[0m&#39;</span>
+<span class="k">case</span> <span class="nv">$RESP</span> in
+  y|Y<span class="o">)</span>
+    <span class="nv">EXIT</span><span class="o">=</span><span class="s1">&#39;0&#39;</span> ;;
+  n|N<span class="o">)</span>
+    <span class="nv">EXIT</span><span class="o">=</span><span class="s1">&#39;1&#39;</span> ;;
+  *<span class="o">)</span>
+    <span class="nv">EXIT</span><span class="o">=</span><span class="s1">&#39;2&#39;</span> ;;
+<span class="k">esac</span>
+<span class="c"># </span>
+<span class="c"># Declare repeated code functions (none declared)</span>
+<span class="c"># </span>
+<span class="c"># !! MAIN SECTION !!</span>
+<span class="c"># </span>
+<span class="c"># Validity tests (setting exit status)</span>
+<span class="c"># </span>
+<span class="c"># Main code, if Valid</span>
+<span class="c"># </span>
+<span class="c"># Exit section: echo results, log errors</span>
+<span class="c"># echo &#39;Hello World&#39;</span>
+<span class="c"># echo &#39;Hello DISPLAY&#39;  ; # full quoting</span>
+<span class="c"># echo &quot;hello DISPLAY&quot;  ; # partial quoting</span>
+<span class="c"># echo &#39;Hello $DISPLAY&#39; ; # $-operator for evaluation</span>
+<span class="c"># echo &quot;Hello $DISPLAY&quot; ; # $ evaluation in partial quotes</span>
+
+<span class="c"># exit statements with user message display</span>
+<span class="k">case</span> <span class="nv">$EXIT</span> in
+  <span class="s1">&#39;0&#39;</span> <span class="o">)</span>
+    <span class="c"># echo -e &quot;\nHello $DISPLAY&quot; ;;</span>
+    <span class="nb">echo</span> -e <span class="s2">&quot;\n\e[1;32m Hello $DISPLAY \e[0m\n&quot;</span> ;;
+  * <span class="o">)</span>
+    <span class="c"># echo -e &quot;\nCanceled&quot; ;;</span>
+    <span class="nb">echo</span> -e <span class="s2">&quot;\n\e[1;31m Canceled \e[0m\n&quot;</span> ;;
+<span class="k">esac</span>
+
+<span class="nb">exit</span> <span class="nv">$EXIT</span>
+<span class="c"># </span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="04_logic.html" title="Logic and Decisions"
+             >next</a></li>
+        <li class="right" >
+          <a href="02_organize.html" title="Script / Program Organization"
+             >previous</a> |</li>
+        <li><a href="index.html">Linux Shell Script Programming 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Gerald Lovel.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

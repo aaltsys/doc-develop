@@ -1,0 +1,447 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Logic and Decisions &mdash; Linux Shell Script Programming 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/aaltsys.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Linux Shell Script Programming 1.0 documentation" href="index.html" />
+    <link rel="next" title="Exercise 2: Logic and Control" href="05_lesson2.html" />
+    <link rel="prev" title="Exercise 1: Organization" href="03_lesson1.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="05_lesson2.html" title="Exercise 2: Logic and Control"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="03_lesson1.html" title="Exercise 1: Organization"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Linux Shell Script Programming 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Logic and Decisions</a><ul>
+<li><a class="reference internal" href="#logic-operations">Logic operations</a><ul>
+<li><a class="reference internal" href="#explaining-unary">Explaining <em>unary</em></a></li>
+<li><a class="reference internal" href="#explaining-binary">Explaining <em>binary</em></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#test-constructs">Test Constructs</a></li>
+<li><a class="reference internal" href="#decisions-flow-control">Decisions &amp;  Flow Control</a><ul>
+<li><a class="reference internal" href="#list-iterative-for">List Iterative <em>for</em></a></li>
+<li><a class="reference internal" href="#algebraic-iterative-for">Algebraic Iterative <em>for</em></a></li>
+<li><a class="reference internal" href="#interactive-select-list">Interactive <em>select</em> List</a></li>
+<li><a class="reference internal" href="#branching-case">Branching <em>case</em></a></li>
+<li><a class="reference internal" href="#branching-if">Branching <em>if</em></a></li>
+<li><a class="reference internal" href="#iterative-while-until">Iterative <em>while</em> &amp; <em>until</em></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="03_lesson1.html"
+                        title="previous chapter">Exercise 1: Organization</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="05_lesson2.html"
+                        title="next chapter">Exercise 2: Logic and Control</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/04_logic.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="logic-and-decisions">
+<span id="logic"></span><h1>Logic and Decisions<a class="headerlink" href="#logic-and-decisions" title="Permalink to this headline">¶</a></h1>
+<p>It is said that the beauty of Unix standards comes from their wide variety, and
+the logical expressions and tests in Linux scripting prove this aphorism.</p>
+<div class="section" id="logic-operations">
+<h2>Logic operations<a class="headerlink" href="#logic-operations" title="Permalink to this headline">¶</a></h2>
+<p>A word about programming logic. Typically, logic tests produce one of two
+results: <tt class="docutils literal"><span class="pre">true</span></tt> (<tt class="docutils literal"><span class="pre">1</span></tt>), or <tt class="docutils literal"><span class="pre">false</span></tt> (<tt class="docutils literal"><span class="pre">0</span></tt>). (Right here, those old
+FORTRAN geezers can stop screaming about <tt class="docutils literal"><span class="pre">arithmetic</span> <span class="pre">if</span></tt>.) The operators in a
+logic test are mostly either <em>unary</em> or <em>binary</em>, meaning that a test either
+evaluates a condition of one term, or compares two terms. Lets examine what this
+means.</p>
+<div class="section" id="explaining-unary">
+<h3>Explaining <em>unary</em><a class="headerlink" href="#explaining-unary" title="Permalink to this headline">¶</a></h3>
+<p>File entries may point to either directories or data. The unary operator <tt class="docutils literal"><span class="pre">-d</span></tt>,
+when applied to a file, returns <tt class="docutils literal"><span class="pre">true</span></tt> if the entry is a directory, and
+<tt class="docutils literal"><span class="pre">false</span></tt> if it is some data file type. Now suppose the file in question does
+not exist; what should the operator return? Well, a non-entry for a file clearly
+is not a directory, so the test returns <tt class="docutils literal"><span class="pre">false</span></tt>. (Another operator, <tt class="docutils literal"><span class="pre">-e</span></tt>,
+would test whether the file exists.) So: a unary operator should return <tt class="docutils literal"><span class="pre">true</span></tt>
+or <tt class="docutils literal"><span class="pre">false</span></tt> with respect to a single condition only.</p>
+</div>
+<div class="section" id="explaining-binary">
+<h3>Explaining <em>binary</em><a class="headerlink" href="#explaining-binary" title="Permalink to this headline">¶</a></h3>
+<p>Comparison operators are binary, meaning that two terms must be compared. These
+tests might be thought of as arithmetic in nature, even when applied to strings
+of text. It is easy to determine if one string equals another, but what does it
+mean for one string to be greater than another? Do we compare the lengths of
+the strings, or their alphabetic order? We compare alphabetic ordering.</p>
+<p>One might suppose that, having defined the meaning of comparisons, only one set
+of comparison operators would be needed, and there would be one way to perform a
+logic test. Well, that is not shell scripting.</p>
+</div>
+</div>
+<div class="section" id="test-constructs">
+<h2>Test Constructs<a class="headerlink" href="#test-constructs" title="Permalink to this headline">¶</a></h2>
+<p>There are multiple ways to construct a logical test expression:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="21%" />
+<col width="79%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">if</span> <span class="pre">...</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">if</span></tt> uses the <strong>exit status</strong> of any expression(s)</td>
+</tr>
+<tr class="row-even"><td><div class="first last line-block">
+<div class="line"><tt class="docutils literal"><span class="pre">[</span></tt> or</div>
+<div class="line"><tt class="docutils literal"><span class="pre">test</span></tt></div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">built-in logical evaluation commands</div>
+<div class="line">lexicographical string comparisons using ASCII ordering</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><div class="first last line-block">
+<div class="line"><tt class="docutils literal"><span class="pre">[[</span> <span class="pre">...</span> <span class="pre">]]</span></tt></div>
+<div class="line"><br /></div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">keyword for extended test command</div>
+<div class="line">Uses lexicographical language order of locale</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p>To be certain of how an expression will evaluate, test it in an
+<tt class="docutils literal"><span class="pre">if</span> <span class="pre">...</span> <span class="pre">then</span></tt> statement:</p>
+<div class="last highlight-bash"><div class="highlight"><pre><span class="k">if </span>expression<span class="o">(</span>s<span class="o">)</span>
+<span class="k">then </span><span class="nb">echo</span> <span class="s2">&quot;Result true&quot;</span>
+<span class="k">else </span><span class="nb">echo</span> <span class="s2">&quot;Result false&quot;</span>
+<span class="k">fi</span>
+</pre></div>
+</div>
+</div>
+<p>Rules apply to tests and comparisons. Not every situation requires each rule, as
+there are many exceptions. But failure to use these conventions will certainly
+lead to trouble when it is least expected.</p>
+<ol class="arabic simple">
+<li>Initialize every string variable which will be used in a test</li>
+<li>Partial-quote (&#8221;) variables and strings inside logic tests</li>
+<li>Set off brackets (<tt class="docutils literal"><span class="pre">[</span></tt> or <tt class="docutils literal"><span class="pre">[[</span></tt>) with spaces</li>
+<li>Set off logic comparison operators with spaces</li>
+<li>Match comparison operators to the logic test, <tt class="docutils literal"><span class="pre">[</span></tt> or <tt class="docutils literal"><span class="pre">[[</span></tt>, per
+<a class="reference external" href="../resources/07_operators.html#operators" title="(in Developer Documentation Resource Pages v0.5)"><em>Operators &amp; Other Characters</em></a>.</li>
+<li>Match comparison operators to the type of data being tested, per
+<a class="reference external" href="../resources/07_operators.html#operators" title="(in Developer Documentation Resource Pages v0.5)"><em>Operators &amp; Other Characters</em></a>.</li>
+</ol>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>Rule 1. There is a test difference between strings which have been
+initialized with zero length, and strings which have never been assigned.
+Testing <tt class="docutils literal"><span class="pre">[</span> <span class="pre">&quot;$STRING&quot;</span> <span class="pre">=</span> <span class="pre">&quot;&quot;</span>&nbsp; <span class="pre">]</span></tt> may produce an unexpected result if
+<tt class="docutils literal"><span class="pre">$STRING</span></tt> is not assigned (null).</p>
+<p>Rule 2. Partial-quoting will evaluate embedded variables or expressions in
+strings.</p>
+<p>Rule 3. <tt class="docutils literal"><span class="pre">[</span></tt> is an operator and <tt class="docutils literal"><span class="pre">[[</span></tt> is a keyword; neither one is a
+grouping enclosure; operators must be surrounded with spaces.</p>
+<p>Rule 4. Logic comparisons are operators which must be surrounded by spaces.</p>
+<p>Rule 5. Operators listed for <tt class="docutils literal"><span class="pre">[[</span></tt> only do not apply to <tt class="docutils literal"><span class="pre">[</span></tt>.</p>
+<p class="last">Rule 6. Separate lists of operators apply to string, integer, and file
+expressions.</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Some operators, notably <tt class="docutils literal"><span class="pre">!=</span></tt> and <tt class="docutils literal"><span class="pre">==</span></tt>, have rather different meanings
+when used within <tt class="docutils literal"><span class="pre">[</span></tt> rather than <tt class="docutils literal"><span class="pre">[[</span></tt>. This may produce confusing results
+when comparing variables which evaluate to integers. BASH variables are
+vaguely typed, and variables may be evaluated (integer) or not (string)
+depending on how the variables are quoted. On top of this, strings may be
+compared literally or by pattern matching, depending on which test is used.</p>
+</div>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p><a class="reference external" href="http://www.gnu.org/software/bash/manual/html_node/Bash-Conditional-Expressions.html">Bash Conditional Expressions</a></p>
+<p><a class="reference external" href="http://tldp.org/LDP/abs/html/tests.html">Advanced Bash-Scripting Guide</a></p>
+<p><a class="reference external" href="http://wiki.bash-hackers.org/start">Bash Hackers Wiki</a></p>
+<p class="last">On-line bash documentation, <tt class="docutils literal"><span class="pre">man</span> <span class="pre">bash</span></tt>.</p>
+</div>
+</div>
+<div class="section" id="decisions-flow-control">
+<h2>Decisions &amp;  Flow Control<a class="headerlink" href="#decisions-flow-control" title="Permalink to this headline">¶</a></h2>
+<p>Logic is only useful when it is applied to decision making. (Back in the FORTRAN
+days this was called flow control, although it may have a different name now.)
+Bash has six compound expression forms which perform iteration or branching
+based on logic or decisions, as shown following:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Bash compound expressions syntax</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">for</span> <span class="pre">name</span> <span class="pre">[</span> <span class="pre">[</span> <span class="pre">in</span> <span class="pre">[</span> <span class="pre">word</span> <span class="pre">...</span> <span class="pre">]</span> <span class="pre">]</span> <span class="pre">;</span> <span class="pre">]</span> <span class="pre">do</span> <span class="pre">list</span> <span class="pre">;</span> <span class="pre">done</span></tt></td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">for</span> <span class="pre">((</span> <span class="pre">expr1</span> <span class="pre">;</span> <span class="pre">expr2</span> <span class="pre">;</span> <span class="pre">expr3</span> <span class="pre">))</span> <span class="pre">;</span> <span class="pre">do</span> <span class="pre">list</span> <span class="pre">;</span> <span class="pre">done</span></tt></td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">select</span> <span class="pre">name</span> <span class="pre">[</span> <span class="pre">in</span> <span class="pre">word</span> <span class="pre">]</span> <span class="pre">;</span> <span class="pre">do</span> <span class="pre">list</span> <span class="pre">;</span> <span class="pre">done</span></tt></td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">case</span> <span class="pre">word</span> <span class="pre">in</span> <span class="pre">[</span> <span class="pre">[(]</span> <span class="pre">pattern</span> <span class="pre">[</span> <span class="pre">|</span> <span class="pre">pattern</span> <span class="pre">]</span> <span class="pre">...</span> <span class="pre">)</span> <span class="pre">list</span> <span class="pre">;;</span> <span class="pre">]</span> <span class="pre">...</span> <span class="pre">esac</span></tt></td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">if</span> <span class="pre">list;</span> <span class="pre">then</span> <span class="pre">list;</span> <span class="pre">[</span> <span class="pre">elif</span> <span class="pre">list;</span> <span class="pre">then</span> <span class="pre">list;</span> <span class="pre">]</span> <span class="pre">...</span> <span class="pre">[</span> <span class="pre">else</span> <span class="pre">list;</span> <span class="pre">]</span> <span class="pre">fi</span></tt></td>
+</tr>
+<tr class="row-odd"><td><div class="first last line-block">
+<div class="line"><tt class="docutils literal"><span class="pre">while</span> <span class="pre">list-1;</span> <span class="pre">do</span> <span class="pre">list-2;</span> <span class="pre">done</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">until</span> <span class="pre">list-1;</span> <span class="pre">do</span> <span class="pre">list-2;</span> <span class="pre">done</span></tt></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="list-iterative-for">
+<h3>List Iterative <em>for</em><a class="headerlink" href="#list-iterative-for" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-bash"><div class="highlight"><pre><span class="k">for </span>name <span class="o">[</span> in <span class="o">[</span> word ... <span class="o">]</span> <span class="o">]</span>
+<span class="k">do</span>
+<span class="k">  </span><span class="nb">command </span>list
+<span class="k">done</span>
+</pre></div>
+</div>
+<p>The  <tt class="docutils literal"><span class="pre">word</span></tt> list following <tt class="docutils literal"><span class="pre">in</span></tt> is expanded, generating a list of items.
+The variable <tt class="docutils literal"><span class="pre">name</span></tt> is set to each element of the expanded <tt class="docutils literal"><span class="pre">word</span></tt> list in
+turn, and the <tt class="docutils literal"><span class="pre">command</span></tt> list is executed for each turn.</p>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<ol class="last arabic simple">
+<li>If operator <tt class="docutils literal"><span class="pre">in</span></tt> is omitted, the <tt class="docutils literal"><span class="pre">for</span></tt> command executes the
+<tt class="docutils literal"><span class="pre">command</span></tt> list once for each positional parameter that is set.</li>
+<li>If the expansion of the <tt class="docutils literal"><span class="pre">word</span></tt> list (following <tt class="docutils literal"><span class="pre">in</span></tt>) results in an
+empty list, no commands are executed.</li>
+</ol>
+</div>
+</div>
+<div class="section" id="algebraic-iterative-for">
+<h3>Algebraic Iterative <em>for</em><a class="headerlink" href="#algebraic-iterative-for" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-bash"><div class="highlight"><pre><span class="k">for</span> <span class="o">((</span> expression1 ; expression2 ; expression3 <span class="o">))</span>
+<span class="k">do</span>
+<span class="k">  </span><span class="nb">command </span>list
+<span class="k">done</span>
+</pre></div>
+</div>
+<p>Arithmetic expression1 is evaluated by the rules of <a class="reference external" href="../resources/08_expressions.html#arithmetic-eval" title="(in Developer Documentation Resource Pages v0.5)"><em>Arithmetic Evaluation</em></a>. Then
+arithmetic expression2 is evaluated repeatedly until it evaluates to <tt class="docutils literal"><span class="pre">0</span></tt>.
+Each time expression2 evaluates to a non-zero value, the command list is
+executed and arithmetic expression3 is evaluated. If any expression is omitted,
+it behaves as if it evaluates to <tt class="docutils literal"><span class="pre">1</span></tt>.</p>
+</div>
+<div class="section" id="interactive-select-list">
+<h3>Interactive <em>select</em> List<a class="headerlink" href="#interactive-select-list" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-bash"><div class="highlight"><pre><span class="k">select </span>name <span class="o">[</span> in word <span class="o">]</span>
+<span class="k">do</span>
+<span class="k">  </span><span class="nb">command </span>list
+<span class="k">done</span>
+</pre></div>
+</div>
+<p>The list of words following <tt class="docutils literal"><span class="pre">in</span></tt> is expanded, generating a list of items. The
+set  of expanded words is printed on the standard error, each preceded by a
+number.  If the <tt class="docutils literal"><span class="pre">in</span></tt> word is omitted, the positional parameters are printed
+(see PARAMETERS below). The <tt class="docutils literal"><span class="pre">PS3</span></tt> prompt is then displayed and a line read
+from the standard input. If the line consists of a number corresponding to one
+of the displayed words, then the value of name is set to that word. If the line
+is empty, the words and prompt are displayed again. If <tt class="docutils literal"><span class="pre">EOF</span></tt> is read, the
+command completes. Any other value read causes name to be set to <tt class="docutils literal"><span class="pre">null</span></tt>. The
+line read is saved in the variable <tt class="docutils literal"><span class="pre">REPLY</span></tt>. The list is executed after each
+selection until a break command is executed.</p>
+</div>
+<div class="section" id="branching-case">
+<h3>Branching <em>case</em><a class="headerlink" href="#branching-case" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-bash"><div class="highlight"><pre><span class="k">case </span>word in
+  pattern|pattern<span class="o">)</span>
+    <span class="nb">command </span>list ;;
+  pattern2|pattern2<span class="o">)</span>
+    <span class="nb">command </span>list ;;
+  *<span class="o">)</span>
+    <span class="nb">command </span>list ;;
+<span class="k">esac</span>
+</pre></div>
+</div>
+<p>A case command first expands <strong>word</strong> (see note 1), and tries to match it
+against each <strong>pattern</strong> in turn, using pathname pattern matching rules (see
+note 2). Once the first match is found, the associated list of commands is
+executed, up to the termination operator, which is processed as follows:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="87%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Operator</th>
+<th class="head">Termination result</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">;;</span></tt></td>
+<td>The case statement exits at <tt class="docutils literal"><span class="pre">esac</span></tt>.</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">;&amp;</span></tt></td>
+<td>Execution continues with the command list of next code block.</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">;;&amp;</span></tt></td>
+<td>Pattern match testing continues with the next code block.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<ol class="last arabic simple">
+<li>When shell option -nocasematch is enabled, the match is performed without
+regard to the case of  alphabetic characters.</li>
+</ol>
+</div>
+</div>
+<div class="section" id="branching-if">
+<h3>Branching <em>if</em><a class="headerlink" href="#branching-if" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-bash"><div class="highlight"><pre><span class="k">if </span>expression list
+<span class="k">then</span>
+<span class="k">  </span><span class="nb">command </span>list ;
+<span class="k">elif </span>expression list
+<span class="k">then</span>
+<span class="k">  </span><span class="nb">command </span>list ;
+  ...
+<span class="k">else </span>expression list
+  <span class="nb">command </span>list ;
+<span class="k">fi</span>
+</pre></div>
+</div>
+<p>The <tt class="docutils literal"><span class="pre">if</span></tt> test <tt class="docutils literal"><span class="pre">expression</span></tt> list is executed. If its exit status is <tt class="docutils literal"><span class="pre">0</span></tt>,
+the <tt class="docutils literal"><span class="pre">then</span></tt> list is executed.  Otherwise, each <tt class="docutils literal"><span class="pre">elif</span></tt> test list is executed
+in turn, and if its exit status is <tt class="docutils literal"><span class="pre">0</span></tt>, the corresponding <tt class="docutils literal"><span class="pre">then</span></tt> list is
+executed and the command completes. Otherwise, the <tt class="docutils literal"><span class="pre">else</span></tt> list is executed,
+if present, to complete the execution.</p>
+</div>
+<div class="section" id="iterative-while-until">
+<h3>Iterative <em>while</em> &amp; <em>until</em><a class="headerlink" href="#iterative-while-until" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-bash"><div class="highlight"><pre><span class="k">while </span>expression list
+<span class="k">do</span>
+<span class="k">  </span><span class="nb">command </span>list
+<span class="k">done</span>
+
+<span class="k">until </span>expression list
+<span class="k">do</span>
+<span class="k">  </span><span class="nb">command </span>list
+<span class="k">done</span>
+</pre></div>
+</div>
+<p>The <tt class="docutils literal"><span class="pre">while</span></tt> command continuously executes the <tt class="docutils literal"><span class="pre">command</span></tt> list as long as the
+last statement in the <tt class="docutils literal"><span class="pre">expression</span></tt> list returns an exit status of <tt class="docutils literal"><span class="pre">0</span></tt>.
+The <tt class="docutils literal"><span class="pre">until</span></tt> command is identical to the <tt class="docutils literal"><span class="pre">while</span></tt> command, except that the
+test is negated; the <tt class="docutils literal"><span class="pre">command</span></tt> list is executed as long as the last statement
+in the test <tt class="docutils literal"><span class="pre">expression</span></tt> list returns a non-zero exit status.</p>
+<p>&#8212;</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<ol class="last arabic simple">
+<li>Seven types of command expansion, in order of performance, are: brace
+expansion; tilde expansion; parameter and variable expansion; arithmetic
+substitution; command substitution (done in a left-to-right fashion);
+word splitting; and pathname expansion.</li>
+<li>Before evaluation, <strong>word</strong>, <strong>pattern</strong>, ... are expanded by: tilde
+expansion, parameter and variable expansion, arithmetic substitution,
+command substitution, followed by process substitution and quote removal.</li>
+<li>Arithmetic expressions are evaluated according to the rules described
+under <a class="reference external" href="../resources/08_expressions.html#arithmetic-eval" title="(in Developer Documentation Resource Pages v0.5)"><em>Arithmetic Evaluation</em></a>.</li>
+<li>Pathname pattern matching rules are given in <a class="reference external" href="../resources/07_operators.html#glob" title="(in Developer Documentation Resource Pages v0.5)"><em>Glob Pattern Matching</em></a>.</li>
+<li>If any condition expression for a compound statement is invalid, or if
+evaluation results in no commands executed, then the exit status of the
+compound statement will be <tt class="docutils literal"><span class="pre">0</span></tt>. Otherwise, the exit status of a compound
+statement is the exit status of the last command executed in a list.</li>
+</ol>
+</div>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">online manual, terminal command <tt class="docutils literal"><span class="pre">man</span> <span class="pre">bash</span></tt>.</p>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="05_lesson2.html" title="Exercise 2: Logic and Control"
+             >next</a></li>
+        <li class="right" >
+          <a href="03_lesson1.html" title="Exercise 1: Organization"
+             >previous</a> |</li>
+        <li><a href="index.html">Linux Shell Script Programming 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Gerald Lovel.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

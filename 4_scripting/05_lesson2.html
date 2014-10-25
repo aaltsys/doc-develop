@@ -1,0 +1,258 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Exercise 2: Logic and Control &mdash; Linux Shell Script Programming 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/aaltsys.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Linux Shell Script Programming 1.0 documentation" href="index.html" />
+    <link rel="next" title="Programming Considerations" href="06_considerations.html" />
+    <link rel="prev" title="Logic and Decisions" href="04_logic.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="06_considerations.html" title="Programming Considerations"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="04_logic.html" title="Logic and Decisions"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Linux Shell Script Programming 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Exercise 2: Logic and Control</a><ul>
+<li><a class="reference internal" href="#expanding-commands">Expanding Commands</a></li>
+<li><a class="reference internal" href="#string-commands">String Commands</a><ul>
+<li><a class="reference internal" href="#id1">$()</a></li>
+<li><a class="reference internal" href="#id2">${}</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#quotes">Quotes</a><ul>
+<li><a class="reference internal" href="#single-vs-double-quotes">Single vs Double Quotes</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#programming-with-logic">Programming with Logic</a><ul>
+<li><a class="reference internal" href="#with-iterative-for">... With Iterative For</a></li>
+<li><a class="reference internal" href="#with-integer-for">... With Integer For</a></li>
+<li><a class="reference internal" href="#with-select-list">... With Select List</a></li>
+<li><a class="reference internal" href="#with-case-branching">... With Case Branching</a></li>
+<li><a class="reference internal" href="#with-if-branching">... With if branching</a></li>
+<li><a class="reference internal" href="#with-iterative-while">... With Iterative While</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="04_logic.html"
+                        title="previous chapter">Logic and Decisions</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="06_considerations.html"
+                        title="next chapter">Programming Considerations</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/05_lesson2.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="exercise-2-logic-and-control">
+<span id="logic-lesson"></span><h1>Exercise 2: Logic and Control<a class="headerlink" href="#exercise-2-logic-and-control" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="expanding-commands">
+<h2>Expanding Commands<a class="headerlink" href="#expanding-commands" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="string-commands">
+<h2>String Commands<a class="headerlink" href="#string-commands" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id1">
+<h3>$()<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id2">
+<h3>${}<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="quotes">
+<h2>Quotes<a class="headerlink" href="#quotes" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="single-vs-double-quotes">
+<h3>Single vs Double Quotes<a class="headerlink" href="#single-vs-double-quotes" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="44%" />
+<col width="56%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">echo</span> <span class="pre">$(git</span> <span class="pre">branch</span> <span class="pre">-a)</span></tt></td>
+<td>garbage</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">echo</span> <span class="pre">'$(git</span> <span class="pre">branch</span> <span class="pre">-a)'</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">git</span> <span class="pre">branch</span> <span class="pre">-a</span></tt></td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">echo</span> <span class="pre">&quot;$(git</span> <span class="pre">branch</span> <span class="pre">-a)&quot;</span></tt></td>
+<td>expected output of git branch command</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="programming-with-logic">
+<h2>Programming with Logic<a class="headerlink" href="#programming-with-logic" title="Permalink to this headline">¶</a></h2>
+<p>This lesson focuses on assembling a program with compound logic commands. First
+start a new program, call it <tt class="docutils literal"><span class="pre">control-logic.sh</span></tt>. Remember, copy in the
+example shell outline or download it from :download:<a href="#id3"><span class="problematic" id="id4">``</span></a>_downloads/example.sh`.</p>
+<div class="section" id="with-iterative-for">
+<h3>... With Iterative For<a class="headerlink" href="#with-iterative-for" title="Permalink to this headline">¶</a></h3>
+<p>For OPT in NAMELIST
+do</p>
+<blockquote>
+<div>Commands</div></blockquote>
+<p>Done</p>
+</div>
+<div class="section" id="with-integer-for">
+<h3>... With Integer For<a class="headerlink" href="#with-integer-for" title="Permalink to this headline">¶</a></h3>
+<p>for (( expression1 ; expression2 ; expression3 ))
+do</p>
+<blockquote>
+<div>command list</div></blockquote>
+<p>done</p>
+</div>
+<div class="section" id="with-select-list">
+<h3>... With Select List<a class="headerlink" href="#with-select-list" title="Permalink to this headline">¶</a></h3>
+<p>select name [ in word ]
+do</p>
+<blockquote>
+<div>command list</div></blockquote>
+<p>done</p>
+</div>
+<div class="section" id="with-case-branching">
+<h3>... With Case Branching<a class="headerlink" href="#with-case-branching" title="Permalink to this headline">¶</a></h3>
+<dl class="docutils">
+<dt>case word in</dt>
+<dd><dl class="first last docutils">
+<dt>pattern|pattern)</dt>
+<dd>command list ;;</dd>
+<dt>pattern2|pattern2)</dt>
+<dd>command list ;;</dd>
+<dt><a href="#id5"><span class="problematic" id="id6">*</span></a>)</dt>
+<dd>command list ;;</dd>
+</dl>
+</dd>
+</dl>
+<p>esac</p>
+</div>
+<div class="section" id="with-if-branching">
+<h3>... With if branching<a class="headerlink" href="#with-if-branching" title="Permalink to this headline">¶</a></h3>
+<p>if expression list
+then</p>
+<blockquote>
+<div>command list ;</div></blockquote>
+<p>elif expression list
+then</p>
+<blockquote>
+<div>command list ;
+...</div></blockquote>
+<dl class="docutils">
+<dt>else expression list</dt>
+<dd>command list ;</dd>
+</dl>
+<p>fi</p>
+<p>Prompt user to escalate privileges:</p>
+<div class="highlight-python"><div class="highlight"><pre>if [[ $EUID -ne 0 ]] ; then echo -e &quot;\e[1;31m try again using sudo \e[0m&quot; ; exit 1 ; fi
+</pre></div>
+</div>
+<p>Select an optional value and concatenate it based on a system setting:</p>
+<div class="highlight-python"><div class="highlight"><pre>CHROMEVER=&#39;google-chrome-stable_current_&#39;
+if [ &quot;`uname -i`&quot; = &quot;i386&quot; ]
+then
+  CHROMEVER+=&#39;i386.deb&#39;
+else
+  CHROMEVER+=&#39;amd64.deb&#39;
+fi
+</pre></div>
+</div>
+<p>Either add or change a configuration setting in a file using programmatic control:</p>
+<div class="highlight-python"><div class="highlight"><pre>if [[ -z &quot;$(grep &#39;vm.mmap_min_addr&#39; /etc/modules)&quot; ]] ; then
+   echo -e /n &quot;vm.mmap_min_addr=0&quot; &gt;&gt; /etc/modules ;
+else
+   sed -i &#39;/vm.mmap_min_addr/c\vn.mmap_min_addr=0&#39; ~/etc/modules ;
+fi
+</pre></div>
+</div>
+</div>
+<div class="section" id="with-iterative-while">
+<h3>... With Iterative While<a class="headerlink" href="#with-iterative-while" title="Permalink to this headline">¶</a></h3>
+<p>while expression list
+do</p>
+<blockquote>
+<div>command list</div></blockquote>
+<p>done</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="06_considerations.html" title="Programming Considerations"
+             >next</a></li>
+        <li class="right" >
+          <a href="04_logic.html" title="Logic and Decisions"
+             >previous</a> |</li>
+        <li><a href="index.html">Linux Shell Script Programming 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Gerald Lovel.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

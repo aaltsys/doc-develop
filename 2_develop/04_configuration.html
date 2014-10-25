@@ -1,0 +1,223 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Workstation Configuration &mdash; Development 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/aaltsys.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Development 1.0 documentation" href="index.html" />
+    <link rel="next" title="GitHub Repository Hosting" href="05_hosting.html" />
+    <link rel="prev" title="Collaboration Summary" href="03_summary.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="05_hosting.html" title="GitHub Repository Hosting"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="03_summary.html" title="Collaboration Summary"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Development 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Workstation Configuration</a><ul>
+<li><a class="reference internal" href="#global-configuration-settings">Global Configuration Settings</a><ul>
+<li><a class="reference internal" href="#generate-missing-ssh-keys">Generate Missing SSH Keys</a></li>
+<li><a class="reference internal" href="#create-a-projects-folder">Create a Projects Folder</a></li>
+<li><a class="reference internal" href="#git-global-settings">Git global settings</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#configuration-by-project">Configuration by Project</a><ul>
+<li><a class="reference internal" href="#initialize-local-git-repo">Initialize Local Git Repo</a></li>
+<li><a class="reference internal" href="#prepare-gitignore">Prepare .gitignore</a></li>
+<li><a class="reference internal" href="#add-changes-to-git">Add Changes to git</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="03_summary.html"
+                        title="previous chapter">Collaboration Summary</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="05_hosting.html"
+                        title="next chapter">GitHub Repository Hosting</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/04_configuration.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="workstation-configuration">
+<span id="configuring"></span><h1>Workstation Configuration<a class="headerlink" href="#workstation-configuration" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="global-configuration-settings">
+<h2>Global Configuration Settings<a class="headerlink" href="#global-configuration-settings" title="Permalink to this headline">¶</a></h2>
+<p>Global configuration settings are performed once per user on a machine.</p>
+<div class="section" id="generate-missing-ssh-keys">
+<h3>Generate Missing SSH Keys<a class="headerlink" href="#generate-missing-ssh-keys" title="Permalink to this headline">¶</a></h3>
+<p>The following command will generate missing <strong>ssh keys</strong> for a user:</p>
+<div class="highlight-python"><div class="highlight"><pre>if [ ! -f &quot;~/.ssh/id_rsa&quot; ]; then ssh-keygen -N &quot;&quot; -f ~/.ssh/id_rsa; fi
+</pre></div>
+</div>
+</div>
+<div class="section" id="create-a-projects-folder">
+<h3>Create a Projects Folder<a class="headerlink" href="#create-a-projects-folder" title="Permalink to this headline">¶</a></h3>
+<p>To create a projects Open a terminal prompt and type the following commands:</p>
+<div class="highlight-python"><div class="highlight"><pre>mkdir -p ~/Projects
+cd ~/Projects
+</pre></div>
+</div>
+</div>
+<div class="section" id="git-global-settings">
+<h3>Git global settings<a class="headerlink" href="#git-global-settings" title="Permalink to this headline">¶</a></h3>
+<p>While there are many options for repositories, <strong>git</strong> <a class="footnote-reference" href="#id3" id="id1">[1]</a> has become a
+<em>de facto</em> standard for public projects. Configure git with the following
+console commands:</p>
+<div class="highlight-python"><div class="highlight"><pre>git config --global user.name &quot;firstname lastname&quot;
+git config --global user.email &quot;email@domain&quot;
+git config --global branch.master.remote origin
+git config --global branch.master.merge refs/heads/master
+git config --global push.default matching
+git config --global color.ui auto
+</pre></div>
+</div>
+<p>Git global settings are recorded in home directory file <tt class="file docutils literal"><span class="pre">~/.gitconfig</span></tt>.</p>
+</div>
+</div>
+<div class="section" id="configuration-by-project">
+<h2>Configuration by Project<a class="headerlink" href="#configuration-by-project" title="Permalink to this headline">¶</a></h2>
+<p>Development work is divided into projects which are stored locally as
+sub-folders of a <tt class="file docutils literal"><span class="pre">Projects</span></tt> folder. Start a new project with the command:</p>
+<div class="highlight-python"><div class="highlight"><pre>git init ~/Projects/doc-firsttask
+</pre></div>
+</div>
+<p>This creates the directory <tt class="file docutils literal"><span class="pre">~/Projects/doc-firsttask/.git</span></tt> where
+repository information is kept for that project.</p>
+<div class="section" id="initialize-local-git-repo">
+<span id="gitignore"></span><h3>Initialize Local Git Repo<a class="headerlink" href="#initialize-local-git-repo" title="Permalink to this headline">¶</a></h3>
+<p>Initialize Git repository services on a folder with the command:</p>
+<div class="highlight-python"><div class="highlight"><pre>git init ~/Projects/doc-firsttask
+</pre></div>
+</div>
+<p>This creates the directory <tt class="file docutils literal"><span class="pre">~/Projects/doc-firsttask/.git</span></tt> where
+repository information is kept for that project.</p>
+</div>
+<div class="section" id="prepare-gitignore">
+<h3>Prepare .gitignore<a class="headerlink" href="#prepare-gitignore" title="Permalink to this headline">¶</a></h3>
+<p>A project will contain files with content that you create, and other files
+which are generated by the system. The git repository should track content and
+not system files. Using <tt class="docutils literal"><span class="pre">nano</span></tt> or <tt class="docutils literal"><span class="pre">kate</span></tt>, create a <tt class="file docutils literal"><span class="pre">.gitignore</span></tt> file
+to identify untracked files to git. Here is some suggested content for
+<tt class="file docutils literal"><span class="pre">.gitignore</span></tt>:</p>
+<div class="highlight-python"><div class="highlight"><pre># ignore editor backup files
+*~
+*/*~
+# ignore compilation from make
+*build/*
+*/*build/*
+# ignore deployment content
+*deploy/*
+*/*deploy/*
+# keep hidden placeholder files which preserve directories
+!.gitkeep
+!*/.gitkeep
+</pre></div>
+</div>
+</div>
+<div class="section" id="add-changes-to-git">
+<h3>Add Changes to git<a class="headerlink" href="#add-changes-to-git" title="Permalink to this headline">¶</a></h3>
+<p>Now add your changes to git <a class="footnote-reference" href="#id4" id="id2">[2]</a> and view the results with the commands:</p>
+<div class="highlight-python"><div class="highlight"><pre>git add .
+git status
+git commit -m &quot;Empty project directory for firsttask&quot;
+</pre></div>
+</div>
+<hr class="docutils" />
+<p class="rubric">Footnotes</p>
+<table class="docutils footnote" frame="void" id="id3" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>For information on git, see <a class="reference external" href="http://en.wikipedia.org/wiki/Git_(software">http://en.wikipedia.org/wiki/Git_(software</a>).
+A git online reference manual is at <a class="reference external" href="http://gitref.org/">http://gitref.org/</a>.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id4" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td><a class="reference external" href="http://try.github.com/">Try GitHub</a> offers a quick tutorial on Git
+and GitHub to bring you up to speed.</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="05_hosting.html" title="GitHub Repository Hosting"
+             >next</a></li>
+        <li class="right" >
+          <a href="03_summary.html" title="Collaboration Summary"
+             >previous</a> |</li>
+        <li><a href="index.html">Development 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Gerald Lovel.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

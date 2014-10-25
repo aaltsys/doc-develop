@@ -1,0 +1,330 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Right Structure &mdash; Publish Documentation 1.5 documentation</title>
+    
+    <link rel="stylesheet" href="_static/aaltsys.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.5',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Publish Documentation 1.5 documentation" href="index.html" />
+    <link rel="next" title="Right Operation" href="06_operation.html" />
+    <link rel="prev" title="Right Hosting" href="04_hosting.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="06_operation.html" title="Right Operation"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="04_hosting.html" title="Right Hosting"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Publish Documentation 1.5 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Right Structure</a><ul>
+<li><a class="reference internal" href="#headings">Headings</a></li>
+<li><a class="reference internal" href="#paragraphs">Paragraphs</a></li>
+<li><a class="reference internal" href="#inline-style-formatting">Inline Style Formatting</a></li>
+<li><a class="reference internal" href="#inline-markup-directives">Inline Markup Directives</a></li>
+<li><a class="reference internal" href="#tables">Tables</a></li>
+<li><a class="reference internal" href="#list-entries">List Entries</a></li>
+<li><a class="reference internal" href="#link-directives">Link Directives</a></li>
+<li><a class="reference internal" href="#paragraph-directives">Paragraph Directives</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="04_hosting.html"
+                        title="previous chapter">Right Hosting</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="06_operation.html"
+                        title="next chapter">Right Operation</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/05_structure.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="right-structure">
+<span id="structure"></span><h1>Right Structure<a class="headerlink" href="#right-structure" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The following guide to reST and Sphinx markup is intended to be
+helpful but not exhaustive. More comprehensive and less comprehendable
+documentation is available from official Sphinx sources. <a class="footnote-reference" href="#id3" id="id1">[1]</a></p>
+</div>
+<div class="section" id="headings">
+<h2>Headings<a class="headerlink" href="#headings" title="Permalink to this headline">¶</a></h2>
+<p>At the top of each reST document is a title surrounded with markers: <a class="footnote-reference" href="#id4" id="id2">[2]</a></p>
+<div class="highlight-python"><div class="highlight"><pre>##############################
+A Document Title Goes Here
+##############################
+</pre></div>
+</div>
+<p>Each document section or subsection is indicated with an underlined heading:</p>
+<div class="highlight-python"><div class="highlight"><pre>This is a heading
+==============================
+
+And so this is a sub-heading
+-------------------------------
+</pre></div>
+</div>
+<p>Page break lines are inserted with a series of dashes</p>
+<p><tt class="docutils literal"><span class="pre">----------------</span></tt></p>
+</div>
+<hr class="docutils" />
+<div class="section" id="paragraphs">
+<h2>Paragraphs<a class="headerlink" href="#paragraphs" title="Permalink to this headline">¶</a></h2>
+<p>Paragraphs are indicated by entering two newlines, which shows as a blank line
+in the text. Single newlines are ignored except in lists or other directives.</p>
+<p>When using a text editor, lines are typically broken by newline characters and
+word wrapping is not performed. This corresponds to programming practice,
+where each statement of a program is marked by a newline.</p>
+</div>
+<div class="section" id="inline-style-formatting">
+<h2>Inline Style Formatting<a class="headerlink" href="#inline-style-formatting" title="Permalink to this headline">¶</a></h2>
+<p>The following table displays inline or embedded markups for text styles:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="47%" />
+<col width="53%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Markup</th>
+<th class="head">Result</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>*italicized text*</td>
+<td><em>italicized text</em></td>
+</tr>
+<tr class="row-odd"><td>**bold text**</td>
+<td><strong>bold text</strong></td>
+</tr>
+<tr class="row-even"><td>`emphasized text`</td>
+<td><cite>emphasized text</cite></td>
+</tr>
+<tr class="row-odd"><td>``unformatted text``</td>
+<td><tt class="docutils literal"><span class="pre">unformatted</span> <span class="pre">text</span></tt></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="inline-markup-directives">
+<h2>Inline Markup Directives<a class="headerlink" href="#inline-markup-directives" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Inline Markup Directives are supported in Sphinx but not in basic reST.
+Therefore these commands will generate errors in the interactive editor at
+<a class="reference external" href="http://rst.ninjs.org">http://rst.ninjs.org</a>.</p>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="42%" />
+<col width="58%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Markup</th>
+<th class="head">Result</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>:kbd:`text`</td>
+<td><tt class="kbd docutils literal"><span class="pre">text</span></tt></td>
+</tr>
+<tr class="row-odd"><td>:guilabel:`text`</td>
+<td><em class="guilabel">text</em></td>
+</tr>
+<tr class="row-even"><td>:menuselection:`menu &#8211;&gt; item`</td>
+<td><em class="menuselection">menu ‣ item</em></td>
+</tr>
+<tr class="row-odd"><td>:command:`git add .`</td>
+<td><strong class="command">git add .</strong></td>
+</tr>
+<tr class="row-even"><td>:file:`../path/to/file`</td>
+<td><tt class="file docutils literal"><span class="pre">../path/to/file</span></tt></td>
+</tr>
+<tr class="row-odd"><td>:download:`script &lt;path.sh&gt;`</td>
+<td><a class="reference download internal" href="_downloads/rest-install.sh"><tt class="xref download docutils literal"><span class="pre">script</span></tt></a></td>
+</tr>
+<tr class="row-even"><td>:ref:`Tables &lt;tables_label&gt;`</td>
+<td><a class="reference internal" href="#tables-label"><em>Tables</em></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="tables">
+<span id="tables-label"></span><h2>Tables<a class="headerlink" href="#tables" title="Permalink to this headline">¶</a></h2>
+<p>Build table layouts as shown below:</p>
+<div class="highlight-python"><div class="highlight"><pre>+------------------------------------+--------------------------------+
+| Markup                             | Result                         |
++====================================+================================+
+| \:kbd\:\`text\`                    | :kbd:`text`                    |
++------------------------------------+--------------------------------+
+| \:guilabel\:\`text\`               | :guilabel:`text`               |
++------------------------------------+--------------------------------+
+| \:menuselection\:\`menu --&gt; item\` | :menuselection:`menu --&gt; item` |
++------------------------------------+--------------------------------+
+| \:command\:\`git add .\`           | :command:`git add .`           |
++------------------------------------+--------------------------------+
+</pre></div>
+</div>
+</div>
+<div class="section" id="list-entries">
+<h2>List Entries<a class="headerlink" href="#list-entries" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line">| The Pipe symbol starts a separate text line.</div>
+<div class="line">| Use this for simple lists.</div>
+</div>
+<div class="line-block">
+<div class="line">The Pipe symbol starts a separate text line.</div>
+<div class="line">Use this for simple lists.</div>
+</div>
+<div class="line-block">
+<div class="line">+ Plus or minus signs start bulleted items.</div>
+<div class="line">+ Use this for item lists.</div>
+</div>
+<ul class="simple">
+<li>Plus or minus signs start bulleted items.</li>
+<li>Use this for item lists.</li>
+</ul>
+<div class="line-block">
+<div class="line">#. Hash-dot starts a numbered line.</div>
+<div class="line">#. Use this for numbered lists.</div>
+</div>
+<ol class="arabic simple">
+<li>Hash-dot starts a numbered line.</li>
+<li>Use this for numbered lists.</li>
+</ol>
+<p>When a paragraph ends with a double colon (::):</p>
+<div class="highlight-python"><div class="highlight"><pre>Following indented lines are blocked.
+Use this for code examples.
+</pre></div>
+</div>
+<p>Indent lists with spaces or tabs to indent the displayed text:</p>
+<blockquote>
+<div><p>Indent lists with spaces or tabs to indent the displayed text:</p>
+<div class="highlight-python"><div class="highlight"><pre>Additionally indented lines are blocked.
+Use this for code examples.
+</pre></div>
+</div>
+</div></blockquote>
+<div class="admonition hint">
+<p class="first admonition-title">Hint</p>
+<p class="last">When the double-colon is preceded with a space, no colon shows in the
+output.</p>
+</div>
+</div>
+<div class="section" id="link-directives">
+<h2>Link Directives<a class="headerlink" href="#link-directives" title="Permalink to this headline">¶</a></h2>
+<p>.. _label_reference:</p>
+<p>.. image :: `_images/04_self-publish_new.png`</p>
+<p>[#]_ (footnote number insertion)</p>
+<p>`Online reST Editor &lt;<a class="reference external" href="http://rst.ninjs.org/">http://rst.ninjs.org/</a>&gt;`_</p>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">The underscore preceding &#8220;label_reference&#8221; is part of the directive,
+not part of the label. The same is true for the underscore following
+footnote brackets, and the underscore following a URL link.</p>
+</div>
+</div>
+<div class="section" id="paragraph-directives">
+<h2>Paragraph Directives<a class="headerlink" href="#paragraph-directives" title="Permalink to this headline">¶</a></h2>
+<p>The following directives should be followed by an indented paragraph of text.
+The text will appear in a message window, a sidebar, or otherwise set off
+from the main document text.</p>
+<p>:: The following paragraph will display as unformatted code.</p>
+<p>.. [#] This paragraph is a footnote paired with a text reference. [#]_</p>
+<p>.. tip :: This paragraph is the text of a short tip.</p>
+<p>.. note :: This paragraph is the text of a note.</p>
+<p>.. warning :: This paragraph is (not) a warning.</p>
+<p>.. sidebar :: The following paragraph will appear in a sidebar.</p>
+<p>.. rubric :: This heading is not in the Table of Contents</p>
+<p>.. centered :: THIS TEXT IS BOLD CENTERED</p>
+<hr class="docutils" />
+<p class="rubric">Footnotes</p>
+<table class="docutils footnote" frame="void" id="id3" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>For Sphinx documentation, see &lt;<a class="reference external" href="http://sphinx.pocoo.org/contents.html">http://sphinx.pocoo.org/contents.html</a>&gt;.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id4" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td>Characters for marking headings are arbitrarily set within a project
+by usage. This is an example of simplifing a task by
+<a class="reference external" href="http://en.wikipedia.org/wiki/Convention_over_configuration">Convention over Configuration</a>.</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="06_operation.html" title="Right Operation"
+             >next</a></li>
+        <li class="right" >
+          <a href="04_hosting.html" title="Right Hosting"
+             >previous</a> |</li>
+        <li><a href="index.html">Publish Documentation 1.5 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Gerald Lovel.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

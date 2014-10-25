@@ -1,0 +1,211 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>DIY Deployment &mdash; Ruby Developer Tutorial 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/aaltsys.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Ruby Developer Tutorial 1.0 documentation" href="index.html" />
+    <link rel="next" title="Deploy with Capistrano" href="03_capistrano.html" />
+    <link rel="prev" title="Overview" href="01_overview.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="03_capistrano.html" title="Deploy with Capistrano"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="01_overview.html" title="Overview"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Ruby Developer Tutorial 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">DIY Deployment</a><ul>
+<li><a class="reference internal" href="#create-a-server">Create a Server</a></li>
+<li><a class="reference internal" href="#create-a-code-project">Create a Code Project</a></li>
+<li><a class="reference internal" href="#move-code-to-the-server">Move Code to the Server</a></li>
+<li><a class="reference internal" href="#what-s-missing">What&#8217;s Missing?</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="01_overview.html"
+                        title="previous chapter">Overview</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="03_capistrano.html"
+                        title="next chapter">Deploy with Capistrano</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/02_diy.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="diy-deployment">
+<span id="deployment"></span><h1>DIY Deployment<a class="headerlink" href="#diy-deployment" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="create-a-server">
+<h2>Create a Server<a class="headerlink" href="#create-a-server" title="Permalink to this headline">¶</a></h2>
+<p>This lesson will make a web application server which is publicly accessible.
+Servers are made publicly accessible through a public IP address, and
+optionally, a DNS entry pointing to the IP address.</p>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">The usual way to browse the web is to type website domain names for
+addresses, relying on DNS to translate the domain name to the server&#8217;s
+public IP address. but you can also visit a site by going straight to the
+IP, skipping DNS.</p>
+</div>
+<p>We can visit our server at:</p>
+<div class="highlight-python"><div class="highlight"><pre>http://54.68.232.191/
+</pre></div>
+</div>
+<p>or</p>
+<div class="highlight-python"><div class="highlight"><pre>http://ec2-54-68-232-191.us-west-2.compute.amazonaws.com/
+</pre></div>
+</div>
+<p>or</p>
+<div class="highlight-python"><div class="highlight"><pre>http::/ec2demo.aaltsys.info/
+</pre></div>
+</div>
+<p>The default Ubuntu Apache installation&#8217;s welcome page should display.
+Apache is the webserver software which directs web requests to our application.</p>
+<img alt="_images/apache-welcome-page.png" src="_images/apache-welcome-page.png" />
+<p>As this page explains, it is located in the <tt class="file docutils literal"><span class="pre">/var/www/html</span></tt> folder on the
+server. This folder is known as the <em>DocRoot</em>.</p>
+<p>The file itself is called <tt class="file docutils literal"><span class="pre">index.html</span></tt>. When Apache gets a request for a
+folder path, it looks first for an <tt class="file docutils literal"><span class="pre">index.html</span></tt> file in that folder, and
+serves that file if it exists.</p>
+<p>In order to see our own files, we should place them within the DocRoot.
+So, the process of deployment will require us to move our code to within the
+DocRoot on the server.</p>
+</div>
+<div class="section" id="create-a-code-project">
+<h2>Create a Code Project<a class="headerlink" href="#create-a-code-project" title="Permalink to this headline">¶</a></h2>
+<p><strong>* change to AAltsys account *</strong></p>
+<p>In the web browser, login to your Github account. Fork the project from
+<a class="reference external" href="https://github.com/aaltsys/html-demo">https://github.com/aaltsys/html-demo</a>. After forking the project, Github will
+take you to the GitHub page for your fork.</p>
+<p>In GitHub, edit the <tt class="file docutils literal"><span class="pre">index.html</span></tt> file, putting your name in the <tt class="docutils literal"><span class="pre">&lt;h1&gt;</span></tt>
+tag.</p>
+<img alt="_images/github-edit-index.png" src="_images/github-edit-index.png" />
+<p>Commit your changes.</p>
+</div>
+<div class="section" id="move-code-to-the-server">
+<h2>Move Code to the Server<a class="headerlink" href="#move-code-to-the-server" title="Permalink to this headline">¶</a></h2>
+<p>After you have finished editing and committing the <tt class="file docutils literal"><span class="pre">index.html</span></tt>
+file, click the <tt class="file docutils literal"><span class="pre">html-demo</span></tt> link at the top of your page to
+return to the main page for your fork.</p>
+<p>In the right sidebar, copy the URL of your repository to clone from
+(HTTPS version) into your clipboard.
+(For example, <a class="reference external" href="https://github.com/AAltSys/html-demo.git">https://github.com/AAltSys/html-demo.git</a>)</p>
+<p>SSH to the server:</p>
+<div class="highlight-python"><div class="highlight"><pre>ssh developer@54.68.232.191
+password: techC@mp
+</pre></div>
+</div>
+<p>Using [your-Github-id] as [your-directory-name], create a unique directory in
+the DocRoot:</p>
+<div class="highlight-python"><div class="highlight"><pre>cd /var/www/html
+sudo mkdir [your-directory-name]
+</pre></div>
+</div>
+<p>Clone to your directory, pasting in the correct URL for your Github repository
+fork:</p>
+<div class="highlight-python"><div class="highlight"><pre>sudo git clone https://github.com/[your-Github-id]/html-demo.git [your-directory-name]
+</pre></div>
+</div>
+<p>View your page at:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">[</span><span class="n">our</span><span class="o">-</span><span class="n">server</span><span class="o">-</span><span class="n">address</span><span class="p">]</span><span class="o">/</span><span class="p">[</span><span class="n">your</span><span class="o">-</span><span class="n">directory</span><span class="o">-</span><span class="n">name</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>For example:</p>
+<div class="highlight-python"><div class="highlight"><pre>http://ec2-54-68-232-191.us-west-2.compute.amazonaws.com/html-demo
+</pre></div>
+</div>
+</div>
+<div class="section" id="what-s-missing">
+<h2>What&#8217;s Missing?<a class="headerlink" href="#what-s-missing" title="Permalink to this headline">¶</a></h2>
+<p>The DIY approach to deployment isn&#8217;t bad for management. But there is a
+one-to-one relationship between the code repository and the public server, with
+no provision for testing, staging, and so forth. For a full-fledged code
+application, DIY leave some things to be desired:</p>
+<ul class="simple">
+<li>One-step automation</li>
+<li>Configuring the application for different servers or server environments
+(locations of dependencies, database connection, etc.)</li>
+<li>Keeping different application versions for easy rollback</li>
+<li>Restarting server processes after a deployment</li>
+</ul>
+<p>So click <em class="guilabel">Next</em> to go on to a more advanced approach to application
+deployment.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="03_capistrano.html" title="Deploy with Capistrano"
+             >next</a></li>
+        <li class="right" >
+          <a href="01_overview.html" title="Overview"
+             >previous</a> |</li>
+        <li><a href="index.html">Ruby Developer Tutorial 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Julia Lovel.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

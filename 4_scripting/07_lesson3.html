@@ -1,0 +1,175 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Attending Conventions &mdash; Linux Shell Script Programming 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/aaltsys.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Linux Shell Script Programming 1.0 documentation" href="index.html" />
+    <link rel="prev" title="Programming Considerations" href="06_considerations.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="06_considerations.html" title="Programming Considerations"
+             accesskey="P">previous</a></li>
+        <li><a href="index.html">Linux Shell Script Programming 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Attending Conventions</a><ul>
+<li><a class="reference internal" href="#inputs-and-logic-tests">Inputs and Logic tests</a></li>
+<li><a class="reference internal" href="#program-flow-control">Program flow control</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="06_considerations.html"
+                        title="previous chapter">Programming Considerations</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/07_lesson3.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <hr class="docutils" id="configure-lesson" />
+<hr class="docutils" />
+<div class="section" id="attending-conventions">
+<h1>Attending Conventions<a class="headerlink" href="#attending-conventions" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="inputs-and-logic-tests">
+<h2>Inputs and Logic tests<a class="headerlink" href="#inputs-and-logic-tests" title="Permalink to this headline">¶</a></h2>
+<div class="sidebar">
+<p class="first sidebar-title">Decision logic</p>
+<div class="last highlight-bash"><div class="highlight"><pre><span class="nb">echo</span> -e <span class="s2">&quot;\n Install apt-fast?&quot;</span>
+<span class="nb">read</span> -n 1 -p <span class="s2">&quot;(y/n)&quot;</span> RESP
+<span class="k">if</span> <span class="o">[</span> <span class="s2">&quot;$RESP&quot;</span> !<span class="o">=</span> <span class="s1">&#39;y&#39;</span> <span class="o">]</span>; <span class="k">then</span>
+<span class="k">  </span><span class="nb">echo</span> -e <span class="s2">&quot;\n Canceled&quot;</span>
+  <span class="nb">exit </span>1
+<span class="k">fi</span>
+</pre></div>
+</div>
+</div>
+<p>Use a read statement to get a single user response at the command line. Use this
+to have the user confirm whenever a script will permanently affect a system.</p>
+<p>Test all possible responses to prevent erroneous or redundant script execution.
+In the sidebar example, any input other than <tt class="kbd docutils literal"><span class="pre">y</span></tt> will cause the script to
+exit. If the script had been written to exit on <tt class="kbd docutils literal"><span class="pre">n</span></tt>, then any key other
+than <tt class="kbd docutils literal"><span class="pre">n</span></tt> would result in executing the script.</p>
+</div>
+<div class="section" id="program-flow-control">
+<h2>Program flow control<a class="headerlink" href="#program-flow-control" title="Permalink to this headline">¶</a></h2>
+<div class="sidebar">
+<p class="first sidebar-title">Program flow</p>
+<div class="last highlight-bash"><div class="highlight"><pre><span class="k">for </span>OPT in <span class="s2">&quot;$@&quot;</span>
+  <span class="k">do</span>
+<span class="k">    case</span> <span class="nv">$OPT</span> in
+      -h|--help<span class="o">)</span>
+        display-help
+        <span class="nb">exit</span>
+        ;;
+      -n|--nodeploy<span class="o">)</span>
+        <span class="nv">NODEPLOY</span><span class="o">=</span><span class="s1">&#39;YES&#39;</span>
+        <span class="nb">shift</span>
+        ;;
+      *<span class="o">)</span>
+        <span class="nv">PROJECT</span><span class="o">=</span><span class="nv">$OPT</span>
+        <span class="nb">shift</span>
+        ;;
+    <span class="k">esac</span>
+<span class="k">  done</span>
+</pre></div>
+</div>
+</div>
+<p>The sidebar code here demonstrates how a relatively complex task, reading and
+processing a list of items entered in arbitrary order, might be addressed with
+a complex program design. Here a compound statement, the <tt class="docutils literal"><span class="pre">for..do..done</span></tt>
+looping control, envelopes another compound statement, the <tt class="docutils literal"><span class="pre">case..test..esac</span></tt>
+logical test and assignment. Let&#8217;s break this down.</p>
+<ul class="simple">
+<li>The expression <tt class="docutils literal"><span class="pre">$&#64;</span></tt> is an array of all input parameters, <tt class="docutils literal"><span class="pre">$1</span> <span class="pre">...</span> <span class="pre">$n</span></tt>.</li>
+<li>The first statement, <tt class="docutils literal"><span class="pre">for</span> <span class="pre">OPT</span> <span class="pre">in</span> <span class="pre">&quot;$&#64;&quot;</span></tt>, iteratively assigns elements of
+<tt class="docutils literal"><span class="pre">$&#64;</span></tt> to variable <tt class="docutils literal"><span class="pre">OPT</span></tt>.</li>
+<li>The second and last statements, <tt class="docutils literal"><span class="pre">do</span> <span class="pre">...</span> <span class="pre">done</span></tt>, bound the statements to be
+iterated with respect to <tt class="docutils literal"><span class="pre">OPT</span></tt>.</li>
+<li>The statement <tt class="docutils literal"><span class="pre">case</span> <span class="pre">$OPT</span> <span class="pre">in</span></tt> specifies to test the values of <tt class="docutils literal"><span class="pre">OPT</span></tt>.</li>
+<li>Each test ends with a closing parenthesis <tt class="docutils literal"><span class="pre">)</span></tt>. The tests are,<ol class="arabic">
+<li><tt class="docutils literal"><span class="pre">-h</span></tt> or <tt class="docutils literal"><span class="pre">--help</span></tt>: display help, then exit</li>
+<li><tt class="docutils literal"><span class="pre">-n</span></tt> or <tt class="docutils literal"><span class="pre">--nodeploy</span></tt>: set variable <tt class="docutils literal"><span class="pre">NODEPLOY='YES'</span></tt></li>
+<li>Any other input: assign the input value to variable <tt class="docutils literal"><span class="pre">PROJECT</span></tt></li>
+</ol>
+</li>
+</ul>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">It may seem obvious, but logic errors are very common when multiple responses
+or numeric options are used, and a <strong class="command">case</strong> statement processes the
+input.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="06_considerations.html" title="Programming Considerations"
+             >previous</a></li>
+        <li><a href="index.html">Linux Shell Script Programming 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Gerald Lovel.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>
