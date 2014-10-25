@@ -25,7 +25,7 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="Ruby Developer Tutorial 1.0 documentation" href="index.html" />
     <link rel="next" title="Deploy with Capistrano" href="03_capistrano.html" />
-    <link rel="prev" title="Overview" href="01_overview.html" /> 
+    <link rel="prev" title="Deployment Overview" href="01_overview.html" /> 
   </head>
   <body>
     <div class="related">
@@ -35,7 +35,7 @@
           <a href="03_capistrano.html" title="Deploy with Capistrano"
              accesskey="N">next</a></li>
         <li class="right" >
-          <a href="01_overview.html" title="Overview"
+          <a href="01_overview.html" title="Deployment Overview"
              accesskey="P">previous</a> |</li>
         <li><a href="index.html">Ruby Developer Tutorial 1.0 documentation</a> &raquo;</li> 
       </ul>
@@ -55,7 +55,7 @@
 
   <h4>Previous topic</h4>
   <p class="topless"><a href="01_overview.html"
-                        title="previous chapter">Overview</a></p>
+                        title="previous chapter">Deployment Overview</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="03_capistrano.html"
                         title="next chapter">Deploy with Capistrano</a></p>
@@ -129,8 +129,8 @@ DocRoot on the server.</p>
 <p>In the web browser, login to your Github account. Fork the project from
 <a class="reference external" href="https://github.com/aaltsys/html-demo">https://github.com/aaltsys/html-demo</a>. After forking the project, Github will
 take you to the GitHub page for your fork.</p>
-<p>In GitHub, edit the <tt class="file docutils literal"><span class="pre">index.html</span></tt> file, putting your name in the <tt class="docutils literal"><span class="pre">&lt;h1&gt;</span></tt>
-tag.</p>
+<p>In GitHub, edit the <tt class="file docutils literal"><span class="pre">index.html</span></tt> file, enclosing your name in the
+<tt class="docutils literal"><span class="pre">&lt;h1&gt;</span> <span class="pre">...</span> <span class="pre">&lt;/h1&gt;</span></tt> tags.</p>
 <img alt="_images/github-edit-index.png" src="_images/github-edit-index.png" />
 <p>Commit your changes.</p>
 </div>
@@ -143,7 +143,7 @@ return to the main page for your fork.</p>
 (HTTPS version) into your clipboard.
 (For example, <a class="reference external" href="https://github.com/AAltSys/html-demo.git">https://github.com/AAltSys/html-demo.git</a>)</p>
 <p>SSH to the server:</p>
-<div class="highlight-python"><div class="highlight"><pre>ssh developer@54.68.232.191
+<div class="highlight-python"><div class="highlight"><pre>ssh developer@ec2demo.aaltsys.info   ; # or ssh developer@54.68.232.191
 password: techC@mp
 </pre></div>
 </div>
@@ -159,11 +159,11 @@ fork:</p>
 </pre></div>
 </div>
 <p>View your page at:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="p">[</span><span class="n">our</span><span class="o">-</span><span class="n">server</span><span class="o">-</span><span class="n">address</span><span class="p">]</span><span class="o">/</span><span class="p">[</span><span class="n">your</span><span class="o">-</span><span class="n">directory</span><span class="o">-</span><span class="n">name</span><span class="p">]</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">ec2demo</span><span class="o">.</span><span class="n">aaltsys</span><span class="o">.</span><span class="n">info</span><span class="o">/</span><span class="p">[</span><span class="n">your</span><span class="o">-</span><span class="n">directory</span><span class="o">-</span><span class="n">name</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>For example:</p>
-<div class="highlight-python"><div class="highlight"><pre>http://ec2-54-68-232-191.us-west-2.compute.amazonaws.com/html-demo
+<div class="highlight-python"><div class="highlight"><pre>http://ec2demo.aaltsys.info/html-demo
 </pre></div>
 </div>
 </div>
@@ -198,7 +198,7 @@ deployment.</p>
           <a href="03_capistrano.html" title="Deploy with Capistrano"
              >next</a></li>
         <li class="right" >
-          <a href="01_overview.html" title="Overview"
+          <a href="01_overview.html" title="Deployment Overview"
              >previous</a> |</li>
         <li><a href="index.html">Ruby Developer Tutorial 1.0 documentation</a> &raquo;</li> 
       </ul>

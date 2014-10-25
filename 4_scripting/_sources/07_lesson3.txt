@@ -1,9 +1,8 @@
-.. _configure-lesson: 
+.. _convention-lesson: 
 
 #############################
-
+Copy Conventions for Success
 #############################
-
 
 
 Attending Conventions
@@ -78,3 +77,26 @@ logical test and assignment. Let's break this down.
    It may seem obvious, but logic errors are very common when multiple responses 
    or numeric options are used, and a :command:`case` statement processes the 
    input.
+
+In Closing
+=============================
+
+One might notice that this guide did not require a special development 
+environment, or IDE. Instead, we have used the system file browser, the system 
+text editor, and the system command terminal. The key is, we have used the basic 
+services of the Linux OS to provide our development environment.
+
+A recent discussion topic was why *Java* is being supplanted by languages such 
+as *Python* and *Ruby*. One respondent said that in his last five *Java* 
+contracts, he had to create a fresh virtual machine for each contract, with the 
+IDE in each machine custom configured to the specific requirements of that job. 
+He spent more time chasing configuration settings than programming code.
+
+As a matter of philosophy, these guides refuse to discuss the configuration of 
+programming environments, or to talk about costly and proprietary langauges and 
+tools. If this means excluding *Java* and *.NET* from consideration, sobeit. 
+Instead we will focus on programming conventions, on skills to make developers 
+productive and to get them paid.
+
+Hopefully you will benefit from this free and open approach to learning 
+development skills, as we know others have. Good luck. 

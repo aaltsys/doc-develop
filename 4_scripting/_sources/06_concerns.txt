@@ -1,7 +1,7 @@
-.. _considerations:
+.. _concerns:
 
 #############################
-Programming Considerations
+Programming Concerns
 #############################
 
 Learning shell scripting may seem a bit esoteric. However, shell is an easy 

@@ -24,7 +24,7 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="Linux Shell Script Programming 1.0 documentation" href="index.html" />
-    <link rel="next" title="Programming Considerations" href="06_considerations.html" />
+    <link rel="next" title="Programming Concerns" href="06_concerns.html" />
     <link rel="prev" title="Logic and Decisions" href="04_logic.html" /> 
   </head>
   <body>
@@ -32,7 +32,7 @@
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="06_considerations.html" title="Programming Considerations"
+          <a href="06_concerns.html" title="Programming Concerns"
              accesskey="N">next</a></li>
         <li class="right" >
           <a href="04_logic.html" title="Logic and Decisions"
@@ -45,14 +45,11 @@
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Exercise 2: Logic and Control</a><ul>
-<li><a class="reference internal" href="#expanding-commands">Expanding Commands</a></li>
-<li><a class="reference internal" href="#string-commands">String Commands</a><ul>
-<li><a class="reference internal" href="#id1">$()</a></li>
-<li><a class="reference internal" href="#id2">${}</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#quotes">Quotes</a><ul>
+<li><a class="reference internal" href="#expanding-commands">Expanding Commands</a><ul>
 <li><a class="reference internal" href="#single-vs-double-quotes">Single vs Double Quotes</a></li>
+<li><a class="reference internal" href="#command-evaluation">Command evaluation <em>$(...)</em></a></li>
+<li><a class="reference internal" href="#id1">Command evaluation <em>${ ... }</em></a></li>
+<li><a class="reference internal" href="#integer-evaluation">Integer evaluation <em>$((...))</em></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#programming-with-logic">Programming with Logic</a><ul>
@@ -72,8 +69,8 @@
   <p class="topless"><a href="04_logic.html"
                         title="previous chapter">Logic and Decisions</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="06_considerations.html"
-                        title="next chapter">Programming Considerations</a></p>
+  <p class="topless"><a href="06_concerns.html"
+                        title="next chapter">Programming Concerns</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="_sources/05_lesson2.txt"
@@ -102,22 +99,14 @@
             
   <div class="section" id="exercise-2-logic-and-control">
 <span id="logic-lesson"></span><h1>Exercise 2: Logic and Control<a class="headerlink" href="#exercise-2-logic-and-control" title="Permalink to this headline">¶</a></h1>
+<p>Using this <a class="reference download internal" href="_downloads/example.sh"><tt class="xref download docutils literal"><span class="pre">example</span> <span class="pre">script</span> <span class="pre">outline</span></tt></a>, start a
+new script and name it <tt class="file docutils literal"><span class="pre">logic-control.sh</span></tt>.</p>
 <div class="section" id="expanding-commands">
 <h2>Expanding Commands<a class="headerlink" href="#expanding-commands" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="string-commands">
-<h2>String Commands<a class="headerlink" href="#string-commands" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id1">
-<h3>$()<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
-</div>
-<div class="section" id="id2">
-<h3>${}<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
-</div>
-</div>
-<div class="section" id="quotes">
-<h2>Quotes<a class="headerlink" href="#quotes" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="single-vs-double-quotes">
 <h3>Single vs Double Quotes<a class="headerlink" href="#single-vs-double-quotes" title="Permalink to this headline">¶</a></h3>
+<p>Double-quotes are referred to as partial quoting, while single-quotes are
+full quoting.</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="44%" />
@@ -135,69 +124,99 @@
 </tr>
 </tbody>
 </table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="17%" />
+<col width="83%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><div class="first last line-block">
+<div class="line">(a b ... n)</div>
+<div class="line">(expr...)</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">assign an array of <tt class="docutils literal"><span class="pre">n</span></tt> elements: <tt class="docutils literal"><span class="pre">array=(1</span> <span class="pre">2</span> <span class="pre">3</span> <span class="pre">4)</span></tt></div>
+<div class="line">group commands <tt class="docutils literal"><span class="pre">(expr1;</span> <span class="pre">expr2;</span> <span class="pre">...)</span></tt> to execute in subshell</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>((expr))</td>
+<td>double-parentheses math construct: <tt class="docutils literal"><span class="pre">var</span> <span class="pre">=</span> <span class="pre">var1</span> <span class="pre">+</span> <span class="pre">var2</span></tt></td>
+</tr>
+<tr class="row-odd"><td>$(expr)</td>
+<td>evaluate command expression (creates subshell)</td>
+</tr>
+<tr class="row-even"><td>$((expr))</td>
+<td>evaluate an integer arithmetic expression (C-style)</td>
+</tr>
+<tr class="row-odd"><td>$[3+4+5]</td>
+<td>evaluate an integer math expression (deprecated)</td>
+</tr>
+<tr class="row-even"><td><div class="first last line-block">
+<div class="line">{var}</div>
+<div class="line">{02..8..2}</div>
+<div class="line">{ expr..; }</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">brace expansion: <tt class="docutils literal"><span class="pre">echo</span> <span class="pre">{1,2,3}</span></tt> shows <tt class="docutils literal"><span class="pre">1</span> <span class="pre">2</span> <span class="pre">3</span></tt></div>
+<div class="line">expand series starting <tt class="docutils literal"><span class="pre">02</span></tt> step <tt class="docutils literal"><span class="pre">2</span></tt> with <tt class="docutils literal"><span class="pre">0</span></tt> padding</div>
+<div class="line">code block: inline group commands into local anonymous function</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><div class="first last line-block">
+<div class="line">${var:l:n}</div>
+<div class="line"><br /></div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">at <tt class="docutils literal"><span class="pre">l</span></tt> from left extract <tt class="docutils literal"><span class="pre">n</span></tt> characters</div>
+<div class="line">negatives start at right and extract by position, not count</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="command-evaluation">
+<h3>Command evaluation <em>$(...)</em><a class="headerlink" href="#command-evaluation" title="Permalink to this headline">¶</a></h3>
+<p>Parentheses group a list of commands. Prepending the parentheses with <tt class="docutils literal"><span class="pre">$</span></tt> will
+execute the commands in a subshell and return the result. Local variables will
+not be accessible to the subshell.</p>
+</div>
+<div class="section" id="id1">
+<h3>Command evaluation <em>${ ... }</em><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>Braces group a list of commands. Prepending the braces with <tt class="docutils literal"><span class="pre">$</span></tt> will execute
+the commands in an anonymous local function and return the result. Local
+variables are accessible to the local function.</p>
+</div>
+<div class="section" id="integer-evaluation">
+<h3>Integer evaluation <em>$((...))</em><a class="headerlink" href="#integer-evaluation" title="Permalink to this headline">¶</a></h3>
+<p>Double-parentheses enclose a math expression. Within the expression, variables
+do not require the <tt class="docutils literal"><span class="pre">$</span></tt> prefix for evaluation.</p>
 </div>
 </div>
 <div class="section" id="programming-with-logic">
 <h2>Programming with Logic<a class="headerlink" href="#programming-with-logic" title="Permalink to this headline">¶</a></h2>
 <p>This lesson focuses on assembling a program with compound logic commands. First
 start a new program, call it <tt class="docutils literal"><span class="pre">control-logic.sh</span></tt>. Remember, copy in the
-example shell outline or download it from :download:<a href="#id3"><span class="problematic" id="id4">``</span></a>_downloads/example.sh`.</p>
+example shell outline or download it from <a class="reference download internal" href="_downloads/example.sh"><tt class="xref download docutils literal"><span class="pre">_downloads/example.sh</span></tt></a>.</p>
 <div class="section" id="with-iterative-for">
 <h3>... With Iterative For<a class="headerlink" href="#with-iterative-for" title="Permalink to this headline">¶</a></h3>
-<p>For OPT in NAMELIST
-do</p>
-<blockquote>
-<div>Commands</div></blockquote>
-<p>Done</p>
 </div>
 <div class="section" id="with-integer-for">
 <h3>... With Integer For<a class="headerlink" href="#with-integer-for" title="Permalink to this headline">¶</a></h3>
-<p>for (( expression1 ; expression2 ; expression3 ))
-do</p>
-<blockquote>
-<div>command list</div></blockquote>
-<p>done</p>
 </div>
 <div class="section" id="with-select-list">
 <h3>... With Select List<a class="headerlink" href="#with-select-list" title="Permalink to this headline">¶</a></h3>
-<p>select name [ in word ]
-do</p>
-<blockquote>
-<div>command list</div></blockquote>
-<p>done</p>
 </div>
 <div class="section" id="with-case-branching">
 <h3>... With Case Branching<a class="headerlink" href="#with-case-branching" title="Permalink to this headline">¶</a></h3>
-<dl class="docutils">
-<dt>case word in</dt>
-<dd><dl class="first last docutils">
-<dt>pattern|pattern)</dt>
-<dd>command list ;;</dd>
-<dt>pattern2|pattern2)</dt>
-<dd>command list ;;</dd>
-<dt><a href="#id5"><span class="problematic" id="id6">*</span></a>)</dt>
-<dd>command list ;;</dd>
-</dl>
-</dd>
-</dl>
-<p>esac</p>
 </div>
 <div class="section" id="with-if-branching">
 <h3>... With if branching<a class="headerlink" href="#with-if-branching" title="Permalink to this headline">¶</a></h3>
-<p>if expression list
-then</p>
-<blockquote>
-<div>command list ;</div></blockquote>
-<p>elif expression list
-then</p>
-<blockquote>
-<div>command list ;
-...</div></blockquote>
-<dl class="docutils">
-<dt>else expression list</dt>
-<dd>command list ;</dd>
-</dl>
-<p>fi</p>
 <p>Prompt user to escalate privileges:</p>
 <div class="highlight-python"><div class="highlight"><pre>if [[ $EUID -ne 0 ]] ; then echo -e &quot;\e[1;31m try again using sudo \e[0m&quot; ; exit 1 ; fi
 </pre></div>
@@ -223,11 +242,6 @@ fi
 </div>
 <div class="section" id="with-iterative-while">
 <h3>... With Iterative While<a class="headerlink" href="#with-iterative-while" title="Permalink to this headline">¶</a></h3>
-<p>while expression list
-do</p>
-<blockquote>
-<div>command list</div></blockquote>
-<p>done</p>
 </div>
 </div>
 </div>
@@ -242,7 +256,7 @@ do</p>
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="06_considerations.html" title="Programming Considerations"
+          <a href="06_concerns.html" title="Programming Concerns"
              >next</a></li>
         <li class="right" >
           <a href="04_logic.html" title="Logic and Decisions"
