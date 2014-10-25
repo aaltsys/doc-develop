@@ -1,1 +1,0 @@
-../../resources/_downloads/doc-newproject.sh

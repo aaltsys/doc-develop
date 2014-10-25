@@ -46,6 +46,12 @@
   <ul>
 <li><a class="reference internal" href="#">Commands and Variables</a><ul>
 <li><a class="reference internal" href="#commands">Commands</a><ul>
+<li><a class="reference internal" href="#apt-get">apt-get</a></li>
+<li><a class="reference internal" href="#dpkg-reconfigure">dpkg-reconfigure</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#system-management">System management</a><ul>
+<li><a class="reference internal" href="#date-and-time">Date and time</a></li>
 <li><a class="reference internal" href="#operating-system-commands">Operating system commands</a></li>
 <li><a class="reference internal" href="#file-system-commands">File system commands</a></li>
 <li><a class="reference internal" href="#text-editing-services">Text editing services</a></li>
@@ -55,12 +61,13 @@
 <li><a class="reference internal" href="#variables">Variables</a><ul>
 <li><a class="reference internal" href="#global-environment-variables">Global environment variables</a></li>
 <li><a class="reference internal" href="#local-environment-variables">Local environment variables</a></li>
-<li><a class="reference internal" href="#ansi-vt100-color-codes">ANSI/VT100 color codes</a></li>
-<li><a class="reference internal" href="#terminfo-color-commands">Terminfo color commands</a><ul>
-<li><a class="reference internal" href="#tput-command-arguments">tput command arguments</a></li>
-<li><a class="reference internal" href="#setaf-setab-xterm-color-values">setaf/setab xterm color values</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#terminal-color-settings">Terminal color settings</a><ul>
+<li><a class="reference internal" href="#ansi-vt100-color-codes"><em>ANSI/VT100</em> color codes</a></li>
+<li><a class="reference internal" href="#terminfo-color-commands"><em>Terminfo</em> color commands</a></li>
+<li><a class="reference internal" href="#tput-command-arguments"><em>tput</em> command arguments</a></li>
+<li><a class="reference internal" href="#setaf-setab-xterm-values">setaf/setab <em>xterm</em> values</a></li>
 </ul>
 </li>
 </ul>
@@ -103,6 +110,58 @@
 <span id="command"></span><h1>Commands and Variables<a class="headerlink" href="#commands-and-variables" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="commands">
 <h2>Commands<a class="headerlink" href="#commands" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="apt-get">
+<h3>apt-get<a class="headerlink" href="#apt-get" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre>apt-get install &lt;package&gt;
+apt-get install aptitude
+aptitude install &lt;package&gt;
+aptitude -f install
+</pre></div>
+</div>
+</div>
+<div class="section" id="dpkg-reconfigure">
+<h3>dpkg-reconfigure<a class="headerlink" href="#dpkg-reconfigure" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre>dpkg-reconfigure tzdata
+dpkg-reconfigure locales
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="system-management">
+<h2>System management<a class="headerlink" href="#system-management" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="date-and-time">
+<h3>Date and time<a class="headerlink" href="#date-and-time" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre>date
+date -s 2012-12-25 12:34:56
+date -u -s 2012-12-25 04:34:56
+hwclock --systohc --utc
+hwclock --hctosys
+ntpq -p
+ntpdate
+</pre></div>
+</div>
+<hr class="docutils" />
+<p class="rubric">Footnotes</p>
+<table class="docutils footnote" frame="void" id="id1" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[1]</td><td>&lt;<a class="reference external" href="http://www.howtoforge.com/useful_linux_commands">http://www.howtoforge.com/useful_linux_commands</a>&gt; presents a list of
+useful Linux commands.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[2]</td><td><a class="reference external" href="http://ss64.com/bash/">Bash commands</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id3" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[3]</td><td><a class="reference external" href="http://ss64.com/nt/">A list of Windows commands for comparison.</a></td></tr>
+</tbody>
+</table>
+</div>
 <div class="section" id="operating-system-commands">
 <span id="command-os"></span><h3>Operating system commands<a class="headerlink" href="#operating-system-commands" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="docutils">
@@ -229,7 +288,7 @@
 </div>
 </div>
 <div class="section" id="variables">
-<span id="id1"></span><h2>Variables<a class="headerlink" href="#variables" title="Permalink to this headline">¶</a></h2>
+<span id="id4"></span><h2>Variables<a class="headerlink" href="#variables" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="global-environment-variables">
 <span id="variables-env"></span><h3>Global environment variables<a class="headerlink" href="#global-environment-variables" title="Permalink to this headline">¶</a></h3>
 <p>Environment Variables are those which are predeclared and can be called from any
@@ -330,8 +389,18 @@ program, script, or terminal.</p>
 <p class="last"><a class="reference external" href="http://www.tldp.org/LDP/Bash-Beginners-Guide/html/sect_03_02.html">Bash Beginners Guide</a></p>
 </div>
 </div>
+</div>
+<div class="section" id="terminal-color-settings">
+<span id="variables-color"></span><h2>Terminal color settings<a class="headerlink" href="#terminal-color-settings" title="Permalink to this headline">¶</a></h2>
+<p>Commands <strong class="command">echo -e</strong> and <strong class="command">printf</strong> will process embedded escape
+sequences, int the form <tt class="docutils literal"><span class="pre">\e[xx;yy;zzm</span></tt>, to produce formatted or colored text.
+For example,</p>
+<div class="highlight-python"><div class="highlight"><pre>echo -e &quot;\e[1;42;95m Some text \e[0m&quot; ;# print Bold;FG Light Magenta;BG Green
+</pre></div>
+</div>
+<p><cite>printf</cite> is not documented further here, but color commands and codes are.</p>
 <div class="section" id="ansi-vt100-color-codes">
-<span id="variables-color"></span><h3>ANSI/VT100 color codes<a class="headerlink" href="#ansi-vt100-color-codes" title="Permalink to this headline">¶</a></h3>
+<h3><em>ANSI/VT100</em> color codes<a class="headerlink" href="#ansi-vt100-color-codes" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="docutils">
 <colgroup>
 <col width="8%" />
@@ -471,19 +540,14 @@ program, script, or terminal.</p>
 </tr>
 </tbody>
 </table>
-<p>Commands <strong class="command">echo -e</strong> and <strong class="command">printf</strong> will process embedded escape
-sequences, int the form <tt class="docutils literal"><span class="pre">\e[xx;yy;zzm</span></tt>, to produce formatted or colored text.
-For example,</p>
-<div class="highlight-python"><div class="highlight"><pre>echo -e &quot;\e[1;42;95m Some text \e[0m&quot; ;# print Bold;FG Light Magenta;BG Green
-</pre></div>
-</div>
 </div>
 <div class="section" id="terminfo-color-commands">
-<h3>Terminfo color commands<a class="headerlink" href="#terminfo-color-commands" title="Permalink to this headline">¶</a></h3>
+<h3><em>Terminfo</em> color commands<a class="headerlink" href="#terminfo-color-commands" title="Permalink to this headline">¶</a></h3>
 <p>Instead of using embedded <tt class="docutils literal"><span class="pre">VT100</span></tt> codes, the <strong class="command">tput</strong> command can set
 terminal colors using a variety of arguments.</p>
+</div>
 <div class="section" id="tput-command-arguments">
-<h4>tput command arguments<a class="headerlink" href="#tput-command-arguments" title="Permalink to this headline">¶</a></h4>
+<h3><em>tput</em> command arguments<a class="headerlink" href="#tput-command-arguments" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="docutils">
 <colgroup>
 <col width="46%" />
@@ -528,8 +592,8 @@ terminal colors using a variety of arguments.</p>
 </tbody>
 </table>
 </div>
-<div class="section" id="setaf-setab-xterm-color-values">
-<h4>setaf/setab xterm color values<a class="headerlink" href="#setaf-setab-xterm-color-values" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="setaf-setab-xterm-values">
+<h3>setaf/setab <em>xterm</em> values<a class="headerlink" href="#setaf-setab-xterm-values" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="docutils">
 <colgroup>
 <col width="19%" />
@@ -600,7 +664,6 @@ tput setab 0
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
 <p class="last">For more information, see the <tt class="docutils literal"><span class="pre">terminfo</span></tt> manpage.</p>
-</div>
 </div>
 </div>
 </div>

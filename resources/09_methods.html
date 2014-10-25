@@ -43,6 +43,8 @@
 <li><a class="reference internal" href="#">Reusable Method Code</a><ul>
 <li><a class="reference internal" href="#get-user-confirmation">Get User Confirmation</a></li>
 <li><a class="reference internal" href="#assign-variables-from-file">Assign Variables from File</a></li>
+<li><a class="reference internal" href="#ask-to-escalate-privileges">Ask to Escalate Privileges</a></li>
+<li><a class="reference internal" href="#change-configuration-entry">Change Configuration Entry</a></li>
 <li><a class="reference internal" href="#here-document">Here Document</a></li>
 </ul>
 </li>
@@ -81,10 +83,9 @@
 <span id="methods"></span><h1>Reusable Method Code<a class="headerlink" href="#reusable-method-code" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="get-user-confirmation">
 <h2>Get User Confirmation<a class="headerlink" href="#get-user-confirmation" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-bash"><div class="highlight"><pre>MSG-CONFIRM<span class="o">=</span><span class="s1">&#39;Say Hello&#39;</span>
-<span class="c"># ...</span>
-<span class="c"># User Confirmation:</span>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c"># User Confirmation:</span>
 <span class="c"># requires MSG-CONFIRM, assigns EXIT</span>
+<span class="c">#</span>
 <span class="nb">echo</span> -e -n <span class="s1">&#39;\n\e[1;31m $MSG-CONFIRM&#39;</span>
 <span class="nb">read</span> -n 1 -p <span class="s1">&#39; (y/n)?&#39;</span> RESP
 <span class="nb">echo</span> -e <span class="s1">&#39;\e[0m&#39;</span>
@@ -120,6 +121,29 @@
     VAR-VALUE<span class="o">=</span><span class="k">${</span><span class="nv">VARLIST</span><span class="p">[i]##*=</span><span class="k">}</span>
     <span class="nb">printf</span> -v <span class="nv">$VAR</span>-NAME <span class="nv">$VAR</span>-VALUE
   <span class="k">done</span>
+<span class="k">fi</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="ask-to-escalate-privileges">
+<h2>Ask to Escalate Privileges<a class="headerlink" href="#ask-to-escalate-privileges" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-bash"><div class="highlight"><pre><span class="k">if</span> <span class="o">[[</span> <span class="nv">$EUID</span> -ne 0 <span class="o">]]</span>
+<span class="k">then</span>
+<span class="k">  </span><span class="nb">echo</span> -e <span class="s2">&quot;\e[1;31m try again using sudo \e[0m&quot;</span>
+  <span class="nb">exit </span>1
+<span class="k">fi</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="change-configuration-entry">
+<h2>Change Configuration Entry<a class="headerlink" href="#change-configuration-entry" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c"># change entry in text file</span>
+<span class="c"># requires FILE-PATH, SEARCH, REPLACE</span>
+<span class="c">#</span>
+<span class="k">if</span> <span class="o">[[</span> -z <span class="s2">&quot;$(grep &#39;vm.mmap_min_addr&#39; /etc/modules)&quot;</span> <span class="o">]]</span> ; <span class="k">then</span>
+<span class="k">   </span><span class="nb">echo</span> -e /n <span class="s2">&quot;vm.mmap_min_addr=0&quot;</span> &gt;&gt; /etc/modules ;
+<span class="k">else</span>
+<span class="k">   </span>sed -i <span class="s1">&#39;/vm.mmap_min_addr/c\vn.mmap_min_addr=0&#39;</span> ~/etc/modules ;
 <span class="k">fi</span>
 </pre></div>
 </div>
