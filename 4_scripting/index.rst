@@ -28,7 +28,7 @@ Contents:
    03_lesson1
    04_logic
    05_lesson2
-   06_considerations
+   06_concerns
    07_lesson3
 
 Indices and tables

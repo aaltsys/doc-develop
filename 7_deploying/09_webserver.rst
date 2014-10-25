@@ -15,7 +15,8 @@ Setup a server on Amazon, by browsing to::
 
 Open a console on your desktop, and run the commands::
 
-   ssh -i keyfile ubuntu@servername
+   # ssh -i keyfile ubuntu@servername
+   ssh  -i keyfile ubuntu@ec2demo.aaltsys.info
    sudo useradd developer -G sudo
 
 Edit :file:`/etc/ssh/sshd_config` to allow password authentication, using the 

@@ -58,8 +58,8 @@ In the web browser, login to your Github account. Fork the project from
 https://github.com/aaltsys/html-demo. After forking the project, Github will 
 take you to the GitHub page for your fork.
 
-In GitHub, edit the :file:`index.html` file, putting your name in the ``<h1>`` 
-tag.
+In GitHub, edit the :file:`index.html` file, enclosing your name in the 
+``<h1> ... </h1>`` tags.
 
 .. image:: _images/github-edit-index.png
 
@@ -78,7 +78,7 @@ In the right sidebar, copy the URL of your repository to clone from
 
 SSH to the server::
 
-   ssh developer@54.68.232.191
+   ssh developer@ec2demo.aaltsys.info   ; # or ssh developer@54.68.232.191
    password: techC@mp
 
 .. note:
@@ -97,11 +97,11 @@ fork::
 
 View your page at::
 
-   [our-server-address]/[your-directory-name]
+   ec2demo.aaltsys.info/[your-directory-name]
 
 For example::
 
-   http://ec2-54-68-232-191.us-west-2.compute.amazonaws.com/html-demo
+   http://ec2demo.aaltsys.info/html-demo
 
 What's Missing?
 =======================

@@ -44,7 +44,7 @@ Edit :file:`config/deploy.rb`:
 
 Example::
 
-   set :server, 'ec2-54-68-232-191.us-west-2.compute.amazonaws.com'
+   set :server, 'ec2demo.aaltsys.info'
    set :repo_url, 'https://github.com/[your-github-id]/html-demo.git'
    set :deploy_to, '/var/www/html/[your-github-id]'
    set :user, 'developer'
