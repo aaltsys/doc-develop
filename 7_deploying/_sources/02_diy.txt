@@ -1,4 +1,4 @@
-.. _deployment:
+.. _diy-deploy:
 
 #######################
 DIY Deployment
