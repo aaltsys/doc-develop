@@ -287,10 +287,10 @@ epub_copyright = u'2013, Julia Lovel'
 
 intersphinx_mapping = {
  'resources': ('../resources', '../_deploy/resources/objects.inv'),
- 'cloud': ('../cloud', '../_deploy/1_cloud/objects.inv'),
- 'develop': ('../develop', '../_deploy/2_develop/objects.inv'),
- 'document': ('../document', '../_deploy/3_document/objects.inv'),
- 'scripting': ('../scripting', '../_deploy/4_scripting/objects.inv'),
- 'webapp': ('../webapp', '../_deploy/5_webapp/objects.inv'),
- 'client': ('../client', '../_deploy/6_client/objects.inv'),
+ 'cloud': ('../1_cloud', '../_deploy/1_cloud/objects.inv'),
+ 'develop': ('../2_develop', '../_deploy/2_develop/objects.inv'),
+ 'document': ('../3_document', '../_deploy/3_document/objects.inv'),
+ 'scripting': ('../4_scripting', '../_deploy/4_scripting/objects.inv'),
+ 'webapp': ('../5_webapp', '../_deploy/5_webapp/objects.inv'),
+ 'client': ('../6_client', '../_deploy/6_client/objects.inv'),
 }
