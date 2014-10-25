@@ -289,11 +289,11 @@ epub_copyright = u'2013, Gerald Lovel, Julia Lovel, Keith Mattix II'
 intersphinx_mapping = {
  'resources': ('resources', '../_deploy/resources/objects.inv'),
  'cloud': ('1_cloud', '../_deploy/1_cloud/objects.inv'),
- 'linux': ('2_linux', '../_deploy/2_linux/objects.inv'),
- 'learn': ('3_learn', '../_deploy/3_learn/objects.inv'),
- 'develop': ('4_develop', '../_deploy/4_develop/objects.inv'),
- 'document': ('5_document', '../_deploy/5_document/objects.inv'),
- 'browser': ('6_browser', '../_deploy/6_browser/objects.inv'),
- 'server': ('7_server', '../_deploy/7_server/objects.inv'),
- 'deployment': ('8_deployment', '../_deploy/8_deployment/objects.inv'),
+ 'develop': ('2_develop', '../_deploy/2_develop/objects.inv'),
+ 'document': ('3_document', '../_deploy/3_document/objects.inv'),
+ 'scripting': ('4_scripting', '../_deploy/4_scripting/objects.inv'),
+ 'webapp': ('5_webapp', '../_deploy/5_webapp/objects.inv'),
+ 'client': ('6_client', '../_deploy/6_client/objects.inv'),
+ 'deploying': ('7_deploying', '../_deploy/7_deploying/objects.inv'),
+ 'linux': ('9_linux', '../_deploy/9_linux/objects.inv'),
 }

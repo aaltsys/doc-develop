@@ -1,11 +1,9 @@
 .. Cloud Development documentation master file, created by
    sphinx-quickstart on Fri Nov  9 13:50:37 2012.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
 
 .. _index:
 
-AAltsys **Cloud Development** Tutorial
+Collaborative Development in the Cloud
 ======================================
 
 Contents:
@@ -19,7 +17,5 @@ Contents:
 Indices and tables
 ==================
 
-* :ref:`genindex`
-* :ref:`modindex`
 * :ref:`search`
 

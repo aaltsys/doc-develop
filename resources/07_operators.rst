@@ -15,47 +15,47 @@ Arithmetic operators
 +-----------------+---------------------------------------------------------+
 | Operator        | Description                                             |
 +=================+=========================================================+
-||  id++          || post-increment                                         |
-||  id\-\-        || post-decrement                                         |
+|| ``id++``       || post-increment                                         |
+|| ``id--``       || post-decrement                                         |
 +-----------------+---------------------------------------------------------+
-||  ++id          || pre-increment                                          |
-|| \-\-id         || pre-decrement                                          |
+|| ``++id``       || pre-increment                                          |
+|| ``--id``       || pre-decrement                                          |
 +-----------------+---------------------------------------------------------+
-||  \+            || unary plus (positive number)                           |
-||  \-            || unary minus (negative number)                          |
+|| ``+``          || unary plus (positive number)                           |
+|| ``-``          || unary minus (negative number)                          |
 +-----------------+---------------------------------------------------------+
-||  !             || logical negation                                       |
-||  ~             || bit-wise negation                                      |
+|| ``!``          || logical negation                                       |
+|| ``~``          || bit-wise negation                                      |
 +-----------------+---------------------------------------------------------+
-|  \*\*           | exponentiation                                          |
+|  ``**``         | exponentiation                                          |
 +-----------------+---------------------------------------------------------+
-||  \*            || multiplication                                         |
-||  \/            || division                                               |
-||  %             || remainder (modulus)                                    |
+|| ``*``          || multiplication                                         |
+|| ``/``          || division                                               |
+|| ``%``          || remainder (modulus)                                    |
 +-----------------+---------------------------------------------------------+
-||  +             || addition                                               |
-||  \-            || subtraction                                            |
+|| ``+``          || addition                                               |
+|| ``-``          || subtraction                                            |
 +-----------------+---------------------------------------------------------+
-||  <<            || bit-wise shift left                                    |
-||  >>            || bit-wise shift right                                   |
+|| ``<<``         || bit-wise shift left                                    |
+|| ``>>``         || bit-wise shift right                                   |
 +-----------------+---------------------------------------------------------+
-||  <=            || comparison less than or equal to                       |
-||  >=            || comparison greater than or equal to                    |
-||  <             || comparison less than                                   |
-||  >             || comparison greater than                                |
+|| ``<=``         || comparison less than or equal to                       |
+|| ``>=``         || comparison greater than or equal to                    |
+|| ``<``          || comparison less than                                   |
+|| ``>``          || comparison greater than                                |
 +-----------------+---------------------------------------------------------+
-||  ==            || equality                                               |
-||  !=            || inequality                                             |
+|| ``==``         || equality                                               |
+|| ``!=``         || inequality                                             |
 +-----------------+---------------------------------------------------------+
-|  &              | bit-wise AND                                            |
+|  ``&``          | bit-wise AND                                            |
 +-----------------+---------------------------------------------------------+
-|  ^              | bit-wise XOR (exclusive or)                             |
+|  ``^``          | bit-wise XOR (exclusive or)                             |
 +-----------------+---------------------------------------------------------+
-|  \|             | bit-wise OR                                             |
+|  ``|``          | bit-wise OR                                             |
 +-----------------+---------------------------------------------------------+
-|  &&             | logical AND                                             |
+|  ``&&``         | logical AND                                             |
 +-----------------+---------------------------------------------------------+
-|  \|\|           | logical OR                                              |
+|  ``||``         | logical OR                                              |
 +-----------------+---------------------------------------------------------+
 | expr?expr:expr  | conditional operator                                    |
 +-----------------+---------------------------------------------------------+
@@ -70,27 +70,27 @@ Arithmetic assignment
 +----------+----------------------------------------------------------------+
 | Operator | Description                                                    |
 +==========+================================================================+
-| =        | Assign expression to variable: variable=expression             |
+| ``=``    | Assign expression to variable: variable=expression             |
 +----------+----------------------------------------------------------------+
-| \*=      | Assign product of expression multiplied by variable            |
+| ``*=``   | Assign product of expression multiplied by variable            |
 +----------+----------------------------------------------------------------+
-| \/=      | Assign dividend                                                |
+| ``/=``   | Assign dividend                                                |
 +----------+----------------------------------------------------------------+
-| \%=      | Assign remainer                                                |
+| ``%=``   | Assign remainer                                                |
 +----------+----------------------------------------------------------------+
-| \+=      | Assign sum                                                     |
+| ``+=``   | Assign sum                                                     |
 +----------+----------------------------------------------------------------+
-| \-=      | Assign difference                                              |
+| ``-=``   | Assign difference                                              |
 +----------+----------------------------------------------------------------+
-| <<=      | assign bit-wise left shift                                     |
+| ``<<=``  | assign bit-wise left shift                                     |
 +----------+----------------------------------------------------------------+
-| >>=      | assign bit-wise right shift                                    |
+| ``>>=``  | assign bit-wise right shift                                    |
 +----------+----------------------------------------------------------------+
-| \&=      | assign bitwise AND                                             |
+| ``&=``   | assign bitwise AND                                             |
 +----------+----------------------------------------------------------------+
-| \^=      | assign bit-wise XOR exclusive or                               |
+| ``^=``   | assign bit-wise XOR exclusive or                               |
 +----------+----------------------------------------------------------------+
-| \|=      | assign bit-wise OR                                             |
+| ``|=``   | assign bit-wise OR                                             |
 +----------+----------------------------------------------------------------+
 
 .. seealso::
@@ -120,7 +120,7 @@ Logical reversal operator
 +----------+-------+-----+-----------------------------------------------------+
 | Operator | Test  | U/B | Description                                         |
 +==========+=======+=====+=====================================================+
-| !        |  all  |  U  | "not" -- reverses the sense of a logical operation  |
+| ``!``    |  all  |  U  | "not" -- reverses the sense of a logical operation  |
 +----------+-------+-----+-----------------------------------------------------+
 
 Compound comparison operators
@@ -129,13 +129,13 @@ Compound comparison operators
 +----------+-------+-----+-----------------------------------------------------+
 | Operator | Test  | U/B | Description                                         |
 +==========+=======+=====+=====================================================+
-| \-a      | ``[`` |  B  | logical AND within test: ``[ expr1 -a expr2 ]``     |
+| ``-a``   | ``[`` |  B  | logical AND within test: ``[ expr1 -a expr2 ]``     |
 +----------+-------+-----+-----------------------------------------------------+
-| \-o      | ``[`` |  B  | logical OR within test: ``[ expr1 -o expr2 ]``      |
+| ``-o``   | ``[`` |  B  | logical OR within test: ``[ expr1 -o expr2 ]``      |
 +----------+-------+-----+-----------------------------------------------------+
-| &&       | ``[[``|  B  | logical AND double-bracket: ``[[ expr1 && expr2 ]]``|
+| ``&&``   | ``[[``|  B  | logical AND double-bracket: ``[[ expr1 && expr2 ]]``|
 +----------+-------+-----+-----------------------------------------------------+
-| \|\|     | ``[[``|  B  | logical OR double-bracket: ``[[ expr1 || expr2 ]]`` |
+| ``||``   | ``[[``|  B  | logical OR double-bracket: ``[[ expr1 || expr2 ]]`` |
 +----------+-------+-----+-----------------------------------------------------+
 
 Comparison Tests
@@ -152,25 +152,25 @@ String comparisons
 +----------+-------+-----+-----------------------------------------------------+
 | Operator | Test  | U/B | Description                                         |
 +==========+=======+=====+=====================================================+
-|  =       |  all  |  B  | equal to, literal matching, whitespace req'd        |
+|  ``=``   |  all  |  B  | equal to, literal matching, whitespace req'd        |
 +----------+-------+-----+-----------------------------------------------------+
-|  ==      | ``[`` |  B  | equal to, within test, synonym for ``=``            |
+|  ``==``  | ``[`` |  B  | equal to, within test, synonym for ``=``            |
 +----------+-------+-----+-----------------------------------------------------+
-|  ==      | ``[[``|  B  | equal to, double-bracket, pattern matching, see (2) |
+|  ``==``  | ``[[``|  B  | equal to, double-bracket, pattern matching, see (2) |
 +----------+-------+-----+-----------------------------------------------------+
-|  !=      | ``[`` |  B  | not equal to, within test, whitespace req'd         |
+|  ``!=``  | ``[`` |  B  | not equal to, within test, whitespace req'd         |
 +----------+-------+-----+-----------------------------------------------------+
-|  !=      | ``[[``|  B  | not equal to, double-bracket, pattern matching, (2) |
+|  ``!=``  | ``[[``|  B  | not equal to, double-bracket, pattern matching, (2) |
 +----------+-------+-----+-----------------------------------------------------+
-|  =~      | ``[[``|  B  | matches, double-bracket, pattern matching, see (2)  |
+|  ``=~``  | ``[[``|  B  | matches, double-bracket, pattern matching, see (2)  |
 +----------+-------+-----+-----------------------------------------------------+
-|  <       |  all  |  B  | less than, escape req'd in ``[``, see (1)           |
+|  ``<``   |  all  |  B  | less than, escape req'd in ``[``, see (1)           |
 +----------+-------+-----+-----------------------------------------------------+
-|  >       |  all  |  B  | greater than, escape req'd in ``[``, see (1)        |
+|  ``>``   |  all  |  B  | greater than, escape req'd in ``[``, see (1)        |
 +----------+-------+-----+-----------------------------------------------------+
-|  -z      |  all  |  U  | null (zero length)                                  |
+|  ``-z``  |  all  |  U  | null (zero length)                                  |
 +----------+-------+-----+-----------------------------------------------------+
-|  -n      |  all  |  U  | not null (length > zero), quotes req'd in ``[``     |
+|  ``-n``  |  all  |  U  | not null (length > zero), quotes req'd in ``[``     |
 +----------+-------+-----+-----------------------------------------------------+
 
 .. note::
@@ -187,29 +187,29 @@ Integer comparisons
 +----------+-------+-----+-----------------------------------------------------+
 | Operator | Test  | U/B | Description                                         |
 +==========+=======+=====+=====================================================+
-| -eq      | ``[`` |  B  | equal to: ``[ number1 -eq number2 ]``               |
+| ``-eq``  | ``[`` |  B  | equal to: ``[ number1 -eq number2 ]``               |
 +----------+-------+-----+-----------------------------------------------------+
-| -ne      | ``[`` |  B  | not equal to: ``[ number1 -ne number2 ]``           |
+| ``-ne``  | ``[`` |  B  | not equal to: ``[ number1 -ne number2 ]``           |
 +----------+-------+-----+-----------------------------------------------------+
-| -gt      | ``[`` |  B  | greater than: ``[ number1 -gt number2 ]``           |
+| ``-gt``  | ``[`` |  B  | greater than: ``[ number1 -gt number2 ]``           |
 +----------+-------+-----+-----------------------------------------------------+
-| -ge      | ``[`` |  B  | greater than/equal to: ``[ number1 -ge number2 ]``  |
+| ``-ge``  | ``[`` |  B  | greater than/equal to: ``[ number1 -ge number2 ]``  |
 +----------+-------+-----+-----------------------------------------------------+
-| -lt      | ``[`` |  B  | less than: ``[ number1 -lt number2 ]``              |
+| ``-lt``  | ``[`` |  B  | less than: ``[ number1 -lt number2 ]``              |
 +----------+-------+-----+-----------------------------------------------------+
-| -le      | ``[`` |  B  | less than/equal to: ``[ number1 -le number2 ]``     |
+| ``-le``  | ``[`` |  B  | less than/equal to: ``[ number1 -le number2 ]``     |
 +----------+-------+-----+-----------------------------------------------------+
-| =        | ``[[``|  B  | equal to: ``(( number1 = expr2 ))``                 |
+| ``=``    | ``[[``|  B  | equal to: ``(( number1 = expr2 ))``                 |
 +----------+-------+-----+-----------------------------------------------------+
-| !=       | ``[[``|  B  | not equal to: ``(( number1 <> expr2 ))``            |
+| ``!=``   | ``[[``|  B  | not equal to: ``(( number1 <> expr2 ))``            |
 +----------+-------+-----+-----------------------------------------------------+
-| <        | ``[[``|  B  | less than: ``(( number1 < expr2 ))``                |
+| ``<``    | ``[[``|  B  | less than: ``(( number1 < expr2 ))``                |
 +----------+-------+-----+-----------------------------------------------------+
-| <=       | ``[[``|  B  | less than or equal to: ``(( number1 ,= expr2 ))``   |
+| ``<=``   | ``[[``|  B  | less than or equal to: ``(( number1 ,= expr2 ))``   |
 +----------+-------+-----+-----------------------------------------------------+
-| >        | ``[[``|  B  | greater than: ``(( number1 > expr2 ))``             |
+| ``>``    | ``[[``|  B  | greater than: ``(( number1 > expr2 ))``             |
 +----------+-------+-----+-----------------------------------------------------+
-| >=       | ``[[``|  B  | greater than or equal to: ``(( number1 >= expr2 ))``|
+| ``>=``   | ``[[``|  B  | greater than or equal to: ``(( number1 >= expr2 ))``|
 +----------+-------+-----+-----------------------------------------------------+
 
 .. _compare-file:

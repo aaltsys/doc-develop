@@ -1,6 +1,6 @@
 .. _index:
 
-Working Like a Developer
+Collaborative Team Desktop Exercise
 ==============================================
 
 Contents:
@@ -14,7 +14,5 @@ Contents:
 Indices and tables
 ==================
 
-* :ref:`genindex`
-* :ref:`modindex`
 * :ref:`search`
 

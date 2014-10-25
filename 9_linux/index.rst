@@ -1,6 +1,6 @@
 .. _index:
 
-Getting Linux
+Linux Configuration Tips
 ====================================
 
 Contents:

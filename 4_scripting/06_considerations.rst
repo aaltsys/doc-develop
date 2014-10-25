@@ -27,7 +27,7 @@ General Programming Concerns
       fi
       cp '/usr/bin/m*' .
 
-Routinely Idempotent
+Feeling Idempotent
 -----------------------------
 
 When a routine has the same effect if it is performed multiple times as when 
@@ -44,7 +44,8 @@ must be tested and verified to be idempotent.
 Programmers often overlook such problems, as the invoice import feature in 
 :program:`QuickBooks Accounting` demonstrates. :program:`QuckBooks` creates 
 additional postings for invoices with every repeated import, rather than 
-posting just the first time.
+posting only the first time. (And :program:`QuickBooks` is an industry 
+standard?!)
 
 .. sidebar:: Validating Paths
 
@@ -123,7 +124,7 @@ A previous lesson presented a code snippet to obtain a user confirmation:
    echo -e '\e[0m' 
    ...
 
-This piece of code is too specific; because it contains the phrase "Say Hello,"
+This piece of code is too specific: because it contains the phrase "Say Hello,"
 it is useful only in our "Hello World" example. Placing the text "Say Hello" in 
 a variable and assigning it in our variable declarations will generalize the 
 snippet and allow it to be used in any script without further code changes.
@@ -191,48 +192,72 @@ variables.
 .. note::
    A comment test is missing from the ``do .. done`` loop. This would entail 
    checking the first non-whitespace character on a line, to see if it is a 
-   ``#``, or to check for blank lines. 
+   ``#``, or to check for blank lines. Those lines should be skipped.
 
-Colorize My Output World
+Color My Words
 -----------------------------
 
-There are two commands for displaying text on the terminal: :command:`printf`, 
-and :command:`echo`. While :command:`printf` behaves more consistently across 
-platforms, the guide will discuss :command:`echo`.
+Coloring terminal output makes messages stand out. This avoids the problem of 
+users ignoring important errors, or wondering why a program doesn't finish 
+when prompted with ``Do this now? (Y/n)``.
 
-Similarly, there are two Unix conventions for formatting terminal text: embedded 
-``VT100 Codes``, and :command:`tput` commands. 
+Applying embedded color commands is a function of the :command:`echo` command, 
+provided the ``-e`` option is included in the command. Try out the following 
+commands in the terminal to see how this works.
 
-Colorful language 
------------------------------
-
-Embedded color commands, are a function of the :command:`echo` command, however,
-and the option ``-e`` is required to translate the colors. 
-
-TEXT="Color my words"
+export TEXT="Colorize my words"
 echo -e "\e[1;31m $TEXT \e[0m"  ; # partial quoting
 echo -e '\e[1;31m $TEXT \e[0m'  ; # full quoting
 echo "\e[1;31m $TEXT \e[0m"     ; # omitting -e option
 
+:ref:`variables-color` documents the possible codes which are accepted at the 
+terminal for changing the displayed colors.
+
+.. note::
+   Two commands for displaying text on the terminal are :command:`printf` and 
+   :command:`echo`. While :command:`printf` behaves more consistently across 
+   platforms, this guide will discuss :command:`echo`.
+
+   Similarly, there are two Unix conventions for formatting terminal text: 
+   embedded ``VT100 Codes``, and :command:`tput` commands. 
+
+Readable Code
+-----------------------------
+
+Code compaction is a major source of confusion and error in programming. Shell 
+scripts are particularly vulnerable to this, as a routine that is compacted into 
+a single line can be pasted into the terminal and run in one step. Building a 
+whole script from one-liners will just lead to confusion, however. Take the 
+following command:
+
+.. code-block:: bash
+
+   if [[ $EUID -ne 0 ]] ; then echo -e "\e[1;31m Use sudo \e[0m" ; exit 1 ; fi
+
+The expanded code,
+
+.. code-block:: bash
+
+   if [[ $EUID -ne 0 ]]
+   then 
+     echo -e "\e[1;31m Use sudo \e[0m"
+     exit 1
+   fi
+
+is actually intelligible.
 
 Debugging Statements
 -----------------------------
+
+Recently Bash has added a debugger, not documented here. Instead, a generic 
+``echo`` command which will display the path, line number, and a message is 
+shown following. Insert this message throughout a script, with appropriate 
+messages, to see the results of an executed program.
 
 .. code-block:: bash
 
    echo "$PWD$(tput setaf 1) $LINENO: $MSG-COMMAND $(tput sgr0)"
 
-Readable Code
------------------------------
-
-.. code-block:: bash
-
-   if [[ $EUID -ne 0 ]] ; then echo -e "\e[1;31m try again using sudo \e[0m" ; exit 1 ; fi
-
-
-
-Highly quotable
------------------------------
-
-Partial quoting (\"``textstring``\") is required to evaluate embedded code in 
-quoted text. 
+Note that this command does not require the ``-e`` option. Partial quoting 
+(\"``textstring``\") is required to evaluate embedded code in quoted text, so 
+this command will not work with full quotes (\').

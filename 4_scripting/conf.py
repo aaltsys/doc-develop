@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 #
-# Development documentation build configuration file, created by
-# sphinx-quickstart on Sat Feb 23 09:21:51 2013.
+# Linux Shell Script Programming build configuration file, created by
+# sphinx-quickstart on Sat Feb 23 09:32:20 2013.
 #
 # This file is execfile()d with the current directory set to its containing dir.
 #
@@ -40,7 +40,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'Development'
+project = u'Linux Shell Script Programming'
 copyright = u'2013, Gerald Lovel'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -164,7 +164,7 @@ html_use_index = False
 #html_file_suffix = None
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'Developmentdoc'
+htmlhelp_basename = 'LinuxShellScriptProgrammingdoc'
 
 
 # -- Options for LaTeX output --------------------------------------------------
@@ -183,7 +183,7 @@ latex_elements = {
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual]).
 latex_documents = [
-  ('index', 'Development.tex', u'Development Documentation',
+  ('index', 'LinuxShellScriptProgramming.tex', u'Linux Shell Script Programming Documentation',
    u'Gerald Lovel', 'manual'),
 ]
 
@@ -213,7 +213,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', 'development', u'Development Documentation',
+    ('index', 'linuxshellscriptprogramming', u'Linux Shell Script Programming',
      [u'Gerald Lovel'], 1)
 ]
 
@@ -227,8 +227,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-  ('index', 'Development', u'Development Documentation',
-   u'Gerald Lovel', 'Development', 'One line description of project.',
+  ('index', 'LinuxShellScriptProgramming', u'Linux Shell Script Programming',
+   u'Gerald Lovel', 'LinuxShellScriptProgramming', 'One line description of project.',
    'Miscellaneous'),
 ]
 
@@ -245,7 +245,7 @@ texinfo_documents = [
 # -- Options for Epub output ---------------------------------------------------
 
 # Bibliographic Dublin Core info.
-epub_title = u'Development'
+epub_title = u'Linux Shell Script Programming'
 epub_author = u'Gerald Lovel'
 epub_publisher = u'Gerald Lovel'
 epub_copyright = u'2013, Gerald Lovel'
@@ -287,6 +287,6 @@ epub_copyright = u'2013, Gerald Lovel'
 intersphinx_mapping = {
  'resources': ('../resources', '../_deploy/resources/objects.inv'),
  'cloud': ('../cloud', '../_deploy/1_cloud/objects.inv'),
- 'linux': ('../linux', '../_deploy/2_linux/objects.inv'),
- 'learn': ('../learn', '../_deploy/3_learn/objects.inv'),
+ 'develop': ('../develop', '../_deploy/2_develop/objects.inv'),
+ 'document': ('../document', '../_deploy/3_document/objects.inv'),
 }

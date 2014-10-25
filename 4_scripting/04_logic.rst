@@ -52,7 +52,7 @@ There are multiple ways to construct a logical test expression:
 || ``[`` or      || built-in logical evaluation commands                     |
 || ``test``      || lexicographical string comparisons using ASCII ordering  |
 +----------------+-----------------------------------------------------------+
-|| ``[[ ... ]]`` ||  keyword for extended test command                       |
+|| ``[[ ... ]]`` || keyword for extended test command                        |
 ||               || Uses lexicographical language order of locale            |
 +----------------+-----------------------------------------------------------+
 
@@ -180,7 +180,7 @@ executed and arithmetic expression3 is evaluated. If any expression is omitted,
 it behaves as if it evaluates to ``1``.
 
 
-List Interactive *select*
+Interactive *select* List
 -----------------------------
 
 .. code-block:: bash

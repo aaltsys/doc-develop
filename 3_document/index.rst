@@ -1,6 +1,6 @@
 .. _index:
 
-Documenting Like a Developer
+Publishing Program Documentation
 =================================
 
 Use this guide to produce free hosted websites at GitHub.com. 

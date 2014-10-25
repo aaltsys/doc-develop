@@ -20,27 +20,9 @@ Example Script Layout
 Warm up the Xerox by highlighting and copying the following code outline, which 
 can become the basis of scripts written throughout these exercises. 
 
-.. code-block:: bash
-
-   #! /bin/sh
-   # Describe program's principal objective
-   # 
-   # Initialize variables
-   # 
-   # Assign parameters ($n) to named variables
-   # 
-   # User execution confirmation (location varies)
-   # 
-   # Declare repeated code functions
-   # 
-   # !! MAIN SECTION !!
-   # 
-   # Validity tests (setting exit status)
-   # 
-   # Main code, if Valid
-   # 
-   # Exit section: echo results, log errors
-   # 
+.. literalinclude:: _downloads/example.sh
+   :language: bash
+   :linenos:
 
 Then paste the code into a script file to be created in the following section.
 
@@ -183,8 +165,8 @@ Replace your user confirmation code with the following statements:
 Play around with (that means test run) these statements. On the :command:`echo` 
 statement, remove the option parameters ``-e`` or ``-n`` and observe the effect. 
 Similarly, try removing ``-n 1`` from the :command:`read` statement. Finally, 
-why would full quoting (with \') or partial quoting (with \") have the same
-result here?
+why would full quoting (with ``'``) or partial quoting (with ``"``) have the 
+same result here?
 
 Example Finished Program
 =============================
@@ -195,4 +177,3 @@ or just view the code below for one solution to this exercise.
 .. literalinclude:: _downloads/hello-world.sh
    :language: bash
    :linenos:
-

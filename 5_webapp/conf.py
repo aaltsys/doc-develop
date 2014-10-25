@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 #
-# HTML and CSS Developer Tutorial documentation build configuration file, created by
-# sphinx-quickstart on Sat Feb 23 09:29:15 2013.
+# Javascript Development Tutorial documentation build configuration file, created by
+# sphinx-quickstart on Sat Feb 23 09:30:39 2013.
 #
 # This file is execfile()d with the current directory set to its containing dir.
 #
@@ -40,7 +40,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'HTML and CSS Developer Tutorial'
+project = u'Javascript Development Tutorial'
 copyright = u'2013, Julia Lovel'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -164,7 +164,7 @@ html_use_index = False
 #html_file_suffix = None
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'HTMLandCSSDeveloperTutorialdoc'
+htmlhelp_basename = 'JavascriptDevelopmentTutorialdoc'
 
 
 # -- Options for LaTeX output --------------------------------------------------
@@ -183,7 +183,7 @@ latex_elements = {
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual]).
 latex_documents = [
-  ('index', 'HTMLandCSSDeveloperTutorial.tex', u'HTML and CSS Developer Tutorial Documentation',
+  ('index', 'JavascriptDevelopmentTutorial.tex', u'Javascript Development Tutorial Documentation',
    u'Julia Lovel', 'manual'),
 ]
 
@@ -213,7 +213,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', 'htmlandcssdevelopertutorial', u'HTML and CSS Developer Tutorial Documentation',
+    ('index', 'javascriptdevelopmenttutorial', u'Javascript Development Tutorial Documentation',
      [u'Julia Lovel'], 1)
 ]
 
@@ -227,8 +227,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-  ('index', 'HTMLandCSSDeveloperTutorial', u'HTML and CSS Developer Tutorial Documentation',
-   u'Julia Lovel', 'HTMLandCSSDeveloperTutorial', 'One line description of project.',
+  ('index', 'JavascriptDevelopmentTutorial', u'Javascript Development Tutorial Documentation',
+   u'Julia Lovel', 'JavascriptDevelopmentTutorial', 'One line description of project.',
    'Miscellaneous'),
 ]
 
@@ -245,7 +245,7 @@ texinfo_documents = [
 # -- Options for Epub output ---------------------------------------------------
 
 # Bibliographic Dublin Core info.
-epub_title = u'HTML and CSS Developer Tutorial'
+epub_title = u'Javascript Development Tutorial'
 epub_author = u'Julia Lovel'
 epub_publisher = u'Julia Lovel'
 epub_copyright = u'2013, Julia Lovel'
@@ -287,8 +287,7 @@ epub_copyright = u'2013, Julia Lovel'
 intersphinx_mapping = {
  'resources': ('../resources', '../_deploy/resources/objects.inv'),
  'cloud': ('../cloud', '../_deploy/1_cloud/objects.inv'),
- 'linux': ('../linux', '../_deploy/2_linux/objects.inv'),
- 'learn': ('../learn', '../_deploy/3_learn/objects.inv'),
- 'develop': ('../develop', '../_deploy/4_develop/objects.inv'),
- 'document': ('../document', '../_deploy/5_document/objects.inv'),
+ 'develop': ('../develop', '../_deploy/2_develop/objects.inv'),
+ 'document': ('../document', '../_deploy/3_document/objects.inv'),
+ 'scripting': ('../scripting', '../_deploy/4_scripting/objects.inv'),
 }

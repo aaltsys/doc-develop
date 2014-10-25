@@ -7,6 +7,53 @@ Commands and Variables
 Commands
 =============================
 
+
+apt-get
+-----------------------------
+
+::
+
+  apt-get install <package>
+  apt-get install aptitude
+  aptitude install <package>
+  aptitude -f install
+
+dpkg-reconfigure
+-----------------------------
+
+::
+
+  dpkg-reconfigure tzdata
+  dpkg-reconfigure locales
+
+System management
+=============================
+
+Date and time
+-----------------------------
+
+::
+
+  date
+  date -s 2012-12-25 12:34:56
+  date -u -s 2012-12-25 04:34:56
+  hwclock --systohc --utc
+  hwclock --hctosys
+  ntpq -p
+  ntpdate
+  
+
+----------
+
+.. rubric:: Footnotes
+
+.. [#] <http://www.howtoforge.com/useful_linux_commands> presents a list of 
+   useful Linux commands.
+
+.. [#] `Bash commands <http://ss64.com/bash/>`_
+
+.. [#] `A list of Windows commands for comparison. <http://ss64.com/nt/>`_
+
 .. _command-os:
 
 Operating system commands
@@ -155,7 +202,18 @@ Below is a table of some of the variables exported by the BASH terminal.
 
 .. _variables-color:
 
-ANSI/VT100 color codes 
+Terminal color settings
+=============================
+
+Commands :command:`echo -e` and :command:`printf` will process embedded escape 
+sequences, int the form ``\e[xx;yy;zzm``, to produce formatted or colored text.
+For example, ::
+
+   echo -e "\e[1;42;95m Some text \e[0m" ;# print Bold;FG Light Magenta;BG Green
+
+`printf` is not documented further here, but color commands and codes are.
+   
+*ANSI/VT100* color codes 
 -----------------------------
 
 +------+------------+----+-----+-----+--------------+----+-----+-----+--------------+
@@ -182,20 +240,14 @@ ANSI/VT100 color codes
 |      |            | \| |  39 |  49 | Default      | \| |     |     |              |
 +------+------------+----+-----+-----+--------------+----+-----+-----+--------------+
 
-Commands :command:`echo -e` and :command:`printf` will process embedded escape 
-sequences, int the form ``\e[xx;yy;zzm``, to produce formatted or colored text.
-For example, ::
-
-   echo -e "\e[1;42;95m Some text \e[0m" ;# print Bold;FG Light Magenta;BG Green
-
-Terminfo color commands
+*Terminfo* color commands
 -----------------------------
 
 Instead of using embedded ``VT100`` codes, the :command:`tput` command can set 
 terminal colors using a variety of arguments. 
 
-tput command arguments
-'''''''''''''''''''''''''''''
+*tput* command arguments
+-----------------------------
 
 +----------------------------+---------------------------------+
 | Command                    | Description                     |
@@ -221,8 +273,8 @@ tput command arguments
 | tput sgr0                  | Reset all attributes            |
 +----------------------------+---------------------------------+
 
-setaf/setab xterm color values
-''''''''''''''''''''''''''''''
+setaf/setab *xterm* values
+-----------------------------
 
 +-------+-------------+----------------+
 | Code  | Color       | RGB values     |
