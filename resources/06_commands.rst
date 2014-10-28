@@ -206,7 +206,7 @@ Terminal color settings
 =============================
 
 Commands :command:`echo -e` and :command:`printf` will process embedded escape 
-sequences, int the form ``\e[xx;yy;zzm``, to produce formatted or colored text.
+sequences, in the form ``\e[xx;yy;zzm``, to produce formatted or colored text.
 For example, ::
 
    echo -e "\e[1;42;95m Some text \e[0m" ;# print Bold;FG Light Magenta;BG Green

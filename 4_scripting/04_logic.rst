@@ -71,33 +71,21 @@ Rules apply to tests and comparisons. Not every situation requires each rule, as
 there are many exceptions. But failure to use these conventions will certainly 
 lead to trouble when it is least expected.
 
-#. Initialize every string variable which will be used in a test
-#. Partial-quote (") variables and strings inside logic tests
-#. Set off brackets (``[`` or ``[[``) with spaces
-#. Set off logic comparison operators with spaces
+#. Initialize every string variable which will be used in a test. There is a 
+   test difference between strings which have been initialized with zero length, 
+   and strings which have never been assigned. Testing ``[ "$STRING" = ""  ]`` 
+   may produce an unexpected result if ``$STRING`` is not assigned (null).
+#. Partial-quote (") variables and strings inside logic tests. Partial-quoting 
+   will evaluate embedded variables or expressions in strings.
+#. Set off brackets (``[`` or ``[[``) with spaces. ``[`` is an operator and 
+   ``[[`` is a keyword; neither one is a grouping enclosure; operators must be 
+   surrounded with spaces.
+#. Logic comparisons are operators which must be surrounded with spaces.
 #. Match comparison operators to the logic test, ``[`` or ``[[``, per 
-   :ref:`operators`.
+   :ref:`operators`. Operators listed for ``[[`` only do not apply to ``[``.
 #. Match comparison operators to the type of data being tested, per 
-   :ref:`operators`.
-
-.. note::
-   Rule 1. There is a test difference between strings which have been 
-   initialized with zero length, and strings which have never been assigned. 
-   Testing ``[ "$STRING" = ""  ]`` may produce an unexpected result if 
-   ``$STRING`` is not assigned (null).
-   
-   Rule 2. Partial-quoting will evaluate embedded variables or expressions in 
-   strings. 
-   
-   Rule 3. ``[`` is an operator and ``[[`` is a keyword; neither one is a 
-   grouping enclosure; operators must be surrounded with spaces.
-   
-   Rule 4. Logic comparisons are operators which must be surrounded by spaces.
-   
-   Rule 5. Operators listed for ``[[`` only do not apply to ``[``. 
-   
-   Rule 6. Separate lists of operators apply to string, integer, and file 
-   expressions. 
+   :ref:`operators`. Separate lists of operators apply to string, integer, and 
+   file expressions.
 
 .. warning::
    Some operators, notably ``!=`` and ``==``, have rather different meanings 
@@ -279,8 +267,6 @@ last statement in the ``expression`` list returns an exit status of ``0``.
 The ``until`` command is identical to the ``while`` command, except that the 
 test is negated; the ``command`` list is executed as long as the last statement 
 in the test ``expression`` list returns a non-zero exit status.  
-
----
 
 .. note::
    #. Seven types of command expansion, in order of performance, are: brace 

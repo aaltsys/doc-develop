@@ -14,17 +14,8 @@ In this exercise, use the 80% copying approach to create a script and add
 features incrementally to achieve a final result. Hopefully this approach will 
 delay that final 10%.
 
-Example Script Layout
+Create a First Script
 =============================
-
-Warm up the Xerox by highlighting and copying the following code outline, which 
-can become the basis of scripts written throughout these exercises. 
-
-.. literalinclude:: _downloads/example.sh
-   :language: bash
-   :linenos:
-
-Then paste the code into a script file to be created in the following section.
 
 .. tip::
    Use :program:`dolphin` or other file viewer to display your home folder, and 
@@ -32,8 +23,6 @@ Then paste the code into a script file to be created in the following section.
    :file:`Projects`, maybe called :file:`linux-scripts`, where you can store 
    your work.
 
-Create a First Script
-=============================
 
 Make a text file
 -----------------------------
@@ -47,6 +36,18 @@ line, and edit the file using :program:`Kate`::
    chmod u+x hello-world.sh
    kate hello-world.sh
 
+Example Script Layout
+-----------------------------
+
+Warm up the Xerox by highlighting and copying the following code outline, which 
+can become the basis of scripts written throughout these exercises, or download 
+the script from :download:`here <_downloads/example.sh>`, naming it 
+:file"`hello-world.sh`.
+
+.. literalinclude:: _downloads/example.sh
+   :language: bash
+   :linenos:
+   
 Hello World
 -----------------------------
 
