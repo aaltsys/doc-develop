@@ -1,10 +1,10 @@
-.. HTML and CSS Developer Tutorial documentation master file, created by
+.. Web Client Software Tutorial documentation master file, created by
    sphinx-quickstart on Sat Feb 23 09:29:15 2013.
 
 .. _index:
 
-HTML, CSS, and Javascript
-=========================================
+Web Client Software Coding
+=============================
 
 .. note::
    AAltsys endorses the **HTML**, **CSS**, and **Javascript** guides at 

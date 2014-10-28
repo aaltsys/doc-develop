@@ -24,7 +24,7 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="Linux Shell Script Programming 1.0 documentation" href="index.html" />
-    <link rel="next" title="Exercise 2: Logic and Control" href="05_lesson2.html" />
+    <link rel="next" title="Exercise 2: Evaluating Logic" href="05_lesson2.html" />
     <link rel="prev" title="Exercise 1: Organization" href="03_lesson1.html" /> 
   </head>
   <body>
@@ -32,7 +32,7 @@
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="05_lesson2.html" title="Exercise 2: Logic and Control"
+          <a href="05_lesson2.html" title="Exercise 2: Evaluating Logic"
              accesskey="N">next</a></li>
         <li class="right" >
           <a href="03_lesson1.html" title="Exercise 1: Organization"
@@ -69,7 +69,7 @@
                         title="previous chapter">Exercise 1: Organization</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="05_lesson2.html"
-                        title="next chapter">Exercise 2: Logic and Control</a></p>
+                        title="next chapter">Exercise 2: Evaluating Logic</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="_sources/04_logic.txt"
@@ -181,30 +181,22 @@ logic test. Well, that is not shell scripting.</p>
 there are many exceptions. But failure to use these conventions will certainly
 lead to trouble when it is least expected.</p>
 <ol class="arabic simple">
-<li>Initialize every string variable which will be used in a test</li>
-<li>Partial-quote (&#8221;) variables and strings inside logic tests</li>
-<li>Set off brackets (<tt class="docutils literal"><span class="pre">[</span></tt> or <tt class="docutils literal"><span class="pre">[[</span></tt>) with spaces</li>
-<li>Set off logic comparison operators with spaces</li>
+<li>Initialize every string variable which will be used in a test. There is a
+test difference between strings which have been initialized with zero length,
+and strings which have never been assigned. Testing <tt class="docutils literal"><span class="pre">[</span> <span class="pre">&quot;$STRING&quot;</span> <span class="pre">=</span> <span class="pre">&quot;&quot;</span>&nbsp; <span class="pre">]</span></tt>
+may produce an unexpected result if <tt class="docutils literal"><span class="pre">$STRING</span></tt> is not assigned (null).</li>
+<li>Partial-quote (&#8221;) variables and strings inside logic tests. Partial-quoting
+will evaluate embedded variables or expressions in strings.</li>
+<li>Set off brackets (<tt class="docutils literal"><span class="pre">[</span></tt> or <tt class="docutils literal"><span class="pre">[[</span></tt>) with spaces. <tt class="docutils literal"><span class="pre">[</span></tt> is an operator and
+<tt class="docutils literal"><span class="pre">[[</span></tt> is a keyword; neither one is a grouping enclosure; operators must be
+surrounded with spaces.</li>
+<li>Logic comparisons are operators which must be surrounded with spaces.</li>
 <li>Match comparison operators to the logic test, <tt class="docutils literal"><span class="pre">[</span></tt> or <tt class="docutils literal"><span class="pre">[[</span></tt>, per
-<a class="reference external" href="../resources/07_operators.html#operators" title="(in Developer Documentation Resource Pages v0.5)"><em>Operators &amp; Other Characters</em></a>.</li>
+<a class="reference external" href="../resources/07_operators.html#operators" title="(in Developer Documentation Resource Pages v0.5)"><em>Operators &amp; Other Characters</em></a>. Operators listed for <tt class="docutils literal"><span class="pre">[[</span></tt> only do not apply to <tt class="docutils literal"><span class="pre">[</span></tt>.</li>
 <li>Match comparison operators to the type of data being tested, per
-<a class="reference external" href="../resources/07_operators.html#operators" title="(in Developer Documentation Resource Pages v0.5)"><em>Operators &amp; Other Characters</em></a>.</li>
+<a class="reference external" href="../resources/07_operators.html#operators" title="(in Developer Documentation Resource Pages v0.5)"><em>Operators &amp; Other Characters</em></a>. Separate lists of operators apply to string, integer, and
+file expressions.</li>
 </ol>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p>Rule 1. There is a test difference between strings which have been
-initialized with zero length, and strings which have never been assigned.
-Testing <tt class="docutils literal"><span class="pre">[</span> <span class="pre">&quot;$STRING&quot;</span> <span class="pre">=</span> <span class="pre">&quot;&quot;</span>&nbsp; <span class="pre">]</span></tt> may produce an unexpected result if
-<tt class="docutils literal"><span class="pre">$STRING</span></tt> is not assigned (null).</p>
-<p>Rule 2. Partial-quoting will evaluate embedded variables or expressions in
-strings.</p>
-<p>Rule 3. <tt class="docutils literal"><span class="pre">[</span></tt> is an operator and <tt class="docutils literal"><span class="pre">[[</span></tt> is a keyword; neither one is a
-grouping enclosure; operators must be surrounded with spaces.</p>
-<p>Rule 4. Logic comparisons are operators which must be surrounded by spaces.</p>
-<p>Rule 5. Operators listed for <tt class="docutils literal"><span class="pre">[[</span></tt> only do not apply to <tt class="docutils literal"><span class="pre">[</span></tt>.</p>
-<p class="last">Rule 6. Separate lists of operators apply to string, integer, and file
-expressions.</p>
-</div>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
 <p class="last">Some operators, notably <tt class="docutils literal"><span class="pre">!=</span></tt> and <tt class="docutils literal"><span class="pre">==</span></tt>, have rather different meanings
@@ -393,7 +385,6 @@ last statement in the <tt class="docutils literal"><span class="pre">expression<
 The <tt class="docutils literal"><span class="pre">until</span></tt> command is identical to the <tt class="docutils literal"><span class="pre">while</span></tt> command, except that the
 test is negated; the <tt class="docutils literal"><span class="pre">command</span></tt> list is executed as long as the last statement
 in the test <tt class="docutils literal"><span class="pre">expression</span></tt> list returns a non-zero exit status.</p>
-<p>&#8212;</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <ol class="last arabic simple">
@@ -431,7 +422,7 @@ statement is the exit status of the last command executed in a list.</li>
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="05_lesson2.html" title="Exercise 2: Logic and Control"
+          <a href="05_lesson2.html" title="Exercise 2: Evaluating Logic"
              >next</a></li>
         <li class="right" >
           <a href="03_lesson1.html" title="Exercise 1: Organization"

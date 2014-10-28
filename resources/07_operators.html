@@ -784,14 +784,20 @@ the pattern on the right. See <a class="reference internal" href="#glob"><em>Glo
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td>((expr))</td>
+<tr class="row-odd"><td>((math))</td>
 <td>double-parentheses math construct: <tt class="docutils literal"><span class="pre">var</span> <span class="pre">=</span> <span class="pre">var1</span> <span class="pre">+</span> <span class="pre">var2</span></tt></td>
 </tr>
-<tr class="row-even"><td>$(expr)</td>
+<tr class="row-even"><td>${var}</td>
+<td>evaluate a string variable</td>
+</tr>
+<tr class="row-odd"><td>$(expr)</td>
 <td>evaluate command expression (creates subshell)</td>
 </tr>
-<tr class="row-odd"><td>$((expr))</td>
+<tr class="row-even"><td>$((math))</td>
 <td>evaluate an integer arithmetic expression (C-style)</td>
+</tr>
+<tr class="row-odd"><td>`expr`</td>
+<td>evaluate a command, original Bourne notation (deprecated)</td>
 </tr>
 <tr class="row-even"><td>$[3+4+5]</td>
 <td>evaluate an integer math expression (deprecated)</td>
@@ -836,12 +842,12 @@ the pattern on the right. See <a class="reference internal" href="#glob"><em>Glo
 <td>delineates a range of characters to match in regular expression</td>
 </tr>
 <tr class="row-even"><td><div class="first last line-block">
-<div class="line">&gt;</div>
-<div class="line">&amp;&gt;</div>
-<div class="line">&gt;&amp;2</div>
-<div class="line">&gt;&gt;</div>
-<div class="line">&lt;</div>
-<div class="line">&lt;&gt;</div>
+<div class="line"><tt class="docutils literal"><span class="pre">&gt;</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">&amp;&gt;</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">&gt;&amp;2</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">&gt;&gt;</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">&lt;</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">&lt;&gt;</span></tt></div>
 </div>
 </td>
 <td><div class="first last line-block">
@@ -855,7 +861,7 @@ the pattern on the right. See <a class="reference internal" href="#glob"><em>Glo
 </td>
 </tr>
 <tr class="row-odd"><td><div class="first last line-block">
-<div class="line">|</div>
+<div class="line"><tt class="docutils literal"><span class="pre">|</span></tt></div>
 </div>
 </td>
 <td><div class="first last line-block">
@@ -875,9 +881,9 @@ the pattern on the right. See <a class="reference internal" href="#glob"><em>Glo
 </td>
 </tr>
 <tr class="row-odd"><td><div class="first last line-block">
-<div class="line">&amp;</div>
-<div class="line">&amp;&amp;</div>
-<div class="line">||</div>
+<div class="line"><tt class="docutils literal"><span class="pre">&amp;</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">&amp;&amp;</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">|</span></tt></div>
 </div>
 </td>
 <td><div class="first last line-block">
@@ -888,9 +894,9 @@ the pattern on the right. See <a class="reference internal" href="#glob"><em>Glo
 </td>
 </tr>
 <tr class="row-even"><td><div class="first last line-block">
-<div class="line">-</div>
-<div class="line">&#8211;</div>
-<div class="line">&#8211;</div>
+<div class="line"><tt class="docutils literal"><span class="pre">-</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">--</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">--</span></tt></div>
 </div>
 </td>
 <td><div class="first last line-block">

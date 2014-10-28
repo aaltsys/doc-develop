@@ -24,6 +24,7 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="Linux Shell Script Programming 1.0 documentation" href="index.html" />
+    <link rel="next" title="Expressions and Logic Scripts" href="05_answers2.html" />
     <link rel="prev" title="Programming Concerns" href="06_concerns.html" /> 
   </head>
   <body>
@@ -31,8 +32,11 @@
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
+          <a href="05_answers2.html" title="Expressions and Logic Scripts"
+             accesskey="N">next</a></li>
+        <li class="right" >
           <a href="06_concerns.html" title="Programming Concerns"
-             accesskey="P">previous</a></li>
+             accesskey="P">previous</a> |</li>
         <li><a href="index.html">Linux Shell Script Programming 1.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
@@ -54,6 +58,9 @@
   <h4>Previous topic</h4>
   <p class="topless"><a href="06_concerns.html"
                         title="previous chapter">Programming Concerns</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="05_answers2.html"
+                        title="next chapter">Expressions and Logic Scripts</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="_sources/07_lesson3.txt"
@@ -82,6 +89,14 @@
             
   <div class="section" id="copy-conventions-for-success">
 <span id="convention-lesson"></span><h1>Copy Conventions for Success<a class="headerlink" href="#copy-conventions-for-success" title="Permalink to this headline">¶</a></h1>
+<p>Either add or change a configuration setting in a file using programmatic control:</p>
+<div class="highlight-python"><div class="highlight"><pre>if [[ -z &quot;$(grep &#39;vm.mmap_min_addr&#39; /etc/modules)&quot; ]] ; then
+   echo -e /n &quot;vm.mmap_min_addr=0&quot; &gt;&gt; /etc/modules ;
+else
+   sed -i &#39;/vm.mmap_min_addr/c\vn.mmap_min_addr=0&#39; ~/etc/modules ;
+fi
+</pre></div>
+</div>
 <div class="section" id="attending-conventions">
 <h2>Attending Conventions<a class="headerlink" href="#attending-conventions" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="inputs-and-logic-tests">
@@ -186,8 +201,11 @@ development skills, as we know others have. Good luck.</p>
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
+          <a href="05_answers2.html" title="Expressions and Logic Scripts"
+             >next</a></li>
+        <li class="right" >
           <a href="06_concerns.html" title="Programming Concerns"
-             >previous</a></li>
+             >previous</a> |</li>
         <li><a href="index.html">Linux Shell Script Programming 1.0 documentation</a> &raquo;</li> 
       </ul>
     </div>

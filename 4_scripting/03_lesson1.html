@@ -45,9 +45,9 @@
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Exercise 1: Organization</a><ul>
-<li><a class="reference internal" href="#example-script-layout">Example Script Layout</a></li>
 <li><a class="reference internal" href="#create-a-first-script">Create a First Script</a><ul>
 <li><a class="reference internal" href="#make-a-text-file">Make a text file</a></li>
+<li><a class="reference internal" href="#example-script-layout">Example Script Layout</a></li>
 <li><a class="reference internal" href="#hello-world">Hello World</a></li>
 </ul>
 </li>
@@ -105,10 +105,33 @@ first.</p>
 <p>In this exercise, use the 80% copying approach to create a script and add
 features incrementally to achieve a final result. Hopefully this approach will
 delay that final 10%.</p>
+<div class="section" id="create-a-first-script">
+<h2>Create a First Script<a class="headerlink" href="#create-a-first-script" title="Permalink to this headline">¶</a></h2>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">Use <strong class="program">dolphin</strong> or other file viewer to display your home folder, and
+create or open your <tt class="file docutils literal"><span class="pre">Projects</span></tt> folder. Then create a folder inside
+<tt class="file docutils literal"><span class="pre">Projects</span></tt>, maybe called <tt class="file docutils literal"><span class="pre">linux-scripts</span></tt>, where you can store
+your work.</p>
+</div>
+<div class="section" id="make-a-text-file">
+<h3>Make a text file<a class="headerlink" href="#make-a-text-file" title="Permalink to this headline">¶</a></h3>
+<p>On the Linux desktop, open a file viewer window (<strong class="program">Dolphin</strong>), and check
+the menu option <em class="menuselection">Control ‣ Panels ‣ Terminal</em> to include the
+terminal console in the display. Create a text file from the console command
+line, and edit the file using <strong class="program">Kate</strong>:</p>
+<div class="highlight-python"><div class="highlight"><pre>touch hello-world.sh
+chmod u+x hello-world.sh
+kate hello-world.sh
+</pre></div>
+</div>
+</div>
 <div class="section" id="example-script-layout">
-<h2>Example Script Layout<a class="headerlink" href="#example-script-layout" title="Permalink to this headline">¶</a></h2>
+<h3>Example Script Layout<a class="headerlink" href="#example-script-layout" title="Permalink to this headline">¶</a></h3>
 <p>Warm up the Xerox by highlighting and copying the following code outline, which
-can become the basis of scripts written throughout these exercises.</p>
+can become the basis of scripts written throughout these exercises, or download
+the script from <a class="reference download internal" href="_downloads/example.sh"><tt class="xref download docutils literal"><span class="pre">here</span></tt></a>, naming it
+:file&#8221;<cite>hello-world.sh</cite>.</p>
 <div class="highlight-bash"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -148,28 +171,6 @@ can become the basis of scripts written throughout these exercises.</p>
 <span class="c"># </span>
 </pre></div>
 </td></tr></table></div>
-<p>Then paste the code into a script file to be created in the following section.</p>
-<div class="admonition tip">
-<p class="first admonition-title">Tip</p>
-<p class="last">Use <strong class="program">dolphin</strong> or other file viewer to display your home folder, and
-create or open your <tt class="file docutils literal"><span class="pre">Projects</span></tt> folder. Then create a folder inside
-<tt class="file docutils literal"><span class="pre">Projects</span></tt>, maybe called <tt class="file docutils literal"><span class="pre">linux-scripts</span></tt>, where you can store
-your work.</p>
-</div>
-</div>
-<div class="section" id="create-a-first-script">
-<h2>Create a First Script<a class="headerlink" href="#create-a-first-script" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="make-a-text-file">
-<h3>Make a text file<a class="headerlink" href="#make-a-text-file" title="Permalink to this headline">¶</a></h3>
-<p>On the Linux desktop, open a file viewer window (<strong class="program">Dolphin</strong>), and check
-the menu option <em class="menuselection">Control ‣ Panels ‣ Terminal</em> to include the
-terminal console in the display. Create a text file from the console command
-line, and edit the file using <strong class="program">Kate</strong>:</p>
-<div class="highlight-python"><div class="highlight"><pre>touch hello-world.sh
-chmod u+x hello-world.sh
-kate hello-world.sh
-</pre></div>
-</div>
 </div>
 <div class="section" id="hello-world">
 <h3>Hello World<a class="headerlink" href="#hello-world" title="Permalink to this headline">¶</a></h3>

@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Exercise 2: Logic and Control &mdash; Linux Shell Script Programming 1.0 documentation</title>
+    <title>Exercise 2: Evaluating Logic &mdash; Linux Shell Script Programming 1.0 documentation</title>
     
     <link rel="stylesheet" href="_static/aaltsys.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -44,23 +44,26 @@
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">Exercise 2: Logic and Control</a><ul>
+<li><a class="reference internal" href="#">Exercise 2: Evaluating Logic</a><ul>
 <li><a class="reference internal" href="#expanding-commands">Expanding Commands</a><ul>
 <li><a class="reference internal" href="#single-vs-double-quotes">Single vs Double Quotes</a></li>
 <li><a class="reference internal" href="#command-evaluation">Command evaluation <em>$(...)</em></a></li>
-<li><a class="reference internal" href="#id1">Command evaluation <em>${ ... }</em></a></li>
-<li><a class="reference internal" href="#integer-evaluation">Integer evaluation <em>$((...))</em></a></li>
+<li><a class="reference internal" href="#grouped-commands">Grouped Commands <em>$(...)</em></a></li>
+<li><a class="reference internal" href="#anonymous-functions">Anonymous functions <em>${ ... }</em></a></li>
+<li><a class="reference internal" href="#integer-calculation">Integer calculation <em>$((...))</em></a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#expressions-test-results">Expressions Test Results</a></li>
 <li><a class="reference internal" href="#programming-with-logic">Programming with Logic</a><ul>
-<li><a class="reference internal" href="#with-iterative-for">... With Iterative For</a></li>
-<li><a class="reference internal" href="#with-integer-for">... With Integer For</a></li>
-<li><a class="reference internal" href="#with-select-list">... With Select List</a></li>
-<li><a class="reference internal" href="#with-case-branching">... With Case Branching</a></li>
-<li><a class="reference internal" href="#with-if-branching">... With if branching</a></li>
-<li><a class="reference internal" href="#with-iterative-while">... With Iterative While</a></li>
+<li><a class="reference internal" href="#iterative-for">Iterative For</a></li>
+<li><a class="reference internal" href="#integer-for">Integer For</a></li>
+<li><a class="reference internal" href="#case-branching">Case Branching</a></li>
+<li><a class="reference internal" href="#if-branching">if branching</a></li>
+<li><a class="reference internal" href="#while-conditional-looping">While Conditional Looping</a></li>
+<li><a class="reference internal" href="#select-list">Select List</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#logic-test-results">Logic Test Results</a></li>
 </ul>
 </li>
 </ul>
@@ -97,152 +100,355 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="exercise-2-logic-and-control">
-<span id="logic-lesson"></span><h1>Exercise 2: Logic and Control<a class="headerlink" href="#exercise-2-logic-and-control" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="exercise-2-evaluating-logic">
+<span id="logic-lesson"></span><h1>Exercise 2: Evaluating Logic<a class="headerlink" href="#exercise-2-evaluating-logic" title="Permalink to this headline">¶</a></h1>
 <p>Using this <a class="reference download internal" href="_downloads/example.sh"><tt class="xref download docutils literal"><span class="pre">example</span> <span class="pre">script</span> <span class="pre">outline</span></tt></a>, start a
-new script and name it <tt class="file docutils literal"><span class="pre">logic-control.sh</span></tt>.</p>
+new script and name it <tt class="file docutils literal"><span class="pre">expressions.sh</span></tt>. This time, the script will be
+used to test various scripting conventions.</p>
 <div class="section" id="expanding-commands">
 <h2>Expanding Commands<a class="headerlink" href="#expanding-commands" title="Permalink to this headline">¶</a></h2>
+<p>The first thing to try is variable substitution and expression evaluation. One
+aspect of scripting is the concept of embedding variables and other expressions
+directly into text strings. Embedded expressions are evaluated when they are
+prefixed with the <tt class="docutils literal"><span class="pre">$</span></tt> sign, provided the expressions are not embedded in text,
+or are unquoted, or are partially quoted.</p>
+<div class="sidebar">
+<p class="first sidebar-title">Partial and full quoting</p>
+<div class="last highlight-bash"><div class="highlight"><pre><span class="nv">COMMAND</span><span class="o">=</span><span class="s1">&#39;git branch -a&#39;</span>
+<span class="nb">echo</span> <span class="nv">$COMMAND</span>
+<span class="nb">echo</span> <span class="s1">&#39;$COMMAND&#39;</span>
+<span class="nb">echo</span> <span class="s2">&quot;$COMMAND&quot;</span>
+</pre></div>
+</div>
+</div>
 <div class="section" id="single-vs-double-quotes">
 <h3>Single vs Double Quotes<a class="headerlink" href="#single-vs-double-quotes" title="Permalink to this headline">¶</a></h3>
 <p>Double-quotes are referred to as partial quoting, while single-quotes are
-full quoting.</p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="44%" />
-<col width="56%" />
-</colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">echo</span> <span class="pre">$(git</span> <span class="pre">branch</span> <span class="pre">-a)</span></tt></td>
-<td>garbage</td>
-</tr>
-<tr class="row-even"><td><tt class="docutils literal"><span class="pre">echo</span> <span class="pre">'$(git</span> <span class="pre">branch</span> <span class="pre">-a)'</span></tt></td>
-<td><tt class="docutils literal"><span class="pre">git</span> <span class="pre">branch</span> <span class="pre">-a</span></tt></td>
-</tr>
-<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">echo</span> <span class="pre">&quot;$(git</span> <span class="pre">branch</span> <span class="pre">-a)&quot;</span></tt></td>
-<td>expected output of git branch command</td>
-</tr>
-</tbody>
-</table>
-<table border="1" class="docutils">
-<colgroup>
-<col width="17%" />
-<col width="83%" />
-</colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><div class="first last line-block">
-<div class="line">(a b ... n)</div>
-<div class="line">(expr...)</div>
+full quoting. Full quoting evaluates to the literal text within the quotes,
+while partial quoting performs variable and command expansion during evaluation.
+Test out quoting as follows:</p>
+<div class="admonition-instruction admonition">
+<p class="first admonition-title">Instruction</p>
+<p class="last">Paste the sidebar statements into the MAIN section of the new script, then
+run the script. Did any statement(s) produce expected results? Comment out
+statements which did not work as intended.</p>
 </div>
-</td>
-<td><div class="first last line-block">
-<div class="line">assign an array of <tt class="docutils literal"><span class="pre">n</span></tt> elements: <tt class="docutils literal"><span class="pre">array=(1</span> <span class="pre">2</span> <span class="pre">3</span> <span class="pre">4)</span></tt></div>
-<div class="line">group commands <tt class="docutils literal"><span class="pre">(expr1;</span> <span class="pre">expr2;</span> <span class="pre">...)</span></tt> to execute in subshell</div>
+<div class="sidebar">
+<p class="first sidebar-title">Evaluating a command expression</p>
+<div class="last highlight-bash"><div class="highlight"><pre><span class="nv">COMMAND</span><span class="o">=</span><span class="s1">&#39;git branch -a&#39;</span>
+<span class="nb">echo</span> <span class="k">$(</span> <span class="s2">&quot;$COMMAND&quot;</span> <span class="k">)</span>
+<span class="k">$(</span> <span class="nb">echo</span> <span class="nv">$COMMAND</span> <span class="k">)</span>
+<span class="k">$(</span> <span class="nb">echo</span> <span class="s1">&#39;$COMMAND&#39;</span> <span class="k">)</span>
+<span class="k">$(</span> <span class="nb">echo</span> <span class="s2">&quot;$COMMAND&quot;</span> <span class="k">)</span>
+</pre></div>
 </div>
-</td>
-</tr>
-<tr class="row-even"><td>((expr))</td>
-<td>double-parentheses math construct: <tt class="docutils literal"><span class="pre">var</span> <span class="pre">=</span> <span class="pre">var1</span> <span class="pre">+</span> <span class="pre">var2</span></tt></td>
-</tr>
-<tr class="row-odd"><td>$(expr)</td>
-<td>evaluate command expression (creates subshell)</td>
-</tr>
-<tr class="row-even"><td>$((expr))</td>
-<td>evaluate an integer arithmetic expression (C-style)</td>
-</tr>
-<tr class="row-odd"><td>$[3+4+5]</td>
-<td>evaluate an integer math expression (deprecated)</td>
-</tr>
-<tr class="row-even"><td><div class="first last line-block">
-<div class="line">{var}</div>
-<div class="line">{02..8..2}</div>
-<div class="line">{ expr..; }</div>
 </div>
-</td>
-<td><div class="first last line-block">
-<div class="line">brace expansion: <tt class="docutils literal"><span class="pre">echo</span> <span class="pre">{1,2,3}</span></tt> shows <tt class="docutils literal"><span class="pre">1</span> <span class="pre">2</span> <span class="pre">3</span></tt></div>
-<div class="line">expand series starting <tt class="docutils literal"><span class="pre">02</span></tt> step <tt class="docutils literal"><span class="pre">2</span></tt> with <tt class="docutils literal"><span class="pre">0</span></tt> padding</div>
-<div class="line">code block: inline group commands into local anonymous function</div>
-</div>
-</td>
-</tr>
-<tr class="row-odd"><td><div class="first last line-block">
-<div class="line">${var:l:n}</div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">at <tt class="docutils literal"><span class="pre">l</span></tt> from left extract <tt class="docutils literal"><span class="pre">n</span></tt> characters</div>
-<div class="line">negatives start at right and extract by position, not count</div>
-</div>
-</td>
-</tr>
-</tbody>
-</table>
 </div>
 <div class="section" id="command-evaluation">
 <h3>Command evaluation <em>$(...)</em><a class="headerlink" href="#command-evaluation" title="Permalink to this headline">¶</a></h3>
-<p>Parentheses group a list of commands. Prepending the parentheses with <tt class="docutils literal"><span class="pre">$</span></tt> will
-execute the commands in a subshell and return the result. Local variables will
-not be accessible to the subshell.</p>
+<p>Commands are evaluated when enclosed in parentheses that are prepended with the
+<tt class="docutils literal"><span class="pre">$</span></tt>. The difference between command evaluation and quoting is, quoting just
+displays text, possibly with expanded variables, while evaluation actually runs
+commands.</p>
+<div class="admonition-instruction admonition">
+<p class="first admonition-title">Instruction</p>
+<p>Add the sidebar statements into the <tt class="file docutils literal"><span class="pre">expressions.sh</span></tt> script, then
+run the script. Which syntax produces the output of the <tt class="docutils literal"><span class="pre">git</span></tt> command?</p>
+<p class="last">Note that <tt class="docutils literal"><span class="pre">$COMMAND</span></tt> is a variable, not a command. The <strong class="command">echo</strong>
+commmand must be used to feed that result as a command to the evaluation.</p>
 </div>
-<div class="section" id="id1">
-<h3>Command evaluation <em>${ ... }</em><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<div class="sidebar">
+<p class="first sidebar-title">Grouped command expressions</p>
+<div class="last highlight-bash"><div class="highlight"><pre><span class="nv">TEXT</span><span class="o">=</span><span class="s1">&#39;embedded grouped commands&#39;</span>
+<span class="k">$(</span>
+  <span class="nb">echo</span> -e <span class="s1">&#39;\e[31m These statements test&#39;</span>
+  <span class="nb">echo</span> -e <span class="s2">&quot; $TEXT. \e[0m&quot;</span>
+<span class="k">)</span>
+<span class="c">#</span>
+<span class="nb">echo</span> -e <span class="k">$(</span>
+  <span class="s1">&#39;\e[32m These statements test&#39;</span>
+  <span class="s2">&quot; $TEXT. \e[0m&quot;</span>
+<span class="k">)</span>
+<span class="c">#</span>
+<span class="nb">echo</span> -e <span class="k">$(</span>
+  <span class="nb">echo</span> <span class="s1">&#39;\e[32m These statements test&#39;</span>
+  <span class="nb">echo</span> <span class="s2">&quot; $TEXT. \e[0m&quot;</span>
+<span class="k">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="grouped-commands">
+<h3>Grouped Commands <em>$(...)</em><a class="headerlink" href="#grouped-commands" title="Permalink to this headline">¶</a></h3>
+<p>Parentheses prepended with <tt class="docutils literal"><span class="pre">$</span></tt> will also group a list of commands. For
+<strong class="program">bash</strong>, the commands will execute in a subshell and return the result,
+and local variables may not be accessible to a subshell. Other shells such as
+<strong class="program">dash</strong>, the default shell for Debian and Ubuntu, do not use a subshell
+and therefore can access local variables.</p>
+<div class="admonition-instruction admonition">
+<p class="first admonition-title">Instruction</p>
+<p class="last">Add the sidebar commands into your script, then view the results.</p>
+</div>
+<p>This example tries three versions of command execution. Notice that a
+command, in this case <strong class="command">echo</strong>, must be inside the parentheses. Then
+the <tt class="docutils literal"><span class="pre">-e</span></tt> option is not needed inside the parentheses. Instead, the inside
+<strong class="command">echo</strong> commands serve to pass a string to the execution, and the
+outside command then echoes the result <em>including the embedded color codes</em>.
+Question: were local variables assigned in the subshell?</p>
+<div class="sidebar">
+<p class="first sidebar-title">Grouped command functions</p>
+<div class="last highlight-bash"><div class="highlight"><pre><span class="nv">TEXT</span><span class="o">=</span><span class="s1">&#39;an embedded anonymous function&#39;</span>
+<span class="nb">echo</span> -e <span class="k">${</span><span class="p"></span>
+<span class="p">  echo </span><span class="s1">&#39;\e[32m These statements test&#39;</span><span class="p"></span>
+<span class="p">  echo </span><span class="s2">&quot; $TEXT. \e[0m&quot;</span><span class="p"></span>
+<span class="k">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="anonymous-functions">
+<h3>Anonymous functions <em>${ ... }</em><a class="headerlink" href="#anonymous-functions" title="Permalink to this headline">¶</a></h3>
 <p>Braces group a list of commands. Prepending the braces with <tt class="docutils literal"><span class="pre">$</span></tt> will execute
 the commands in an anonymous local function and return the result. Local
-variables are accessible to the local function.</p>
+variables are accessible to the local anonymous function.</p>
+<div class="admonition-instruction admonition">
+<p class="first admonition-title">Instruction</p>
+<p>Add this next set of sidebar commands into your script, then examine the
+results.</p>
+<p class="last">Hmm. Maybe we are not actually using <strong class="program">bash</strong>. If <tt class="docutils literal"><span class="pre">$(</span> <span class="pre">...</span> <span class="pre">)</span></tt> is
+treated as an anonymous function, the <tt class="docutils literal"><span class="pre">${</span> <span class="pre">...}</span></tt> syntax may not be supported
+for grouped commands. However, this syntax will evaluate variables.</p>
 </div>
-<div class="section" id="integer-evaluation">
-<h3>Integer evaluation <em>$((...))</em><a class="headerlink" href="#integer-evaluation" title="Permalink to this headline">¶</a></h3>
+<div class="sidebar">
+<p class="first sidebar-title">Integer calculation evaluation</p>
+<div class="last highlight-bash"><div class="highlight"><pre><span class="nv">SEVEN</span><span class="o">=</span>7 ; <span class="nv">FIVE</span><span class="o">=</span>5
+<span class="nb">echo</span> -e <span class="s1">&#39;\e[32m $FIVE times $SEVEN is $(( FIVE * SEVEN )) \e[0m&#39;</span>
+<span class="nb">echo</span> -e <span class="s2">&quot;\e[32m $FIVE times $SEVEN is $(( FIVE * SEVEN )) \e[0m&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="integer-calculation">
+<h3>Integer calculation <em>$((...))</em><a class="headerlink" href="#integer-calculation" title="Permalink to this headline">¶</a></h3>
 <p>Double-parentheses enclose a math expression. Within the expression, variables
 do not require the <tt class="docutils literal"><span class="pre">$</span></tt> prefix for evaluation.</p>
+<p>The <strong class="command">let ...</strong> command is a synonym for double-parentheses, but it is
+not recommended because <strong class="command">let</strong> lacks closure and flexibility.</p>
+<div class="admonition-instruction admonition">
+<p class="first admonition-title">Instruction</p>
+<p class="last">Add these sidebar commands to your script, then view the results. Just for
+fun, try replacing the <tt class="docutils literal"><span class="pre">$((</span> <span class="pre">...</span> <span class="pre">))</span></tt> expression with <tt class="docutils literal"><span class="pre">let</span> <span class="pre">...</span></tt>?</p>
 </div>
+</div>
+</div>
+<div class="section" id="expressions-test-results">
+<h2>Expressions Test Results<a class="headerlink" href="#expressions-test-results" title="Permalink to this headline">¶</a></h2>
+<p>Probably this has been about all the programming fun one can stand. Fortunately
+we are finished with syntax for evaluating expressions. Sample program results
+for this section and the following topic on logic can be viewed on a separate
+page: <a class="reference internal" href="05_answers2.html#expressions-answers"><em>Sample Expressions Script</em></a>.</p>
 </div>
 <div class="section" id="programming-with-logic">
 <h2>Programming with Logic<a class="headerlink" href="#programming-with-logic" title="Permalink to this headline">¶</a></h2>
-<p>This lesson focuses on assembling a program with compound logic commands. First
-start a new program, call it <tt class="docutils literal"><span class="pre">control-logic.sh</span></tt>. Remember, copy in the
+<p>This lesson focuses on assembling a program with compound logic expressions.
+First start a new program, call it <tt class="docutils literal"><span class="pre">control-logic.sh</span></tt>. Remember, copy in the
 example shell outline or download it from <a class="reference download internal" href="_downloads/example.sh"><tt class="xref download docutils literal"><span class="pre">_downloads/example.sh</span></tt></a>.</p>
-<div class="section" id="with-iterative-for">
-<h3>... With Iterative For<a class="headerlink" href="#with-iterative-for" title="Permalink to this headline">¶</a></h3>
-</div>
-<div class="section" id="with-integer-for">
-<h3>... With Integer For<a class="headerlink" href="#with-integer-for" title="Permalink to this headline">¶</a></h3>
-</div>
-<div class="section" id="with-select-list">
-<h3>... With Select List<a class="headerlink" href="#with-select-list" title="Permalink to this headline">¶</a></h3>
-</div>
-<div class="section" id="with-case-branching">
-<h3>... With Case Branching<a class="headerlink" href="#with-case-branching" title="Permalink to this headline">¶</a></h3>
-</div>
-<div class="section" id="with-if-branching">
-<h3>... With if branching<a class="headerlink" href="#with-if-branching" title="Permalink to this headline">¶</a></h3>
-<p>Prompt user to escalate privileges:</p>
-<div class="highlight-python"><div class="highlight"><pre>if [[ $EUID -ne 0 ]] ; then echo -e &quot;\e[1;31m try again using sudo \e[0m&quot; ; exit 1 ; fi
-</pre></div>
-</div>
-<p>Select an optional value and concatenate it based on a system setting:</p>
-<div class="highlight-python"><div class="highlight"><pre>CHROMEVER=&#39;google-chrome-stable_current_&#39;
-if [ &quot;`uname -i`&quot; = &quot;i386&quot; ]
-then
-  CHROMEVER+=&#39;i386.deb&#39;
-else
-  CHROMEVER+=&#39;amd64.deb&#39;
-fi
-</pre></div>
-</div>
-<p>Either add or change a configuration setting in a file using programmatic control:</p>
-<div class="highlight-python"><div class="highlight"><pre>if [[ -z &quot;$(grep &#39;vm.mmap_min_addr&#39; /etc/modules)&quot; ]] ; then
-   echo -e /n &quot;vm.mmap_min_addr=0&quot; &gt;&gt; /etc/modules ;
-else
-   sed -i &#39;/vm.mmap_min_addr/c\vn.mmap_min_addr=0&#39; ~/etc/modules ;
-fi
+<div class="sidebar">
+<p class="first sidebar-title">Iterative for</p>
+<div class="last highlight-bash"><div class="highlight"><pre><span class="k">for </span>NAME in <span class="s1">&#39;in&#39;</span> <span class="s1">&#39;inn&#39;</span> <span class="s1">&#39;ian&#39;</span> <span class="s1">&#39;eoin&#39;</span>
+<span class="k">do</span>
+<span class="k">  </span><span class="nb">echo</span> <span class="nv">$NAME</span>
+<span class="k">done</span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="with-iterative-while">
-<h3>... With Iterative While<a class="headerlink" href="#with-iterative-while" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="iterative-for">
+<h3>Iterative For<a class="headerlink" href="#iterative-for" title="Permalink to this headline">¶</a></h3>
+<p>Use the iterative <strong class="command">for</strong> command to step through a list or an array of
+values. For example, the parameters passed to a script could be processed by
+referring to array <tt class="docutils literal"><span class="pre">$&#64;</span></tt>.</p>
+<div class="admonition-instruction admonition">
+<p class="first admonition-title">Instruction</p>
+<p class="last">Add these sidebar commands to the main section of script
+<tt class="file docutils literal"><span class="pre">logic-control.sh</span></tt>, then run the script to view the results.</p>
 </div>
+<p>Try this command without quoting the word list. Could this syntax be confusing?</p>
+<div class="sidebar">
+<p class="first sidebar-title">Integer for</p>
+<div class="last highlight-bash"><div class="highlight"><pre><span class="k">for</span> <span class="o">((</span> <span class="nv">K</span><span class="o">=</span>4; <span class="nv">$K</span> -ge 0; <span class="nv">$K</span>-- <span class="o">))</span>
+<span class="k">do</span>
+<span class="k">  </span><span class="nb">echo</span> <span class="s2">&quot;The negative of $K squared is: -$(( K * -K ))&quot;</span>
+<span class="k">done</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="integer-for">
+<h3>Integer For<a class="headerlink" href="#integer-for" title="Permalink to this headline">¶</a></h3>
+<p>Use the integer for with three-expression operator for iterating a number of
+times, or iterating on an indexed list of options.</p>
+<div class="admonition-instruction admonition">
+<p class="first admonition-title">Instruction</p>
+<p class="last">Add these sidebar commands to your script, then view the results.</p>
+</div>
+<p>Evaluation stops at the first error: <tt class="docutils literal"><span class="pre">-le</span></tt> is an integer comparison test, not
+an arithmetic operator. The correct term is <tt class="docutils literal"><span class="pre">&lt;=</span></tt> (See <a class="reference external" href="../resources/07_operators.html#arithmetic" title="(in Developer Documentation Resource Pages v0.5)"><em>Arithmetic operators</em></a>).
+Correct this to find the next error, where <tt class="docutils literal"><span class="pre">$</span></tt> is prepended to the third term,
+<tt class="docutils literal"><span class="pre">K--</span></tt>. Since this is an (implicit) assignment statement, the <tt class="docutils literal"><span class="pre">$</span></tt> is not
+permitted. (We know that <tt class="docutils literal"><span class="pre">$K</span></tt> works in the second term, otherwise that would
+have been the second error.)</p>
+<div class="sidebar">
+<p class="first sidebar-title">Case branching</p>
+<div class="last highlight-bash"><div class="highlight"><pre><span class="nv">OPT</span><span class="o">=</span><span class="s1">&#39;YNmaybe&#39;</span>
+<span class="c"># OPT=&#39;dontknow&#39;</span>
+<span class="c"># OPT=&#39;whatever&#39;</span>
+<span class="nv">ANS</span><span class="o">=</span><span class="s1">&#39;&#39;</span>
+<span class="k">case</span> <span class="nv">$OPT</span> in
+  Y*|y*<span class="o">)</span>
+    ANS+<span class="o">=</span><span class="s2">&quot;positive answer\n&quot;</span> ;;
+  *N*|*n*<span class="o">)</span>
+    ANS+<span class="o">=</span><span class="s2">&quot;negative answer\n&quot;</span> ;;&amp;
+  *<span class="o">)</span>
+    ANS+<span class="o">=</span><span class="s2">&quot;ambiguous answer\n&quot;</span> ;;
+<span class="k">esac</span>
+<span class="nb">echo</span> -e -n <span class="s2">&quot;\e[32m$ANS\e[0m&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="case-branching">
+<h3>Case Branching<a class="headerlink" href="#case-branching" title="Permalink to this headline">¶</a></h3>
+<p>Use the case statement to branch into code blocks from a set of literal choices.
+Note that multiple patterns may be used in each branch, where patterns are
+separated by the <tt class="docutils literal"><span class="pre">|</span></tt> (pipe) symbol, here used to represent <em>or</em>.</p>
+<p>Patterns are checked in the sequence, and <strong class="command">case</strong> executes the code
+block for the first match. The operator ending a code block determines what
+happens after a block is executed:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="15%" />
+<col width="85%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Oper</th>
+<th class="head">Termination result</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">;;</span></tt></td>
+<td>The case statement exits at <tt class="docutils literal"><span class="pre">esac</span></tt>.</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">;&amp;</span></tt></td>
+<td>The next pattern&#8217;s code block executes.</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">;;&amp;</span></tt></td>
+<td>Pattern matching resumes at the next block.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition-instruction admonition">
+<p class="first admonition-title">Instruction</p>
+<p class="last">Add the <strong class="command">case</strong> statements to your script from the sidebar. Test the
+script using each of the suggested values for <tt class="docutils literal"><span class="pre">OPT</span></tt>.</p>
+</div>
+<div class="sidebar">
+<p class="first sidebar-title">If branching</p>
+<div class="last highlight-bash"><div class="highlight"><pre><span class="nv">CHROMEVER</span><span class="o">=</span><span class="s1">&#39;google-chrome-stable_current_&#39;</span>
+<span class="k">if</span> <span class="o">[[</span> <span class="nv">$EUID</span> -eq 0 <span class="o">]]</span>
+<span class="k">then</span>
+<span class="k">  </span><span class="nv">PTN</span><span class="o">=</span><span class="s1">&#39;i*86&#39;</span>
+  <span class="k">if</span> <span class="o">[[</span> <span class="sb">`</span>uname -i<span class="sb">`</span> <span class="o">=</span>~ <span class="nv">$PTN</span> <span class="o">]]</span>
+  <span class="k">then</span>
+<span class="k">    </span>CHROMEVER+<span class="o">=</span><span class="s1">&#39;i386.deb&#39;</span>
+  <span class="k">else</span>
+<span class="k">    </span>CHROMEVER+<span class="o">=</span><span class="s1">&#39;amd64.deb&#39;</span>
+  <span class="k">fi</span>
+<span class="k">  </span><span class="nb">echo</span> -e <span class="s2">&quot;\e[32m $CHROMEVER \e[0m&quot;</span>
+<span class="k">else</span>
+<span class="k">  </span><span class="nb">echo</span> -e <span class="s1">&#39;\e[5;31m try again using sudo \e[0m&#39;</span>
+<span class="k">fi</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="if-branching">
+<h3>if branching<a class="headerlink" href="#if-branching" title="Permalink to this headline">¶</a></h3>
+<p>The <strong class="command">if</strong> statement is the Swiss Army Knife of logic testing.
+Comparisons may be string, numeric, or any combination thereof due to the option
+of using multiple <tt class="docutils literal"><span class="pre">elif</span></tt> sections.</p>
+<div class="admonition-instruction admonition">
+<p class="first admonition-title">Instruction</p>
+<p>Update your script to include the sidebar code, then view the results.
+To display results for the <tt class="docutils literal"><span class="pre">elif</span></tt> branch, run your script as <tt class="docutils literal"><span class="pre">root</span></tt>:</p>
+<div class="last highlight-python"><div class="highlight"><pre>sudo bash ./logic-control.sh
+</pre></div>
+</div>
+</div>
+<p>The sample code here tests whether or not the routine is being run with <tt class="docutils literal"><span class="pre">root</span></tt>
+permissions. Then it tests a system variable to determine which generation of
+OS hardware support is installed: 32 bit, or 64 bit. The resulting string may
+be used to download and install the <strong>Chrome</strong> web browser from a script.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">In the pattern-matching test, the pattern had to be evaluated from variable
+<tt class="docutils literal"><span class="pre">$PTN</span></tt>, instead of being expressed as a string inside the test?</p>
+</div>
+<div class="sidebar">
+<p class="first sidebar-title">While &amp; Until iterations</p>
+<div class="last highlight-bash"><div class="highlight"><pre><span class="nv">K</span><span class="o">=</span>5
+<span class="k">while</span> <span class="o">[</span> <span class="nv">$K</span> -gt 0 <span class="o">]</span>
+<span class="c"># until [[ $K -le 0 ]]</span>
+<span class="k">do</span>
+  <span class="o">((</span> K-- <span class="o">))</span>
+  <span class="nb">echo</span> -e <span class="s2">&quot;\e[32m $K squared is: $(( K ** 2 )) \e[0m&quot;</span>
+<span class="k">done</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="while-conditional-looping">
+<h3>While Conditional Looping<a class="headerlink" href="#while-conditional-looping" title="Permalink to this headline">¶</a></h3>
+<p>Use <strong class="command">while</strong> or <strong class="command">until</strong> to loop under control of some logical
+condition. The general distinction between <strong class="command">for</strong> and <strong class="command">while</strong>
+is this: <strong class="command">for</strong> is for enumerated interation, while <strong class="command">while</strong>
+performs conditional looping.</p>
+<div class="admonition-instruction admonition">
+<p class="first admonition-title">Instruction</p>
+<p class="last">Add the sidebar commands to your script, then test the program with both the
+<strong class="command">while</strong> and the <strong class="command">until</strong> tests. For this simple example,
+the two tests are equivalent in simplicity.</p>
+</div>
+<div class="sidebar">
+<p class="first sidebar-title">Select list</p>
+<div class="last highlight-bash"><div class="highlight"><pre><span class="k">select </span>NAME in <span class="s1">&#39;in&#39;</span> <span class="s1">&#39;inn&#39;</span> <span class="s1">&#39;ian&#39;</span> <span class="s1">&#39;eoin&#39;</span>
+<span class="k">do</span>
+<span class="k">  </span><span class="nb">echo</span> -e <span class="s2">&quot;\e[32m $NAME \e[0m&quot;</span>
+<span class="k">done</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="select-list">
+<h3>Select List<a class="headerlink" href="#select-list" title="Permalink to this headline">¶</a></h3>
+<p>Use the Select List operator to display a selection menu at the terminal. This
+may not be your mama&#8217;s GUI, but it offers and effective mechanism for selecting
+options in a terminal session.</p>
+<div class="admonition-instruction admonition">
+<p class="first admonition-title">Instruction</p>
+<p class="last">Add the select loop code from the sidebar to your script, then view the
+results.</p>
+</div>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">Use the universal break key <tt class="docutils literal"><span class="pre">^D</span></tt> (Ctrl-D) to exit the select menu, or use
+<tt class="docutils literal"><span class="pre">^C</span></tt> (Ctrl-C) to exit the script.</p>
+</div>
+</div>
+</div>
+<div class="section" id="logic-test-results">
+<h2>Logic Test Results<a class="headerlink" href="#logic-test-results" title="Permalink to this headline">¶</a></h2>
+<p>Again, sample program results on logic tests can be viewed on a separate page:
+<a class="reference internal" href="05_answers2.html#logic-answers"><em>Sample Logic Control Script</em></a>.</p>
 </div>
 </div>
 

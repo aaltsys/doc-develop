@@ -5,6 +5,14 @@ Copy Conventions for Success
 #############################
 
 
+Either add or change a configuration setting in a file using programmatic control::
+
+   if [[ -z "$(grep 'vm.mmap_min_addr' /etc/modules)" ]] ; then 
+      echo -e /n "vm.mmap_min_addr=0" >> /etc/modules ;
+   else
+      sed -i '/vm.mmap_min_addr/c\vn.mmap_min_addr=0' ~/etc/modules ;
+   fi
+
 Attending Conventions
 =============================
 

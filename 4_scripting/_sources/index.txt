@@ -31,6 +31,11 @@ Contents:
    06_concerns
    07_lesson3
 
+.. toctree::
+   :hidden:
+
+   05_answers2
+
 Indices and tables
 =============================
 

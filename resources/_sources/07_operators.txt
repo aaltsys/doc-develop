@@ -287,11 +287,15 @@ Expression constructs
 || (a b ... n)|| assign an array of ``n`` elements: ``array=(1 2 3 4)``         |
 || (expr...)  || group commands ``(expr1; expr2; ...)`` to execute in subshell  |
 +-------------+-----------------------------------------------------------------+
-| ((expr))    | double-parentheses math construct: ``var = var1 + var2``        |
+| ((math))    | double-parentheses math construct: ``var = var1 + var2``        |
++-------------+-----------------------------------------------------------------+
+| ${var}      | evaluate a string variable                                      |
 +-------------+-----------------------------------------------------------------+
 | $(expr)     | evaluate command expression (creates subshell)                  |
 +-------------+-----------------------------------------------------------------+
-| $((expr))   | evaluate an integer arithmetic expression (C-style)             |
+| $((math))   | evaluate an integer arithmetic expression (C-style)             |
++-------------+-----------------------------------------------------------------+
+| \`expr\`    | evaluate a command, original Bourne notation (deprecated)       |
 +-------------+-----------------------------------------------------------------+
 | $[3+4+5]    | evaluate an integer math expression (deprecated)                |
 +-------------+-----------------------------------------------------------------+
@@ -312,25 +316,25 @@ Expression constructs
 +-------------+-----------------------------------------------------------------+
 | [c d e]     | delineates a range of characters to match in regular expression |
 +-------------+-----------------------------------------------------------------+
-|| >          || redirect output (stdout): ``ls > filename``                    |
-|| &>         || redirect errors, output (stdout, stderr): ``ls &> filename``   |
-|| >&2        || redirect output to error (stdout > stderr)                     |
-|| >>         || append output (stdout) to filename: ``ls >> filename``         |
-|| <          || redirect input from expression: ``filename < ls``              |
-|| <>         || open file and assign file descriptor: ``[i]<>filename``        |
+|| ``>``      || redirect output (stdout): ``ls > filename``                    |
+|| ``&>``     || redirect errors, output (stdout, stderr): ``ls &> filename``   |
+|| ``>&2``    || redirect output to error (stdout > stderr)                     |
+|| ``>>``     || append output (stdout) to filename: ``ls >> filename``         |
+|| ``<``      || redirect input from expression: ``filename < ls``              |
+|| ``<>``     || open file and assign file descriptor: ``[i]<>filename``        |
 +-------------+-----------------------------------------------------------------+
-|| \|         || pipe output (stdout) of one process to input (stdin) of next   |
+|| ``|``      || pipe output (stdout) of one process to input (stdin) of next   |
 +-------------+-----------------------------------------------------------------+
 || <(commands)|| substitutes output of one process into another process         |
 || >(commands)||                                                                |
 +-------------+-----------------------------------------------------------------+
-|| &          || at end of command, detach and run command in background        |
-|| &&         || linking two commands, run second iff for first, ``exit -eq 0`` |
-|| \|\|       || linking two commands, run second iff for first, ``exit -ne 0`` |
+|| ``&``      || at end of command, detach and run command in background        |
+|| ``&&``     || linking two commands, run second iff for first, ``exit -eq 0`` |
+|| ``|``      || linking two commands, run second iff for first, ``exit -ne 0`` |
 +-------------+-----------------------------------------------------------------+
-|| \-         || command option prefix: ``ls -al``                              |
-|| \-\-       || verbose option prefix: ``ls --all --list``                     |
-|| \-\-       || (builtin) end of options ``rm -- -badname*``                   |
+|| ``-``      || command option prefix: ``ls -al``                              |
+|| ``--``     || verbose option prefix: ``ls --all --list``                     |
+|| ``--``     || (builtin) end of options ``rm -- -badname*``                   |
 +-------------+-----------------------------------------------------------------+
 
 .. _glob:
