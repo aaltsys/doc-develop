@@ -103,19 +103,23 @@ documentation. Here is a consolidated list of these files, both as download
 links and as <strong class="command">wget</strong> terminal commands.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">Assuming the <tt class="file docutils literal"><span class="pre">doc-</span></tt> script files listed below are saved in
-folder <tt class="file docutils literal"><span class="pre">~/Projects</span></tt>, then the scripts may be executed from within
-project folders with the command format <strong class="command">../{scriptname}</strong>,
-omitting the <strong class="command">{project_folder_name}</strong> from the command.</p>
+<p class="last">Assuming the <tt class="file docutils literal"><span class="pre">doc-</span></tt> script files listed below are saved in folder
+<tt class="file docutils literal"><span class="pre">~/Projects</span></tt>, then the scripts may be executed from within project
+sub-folders with the command format <strong class="command">../{scriptname}</strong>. Remenber to
+make the scripts executable in the file permissions first.</p>
 </div>
 <div class="section" id="linux-installation-scripts">
 <h2>Linux installation scripts<a class="headerlink" href="#linux-installation-scripts" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="apt-fast-sh">
 <h3>apt-fast.sh<a class="headerlink" href="#apt-fast-sh" title="Permalink to this headline">¶</a></h3>
-<p>For existing installs of Ubuntu (14.04 or later), download and install
-<tt class="file docutils literal"><span class="pre">apt-fast.sh</span></tt> to speed up <strong class="command">apt-</strong> processes. The
-<tt class="file docutils literal"><span class="pre">first-install.sh</span></tt> and <tt class="file docutils literal"><span class="pre">rest-install.sh</span></tt> scripts described following
-are optimized using <strong class="command">apt-fast</strong>. <a class="footnote-reference" href="#id2" id="id1">[1]</a></p>
+<p>For existing installs of Ubuntu (14.04 or earlier), download and install
+<tt class="file docutils literal"><span class="pre">apt-fast.sh</span></tt> to speed up <strong class="command">apt-</strong> installation processes.  <a class="footnote-reference" href="#id2" id="id1">[1]</a></p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The <tt class="file docutils literal"><span class="pre">first-install.sh</span></tt> and <tt class="file docutils literal"><span class="pre">rest-install.sh</span></tt> scripts described
+following are optimized using <strong class="program">apt-fast</strong> already, so there is no
+need to install <strong class="program">apt-fast</strong> separately in that case.</p>
+</div>
 <div class="line-block">
 <div class="line">KUbuntu_14: <a class="reference download internal" href="_downloads/apt-fast.sh"><tt class="xref download docutils literal"><span class="pre">apt-fast.sh</span></tt></a></div>
 </div>
@@ -133,8 +137,7 @@ of the following scripts as appropriate, saving it to the desktop with the name
 <div class="line">KUbuntu_14: <a class="reference download internal" href="_downloads/KUbuntu_14-desktop.sh"><tt class="xref download docutils literal"><span class="pre">KUbuntu_14.sh</span></tt></a></div>
 </div>
 <p>Get the respective script from the command line via <strong class="program">wget</strong> with:</p>
-<div class="highlight-python"><div class="highlight"><pre>wget -O first-install.sh http://develop.aaltsys.info/resources/_downloads/Gnome-Ubuntu_10.10-desktop.sh
-wget -O first-install.sh http://develop.aaltsys.info/resources/_downloads/KDE-Mint_10-desktop.sh
+<div class="highlight-python"><div class="highlight"><pre>wget -O first-install.sh http://develop.aaltsys.info/resources/_downloads/KDE-Mint_10-desktop.sh
 wget -O first-install.sh http://develop.aaltsys.info/resources/_downloads/KDE-Mint_12-desktop.sh
 wget -O first-install.sh http://develop.aaltsys.info/resources/_downloads/KUbuntu_12-desktop.sh
 wget -O first-install.sh http://develop.aaltsys.info/resources/_downloads/KUbuntu_13-desktop.sh
@@ -148,7 +151,7 @@ wget -O first-install.sh http://develop.aaltsys.info/resources/_downloads/KUbunt
 </div>
 <div class="section" id="rest-install-sh">
 <h3>rest-install.sh<a class="headerlink" href="#rest-install-sh" title="Permalink to this headline">¶</a></h3>
-<p>To install Restructured Text project support, download the script
+<p>To install ReSructuredText project support, download the script
 <a class="reference download internal" href="_downloads/rest-install.sh"><tt class="xref download docutils literal"><span class="pre">rest-install.sh</span></tt></a> to the desktop and
 execute it with the command,</p>
 <div class="highlight-python"><div class="highlight"><pre>bash rest-install.sh
@@ -169,10 +172,13 @@ command <strong class="program">~/Projects/doc-newproject.sh {project_folder_nam
 <div class="line-block">
 <div class="line">Recommended location for script: <tt class="file docutils literal"><span class="pre">~/Projects/doc-newproject.sh</span></tt>.</div>
 <div class="line">Download link: <a class="reference download internal" href="_downloads/doc-newproject.sh"><tt class="xref download docutils literal"><span class="pre">doc-newproject.sh</span></tt></a>.</div>
-<div class="line">Get the script from the command line with::</div>
+<div class="line">Get the script from the command line with</div>
 </div>
 <blockquote>
-<div>wget -O doc-newproject.sh <a class="reference external" href="http://develop.aaltsys.info/resources/_downloads/doc-newproject.sh">http://develop.aaltsys.info/resources/_downloads/doc-newproject.sh</a></div></blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre>wget -O doc-newproject.sh http://develop.aaltsys.info/resources/_downloads/doc-newproject.sh
+</pre></div>
+</div>
+</div></blockquote>
 </div>
 <div class="section" id="doc-addbranch-sh">
 <h3>doc-addbranch.sh<a class="headerlink" href="#doc-addbranch-sh" title="Permalink to this headline">¶</a></h3>
@@ -181,10 +187,13 @@ command <strong class="program">~/Projects/doc-newproject.sh {project_folder_nam
 <div class="line-block">
 <div class="line">Recommended location for script: <tt class="file docutils literal"><span class="pre">~/Projects/doc-addbranch.sh</span></tt>.</div>
 <div class="line">Download link: <a class="reference download internal" href="_downloads/doc-addbranch.sh"><tt class="xref download docutils literal"><span class="pre">doc-addbranch.sh</span></tt></a>.</div>
-<div class="line">Get the script from the command line with::</div>
+<div class="line">Get the script from the command line with</div>
 </div>
 <blockquote>
-<div>wget -O doc-addbranch.sh <a class="reference external" href="http://develop.aaltsys.info/resources/_downloads/doc-addbranch.sh">http://develop.aaltsys.info/resources/_downloads/doc-addbranch.sh</a></div></blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre>wget -O doc-addbranch.sh http://develop.aaltsys.info/resources/_downloads/doc-addbranch.sh
+</pre></div>
+</div>
+</div></blockquote>
 </div>
 <div class="section" id="doc-deploy-sh">
 <h3>doc-deploy.sh<a class="headerlink" href="#doc-deploy-sh" title="Permalink to this headline">¶</a></h3>
@@ -193,10 +202,13 @@ the command <strong class="command">~/Projects/doc-deploy.sh {project_folder_nam
 <div class="line-block">
 <div class="line">Recommended location for script: <tt class="file docutils literal"><span class="pre">~/Projects/doc-deploy.sh</span></tt>.</div>
 <div class="line">Download link: <a class="reference download internal" href="_downloads/doc-deploy.sh"><tt class="xref download docutils literal"><span class="pre">doc-deploy.sh</span></tt></a></div>
-<div class="line">Get the script from the command line with::</div>
+<div class="line">Get the script from the command line with</div>
 </div>
 <blockquote>
-<div>wget -O doc-deploy.sh <a class="reference external" href="http://develop.aaltsys.info/resources/_downloads/doc-deploy.sh">http://develop.aaltsys.info/resources/_downloads/doc-deploy.sh</a></div></blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre>wget -O doc-deploy.sh http://develop.aaltsys.info/resources/_downloads/doc-deploy.sh
+</pre></div>
+</div>
+</div></blockquote>
 </div>
 <div class="section" id="aaltsys-theme-documents">
 <h3>aaltsys theme documents<a class="headerlink" href="#aaltsys-theme-documents" title="Permalink to this headline">¶</a></h3>
@@ -215,10 +227,13 @@ undesirable chuff in the repository.</p>
 <div class="line-block">
 <div class="line">Recommended file location: <tt class="file docutils literal"><span class="pre">~Projects/</span><em><span class="pre">documentation_folder_name</span></em><span class="pre">/.gitignore</span></tt>.</div>
 <div class="line">Download link: <a class="reference download internal" href="_downloads/.gitignore"><tt class="xref download docutils literal"><span class="pre">gitignore</span></tt></a>.</div>
-<div class="line">Get this file from the command line with::</div>
+<div class="line">Get this file from the command line with</div>
 </div>
 <blockquote>
-<div>wget -O .gitignore <a class="reference external" href="http://develop.aaltsys.info/resources/_downloads/.gitignore">http://develop.aaltsys.info/resources/_downloads/.gitignore</a></div></blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre>wget -O .gitignore http://develop.aaltsys.info/resources/_downloads/.gitignore
+</pre></div>
+</div>
+</div></blockquote>
 </div>
 <div class="section" id="htaccess">
 <h3>.htaccess<a class="headerlink" href="#htaccess" title="Permalink to this headline">¶</a></h3>
@@ -227,14 +242,18 @@ Heroku, add the following <tt class="file docutils literal"><span class="pre">.h
 <div class="line-block">
 <div class="line">Recommended location: <tt class="file docutils literal"><span class="pre">~/Projects/</span><em><span class="pre">documentation_folder_name</span></em><span class="pre">/_static/.htaccess</span></tt>.</div>
 <div class="line">Download link: <a class="reference download internal" href="_downloads/.htaccess"><tt class="xref download docutils literal"><span class="pre">htaccess</span></tt></a>.</div>
-<div class="line">Get this file from the command line with::</div>
+<div class="line">Get this file from the command line with</div>
 </div>
 <blockquote>
-<div>wget -O _static/.htaccess <a class="reference external" href="http://develop.aaltsys.info/resources/_downloads/.htaccess">http://develop.aaltsys.info/resources/_downloads/.htaccess</a></div></blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre>wget -O _static/.htaccess http://develop.aaltsys.info/resources/_downloads/.htaccess
+</pre></div>
+</div>
+</div></blockquote>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">An <tt class="file docutils literal"><span class="pre">.htpasswd</span></tt> file is also required, in the same directory.
-Learn about basic authentication using <tt class="file docutils literal"><span class="pre">.htaccess</span></tt></p>
+Learn about basic authentication using <tt class="file docutils literal"><span class="pre">.htaccess</span></tt> at
+<a class="reference external" href="http://www.htaccesstools.com/">.htaccess Tools</a></p>
 </div>
 <p>&#8212;</p>
 <p class="rubric">Footnotes</p>
