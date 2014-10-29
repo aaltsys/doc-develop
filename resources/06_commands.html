@@ -70,6 +70,10 @@
 <li><a class="reference internal" href="#setaf-setab-xterm-values">setaf/setab <em>xterm</em> values</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#variable-scope">Variable Scope</a></li>
+<li><a class="reference internal" href="#declared-variables">Declared Variables</a></li>
+<li><a class="reference internal" href="#id5">Global Environment Variables</a></li>
+<li><a class="reference internal" href="#exported-variables">Exported Variables</a></li>
 </ul>
 </li>
 </ul>
@@ -665,7 +669,112 @@ tput setab 0
 <p class="first admonition-title">See also</p>
 <p class="last">For more information, see the <tt class="docutils literal"><span class="pre">terminfo</span></tt> manpage.</p>
 </div>
+<p>&#8212;</p>
 </div>
+</div>
+<div class="section" id="variable-scope">
+<h2>Variable Scope<a class="headerlink" href="#variable-scope" title="Permalink to this headline">¶</a></h2>
+<p>Variables may have different scopes in bash shell.</p>
+<ul class="simple">
+<li>Sub-shell local variables</li>
+<li>Declared Local Variables</li>
+<li>Exported Environment Session Variables</li>
+<li>Global Environment Variables</li>
+</ul>
+</div>
+<div class="section" id="declared-variables">
+<h2>Declared Variables<a class="headerlink" href="#declared-variables" title="Permalink to this headline">¶</a></h2>
+<div class="sidebar">
+<p class="first sidebar-title">Example Declared Variable ::</p>
+<blockquote>
+<div>THISVARIABLE=&#8221;A string&#8221;</div></blockquote>
+<p>The value can be changed by re-declaring it.</p>
+<div class="last highlight-python"><div class="highlight"><pre><span class="n">THISVARIABLE</span><span class="o">=</span><span class="s">&quot;A new string&quot;</span>
+</pre></div>
+</div>
+</div>
+<p>Declared Variables are those which are assigned within a script. The value of a
+variable and its data type can be changed at any time by re-assigning it.</p>
+</div>
+<div class="section" id="id5">
+<h2>Global Environment Variables<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<p>Global Environment Variables are declared and exported when a shell session is
+instantiated. A few useful Environment Variables are listed following:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="29%" />
+<col width="71%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Environment Variables</th>
+<th class="head">Variable description of use.</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>$BASH</td>
+<td>full filename used to invoke bash</td>
+</tr>
+<tr class="row-odd"><td>$EUID</td>
+<td>effective user ID (number) of the current user</td>
+</tr>
+<tr class="row-even"><td>$GROUPS</td>
+<td>array of groups the current user is a member of</td>
+</tr>
+<tr class="row-odd"><td>$HOSTNAME</td>
+<td>the name of the current host</td>
+</tr>
+<tr class="row-even"><td>$IFS</td>
+<td>characters treated as white space</td>
+</tr>
+<tr class="row-odd"><td>$LINENO</td>
+<td>sequential number of executing line in a script</td>
+</tr>
+<tr class="row-even"><td>$MACHTYPE</td>
+<td>GNU cpu-company-system machine type description</td>
+</tr>
+<tr class="row-odd"><td>$OSTYPE</td>
+<td>string describing the operating system</td>
+</tr>
+<tr class="row-even"><td>$PATH</td>
+<td>search path for commands</td>
+</tr>
+<tr class="row-odd"><td>$PPID</td>
+<td>process id of the shell&#8217;s parent</td>
+</tr>
+<tr class="row-even"><td>$PWD</td>
+<td>when called, it returns the current directory</td>
+</tr>
+<tr class="row-odd"><td>$UID</td>
+<td>user ID of the current user</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="exported-variables">
+<h2>Exported Variables<a class="headerlink" href="#exported-variables" title="Permalink to this headline">¶</a></h2>
+<p>Type these commands into the terminal:</p>
+<div class="highlight-python"><div class="highlight"><pre>export NUMBER=12
+echo &quot;echo $NUMBER&quot; &gt; test-script.sh
+bash ./test-script.sh
+</pre></div>
+</div>
+<p>The value <tt class="docutils literal"><span class="pre">12</span></tt> should be returned, as that is the exported value of
+<tt class="docutils literal"><span class="pre">NUMBER</span></tt>.</p>
+<p>Now, type:</p>
+<div class="highlight-python"><div class="highlight"><pre>echo &quot;NUMBER=4&quot; &gt; test-script.sh
+echo &#39;echo $NUMBER&#39; &gt;&gt; test-script.sh
+bash test-script.sh
+echo $NUMBER
+</pre></div>
+</div>
+<p>Notice that NUMBER is now equal to <tt class="docutils literal"><span class="pre">4</span></tt> <em>within *``test-script.sh``, but it
+retains the value ``12`` at the terminal. If a shell script reassigns an
+exported variable, the variable is overloaded with a new local version
+*within the script</em>, but the original assignment is retained in the shell
+session.</p>
+<p>Exported variables must be assigned and then exported. Once exported, any script
+or command in the current shell session may reference the variable, but the
+value of the exported variable is cleared when the terminal is closed.</p>
 </div>
 </div>
 

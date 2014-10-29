@@ -24,7 +24,7 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="Linux Shell Script Programming 1.0 documentation" href="index.html" />
-    <link rel="next" title="Copy Conventions for Success" href="07_lesson3.html" />
+    <link rel="next" title="Exercise 3: Automation Script" href="07_lesson3.html" />
     <link rel="prev" title="Exercise 2: Evaluating Logic" href="05_lesson2.html" /> 
   </head>
   <body>
@@ -32,7 +32,7 @@
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="07_lesson3.html" title="Copy Conventions for Success"
+          <a href="07_lesson3.html" title="Exercise 3: Automation Script"
              accesskey="N">next</a></li>
         <li class="right" >
           <a href="05_lesson2.html" title="Exercise 2: Evaluating Logic"
@@ -64,7 +64,7 @@
                         title="previous chapter">Exercise 2: Evaluating Logic</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="07_lesson3.html"
-                        title="next chapter">Copy Conventions for Success</a></p>
+                        title="next chapter">Exercise 3: Automation Script</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="_sources/06_concerns.txt"
@@ -218,11 +218,11 @@ might be a broken system.</p>
 ...
 </pre></div>
 </div>
-<p>This piece of code is too specific: because it contains the phrase &#8220;Say Hello,&#8221;
-it is useful only in our &#8220;Hello World&#8221; example. Placing the text &#8220;Say Hello&#8221; in
-a variable and assigning it in our variable declarations will generalize the
-snippet and allow it to be used in any script without further code changes.
-This will save programming and testing time down the road.</p>
+<p>The phrase <tt class="docutils literal"><span class="pre">Say</span> <span class="pre">Hello</span></tt> makes this code specific to the <strong class="program">Hello World</strong>
+example script. Placing the text <tt class="docutils literal"><span class="pre">Say</span> <span class="pre">Hello</span></tt> in a variable and assigning it
+in our variable declarations will generalize the snippet and allow it to be
+used in any script without further code changes. This will save programming and
+testing time down the road.</p>
 <p>There are other reasons to assign strings to variables in declarations at the
 top of a program. Configuration information will be exposed in the variable
 declarations instead of being buried in the script, and changing the variable&#8217;s
@@ -260,15 +260,15 @@ may be displayed to the user, and so language could be a concern. Then, there
 are variables which represent configuration settings for a system. We would
 want to change program configuration items without re-writing code, so
 configuration settings should be stored in a text file, and not hard coded.</p>
-<p>A common form of configuration file is structured just like variable assignment
-declarations. In fact, a program usually contains exactly the same statements
-as default variable declarations, followed by a routine to override the defaults
-with configuration values: maybe from a global file, then from a user file.</p>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
 <p class="last">Unixes store most configuration files in directory <tt class="file docutils literal"><span class="pre">/etc/</span></tt>, or as
 hidden files in the user&#8217;s home directory <tt class="file docutils literal"><span class="pre">~/</span></tt>.</p>
 </div>
+<p>A common form of configuration file is structured just like variable assignment
+declarations. In fact, a program usually contains exactly the same statements
+as default variable declarations, followed by a routine to override the defaults
+with configuration values: maybe from a global file, then from a user file.</p>
 <p>So the contents of a simple configuration file would be lines like:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span class="nv">VARIABLE1</span><span class="o">=</span>VALUE1
 <span class="nv">VARIABLE2</span><span class="o">=</span>VALUE2
@@ -292,10 +292,6 @@ when prompted with <tt class="docutils literal"><span class="pre">Do</span> <spa
 <p>Applying embedded color commands is a function of the <strong class="command">echo</strong> command,
 provided the <tt class="docutils literal"><span class="pre">-e</span></tt> option is included in the command. Try out the following
 commands in the terminal to see how this works.</p>
-<p>export TEXT=&#8221;Colorize my words&#8221;
-echo -e &#8220;e[1;31m $TEXT e[0m&#8221;  ; # partial quoting
-echo -e &#8216;e[1;31m $TEXT e[0m&#8217;  ; # full quoting
-echo &#8220;e[1;31m $TEXT e[0m&#8221;     ; # omitting -e option</p>
 <p><a class="reference external" href="../resources/06_commands.html#variables-color" title="(in Developer Documentation Resource Pages v0.5)"><em>Terminal color settings</em></a> documents the possible codes which are accepted at the
 terminal for changing the displayed colors.</p>
 <div class="admonition note">
@@ -337,8 +333,8 @@ messages, to see the results of an executed program.</p>
 </pre></div>
 </div>
 <p>Note that this command does not require the <tt class="docutils literal"><span class="pre">-e</span></tt> option. Partial quoting
-(&#8220;<tt class="docutils literal"><span class="pre">textstring</span></tt>&#8221;) is required to evaluate embedded code in quoted text, so
-this command will not work with full quotes (&#8216;).</p>
+(<tt class="docutils literal"><span class="pre">&quot;textstring&quot;</span></tt>) is required to evaluate embedded code in quoted text, so
+this command will not work with full quotes (<tt class="docutils literal"><span class="pre">'</span></tt>).</p>
 </div>
 </div>
 </div>
@@ -353,7 +349,7 @@ this command will not work with full quotes (&#8216;).</p>
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="07_lesson3.html" title="Copy Conventions for Success"
+          <a href="07_lesson3.html" title="Exercise 3: Automation Script"
              >next</a></li>
         <li class="right" >
           <a href="05_lesson2.html" title="Exercise 2: Evaluating Logic"

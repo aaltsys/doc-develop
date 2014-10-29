@@ -6,7 +6,7 @@ Software Installation
 =============================
 
 Installation of Linux and scripted OS configuration is described at 
-http://publish.aaltsys.com/02_installation.html.
+:ref:`downloads`.
 
 Desktop Configuration
 =============================

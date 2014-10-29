@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Copy Conventions for Success &mdash; Linux Shell Script Programming 1.0 documentation</title>
+    <title>Exercise 3: Automation Script &mdash; Linux Shell Script Programming 1.0 documentation</title>
     
     <link rel="stylesheet" href="_static/aaltsys.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="Linux Shell Script Programming 1.0 documentation" href="index.html" />
-    <link rel="next" title="Expressions and Logic Scripts" href="05_answers2.html" />
+    <link rel="next" title="Lesson Sample Scripts" href="10_answers.html" />
     <link rel="prev" title="Programming Concerns" href="06_concerns.html" /> 
   </head>
   <body>
@@ -32,7 +32,7 @@
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="05_answers2.html" title="Expressions and Logic Scripts"
+          <a href="10_answers.html" title="Lesson Sample Scripts"
              accesskey="N">next</a></li>
         <li class="right" >
           <a href="06_concerns.html" title="Programming Concerns"
@@ -44,13 +44,19 @@
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">Copy Conventions for Success</a><ul>
-<li><a class="reference internal" href="#attending-conventions">Attending Conventions</a><ul>
-<li><a class="reference internal" href="#inputs-and-logic-tests">Inputs and Logic tests</a></li>
-<li><a class="reference internal" href="#program-flow-control">Program flow control</a></li>
+<li><a class="reference internal" href="#">Exercise 3: Automation Script</a><ul>
+<li><a class="reference internal" href="#preliminaries">Preliminaries</a><ul>
+<li><a class="reference internal" href="#add-function-confirm">Add function confirm</a></li>
+<li><a class="reference internal" href="#initialization-section">Initialization Section</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#in-closing">In Closing</a></li>
+<li><a class="reference internal" href="#serving-the-program-purpose">Serving the Program Purpose</a><ul>
+<li><a class="reference internal" href="#speeding-up-installs">Speeding up Installs</a></li>
+<li><a class="reference internal" href="#configuring-apt-fast">Configuring apt-fast</a></li>
+<li><a class="reference internal" href="#adding-a-software-repository">Adding a software repository</a></li>
+<li><a class="reference internal" href="#adding-an-application">Adding an application</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -59,8 +65,8 @@
   <p class="topless"><a href="06_concerns.html"
                         title="previous chapter">Programming Concerns</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="05_answers2.html"
-                        title="next chapter">Expressions and Logic Scripts</a></p>
+  <p class="topless"><a href="10_answers.html"
+                        title="next chapter">Lesson Sample Scripts</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="_sources/07_lesson3.txt"
@@ -87,107 +93,338 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="copy-conventions-for-success">
-<span id="convention-lesson"></span><h1>Copy Conventions for Success<a class="headerlink" href="#copy-conventions-for-success" title="Permalink to this headline">¶</a></h1>
-<p>Either add or change a configuration setting in a file using programmatic control:</p>
-<div class="highlight-python"><div class="highlight"><pre>if [[ -z &quot;$(grep &#39;vm.mmap_min_addr&#39; /etc/modules)&quot; ]] ; then
-   echo -e /n &quot;vm.mmap_min_addr=0&quot; &gt;&gt; /etc/modules ;
-else
-   sed -i &#39;/vm.mmap_min_addr/c\vn.mmap_min_addr=0&#39; ~/etc/modules ;
-fi
+  <div class="section" id="exercise-3-automation-script">
+<span id="convention-lesson"></span><h1>Exercise 3: Automation Script<a class="headerlink" href="#exercise-3-automation-script" title="Permalink to this headline">¶</a></h1>
+<p>The usual purpose of any program is to automate an operation, so that it can be
+performed repeatedly and reliably.</p>
+<p>Linux gurus have done an excellent job of automating basic Linux installation,
+and the same goes for managing individual software packages. However, it still
+may take a user somewhere between hours and weeks to get a system to behave
+exactly to her liking: right applications, right options, just-so configuration.</p>
+<p>This script will automate the application installation process for an Ubuntu
+desktop system which is used for productivity tasks or software development
+work.</p>
+<div class="sidebar">
+<p class="first sidebar-title">Function confirm</p>
+<div class="last highlight-bash"><div class="highlight"><pre><span class="c"># ===== Ask for confirmation</span>
+<span class="c"># Requires $PROMPT, returns $EXIT</span>
+confirm<span class="o">()</span> <span class="o">{</span>
+  tput rev
+  <span class="nb">echo</span> -n <span class="nv">$PROMPT</span>
+  <span class="nb">read</span> -n 1 -p <span class="s2">&quot; (Yes/no)?&quot;</span> RESPONSE
+  tput sgr0
+  <span class="nb">echo</span>
+<span class="nb">  </span><span class="k">case</span> <span class="nv">$RESPONSE</span> in
+    Y|y<span class="o">)</span>
+      <span class="nv">EXIT</span><span class="o">=</span><span class="s1">&#39;0&#39;</span> ;;
+    N|n<span class="o">)</span>
+      <span class="nv">EXIT</span><span class="o">=</span><span class="s1">&#39;1&#39;</span> ;;
+    *<span class="o">)</span>
+      <span class="nv">EXIT</span><span class="o">=</span><span class="s1">&#39;2&#39;</span> ;;
+  <span class="k">esac</span>
+<span class="o">}</span>
 </pre></div>
 </div>
-<div class="section" id="attending-conventions">
-<h2>Attending Conventions<a class="headerlink" href="#attending-conventions" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="inputs-and-logic-tests">
-<h3>Inputs and Logic tests<a class="headerlink" href="#inputs-and-logic-tests" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="preliminaries">
+<h2>Preliminaries<a class="headerlink" href="#preliminaries" title="Permalink to this headline">¶</a></h2>
+<p>To begin, create a fresh copy of <a class="reference download internal" href="_downloads/example.sh"><tt class="xref download docutils literal"><span class="pre">example.sh</span></tt></a>
+and save it under the name <tt class="file docutils literal"><span class="pre">installer.sh</span></tt>.</p>
+<div class="section" id="add-function-confirm">
+<h3>Add function confirm<a class="headerlink" href="#add-function-confirm" title="Permalink to this headline">¶</a></h3>
+<p>The script will need a user confirmation to prevent runaway execution. This is
+supplied by a function in the library, so let&#8217;s add that to FUNCTIONS now.</p>
+<div class="admonition-instruction admonition">
+<p class="first admonition-title">Instruction</p>
+<p class="last">Add the sidebar code into the &#8220;FUNCTIONS&#8221; section of <tt class="file docutils literal"><span class="pre">installer.sh</span></tt>.
+The comments say that variable <tt class="docutils literal"><span class="pre">PROMPT</span></tt> is required, so declare this
+variable with the statement <tt class="docutils literal"><span class="pre">PROMPT=''</span></tt> in the variable declaration
+section as well.</p>
+</div>
+</div>
+<div class="section" id="initialization-section">
+<h3>Initialization Section<a class="headerlink" href="#initialization-section" title="Permalink to this headline">¶</a></h3>
 <div class="sidebar">
-<p class="first sidebar-title">Decision logic</p>
-<div class="last highlight-bash"><div class="highlight"><pre><span class="nb">echo</span> -e <span class="s2">&quot;\n Install apt-fast?&quot;</span>
-<span class="nb">read</span> -n 1 -p <span class="s2">&quot;(y/n)&quot;</span> RESP
-<span class="k">if</span> <span class="o">[</span> <span class="s2">&quot;$RESP&quot;</span> !<span class="o">=</span> <span class="s1">&#39;y&#39;</span> <span class="o">]</span>; <span class="k">then</span>
-<span class="k">  </span><span class="nb">echo</span> -e <span class="s2">&quot;\n Canceled&quot;</span>
-  <span class="nb">exit </span>1
+<p class="first sidebar-title">Confirm script execution</p>
+<div class="last highlight-bash"><div class="highlight"><pre><span class="c"># check OS type</span>
+<span class="c"># Uses PROMPT, returns OS, VERSION, EXIT</span>
+<span class="nb">read </span>OS &lt; /etc/issue
+<span class="k">case</span> <span class="nv">$OS</span> in
+  Ubuntu*<span class="o">)</span>
+    <span class="nv">ARRAY</span><span class="o">=(</span><span class="nv">$OS</span><span class="o">)</span>
+    <span class="nv">VERSION</span><span class="o">=</span><span class="k">${</span><span class="nv">ARRAY</span><span class="p">[1]</span><span class="k">}</span>
+    ;;
+  Debian*<span class="o">)</span> ;;
+  *<span class="o">)</span>
+    <span class="nb">echo</span> <span class="s2">&quot;Not Debian or Ubuntu, exiting ...&quot;</span>
+    <span class="nv">EXIT</span><span class="o">=</span><span class="s1">&#39;1&#39;</span> ;;
+<span class="k">esac</span>
+<span class="c">#</span>
+<span class="c"># Check privileges</span>
+<span class="k">if</span> <span class="o">[[</span> <span class="nv">$EUID</span> -ne 0 <span class="o">]]</span>
+<span class="k">then</span>
+<span class="k">  </span><span class="nb">echo</span> -e <span class="s2">&quot;\e[1;31m try again using sudo \e[0m&quot;</span>
+  <span class="nv">EXIT</span><span class="o">=</span><span class="s1">&#39;1&#39;</span>
+<span class="k">else</span>
+  <span class="c"># test user confirmation</span>
+  <span class="nv">PROMPT</span><span class="o">=</span><span class="s1">&#39;Install packages for Kubuntu&#39;</span>
+  confirm
+<span class="k">fi</span>
+<span class="c">#</span>
+<span class="k">if</span> <span class="o">[[</span> <span class="nv">$EXIT</span> -gt 0 <span class="o">]]</span>
+<span class="k">then </span><span class="nb">exit</span> <span class="nv">$EXIT</span>
 <span class="k">fi</span>
 </pre></div>
 </div>
 </div>
-<p>Use a read statement to get a single user response at the command line. Use this
-to have the user confirm whenever a script will permanently affect a system.</p>
-<p>Test all possible responses to prevent erroneous or redundant script execution.
-In the sidebar example, any input other than <tt class="kbd docutils literal"><span class="pre">y</span></tt> will cause the script to
-exit. If the script had been written to exit on <tt class="kbd docutils literal"><span class="pre">n</span></tt>, then any key other
-than <tt class="kbd docutils literal"><span class="pre">n</span></tt> would result in executing the script.</p>
+<p>Before a script does run, it is necessary to check that the script should run.
+Following is a set of conditions that must be satisfied before executing
+<tt class="file docutils literal"><span class="pre">installer.sh</span></tt>:</p>
+<ul class="simple">
+<li>The system must be Debian or Ubuntu,</li>
+<li>The user must have <tt class="docutils literal"><span class="pre">root</span></tt> privileges,</li>
+<li>The user must confirm the action.</li>
+</ul>
+<p>Again, these checks are not specific to the purpose of this script, so a general
+routine will be used.</p>
+<div class="admonition-instruction admonition">
+<p class="first admonition-title">Instruction</p>
+<p class="last">Add the sidebar code to the CONFIRMATION section of <tt class="file docutils literal"><span class="pre">installer.sh</span></tt>.</p>
 </div>
-<div class="section" id="program-flow-control">
-<h3>Program flow control<a class="headerlink" href="#program-flow-control" title="Permalink to this headline">¶</a></h3>
-<div class="sidebar">
-<p class="first sidebar-title">Program flow</p>
-<div class="last highlight-bash"><div class="highlight"><pre><span class="k">for </span>OPT in <span class="s2">&quot;$@&quot;</span>
-  <span class="k">do</span>
-<span class="k">    case</span> <span class="nv">$OPT</span> in
-      -h|--help<span class="o">)</span>
-        display-help
-        <span class="nb">exit</span>
-        ;;
-      -n|--nodeploy<span class="o">)</span>
-        <span class="nv">NODEPLOY</span><span class="o">=</span><span class="s1">&#39;YES&#39;</span>
-        <span class="nb">shift</span>
-        ;;
-      *<span class="o">)</span>
-        <span class="nv">PROJECT</span><span class="o">=</span><span class="nv">$OPT</span>
-        <span class="nb">shift</span>
-        ;;
-    <span class="k">esac</span>
-<span class="k">  done</span>
+<p>For the variables which will be used or returned, add the following variable
+declarations as well:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">PROMPT</span><span class="o">=</span><span class="s">&#39;&#39;</span>
+<span class="n">EXIT</span><span class="o">=</span><span class="mi">0</span>
+<span class="n">OS</span><span class="o">=</span><span class="s">&#39;&#39;</span>
+<span class="n">VERSION</span><span class="o">=</span><span class="s">&#39;&#39;</span>
+</pre></div>
+</div>
+<p>Finally, add a couple statements to the program exit section also, so that a
+normal exit can be identified:</p>
+<div class="highlight-python"><div class="highlight"><pre>echo $EXIT
+exit $EXIT
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Tests are important for the safety and reliablilty of a program.</p>
+</div>
+</div>
+</div>
+<div class="section" id="serving-the-program-purpose">
+<h2>Serving the Program Purpose<a class="headerlink" href="#serving-the-program-purpose" title="Permalink to this headline">¶</a></h2>
+<p>This script will use Debian&#8217;s <strong class="program">apt</strong> software repository system to
+install programs.</p>
+<div class="section" id="speeding-up-installs">
+<h3>Speeding up Installs<a class="headerlink" href="#speeding-up-installs" title="Permalink to this headline">¶</a></h3>
+<p><strong class="program">apt</strong> is slow to retrieve packages, due to latency of software
+repository mirrors. Program <strong class="program">apt-fast</strong> improves download speeds by
+accessing multiple nearby mirrors simultaneously, like torrents do. We want a
+routine to install <strong class="program">apt-fast</strong>, which is cribbed from
+<a class="reference external" href="http://xmodulo.com/speed-slow-apt-get-install-debian-ubuntu.html">this website</a>.
+The instructions for Ubuntu 14.04 and previous supported versions are:</p>
+<div class="highlight-python"><div class="highlight"><pre>sudo add-apt-repository ppa:apt-fast/stable
+sudo apt-get update
+sudo apt-get install apt-fast
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>The instructions for installing apt-fast on Debian are provided here, but
+not implemented in this example script.</p>
+<div class="last highlight-bash"><div class="highlight"><pre>sudo apt-get install aria2
+wget https://github.com/ilikenwf/apt-fast/archive/master.zip
+unzip master.zip
+<span class="nb">cd </span>apt-fast-master
+sudo cp apt-fast /usr/bin
+sudo cp apt-fast.conf /etc
+sudo cp ./man/apt-fast.8 /usr/share/man/man8
+sudo gzip /usr/share/man/man8/apt-fast.8
+sudo cp ./man/apt-fast.conf.5 /usr/share/man/man5
+sudo gzip /usr/share/man/man5/apt-fast.conf.5
 </pre></div>
 </div>
 </div>
-<p>The sidebar code here demonstrates how a relatively complex task, reading and
-processing a list of items entered in arbitrary order, might be addressed with
-a complex program design. Here a compound statement, the <tt class="docutils literal"><span class="pre">for..do..done</span></tt>
-looping control, envelopes another compound statement, the <tt class="docutils literal"><span class="pre">case..test..esac</span></tt>
-logical test and assignment. Let&#8217;s break this down.</p>
-<ul class="simple">
-<li>The expression <tt class="docutils literal"><span class="pre">$&#64;</span></tt> is an array of all input parameters, <tt class="docutils literal"><span class="pre">$1</span> <span class="pre">...</span> <span class="pre">$n</span></tt>.</li>
-<li>The first statement, <tt class="docutils literal"><span class="pre">for</span> <span class="pre">OPT</span> <span class="pre">in</span> <span class="pre">&quot;$&#64;&quot;</span></tt>, iteratively assigns elements of
-<tt class="docutils literal"><span class="pre">$&#64;</span></tt> to variable <tt class="docutils literal"><span class="pre">OPT</span></tt>.</li>
-<li>The second and last statements, <tt class="docutils literal"><span class="pre">do</span> <span class="pre">...</span> <span class="pre">done</span></tt>, bound the statements to be
-iterated with respect to <tt class="docutils literal"><span class="pre">OPT</span></tt>.</li>
-<li>The statement <tt class="docutils literal"><span class="pre">case</span> <span class="pre">$OPT</span> <span class="pre">in</span></tt> specifies to test the values of <tt class="docutils literal"><span class="pre">OPT</span></tt>.</li>
-<li>Each test ends with a closing parenthesis <tt class="docutils literal"><span class="pre">)</span></tt>. The tests are,<ol class="arabic">
-<li><tt class="docutils literal"><span class="pre">-h</span></tt> or <tt class="docutils literal"><span class="pre">--help</span></tt>: display help, then exit</li>
-<li><tt class="docutils literal"><span class="pre">-n</span></tt> or <tt class="docutils literal"><span class="pre">--nodeploy</span></tt>: set variable <tt class="docutils literal"><span class="pre">NODEPLOY='YES'</span></tt></li>
-<li>Any other input: assign the input value to variable <tt class="docutils literal"><span class="pre">PROJECT</span></tt></li>
-</ol>
-</li>
-</ul>
+<div class="sidebar">
+<p class="first sidebar-title">Installing apt-fast</p>
+<div class="last highlight-bash"><div class="highlight"><pre>apt-fast-install<span class="o">()</span> <span class="o">{</span>
+  <span class="c"># uses VERSION, EXIT, PROMPT</span>
+  <span class="c"># returns PKGS</span>
+  <span class="c"># calls apt-repos, apt-pkgs, confirm</span>
+  <span class="c">#</span>
+  <span class="c"># check if apt-fast is installed</span>
+  <span class="nv">PKGS</span><span class="o">=</span><span class="s1">&#39;apt-fast&#39;</span>
+  dpkg -s <span class="nv">$PKGS</span> &gt; null
+  <span class="k">if</span> <span class="o">[</span> <span class="nv">$?</span> -ne 0 <span class="o">]</span>
+  <span class="k">then</span>
+    <span class="c"># determine REPOS for apt-fast</span>
+    <span class="k">case </span>VERSION in
+      10*|11*|12*|13*|14.04*<span class="o">)</span>
+        <span class="nv">REPOS</span><span class="o">=</span><span class="s1">&#39;ppa:apt-fast/stable&#39;</span> ;;
+      *<span class="o">)</span>
+        <span class="nb">echo</span> -e <span class="s2">&quot;\e[1;31m apt-fast is not released for $VERSION \e[0m&quot;</span> ;;
+    <span class="k">esac</span>
+    <span class="c">#</span>
+    <span class="k">if</span> <span class="o">[[</span> <span class="nv">$REPOS</span> !<span class="o">=</span> <span class="s1">&#39;&#39;</span> <span class="o">]]</span>
+    <span class="k">then</span>
+<span class="k">      </span><span class="nv">PROMPT</span><span class="o">=</span><span class="s1">&#39;Install program apt-fast&#39;</span>
+      confirm
+      <span class="k">if</span> <span class="o">[[</span> <span class="nv">$EXIT</span> -gt 0 <span class="o">]]</span>
+      <span class="k">then</span>
+        <span class="c"># not confirmed, reset EXIT</span>
+        <span class="nv">EXIT</span><span class="o">=</span><span class="s1">&#39;0&#39;</span>
+      <span class="k">else</span>
+        <span class="c"># install apt-fast</span>
+        <span class="nv">PKGS</span><span class="o">=</span><span class="s1">&#39;apt-fast&#39;</span>
+        apt-repos
+        apt-pkgs
+      <span class="k">fi</span>
+<span class="k">    fi</span>
+<span class="k">  fi</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+<p>The first question for this script needs to be, has <strong class="program">apt-fast</strong> been
+installed before? This question must be addressed for the script to be
+<em>idempotent</em>.</p>
+<p>Next up is to determine if <strong class="program">apt-fast</strong> can be installed: is there a
+repository for it? Using the <tt class="docutils literal"><span class="pre">$VERSION</span></tt> variable from the starting
+confirmation, a case statement calculates the repository string in <tt class="docutils literal"><span class="pre">$REPOS</span></tt>.</p>
+<p>Finally, the user gets choose whether or not to install <strong class="program">apt-fast</strong>.
+This section reuses the <tt class="docutils literal"><span class="pre">confirm</span></tt> function we started the script with.</p>
+<div class="admonition-instruction admonition">
+<p class="first admonition-title">Instruction</p>
+<p class="last">The sidebar code was written specifically to install <strong class="program">apt-fast</strong>.
+Add this function to the DECLARE FUNCTIONS section of <tt class="file docutils literal"><span class="pre">installer.sh</span></tt>,
+placing it after function <tt class="docutils literal"><span class="pre">confirm()</span></tt>. Then add the call to function
+<tt class="docutils literal"><span class="pre">apt-fast-install</span></tt> in the VALIDITY TESTS section of the MAIN program.</p>
+</div>
+<p>In addition to the function code, add statement <tt class="docutils literal"><span class="pre">PKGS=''</span></tt> to the variable
+declarations, and add placeholder functions <tt class="docutils literal"><span class="pre">apt-repos()</span> <span class="pre">{</span> <span class="pre">:</span> <span class="pre">}</span></tt> and
+<tt class="docutils literal"><span class="pre">apt-pkgs()</span> <span class="pre">{</span> <span class="pre">:</span> <span class="pre">}</span></tt> to the DECLARE FUNCTIONS section above function
+<tt class="docutils literal"><span class="pre">apt-fast-install()</span></tt>.</p>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">Empty functions will generate errors on execution. The <tt class="docutils literal"><span class="pre">:</span></tt> is a bash
+built-in equivalent of NOP, or no operation, in the placeholder functions.</p>
+</div>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
-<p class="last">It may seem obvious, but logic errors are very common when multiple responses
-or numeric options are used, and a <strong class="command">case</strong> statement processes the
-input.</p>
+<p class="last">A function should always be declared preceding any calls to the function
+name.</p>
+</div>
+<div class="sidebar">
+<p class="first sidebar-title">Routine apt-fast-config</p>
+<div class="last highlight-bash"><div class="highlight"><pre>apt-fast-config<span class="o">()</span> <span class="o">{</span>
+  <span class="c"># updates configuration file /etc/apt-fast.conf</span>
+  <span class="nv">MIRRORS</span><span class="o">=</span><span class="s1">&#39;MIRRORS=(&quot;http://us.archive.ubuntu.com/ubuntu,&#39;</span>
+  MIRRORS+<span class="o">=</span><span class="s1">&#39;http://mirror.pnl.gov/ubuntu/,&#39;</span>
+  MIRRORS+<span class="o">=</span><span class="s1">&#39;http://mirrors.centarra.com/ubuntu/,&#39;</span>
+  MIRRORS+<span class="o">=</span><span class="s1">&#39;http://mirror.tocici.com/ubuntu/,&#39;</span>
+  MIRRORS+<span class="o">=</span><span class="s1">&#39;http://mirrors.us.kernel.org/ubuntu/,&#39;</span>
+  <span class="c">#</span>
+  sed -r <span class="s2">&quot;/MIRRORS=.*$/d&quot;</span> -i /etc/apt-fast.conf
+  sed -r <span class="s2">&quot;$ a\$MIRRORS&quot;</span> -i /etc/apt-fast.conf
+<span class="o">}</span>
+</pre></div>
 </div>
 </div>
 </div>
-<div class="section" id="in-closing">
-<h2>In Closing<a class="headerlink" href="#in-closing" title="Permalink to this headline">¶</a></h2>
-<p>One might notice that this guide did not require a special development
-environment, or IDE. Instead, we have used the system file browser, the system
-text editor, and the system command terminal. The key is, we have used the basic
-services of the Linux OS to provide our development environment.</p>
-<p>A recent discussion topic was why <em>Java</em> is being supplanted by languages such
-as <em>Python</em> and <em>Ruby</em>. One respondent said that in his last five <em>Java</em>
-contracts, he had to create a fresh virtual machine for each contract, with the
-IDE in each machine custom configured to the specific requirements of that job.
-He spent more time chasing configuration settings than programming code.</p>
-<p>As a matter of philosophy, these guides refuse to discuss the configuration of
-programming environments, or to talk about costly and proprietary langauges and
-tools. If this means excluding <em>Java</em> and <em>.NET</em> from consideration, sobeit.
-Instead we will focus on programming conventions, on skills to make developers
-productive and to get them paid.</p>
-<p>Hopefully you will benefit from this free and open approach to learning
-development skills, as we know others have. Good luck.</p>
+<div class="section" id="configuring-apt-fast">
+<h3>Configuring apt-fast<a class="headerlink" href="#configuring-apt-fast" title="Permalink to this headline">¶</a></h3>
+<p>Configuring <strong class="program">apt-fast</strong> requires selecting up to five mirrors which are
+geographically close to the user. There are about
+<a class="reference external" href="https://launchpad.net/ubuntu/+archivemirrors">70 U.S. mirrors for Ubuntu</a>,
+of which maybe 20% are actually up-to-date, and some of these mirrors have
+limited bandwidth.</p>
+<p>Writing a dynamic configuration routine for <strong class="program">apt-fast</strong> would require
+screen-scraping the Ubuntu mirrors webpages and a fair bit more. As a
+work-around, a mirrors list has been assembled by hand and (ugh!) assigned to a
+variable <tt class="docutils literal"><span class="pre">MIRRORS</span></tt>. This data must be moved to a configuration file ASAP.</p>
+<div class="sidebar">
+<p class="first sidebar-title">Routine apt-repos</p>
+<div class="last highlight-bash"><div class="highlight"><pre>apt-repos<span class="o">()</span> <span class="o">{</span>
+  <span class="c"># uses REPOS, APTMGR, returns APT</span>
+  <span class="c"># calls apt-manager</span>
+  <span class="c">#</span>
+  apt-manager
+  <span class="c"># Install repositories listed in variable REPOS</span>
+  <span class="nv">APT</span><span class="o">=</span>0
+  <span class="k">for </span>NAME in <span class="nv">$REPOS</span>
+  <span class="k">do</span>
+<span class="k">    </span>APT+<span class="o">=</span>1
+    apt-add-repository <span class="nv">$NAME</span>
+  <span class="k">done</span>
+  <span class="c"># verify installation and update packages indexes</span>
+  <span class="k">if</span> <span class="o">[</span> <span class="nv">$APT</span> -ne 0 <span class="o">]</span>
+  <span class="k">then</span>
+<span class="k">    </span><span class="nb">echo</span> -e <span class="s2">&quot;\e[1;32m Updating repository indexes \e[0m&quot;</span>
+    <span class="nv">$APTMGR</span> -y -f install <span class="o">&amp;&amp;</span> apt-get -y update
+  <span class="k">fi</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="adding-a-software-repository">
+<h3>Adding a software repository<a class="headerlink" href="#adding-a-software-repository" title="Permalink to this headline">¶</a></h3>
+<p>This script will use Debian&#8217;s <strong class="program">apt</strong> software repository system to
+install programs. <strong class="program">apt</strong> can install multiple packages at a time, but
+if any of a list of packages have no installation candidate, the whole list
+will be skipped. Package lists are installed one package at a time to avoid
+skipping.</p>
+<p>&#8212;</p>
+<div class="sidebar">
+<p class="first sidebar-title">Routine apt-pkgs</p>
+<div class="last highlight-bash"><div class="highlight"><pre>apt-pkgs<span class="o">()</span> <span class="o">{</span>
+  <span class="c"># uses PKGS, APTMGR; returns APT</span>
+  <span class="c"># calls apt-manager</span>
+  <span class="c">#</span>
+  apt-manager
+  <span class="c"># Install packages listed in variable PKGS</span>
+  <span class="nv">APT</span><span class="o">=</span>0
+  <span class="k">for </span>NAME in <span class="nv">$PKGS</span>
+  <span class="k">do</span>
+<span class="k">    </span>dpkg -s <span class="nv">$NAME</span> &gt; /dev/null
+    <span class="k">if</span> <span class="o">[</span> <span class="nv">$?</span> -ne 0 <span class="o">]</span>
+    <span class="k">then</span>
+<span class="k">      </span>APT+<span class="o">=</span>1
+      <span class="nb">echo</span> -e <span class="s2">&quot;\e[1;32m Missing $NAME will be installed \e[0m&quot;</span>
+      <span class="nv">$APTMGR</span> -y install <span class="nv">$NAME</span>
+    <span class="k">fi</span>
+<span class="k">  done</span>
+  <span class="c"># verify installation and update packages indexes</span>
+  <span class="k">if</span> <span class="o">[</span> <span class="nv">$APT</span> -ne 0 <span class="o">]</span>
+  <span class="k">then</span>
+<span class="k">    </span><span class="nb">echo</span> -e <span class="s1">&#39;\e[1;32m Wait as system packages are updated \e[0m&#39;</span>
+    <span class="nv">$APTMGR</span> -y -f install <span class="o">&amp;&amp;</span> apt-get -y update
+  <span class="k">fi</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="adding-an-application">
+<h3>Adding an application<a class="headerlink" href="#adding-an-application" title="Permalink to this headline">¶</a></h3>
+<p>&#8212;</p>
+<div class="sidebar">
+<p class="first sidebar-title">Routine apt-manager</p>
+<div class="last highlight-bash"><div class="highlight"><pre>apt-manager<span class="o">()</span> <span class="o">{</span>
+  <span class="c"># returns APTMGR</span>
+  <span class="c">#</span>
+  dpkg -s <span class="s1">&#39;apt-fast&#39;</span> &gt; /dev/null
+  <span class="k">if</span> <span class="o">[</span> <span class="nv">$?</span> -ne 0 <span class="o">]</span>
+  <span class="k">then</span>
+<span class="k">    </span><span class="nv">APTMGR</span><span class="o">=</span><span class="s1">&#39;apt-get&#39;</span>
+  <span class="k">else</span>
+<span class="k">    </span><span class="nv">APTMGR</span><span class="o">=</span><span class="s1">&#39;apt-fast&#39;</span>
+  <span class="k">fi</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 </div>
 
@@ -201,7 +438,7 @@ development skills, as we know others have. Good luck.</p>
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="05_answers2.html" title="Expressions and Logic Scripts"
+          <a href="10_answers.html" title="Lesson Sample Scripts"
              >next</a></li>
         <li class="right" >
           <a href="06_concerns.html" title="Programming Concerns"

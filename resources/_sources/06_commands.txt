@@ -320,3 +320,92 @@ or, this could be executed at the terminal as a single command::
 
 .. seealso::
    For more information, see the ``terminfo`` manpage.
+
+---
+
+Variable Scope
+=============================
+
+Variables may have different scopes in bash shell.
+
+*  Sub-shell local variables
+*  Declared Local Variables
+*  Exported Environment Session Variables
+*  Global Environment Variables
+
+Declared Variables
+=============================
+
+.. sidebar:: Example Declared Variable ::
+  
+      THISVARIABLE="A string"
+  
+   The value can be changed by re-declaring it. ::
+   
+      THISVARIABLE="A new string"
+
+Declared Variables are those which are assigned within a script. The value of a 
+variable and its data type can be changed at any time by re-assigning it.
+
+Global Environment Variables
+=============================
+
+Global Environment Variables are declared and exported when a shell session is 
+instantiated. A few useful Environment Variables are listed following:
+
++----------------------+-------------------------------------------------------+
+|Environment Variables | Variable description of use.                          |
++======================+=======================================================+
+| $BASH                | full filename used to invoke bash                     |
++----------------------+-------------------------------------------------------+
+| $EUID                | effective user ID (number) of the current user        |
++----------------------+-------------------------------------------------------+
+| $GROUPS              | array of groups the current user is a member of       |
++----------------------+-------------------------------------------------------+
+| $HOSTNAME            | the name of the current host                          |
++----------------------+-------------------------------------------------------+
+| $IFS                 | characters treated as white space                     |
++----------------------+-------------------------------------------------------+
+| $LINENO              | sequential number of executing line in a script       |
++----------------------+-------------------------------------------------------+
+| $MACHTYPE            | GNU cpu-company-system machine type description       |
++----------------------+-------------------------------------------------------+
+| $OSTYPE              | string describing the operating system                |
++----------------------+-------------------------------------------------------+
+| $PATH                | search path for commands                              |
++----------------------+-------------------------------------------------------+
+| $PPID                | process id of the shell's parent                      |
++----------------------+-------------------------------------------------------+
+| $PWD                 | when called, it returns the current directory         |
++----------------------+-------------------------------------------------------+
+| $UID                 | user ID of the current user                           |
++----------------------+-------------------------------------------------------+
+
+Exported Variables
+=============================
+
+Type these commands into the terminal::
+
+   export NUMBER=12
+   echo "echo $NUMBER" > test-script.sh
+   bash ./test-script.sh
+
+The value ``12`` should be returned, as that is the exported value of 
+``NUMBER``.
+
+Now, type::
+
+   echo "NUMBER=4" > test-script.sh
+   echo 'echo $NUMBER' >> test-script.sh
+   bash test-script.sh
+   echo $NUMBER
+
+Notice that NUMBER is now equal to ``4`` *within *``test-script.sh``, but it 
+retains the value ``12`` at the terminal. If a shell script reassigns an 
+exported variable, the variable is overloaded with a new local version 
+*within the script*, but the original assignment is retained in the shell
+session.
+
+Exported variables must be assigned and then exported. Once exported, any script 
+or command in the current shell session may reference the variable, but the 
+value of the exported variable is cleared when the terminal is closed. 

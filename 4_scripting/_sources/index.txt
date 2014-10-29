@@ -6,13 +6,13 @@
 Learn Shell Scripting
 =============================
 
-Learning computer programming is a daunting challenge. However, every Unix/Linux 
+Learning computer programming is a daunting challenge. However, every Linux 
 computer system has a built-in shell scripting language which is designed for 
 managing the computer, and learning to program in shell scripts is not hard. 
 Shell commands are interactive, and the results from commands are immediate.
 
-The best part of learning shell scripting is, everything you learn to do well in 
-shell is part of the programming skill required in any programming language. 
+The best part of learning shell scripting is, everything you learn to do well 
+in shell is part of the programming skill required in any programming language. 
 Shell programming is not a replacement for other programming languages, but 
 it is powerful enough that Linus Torvalds used shell scripting to write the 
 first versions of the :program:`git` repository.
@@ -34,7 +34,7 @@ Contents:
 .. toctree::
    :hidden:
 
-   05_answers2
+   10_answers
 
 Indices and tables
 =============================

@@ -114,10 +114,10 @@ omitting the <strong class="command">{project_folder_name}</strong> from the com
 <h3>apt-fast.sh<a class="headerlink" href="#apt-fast-sh" title="Permalink to this headline">¶</a></h3>
 <p>For existing installs of Ubuntu (14.04 or later), download and install
 <tt class="file docutils literal"><span class="pre">apt-fast.sh</span></tt> to speed up <strong class="command">apt-</strong> processes. The
-<tt class="file docutils literal"><span class="pre">first-install.sh</span></tt> and :file`rest-install.sh` scripts described following
+<tt class="file docutils literal"><span class="pre">first-install.sh</span></tt> and <tt class="file docutils literal"><span class="pre">rest-install.sh</span></tt> scripts described following
 are optimized using <strong class="command">apt-fast</strong>. <a class="footnote-reference" href="#id2" id="id1">[1]</a></p>
 <div class="line-block">
-<div class="line">KUbuntu_14: <a class="reference download internal" href="_downloads/apt-fast.sh"><tt class="xref download docutils literal"><span class="pre">_downloads/apt-fast.sh</span></tt></a></div>
+<div class="line">KUbuntu_14: <a class="reference download internal" href="_downloads/apt-fast.sh"><tt class="xref download docutils literal"><span class="pre">apt-fast.sh</span></tt></a></div>
 </div>
 </div>
 <div class="section" id="first-install-sh">
@@ -126,14 +126,13 @@ are optimized using <strong class="command">apt-fast</strong>. <a class="footnot
 of the following scripts as appropriate, saving it to the desktop with the name
 <tt class="file docutils literal"><span class="pre">first-install.sh</span></tt>.</p>
 <div class="line-block">
-<div class="line">Gnome-Ubuntu_10.10: <a class="reference download internal" href="_downloads/Gnome-Ubuntu_10.10-desktop.sh"><tt class="xref download docutils literal"><span class="pre">_downloads/Gnome-Ubuntu_10.10-desktop.sh</span></tt></a></div>
-<div class="line">KDE-Mint_10: <a class="reference download internal" href="_downloads/KDE-Mint_10-desktop.sh"><tt class="xref download docutils literal"><span class="pre">_downloads/KDE-Mint_10-desktop.sh</span></tt></a></div>
-<div class="line">KDE-Mint_12: <a class="reference download internal" href="_downloads/KDE-Mint_12-desktop.sh"><tt class="xref download docutils literal"><span class="pre">_downloads/KDE-Mint_12-desktop.sh</span></tt></a></div>
-<div class="line">KUbuntu_12: <a class="reference download internal" href="_downloads/KUbuntu_12-desktop.sh"><tt class="xref download docutils literal"><span class="pre">_downloads/KUbuntu_12-desktop.sh</span></tt></a></div>
-<div class="line">KUbuntu_13: <a class="reference download internal" href="_downloads/KUbuntu_13-desktop.sh"><tt class="xref download docutils literal"><span class="pre">_downloads/KUbuntu_13-desktop.sh</span></tt></a></div>
-<div class="line">KUbuntu_14: <a class="reference download internal" href="_downloads/KUbuntu_14-desktop.sh"><tt class="xref download docutils literal"><span class="pre">_downloads/KUbuntu_14-desktop.sh</span></tt></a></div>
+<div class="line">KDE-Mint_10: <a class="reference download internal" href="_downloads/KDE-Mint_10-desktop.sh"><tt class="xref download docutils literal"><span class="pre">KDE-Mint_10.sh</span></tt></a></div>
+<div class="line">KDE-Mint_12: <a class="reference download internal" href="_downloads/KDE-Mint_12-desktop.sh"><tt class="xref download docutils literal"><span class="pre">KDE-Mint_12.sh</span></tt></a></div>
+<div class="line">KUbuntu_12: <a class="reference download internal" href="_downloads/KUbuntu_12-desktop.sh"><tt class="xref download docutils literal"><span class="pre">KUbuntu_12.sh</span></tt></a></div>
+<div class="line">KUbuntu_13: <a class="reference download internal" href="_downloads/KUbuntu_13-desktop.sh"><tt class="xref download docutils literal"><span class="pre">KUbuntu_13.sh</span></tt></a></div>
+<div class="line">KUbuntu_14: <a class="reference download internal" href="_downloads/KUbuntu_14-desktop.sh"><tt class="xref download docutils literal"><span class="pre">KUbuntu_14.sh</span></tt></a></div>
 </div>
-<p>Get the respective script from the command line via wget with:</p>
+<p>Get the respective script from the command line via <strong class="program">wget</strong> with:</p>
 <div class="highlight-python"><div class="highlight"><pre>wget -O first-install.sh http://develop.aaltsys.info/resources/_downloads/Gnome-Ubuntu_10.10-desktop.sh
 wget -O first-install.sh http://develop.aaltsys.info/resources/_downloads/KDE-Mint_10-desktop.sh
 wget -O first-install.sh http://develop.aaltsys.info/resources/_downloads/KDE-Mint_12-desktop.sh
@@ -142,14 +141,20 @@ wget -O first-install.sh http://develop.aaltsys.info/resources/_downloads/KUbunt
 wget -O first-install.sh http://develop.aaltsys.info/resources/_downloads/KUbuntu_14-desktop.sh
 </pre></div>
 </div>
-<p>Execute the script with the command, <strong class="command">bash first-install.sh</strong>.</p>
+<p>Execute the script with the command:</p>
+<div class="highlight-python"><div class="highlight"><pre>bash first-install.sh
+</pre></div>
+</div>
 </div>
 <div class="section" id="rest-install-sh">
 <h3>rest-install.sh<a class="headerlink" href="#rest-install-sh" title="Permalink to this headline">¶</a></h3>
 <p>To install Restructured Text project support, download the script
-<a class="reference download internal" href="_downloads/rest-install.sh"><tt class="xref download docutils literal"><span class="pre">_downloads/rest-install.sh</span></tt></a> to the desktop and execute it with the
-command, <strong class="command">bash rest-install.sh</strong>. The download command to get this
-script is:</p>
+<a class="reference download internal" href="_downloads/rest-install.sh"><tt class="xref download docutils literal"><span class="pre">rest-install.sh</span></tt></a> to the desktop and
+execute it with the command,</p>
+<div class="highlight-python"><div class="highlight"><pre>bash rest-install.sh
+</pre></div>
+</div>
+<p>The <strong class="program">wget</strong> download command to get this script is:</p>
 <div class="highlight-python"><div class="highlight"><pre>wget -O rest-install.sh http://develop.aaltsys.info/resources/_downloads/rest-install.sh
 </pre></div>
 </div>
@@ -160,10 +165,10 @@ script is:</p>
 <div class="section" id="doc-newproject-sh">
 <h3>doc-newproject.sh<a class="headerlink" href="#doc-newproject-sh" title="Permalink to this headline">¶</a></h3>
 <p>Start a new documentation project in your <tt class="file docutils literal"><span class="pre">~/Projects</span></tt> folder with the
-command <strong class="command">~/Projects/doc-newproject.sh {project_folder_name}</strong>.</p>
+command <strong class="program">~/Projects/doc-newproject.sh {project_folder_name}</strong>.</p>
 <div class="line-block">
 <div class="line">Recommended location for script: <tt class="file docutils literal"><span class="pre">~/Projects/doc-newproject.sh</span></tt>.</div>
-<div class="line">Download link to script: <a class="reference download internal" href="_downloads/doc-newproject.sh"><tt class="xref download docutils literal"><span class="pre">_downloads/doc-newproject.sh</span></tt></a>.</div>
+<div class="line">Download link: <a class="reference download internal" href="_downloads/doc-newproject.sh"><tt class="xref download docutils literal"><span class="pre">doc-newproject.sh</span></tt></a>.</div>
 <div class="line">Get the script from the command line with::</div>
 </div>
 <blockquote>
@@ -175,7 +180,7 @@ command <strong class="command">~/Projects/doc-newproject.sh {project_folder_nam
 <strong class="command">~/Projects/doc-addbranch.sh {project_folder_name}</strong>.</p>
 <div class="line-block">
 <div class="line">Recommended location for script: <tt class="file docutils literal"><span class="pre">~/Projects/doc-addbranch.sh</span></tt>.</div>
-<div class="line">Download link to script: <a class="reference download internal" href="_downloads/doc-addbranch.sh"><tt class="xref download docutils literal"><span class="pre">_downloads/doc-addbranch.sh</span></tt></a>.</div>
+<div class="line">Download link: <a class="reference download internal" href="_downloads/doc-addbranch.sh"><tt class="xref download docutils literal"><span class="pre">doc-addbranch.sh</span></tt></a>.</div>
 <div class="line">Get the script from the command line with::</div>
 </div>
 <blockquote>
@@ -187,7 +192,7 @@ command <strong class="command">~/Projects/doc-newproject.sh {project_folder_nam
 the command <strong class="command">~/Projects/doc-deploy.sh {project_folder_name}</strong></p>
 <div class="line-block">
 <div class="line">Recommended location for script: <tt class="file docutils literal"><span class="pre">~/Projects/doc-deploy.sh</span></tt>.</div>
-<div class="line">Download link to script:<a class="reference download internal" href="_downloads/doc-deploy.sh"><tt class="xref download docutils literal"><span class="pre">_downloads/doc-deploy.sh</span></tt></a></div>
+<div class="line">Download link: <a class="reference download internal" href="_downloads/doc-deploy.sh"><tt class="xref download docutils literal"><span class="pre">doc-deploy.sh</span></tt></a></div>
 <div class="line">Get the script from the command line with::</div>
 </div>
 <blockquote>
@@ -195,8 +200,8 @@ the command <strong class="command">~/Projects/doc-deploy.sh {project_folder_nam
 </div>
 <div class="section" id="aaltsys-theme-documents">
 <h3>aaltsys theme documents<a class="headerlink" href="#aaltsys-theme-documents" title="Permalink to this headline">¶</a></h3>
-<p>doc-...sh scripts include custom stylesheet CSS in your documentation project.
-Add these default theme files with the commands:</p>
+<p><tt class="docutils literal"><span class="pre">doc-...sh</span></tt> scripts include custom stylesheet CSS in your documentation
+project. Add these default theme files with the commands:</p>
 <div class="highlight-python"><div class="highlight"><pre>mkdir -p _static/aaltsys
 wget -O _static/aaltsys.css_t http://develop.aaltsys.info/resources/_downloads/aaltsys.css_t
 wget -O _static/aaltsys/theme.conf http://develop.aaltsys.info/resources/_downloads/aaltsys/theme.conf
@@ -209,7 +214,7 @@ wget -O _static/aaltsys/theme.conf http://develop.aaltsys.info/resources/_downlo
 undesirable chuff in the repository.</p>
 <div class="line-block">
 <div class="line">Recommended file location: <tt class="file docutils literal"><span class="pre">~Projects/</span><em><span class="pre">documentation_folder_name</span></em><span class="pre">/.gitignore</span></tt>.</div>
-<div class="line">Download link to file: <a class="reference download internal" href="_downloads/.gitignore"><tt class="xref download docutils literal"><span class="pre">_downloads/.gitignore</span></tt></a>.</div>
+<div class="line">Download link: <a class="reference download internal" href="_downloads/.gitignore"><tt class="xref download docutils literal"><span class="pre">gitignore</span></tt></a>.</div>
 <div class="line">Get this file from the command line with::</div>
 </div>
 <blockquote>
@@ -221,7 +226,7 @@ undesirable chuff in the repository.</p>
 Heroku, add the following <tt class="file docutils literal"><span class="pre">.htaccess</span></tt> server directive file:</p>
 <div class="line-block">
 <div class="line">Recommended location: <tt class="file docutils literal"><span class="pre">~/Projects/</span><em><span class="pre">documentation_folder_name</span></em><span class="pre">/_static/.htaccess</span></tt>.</div>
-<div class="line">Download link to file: <a class="reference download internal" href="_downloads/.htaccess"><tt class="xref download docutils literal"><span class="pre">_downloads/.htaccess</span></tt></a>.</div>
+<div class="line">Download link: <a class="reference download internal" href="_downloads/.htaccess"><tt class="xref download docutils literal"><span class="pre">htaccess</span></tt></a>.</div>
 <div class="line">Get this file from the command line with::</div>
 </div>
 <blockquote>
@@ -231,7 +236,7 @@ Heroku, add the following <tt class="file docutils literal"><span class="pre">.h
 <p class="last">An <tt class="file docutils literal"><span class="pre">.htpasswd</span></tt> file is also required, in the same directory.
 Learn about basic authentication using <tt class="file docutils literal"><span class="pre">.htaccess</span></tt></p>
 </div>
-<hr class="docutils" />
+<p>&#8212;</p>
 <p class="rubric">Footnotes</p>
 <table class="docutils footnote" frame="void" id="id2" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
