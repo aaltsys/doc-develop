@@ -172,9 +172,5 @@ same result here?
 Example Finished Program
 =============================
 
-Download the :download:`hello-world.sh <_downloads/hello-world.sh>` example code 
-or just view the code below for one solution to this exercise. 
-
-.. literalinclude:: _downloads/hello-world.sh
-   :language: bash
-   :linenos:
+A sample program for the Hello World scripting challenge can be viewed at: 
+:ref:`hello-answers`.

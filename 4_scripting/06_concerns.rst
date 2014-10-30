@@ -124,11 +124,11 @@ A previous lesson presented a code snippet to obtain a user confirmation:
    echo -e '\e[0m' 
    ...
 
-This piece of code is too specific: because it contains the phrase "Say Hello,"
-it is useful only in our "Hello World" example. Placing the text "Say Hello" in 
-a variable and assigning it in our variable declarations will generalize the 
-snippet and allow it to be used in any script without further code changes.
-This will save programming and testing time down the road.
+The phrase ``Say Hello`` makes this code specific to the :program:`Hello World` 
+example script. Placing the text ``Say Hello`` in a variable and assigning it 
+in our variable declarations will generalize the snippet and allow it to be 
+used in any script without further code changes. This will save programming and 
+testing time down the road.
 
 There are other reasons to assign strings to variables in declarations at the 
 top of a program. Configuration information will be exposed in the variable 
@@ -169,14 +169,14 @@ are variables which represent configuration settings for a system. We would
 want to change program configuration items without re-writing code, so 
 configuration settings should be stored in a text file, and not hard coded. 
 
+.. tip::
+   Unixes store most configuration files in directory :file:`/etc/`, or as
+   hidden files in the user's home directory :file:`~/`.
+
 A common form of configuration file is structured just like variable assignment 
 declarations. In fact, a program usually contains exactly the same statements 
 as default variable declarations, followed by a routine to override the defaults 
 with configuration values: maybe from a global file, then from a user file.
-
-.. tip::
-   Unixes store most configuration files in directory :file:`/etc/`, or as
-   hidden files in the user's home directory :file:`~/`.
 
 So the contents of a simple configuration file would be lines like:
 
@@ -205,10 +205,12 @@ Applying embedded color commands is a function of the :command:`echo` command,
 provided the ``-e`` option is included in the command. Try out the following 
 commands in the terminal to see how this works.
 
-export TEXT="Colorize my words"
-echo -e "\e[1;31m $TEXT \e[0m"  ; # partial quoting
-echo -e '\e[1;31m $TEXT \e[0m'  ; # full quoting
-echo "\e[1;31m $TEXT \e[0m"     ; # omitting -e option
+.. code-block: bash
+
+   export TEXT="Colorize my words"
+   echo -e "\e[1;31m $TEXT \e[0m"  ; # partial quoting
+   echo -e '\e[1;31m $TEXT \e[0m'  ; # full quoting
+   echo "\e[1;31m $TEXT \e[0m"     ; # omitting -e option
 
 :ref:`variables-color` documents the possible codes which are accepted at the 
 terminal for changing the displayed colors.
@@ -259,5 +261,5 @@ messages, to see the results of an executed program.
    echo "$PWD$(tput setaf 1) $LINENO: $MSG-COMMAND $(tput sgr0)"
 
 Note that this command does not require the ``-e`` option. Partial quoting 
-(\"``textstring``\") is required to evaluate embedded code in quoted text, so 
-this command will not work with full quotes (\').
+(``"textstring"``) is required to evaluate embedded code in quoted text, so 
+this command will not work with full quotes (``'``).

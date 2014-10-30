@@ -35,7 +35,7 @@ while partial quoting performs variable and command expansion during evaluation.
 Test out quoting as follows:
 
 .. admonition:: Instruction
-   
+
    Paste the sidebar statements into the MAIN section of the new script, then 
    run the script. Did any statement(s) produce expected results? Comment out 
    statements which did not work as intended.

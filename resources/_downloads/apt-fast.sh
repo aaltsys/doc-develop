@@ -6,8 +6,8 @@ echo -e "\n update mirrors in this installer based on the following URLs:"
 echo    " Debian: http://www.debian.org/mirror/list"
 echo -e " Ubuntu: https://launchpad.net/ubuntu/+archivemirrors\n"
 
-echo -e "\e[1;31m Install apt-fast for Kubuntu 14.04 or Debian 6 KDE?" 
-read -n 1 -p "(y/n)" RESP 
+echo -e -n "\e[1;32m Install apt-fast for Kubuntu 14.04 or Debian 6 KDE?" 
+read -n 1 -p " (y/n)" RESP 
 echo -e "\e[0m" 
 if [ "$RESP" != 'y' ]; then
   echo -e "\nCanceled"
@@ -25,7 +25,7 @@ fi
 apt-manager() {
 
   # Determine apt package management command --
-  dpkg -s 'apt-fast' > null
+  dpkg -s 'apt-fast' > /dev/null
   if [ $? -ne 0 ] ; then
     APTMGR='apt-get'
   else
@@ -67,7 +67,7 @@ apt-pkgs() {
   APT=0
   for i in $PKGS
   do
-    dpkg -s $i > null
+    dpkg -s $i > /dev/null
     if [ $? -ne 0 ] ; then
       APT=1
       echo "$i is missing, it will be installed"
@@ -78,7 +78,7 @@ apt-pkgs() {
   # verify installation and update packages indexes
   if [ $APT -ne 0 ] ; then
     echo -e "\e[1;94m Updating system packages, this may take a while \e[0m"
-    $APTMGR -y -f install && $APTMGR -y update 
+    $APTMGR -y -f install && apt-get -y update 
   fi
 
 }
@@ -94,17 +94,18 @@ if [ "$APTMGR" = 'apt-fast' ] ; then
 fi
 
 # add repository
-REPOS='ppa:saiarcot895/myppa'
+REPOS='ppa:apt-fast/stable'
 apt-repos
 # add package
 PKGS='apt-fast'
 apt-pkgs
 # update configuration file
 MIRRORS='MIRRORS=("http://us.archive.ubuntu.com/ubuntu,'
-MIRRORS+='http://mirror.cc.columbia.edu/pub/linux/ubuntu/archive/,'
-MIRRORS+='http://mirror.cc.vt.edu/pub2/ubuntu/,'
-MIRRORS+='http://mirror.umd.edu/ubuntu/,'
-MIRRORS+='http://mirrors.mit.edu/ubuntu/")'
+MIRRORS+='http://mirror.pnl.gov/ubuntu/,'
+MIRRORS+='http://mirrors.centarra.com/ubuntu/,'
+MIRRORS+='http://mirror.tocici.com/ubuntu/,'
+MIRRORS+='http://mirrors.us.kernel.org/ubuntu/")'
+#
 sed -r "/MIRRORS=.*$/d" -i /etc/apt-fast.conf
 sed -r "$ a\$MIRRORS" -i /etc/apt-fast.conf 
 # test installation and provide exit messages
