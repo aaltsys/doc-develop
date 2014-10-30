@@ -875,7 +875,9 @@ as organized in this guide, or just view the code below.</p>
 259
 260
 261
-262</pre></div></td><td class="code"><div class="highlight"><pre><span class="c">#! /bin/sh</span>
+262
+263
+264</pre></div></td><td class="code"><div class="highlight"><pre><span class="c">#! /bin/sh</span>
 <span class="c"># --- Program Principal Objective ---</span>
 <span class="c"># For Ubuntu up to 14.04 or other Ubuntu-based desktop systems: </span>
 <span class="c"># This script installs core utilities and general productivity apps.</span>
@@ -1010,8 +1012,10 @@ apt-fast-install<span class="o">()</span> <span class="o">{</span>
 <span class="k">  else</span>
     <span class="c"># determine REPOS for apt-fast</span>
     <span class="k">case</span> <span class="nv">$VERSION</span> in
-      10*|11*|12*|13*|14.04*<span class="o">)</span>
+      10*|11*|12*|13*<span class="o">)</span>
         <span class="nv">REPOS</span><span class="o">=</span><span class="s1">&#39;ppa:apt-fast/stable&#39;</span> ;;
+      14.04*<span class="o">)</span>
+        <span class="nv">REPOS</span><span class="o">=</span><span class="s1">&#39;ppa:saiarcot895/myppa&#39;</span> ;;
       *<span class="o">)</span> 
         <span class="nb">echo</span> -e <span class="s2">&quot;\e[1;31m apt-fast is not released for $VERSION \e[0m&quot;</span> ;;
     <span class="k">esac</span>
@@ -1125,7 +1129,7 @@ apt-get clean <span class="o">&amp;&amp;</span> apt-get update <span class="o">&
 <span class="k">if</span> <span class="o">[</span> <span class="nv">$EXIT</span> -eq 0 <span class="o">]</span> 
 <span class="k">then</span>
 <span class="k">  </span><span class="nv">PROMPT</span><span class="o">=</span><span class="s1">&#39;Installation successful. Reboot now&#39;</span>
-  <span class="k">if</span> <span class="o">[</span><span class="nv">$EXIT</span> -gt 0 <span class="o">]</span> 
+  <span class="k">if</span> <span class="o">[</span> <span class="nv">$EXIT</span> -gt 0 <span class="o">]</span> 
   <span class="k">then </span>reboot &amp;
   <span class="k">fi</span>
 <span class="k">else </span><span class="nb">echo</span> <span class="s2">&quot;EXIT value is $EXIT&quot;</span>
