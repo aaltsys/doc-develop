@@ -133,8 +133,10 @@ apt-fast-install() {
   else
     # determine REPOS for apt-fast
     case $VERSION in
-      10*|11*|12*|13*|14.04*)
+      10*|11*|12*|13*)
         REPOS='ppa:apt-fast/stable' ;;
+      14.04*)
+        REPOS='ppa:saiarcot895/myppa' ;;
       *) 
         echo -e "\e[1;31m apt-fast is not released for $VERSION \e[0m" ;;
     esac
@@ -248,7 +250,7 @@ apt-get clean && apt-get update && apt-get upgrade
 if [ $EXIT -eq 0 ] 
 then
   PROMPT='Installation successful. Reboot now'
-  if [$EXIT -gt 0 ] 
+  if [ $EXIT -gt 0 ] 
   then reboot &
   fi
 else echo "EXIT value is $EXIT"
