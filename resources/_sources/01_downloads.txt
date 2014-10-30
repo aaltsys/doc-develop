@@ -63,7 +63,7 @@ To install ReSructuredText project support, download the script
 execute it with the command, ::
 
    bash rest-install.sh
-   
+
 The :program:`wget` download command to get this script is:: 
 
    wget -O rest-install.sh http://develop.aaltsys.info/resources/_downloads/rest-install.sh
@@ -81,8 +81,8 @@ command :program:`~/Projects/doc-newproject.sh {project_folder_name}`.
 | Download link: :download:`doc-newproject.sh <_downloads/doc-newproject.sh>`.
 | Get the script from the command line with
 
- ::
- 
+::
+
    wget -O doc-newproject.sh http://develop.aaltsys.info/resources/_downloads/doc-newproject.sh
    
 doc-addbranch.sh
@@ -95,8 +95,8 @@ Add documentation into an existing development project with the command
 | Download link: :download:`doc-addbranch.sh <_downloads/doc-addbranch.sh>`.
 | Get the script from the command line with
 
- ::
- 
+::
+
    wget -O doc-addbranch.sh http://develop.aaltsys.info/resources/_downloads/doc-addbranch.sh
 
 doc-deploy.sh
@@ -109,8 +109,8 @@ the command :command:`~/Projects/doc-deploy.sh {project_folder_name}`
 | Download link: :download:`doc-deploy.sh <_downloads/doc-deploy.sh>`
 | Get the script from the command line with
 
- ::
- 
+::
+
    wget -O doc-deploy.sh http://develop.aaltsys.info/resources/_downloads/doc-deploy.sh
 
 aaltsys theme documents
@@ -133,8 +133,8 @@ undesirable chuff in the repository.
 | Download link: :download:`gitignore <_downloads/.gitignore>`.
 | Get this file from the command line with
 
- ::
- 
+::
+
    wget -O .gitignore http://develop.aaltsys.info/resources/_downloads/.gitignore
 
 .htaccess
@@ -147,13 +147,13 @@ Heroku, add the following :file:`.htaccess` server directive file:
 | Download link: :download:`htaccess <_downloads/.htaccess>`.
 | Get this file from the command line with
 
- ::
- 
+::
+
    wget -O _static/.htaccess http://develop.aaltsys.info/resources/_downloads/.htaccess
    
 .. note:: An :file:`.htpasswd` file is also required, in the same directory.
    Learn about basic authentication using :file:`.htaccess` at
-   `.htaccess Tools <http://www.htaccesstools.com/>`_
+   `.htaccess Tools <http://www.htaccesstools.com/>`_.
 
 ---
 

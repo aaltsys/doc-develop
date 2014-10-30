@@ -875,117 +875,62 @@ as organized in this guide, or just view the code below.</p>
 259
 260
 261
-262
-263
-264
-265
-266
-267
-268
-269
-270
-271
-272
-273
-274
-275
-276
-277
-278
-279
-280
-281
-282
-283
-284
-285
-286
-287
-288
-289
-290
-291
-292
-293
-294
-295
-296
-297
-298
-299
-300
-301
-302
-303
-304
-305
-306
-307
-308
-309
-310
-311
-312
-313
-314
-315
-316
-317
-318
-319
-320
-321
-322
-323
-324
-325
-326
-327
-328
-329
-330
-331
-332
-333
-334</pre></div></td><td class="code"><div class="highlight"><pre><span class="c">#! /bin/sh</span>
+262</pre></div></td><td class="code"><div class="highlight"><pre><span class="c">#! /bin/sh</span>
 <span class="c"># --- Program Principal Objective ---</span>
-<span class="c"># For Kubuntu 14.x or other Ubuntu-based KDE desktop systems: </span>
+<span class="c"># For Ubuntu up to 14.04 or other Ubuntu-based desktop systems: </span>
 <span class="c"># This script installs core utilities and general productivity apps.</span>
 <span class="c"># </span>
-<span class="c"># ##### DECLARE VARIABLES</span>
+<span class="c"># ##### VARIABLE DECLARATIONS</span>
 <span class="c"># </span>
 <span class="nv">PROMPT</span><span class="o">=</span><span class="s1">&#39;&#39;</span>
 <span class="nv">EXIT</span><span class="o">=</span>0
 <span class="nv">OS</span><span class="o">=</span><span class="s1">&#39;&#39;</span>
 <span class="nv">VERSION</span><span class="o">=</span><span class="s1">&#39;&#39;</span>
-<span class="c">#</span>
-<span class="c"># ##### ASSIGN PARAMETERS</span>
+<span class="nv">APTMGR</span><span class="o">=</span><span class="s1">&#39;apt-get&#39;</span>
+<span class="nv">REPOS</span><span class="o">=</span><span class="s1">&#39;&#39;</span>
+<span class="nv">APT</span><span class="o">=</span><span class="s1">&#39;&#39;</span>
+<span class="nv">PKGS</span><span class="o">=</span><span class="s1">&#39;&#39;</span>
+<span class="c"># default values before configuration</span>
+<span class="nv">MIRRORS</span><span class="o">=</span><span class="s1">&#39;MIRRORS=(&quot;http://us.archive.ubuntu.com/ubuntu&#39;</span>
+MIRRORS+<span class="o">=</span><span class="s1">&#39;,http://mirror.pnl.gov/ubuntu/&#39;</span>
+MIRRORS+<span class="o">=</span><span class="s1">&#39;,http://mirrors.centarra.com/ubuntu/&#39;</span>
+MIRRORS+<span class="o">=</span><span class="s1">&#39;,http://mirror.tocici.com/ubuntu/&#39;</span>
+MIRRORS+<span class="o">=</span><span class="s1">&#39;,http://mirrors.us.kernel.org/ubuntu/&quot;)&#39;</span>
+<span class="c"># </span>
+<span class="c"># CONFIGURATION VALUES FROM FILE</span>
+<span class="c"># </span>
+<span class="c"># (none used)</span>
+<span class="c">#.</span>
+<span class="c"># ##### PARAMETER ASSIGNMENTS</span>
 <span class="c"># </span>
 <span class="c"># (none used)</span>
 <span class="c"># </span>
-<span class="c"># ##### DECLARE FUNCTIONS</span>
+<span class="c"># ##### FUNCTION DECLARATIONS</span>
 <span class="c"># </span>
 confirm<span class="o">()</span> <span class="o">{</span>
-  <span class="c"># Requires $PROMPT, returns $EXIT</span>
+  <span class="c"># uses $PROMPT, returns $EXIT</span>
+  <span class="c">#</span>
   tput rev
   <span class="nb">echo</span> -n <span class="nv">$PROMPT</span>
-  <span class="nb">read</span> -n 1 -p <span class="s2">&quot; (Yes/no)?&quot;</span> RESPONSE
+  <span class="nb">read</span> -n 1 -p <span class="s2">&quot;? [Y/n]&quot;</span> RESPONSE
   tput sgr0
   <span class="nb">echo</span>
 <span class="nb">  </span><span class="k">case</span> <span class="nv">$RESPONSE</span> in
-    Y*|y*<span class="o">)</span>
-      <span class="nv">EXIT</span><span class="o">=</span><span class="s1">&#39;0&#39;</span> ;;
-    *N*|*n*<span class="o">)</span>
-      <span class="nv">EXIT</span><span class="o">=</span><span class="s1">&#39;1&#39;</span> ;;
+    Y|y<span class="o">)</span>
+      <span class="nv">EXIT</span><span class="o">=</span>0 ;;
+    N|n<span class="o">)</span>
+      <span class="nv">EXIT</span><span class="o">=</span>1 ;;
     *<span class="o">)</span>
-      <span class="nv">EXIT</span><span class="o">=</span><span class="s1">&#39;2&#39;</span> ;;
+      <span class="nv">EXIT</span><span class="o">=</span>2 ;;
   <span class="k">esac</span>
 <span class="o">}</span>
 <span class="c"># </span>
 apt-manager<span class="o">()</span> <span class="o">{</span>
-  <span class="c"># Determine apt package management command --</span>
-  dpkg -s <span class="s1">&#39;apt-fast&#39;</span> &gt; null
-  <span class="k">if</span> <span class="o">[</span> <span class="nv">$?</span> -ne 0 <span class="o">]</span> ; <span class="k">then</span>
+  <span class="c"># returns APTMGR</span>
+  <span class="c">#</span>
+  dpkg -s <span class="s1">&#39;apt-fast&#39;</span> &gt; /dev/null 2&gt;&amp;1
+  <span class="k">if</span> <span class="o">[</span> <span class="nv">$?</span> -ne 0 <span class="o">]</span>
+  <span class="k">then</span>
 <span class="k">    </span><span class="nv">APTMGR</span><span class="o">=</span><span class="s1">&#39;apt-get&#39;</span>
   <span class="k">else</span>
 <span class="k">    </span><span class="nv">APTMGR</span><span class="o">=</span><span class="s1">&#39;apt-fast&#39;</span>
@@ -1007,8 +952,8 @@ apt-repos<span class="o">()</span> <span class="o">{</span>
   <span class="c"># verify installation and update packages indexes</span>
   <span class="k">if</span> <span class="o">[</span> <span class="nv">$APT</span> -ne 0 <span class="o">]</span> 
   <span class="k">then</span>
-<span class="k">    </span><span class="nb">echo</span> -e  <span class="s2">&quot;\e[1;32m Updating system repository indexes \e[0m&quot;</span>
-    <span class="nv">$APTMGR</span> -y -f install <span class="o">&amp;&amp;</span> <span class="nv">$APTMGR</span> -y update 
+<span class="k">    </span><span class="nb">echo</span> -e <span class="s2">&quot;\e[1;32m Updating repository indexes \e[0m&quot;</span>
+    <span class="nv">$APTMGR</span> -y -f install <span class="o">&amp;&amp;</span> apt-get -y update 
   <span class="k">fi</span>
 <span class="o">}</span>
 <span class="c">#</span>
@@ -1021,18 +966,29 @@ apt-pkgs<span class="o">()</span> <span class="o">{</span>
   <span class="nv">APT</span><span class="o">=</span>0
   <span class="k">for </span>NAME in <span class="nv">$PKGS</span>
   <span class="k">do</span>
-<span class="k">    </span>dpkg -s <span class="nv">$NAME</span> &gt; null
-    <span class="k">if</span> <span class="o">[</span> <span class="nv">$?</span> -ne 0 <span class="o">]</span> ; <span class="k">then</span>
+<span class="k">    </span>dpkg -s <span class="nv">$NAME</span> &gt; /dev/null 2&gt;&amp;1
+    <span class="k">if</span> <span class="o">[</span> <span class="nv">$?</span> -ne 0 <span class="o">]</span>
+    <span class="k">then</span>
 <span class="k">      </span>APT+<span class="o">=</span>1
-      <span class="nb">echo</span> -e <span class="s2">&quot;\e[1;31m $NAME is missing, it will be installed \e[0m&quot;</span>
+      <span class="nb">echo</span> -e <span class="s2">&quot;\e[1;32m Missing $NAME will be installed \e[0m&quot;</span>
       <span class="nv">$APTMGR</span> -y install <span class="nv">$NAME</span>
     <span class="k">fi</span>
 <span class="k">  done</span>
   <span class="c"># verify installation and update packages indexes</span>
-  <span class="k">if</span> <span class="o">[</span> <span class="nv">$APT</span> -ne 0 <span class="o">]</span> ; <span class="k">then</span>
-<span class="k">    </span><span class="nb">echo</span> -e <span class="s2">&quot;\e[1;31m Updating system packages, this may take a while \e[0m&quot;</span>
-    <span class="nv">$APTMGR</span> -y -f install <span class="o">&amp;&amp;</span> <span class="nv">$APTMGR</span> -y update 
+  <span class="k">if</span> <span class="o">[</span> <span class="nv">$APT</span> -ne 0 <span class="o">]</span>
+  <span class="k">then</span>
+<span class="k">    </span><span class="nb">echo</span> -e <span class="s1">&#39;\e[1;32m Wait as system packages are updated \e[0m&#39;</span>
+    <span class="nv">$APTMGR</span> -y -f install <span class="o">&amp;&amp;</span> apt-get -y update 
   <span class="k">fi</span>
+<span class="o">}</span>
+<span class="c"># </span>
+apt-fast-config<span class="o">()</span> <span class="o">{</span>
+  <span class="c"># updates configuration file /etc/apt-fast.conf </span>
+  <span class="c"># uses MIRRORS, sets /etc/apt-fast.conf</span>
+  <span class="c">#</span>
+  touch /etc/apt-fast.conf
+  sed -r <span class="s2">&quot;/MIRRORS=.*$/d&quot;</span> -i /etc/apt-fast.conf
+  sed -r <span class="s2">&quot;$ a\$MIRRORS&quot;</span> -i /etc/apt-fast.conf
 <span class="o">}</span>
 <span class="c"># </span>
 apt-fast-install<span class="o">()</span> <span class="o">{</span>
@@ -1041,32 +997,37 @@ apt-fast-install<span class="o">()</span> <span class="o">{</span>
   <span class="c"># calls apt-repos, apt-pkgs, confirm</span>
   <span class="c">#</span>
   <span class="c"># check if apt-fast is installed</span>
-  <span class="nv">PKGS</span><span class="o">=</span><span class="s1">&#39;apt-fast&#39;</span>
-  dpkg -s <span class="nv">$PKGS</span> &gt; null
-  <span class="k">if</span> <span class="o">[</span> <span class="nv">$?</span> -ne 0 <span class="o">]</span> 
+  dpkg -s <span class="s1">&#39;apt-fast&#39;</span> &gt; /dev/null 2&gt;&amp;1
+  <span class="k">if</span> <span class="o">[</span> <span class="nv">$?</span> -eq 0 <span class="o">]</span> 
   <span class="k">then</span>
+<span class="k">    </span><span class="nv">PROMPT</span><span class="o">=</span><span class="s1">&#39;Skip apt-fast mirror configuration&#39;</span>
+    confirm
+    <span class="k">if</span> <span class="o">[</span> <span class="nv">$EXIT</span> -ne 0 <span class="o">]</span> 
+    <span class="k">then </span>
+<span class="k">      </span>apt-fast-config
+      <span class="nv">EXIT</span><span class="o">=</span>0
+    <span class="k">fi</span>
+<span class="k">  else</span>
     <span class="c"># determine REPOS for apt-fast</span>
-    <span class="k">case </span>VERSION in
-      11*|12*|13*<span class="o">)</span>
+    <span class="k">case</span> <span class="nv">$VERSION</span> in
+      10*|11*|12*|13*|14.04*<span class="o">)</span>
         <span class="nv">REPOS</span><span class="o">=</span><span class="s1">&#39;ppa:apt-fast/stable&#39;</span> ;;
-      14*|15*|16*<span class="o">)</span>
-        <span class="nv">REPOS</span><span class="o">=</span><span class="s1">&#39;ppa:saiarcot895/myppa&#39;</span> ;;
-      *<span class="o">)</span> ;;
+      *<span class="o">)</span> 
+        <span class="nb">echo</span> -e <span class="s2">&quot;\e[1;31m apt-fast is not released for $VERSION \e[0m&quot;</span> ;;
     <span class="k">esac</span>
     <span class="c">#</span>
     <span class="k">if</span> <span class="o">[</span> <span class="nv">$REPOS</span> !<span class="o">=</span> <span class="s1">&#39;&#39;</span> <span class="o">]</span>
     <span class="k">then</span>
 <span class="k">      </span><span class="nv">PROMPT</span><span class="o">=</span><span class="s1">&#39;Install program apt-fast&#39;</span>
       confirm
-      <span class="k">if</span> <span class="o">[</span> <span class="nv">$EXIT</span> -gt 0 <span class="o">]</span>
-      <span class="k">then</span>
-        <span class="c"># not confirmed, reset EXIT</span>
-        <span class="nv">EXIT</span><span class="o">=</span><span class="s1">&#39;0&#39;</span>
+      <span class="k">if</span> <span class="o">[</span> <span class="nv">$EXIT</span> -gt 0 <span class="o">]</span> 
+      <span class="k">then </span><span class="nv">EXIT</span><span class="o">=</span>0 ;        <span class="c"># not confirmed, reset EXIT</span>
       <span class="k">else</span>
         <span class="c"># install apt-fast</span>
         <span class="nv">PKGS</span><span class="o">=</span><span class="s1">&#39;apt-fast&#39;</span>
         apt-repos
         apt-pkgs
+        apt-fast-config
       <span class="k">fi</span>
 <span class="k">    fi</span>
 <span class="k">  fi</span>
@@ -1074,7 +1035,8 @@ apt-fast-install<span class="o">()</span> <span class="o">{</span>
 <span class="c">#</span>
 <span class="c"># ##### CONFIRM EXECUTION</span>
 <span class="c"># </span>
-<span class="c"># Check OS type</span>
+<span class="c"># check OS type </span>
+<span class="c"># Uses PROMPT, returns OS, VERSION, EXIT</span>
 <span class="nb">read </span>OS &lt; /etc/issue
 <span class="k">case</span> <span class="nv">$OS</span> in
   Ubuntu*<span class="o">)</span>
@@ -1083,141 +1045,32 @@ apt-fast-install<span class="o">()</span> <span class="o">{</span>
   Debian*<span class="o">)</span> ;;
   *<span class="o">)</span>
     <span class="nb">echo</span> <span class="s2">&quot;Not Debian or Ubuntu, exiting ...&quot;</span>
-    <span class="nv">EXIT</span><span class="o">=</span><span class="sb">`</span>1<span class="sb">`</span> ;;
+    <span class="nv">EXIT</span><span class="o">=</span>1 ;;
 <span class="k">esac</span>
 <span class="c"># </span>
-<span class="c"># Check privileges, user confirmation</span>
-<span class="k">if</span> <span class="o">[[</span> <span class="nv">$EUID</span> -ne 0 <span class="o">]]</span>
+<span class="c"># Check privileges</span>
+<span class="k">if</span> <span class="o">[</span> <span class="nv">$EUID</span> -ne 0 <span class="o">]</span>
 <span class="k">then</span>
 <span class="k">  </span><span class="nb">echo</span> -e <span class="s2">&quot;\e[1;31m try again using sudo \e[0m&quot;</span>
-  <span class="nv">EXIT</span><span class="o">=</span><span class="s1">&#39;1&#39;</span>
+  <span class="nv">EXIT</span><span class="o">=</span>1
 <span class="k">else</span>
-<span class="k">  </span><span class="nv">PROMPT</span><span class="o">=</span><span class="s1">&#39;Install packages for Kubuntu&#39;</span>
+  <span class="c"># test user confirmation</span>
+  <span class="nv">PROMPT</span><span class="o">=</span><span class="s1">&#39;Install packages for Kubuntu&#39;</span>
   confirm
 <span class="k">fi</span>
 <span class="c"># </span>
-<span class="k">if</span> <span class="o">[[</span> <span class="nv">$EXIT</span> -gt 0 <span class="o">]]</span>
-<span class="k">then </span><span class="nb">exit</span> <span class="nv">$EXIT</span>
+<span class="k">if</span> <span class="o">[</span> <span class="nv">$EXIT</span> -gt 0 <span class="o">]</span>
+<span class="k">then </span>
+<span class="k">  </span><span class="nb">echo</span> -e <span class="s2">&quot;\e[1;31m Package installation was canceled. \e[0m&quot;</span>
+  <span class="nb">exit</span> <span class="nv">$EXIT</span>
 <span class="k">fi</span>
 <span class="c"># </span>
-<span class="c"># !! MAIN SECTION !!</span>
-<span class="c"># </span>
-<span class="c"># VALIDITY TESTS</span>
+<span class="c"># ##### MAIN VALIDITY TESTS</span>
 <span class="c">#</span>
 apt-fast-install
 <span class="c"># </span>
-<span class="c"># CODE</span>
+<span class="c"># ##### MAIN CODE</span>
 <span class="c"># </span>
-<span class="c"># </span>
-<span class="c"># </span>
-<span class="c"># Exit section: echo results, log errors</span>
-<span class="c"># </span>
-<span class="nb">echo</span> <span class="nv">$EXIT</span>
-<span class="nb">exit</span> <span class="nv">$EXIT</span>
----
-
-<span class="c">#!/bin/bash</span>
-<span class="c"># This script is targeted to KUbuntu 13 KDE or Debian 6 KDE derivatives.</span>
-<span class="c"># This desktop script installs general productivity apps.</span>
-<span class="c"># The default script interpreter is assumed to be dash/bash.</span>
-
-<span class="c"># Not working lines with this KUbuntu release are marked with !!</span>
-<span class="c"># Problem packages are: chrome, cinelerra, adobe-flashplugin, sun-java6</span>
-
-<span class="nb">echo</span> <span class="s2">&quot;Install packages for Kubuntu 14.04 or other Debian 6 KDE&quot;</span>
-
-<span class="k">if</span> <span class="o">[[</span> <span class="nv">$EUID</span> -ne 0 <span class="o">]]</span> ; <span class="k">then </span><span class="nb">echo</span> -e <span class="s2">&quot;\e[1;31m try again using sudo \e[0m&quot;</span> ; <span class="nb">exit </span>1 ; <span class="k">fi</span>
-
-<span class="c"># assumes standard values for whitespace -- safe programming would set this</span>
-
-<span class="nv">APT</span><span class="o">=</span>0
-<span class="nv">APTMGR</span><span class="o">=</span><span class="s1">&#39;apt-get&#39;</span>
-<span class="nv">PKGS</span><span class="o">=</span><span class="s1">&#39;&#39;</span>
-<span class="nv">REPOS</span><span class="o">=</span><span class="s1">&#39;&#39;</span>
-
-<span class="c"># !!!!!!!!!!!!!!!!!!!!!!!!!!! apt-manager Routine !!!!!!!!!!!!!!!!!!!!!!!!!!!!!</span>
-<span class="c">#===== function to determine apt manager program ==============================</span>
-
-apt-manager<span class="o">()</span> <span class="o">{</span>
-  <span class="c"># Determine apt package management command --</span>
-  dpkg -s <span class="s1">&#39;apt-fast&#39;</span> &gt; null
-  <span class="k">if</span> <span class="o">[</span> <span class="nv">$?</span> -ne 0 <span class="o">]</span> ; <span class="k">then</span>
-<span class="k">    </span><span class="nv">APTMGR</span><span class="o">=</span><span class="s1">&#39;apt-get&#39;</span>
-  <span class="k">else</span>
-<span class="k">    </span><span class="nv">APTMGR</span><span class="o">=</span><span class="s1">&#39;apt-fast&#39;</span>
-  <span class="k">fi</span>
-<span class="o">}</span>
-
-<span class="c"># !!!!!!!!!!!!!!!!!!!!!!!!!!! apt-repository Routine !!!!!!!!!!!!!!!!!!!!!!!!!!</span>
-<span class="c">#===== function to add a delimited repository list ============================</span>
-
-apt-repos<span class="o">()</span> <span class="o">{</span>
-
-  apt-manager
-  <span class="c"># Install repositories listed in variable REPOS</span>
-  <span class="nv">APT</span><span class="o">=</span>0
-  <span class="k">for </span>i in <span class="nv">$REPOS</span>
-  <span class="k">do</span>
-<span class="k">    </span><span class="nv">APT</span><span class="o">=</span>1
-    apt-add-repository <span class="nv">$i</span>
-  <span class="k">done</span>
-   
-  <span class="c"># verify installation and update packages indexes</span>
-  <span class="k">if</span> <span class="o">[</span> <span class="nv">$APT</span> -ne 0 <span class="o">]</span> 
-  <span class="k">then</span>
-<span class="k">    </span><span class="nb">echo</span> -e  <span class="s2">&quot;\e[1;31m Updating system repository indexes \e[0m&quot;</span>
-    <span class="nv">$APTMGR</span> -y -f install <span class="o">&amp;&amp;</span> <span class="nv">$APTMGR</span> -y update 
-  <span class="k">fi</span>
-
-<span class="o">}</span>
-
-<span class="c"># !!!!!!!!!!!!!!!!!!!!!!!!!!! apt-install Routine !!!!!!!!!!!!!!!!!!!!!!!!!!!!!</span>
-<span class="c">#===== function to install a delimited package list ===========================</span>
-
-apt-pkgs<span class="o">()</span> <span class="o">{</span>
-
-  apt-manager
-  <span class="c"># Install packages listed in variable PKGS</span>
-  <span class="nv">APT</span><span class="o">=</span>0
-  <span class="k">for </span>i in <span class="nv">$PKGS</span>
-  <span class="k">do</span>
-<span class="k">    </span>dpkg -s <span class="nv">$i</span> &gt; null
-    <span class="k">if</span> <span class="o">[</span> <span class="nv">$?</span> -ne 0 <span class="o">]</span> ; <span class="k">then</span>
-<span class="k">      </span><span class="nv">APT</span><span class="o">=</span>1
-      <span class="nb">echo</span> <span class="s2">&quot;$i is missing, it will be installed&quot;</span>
-      <span class="nv">$APTMGR</span> -y install <span class="nv">$i</span>
-    <span class="k">fi</span>
-<span class="k">  done</span>
-
-  <span class="c"># verify installation and update packages indexes</span>
-  <span class="k">if</span> <span class="o">[</span> <span class="nv">$APT</span> -ne 0 <span class="o">]</span> ; <span class="k">then</span>
-<span class="k">    </span><span class="nb">echo</span> -e <span class="s2">&quot;\e[1;31m Updating system packages, this may take a while \e[0m&quot;</span>
-    <span class="nv">$APTMGR</span> -y -f install <span class="o">&amp;&amp;</span> <span class="nv">$APTMGR</span> -y update 
-  <span class="k">fi</span>
-
-<span class="o">}</span>
-
-<span class="c"># !!!!!!!!!!!!!!!!!!!!!!!!!!! Main Program !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!</span>
-<span class="c">#==============================================================================</span>
-
-<span class="c"># install, configure apt-fast</span>
-<span class="c"># ###########################</span>
-
-<span class="nv">REPOS</span><span class="o">=</span><span class="s1">&#39;ppa:saiarcot895/myppa&#39;</span>
-apt-repos
-<span class="nv">PKGS</span><span class="o">=</span><span class="s1">&#39;apt-fast&#39;</span>
-apt-pkgs
-<span class="nv">MIRRORS</span><span class="o">=</span><span class="s1">&#39;MIRRORS=(&quot;http://us.archive.ubuntu.com/ubuntu,&#39;</span>
-MIRRORS+<span class="o">=</span><span class="s1">&#39;http://mirror.cc.columbia.edu/pub/linux/ubuntu/archive/,&#39;</span>
-MIRRORS+<span class="o">=</span><span class="s1">&#39;http://mirror.cc.vt.edu/pub2/ubuntu/,&#39;</span>
-MIRRORS+<span class="o">=</span><span class="s1">&#39;http://mirror.umd.edu/ubuntu/,&#39;</span>
-MIRRORS+<span class="o">=</span><span class="s1">&#39;http://mirrors.mit.edu/ubuntu/&quot;)&#39;</span>
-sed -r <span class="s2">&quot;/MIRRORS=.*$/d&quot;</span> -i /etc/apt-fast.conf
-sed -r <span class="s2">&quot;$ a\$MIRRORS&quot;</span> -i /etc/apt-fast.conf
-apt-manager
-
-<span class="c"># Add repositories, browsers</span>
-<span class="c"># ###########################</span>
 
 <span class="c"># universe/multiverse repositories</span>
 apt-add-repository <span class="s2">&quot;deb http://archive.ubuntu.com/ubuntu $(lsb_release -sc) main universe restricted multiverse&quot;</span>
@@ -1226,24 +1079,21 @@ apt-add-repository <span class="s2">&quot;deb http://archive.ubuntu.com/ubuntu $
 <span class="c"># REPOS=&#39;ppa:cinelerra-ppa/ppa ppa:tualatrix/ppa ppa:ubuntu-on-rails/ppa&#39;</span>
 <span class="c"># apt-repos</span>
 
-<span class="c"># upgrade Firefox, replace latex-xft-fonts with ttf-lyx, add curl for Chrome</span>
+<span class="c"># upgrade curl, firefox, ttf-lyx, ubufox</span>
 <span class="nv">PKGS</span><span class="o">=</span><span class="s1">&#39;curl firefox ttf-lyx ubufox&#39;</span>
 apt-pkgs
 
 <span class="c"># install Google Chrome stable</span>
-<span class="k">if </span><span class="nb">echo</span> <span class="sb">`</span>uname -i<span class="sb">`</span> | grep -q 64 ; <span class="k">then</span>
-<span class="k">  </span><span class="nv">CHROMEVER</span><span class="o">=</span><span class="s2">&quot;google-chrome-stable_current_amd64.deb&quot;</span>
-<span class="k">else</span>
-<span class="k">  </span><span class="nv">CHROMEVER</span><span class="o">=</span><span class="s2">&quot;google-chrome-stable_current_i386.deb&quot;</span>
-<span class="k">fi</span>
+<span class="nv">CHROMEVER</span><span class="o">=</span><span class="s1">&#39;google-chrome-stable_current_&#39;</span>
+<span class="k">if</span> <span class="o">[[</span> <span class="sb">`</span>uname -i<span class="sb">`</span> <span class="o">=</span>~ i*86 <span class="o">]]</span> 
+<span class="k">then </span>CHROMEVER+<span class="o">=</span><span class="s1">&#39;i386.deb&#39;</span>
+<span class="k">else </span>CHROMEVER+<span class="o">=</span><span class="s1">&#39;amd64.deb&#39;</span>
+<span class="k">fi </span>
 wget -O /tmp/chrome.deb https://dl-ssl.google.com/linux/direct/<span class="nv">$CHROMEVER</span>
 dpkg -i /tmp/chrome.deb
 rm /tmp/chrome.deb
 
-<span class="c"># Install apps and tools</span>
-<span class="c"># ###########################</span>
-
-  <span class="c"># install desktop productivity apps</span>
+<span class="c"># install desktop productivity apps</span>
 <span class="nv">PKGS</span><span class="o">=</span><span class="s1">&#39;blender dia filezilla freemind gimp gnucash inkscape mypaint&#39;</span>
 PKGS+<span class="o">=</span><span class="s1">&#39; openshot scribus shotwell xaralx xsane&#39;</span>
 <span class="c"># PKGS+=&#39; cinelerra&#39;</span>
@@ -1267,20 +1117,26 @@ apt-pkgs
 <span class="c"># wget http://deb.playonlinux.com/playonlinux_trusty.list -O /etc/apt/sources.list.d/playonlinux.list</span>
 <span class="c"># $APTMGR update</span>
 <span class="c"># $APTMGR install playonlinux</span>
+<span class="c"># </span>
+<span class="c"># ##### EXIT CODE</span>
+<span class="c"># </span>
+apt-get clean <span class="o">&amp;&amp;</span> apt-get update <span class="o">&amp;&amp;</span> apt-get upgrade
 
-<span class="c"># clean up aptitude at end</span>
-<span class="c"># ###########################</span>
+<span class="k">if</span> <span class="o">[</span> <span class="nv">$EXIT</span> -eq 0 <span class="o">]</span> 
+<span class="k">then</span>
+<span class="k">  </span><span class="nv">PROMPT</span><span class="o">=</span><span class="s1">&#39;Installation successful. Reboot now&#39;</span>
+  <span class="k">if</span> <span class="o">[</span><span class="nv">$EXIT</span> -gt 0 <span class="o">]</span> 
+  <span class="k">then </span>reboot &amp;
+  <span class="k">fi</span>
+<span class="k">else </span><span class="nb">echo</span> <span class="s2">&quot;EXIT value is $EXIT&quot;</span>
+<span class="k">fi</span>
 
-<span class="nv">$APTMGR</span> clean <span class="o">&amp;&amp;</span> <span class="nv">$APTMGR</span> update <span class="o">&amp;&amp;</span> <span class="nv">$APTMGR</span> upgrade
-
-<span class="c"># Restart system</span>
-<span class="c"># ###########################</span>
-
-reboot
+<span class="nb">exit</span> <span class="nv">$EXIT</span>
 
 <span class="c">################################################################################</span>
 
 <span class="c"># 10/12/14 GARL -- Added apt-fast installation to speed routine</span>
+<span class="c"># 10/29/14 GARL -- Rewritten for TechCamp 2014 workshop</span>
 </pre></div>
 </td></tr></table></div>
 </div>

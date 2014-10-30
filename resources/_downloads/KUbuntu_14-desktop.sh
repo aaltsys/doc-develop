@@ -23,7 +23,7 @@ REPOS=''
 apt-manager() {
 
   # Determine apt package management command --
-  dpkg -s 'apt-fast' > null
+  dpkg -s 'apt-fast' > /dev/null
   if [ $? -ne 0 ] ; then
     APTMGR='apt-get'
   else
@@ -65,7 +65,7 @@ apt-pkgs() {
   APT=0
   for i in $PKGS
   do
-    dpkg -s $i > null
+    dpkg -s $i > /dev/null
     if [ $? -ne 0 ] ; then
       APT=1
       echo "$i is missing, it will be installed"
@@ -87,15 +87,15 @@ apt-pkgs() {
 # install, configure apt-fast
 # ###########################
 
-REPOS='ppa:saiarcot895/myppa'
+REPOS='ppa:apt-fast/stable'
 apt-repos
 PKGS='apt-fast'
 apt-pkgs
 MIRRORS='MIRRORS=("http://us.archive.ubuntu.com/ubuntu,'
-MIRRORS+='http://mirror.cc.columbia.edu/pub/linux/ubuntu/archive/,'
-MIRRORS+='http://mirror.cc.vt.edu/pub2/ubuntu/,'
-MIRRORS+='http://mirror.umd.edu/ubuntu/,'
-MIRRORS+='http://mirrors.mit.edu/ubuntu/")'
+MIRRORS+='http://mirror.pnl.gov/ubuntu/,'
+MIRRORS+='http://mirrors.centarra.com/ubuntu/,'
+MIRRORS+='http://mirror.tocici.com/ubuntu/,'
+MIRRORS+='http://mirrors.us.kernel.org/ubuntu/")'
 sed -r "/MIRRORS=.*$/d" -i /etc/apt-fast.conf
 sed -r "$ a\$MIRRORS" -i /etc/apt-fast.conf
 apt-manager

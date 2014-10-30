@@ -53,10 +53,23 @@
 <li><a class="reference internal" href="#serving-the-program-purpose">Serving the Program Purpose</a><ul>
 <li><a class="reference internal" href="#speeding-up-installs">Speeding up Installs</a></li>
 <li><a class="reference internal" href="#configuring-apt-fast">Configuring apt-fast</a></li>
-<li><a class="reference internal" href="#adding-a-software-repository">Adding a software repository</a></li>
-<li><a class="reference internal" href="#adding-an-application">Adding an application</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#installation-routines">Installation routines</a><ul>
+<li><a class="reference internal" href="#apt-repos">apt-repos</a></li>
+<li><a class="reference internal" href="#apt-pkgs">apt-pkgs</a></li>
+<li><a class="reference internal" href="#apt-manager">apt-manager</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#the-main-program">The MAIN Program</a><ul>
+<li><a class="reference internal" href="#install-google-chrome-stable">Install Google Chrome stable</a></li>
+<li><a class="reference internal" href="#install-productivity-apps">Install productivity apps</a></li>
+<li><a class="reference internal" href="#install-desktop-utilities">Install desktop utilities</a></li>
+<li><a class="reference internal" href="#install-sun-oracle-java">Install Sun (Oracle) java</a></li>
+<li><a class="reference internal" href="#install-playonlinux-console">Install playonlinux console</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#clean-up-and-exit">Clean Up and Exit</a></li>
 </ul>
 </li>
 </ul>
@@ -106,21 +119,21 @@ desktop system which is used for productivity tasks or software development
 work.</p>
 <div class="sidebar">
 <p class="first sidebar-title">Function confirm</p>
-<div class="last highlight-bash"><div class="highlight"><pre><span class="c"># ===== Ask for confirmation</span>
-<span class="c"># Requires $PROMPT, returns $EXIT</span>
-confirm<span class="o">()</span> <span class="o">{</span>
+<div class="last highlight-bash"><div class="highlight"><pre>confirm<span class="o">()</span> <span class="o">{</span>
+  <span class="c"># uses $PROMPT, returns $EXIT</span>
+  <span class="c">#</span>
   tput rev
   <span class="nb">echo</span> -n <span class="nv">$PROMPT</span>
-  <span class="nb">read</span> -n 1 -p <span class="s2">&quot; (Yes/no)?&quot;</span> RESPONSE
+  <span class="nb">read</span> -n 1 -p <span class="s2">&quot;? [Y/n]&quot;</span> RESPONSE
   tput sgr0
   <span class="nb">echo</span>
 <span class="nb">  </span><span class="k">case</span> <span class="nv">$RESPONSE</span> in
     Y|y<span class="o">)</span>
-      <span class="nv">EXIT</span><span class="o">=</span><span class="s1">&#39;0&#39;</span> ;;
+      <span class="nv">EXIT</span><span class="o">=</span>0 ;;
     N|n<span class="o">)</span>
-      <span class="nv">EXIT</span><span class="o">=</span><span class="s1">&#39;1&#39;</span> ;;
+      <span class="nv">EXIT</span><span class="o">=</span>1 ;;
     *<span class="o">)</span>
-      <span class="nv">EXIT</span><span class="o">=</span><span class="s1">&#39;2&#39;</span> ;;
+      <span class="nv">EXIT</span><span class="o">=</span>2 ;;
   <span class="k">esac</span>
 <span class="o">}</span>
 </pre></div>
@@ -148,31 +161,33 @@ section as well.</p>
 <p class="first sidebar-title">Confirm script execution</p>
 <div class="last highlight-bash"><div class="highlight"><pre><span class="c"># check OS type</span>
 <span class="c"># Uses PROMPT, returns OS, VERSION, EXIT</span>
+<span class="c">#</span>
 <span class="nb">read </span>OS &lt; /etc/issue
 <span class="k">case</span> <span class="nv">$OS</span> in
   Ubuntu*<span class="o">)</span>
     <span class="nv">ARRAY</span><span class="o">=(</span><span class="nv">$OS</span><span class="o">)</span>
-    <span class="nv">VERSION</span><span class="o">=</span><span class="k">${</span><span class="nv">ARRAY</span><span class="p">[1]</span><span class="k">}</span>
-    ;;
+    <span class="nv">VERSION</span><span class="o">=</span><span class="k">${</span><span class="nv">ARRAY</span><span class="p">[1]</span><span class="k">}</span> ;;
   Debian*<span class="o">)</span> ;;
   *<span class="o">)</span>
     <span class="nb">echo</span> <span class="s2">&quot;Not Debian or Ubuntu, exiting ...&quot;</span>
-    <span class="nv">EXIT</span><span class="o">=</span><span class="s1">&#39;1&#39;</span> ;;
+    <span class="nv">EXIT</span><span class="o">=</span>1 ;;
 <span class="k">esac</span>
 <span class="c">#</span>
 <span class="c"># Check privileges</span>
-<span class="k">if</span> <span class="o">[[</span> <span class="nv">$EUID</span> -ne 0 <span class="o">]]</span>
+<span class="k">if</span> <span class="o">[</span> <span class="nv">$EUID</span> -ne 0 <span class="o">]</span>
 <span class="k">then</span>
 <span class="k">  </span><span class="nb">echo</span> -e <span class="s2">&quot;\e[1;31m try again using sudo \e[0m&quot;</span>
-  <span class="nv">EXIT</span><span class="o">=</span><span class="s1">&#39;1&#39;</span>
+  <span class="nv">EXIT</span><span class="o">=</span>1
 <span class="k">else</span>
   <span class="c"># test user confirmation</span>
   <span class="nv">PROMPT</span><span class="o">=</span><span class="s1">&#39;Install packages for Kubuntu&#39;</span>
   confirm
 <span class="k">fi</span>
 <span class="c">#</span>
-<span class="k">if</span> <span class="o">[[</span> <span class="nv">$EXIT</span> -gt 0 <span class="o">]]</span>
-<span class="k">then </span><span class="nb">exit</span> <span class="nv">$EXIT</span>
+<span class="k">if</span> <span class="o">[</span> <span class="nv">$EXIT</span> -gt 0 <span class="o">]</span>
+<span class="k">then</span>
+<span class="k">  </span><span class="nb">echo</span> -e <span class="s2">&quot;\e[1;31m Package installation was canceled. \e[0m&quot;</span>
+  <span class="nb">exit</span> <span class="nv">$EXIT</span>
 <span class="k">fi</span>
 </pre></div>
 </div>
@@ -200,14 +215,10 @@ declarations as well:</p>
 </pre></div>
 </div>
 <p>Finally, add a couple statements to the program exit section also, so that a
-normal exit can be identified:</p>
+normal exit can be identified during testing:</p>
 <div class="highlight-python"><div class="highlight"><pre>echo $EXIT
 exit $EXIT
 </pre></div>
-</div>
-<div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">Tests are important for the safety and reliablilty of a program.</p>
 </div>
 </div>
 </div>
@@ -253,31 +264,37 @@ sudo gzip /usr/share/man/man5/apt-fast.conf.5
   <span class="c"># calls apt-repos, apt-pkgs, confirm</span>
   <span class="c">#</span>
   <span class="c"># check if apt-fast is installed</span>
-  <span class="nv">PKGS</span><span class="o">=</span><span class="s1">&#39;apt-fast&#39;</span>
-  dpkg -s <span class="nv">$PKGS</span> &gt; null
-  <span class="k">if</span> <span class="o">[</span> <span class="nv">$?</span> -ne 0 <span class="o">]</span>
+  dpkg -s <span class="s1">&#39;apt-fast&#39;</span> &gt; /dev/null 2&gt;&amp;1
+  <span class="k">if</span> <span class="o">[</span> <span class="nv">$?</span> -eq 0 <span class="o">]</span>
   <span class="k">then</span>
+<span class="k">    </span><span class="nv">PROMPT</span><span class="o">=</span><span class="s1">&#39;Skip apt-fast mirror configuration&#39;</span>
+    confirm
+    <span class="k">if</span> <span class="o">[</span> <span class="nv">$EXIT</span> -ne 0 <span class="o">]</span>
+    <span class="k">then</span>
+<span class="k">      </span>apt-fast-config
+      <span class="nv">EXIT</span><span class="o">=</span>0
+    <span class="k">fi</span>
+<span class="k">  else</span>
     <span class="c"># determine REPOS for apt-fast</span>
-    <span class="k">case </span>VERSION in
+    <span class="k">case</span> <span class="nv">$VERSION</span> in
       10*|11*|12*|13*|14.04*<span class="o">)</span>
         <span class="nv">REPOS</span><span class="o">=</span><span class="s1">&#39;ppa:apt-fast/stable&#39;</span> ;;
       *<span class="o">)</span>
         <span class="nb">echo</span> -e <span class="s2">&quot;\e[1;31m apt-fast is not released for $VERSION \e[0m&quot;</span> ;;
     <span class="k">esac</span>
     <span class="c">#</span>
-    <span class="k">if</span> <span class="o">[[</span> <span class="nv">$REPOS</span> !<span class="o">=</span> <span class="s1">&#39;&#39;</span> <span class="o">]]</span>
+    <span class="k">if</span> <span class="o">[</span> <span class="nv">$REPOS</span> !<span class="o">=</span> <span class="s1">&#39;&#39;</span> <span class="o">]</span>
     <span class="k">then</span>
 <span class="k">      </span><span class="nv">PROMPT</span><span class="o">=</span><span class="s1">&#39;Install program apt-fast&#39;</span>
       confirm
-      <span class="k">if</span> <span class="o">[[</span> <span class="nv">$EXIT</span> -gt 0 <span class="o">]]</span>
-      <span class="k">then</span>
-        <span class="c"># not confirmed, reset EXIT</span>
-        <span class="nv">EXIT</span><span class="o">=</span><span class="s1">&#39;0&#39;</span>
+      <span class="k">if</span> <span class="o">[</span> <span class="nv">$EXIT</span> -gt 0 <span class="o">]</span>
+      <span class="k">then </span><span class="nv">EXIT</span><span class="o">=</span>0 ;       <span class="c"># not confirmed, reset EXIT</span>
       <span class="k">else</span>
         <span class="c"># install apt-fast</span>
         <span class="nv">PKGS</span><span class="o">=</span><span class="s1">&#39;apt-fast&#39;</span>
         apt-repos
         apt-pkgs
+        apt-fast-config
       <span class="k">fi</span>
 <span class="k">    fi</span>
 <span class="k">  fi</span>
@@ -285,14 +302,14 @@ sudo gzip /usr/share/man/man5/apt-fast.conf.5
 </pre></div>
 </div>
 </div>
-<p>The first question for this script needs to be, has <strong class="program">apt-fast</strong> been
-installed before? This question must be addressed for the script to be
+<p>The first question for this routine needs to be, has <strong class="program">apt-fast</strong> been
+installed already? This question must be addressed for the script to be
 <em>idempotent</em>.</p>
 <p>Next up is to determine if <strong class="program">apt-fast</strong> can be installed: is there a
 repository for it? Using the <tt class="docutils literal"><span class="pre">$VERSION</span></tt> variable from the starting
 confirmation, a case statement calculates the repository string in <tt class="docutils literal"><span class="pre">$REPOS</span></tt>.</p>
 <p>Finally, the user gets choose whether or not to install <strong class="program">apt-fast</strong>.
-This section reuses the <tt class="docutils literal"><span class="pre">confirm</span></tt> function we started the script with.</p>
+This section reuses the <tt class="docutils literal"><span class="pre">confirm</span></tt> function we started with.</p>
 <div class="admonition-instruction admonition">
 <p class="first admonition-title">Instruction</p>
 <p class="last">The sidebar code was written specifically to install <strong class="program">apt-fast</strong>.
@@ -306,29 +323,14 @@ declarations, and add placeholder functions <tt class="docutils literal"><span c
 <tt class="docutils literal"><span class="pre">apt-fast-install()</span></tt>.</p>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
-<p class="last">Empty functions will generate errors on execution. The <tt class="docutils literal"><span class="pre">:</span></tt> is a bash
-built-in equivalent of NOP, or no operation, in the placeholder functions.</p>
+<p class="last">Empty functions will generate errors on execution. The <tt class="docutils literal"><span class="pre">:</span></tt> operator, a
+bash built-in equivalent of NOP or no operation, is used to prevent these
+errors in the placeholder functions.</p>
 </div>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
-<p class="last">A function should always be declared preceding any calls to the function
+<p class="last">A function should always be declared preceding any calls to that function
 name.</p>
-</div>
-<div class="sidebar">
-<p class="first sidebar-title">Routine apt-fast-config</p>
-<div class="last highlight-bash"><div class="highlight"><pre>apt-fast-config<span class="o">()</span> <span class="o">{</span>
-  <span class="c"># updates configuration file /etc/apt-fast.conf</span>
-  <span class="nv">MIRRORS</span><span class="o">=</span><span class="s1">&#39;MIRRORS=(&quot;http://us.archive.ubuntu.com/ubuntu,&#39;</span>
-  MIRRORS+<span class="o">=</span><span class="s1">&#39;http://mirror.pnl.gov/ubuntu/,&#39;</span>
-  MIRRORS+<span class="o">=</span><span class="s1">&#39;http://mirrors.centarra.com/ubuntu/,&#39;</span>
-  MIRRORS+<span class="o">=</span><span class="s1">&#39;http://mirror.tocici.com/ubuntu/,&#39;</span>
-  MIRRORS+<span class="o">=</span><span class="s1">&#39;http://mirrors.us.kernel.org/ubuntu/,&#39;</span>
-  <span class="c">#</span>
-  sed -r <span class="s2">&quot;/MIRRORS=.*$/d&quot;</span> -i /etc/apt-fast.conf
-  sed -r <span class="s2">&quot;$ a\$MIRRORS&quot;</span> -i /etc/apt-fast.conf
-<span class="o">}</span>
-</pre></div>
-</div>
 </div>
 </div>
 <div class="section" id="configuring-apt-fast">
@@ -339,14 +341,51 @@ geographically close to the user. There are about
 of which maybe 20% are actually up-to-date, and some of these mirrors have
 limited bandwidth.</p>
 <p>Writing a dynamic configuration routine for <strong class="program">apt-fast</strong> would require
-screen-scraping the Ubuntu mirrors webpages and a fair bit more. As a
-work-around, a mirrors list has been assembled by hand and (ugh!) assigned to a
-variable <tt class="docutils literal"><span class="pre">MIRRORS</span></tt>. This data must be moved to a configuration file ASAP.</p>
-<div class="sidebar">
-<p class="first sidebar-title">Routine apt-repos</p>
-<div class="last highlight-bash"><div class="highlight"><pre>apt-repos<span class="o">()</span> <span class="o">{</span>
+screen-scraping the Ubuntu mirrors webpages and a fair bit more, and the
+resulting code would be unreliable at best.</p>
+<p>As a temporary work-around, a mirrors list has been assembled by hand and
+(ugh!) assigned to a variable <tt class="docutils literal"><span class="pre">MIRRORS</span></tt>. (This data should be moved to a
+configuration file ASAP; configuration data does not belong in program code.)</p>
+<div class="highlight-bash"><div class="highlight"><pre>apt-fast-config<span class="o">()</span> <span class="o">{</span>
+  <span class="c"># updates configuration file /etc/apt-fast.conf</span>
+  <span class="c"># uses MIRRORS, sets /etc/apt-fast.conf</span>
+  <span class="c">#</span>
+  touch /etc/apt-fast.conf
+  sed -r <span class="s2">&quot;/MIRRORS=.*$/d&quot;</span> -i /etc/apt-fast.conf
+  sed -r <span class="s2">&quot;$ a\$MIRRORS&quot;</span> -i /etc/apt-fast.conf
+<span class="o">}</span>
+</pre></div>
+</div>
+<div class="admonition-instruction admonition">
+<p class="first admonition-title">Instruction</p>
+<p>Copy the <tt class="docutils literal"><span class="pre">apt-fast-config()</span></tt> function above and place it above function
+<tt class="docutils literal"><span class="pre">apt-fast-install()</span></tt> in the FUNCTION DECLARATIONS. Then add the $MIRRORS
+declaration to the VARIABLE DECLARATIONS:</p>
+<div class="last highlight-python"><div class="highlight"><pre><span class="n">MIRRORS</span><span class="o">=</span><span class="s">&#39;MIRRORS=(&quot;http://us.archive.ubuntu.com/ubuntu&#39;</span>
+<span class="n">MIRRORS</span><span class="o">+=</span><span class="s">&#39;,http://mirror.pnl.gov/ubuntu/&#39;</span>
+<span class="n">MIRRORS</span><span class="o">+=</span><span class="s">&#39;,http://mirrors.centarra.com/ubuntu/&#39;</span>
+<span class="n">MIRRORS</span><span class="o">+=</span><span class="s">&#39;,http://mirror.tocici.com/ubuntu/&#39;</span>
+<span class="n">MIRRORS</span><span class="o">+=</span><span class="s">&#39;,http://mirrors.us.kernel.org/ubuntu/&quot;)&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="installation-routines">
+<h2>Installation routines<a class="headerlink" href="#installation-routines" title="Permalink to this headline">¶</a></h2>
+<p>Finally, the placeholder routines for installing repositories and packages can
+be replaced with actual code.</p>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">Debian&#8217;s <strong class="program">apt</strong> software repository system can install multiple
+packages at a time, but if any of a list of packages has no installation
+candidate, the whole list will be skipped. These routines process package
+lists one package at a time to avoid skipping.</p>
+</div>
+<div class="section" id="apt-repos">
+<h3>apt-repos<a class="headerlink" href="#apt-repos" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-bash"><div class="highlight"><pre>apt-repos<span class="o">()</span> <span class="o">{</span>
   <span class="c"># uses REPOS, APTMGR, returns APT</span>
-  <span class="c"># calls apt-manager</span>
   <span class="c">#</span>
   apt-manager
   <span class="c"># Install repositories listed in variable REPOS</span>
@@ -360,24 +399,20 @@ variable <tt class="docutils literal"><span class="pre">MIRRORS</span></tt>. Thi
   <span class="k">if</span> <span class="o">[</span> <span class="nv">$APT</span> -ne 0 <span class="o">]</span>
   <span class="k">then</span>
 <span class="k">    </span><span class="nb">echo</span> -e <span class="s2">&quot;\e[1;32m Updating repository indexes \e[0m&quot;</span>
-    <span class="nv">$APTMGR</span> -y -f install <span class="o">&amp;&amp;</span> apt-get -y update
+    apt-get -y -f install <span class="o">&amp;&amp;</span> apt-get -y update
   <span class="k">fi</span>
 <span class="o">}</span>
 </pre></div>
 </div>
+<div class="admonition-instruction admonition">
+<p class="first admonition-title">Instruction</p>
+<p class="last">Use the <tt class="docutils literal"><span class="pre">apt-repos()</span></tt> function above to replace the temporary stub of the
+same name in the FUNCTION DECLARATIONS.</p>
 </div>
 </div>
-<div class="section" id="adding-a-software-repository">
-<h3>Adding a software repository<a class="headerlink" href="#adding-a-software-repository" title="Permalink to this headline">¶</a></h3>
-<p>This script will use Debian&#8217;s <strong class="program">apt</strong> software repository system to
-install programs. <strong class="program">apt</strong> can install multiple packages at a time, but
-if any of a list of packages have no installation candidate, the whole list
-will be skipped. Package lists are installed one package at a time to avoid
-skipping.</p>
-<p>&#8212;</p>
-<div class="sidebar">
-<p class="first sidebar-title">Routine apt-pkgs</p>
-<div class="last highlight-bash"><div class="highlight"><pre>apt-pkgs<span class="o">()</span> <span class="o">{</span>
+<div class="section" id="apt-pkgs">
+<h3>apt-pkgs<a class="headerlink" href="#apt-pkgs" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-bash"><div class="highlight"><pre>apt-pkgs<span class="o">()</span> <span class="o">{</span>
   <span class="c"># uses PKGS, APTMGR; returns APT</span>
   <span class="c"># calls apt-manager</span>
   <span class="c">#</span>
@@ -386,7 +421,7 @@ skipping.</p>
   <span class="nv">APT</span><span class="o">=</span>0
   <span class="k">for </span>NAME in <span class="nv">$PKGS</span>
   <span class="k">do</span>
-<span class="k">    </span>dpkg -s <span class="nv">$NAME</span> &gt; /dev/null
+<span class="k">    </span>dpkg -s <span class="nv">$NAME</span> &gt; /dev/null 2&gt;&amp;1
     <span class="k">if</span> <span class="o">[</span> <span class="nv">$?</span> -ne 0 <span class="o">]</span>
     <span class="k">then</span>
 <span class="k">      </span>APT+<span class="o">=</span>1
@@ -403,17 +438,28 @@ skipping.</p>
 <span class="o">}</span>
 </pre></div>
 </div>
+<div class="admonition-instruction admonition">
+<p class="first admonition-title">Instruction</p>
+<p class="last">Use the <tt class="docutils literal"><span class="pre">apt-pkgs()</span></tt> function above to replace the temporary stub of the
+same name in the FUNCTION DECLARATIONS.</p>
 </div>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">Debian&#8217;s <strong class="program">apt</strong> software repository system can install multiple
+packages at a time, but if any of a list of packages has no installation
+candidate, the whole list will be skipped. These routines process package
+lists one package at a time to avoid skipping.</p>
 </div>
-<div class="section" id="adding-an-application">
-<h3>Adding an application<a class="headerlink" href="#adding-an-application" title="Permalink to this headline">¶</a></h3>
-<p>&#8212;</p>
-<div class="sidebar">
-<p class="first sidebar-title">Routine apt-manager</p>
-<div class="last highlight-bash"><div class="highlight"><pre>apt-manager<span class="o">()</span> <span class="o">{</span>
+<p>The <tt class="docutils literal"><span class="pre">apt-pkgs()</span></tt> function calls an additional function, <tt class="docutils literal"><span class="pre">apt-manager()</span></tt>, to
+determine what <tt class="docutils literal"><span class="pre">apt</span></tt> installer to use &#8211; <strong class="program">apt-fast</strong> or
+<strong class="program">apt-get</strong> &#8211; during install operations. Lets add this final function.</p>
+</div>
+<div class="section" id="apt-manager">
+<h3>apt-manager<a class="headerlink" href="#apt-manager" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-bash"><div class="highlight"><pre>apt-manager<span class="o">()</span> <span class="o">{</span>
   <span class="c"># returns APTMGR</span>
   <span class="c">#</span>
-  dpkg -s <span class="s1">&#39;apt-fast&#39;</span> &gt; /dev/null
+  dpkg -s <span class="s1">&#39;apt-fast&#39;</span> &gt; /dev/null 2&gt;&amp;1
   <span class="k">if</span> <span class="o">[</span> <span class="nv">$?</span> -ne 0 <span class="o">]</span>
   <span class="k">then</span>
 <span class="k">    </span><span class="nv">APTMGR</span><span class="o">=</span><span class="s1">&#39;apt-get&#39;</span>
@@ -423,8 +469,130 @@ skipping.</p>
 <span class="o">}</span>
 </pre></div>
 </div>
+<div class="admonition-instruction admonition">
+<p class="first admonition-title">Instruction</p>
+<p class="last">Copy the <tt class="docutils literal"><span class="pre">apt-manager()</span></tt> function and insert the code above <tt class="docutils literal"><span class="pre">apt-pkgs()</span></tt>
+in the FUNCTION DECLARATIONS.</p>
+</div>
+<p>Reading through the code so far, a pattern will emerge. For each routine:</p>
+<ul class="simple">
+<li>A function performs one specific task.</li>
+<li>Typically, but not always, a function returns a single variable.</li>
+<li>Each function uses a minimum of input variables.</li>
+<li>Each function calls a limited number of other functions, if any.</li>
+<li>Functions check before performing redundant operations.</li>
+<li>Every Function is idempotent.</li>
+<li>Function code is generalized for potential reuse.</li>
+<li>Routines get user confirmation before changing settings.</li>
+</ul>
+<p>In fact, only one main routine has been written so far, and all the other code
+is generalized supporting functions for that routine.</p>
 </div>
 </div>
+<div class="section" id="the-main-program">
+<h2>The MAIN Program<a class="headerlink" href="#the-main-program" title="Permalink to this headline">¶</a></h2>
+<p>Now it is time to write the main code for installing software. First is to add
+repositories for packages. Add the following code to the main program body:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c"># universe/multiverse repositories</span>
+apt-add-repository <span class="s2">&quot;deb http://archive.ubuntu.com/ubuntu $(lsb_release -sc) main universe restricted multiverse&quot;</span>
+
+<span class="c"># add repositories for: Cinelerra, Ubuntu tweaks, Rails</span>
+<span class="c"># REPOS=&#39;ppa:cinelerra-ppa/ppa ppa:tualatrix/ppa ppa:ubuntu-on-rails/ppa&#39;</span>
+<span class="c"># apt-repos</span>
+
+<span class="c"># upgrade curl, firefox, ttf-lyx, ubufox</span>
+<span class="nv">PKGS</span><span class="o">=</span><span class="s1">&#39;curl firefox ttf-lyx ubufox&#39;</span>
+apt-pkgs
+</pre></div>
+</div>
+<div class="section" id="install-google-chrome-stable">
+<h3>Install Google Chrome stable<a class="headerlink" href="#install-google-chrome-stable" title="Permalink to this headline">¶</a></h3>
+<p>Next will be the code to install <strong class="program">Chrome</strong>. There is a repository for
+<strong class="program">Chrome</strong>, but the Google Chrome website does it another way. Add this
+code to the main program body:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c"># install Google Chrome stable</span>
+<span class="nv">CHROMEVER</span><span class="o">=</span><span class="s1">&#39;google-chrome-stable_current_&#39;</span>
+<span class="k">if</span> <span class="o">[[</span> <span class="sb">`</span>uname -i<span class="sb">`</span> <span class="o">=</span>~ i*86 <span class="o">]]</span>
+<span class="k">then </span>CHROMEVER+<span class="o">=</span><span class="s1">&#39;i386.deb&#39;</span>
+<span class="k">else </span>CHROMEVER+<span class="o">=</span><span class="s1">&#39;amd64.deb&#39;</span>
+<span class="k">fi</span>
+wget -O /tmp/chrome.deb https://dl-ssl.google.com/linux/direct/<span class="nv">$CHROMEVER</span>
+dpkg -i /tmp/chrome.deb
+rm /tmp/chrome.deb
+</pre></div>
+</div>
+</div>
+<div class="section" id="install-productivity-apps">
+<h3>Install productivity apps<a class="headerlink" href="#install-productivity-apps" title="Permalink to this headline">¶</a></h3>
+<p>Now there are several sections of programs, all of which are maintained in
+package repositories. These programs will be installed in groups; add the code
+for each group to the main section of the program:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c"># install desktop productivity apps</span>
+<span class="nv">PKGS</span><span class="o">=</span><span class="s1">&#39;blender dia filezilla freemind gimp gnucash inkscape mypaint&#39;</span>
+PKGS+<span class="o">=</span><span class="s1">&#39; openshot scribus shotwell xaralx xsane&#39;</span>
+<span class="c"># PKGS+=&#39; cinelerra&#39;</span>
+apt-pkgs
+</pre></div>
+</div>
+</div>
+<div class="section" id="install-desktop-utilities">
+<h3>Install desktop utilities<a class="headerlink" href="#install-desktop-utilities" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c"># install desktop utility apps</span>
+<span class="nv">PKGS</span><span class="o">=</span><span class="s1">&#39;aptitude byobu cifs-utils diffuse dosbox dosemu&#39;</span>
+PKGS+<span class="o">=</span><span class="s1">&#39; hplip-gui keepassx krdc kubuntu-restricted-extras lftp mc&#39;</span>
+PKGS+<span class="o">=</span><span class="s1">&#39; nfs-common openvpn plasma-widget-lancelot putty recordmydesktop&#39;</span>
+PKGS+<span class="o">=</span><span class="s1">&#39; screen shutter unison vlc whois wine wireshark xclip&#39;</span>
+<span class="c"># PKGS+=&#39; playonlinux ubuntu-tweak&#39;</span>
+apt-pkgs
+</pre></div>
+</div>
+</div>
+<div class="section" id="install-sun-oracle-java">
+<h3>Install Sun (Oracle) java<a class="headerlink" href="#install-sun-oracle-java" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c"># install Sun (Oracle) java</span>
+<span class="nv">PKGS</span><span class="o">=</span><span class="s1">&#39;sun-java6-bin sun-java6-fonts sun-java6-javadb sun-java6-jdk&#39;</span>
+PKGS+<span class="o">=</span><span class="s1">&#39; sun-java6-jre sun-java6-plugin&#39;</span>
+apt-pkgs
+</pre></div>
+</div>
+</div>
+<div class="section" id="install-playonlinux-console">
+<h3>Install playonlinux console<a class="headerlink" href="#install-playonlinux-console" title="Permalink to this headline">¶</a></h3>
+<p>To add entertainment value, uncomment the following code and add it to the main
+section as well:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c"># install playonlinux windows game console</span>
+<span class="c"># wget -q &quot;http://deb.playonlinux.com/public.gpg&quot; -O- | apt-key add -</span>
+<span class="c"># wget http://deb.playonlinux.com/playonlinux_trusty.list -O /etc/apt/sources.list.d/playonlinux.list</span>
+<span class="c"># $APTMGR update</span>
+<span class="c"># $APTMGR install playonlinux</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="clean-up-and-exit">
+<h2>Clean Up and Exit<a class="headerlink" href="#clean-up-and-exit" title="Permalink to this headline">¶</a></h2>
+<p>Finally, this program is finished except for the exit. Normally a program would
+have a single exit point which would report a status. This script would be just
+like that too, except that it gives the user the selection to reboot when
+finished. The <tt class="docutils literal"><span class="pre">&amp;</span></tt> after <strong class="command">reboot</strong> instructs shell to execute the
+reboot in a subshell, so that our script can exit normally.</p>
+<p>Put the following statements in the EXIT CODE section at the bottom of the
+program:</p>
+<div class="highlight-bash"><div class="highlight"><pre>apt-get clean <span class="o">&amp;&amp;</span> apt-get update <span class="o">&amp;&amp;</span> apt-get upgrade
+
+<span class="k">if</span> <span class="o">[</span> <span class="nv">$EXIT</span> -eq 0 <span class="o">]</span>
+<span class="k">then</span>
+<span class="k">  </span><span class="nv">PROMPT</span><span class="o">=</span><span class="s1">&#39;Installation successful. Reboot now&#39;</span>
+  <span class="k">if</span> <span class="o">[</span><span class="nv">$EXIT</span> -gt 0 <span class="o">]</span>
+  <span class="k">then </span>reboot &amp;
+  <span class="k">fi</span>
+<span class="k">else </span><span class="nb">echo</span> <span class="s2">&quot;EXIT value is $EXIT&quot;</span>
+<span class="k">fi</span>
+
+<span class="nb">exit</span> <span class="nv">$EXIT</span>
+</pre></div>
+</div>
+<p><strong>And now, we are finished.*</strong></p>
 </div>
 </div>
 
