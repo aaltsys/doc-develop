@@ -520,4 +520,4 @@ program:
    
    exit $EXIT
 
-**And now, we are finished.***
+**And now, we are finished.**
