@@ -111,24 +111,14 @@ apt-add-repository "deb http://archive.ubuntu.com/ubuntu $(lsb_release -sc) main
 # apt-repos
 
 # upgrade Firefox, replace latex-xft-fonts with ttf-lyx, add curl for Chrome
-PKGS='curl firefox ttf-lyx ubufox'
+PKGS='curl google-chrome-stable firefox ttf-lyx ubufox'
 apt-pkgs
-
-# install Google Chrome stable
-if echo `uname -i` | grep -q 64 ; then
-  CHROMEVER="google-chrome-stable_current_amd64.deb"
-else
-  CHROMEVER="google-chrome-stable_current_i386.deb"
-fi
-wget -O /tmp/chrome.deb https://dl-ssl.google.com/linux/direct/$CHROMEVER
-dpkg -i /tmp/chrome.deb
-rm /tmp/chrome.deb
 
 # Install apps and tools
 # ###########################
 
   # install desktop productivity apps
-PKGS='blender dia filezilla freemind gimp gnucash inkscape mypaint'
+PKGS='blender dia filezilla freemind gimp git gnucash inkscape mypaint'
 PKGS+=' openshot scribus shotwell xaralx xsane'
 # PKGS+=' cinelerra'
 apt-pkgs
@@ -142,9 +132,9 @@ PKGS+=' screen shutter unison vlc whois wine wireshark xclip'
 apt-pkgs
 
 # install Sun (Oracle) java
-PKGS='sun-java6-bin sun-java6-fonts sun-java6-javadb sun-java6-jdk'
-PKGS+=' sun-java6-jre sun-java6-plugin'
-apt-pkgs
+# PKGS='sun-java6-bin sun-java6-fonts sun-java6-javadb sun-java6-jdk'
+# PKGS+=' sun-java6-jre sun-java6-plugin'
+# apt-pkgs
 
 # install playonlinux windows game console
 # wget -q "http://deb.playonlinux.com/public.gpg" -O- | apt-key add -

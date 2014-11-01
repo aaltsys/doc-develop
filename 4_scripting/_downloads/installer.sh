@@ -9,6 +9,7 @@ PROMPT=''
 EXIT=0
 OS=''
 VERSION=''
+OPER=''
 APTMGR='apt-get'
 REPOS=''
 APT=''
@@ -89,13 +90,30 @@ apt-pkgs() {
   APT=0
   for NAME in $PKGS
   do
-    dpkg -s $NAME > /dev/null 2>&1
-    if [ $? -ne 0 ]
-    then
-      APT+=1
-      echo -e "\e[1;32m Missing $NAME will be installed \e[0m"
-      $APTMGR -y install $NAME
+    if [ $OPER = '' ]
+    Then OPER='install'
     fi
+    case $OPER in
+      'purge')
+        dpkg -s $NAME > /dev/null 2>&1
+        if [ $? -eq 0 ]
+        then
+          APT+=1
+          echo -e "\e[1;33m Installed $NAME will be purged \e[0m"
+          $APTMGR -y purge $NAME
+        fi
+        ;;
+      'install')
+        dpkg -s $NAME > /dev/null 2>&1
+        if [ $? -ne 0 ]
+        then
+          APT+=1
+          echo -e "\e[1;32m Missing $NAME will be installed \e[0m"
+          $APTMGR -y install $NAME
+        fi
+        ;;
+      *) ;;
+    esac
   done
   # verify installation and update packages indexes
   if [ $APT -ne 0 ]
@@ -196,34 +214,23 @@ apt-fast-install
 # 
 # ##### MAIN CODE
 # 
-
 # universe/multiverse repositories
 apt-add-repository "deb http://archive.ubuntu.com/ubuntu $(lsb_release -sc) main universe restricted multiverse"
-
+#
 # add repositories for: Cinelerra, Ubuntu tweaks, Rails
 # REPOS='ppa:cinelerra-ppa/ppa ppa:tualatrix/ppa ppa:ubuntu-on-rails/ppa'
 # apt-repos
 
-# upgrade curl, firefox, ttf-lyx, ubufox
-PKGS='curl firefox ttf-lyx ubufox'
+# upgrade Firefox, replace latex-xft-fonts with ttf-lyx, add curl for Chrome
+PKGS='curl google-chrome-stable firefox ttf-lyx ubufox'
 apt-pkgs
-
-# install Google Chrome stable
-CHROMEVER='google-chrome-stable_current_'
-if [[ `uname -i` =~ i*86 ]] 
-then CHROMEVER+='i386.deb'
-else CHROMEVER+='amd64.deb'
-fi 
-wget -O /tmp/chrome.deb https://dl-ssl.google.com/linux/direct/$CHROMEVER
-dpkg -i /tmp/chrome.deb
-rm /tmp/chrome.deb
-
+#
 # install desktop productivity apps
-PKGS='blender dia filezilla freemind gimp gnucash inkscape mypaint'
+PKGS='blender dia filezilla freemind gimp git gnucash inkscape mypaint'
 PKGS+=' openshot scribus shotwell xaralx xsane'
 # PKGS+=' cinelerra'
 apt-pkgs
-
+#
 # install desktop utility apps
 PKGS='aptitude byobu cifs-utils diffuse dosbox dosemu'
 PKGS+=' hplip-gui keepassx krdc kubuntu-restricted-extras lftp mc'
@@ -231,18 +238,30 @@ PKGS+=' nfs-common openvpn plasma-widget-lancelot putty recordmydesktop'
 PKGS+=' screen shutter unison vlc whois wine wireshark xclip'
 # PKGS+=' playonlinux ubuntu-tweak'
 apt-pkgs
-
+#
 # install Sun (Oracle) java
-PKGS='sun-java6-bin sun-java6-fonts sun-java6-javadb sun-java6-jdk'
-PKGS+=' sun-java6-jre sun-java6-plugin'
-apt-pkgs
-
+# PKGS='sun-java6-bin sun-java6-fonts sun-java6-javadb sun-java6-jdk'
+# PKGS+=' sun-java6-jre sun-java6-plugin'
+# apt-pkgs
+#
 # install playonlinux windows game console
 # wget -q "http://deb.playonlinux.com/public.gpg" -O- | apt-key add -
 # wget http://deb.playonlinux.com/playonlinux_trusty.list -O /etc/apt/sources.list.d/playonlinux.list
 # $APTMGR update
 # $APTMGR install playonlinux
-# 
+# install python and TeX tools
+#
+OPER='install'
+PKGS='python-setuptools python-dev python-numpy python-qt4 python-qt4-gl python-vtk'
+PKGS+=' build-essential texlive-full'
+apt-pkgs
+#
+# install sphinx-tools
+OPER='purge'
+PKGS='python-configobj python-docutils python-pygments python-sphinx rst2pdf'
+apt-pkgs
+easy_install configobj docutils pygments sphinx rst2pdf 
+#
 # ##### EXIT CODE
 # 
 apt-get clean && apt-get update && apt-get upgrade
