@@ -34,7 +34,7 @@ Capify Project::
 Configure Capistrano
 =============================
 
-Edit :file:`config/deploy.rb`: 
+Edit :file:`config/deploy/production.rb`: 
 
 #. Change the `server` setting to the correct server address,
 #. Change `repo_url` to the correct URL for your fork,
@@ -48,6 +48,19 @@ Example::
    set :repo_url, 'https://github.com/[your-github-id]/html-demo.git'
    set :deploy_to, '/var/www/html/[your-github-id]'
    set :user, 'developer'
+   
+Edit :file:`config/deploy/production.rb`: 
+
+#. Change the `app` role setting to the correct user and server address, `developer@ec2demo.aaltsys.info`,
+#. Make sure that all of the other lines in the file are commented out (with a `#` at the beginning of the line),
+#. Add the following lines to the bottom of the file::
+      
+      set :ssh_options, {
+       auth_methods: %w(password),
+       password: 'techC@mp'
+      }
+
+
 
 Deploy!
 =============================
