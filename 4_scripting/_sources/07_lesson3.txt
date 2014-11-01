@@ -520,4 +520,10 @@ program:
    
    exit $EXIT
 
+Logic Test Results
+=============================
+   
+Again, sample program results on logic tests can be viewed on a separate page: 
+:ref:`installer-answers`.
+
 **And now, we are finished.**

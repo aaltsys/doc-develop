@@ -877,7 +877,26 @@ as organized in this guide, or just view the code below.</p>
 261
 262
 263
-264</pre></div></td><td class="code"><div class="highlight"><pre><span class="c">#! /bin/sh</span>
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283</pre></div></td><td class="code"><div class="highlight"><pre><span class="c">#! /bin/sh</span>
 <span class="c"># --- Program Principal Objective ---</span>
 <span class="c"># For Ubuntu up to 14.04 or other Ubuntu-based desktop systems: </span>
 <span class="c"># This script installs core utilities and general productivity apps.</span>
@@ -888,6 +907,7 @@ as organized in this guide, or just view the code below.</p>
 <span class="nv">EXIT</span><span class="o">=</span>0
 <span class="nv">OS</span><span class="o">=</span><span class="s1">&#39;&#39;</span>
 <span class="nv">VERSION</span><span class="o">=</span><span class="s1">&#39;&#39;</span>
+<span class="nv">OPER</span><span class="o">=</span><span class="s1">&#39;&#39;</span>
 <span class="nv">APTMGR</span><span class="o">=</span><span class="s1">&#39;apt-get&#39;</span>
 <span class="nv">REPOS</span><span class="o">=</span><span class="s1">&#39;&#39;</span>
 <span class="nv">APT</span><span class="o">=</span><span class="s1">&#39;&#39;</span>
@@ -968,13 +988,30 @@ apt-pkgs<span class="o">()</span> <span class="o">{</span>
   <span class="nv">APT</span><span class="o">=</span>0
   <span class="k">for </span>NAME in <span class="nv">$PKGS</span>
   <span class="k">do</span>
-<span class="k">    </span>dpkg -s <span class="nv">$NAME</span> &gt; /dev/null 2&gt;&amp;1
-    <span class="k">if</span> <span class="o">[</span> <span class="nv">$?</span> -ne 0 <span class="o">]</span>
-    <span class="k">then</span>
-<span class="k">      </span>APT+<span class="o">=</span>1
-      <span class="nb">echo</span> -e <span class="s2">&quot;\e[1;32m Missing $NAME will be installed \e[0m&quot;</span>
-      <span class="nv">$APTMGR</span> -y install <span class="nv">$NAME</span>
+<span class="k">    if</span> <span class="o">[</span> <span class="nv">$OPER</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span> <span class="o">]</span>
+    Then <span class="nv">OPER</span><span class="o">=</span><span class="s1">&#39;install&#39;</span>
     <span class="k">fi</span>
+<span class="k">    case</span> <span class="nv">$OPER</span> in
+      <span class="s1">&#39;purge&#39;</span><span class="o">)</span>
+        dpkg -s <span class="nv">$NAME</span> &gt; /dev/null 2&gt;&amp;1
+        <span class="k">if</span> <span class="o">[</span> <span class="nv">$?</span> -eq 0 <span class="o">]</span>
+        <span class="k">then</span>
+<span class="k">          </span>APT+<span class="o">=</span>1
+          <span class="nb">echo</span> -e <span class="s2">&quot;\e[1;33m Installed $NAME will be purged \e[0m&quot;</span>
+          <span class="nv">$APTMGR</span> -y purge <span class="nv">$NAME</span>
+        <span class="k">fi</span>
+        ;;
+      <span class="s1">&#39;install&#39;</span><span class="o">)</span>
+        dpkg -s <span class="nv">$NAME</span> &gt; /dev/null 2&gt;&amp;1
+        <span class="k">if</span> <span class="o">[</span> <span class="nv">$?</span> -ne 0 <span class="o">]</span>
+        <span class="k">then</span>
+<span class="k">          </span>APT+<span class="o">=</span>1
+          <span class="nb">echo</span> -e <span class="s2">&quot;\e[1;32m Missing $NAME will be installed \e[0m&quot;</span>
+          <span class="nv">$APTMGR</span> -y install <span class="nv">$NAME</span>
+        <span class="k">fi</span>
+        ;;
+      *<span class="o">)</span> ;;
+    <span class="k">esac</span>
 <span class="k">  done</span>
   <span class="c"># verify installation and update packages indexes</span>
   <span class="k">if</span> <span class="o">[</span> <span class="nv">$APT</span> -ne 0 <span class="o">]</span>
@@ -1075,34 +1112,23 @@ apt-fast-install
 <span class="c"># </span>
 <span class="c"># ##### MAIN CODE</span>
 <span class="c"># </span>
-
 <span class="c"># universe/multiverse repositories</span>
 apt-add-repository <span class="s2">&quot;deb http://archive.ubuntu.com/ubuntu $(lsb_release -sc) main universe restricted multiverse&quot;</span>
-
+<span class="c">#</span>
 <span class="c"># add repositories for: Cinelerra, Ubuntu tweaks, Rails</span>
 <span class="c"># REPOS=&#39;ppa:cinelerra-ppa/ppa ppa:tualatrix/ppa ppa:ubuntu-on-rails/ppa&#39;</span>
 <span class="c"># apt-repos</span>
 
-<span class="c"># upgrade curl, firefox, ttf-lyx, ubufox</span>
-<span class="nv">PKGS</span><span class="o">=</span><span class="s1">&#39;curl firefox ttf-lyx ubufox&#39;</span>
+<span class="c"># upgrade Firefox, replace latex-xft-fonts with ttf-lyx, add curl for Chrome</span>
+<span class="nv">PKGS</span><span class="o">=</span><span class="s1">&#39;curl google-chrome-stable firefox ttf-lyx ubufox&#39;</span>
 apt-pkgs
-
-<span class="c"># install Google Chrome stable</span>
-<span class="nv">CHROMEVER</span><span class="o">=</span><span class="s1">&#39;google-chrome-stable_current_&#39;</span>
-<span class="k">if</span> <span class="o">[[</span> <span class="sb">`</span>uname -i<span class="sb">`</span> <span class="o">=</span>~ i*86 <span class="o">]]</span> 
-<span class="k">then </span>CHROMEVER+<span class="o">=</span><span class="s1">&#39;i386.deb&#39;</span>
-<span class="k">else </span>CHROMEVER+<span class="o">=</span><span class="s1">&#39;amd64.deb&#39;</span>
-<span class="k">fi </span>
-wget -O /tmp/chrome.deb https://dl-ssl.google.com/linux/direct/<span class="nv">$CHROMEVER</span>
-dpkg -i /tmp/chrome.deb
-rm /tmp/chrome.deb
-
+<span class="c">#</span>
 <span class="c"># install desktop productivity apps</span>
-<span class="nv">PKGS</span><span class="o">=</span><span class="s1">&#39;blender dia filezilla freemind gimp gnucash inkscape mypaint&#39;</span>
+<span class="nv">PKGS</span><span class="o">=</span><span class="s1">&#39;blender dia filezilla freemind gimp git gnucash inkscape mypaint&#39;</span>
 PKGS+<span class="o">=</span><span class="s1">&#39; openshot scribus shotwell xaralx xsane&#39;</span>
 <span class="c"># PKGS+=&#39; cinelerra&#39;</span>
 apt-pkgs
-
+<span class="c">#</span>
 <span class="c"># install desktop utility apps</span>
 <span class="nv">PKGS</span><span class="o">=</span><span class="s1">&#39;aptitude byobu cifs-utils diffuse dosbox dosemu&#39;</span>
 PKGS+<span class="o">=</span><span class="s1">&#39; hplip-gui keepassx krdc kubuntu-restricted-extras lftp mc&#39;</span>
@@ -1110,18 +1136,30 @@ PKGS+<span class="o">=</span><span class="s1">&#39; nfs-common openvpn plasma-wi
 PKGS+<span class="o">=</span><span class="s1">&#39; screen shutter unison vlc whois wine wireshark xclip&#39;</span>
 <span class="c"># PKGS+=&#39; playonlinux ubuntu-tweak&#39;</span>
 apt-pkgs
-
+<span class="c">#</span>
 <span class="c"># install Sun (Oracle) java</span>
-<span class="nv">PKGS</span><span class="o">=</span><span class="s1">&#39;sun-java6-bin sun-java6-fonts sun-java6-javadb sun-java6-jdk&#39;</span>
-PKGS+<span class="o">=</span><span class="s1">&#39; sun-java6-jre sun-java6-plugin&#39;</span>
-apt-pkgs
-
+<span class="c"># PKGS=&#39;sun-java6-bin sun-java6-fonts sun-java6-javadb sun-java6-jdk&#39;</span>
+<span class="c"># PKGS+=&#39; sun-java6-jre sun-java6-plugin&#39;</span>
+<span class="c"># apt-pkgs</span>
+<span class="c">#</span>
 <span class="c"># install playonlinux windows game console</span>
 <span class="c"># wget -q &quot;http://deb.playonlinux.com/public.gpg&quot; -O- | apt-key add -</span>
 <span class="c"># wget http://deb.playonlinux.com/playonlinux_trusty.list -O /etc/apt/sources.list.d/playonlinux.list</span>
 <span class="c"># $APTMGR update</span>
 <span class="c"># $APTMGR install playonlinux</span>
-<span class="c"># </span>
+<span class="c"># install python and TeX tools</span>
+<span class="c">#</span>
+<span class="nv">OPER</span><span class="o">=</span><span class="s1">&#39;install&#39;</span>
+<span class="nv">PKGS</span><span class="o">=</span><span class="s1">&#39;python-setuptools python-dev python-numpy python-qt4 python-qt4-gl python-vtk&#39;</span>
+PKGS+<span class="o">=</span><span class="s1">&#39; build-essential texlive-full&#39;</span>
+apt-pkgs
+<span class="c">#</span>
+<span class="c"># install sphinx-tools</span>
+<span class="nv">OPER</span><span class="o">=</span><span class="s1">&#39;purge&#39;</span>
+<span class="nv">PKGS</span><span class="o">=</span><span class="s1">&#39;python-configobj python-docutils python-pygments python-sphinx rst2pdf&#39;</span>
+apt-pkgs
+easy_install configobj docutils pygments sphinx rst2pdf 
+<span class="c">#</span>
 <span class="c"># ##### EXIT CODE</span>
 <span class="c"># </span>
 apt-get clean <span class="o">&amp;&amp;</span> apt-get update <span class="o">&amp;&amp;</span> apt-get upgrade
