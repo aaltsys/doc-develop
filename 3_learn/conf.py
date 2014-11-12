@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# Linux BASH Commands Tutorial documentation build configuration file, created by
+# Linux Shell Script Programming build configuration file, created by
 # sphinx-quickstart on Sat Feb 23 09:32:20 2013.
 #
 # This file is execfile()d with the current directory set to its containing dir.
@@ -40,7 +40,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'Linux BASH Commands Tutorial'
+project = u'Linux Shell Script Programming'
 copyright = u'2013, Gerald Lovel'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -48,7 +48,7 @@ copyright = u'2013, Gerald Lovel'
 # built documents.
 #
 # The short X.Y version.
-version = '0.1'
+version = '1.0'
 # The full version, including alpha/beta/rc tags.
 release = '1.0'
 
@@ -164,7 +164,7 @@ html_use_index = False
 #html_file_suffix = None
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'LinuxBASHCommandsTutorialdoc'
+htmlhelp_basename = 'LinuxShellScriptProgrammingdoc'
 
 
 # -- Options for LaTeX output --------------------------------------------------
@@ -183,7 +183,7 @@ latex_elements = {
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual]).
 latex_documents = [
-  ('index', 'LinuxBASHCommandsTutorial.tex', u'Linux BASH Commands Tutorial Documentation',
+  ('index', 'LinuxShellScriptProgramming.tex', u'Linux Shell Script Programming Documentation',
    u'Gerald Lovel', 'manual'),
 ]
 
@@ -213,7 +213,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', 'linuxbashcommandstutorial', u'Linux BASH Commands Tutorial Documentation',
+    ('index', 'linuxshellscriptprogramming', u'Linux Shell Script Programming',
      [u'Gerald Lovel'], 1)
 ]
 
@@ -227,8 +227,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-  ('index', 'LinuxBASHCommandsTutorial', u'Linux BASH Commands Tutorial Documentation',
-   u'Gerald Lovel', 'LinuxBASHCommandsTutorial', 'One line description of project.',
+  ('index', 'LinuxShellScriptProgramming', u'Linux Shell Script Programming',
+   u'Gerald Lovel', 'LinuxShellScriptProgramming', 'One line description of project.',
    'Miscellaneous'),
 ]
 
@@ -245,7 +245,7 @@ texinfo_documents = [
 # -- Options for Epub output ---------------------------------------------------
 
 # Bibliographic Dublin Core info.
-epub_title = u'Linux BASH Commands Tutorial'
+epub_title = u'Linux Shell Script Programming'
 epub_author = u'Gerald Lovel'
 epub_publisher = u'Gerald Lovel'
 epub_copyright = u'2013, Gerald Lovel'

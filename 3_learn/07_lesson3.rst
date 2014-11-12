@@ -1,7 +1,5 @@
-.. _prolinux:
+.. _conventions-lesson: 
 
 #############################
-Programming with Linux
+Attending Conventions
 #############################
-
-

@@ -1,9 +1,26 @@
 #! /bin/bash
 # Install 
 
+APTMGR='apt-get'
+
 echo "Install TeX, LaTeX, and ReStructured Text documentation tools"
 
 if [[ $EUID -ne 0 ]] ; then echo -e "\e[1;31m try again using sudo \e[0m" ; exit 1 ; fi
+
+# !!!!!!!!!!!!!!!!!!!!!!!!!!! apt-manager Routine !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+#===== function to determine apt manager program ==============================
+
+apt-manager() {
+
+  # Determine apt package management command --
+  dpkg -s 'apt-fast' > null
+  if [ $? -ne 0 ] ; then
+    APTMGR='apt-get'
+  else
+    APTMGR='apt-fast'
+  fi
+
+}
 
 # !!!!!!!!!!!!!!!!!!!!!!!!!!! apt-install Routine !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 #===== function to install a delimited package list ===========================
@@ -41,6 +58,8 @@ apt-pkgs() {
 
 # !!!!!!!!!!!!!!!!!!!!!!!!!!! Main Program !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 ===============================================================================
+
+apt-manager
 
 # install python and TeX tools
 OPER='install'
