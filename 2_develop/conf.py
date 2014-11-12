@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 #
-# AAltsys Technology Development documentation build configuration file, created by
-# sphinx-quickstart on Sat Feb 23 09:36:40 2013.
+# Development documentation build configuration file, created by
+# sphinx-quickstart on Sat Feb 23 09:21:51 2013.
 #
 # This file is execfile()d with the current directory set to its containing dir.
 #
@@ -40,15 +40,15 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'AAltsys Technology Development'
-copyright = u'2013, Gerald Lovel, Julia Lovel, Keith Mattix II'
+project = u'Development'
+copyright = u'2013, Gerald Lovel'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
 # built documents.
 #
 # The short X.Y version.
-version = '0.5'
+version = '1.0'
 # The full version, including alpha/beta/rc tags.
 release = '1.0'
 
@@ -164,7 +164,7 @@ html_use_index = False
 #html_file_suffix = None
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'AAltsysTechnologyDevelopmentdoc'
+htmlhelp_basename = 'Developmentdoc'
 
 
 # -- Options for LaTeX output --------------------------------------------------
@@ -183,8 +183,8 @@ latex_elements = {
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual]).
 latex_documents = [
-  ('index', 'AAltsysTechnologyDevelopment.tex', u'AAltsys Technology Development Documentation',
-   u'Gerald Lovel, Julia Lovel, Keith Mattix II', 'manual'),
+  ('index', 'Development.tex', u'Development Documentation',
+   u'Gerald Lovel', 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
@@ -213,8 +213,8 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', 'aaltsystechnologydevelopment', u'AAltsys Technology Development Documentation',
-     [u'Gerald Lovel, Julia Lovel, Keith Mattix II'], 1)
+    ('index', 'development', u'Development Documentation',
+     [u'Gerald Lovel'], 1)
 ]
 
 # If true, show URL addresses after external links.
@@ -227,8 +227,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-  ('index', 'AAltsysTechnologyDevelopment', u'AAltsys Technology Development Documentation',
-   u'Gerald Lovel, Julia Lovel, Keith Mattix II', 'AAltsysTechnologyDevelopment', 'One line description of project.',
+  ('index', 'Development', u'Development Documentation',
+   u'Gerald Lovel', 'Development', 'One line description of project.',
    'Miscellaneous'),
 ]
 
@@ -245,10 +245,10 @@ texinfo_documents = [
 # -- Options for Epub output ---------------------------------------------------
 
 # Bibliographic Dublin Core info.
-epub_title = u'AAltsys Technology Development'
-epub_author = u'Gerald Lovel, Julia Lovel, Keith Mattix II'
-epub_publisher = u'Gerald Lovel, Julia Lovel, Keith Mattix II'
-epub_copyright = u'2013, Gerald Lovel, Julia Lovel, Keith Mattix II'
+epub_title = u'Development'
+epub_author = u'Gerald Lovel'
+epub_publisher = u'Gerald Lovel'
+epub_copyright = u'2013, Gerald Lovel'
 
 # The language of the text. It defaults to the language option
 # or en if the language is not set.
@@ -284,16 +284,7 @@ epub_copyright = u'2013, Gerald Lovel, Julia Lovel, Keith Mattix II'
 # Allow duplicate toc entries.
 #epub_tocdup = True
 
-# intersphinx_mapping = {'': None}
-
 intersphinx_mapping = {
- 'resources': ('resources', '../_deploy/resources/objects.inv'),
- 'cloud': ('1_cloud', '../_deploy/1_cloud/objects.inv'),
- 'develop': ('2_develop', '../_deploy/2_develop/objects.inv'),
- 'document': ('3_document', '../_deploy/3_document/objects.inv'),
- 'scripting': ('4_scripting', '../_deploy/4_scripting/objects.inv'),
- 'webapp': ('5_webapp', '../_deploy/5_webapp/objects.inv'),
- 'client': ('6_client', '../_deploy/6_client/objects.inv'),
- 'deploying': ('7_deploying', '../_deploy/7_deploying/objects.inv'),
- 'linux': ('9_linux', '../_deploy/9_linux/objects.inv'),
+ 'resources': ('../resources', '../_deploy/resources/objects.inv'),
+ 'cloud': ('../1_cloud', '../_deploy/1_cloud/objects.inv'),
 }

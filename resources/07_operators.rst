@@ -4,13 +4,10 @@
 Operators & Other Characters
 #############################
 
-Operators by Type
-=============================
-
 .. _arithmetic:
 
 Arithmetic operators
------------------------------
+=============================
 
 .. note::
    The arithmetic operators are listed grouped in order of precedence. 
@@ -18,49 +15,49 @@ Arithmetic operators
 +-----------------+---------------------------------------------------------+
 | Operator        | Description                                             |
 +=================+=========================================================+
-||  id++          || post-increment                                         |
-||  id--          || post-decrement                                         |
+|| ``id++``       || post-increment                                         |
+|| ``id--``       || post-decrement                                         |
 +-----------------+---------------------------------------------------------+
-||  ++id          || pre-increment                                          |
-|| --id           || pre-decrement                                          |
+|| ``++id``       || pre-increment                                          |
+|| ``--id``       || pre-decrement                                          |
 +-----------------+---------------------------------------------------------+
-||  \+            || unary plus (positive number)                           |
-||  \-            || unary minus (negative number)                          |
+|| ``+``          || unary plus (positive number)                           |
+|| ``-``          || unary minus (negative number)                          |
 +-----------------+---------------------------------------------------------+
-||  !             || logical negation                                       |
-||  ~             || bit-wise negation                                      |
+|| ``!``          || logical negation                                       |
+|| ``~``          || bit-wise negation                                      |
 +-----------------+---------------------------------------------------------+
-|  \*\*           | exponentiation                                          |
+|  ``**``         | exponentiation                                          |
 +-----------------+---------------------------------------------------------+
-||  \*            || multiplication                                         |
-||  \/            || division                                               |
-||  %             || remainder (modulus)                                    |
+|| ``*``          || multiplication                                         |
+|| ``/``          || division                                               |
+|| ``%``          || remainder (modulus)                                    |
 +-----------------+---------------------------------------------------------+
-||  +             || addition                                               |
-||  -             || subtraction                                            |
+|| ``+``          || addition                                               |
+|| ``-``          || subtraction                                            |
 +-----------------+---------------------------------------------------------+
-||  <<            || bit-wise shift left                                    |
-||  >>            || bit-wise shift right                                   |
+|| ``<<``         || bit-wise shift left                                    |
+|| ``>>``         || bit-wise shift right                                   |
 +-----------------+---------------------------------------------------------+
-||  <=            || comparison less than or equal to                       |
-||  >=            || comparison greater than or equal to                    |
-||  <             || comparison less than                                   |
-||  >             || comparison greater than                                |
+|| ``<=``         || comparison less than or equal to                       |
+|| ``>=``         || comparison greater than or equal to                    |
+|| ``<``          || comparison less than                                   |
+|| ``>``          || comparison greater than                                |
 +-----------------+---------------------------------------------------------+
-||  ==            || equality                                               |
-||  !=            || inequality                                             |
+|| ``==``         || equality                                               |
+|| ``!=``         || inequality                                             |
 +-----------------+---------------------------------------------------------+
-|  &              | bit-wise AND                                            |
+|  ``&``          | bit-wise AND                                            |
 +-----------------+---------------------------------------------------------+
-|  ^              | bit-wise XOR (exclusive or)                             |
+|  ``^``          | bit-wise XOR (exclusive or)                             |
 +-----------------+---------------------------------------------------------+
-|  \|             | bit-wise OR                                             |
+|  ``|``          | bit-wise OR                                             |
 +-----------------+---------------------------------------------------------+
-|  &&             | logical AND                                             |
+|  ``&&``         | logical AND                                             |
 +-----------------+---------------------------------------------------------+
-|  \|\|           | logical OR                                              |
+|  ``||``         | logical OR                                              |
 +-----------------+---------------------------------------------------------+
-|| expr?expr:expr | conditional operator                                    |
+| expr?expr:expr  | conditional operator                                    |
 +-----------------+---------------------------------------------------------+
 | assignment      | (see following table)                                   |
 +-----------------+---------------------------------------------------------+
@@ -73,34 +70,49 @@ Arithmetic assignment
 +----------+----------------------------------------------------------------+
 | Operator | Description                                                    |
 +==========+================================================================+
-| =        | Assign expression to variable: variable=expression             |
+| ``=``    | Assign expression to variable: variable=expression             |
 +----------+----------------------------------------------------------------+
-| \*=      | Assign product of expression multiplied by variable            |
+| ``*=``   | Assign product of expression multiplied by variable            |
 +----------+----------------------------------------------------------------+
-| \/=      | Assign dividend                                                |
+| ``/=``   | Assign dividend                                                |
 +----------+----------------------------------------------------------------+
-| \%=      | Assign remainer                                                |
+| ``%=``   | Assign remainer                                                |
 +----------+----------------------------------------------------------------+
-| \+=      | Assign sum                                                     |
+| ``+=``   | Assign sum                                                     |
 +----------+----------------------------------------------------------------+
-| \-=      | Assign difference                                              |
+| ``-=``   | Assign difference                                              |
 +----------+----------------------------------------------------------------+
-| <<=      | assign bit-wise left shift                                     |
+| ``<<=``  | assign bit-wise left shift                                     |
 +----------+----------------------------------------------------------------+
-| >>=      | assign bit-wise right shift                                    |
+| ``>>=``  | assign bit-wise right shift                                    |
 +----------+----------------------------------------------------------------+
-| \&=      | assign bitwise AND                                             |
+| ``&=``   | assign bitwise AND                                             |
 +----------+----------------------------------------------------------------+
-| \^=      | assign bit-wise XOR exclusive or                               |
+| ``^=``   | assign bit-wise XOR exclusive or                               |
 +----------+----------------------------------------------------------------+
-| \|=      | assign bit-wise OR                                             |
+| ``|=``   | assign bit-wise OR                                             |
 +----------+----------------------------------------------------------------+
 
 .. seealso::
 
-   Online documentation at ``man bash``
+   Online documentation at ``man bash``.
 
 .. _logic:
+
+Logic Operators
+=============================
+
+.. note::
+
+   +---------------------------------------------------------------------------+
+   |      Legend                                                               |
+   +========+==================================================================+
+   | Test   | Column **Test** indicates which type of logic test this          |
+   |        | operator applies to. Values might be ``[``, ``[[`` or ``all``.   |
+   +--------+------------------------------------------------------------------+
+   | U/B    | The **U/B** column refers to the type of test: ``U`` for         |
+   |        | *unary*, or ``B`` for *binary*.                                  |
+   +--------+------------------------------------------------------------------+
 
 Logical reversal operator
 -----------------------------
@@ -108,7 +120,7 @@ Logical reversal operator
 +----------+-------+-----+-----------------------------------------------------+
 | Operator | Test  | U/B | Description                                         |
 +==========+=======+=====+=====================================================+
-| !        |  all  |  U  | "not" -- reverses the sense of a logical operation  |
+| ``!``    |  all  |  U  | "not" -- reverses the sense of a logical operation  |
 +----------+-------+-----+-----------------------------------------------------+
 
 Compound comparison operators
@@ -117,17 +129,20 @@ Compound comparison operators
 +----------+-------+-----+-----------------------------------------------------+
 | Operator | Test  | U/B | Description                                         |
 +==========+=======+=====+=====================================================+
-| -a       | ``[`` |  B  | logical AND within test: ``[ expr1 -a expr2 ]``     |
+| ``-a``   | ``[`` |  B  | logical AND within test: ``[ expr1 -a expr2 ]``     |
 +----------+-------+-----+-----------------------------------------------------+
-| -o       | ``[`` |  B  | logical OR within test: ``[ expr1 -o expr2 ]``      |
+| ``-o``   | ``[`` |  B  | logical OR within test: ``[ expr1 -o expr2 ]``      |
 +----------+-------+-----+-----------------------------------------------------+
-| &&       | ``[[``|  B  | logical AND double-bracket: ``[[ expr1 && expr2 ]]``|
+| ``&&``   | ``[[``|  B  | logical AND double-bracket: ``[[ expr1 && expr2 ]]``|
 +----------+-------+-----+-----------------------------------------------------+
-| \|\|     | ``[[``|  B  | logical OR double-bracket: ``[[ expr1 || expr2 ]]`` |
+| ``||``   | ``[[``|  B  | logical OR double-bracket: ``[[ expr1 || expr2 ]]`` |
 +----------+-------+-----+-----------------------------------------------------+
 
-Test constructs
+Comparison Tests
 =============================
+
+Generally, comparison tests are of three types: string comparisons, integer 
+comparisons, and file status tests.
 
 .. _compare-string:
 
@@ -137,32 +152,32 @@ String comparisons
 +----------+-------+-----+-----------------------------------------------------+
 | Operator | Test  | U/B | Description                                         |
 +==========+=======+=====+=====================================================+
-|  =       |  all  |  B  | equal to, literal matching, whitespace req'd        |
+|  ``=``   |  all  |  B  | equal to, literal matching, whitespace req'd        |
 +----------+-------+-----+-----------------------------------------------------+
-|  ==      | ``[`` |  B  | equal to, within test, synonym for ``=``            |
+|  ``==``  | ``[`` |  B  | equal to, within test, synonym for ``=``            |
 +----------+-------+-----+-----------------------------------------------------+
-|  ==      | ``[[``|  B  | equal to, double-bracket, pattern matching, see (2) |
+|  ``==``  | ``[[``|  B  | equal to, double-bracket, pattern matching, see (2) |
 +----------+-------+-----+-----------------------------------------------------+
-|  !=      | ``[`` |  B  | not equal to, within test, whitespace req'd         |
+|  ``!=``  | ``[`` |  B  | not equal to, within test, whitespace req'd         |
 +----------+-------+-----+-----------------------------------------------------+
-|  !=      | ``[[``|  B  | not equal to, double-bracket, pattern matching, (2) |
+|  ``!=``  | ``[[``|  B  | not equal to, double-bracket, pattern matching, (2) |
 +----------+-------+-----+-----------------------------------------------------+
-|  =~      | ``[[``|  B  | matches, double-bracket, pattern matching, see (2)  |
+|  ``=~``  | ``[[``|  B  | matches, double-bracket, pattern matching, see (2)  |
 +----------+-------+-----+-----------------------------------------------------+
-|  <       |  all  |  B  | less than, escape req'd in ``[``, see (1)           |
+|  ``<``   |  all  |  B  | less than, escape req'd in ``[``, see (1)           |
 +----------+-------+-----+-----------------------------------------------------+
-|  >       |  all  |  B  | greater than, escape req'd in ``[``, see (1)        |
+|  ``>``   |  all  |  B  | greater than, escape req'd in ``[``, see (1)        |
 +----------+-------+-----+-----------------------------------------------------+
-|  -z      |  all  |  U  | null (zero length)                                  |
+|  ``-z``  |  all  |  U  | null (zero length)                                  |
 +----------+-------+-----+-----------------------------------------------------+
-|  -n      |  all  |  U  | not null (length > zero), quotes req'd in ``[``     |
+|  ``-n``  |  all  |  U  | not null (length > zero), quotes req'd in ``[``     |
 +----------+-------+-----+-----------------------------------------------------+
 
 .. note::
    #. Lexicographical sort order for ``test`` or ``[`` construct is ASCII; 
       for ``[[`` construct the ordering is determined using the current locale.
    #. Construct ``[[`` uses ``==``, ``!=``, and ``=~`` to match by pattern, with
-      the pattern on the right. See Bash documentation for pattern description.
+      the pattern on the right. See :ref:`glob`.
 
 .. _compare-math:
 
@@ -172,32 +187,32 @@ Integer comparisons
 +----------+-------+-----+-----------------------------------------------------+
 | Operator | Test  | U/B | Description                                         |
 +==========+=======+=====+=====================================================+
-| -eq      | ``[`` |  B  | equal to: ``[ number1 -eq number2 ]``               |
+| ``-eq``  | ``[`` |  B  | equal to: ``[ number1 -eq number2 ]``               |
 +----------+-------+-----+-----------------------------------------------------+
-| -ne      | ``[`` |  B  | not equal to: ``[ number1 -ne number2 ]``           |
+| ``-ne``  | ``[`` |  B  | not equal to: ``[ number1 -ne number2 ]``           |
 +----------+-------+-----+-----------------------------------------------------+
-| -gt      | ``[`` |  B  | greater than: ``[ number1 -gt number2 ]``           |
+| ``-gt``  | ``[`` |  B  | greater than: ``[ number1 -gt number2 ]``           |
 +----------+-------+-----+-----------------------------------------------------+
-| -ge      | ``[`` |  B  | greater than/equal to: ``[ number1 -ge number2 ]``  |
+| ``-ge``  | ``[`` |  B  | greater than/equal to: ``[ number1 -ge number2 ]``  |
 +----------+-------+-----+-----------------------------------------------------+
-| -lt      | ``[`` |  B  | less than: ``[ number1 -lt number2 ]``              |
+| ``-lt``  | ``[`` |  B  | less than: ``[ number1 -lt number2 ]``              |
 +----------+-------+-----+-----------------------------------------------------+
-| -le      | ``[`` |  B  | less than/equal to: ``[ number1 -le number2 ]``     |
+| ``-le``  | ``[`` |  B  | less than/equal to: ``[ number1 -le number2 ]``     |
 +----------+-------+-----+-----------------------------------------------------+
-| =        | ``[[``|  B  | equal to: ``(( number1 = expr2 ))``                 |
+| ``=``    | ``[[``|  B  | equal to: ``(( number1 = expr2 ))``                 |
 +----------+-------+-----+-----------------------------------------------------+
-| !=       | ``[[``|  B  | not equal to: ``(( number1 <> expr2 ))``            |
+| ``!=``   | ``[[``|  B  | not equal to: ``(( number1 <> expr2 ))``            |
 +----------+-------+-----+-----------------------------------------------------+
-| <        | ``[[``|  B  | less than: ``(( number1 < expr2 ))``                |
+| ``<``    | ``[[``|  B  | less than: ``(( number1 < expr2 ))``                |
 +----------+-------+-----+-----------------------------------------------------+
-| <=       | ``[[``|  B  | less than or equal to: ``(( number1 ,= expr2 ))``   |
+| ``<=``   | ``[[``|  B  | less than or equal to: ``(( number1 ,= expr2 ))``   |
 +----------+-------+-----+-----------------------------------------------------+
-| >        | ``[[``|  B  | greater than: ``(( number1 > expr2 ))``             |
+| ``>``    | ``[[``|  B  | greater than: ``(( number1 > expr2 ))``             |
 +----------+-------+-----+-----------------------------------------------------+
-| >=       | ``[[``|  B  | greater than or equal to: ``(( number1 >= expr2 ))``|
+| ``>=``   | ``[[``|  B  | greater than or equal to: ``(( number1 >= expr2 ))``|
 +----------+-------+-----+-----------------------------------------------------+
 
-.. _test-file:
+.. _compare-file:
 
 File test operators
 -----------------------------
@@ -261,7 +276,7 @@ File test operators
 
    `Advanced Bash Scripting Guide <http://tldp.org/LDP/abs/html/fto.html>`_
 
-.. constructs:
+.. _constructs:
 
 Expression constructs
 =============================
@@ -272,11 +287,15 @@ Expression constructs
 || (a b ... n)|| assign an array of ``n`` elements: ``array=(1 2 3 4)``         |
 || (expr...)  || group commands ``(expr1; expr2; ...)`` to execute in subshell  |
 +-------------+-----------------------------------------------------------------+
-| ((expr))    | double-parentheses math construct: ``var = var1 + var2``        |
+| ((math))    | double-parentheses math construct: ``var = var1 + var2``        |
++-------------+-----------------------------------------------------------------+
+| ${var}      | evaluate a string variable                                      |
 +-------------+-----------------------------------------------------------------+
 | $(expr)     | evaluate command expression (creates subshell)                  |
 +-------------+-----------------------------------------------------------------+
-| $((expr))   | evaluate an integer arithmetic expression (C-style)             |
+| $((math))   | evaluate an integer arithmetic expression (C-style)             |
++-------------+-----------------------------------------------------------------+
+| \`expr\`    | evaluate a command, original Bourne notation (deprecated)       |
 +-------------+-----------------------------------------------------------------+
 | $[3+4+5]    | evaluate an integer math expression (deprecated)                |
 +-------------+-----------------------------------------------------------------+
@@ -297,28 +316,50 @@ Expression constructs
 +-------------+-----------------------------------------------------------------+
 | [c d e]     | delineates a range of characters to match in regular expression |
 +-------------+-----------------------------------------------------------------+
-|| >          || redirect output (stdout): ``ls > filename``                    |
-|| &>         || redirect errors, output (stdout, stderr): ``ls &> filename``   |
-|| >&2        || redirect output to error (stdout > stderr)                     |
-|| >>         || append output (stdout) to filename: ``ls >> filename``         |
-|| <          || redirect input from expression: ``filename < ls``              |
-|| <>         || open file and assign file descriptor: ``[i]<>filename``        |
+|| ``>``      || redirect output (stdout): ``ls > filename``                    |
+|| ``&>``     || redirect errors, output (stdout, stderr): ``ls &> filename``   |
+|| ``>&2``    || redirect output to error (stdout > stderr)                     |
+|| ``>>``     || append output (stdout) to filename: ``ls >> filename``         |
+|| ``<``      || redirect input from expression: ``filename < ls``              |
+|| ``<>``     || open file and assign file descriptor: ``[i]<>filename``        |
 +-------------+-----------------------------------------------------------------+
-|| \|         || pipe output (stdout) of one process to input (stdin) of next   |
+|| ``|``      || pipe output (stdout) of one process to input (stdin) of next   |
 +-------------+-----------------------------------------------------------------+
 || <(commands)|| substitutes output of one process into another process         |
 || >(commands)||                                                                |
 +-------------+-----------------------------------------------------------------+
-|| &          || at end of command, detach and run command in background        |
-|| &&         || linking two commands, run second iff for first, ``exit -eq 0`` |
-|| \|\|       || linking two commands, run second iff for first, ``exit -ne 0`` |
+|| ``&``      || at end of command, detach and run command in background        |
+|| ``&&``     || linking two commands, run second iff for first, ``exit -eq 0`` |
+|| ``|``      || linking two commands, run second iff for first, ``exit -ne 0`` |
 +-------------+-----------------------------------------------------------------+
-|| \-         || command option prefix: ``ls -al``                              |
-|| \-\-       || verbose option prefix: ``ls --all --list``                     |
-|| \-\-       || (builtin) end of options ``rm -- -badname*``                   |
+|| ``-``      || command option prefix: ``ls -al``                              |
+|| ``--``     || verbose option prefix: ``ls --all --list``                     |
+|| ``--``     || (builtin) end of options ``rm -- -badname*``                   |
 +-------------+-----------------------------------------------------------------+
 
-.. characters:
+.. _glob:
+
+Glob Pattern Matching
+=============================
+
+Some entries, such as file system paths, may be written as expressions to be 
+expanded by substitution and pattern matching. 
+
++----------------+-----------------------------------------------------------+
+| Expression     | Interpretation                                            |
++================+===========================================================+
+| ``*``          | any string of 0 or more characters                        |
++----------------+-----------------------------------------------------------+
+| ``?``          | any string of 0 or 1 character                            |
++----------------+-----------------------------------------------------------+
+| ``X`` or ``\X``| where ``X`` represents any (special) character            |
++----------------+-----------------------------------------------------------+
+|  ``[XYZ]``     | where ``XYZ`` is a set of permitted characters            |
++----------------+-----------------------------------------------------------+
+|  ``[x..z]``    | where ``x..z`` is a range of permitted characters         |
++----------------+-----------------------------------------------------------+
+
+.. _characters:
 
 Special characters 
 =============================
@@ -359,7 +400,7 @@ Special characters
 +-----------+------------------------------------------------------------------+
 || ~        || user home directory path: corresponds to $HOME                  |
 || ~+       || present working directory: corresponds to $PWD                  |
-|| ~-       || previous working directory: corresponds to $OLDPWD              |
+|| ~\-      || previous working directory: corresponds to $OLDPWD              |
 +-----------+------------------------------------------------------------------+
 || \^       || parameter substitution: ``echo ${var^}`` uppercase first char   |
 || \^\^     || parameter substitution: ``echo ${var^^}`` uppercase string      |

@@ -23,7 +23,7 @@ REPOS=''
 apt-manager() {
 
   # Determine apt package management command --
-  dpkg -s 'apt-fast' > null
+  dpkg -s 'apt-fast' > /dev/null
   if [ $? -ne 0 ] ; then
     APTMGR='apt-get'
   else
@@ -65,7 +65,7 @@ apt-pkgs() {
   APT=0
   for i in $PKGS
   do
-    dpkg -s $i > null
+    dpkg -s $i > /dev/null
     if [ $? -ne 0 ] ; then
       APT=1
       echo "$i is missing, it will be installed"
@@ -87,15 +87,15 @@ apt-pkgs() {
 # install, configure apt-fast
 # ###########################
 
-REPOS='ppa:saiarcot895/myppa'
+REPOS='ppa:apt-fast/stable'
 apt-repos
 PKGS='apt-fast'
 apt-pkgs
 MIRRORS='MIRRORS=("http://us.archive.ubuntu.com/ubuntu,'
-MIRRORS+='http://mirror.cc.columbia.edu/pub/linux/ubuntu/archive/,'
-MIRRORS+='http://mirror.cc.vt.edu/pub2/ubuntu/,'
-MIRRORS+='http://mirror.umd.edu/ubuntu/,'
-MIRRORS+='http://mirrors.mit.edu/ubuntu/")'
+MIRRORS+='http://mirror.pnl.gov/ubuntu/,'
+MIRRORS+='http://mirrors.centarra.com/ubuntu/,'
+MIRRORS+='http://mirror.tocici.com/ubuntu/,'
+MIRRORS+='http://mirrors.us.kernel.org/ubuntu/")'
 sed -r "/MIRRORS=.*$/d" -i /etc/apt-fast.conf
 sed -r "$ a\$MIRRORS" -i /etc/apt-fast.conf
 apt-manager
@@ -111,24 +111,14 @@ apt-add-repository "deb http://archive.ubuntu.com/ubuntu $(lsb_release -sc) main
 # apt-repos
 
 # upgrade Firefox, replace latex-xft-fonts with ttf-lyx, add curl for Chrome
-PKGS='curl firefox ttf-lyx ubufox'
+PKGS='curl google-chrome-stable firefox ttf-lyx ubufox'
 apt-pkgs
-
-# install Google Chrome stable
-if echo `uname -i` | grep -q 64 ; then
-  CHROMEVER="google-chrome-stable_current_amd64.deb"
-else
-  CHROMEVER="google-chrome-stable_current_i386.deb"
-fi
-wget -O /tmp/chrome.deb https://dl-ssl.google.com/linux/direct/$CHROMEVER
-dpkg -i /tmp/chrome.deb
-rm /tmp/chrome.deb
 
 # Install apps and tools
 # ###########################
 
   # install desktop productivity apps
-PKGS='blender dia filezilla freemind gimp gnucash inkscape mypaint'
+PKGS='blender dia filezilla freemind gimp git gnucash inkscape mypaint'
 PKGS+=' openshot scribus shotwell xaralx xsane'
 # PKGS+=' cinelerra'
 apt-pkgs
@@ -142,9 +132,9 @@ PKGS+=' screen shutter unison vlc whois wine wireshark xclip'
 apt-pkgs
 
 # install Sun (Oracle) java
-PKGS='sun-java6-bin sun-java6-fonts sun-java6-javadb sun-java6-jdk'
-PKGS+=' sun-java6-jre sun-java6-plugin'
-apt-pkgs
+# PKGS='sun-java6-bin sun-java6-fonts sun-java6-javadb sun-java6-jdk'
+# PKGS+=' sun-java6-jre sun-java6-plugin'
+# apt-pkgs
 
 # install playonlinux windows game console
 # wget -q "http://deb.playonlinux.com/public.gpg" -O- | apt-key add -

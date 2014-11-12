@@ -9,10 +9,9 @@ Get User Confirmation
 
 .. code-block:: bash
 
-   MSG-CONFIRM='Say Hello'
-   # ...
    # User Confirmation:
    # requires MSG-CONFIRM, assigns EXIT
+   #
    echo -e -n '\n\e[1;31m $MSG-CONFIRM'
    read -n 1 -p ' (y/n)?' RESP 
    echo -e '\e[0m' 
@@ -50,6 +49,32 @@ Assign Variables from File
        printf -v $VAR-NAME $VAR-VALUE
      done
    fi
+
+Ask to Escalate Privileges
+=============================
+
+.. code-block:: bash
+
+   if [[ $EUID -ne 0 ]]
+   then
+     echo -e "\e[1;31m try again using sudo \e[0m"
+     exit 1
+   fi
+
+Change Configuration Entry
+=============================
+
+.. code-block:: bash
+
+   # change entry in text file
+   # requires FILE-PATH, SEARCH, REPLACE
+   #
+   if [[ -z "$(grep 'vm.mmap_min_addr' /etc/modules)" ]] ; then 
+      echo -e /n "vm.mmap_min_addr=0" >> /etc/modules ;
+   else
+      sed -i '/vm.mmap_min_addr/c\vn.mmap_min_addr=0' ~/etc/modules ;
+   fi
+
 
 Here Document
 =============================

@@ -1,10 +1,10 @@
 resources
 1_cloud
-2_linux
-3_learn
-4_develop
-5_document
-6_browser
-7_server
-8_deployment
+2_develop
+3_document
+4_scripting
+5_webapp
+6_client
+7_deploying
+9_linux
 master

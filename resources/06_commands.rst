@@ -7,6 +7,53 @@ Commands and Variables
 Commands
 =============================
 
+
+apt-get
+-----------------------------
+
+::
+
+  apt-get install <package>
+  apt-get install aptitude
+  aptitude install <package>
+  aptitude -f install
+
+dpkg-reconfigure
+-----------------------------
+
+::
+
+  dpkg-reconfigure tzdata
+  dpkg-reconfigure locales
+
+System management
+=============================
+
+Date and time
+-----------------------------
+
+::
+
+  date
+  date -s 2012-12-25 12:34:56
+  date -u -s 2012-12-25 04:34:56
+  hwclock --systohc --utc
+  hwclock --hctosys
+  ntpq -p
+  ntpdate
+  
+
+----------
+
+.. rubric:: Footnotes
+
+.. [#] <http://www.howtoforge.com/useful_linux_commands> presents a list of 
+   useful Linux commands.
+
+.. [#] `Bash commands <http://ss64.com/bash/>`_
+
+.. [#] `A list of Windows commands for comparison. <http://ss64.com/nt/>`_
+
 .. _command-os:
 
 Operating system commands
@@ -150,11 +197,23 @@ Below is a table of some of the variables exported by the BASH terminal.
 | UID          | The login ID number of the current login                      |
 +--------------+---------------------------------------------------------------+
 
-Source: `Bash Beginners Guide <http://www.tldp.org/LDP/Bash-Beginners-Guide/html/sect_03_02.html>`_
+.. seealso::
+   `Bash Beginners Guide <http://www.tldp.org/LDP/Bash-Beginners-Guide/html/sect_03_02.html>`_
 
 .. _variables-color:
 
-ANSI/VT100 color codes 
+Terminal color settings
+=============================
+
+Commands :command:`echo -e` and :command:`printf` will process embedded escape 
+sequences, in the form ``\e[xx;yy;zzm``, to produce formatted or colored text.
+For example, ::
+
+   echo -e "\e[1;42;95m Some text \e[0m" ;# print Bold;FG Light Magenta;BG Green
+
+`printf` is not documented further here, but color commands and codes are.
+   
+*ANSI/VT100* color codes 
 -----------------------------
 
 +------+------------+----+-----+-----+--------------+----+-----+-----+--------------+
@@ -181,20 +240,14 @@ ANSI/VT100 color codes
 |      |            | \| |  39 |  49 | Default      | \| |     |     |              |
 +------+------------+----+-----+-----+--------------+----+-----+-----+--------------+
 
-Commands :command:`echo -e` and :command:`printf` will process embedded escape 
-sequences, int the form ``\e[xx;yy;zzm``, to produce formatted or colored text.
-For example, ::
-
-   echo -e "\e[1;42;95m Some text \e[0m" ;# print Bold;FG Light Magenta;BG Green
-
-Terminfo color commands
+*Terminfo* color commands
 -----------------------------
 
 Instead of using embedded ``VT100`` codes, the :command:`tput` command can set 
 terminal colors using a variety of arguments. 
 
-tput command arguments
-'''''''''''''''''''''''''''''
+*tput* command arguments
+-----------------------------
 
 +----------------------------+---------------------------------+
 | Command                    | Description                     |
@@ -220,8 +273,8 @@ tput command arguments
 | tput sgr0                  | Reset all attributes            |
 +----------------------------+---------------------------------+
 
-setaf/setab xterm color values
-''''''''''''''''''''''''''''''
+setaf/setab *xterm* values
+-----------------------------
 
 +-------+-------------+----------------+
 | Code  | Color       | RGB values     |
@@ -246,13 +299,113 @@ setaf/setab xterm color values
 The :command:`tput` command uses a ``terminfo`` terminal definition, of which 
 the default :file:`xterm` definition serves the 8 colors listed above. For more 
 colors, you can load :file:`xterm-256color`. Commands demonstrating this 
-color set follow::
+color set follow:
 
 .. code-block:: bash
 
    export TERM='xterm-256color'
    tput colors
-   for i in {0..255}; do tput setab $i; echo -n "  $i  "; done; tput setab 0; echo
+   for i in {0..255}
+   do
+     tput setab $i
+     echo -n "  $i  "
+   done
+   tput setab 0
+   echo
    export TERM='xterm'
 
-For more information, see the ``terminfo`` manpage.
+or, this could be executed at the terminal as a single command::
+
+   export TERM=’xterm-256color’; tput colors; for i in {0..255}; do tput setab $i; echo -n ” $i ”; done; tput setab 0; echo; export TERM=’xterm’
+
+.. seealso::
+   For more information, see the ``terminfo`` manpage.
+
+---
+
+Variable Scope
+=============================
+
+Variables may have different scopes in bash shell.
+
+*  Sub-shell local variables
+*  Declared Local Variables
+*  Exported Environment Session Variables
+*  Global Environment Variables
+
+Declared Variables
+=============================
+
+.. sidebar:: Example Declared Variable ::
+  
+      THISVARIABLE="A string"
+  
+   The value can be changed by re-declaring it. ::
+   
+      THISVARIABLE="A new string"
+
+Declared Variables are those which are assigned within a script. The value of a 
+variable and its data type can be changed at any time by re-assigning it.
+
+Global Environment Variables
+=============================
+
+Global Environment Variables are declared and exported when a shell session is 
+instantiated. A few useful Environment Variables are listed following:
+
++----------------------+-------------------------------------------------------+
+|Environment Variables | Variable description of use.                          |
++======================+=======================================================+
+| $BASH                | full filename used to invoke bash                     |
++----------------------+-------------------------------------------------------+
+| $EUID                | effective user ID (number) of the current user        |
++----------------------+-------------------------------------------------------+
+| $GROUPS              | array of groups the current user is a member of       |
++----------------------+-------------------------------------------------------+
+| $HOSTNAME            | the name of the current host                          |
++----------------------+-------------------------------------------------------+
+| $IFS                 | characters treated as white space                     |
++----------------------+-------------------------------------------------------+
+| $LINENO              | sequential number of executing line in a script       |
++----------------------+-------------------------------------------------------+
+| $MACHTYPE            | GNU cpu-company-system machine type description       |
++----------------------+-------------------------------------------------------+
+| $OSTYPE              | string describing the operating system                |
++----------------------+-------------------------------------------------------+
+| $PATH                | search path for commands                              |
++----------------------+-------------------------------------------------------+
+| $PPID                | process id of the shell's parent                      |
++----------------------+-------------------------------------------------------+
+| $PWD                 | when called, it returns the current directory         |
++----------------------+-------------------------------------------------------+
+| $UID                 | user ID of the current user                           |
++----------------------+-------------------------------------------------------+
+
+Exported Variables
+=============================
+
+Type these commands into the terminal::
+
+   export NUMBER=12
+   echo "echo $NUMBER" > test-script.sh
+   bash ./test-script.sh
+
+The value ``12`` should be returned, as that is the exported value of 
+``NUMBER``.
+
+Now, type::
+
+   echo "NUMBER=4" > test-script.sh
+   echo 'echo $NUMBER' >> test-script.sh
+   bash test-script.sh
+   echo $NUMBER
+
+Notice that NUMBER is now equal to ``4`` *within *``test-script.sh``, but it 
+retains the value ``12`` at the terminal. If a shell script reassigns an 
+exported variable, the variable is overloaded with a new local version 
+*within the script*, but the original assignment is retained in the shell
+session.
+
+Exported variables must be assigned and then exported. Once exported, any script 
+or command in the current shell session may reference the variable, but the 
+value of the exported variable is cleared when the terminal is closed. 
