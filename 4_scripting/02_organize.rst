@@ -145,7 +145,7 @@ Embed documentation comments
         cp -R $DIR_BUILD/$MAKE_METHOD/* $DIR_OUT/
    
         # add download files provided they exist
-        if [[ -d $DIR_DOWNLOADS ]] ; then
+        if [ -d $DIR_DOWNLOADS ] ; then
           cp -R $DIR_DOWNLOADS $DIR_OUT/
         fi
       }
@@ -197,10 +197,10 @@ Inputs and Logic tests
 
    .. code-block:: bash
  
-      echo -e "\n Install apt-fast?" 
-      read -n 1 -p "(y/n)" RESP  
+      echo  "Install apt-fast?" 
+      read -r 1 "(y/n)" RESP  
       if [ "$RESP" != 'y' ]; then
-        echo -e "\n Canceled"
+        echo "Canceled"
         exit 1
       fi
 
