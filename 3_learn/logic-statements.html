@@ -1,0 +1,153 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>A not equal to if/then statement &mdash; Linux BASH Commands Tutorial 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/aaltsys.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Linux BASH Commands Tutorial 1.0 documentation" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li><a href="index.html">Linux BASH Commands Tutorial 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">A not equal to if/then statement</a></li>
+<li><a class="reference internal" href="#an-equal-to-if-then-else-statement">An equal to if/then/else statement</a></li>
+<li><a class="reference internal" href="#a-code-search-statement">A code search statement</a></li>
+</ul>
+
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/logic-statements.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="a-not-equal-to-if-then-statement">
+<h1>A not equal to if/then statement<a class="headerlink" href="#a-not-equal-to-if-then-statement" title="Permalink to this headline">¶</a></h1>
+<div class="sidebar">
+<p class="first sidebar-title">Example of a not equal to statement</p>
+<p>This is an example of a not equal to if/then statement.</p>
+<div class="highlight-python"><div class="highlight"><pre>if [[ $EUID -ne 0 ]] ; then echo -e &quot;\e[1;31m try again using sudo \e[0m&quot; ; exit 1 ; fi
+</pre></div>
+</div>
+<p class="last">A simple not equal to if/then statement example.</p>
+</div>
+<div class="highlight-python"><div class="highlight"><pre>if [[ (variable) -ne (value) ]] ; then (perform action) fi
+</pre></div>
+</div>
+<p>A logic statement which performs an action if a variable is not equal to a certain
+value, for instance if the length of a variable is not equal to 8, it performs the action, but if the length of the variable is equal to 8, it simply continues running the program.</p>
+</div>
+<div class="section" id="an-equal-to-if-then-else-statement">
+<h1>An equal to if/then/else statement<a class="headerlink" href="#an-equal-to-if-then-else-statement" title="Permalink to this headline">¶</a></h1>
+<div class="sidebar">
+<p class="first sidebar-title">Example of an equal to if/then/else statement</p>
+<p>This is an example of an if/then/else statement of equality:</p>
+<div class="highlight-python"><div class="highlight"><pre>if [ &quot;`uname -i`&quot; = &quot;i386&quot; ]
+then
+  CHROMEVER=&quot;google-chrome-stable_current_i386.deb&quot;
+else
+  CHROMEVER=&quot;google-chrome-stable_current_amd64.deb&quot;
+fi
+</pre></div>
+</div>
+<p class="last">this is a simple if else statement.</p>
+</div>
+<div class="highlight-python"><div class="highlight"><pre>if [ variable = value ]
+then
+  (perform action)
+else
+   (peform other action)
+fi
+</pre></div>
+</div>
+<p>A logic statement which performs an action if a variable is equal to a value, and
+performs another action if the variable is not equal to that value. for instance, if the length of a variable were equal to 8 it would carry out a certain action, but if the length were NOT equal to 8 it would carry out a different action.</p>
+</div>
+<div class="section" id="a-code-search-statement">
+<h1>A code search statement<a class="headerlink" href="#a-code-search-statement" title="Permalink to this headline">¶</a></h1>
+<div class="sidebar">
+<p class="first sidebar-title">Example of a code search if/then statement</p>
+<p>This is an example of an if/then/else code search statement:</p>
+<div class="highlight-python"><div class="highlight"><pre>if [[ -z &quot;$(grep &#39;vm.mmap_min_addr&#39; /etc/modules)&quot; ]] ; then
+   echo -e /n &quot;vm.mmap_min_addr=0&quot; &gt;&gt; /etc/modules ;
+else
+   sed -i &#39;/vm.mmap_min_addr/c\vn.mmap_min_addr=0&#39; ~/etc/modules ;
+fi
+</pre></div>
+</div>
+<p class="last">This an if/then/else statement.</p>
+</div>
+<div class="highlight-python"><div class="highlight"><pre>if [[ -z &quot;$(grep &quot;(search term)&quot; /folder/document)&quot; ]] ; then
+   echo &quot;(search term)&quot; &gt;&gt; /folder/document
+fi
+</pre></div>
+</div>
+<p>A logic statement which searches a file for a specific term, and if it doesn&#8217;t find
+it it adds the text. note that the dash z means that instead of adding the echo if
+the search term is found, the program adds the echo if the search term is NOT found. Also, the added code in the example which starts with the command &#8220;sed&#8221; is designed to look for code and replace the line with a new line.</p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li><a href="index.html">Linux BASH Commands Tutorial 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Gerald Lovel.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>

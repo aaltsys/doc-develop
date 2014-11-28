@@ -1,0 +1,314 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Markdown Syntax &mdash; Development 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/aaltsys.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Development 1.0 documentation" href="index.html" />
+    <link rel="next" title="Team Collaboration" href="07_operation.html" />
+    <link rel="prev" title="GitHub Repository Hosting" href="05_hosting.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="07_operation.html" title="Team Collaboration"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="05_hosting.html" title="GitHub Repository Hosting"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Development 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Markdown Syntax</a><ul>
+<li><a class="reference internal" href="#headings">Headings</a></li>
+<li><a class="reference internal" href="#an-h1-heading-goes-here-or">An H1 Heading Goes Here, or</a></li>
+<li><a class="reference internal" href="#h1-headings-are-underlined">H1 Headings are Underlined</a><ul>
+<li><a class="reference internal" href="#this-is-a-sub-heading">This is a sub-heading</a></li>
+<li><a class="reference internal" href="#and-this-is-also-a-sub-heading">And this is also a sub-heading</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#inline-style-formatting">Inline Style Formatting</a></li>
+<li><a class="reference internal" href="#paragraphs">Paragraphs</a></li>
+<li><a class="reference internal" href="#list-entries">List Entries</a></li>
+<li><a class="reference internal" href="#tables">Tables</a></li>
+<li><a class="reference internal" href="#link-directives">Link Directives</a><ul>
+<li><a class="reference internal" href="#web-hyperlinks">Web Hyperlinks</a></li>
+<li><a class="reference internal" href="#local-filesystem-links">Local Filesystem Links</a></li>
+<li><a class="reference internal" href="#images">Images</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="05_hosting.html"
+                        title="previous chapter">GitHub Repository Hosting</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="07_operation.html"
+                        title="next chapter">Team Collaboration</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/06_markdown.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="markdown-syntax">
+<span id="markdown"></span><h1>Markdown Syntax<a class="headerlink" href="#markdown-syntax" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="headings">
+<h2>Headings<a class="headerlink" href="#headings" title="Permalink to this headline">¶</a></h2>
+<p>Each document section is indicated with either a hash heading (#) or underlines:</p>
+<div class="highlight-python"><div class="highlight"><pre># An H1 Heading Goes Here, or #
+
+H1 Headings are Underlined
+==========================
+</pre></div>
+</div>
+</div>
+<div class="section" id="an-h1-heading-goes-here-or">
+<h2>An H1 Heading Goes Here, or<a class="headerlink" href="#an-h1-heading-goes-here-or" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="h1-headings-are-underlined">
+<h2>H1 Headings are Underlined<a class="headerlink" href="#h1-headings-are-underlined" title="Permalink to this headline">¶</a></h2>
+<p>Subsections use hyphen underlining, or (##) heading:</p>
+<div class="highlight-python"><div class="highlight"><pre>## This is a sub-heading ##
+
+And this is also a sub-heading
+------------------------------
+</pre></div>
+</div>
+<div class="section" id="this-is-a-sub-heading">
+<h3>This is a sub-heading<a class="headerlink" href="#this-is-a-sub-heading" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="and-this-is-also-a-sub-heading">
+<h3>And this is also a sub-heading<a class="headerlink" href="#and-this-is-also-a-sub-heading" title="Permalink to this headline">¶</a></h3>
+<p>Hash marks can indicate additional levels of sub-sub- headings, up to six:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c">###### This is a H6 sub-heading ######</span>
+</pre></div>
+</div>
+<p>Break lines are inserted with three or more hyphens, asterisks, or underscores:</p>
+<div class="highlight-python"><div class="highlight"><pre>___
+- - -
+*******
+</pre></div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="inline-style-formatting">
+<h2>Inline Style Formatting<a class="headerlink" href="#inline-style-formatting" title="Permalink to this headline">¶</a></h2>
+<p>The following table displays inline or embedded markups for text styles:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="47%" />
+<col width="53%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Markup</th>
+<th class="head">Result</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>*emphasized text*</td>
+<td><cite>emphasized text</cite></td>
+</tr>
+<tr class="row-odd"><td>_emphasized text_</td>
+<td><cite>emphasized text</cite></td>
+</tr>
+<tr class="row-even"><td>**bold text**</td>
+<td><strong>bold text</strong></td>
+</tr>
+<tr class="row-odd"><td>__bold text__</td>
+<td><strong>bold text</strong></td>
+</tr>
+<tr class="row-even"><td>``unformatted text``</td>
+<td><tt class="docutils literal"><span class="pre">unformatted</span> <span class="pre">text</span></tt></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="paragraphs">
+<h2>Paragraphs<a class="headerlink" href="#paragraphs" title="Permalink to this headline">¶</a></h2>
+<p>Paragraphs are indicated by entering two newlines, which shows as a blank line
+in the text. Spaces and single newlines are ignored except in lists or quotes.</p>
+<p>Code blocks are set off by indenting 4 or more spaces, or 1 tab:</p>
+<div class="highlight-python"><div class="highlight"><pre>|    This will be a code block or command
+|    This is another line in the code block
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre>This will be a code block or command
+This is another line in the code block
+</pre></div>
+</div>
+</div>
+<div class="section" id="list-entries">
+<h2>List Entries<a class="headerlink" href="#list-entries" title="Permalink to this headline">¶</a></h2>
+<p>Use hyphens, asterisks, or plusses to create bulleted (unordered) lists:</p>
+<div class="highlight-python"><div class="highlight"><pre>| * This is a list with an embedded list
+| + + Here is an embedded line
+| + + This is the second embedded line
+| * This is the second main line of the list
+</pre></div>
+</div>
+<ul class="simple">
+<li>This is a list with an embedded list</li>
+<li><ul class="first">
+<li>Here is an embedded line</li>
+</ul>
+</li>
+<li><ul class="first">
+<li>This is the second embedded line</li>
+</ul>
+</li>
+<li>This is the second main line of the list</li>
+</ul>
+<p>Any numbered lines with periods will form an ordered list:</p>
+<div class="highlight-python"><div class="highlight"><pre>1. Use number 1. on the first line of the list.
+5. Follow the first line with additional numbered lines.
+3. The order of the lines matters, but the number sequence is irrelevant.
+</pre></div>
+</div>
+<ol class="arabic simple">
+<li>Use number 1. on the first line of the list.</li>
+<li>Follow the first line with additional numbered lines.</li>
+<li>The order of the lines matters, but the number sequence is irrelevant.</li>
+</ol>
+<p>List items may include paragraphs provided hanging indents are used for the
+first line of each paragraph.</p>
+</div>
+<div class="section" id="tables">
+<h2>Tables<a class="headerlink" href="#tables" title="Permalink to this headline">¶</a></h2>
+<p>Markdown syntax does not include a specification for tables.</p>
+</div>
+<div class="section" id="link-directives">
+<h2>Link Directives<a class="headerlink" href="#link-directives" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="web-hyperlinks">
+<h3>Web Hyperlinks<a class="headerlink" href="#web-hyperlinks" title="Permalink to this headline">¶</a></h3>
+<p>Markdown supports two styles for links: inline and reference. With either
+style, use square brackets surrounding the name text you want to display.</p>
+<p>Inline-style links use parentheses immediately after the link text. For example:</p>
+<div class="highlight-python"><div class="highlight"><pre>This is an [example link](http://example.com/).
+</pre></div>
+</div>
+<p>This is an <a class="reference external" href="http://example.com/">example link</a></p>
+<p>Reference-style links allow you to refer to your links by names, which you
+define elsewhere in your document:</p>
+<div class="highlight-python"><div class="highlight"><pre>I get 10 times more traffic from [Google][1] than from
+[Yahoo][2] or [MSN][3].
+
+[1]: http://google.com/        &quot;Google&quot;
+[2]: http://search.yahoo.com/  &quot;Yahoo Search&quot;
+[3]: http://search.msn.com/    &quot;MSN Search&quot;
+</pre></div>
+</div>
+<p>I get 10 times more traffic from <a class="reference external" href="http://google.com/">Google</a> than from
+<a class="reference external" href="http://search.yahoo.com/">Yahoo Search</a> or <a class="reference external" href="http://search.msn.com/">MSN Search</a>.</p>
+</div>
+<div class="section" id="local-filesystem-links">
+<h3>Local Filesystem Links<a class="headerlink" href="#local-filesystem-links" title="Permalink to this headline">¶</a></h3>
+<p>To refer to a relative path on the local system or server, replace the
+protocol &#8220;<a class="reference external" href="http://">http://</a>&#8221; with a simple slash &#8220;/&#8221; in the preceding link format:</p>
+<div class="highlight-python"><div class="highlight"><pre>See my [About](/about/) page for details.
+</pre></div>
+</div>
+<p>See my <a class="reference external" href="/about/">about</a> page for details.</p>
+</div>
+<div class="section" id="images">
+<h3>Images<a class="headerlink" href="#images" title="Permalink to this headline">¶</a></h3>
+<p>Image syntax is very much like link syntax, with both inline and reference
+forms:</p>
+<div class="highlight-python"><div class="highlight"><pre>![alt text](/_images/00_testimg.jpg &quot;Title&quot;)
+
+![alt text][id]
+[id]: /_images/00_testimg.jpg &quot;Title&quot;
+</pre></div>
+</div>
+<p>Both of the above examples produce the same output:</p>
+<img alt="_images/06_publish_toast.jpg" src="_images/06_publish_toast.jpg" />
+<hr class="docutils" />
+<p class="rubric">Footnotes</p>
+<table class="docutils footnote" frame="void" id="id1" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[1]</td><td><a class="reference external" href="http://github.github.com/github-flavored-markdown/sample_content.html">http://github.github.com/github-flavored-markdown/sample_content.html</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[2]</td><td><a class="reference external" href="http://daringfireball.net/projects/markdown/syntax">http://daringfireball.net/projects/markdown/syntax</a></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="07_operation.html" title="Team Collaboration"
+             >next</a></li>
+        <li class="right" >
+          <a href="05_hosting.html" title="GitHub Repository Hosting"
+             >previous</a> |</li>
+        <li><a href="index.html">Development 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Gerald Lovel.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,248 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Right Installation &mdash; Publish Documentation 1.5 documentation</title>
+    
+    <link rel="stylesheet" href="_static/aaltsys.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.5',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Publish Documentation 1.5 documentation" href="index.html" />
+    <link rel="next" title="Right Configuration" href="03_configuration.html" />
+    <link rel="prev" title="Right Understanding" href="01_understanding.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="03_configuration.html" title="Right Configuration"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="01_understanding.html" title="Right Understanding"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Publish Documentation 1.5 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Right Installation</a><ul>
+<li><a class="reference internal" href="#overview">Overview</a></li>
+<li><a class="reference internal" href="#platform-of-choice">Platform of Choice</a></li>
+<li><a class="reference internal" href="#install-dual-booting-linux">Install Dual-Booting Linux</a></li>
+<li><a class="reference internal" href="#installing-software">Installing Software</a></li>
+<li><a class="reference internal" href="#installing-sphinx">Installing Sphinx</a></li>
+<li><a class="reference internal" href="#development-environments">Development Environments</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="01_understanding.html"
+                        title="previous chapter">Right Understanding</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="03_configuration.html"
+                        title="next chapter">Right Configuration</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/02_installation.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="right-installation">
+<span id="install"></span><h1>Right Installation<a class="headerlink" href="#right-installation" title="Permalink to this headline">¶</a></h1>
+<p>It is said, <em>&#8220;A bad workman blames his tools.&#8221;</em> To avoid excuses, this guide
+uses tools created by the best craftsmen of the technology community. As
+these programs are entirely free, tools are no excuse here.</p>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>The following system components and Internet services are used to publish this
+guide:</p>
+<ul class="simple">
+<li><strong>Konsole</strong>, the Linux KDE terminal</li>
+<li><strong>Kate</strong> text editor (but any editor will do)</li>
+<li><strong>Chrome</strong> web browser (but Firefox, Opera or Safari may be preferred)</li>
+<li><strong>Python</strong> programming language tools (python-setuptools)</li>
+<li><strong>TeX</strong> composition tools (texlive-full)</li>
+<li><strong>Sphinx</strong> Python documentation generator</li>
+<li><strong>git</strong> repository file system _[#]</li>
+<li><strong>GitHub</strong> public online repository hosting _[#]</li>
+</ul>
+</div>
+<div class="section" id="platform-of-choice">
+<h2>Platform of Choice<a class="headerlink" href="#platform-of-choice" title="Permalink to this headline">¶</a></h2>
+<p>Building a workstation platform which will create simple, elegant web documents
+without hassle is a challenge. For this guide, workstations used was an ASUS
+EeePC 1001PX runnng <strong>Linux KUbuntu 12</strong>. This machine can dual-boot with the
+Windows Home Starter Edition that came on it, but what is the point of using a
+non-working operating system when a working system is available for free?</p>
+<p>Programmers are like that. As we go farther along, you will notice links to
+various developer services, and invariably the screen shots and installation
+instructions will be written for Linux. _[#] Hopefully by the end of this guide, you
+will understand why.</p>
+</div>
+<div class="section" id="install-dual-booting-linux">
+<h2>Install Dual-Booting Linux<a class="headerlink" href="#install-dual-booting-linux" title="Permalink to this headline">¶</a></h2>
+<p>Here are basic directions. First, choose an operating system to download:</p>
+<ul class="simple">
+<li><a class="reference external" href="http://linuxmint.com/download.php">Download Mint here</a></li>
+<li><a class="reference external" href="http://www.kubuntu.org/getkubuntu/download">Download KUbuntu here</a></li>
+</ul>
+<p>Burn a DVD of from operating system file, or <strong>dd</strong> the file to a usb key.</p>
+<ol class="arabic simple">
+<li>Run defrag and chkdsk on your Windows hard drive partition.</li>
+<li>Boot from CD and follow directions to partition your drive and dual-install.</li>
+</ol>
+<p>If this is too difficult, look for help at a nearby Linux user group meeting.</p>
+</div>
+<div class="section" id="installing-software">
+<h2>Installing Software<a class="headerlink" href="#installing-software" title="Permalink to this headline">¶</a></h2>
+<p>There is a whole slew of software one would want on a computer for programming,
+writing, graphic arts, and so forth. Rather than enumerate all these packages,
+a script to install software is provided as part of <a class="reference external" href="https://github.com/garlovel/self-publish">this GitHub project
+repository</a>.</p>
+<p>Install the script as follows. First, download the script file appropriate for
+your system, saving it to file <tt class="file docutils literal"><span class="pre">first-install.sh</span></tt> in your home folder:</p>
+<ul class="simple">
+<li><a class="reference download internal" href="_downloads/Gnome-Ubuntu_10.10-desktop.sh"><tt class="xref download docutils literal"><span class="pre">Gnome/Ubuntu</span> <span class="pre">10.10</span> <span class="pre">desktop</span></tt></a></li>
+<li><a class="reference download internal" href="_downloads/KDE-Mint_10-desktop.sh"><tt class="xref download docutils literal"><span class="pre">KDE/Mint</span> <span class="pre">10</span> <span class="pre">desktop</span></tt></a></li>
+<li><a class="reference download internal" href="_downloads/KDE-Mint_12-desktop.sh"><tt class="xref download docutils literal"><span class="pre">KDE/Mint</span> <span class="pre">12</span> <span class="pre">desktop</span></tt></a></li>
+<li><a class="reference download internal" href="_downloads/KUbuntu_12-desktop.sh"><tt class="xref download docutils literal"><span class="pre">KUbuntu</span> <span class="pre">12/Mint</span> <span class="pre">13</span> <span class="pre">desktop</span></tt></a></li>
+</ul>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">If your browser saved this file without asking you where to put it or
+what to name it, then edit your browser preferences to always ask when
+saving downloads.</p>
+</div>
+<p>Now perform the following:</p>
+<ol class="arabic simple">
+<li>Open a console (terminal) window</li>
+<li>Type the command <strong class="command">bash first-install.sh &lt;Enter&gt;</strong></li>
+<li>Enter your password when asked (this may happen multiple times)</li>
+<li>When asked for a mysql pasword, type <tt class="kbd docutils literal"><span class="pre">mysql</span></tt></li>
+<li>Wait an hour or so while over 1000 software packages are installed</li>
+<li>Restart your system to load the most recent Linux kernel</li>
+</ol>
+</div>
+<div class="section" id="installing-sphinx">
+<h2>Installing Sphinx<a class="headerlink" href="#installing-sphinx" title="Permalink to this headline">¶</a></h2>
+<p>We are not done yet. The desktop installation script did not include
+documentation tools, which will be installed from a separate script:</p>
+<ol class="arabic simple">
+<li>Download <a class="reference download internal" href="_downloads/rest-install.sh"><tt class="xref download docutils literal"><span class="pre">reST</span> <span class="pre">script</span></tt></a> to filename
+<tt class="file docutils literal"><span class="pre">rest-install.sh</span></tt></li>
+<li>Open a console (terminal) window</li>
+<li>Type the command <strong class="command">bash rest-install.sh &lt;Enter&gt;</strong></li>
+<li>Enter your password when asked (this may happen multiple times)</li>
+<li>Wait an hour or so while packages are installed and compiled</li>
+</ol>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">There will be plenty of commands to type in this guide. Being a lazy
+lot, Linux programmers have a way to avoid the typing. Open both web browser
+and console windows in your workspace. Highlight text to be typed in the
+browser, then move to the console and click with the mouse scroll wheel at
+the prompt.</p>
+</div>
+<p>Congratulations. Now your computer has the tools to do documentation work.</p>
+</div>
+<div class="section" id="development-environments">
+<h2>Development Environments<a class="headerlink" href="#development-environments" title="Permalink to this headline">¶</a></h2>
+<p>A nice thing about Linux is the convenience of terminal command files, where a
+short script can perform hours of tedious computer work for you. Additional
+optional scripts are listed here for installing development environments for
+writing web applications.</p>
+<ul class="simple">
+<li>Download <a class="reference download internal" href="_downloads/ruby-install.sh"><tt class="xref download docutils literal"><span class="pre">Ruby</span> <span class="pre">on</span> <span class="pre">Rails</span> <span class="pre">with</span> <span class="pre">MongoDB</span></tt></a></li>
+</ul>
+<p>As described previously, open a console window and type a command such as
+<strong class="command">bash program_name.sh &lt;Enter&gt;</strong> to execute a script file.</p>
+<hr class="docutils" />
+<p class="rubric">Footnotes</p>
+<table class="docutils footnote" frame="void" id="id1" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[1]</td><td>Scott Chacon, Pro Git (August 27, 2009, ISBN-10: 1430218339), available
+at Amazon, or for free on-line at <a class="reference external" href="http://git-scm.com/book">http://git-scm.com/book</a>.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[2]</td><td>Scott Chacon, Pro Git book source (written in MarkDown, not reST)
+repository on GitHub: <a class="reference external" href="https://github.com/progit/progit">https://github.com/progit/progit</a>.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id3" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[3]</td><td><a class="reference external" href="http://www.howtoforge.com/useful_linux_commands">http://www.howtoforge.com/useful_linux_commands</a> presents a list of
+useful Linux commands.</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="03_configuration.html" title="Right Configuration"
+             >next</a></li>
+        <li class="right" >
+          <a href="01_understanding.html" title="Right Understanding"
+             >previous</a> |</li>
+        <li><a href="index.html">Publish Documentation 1.5 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Gerald Lovel.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>
