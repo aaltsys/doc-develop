@@ -155,14 +155,12 @@ entirely case-sensitive, making variable <tt class="docutils literal"><span clas
 <h3>Assign script parameters<a class="headerlink" href="#assign-script-parameters" title="Permalink to this headline">¶</a></h3>
 <div class="sidebar">
 <p class="first sidebar-title">Parameter assignment</p>
-<blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span class="nv">PROJECT</span><span class="o">=</span><span class="s1">&#39;default&#39;</span>
+<div class="last highlight-bash"><div class="highlight"><pre><span class="nv">PROJECT</span><span class="o">=</span><span class="s1">&#39;default&#39;</span>
+<span class="k">if</span> <span class="o">[</span> -n <span class="nv">$1</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="o">[</span> ! <span class="nv">$1</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span> <span class="o">]</span>
+<span class="k">then  </span><span class="nv">PROJECT</span><span class="o">=</span><span class="nv">$1</span>
+<span class="k">fi</span>
 </pre></div>
 </div>
-</div></blockquote>
-<p class="last">if [ -n $1 ] &amp;&amp; [ ! $1 = &#8216;&#8217; ]
-then  PROJECT=$1
-fi</p>
 </div>
 <p>Assign command parameters to named variables, provided the parameters are being
 passed. Notice that variables are assigned by name with an <tt class="docutils literal"><span class="pre">=</span></tt> suffixed, but
@@ -277,8 +275,8 @@ the writing commands and comment out the echo statements.</p>
 <h3>Inputs and Logic tests<a class="headerlink" href="#inputs-and-logic-tests" title="Permalink to this headline">¶</a></h3>
 <div class="sidebar">
 <p class="first sidebar-title">Decision logic</p>
-<div class="last highlight-bash"><div class="highlight"><pre><span class="nb">echo</span>  <span class="s2">&quot;Install apt-fast?&quot;</span>
-<span class="nb">read</span> -r 1 <span class="s2">&quot;(y/n)&quot;</span> RESP
+<div class="last highlight-bash"><div class="highlight"><pre><span class="nb">echo</span>  <span class="s2">&quot;Install apt-fast? (y/n) &quot;</span>
+<span class="nb">read </span>RESP
 <span class="k">if</span> <span class="o">[</span> <span class="s2">&quot;$RESP&quot;</span> !<span class="o">=</span> <span class="s1">&#39;y&#39;</span> <span class="o">]</span>; <span class="k">then</span>
 <span class="k">  </span><span class="nb">echo</span> <span class="s2">&quot;Canceled&quot;</span>
   <span class="nb">exit </span>1

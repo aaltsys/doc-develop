@@ -71,9 +71,9 @@ Assign script parameters
    .. code-block:: bash
  
       PROJECT='default'
-  if [ -n $1 ] && [ ! $1 = '' ]
-  then  PROJECT=$1
-  fi
+      if [ -n $1 ] && [ ! $1 = '' ]
+      then  PROJECT=$1
+      fi	
 
 
 Assign command parameters to named variables, provided the parameters are being 
@@ -197,8 +197,8 @@ Inputs and Logic tests
 
    .. code-block:: bash
  
-      echo  "Install apt-fast?" 
-      read -r 1 "(y/n)" RESP  
+      echo  "Install apt-fast? (y/n) " 
+      read RESP  
       if [ "$RESP" != 'y' ]; then
         echo "Canceled"
         exit 1
