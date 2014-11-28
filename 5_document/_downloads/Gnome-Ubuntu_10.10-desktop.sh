@@ -1,1 +1,0 @@
-../../resources/_downloads/Gnome-Ubuntu_10.10-desktop.sh
