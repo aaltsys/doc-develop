@@ -71,9 +71,10 @@ Assign script parameters
    .. code-block:: bash
  
       PROJECT='default'
-      if [ $1 != '' ] ; then
-        PROJECT=$1
-      fi
+  if [ -n $1 ] && [ ! $1 = '' ]
+  then  PROJECT=$1
+  fi
+
 
 Assign command parameters to named variables, provided the parameters are being 
 passed. Notice that variables are assigned by name with an ``=`` suffixed, but 
@@ -168,7 +169,7 @@ Display results
 
    .. code-block:: bash
  
-      if [[ ! -d $PROJECT ]] ; then
+      if [ ! -d $PROJECT ] ; then
         echo "No Project folder \"$PROJECT\". Exiting ... "
         exit 1
       fi
