@@ -1,0 +1,336 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Right Operation &mdash; Publish Documentation 1.5 documentation</title>
+    
+    <link rel="stylesheet" href="_static/aaltsys.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.5',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Publish Documentation 1.5 documentation" href="index.html" />
+    <link rel="next" title="Right Content" href="07_content.html" />
+    <link rel="prev" title="Right Structure" href="05_structure.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="07_content.html" title="Right Content"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="05_structure.html" title="Right Structure"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Publish Documentation 1.5 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Right Operation</a><ul>
+<li><a class="reference internal" href="#project-management">Project Management</a></li>
+<li><a class="reference internal" href="#edit-rest-documents">Edit reST Documents</a><ul>
+<li><a class="reference internal" href="#create-a-text-document">Create a text document</a></li>
+<li><a class="reference internal" href="#markup-a-text-document">Markup a text document</a></li>
+<li><a class="reference internal" href="#view-output-while-editing">View output while editing</a></li>
+<li><a class="reference internal" href="#compile-html-test-output">Compile HTML test output</a></li>
+<li><a class="reference internal" href="#view-local-compiled-html">View local compiled HTML</a></li>
+<li><a class="reference internal" href="#periodically-save-work">Periodically Save Work</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#commit-to-git-repository">Commit to git Repository</a><ul>
+<li><a class="reference internal" href="#track-current-changes">Track current changes</a></li>
+<li><a class="reference internal" href="#see-changes-being-tracked">See changes being tracked</a></li>
+<li><a class="reference internal" href="#undo-an-add">Undo an add</a></li>
+<li><a class="reference internal" href="#rename-a-project-file">Rename a project file</a></li>
+<li><a class="reference internal" href="#delete-a-project-file">Delete a project file</a></li>
+<li><a class="reference internal" href="#commit-changes-to-repository">Commit changes to repository</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#remote-repository-updates">Remote Repository Updates</a><ul>
+<li><a class="reference internal" href="#pull-remote-content">Pull remote content</a></li>
+<li><a class="reference internal" href="#push-local-content">Push local content</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#build-final-web-content">Build Final Web Content</a><ul>
+<li><a class="reference internal" href="#github-deploy-requirements">GitHub deploy requirements</a></li>
+<li><a class="reference internal" href="#github-deployment-script">GitHub deployment script</a></li>
+<li><a class="reference internal" href="#view-the-deployed-site">View the deployed site</a></li>
+<li><a class="reference internal" href="#view-displayed-page-source">View displayed page source</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#using-the-browser">Using the Browser</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="05_structure.html"
+                        title="previous chapter">Right Structure</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="07_content.html"
+                        title="next chapter">Right Content</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/06_operation.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="right-operation">
+<span id="operation"></span><h1>Right Operation<a class="headerlink" href="#right-operation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="project-management">
+<h2>Project Management<a class="headerlink" href="#project-management" title="Permalink to this headline">¶</a></h2>
+<p>Web content projects typically exist in multiple states: edited, committed,
+staged, and deployed. Here is a very brief explanation of content management:</p>
+<p>Editing is work in progress, where changes are not yet a part of a repository.
+When completed, the developer commits work to his local repository.
+Periodically a developer will synchronize his local work with a master
+repository, and then push his commits to be merged into that master. When the
+master repository contains a complete, working version of the project, the
+project will be deployed to the web.</p>
+<p>The developer needs to test the results of his local work in progress, before
+and after committing to his local repository. The merged work of the entire
+project needs to be staged and reviewed. Finally, the current deployed product
+needs to be viewed for comparison during development.</p>
+<p>The reader may be thinking, &#8220;I never had to do all that with _(insert a CMS
+package name here)_.&#8221; If so, the reader is not a developer (yet).</p>
+</div>
+<div class="section" id="edit-rest-documents">
+<h2>Edit reST Documents<a class="headerlink" href="#edit-rest-documents" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="create-a-text-document">
+<h3>Create a text document<a class="headerlink" href="#create-a-text-document" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre>cd ~/Projects/doc-firsttask
+kate firstdoc.rst
+</pre></div>
+</div>
+<p>The extension <tt class="file docutils literal"><span class="pre">.rst</span></tt> identifies restructured text documents. Make Kate
+the default editor for this document type.</p>
+</div>
+<div class="section" id="markup-a-text-document">
+<h3>Markup a text document<a class="headerlink" href="#markup-a-text-document" title="Permalink to this headline">¶</a></h3>
+<p>Use the notations for <a class="reference internal" href="05_structure.html#structure"><em>text structure</em></a> to markup text. Start
+each document of the project with a heading, and go on from there.</p>
+</div>
+<div class="section" id="view-output-while-editing">
+<h3>View output while editing<a class="headerlink" href="#view-output-while-editing" title="Permalink to this headline">¶</a></h3>
+<p>Open the <a class="reference external" href="http://rst.ninjs.org">Interactive rST Editor</a> in a browser tab, and
+paste text into the left pane. Interpreted HTML output will display on the
+right.</p>
+</div>
+<div class="section" id="compile-html-test-output">
+<h3>Compile HTML test output<a class="headerlink" href="#compile-html-test-output" title="Permalink to this headline">¶</a></h3>
+<p>Compile a text document into HTML output with the command</p>
+<div class="highlight-python"><div class="highlight"><pre>make clean html
+</pre></div>
+</div>
+</div>
+<div class="section" id="view-local-compiled-html">
+<h3>View local compiled HTML<a class="headerlink" href="#view-local-compiled-html" title="Permalink to this headline">¶</a></h3>
+<p>In a browser tab, substitute your username and the name of your project folder
+into the following URL to see the index of files in a local project, and to
+view the output of individual documents:</p>
+<div class="highlight-python"><div class="highlight"><pre>file:///home/__username__/Projects/__projectfolder__/_build/html/index.html
+</pre></div>
+</div>
+</div>
+<div class="section" id="periodically-save-work">
+<h3>Periodically Save Work<a class="headerlink" href="#periodically-save-work" title="Permalink to this headline">¶</a></h3>
+<p>What should never have to be said, must be said.</p>
+</div>
+</div>
+<div class="section" id="commit-to-git-repository">
+<h2>Commit to git Repository<a class="headerlink" href="#commit-to-git-repository" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="track-current-changes">
+<h3>Track current changes<a class="headerlink" href="#track-current-changes" title="Permalink to this headline">¶</a></h3>
+<p>Make git aware of current changes with the command:</p>
+<div class="highlight-python"><div class="highlight"><pre>git add .
+</pre></div>
+</div>
+<p>The &#8220;dot&#8221; means track everything in a project directory. Name specific files
+if everything is not desired. Exclude categories of files from tracking with
+entries in <tt class="file docutils literal"><span class="pre">.gitignore</span></tt>, as <a class="reference internal" href="03_configuration.html#gitignore"><em>previously shown</em></a>.</p>
+</div>
+<div class="section" id="see-changes-being-tracked">
+<h3>See changes being tracked<a class="headerlink" href="#see-changes-being-tracked" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre>git status
+</pre></div>
+</div>
+<p>Shows what git has staged to be committed based on <strong class="command">add</strong> commands.</p>
+</div>
+<div class="section" id="undo-an-add">
+<h3>Undo an add<a class="headerlink" href="#undo-an-add" title="Permalink to this headline">¶</a></h3>
+<p>Clear staged content which you do not want to add with the command:</p>
+<div class="highlight-python"><div class="highlight"><pre>git reset
+</pre></div>
+</div>
+</div>
+<div class="section" id="rename-a-project-file">
+<h3>Rename a project file<a class="headerlink" href="#rename-a-project-file" title="Permalink to this headline">¶</a></h3>
+<p>Always use git to move or rename a tracked file. The syntax is the same as
+Linux <strong class="command">mv</strong> command, but proceded with <strong class="command">git</strong>:</p>
+<div class="highlight-python"><div class="highlight"><pre>git mv old_filename.rst new_filename.rst
+</pre></div>
+</div>
+</div>
+<div class="section" id="delete-a-project-file">
+<h3>Delete a project file<a class="headerlink" href="#delete-a-project-file" title="Permalink to this headline">¶</a></h3>
+<p>As with moving a tracked file, use a <strong class="command">git</strong> command when deleting:</p>
+<div class="highlight-python"><div class="highlight"><pre>git rm bad_filename.rst
+</pre></div>
+</div>
+</div>
+<div class="section" id="commit-changes-to-repository">
+<h3>Commit changes to repository<a class="headerlink" href="#commit-changes-to-repository" title="Permalink to this headline">¶</a></h3>
+<p>Periodically add and commit completed content to your local repository:</p>
+<div class="highlight-python"><div class="highlight"><pre>git add .
+git status
+git commit -m &quot;type a brief message here describing your changes&quot;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="remote-repository-updates">
+<h2>Remote Repository Updates<a class="headerlink" href="#remote-repository-updates" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="pull-remote-content">
+<h3>Pull remote content<a class="headerlink" href="#pull-remote-content" title="Permalink to this headline">¶</a></h3>
+<p>Before starting a day&#8217;s work, synchronize your local repository copy to the
+remote master repository:</p>
+<div class="highlight-python"><div class="highlight"><pre>git pull
+</pre></div>
+</div>
+</div>
+<div class="section" id="push-local-content">
+<h3>Push local content<a class="headerlink" href="#push-local-content" title="Permalink to this headline">¶</a></h3>
+<p>When local content is synchronized with master changes, tested, and committed
+locally, then push the content commits to the remote master:</p>
+<div class="highlight-python"><div class="highlight"><pre>git push
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If git requires a user password in the <strong class="command">git push</strong> command,
+then an ssh key is missing at GitHub. Follow GitHub directions to add the
+missing key.</p>
+</div>
+</div>
+</div>
+<div class="section" id="build-final-web-content">
+<h2>Build Final Web Content<a class="headerlink" href="#build-final-web-content" title="Permalink to this headline">¶</a></h2>
+<p>The original goal of this guide may seem forgotten, in that a free hosted
+website has not yet materialized. (You are viewing just such a site, of course,
+but that doesn&#8217;t count.) That goal can be achieved now if all the preliminary
+steps are complete.</p>
+<div class="section" id="github-deploy-requirements">
+<h3>GitHub deploy requirements<a class="headerlink" href="#github-deploy-requirements" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>A local project folder with .rst document content</li>
+<li>git repository and sphinx markup initialized on the project folder</li>
+<li>Some .rst document content, stored in the repository</li>
+<li>A GitHub remote master repository which is updated from the local content</li>
+<li>A <strong>gh-pages</strong> branch in the GitHub repository to contain deployed HTML</li>
+<li>A script to build and deploy the site, which is downloaded below.</li>
+</ul>
+</div>
+<div class="section" id="github-deployment-script">
+<h3>GitHub deployment script<a class="headerlink" href="#github-deployment-script" title="Permalink to this headline">¶</a></h3>
+<p>Download script <a class="reference download internal" href="_downloads/github-deploy.sh"><tt class="xref download docutils literal"><span class="pre">github-deploy.sh</span></tt></a> to
+your <tt class="file docutils literal"><span class="pre">Projects</span></tt> folder, or inside of your project.</p>
+<p>Then deploy the site at GitHub with the command:</p>
+<div class="highlight-python"><div class="highlight"><pre>bash gitdeploy.sh {project_foldername}
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If the script is executed from within your project, omit the
+<tt class="docutils literal"><span class="pre">{project_foldername}</span></tt> from the command.</p>
+</div>
+</div>
+<div class="section" id="view-the-deployed-site">
+<h3>View the deployed site<a class="headerlink" href="#view-the-deployed-site" title="Permalink to this headline">¶</a></h3>
+<p>In the web browser, substitute your GitHub <strong>username</strong> and <strong>repository</strong>
+name into the following URL to view the site:</p>
+<div class="highlight-python"><div class="highlight"><pre>http://_username_.github.com/_repository_
+</pre></div>
+</div>
+</div>
+<div class="section" id="view-displayed-page-source">
+<h3>View displayed page source<a class="headerlink" href="#view-displayed-page-source" title="Permalink to this headline">¶</a></h3>
+<p>When viewing a site page in the browser, click the <em class="guilabel">Show Source</em>
+link in the side menu to display the original text source of the page.</p>
+</div>
+</div>
+<div class="section" id="using-the-browser">
+<h2>Using the Browser<a class="headerlink" href="#using-the-browser" title="Permalink to this headline">¶</a></h2>
+<p>Firefox introduced tabs in the web browser, making life better for web
+developers. The following five tabs are useful all the time:</p>
+<div class="highlight-python"><div class="highlight"><pre>`Sphinx documentation &lt;http://sphinx.pocoo.org/contents.html&gt;`_
+`Online rst Editor &lt;http://rst.ninjs.org/&gt;`_
+`Built HTML &lt;file://~/Projects/doc-firsttask/_build/html/index.html&gt;`_
+`Deployed project \&lt;http://_yourname_.github.com/_yourproject_/\&gt;`_
+`Your GitHub page \&lt;https://github.com/_yourname_\&gt;`_
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="07_content.html" title="Right Content"
+             >next</a></li>
+        <li class="right" >
+          <a href="05_structure.html" title="Right Structure"
+             >previous</a> |</li>
+        <li><a href="index.html">Publish Documentation 1.5 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Gerald Lovel.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,191 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Deploy with Capistrano &mdash; Ruby Developer Tutorial 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/aaltsys.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Ruby Developer Tutorial 1.0 documentation" href="index.html" />
+    <link rel="next" title="Free Cloud Web Servers" href="09_webserver.html" />
+    <link rel="prev" title="DIY Deployment" href="02_diy.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="09_webserver.html" title="Free Cloud Web Servers"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="02_diy.html" title="DIY Deployment"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Ruby Developer Tutorial 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Deploy with Capistrano</a><ul>
+<li><a class="reference internal" href="#install-capistrano">Install Capistrano</a></li>
+<li><a class="reference internal" href="#configure-capistrano">Configure Capistrano</a></li>
+<li><a class="reference internal" href="#deploy">Deploy!</a></li>
+<li><a class="reference internal" href="#now-what-s-missing">Now What&#8217;s Missing?</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="02_diy.html"
+                        title="previous chapter">DIY Deployment</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="09_webserver.html"
+                        title="next chapter">Free Cloud Web Servers</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/03_capistrano.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="deploy-with-capistrano">
+<span id="capistrano"></span><h1>Deploy with Capistrano<a class="headerlink" href="#deploy-with-capistrano" title="Permalink to this headline">¶</a></h1>
+<p>Capistrano is a tool for automating deployment.</p>
+<div class="section" id="install-capistrano">
+<h2>Install Capistrano<a class="headerlink" href="#install-capistrano" title="Permalink to this headline">¶</a></h2>
+<p>Install RVM:</p>
+<div class="highlight-python"><div class="highlight"><pre>curl -L get.rvm.io | bash -s stable
+</pre></div>
+</div>
+<p>Install Ruby:</p>
+<div class="highlight-python"><div class="highlight"><pre>rvm install 2.1.2
+rvm use 2.1.2 --default
+</pre></div>
+</div>
+<p>Install RubyGems:</p>
+<div class="highlight-python"><div class="highlight"><pre>rvm rubygems current
+rvm use --create 2.1.2@demo
+</pre></div>
+</div>
+<p>Install Capistrano:</p>
+<div class="highlight-python"><div class="highlight"><pre>gem install capistrano
+</pre></div>
+</div>
+<p>Capify Project:</p>
+<div class="highlight-python"><div class="highlight"><pre>cap install
+</pre></div>
+</div>
+</div>
+<div class="section" id="configure-capistrano">
+<h2>Configure Capistrano<a class="headerlink" href="#configure-capistrano" title="Permalink to this headline">¶</a></h2>
+<p>Edit <tt class="file docutils literal"><span class="pre">config/deploy/production.rb</span></tt>:</p>
+<ol class="arabic simple">
+<li>Change the <cite>server</cite> setting to the correct server address,</li>
+<li>Change <cite>repo_url</cite> to the correct URL for your fork,</li>
+<li>Change <cite>deploy_to</cite> to the folder on the server where the code will be
+hosted (/var/www/html/[your-github-id])</li>
+<li>Change <cite>user</cite> to the user who has SSH access to the server (developer)</li>
+</ol>
+<p>Example:</p>
+<div class="highlight-python"><div class="highlight"><pre>set :server, &#39;ec2demo.aaltsys.info&#39;
+set :repo_url, &#39;https://github.com/[your-github-id]/html-demo.git&#39;
+set :deploy_to, &#39;/var/www/html/[your-github-id]&#39;
+set :user, &#39;developer&#39;
+</pre></div>
+</div>
+<p>Edit <tt class="file docutils literal"><span class="pre">config/deploy/production.rb</span></tt>:</p>
+<ol class="arabic">
+<li><p class="first">Change the <cite>app</cite> role setting to the correct user and server address, <cite>developer&#64;ec2demo.aaltsys.info</cite>,</p>
+</li>
+<li><p class="first">Make sure that all of the other lines in the file are commented out (with a <cite>#</cite> at the beginning of the line),</p>
+</li>
+<li><p class="first">Add the following lines to the bottom of the file:</p>
+<div class="highlight-python"><div class="highlight"><pre>set :ssh_options, {
+ auth_methods: %w(password),
+ password: &#39;techC@mp&#39;
+}
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="deploy">
+<h2>Deploy!<a class="headerlink" href="#deploy" title="Permalink to this headline">¶</a></h2>
+<p>Deploy your application with the following commands:</p>
+<div class="highlight-python"><div class="highlight"><pre>cap production deploy:check
+cap production deploy
+</pre></div>
+</div>
+</div>
+<div class="section" id="now-what-s-missing">
+<h2>Now What&#8217;s Missing?<a class="headerlink" href="#now-what-s-missing" title="Permalink to this headline">¶</a></h2>
+<p>We still have only one deployment environment, the production server. We would
+like to be able to test our code locally, then deploy to a shared testing server
+for collaborative development, then deploy to a staging server which mimics the
+production environment. At each of stage of this process, we would want to use
+an automated test set for the application and conformance testing for the client
+browsers. Only then would we deploy to a production server.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="09_webserver.html" title="Free Cloud Web Servers"
+             >next</a></li>
+        <li class="right" >
+          <a href="02_diy.html" title="DIY Deployment"
+             >previous</a> |</li>
+        <li><a href="index.html">Ruby Developer Tutorial 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Julia Lovel.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>

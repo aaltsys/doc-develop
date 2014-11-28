@@ -1,0 +1,1162 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Operators &amp; Other Characters &mdash; Developer Documentation Resource Pages 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/aaltsys.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Developer Documentation Resource Pages 1.0 documentation" href="index.html" />
+    <link rel="next" title="Routines and Expressions" href="08_expressions.html" />
+    <link rel="prev" title="Commands and Variables" href="06_commands.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="08_expressions.html" title="Routines and Expressions"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="06_commands.html" title="Commands and Variables"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Developer Documentation Resource Pages 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Operators &amp; Other Characters</a><ul>
+<li><a class="reference internal" href="#arithmetic-operators">Arithmetic operators</a><ul>
+<li><a class="reference internal" href="#arithmetic-assignment">Arithmetic assignment</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#logic-operators">Logic Operators</a><ul>
+<li><a class="reference internal" href="#logical-reversal-operator">Logical reversal operator</a></li>
+<li><a class="reference internal" href="#compound-comparison-operators">Compound comparison operators</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#comparison-tests">Comparison Tests</a><ul>
+<li><a class="reference internal" href="#string-comparisons">String comparisons</a></li>
+<li><a class="reference internal" href="#integer-comparisons">Integer comparisons</a></li>
+<li><a class="reference internal" href="#file-test-operators">File test operators</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#expression-constructs">Expression constructs</a></li>
+<li><a class="reference internal" href="#glob-pattern-matching">Glob Pattern Matching</a></li>
+<li><a class="reference internal" href="#special-characters">Special characters</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="06_commands.html"
+                        title="previous chapter">Commands and Variables</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="08_expressions.html"
+                        title="next chapter">Routines and Expressions</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/07_operators.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="operators-other-characters">
+<span id="operators"></span><h1>Operators &amp; Other Characters<a class="headerlink" href="#operators-other-characters" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="arithmetic-operators">
+<span id="arithmetic"></span><h2>Arithmetic operators<a class="headerlink" href="#arithmetic-operators" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The arithmetic operators are listed grouped in order of precedence.</p>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="23%" />
+<col width="55%" />
+<col width="22%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Operator</th>
+<th class="head">Description</th>
+<th class="head">b/d/k/z</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><div class="first last line-block">
+<div class="line"><tt class="docutils literal"><span class="pre">id++</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">id--</span></tt></div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">post-increment</div>
+<div class="line">post-decrement</div>
+</div>
+</td>
+<td>bdkz</td>
+</tr>
+<tr class="row-odd"><td><div class="first last line-block">
+<div class="line"><tt class="docutils literal"><span class="pre">++id</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">--id</span></tt></div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">pre-increment</div>
+<div class="line">pre-decrement</div>
+</div>
+</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td><div class="first last line-block">
+<div class="line"><tt class="docutils literal"><span class="pre">+</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">-</span></tt></div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">unary plus (positive number)</div>
+<div class="line">unary minus (negative number)</div>
+</div>
+</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td><div class="first last line-block">
+<div class="line"><tt class="docutils literal"><span class="pre">!</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">~</span></tt></div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">logical negation</div>
+<div class="line">bit-wise negation</div>
+</div>
+</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">**</span></tt></td>
+<td>exponentiation</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td><div class="first last line-block">
+<div class="line"><tt class="docutils literal"><span class="pre">*</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">/</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">%</span></tt></div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">multiplication</div>
+<div class="line">division</div>
+<div class="line">remainder (modulus)</div>
+</div>
+</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td><div class="first last line-block">
+<div class="line"><tt class="docutils literal"><span class="pre">+</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">-</span></tt></div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">addition</div>
+<div class="line">subtraction</div>
+</div>
+</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td><div class="first last line-block">
+<div class="line"><tt class="docutils literal"><span class="pre">&lt;&lt;</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">&gt;&gt;</span></tt></div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">bit-wise shift left</div>
+<div class="line">bit-wise shift right</div>
+</div>
+</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td><div class="first last line-block">
+<div class="line"><tt class="docutils literal"><span class="pre">&lt;=</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">&gt;=</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">&lt;</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">&gt;</span></tt></div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">comparison less than or equal to</div>
+<div class="line">comparison greater than or equal to</div>
+<div class="line">comparison less than</div>
+<div class="line">comparison greater than</div>
+</div>
+</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td><div class="first last line-block">
+<div class="line"><tt class="docutils literal"><span class="pre">==</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">!=</span></tt></div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">equality</div>
+<div class="line">inequality</div>
+</div>
+</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">&amp;</span></tt></td>
+<td>bit-wise AND</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">^</span></tt></td>
+<td>bit-wise XOR (exclusive or)</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">|</span></tt></td>
+<td>bit-wise OR</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">&amp;&amp;</span></tt></td>
+<td>logical AND</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">||</span></tt></td>
+<td>logical OR</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>expr?expr:expr</td>
+<td>conditional operator</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>assignment</td>
+<td>(see following table)</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>expr1 , expr2</td>
+<td>comma assignment</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="arithmetic-assignment">
+<h3>Arithmetic assignment<a class="headerlink" href="#arithmetic-assignment" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="14%" />
+<col width="86%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Operator</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">=</span></tt></td>
+<td>Assign expression to variable: variable=expression</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">*=</span></tt></td>
+<td>Assign product of expression multiplied by variable</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">/=</span></tt></td>
+<td>Assign dividend</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">%=</span></tt></td>
+<td>Assign remainer</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">+=</span></tt></td>
+<td>Assign sum</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">-=</span></tt></td>
+<td>Assign difference</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">&lt;&lt;=</span></tt></td>
+<td>assign bit-wise left shift</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">&gt;&gt;=</span></tt></td>
+<td>assign bit-wise right shift</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">&amp;=</span></tt></td>
+<td>assign bitwise AND</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">^=</span></tt></td>
+<td>assign bit-wise XOR exclusive or</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">|=</span></tt></td>
+<td>assign bit-wise OR</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">Online documentation at <tt class="docutils literal"><span class="pre">man</span> <span class="pre">bash</span></tt>.</p>
+</div>
+</div>
+</div>
+<div class="section" id="logic-operators">
+<span id="logic"></span><h2>Logic Operators<a class="headerlink" href="#logic-operators" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<table border="1" class="last docutils">
+<colgroup>
+<col width="11%" />
+<col width="89%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head" colspan="2">Legend</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Test</td>
+<td>Column <strong>Test</strong> indicates which type of logic test this
+operator applies to. Values might be <tt class="docutils literal"><span class="pre">[</span></tt>, <tt class="docutils literal"><span class="pre">[[</span></tt> or <tt class="docutils literal"><span class="pre">all</span></tt>.</td>
+</tr>
+<tr class="row-odd"><td>U/B</td>
+<td>The <strong>U/B</strong> column refers to the type of test: <tt class="docutils literal"><span class="pre">U</span></tt> for
+<em>unary</em>, or <tt class="docutils literal"><span class="pre">B</span></tt> for <em>binary</em>.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="logical-reversal-operator">
+<h3>Logical reversal operator<a class="headerlink" href="#logical-reversal-operator" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="9%" />
+<col width="7%" />
+<col width="71%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Operator</th>
+<th class="head">Test</th>
+<th class="head">U/B</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">!</span></tt></td>
+<td>all</td>
+<td>U</td>
+<td>&#8220;not&#8221; &#8211; reverses the sense of a logical operation</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="compound-comparison-operators">
+<h3>Compound comparison operators<a class="headerlink" href="#compound-comparison-operators" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="9%" />
+<col width="7%" />
+<col width="71%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Operator</th>
+<th class="head">Test</th>
+<th class="head">U/B</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">-a</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">[</span></tt></td>
+<td>B</td>
+<td>logical AND within test: <tt class="docutils literal"><span class="pre">[</span> <span class="pre">expr1</span> <span class="pre">-a</span> <span class="pre">expr2</span> <span class="pre">]</span></tt></td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">-o</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">[</span></tt></td>
+<td>B</td>
+<td>logical OR within test: <tt class="docutils literal"><span class="pre">[</span> <span class="pre">expr1</span> <span class="pre">-o</span> <span class="pre">expr2</span> <span class="pre">]</span></tt></td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">&amp;&amp;</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">[[</span></tt></td>
+<td>B</td>
+<td>logical AND double-bracket: <tt class="docutils literal"><span class="pre">[[</span> <span class="pre">expr1</span> <span class="pre">&amp;&amp;</span> <span class="pre">expr2</span> <span class="pre">]]</span></tt></td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">||</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">[[</span></tt></td>
+<td>B</td>
+<td>logical OR double-bracket: <tt class="docutils literal"><span class="pre">[[</span> <span class="pre">expr1</span> <span class="pre">||</span> <span class="pre">expr2</span> <span class="pre">]]</span></tt></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="comparison-tests">
+<h2>Comparison Tests<a class="headerlink" href="#comparison-tests" title="Permalink to this headline">¶</a></h2>
+<p>Generally, comparison tests are of three types: string comparisons, integer
+comparisons, and file status tests.</p>
+<div class="section" id="string-comparisons">
+<span id="compare-string"></span><h3>String comparisons<a class="headerlink" href="#string-comparisons" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="9%" />
+<col width="7%" />
+<col width="71%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Operator</th>
+<th class="head">Test</th>
+<th class="head">U/B</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">=</span></tt></td>
+<td>all</td>
+<td>B</td>
+<td>equal to, literal matching, whitespace req&#8217;d</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">==</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">[</span></tt></td>
+<td>B</td>
+<td>equal to, within test, synonym for <tt class="docutils literal"><span class="pre">=</span></tt></td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">==</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">[[</span></tt></td>
+<td>B</td>
+<td>equal to, double-bracket, pattern matching, see (2)</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">!=</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">[</span></tt></td>
+<td>B</td>
+<td>not equal to, within test, whitespace req&#8217;d</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">!=</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">[[</span></tt></td>
+<td>B</td>
+<td>not equal to, double-bracket, pattern matching, (2)</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">=~</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">[[</span></tt></td>
+<td>B</td>
+<td>matches, double-bracket, pattern matching, see (2)</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">&lt;</span></tt></td>
+<td>all</td>
+<td>B</td>
+<td>less than, escape req&#8217;d in <tt class="docutils literal"><span class="pre">[</span></tt>, see (1)</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">&gt;</span></tt></td>
+<td>all</td>
+<td>B</td>
+<td>greater than, escape req&#8217;d in <tt class="docutils literal"><span class="pre">[</span></tt>, see (1)</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">-z</span></tt></td>
+<td>all</td>
+<td>U</td>
+<td>null (zero length)</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">-n</span></tt></td>
+<td>all</td>
+<td>U</td>
+<td>not null (length &gt; zero), quotes req&#8217;d in <tt class="docutils literal"><span class="pre">[</span></tt></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<ol class="last arabic simple">
+<li>Lexicographical sort order for <tt class="docutils literal"><span class="pre">test</span></tt> or <tt class="docutils literal"><span class="pre">[</span></tt> construct is ASCII;
+for <tt class="docutils literal"><span class="pre">[[</span></tt> construct the ordering is determined using the current locale.</li>
+<li>Construct <tt class="docutils literal"><span class="pre">[[</span></tt> uses <tt class="docutils literal"><span class="pre">==</span></tt>, <tt class="docutils literal"><span class="pre">!=</span></tt>, and <tt class="docutils literal"><span class="pre">=~</span></tt> to match by pattern, with
+the pattern on the right. See <a class="reference internal" href="#glob"><em>Glob Pattern Matching</em></a>.</li>
+</ol>
+</div>
+</div>
+<div class="section" id="integer-comparisons">
+<span id="compare-math"></span><h3>Integer comparisons<a class="headerlink" href="#integer-comparisons" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="9%" />
+<col width="7%" />
+<col width="71%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Operator</th>
+<th class="head">Test</th>
+<th class="head">U/B</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">-eq</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">[</span></tt></td>
+<td>B</td>
+<td>equal to: <tt class="docutils literal"><span class="pre">[</span> <span class="pre">number1</span> <span class="pre">-eq</span> <span class="pre">number2</span> <span class="pre">]</span></tt></td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">-ne</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">[</span></tt></td>
+<td>B</td>
+<td>not equal to: <tt class="docutils literal"><span class="pre">[</span> <span class="pre">number1</span> <span class="pre">-ne</span> <span class="pre">number2</span> <span class="pre">]</span></tt></td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">-gt</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">[</span></tt></td>
+<td>B</td>
+<td>greater than: <tt class="docutils literal"><span class="pre">[</span> <span class="pre">number1</span> <span class="pre">-gt</span> <span class="pre">number2</span> <span class="pre">]</span></tt></td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">-ge</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">[</span></tt></td>
+<td>B</td>
+<td>greater than/equal to: <tt class="docutils literal"><span class="pre">[</span> <span class="pre">number1</span> <span class="pre">-ge</span> <span class="pre">number2</span> <span class="pre">]</span></tt></td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">-lt</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">[</span></tt></td>
+<td>B</td>
+<td>less than: <tt class="docutils literal"><span class="pre">[</span> <span class="pre">number1</span> <span class="pre">-lt</span> <span class="pre">number2</span> <span class="pre">]</span></tt></td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">-le</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">[</span></tt></td>
+<td>B</td>
+<td>less than/equal to: <tt class="docutils literal"><span class="pre">[</span> <span class="pre">number1</span> <span class="pre">-le</span> <span class="pre">number2</span> <span class="pre">]</span></tt></td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">=</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">[[</span></tt></td>
+<td>B</td>
+<td>equal to: <tt class="docutils literal"><span class="pre">((</span> <span class="pre">number1</span> <span class="pre">=</span> <span class="pre">expr2</span> <span class="pre">))</span></tt></td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">!=</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">[[</span></tt></td>
+<td>B</td>
+<td>not equal to: <tt class="docutils literal"><span class="pre">((</span> <span class="pre">number1</span> <span class="pre">&lt;&gt;</span> <span class="pre">expr2</span> <span class="pre">))</span></tt></td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">&lt;</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">[[</span></tt></td>
+<td>B</td>
+<td>less than: <tt class="docutils literal"><span class="pre">((</span> <span class="pre">number1</span> <span class="pre">&lt;</span> <span class="pre">expr2</span> <span class="pre">))</span></tt></td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">&lt;=</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">[[</span></tt></td>
+<td>B</td>
+<td>less than or equal to: <tt class="docutils literal"><span class="pre">((</span> <span class="pre">number1</span> <span class="pre">,=</span> <span class="pre">expr2</span> <span class="pre">))</span></tt></td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">&gt;</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">[[</span></tt></td>
+<td>B</td>
+<td>greater than: <tt class="docutils literal"><span class="pre">((</span> <span class="pre">number1</span> <span class="pre">&gt;</span> <span class="pre">expr2</span> <span class="pre">))</span></tt></td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">&gt;=</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">[[</span></tt></td>
+<td>B</td>
+<td>greater than or equal to: <tt class="docutils literal"><span class="pre">((</span> <span class="pre">number1</span> <span class="pre">&gt;=</span> <span class="pre">expr2</span> <span class="pre">))</span></tt></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="file-test-operators">
+<span id="compare-file"></span><h3>File test operators<a class="headerlink" href="#file-test-operators" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="9%" />
+<col width="7%" />
+<col width="71%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Operator</th>
+<th class="head">Test</th>
+<th class="head">U/B</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><div class="first last line-block">
+<div class="line">-e</div>
+<div class="line">-a</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">all</div>
+<div class="line"><br /></div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">U</div>
+<div class="line">U</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">file exists</div>
+<div class="line">file exists (deprecated usage)</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>-f</td>
+<td>all</td>
+<td>U</td>
+<td>a regular file (not a directory or device file)</td>
+</tr>
+<tr class="row-even"><td>-s</td>
+<td>all</td>
+<td>U</td>
+<td>file is not zero size</td>
+</tr>
+<tr class="row-odd"><td>-d</td>
+<td>all</td>
+<td>U</td>
+<td>file is a directory</td>
+</tr>
+<tr class="row-even"><td>-b</td>
+<td>all</td>
+<td>U</td>
+<td>file is a block device</td>
+</tr>
+<tr class="row-odd"><td>-c</td>
+<td>all</td>
+<td>U</td>
+<td>file is a character device</td>
+</tr>
+<tr class="row-even"><td>-p</td>
+<td>all</td>
+<td>U</td>
+<td>file is a pipe</td>
+</tr>
+<tr class="row-odd"><td><div class="first last line-block">
+<div class="line">-h</div>
+<div class="line">-L</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">all</div>
+<div class="line">all</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">U</div>
+<div class="line">U</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">file is a symbolic link</div>
+<div class="line">file is a symbolic link</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>-S</td>
+<td>all</td>
+<td>U</td>
+<td>file is a socket</td>
+</tr>
+<tr class="row-odd"><td>-t</td>
+<td><div class="first last line-block">
+<div class="line">all</div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">U</div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">file (descriptor) is associated with a terminal.</div>
+<div class="line">In a script, this test option can check whether the</div>
+<div class="line">stdin [ -t 0 ] or stdout [ -t 1 ] is a terminal.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>-r</td>
+<td>all</td>
+<td>U</td>
+<td>file has read permission (for user running test)</td>
+</tr>
+<tr class="row-odd"><td>-w</td>
+<td>all</td>
+<td>U</td>
+<td>file has write permission (for user running test)</td>
+</tr>
+<tr class="row-even"><td>-x</td>
+<td>all</td>
+<td>U</td>
+<td>file has execute permission (for user running test)</td>
+</tr>
+<tr class="row-odd"><td>-g</td>
+<td><div class="first last line-block">
+<div class="line">all</div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">U</div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">set-group-id (sgid) flag set on file or directory.</div>
+<div class="line">When sgid flag is set on a directory, files created</div>
+<div class="line">in that directory belong to the group that owns the</div>
+<div class="line">directory, not to the creating user&#8217;s group.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>-u</td>
+<td>all</td>
+<td>U</td>
+<td>set-user-id (suid) flag set on file</td>
+</tr>
+<tr class="row-odd"><td>-k</td>
+<td>all</td>
+<td>U</td>
+<td>sticky bit set</td>
+</tr>
+<tr class="row-even"><td>-O</td>
+<td>all</td>
+<td>U</td>
+<td>you are owner of file</td>
+</tr>
+<tr class="row-odd"><td>-G</td>
+<td>all</td>
+<td>U</td>
+<td>group-id of file same as yours</td>
+</tr>
+<tr class="row-even"><td>-N</td>
+<td>all</td>
+<td>U</td>
+<td>file modified since it was last read</td>
+</tr>
+<tr class="row-odd"><td>f1 -nt f2</td>
+<td>all</td>
+<td>B</td>
+<td>file f1 is newer than f2</td>
+</tr>
+<tr class="row-even"><td>f1 -ot f2</td>
+<td>all</td>
+<td>B</td>
+<td>file f1 is older than f2</td>
+</tr>
+<tr class="row-odd"><td>f1 -ef f2</td>
+<td>all</td>
+<td>B</td>
+<td>files f1 and f2 are hard links to the same file</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference external" href="http://tldp.org/LDP/abs/html/fto.html">Advanced Bash Scripting Guide</a></p>
+</div>
+</div>
+</div>
+<div class="section" id="expression-constructs">
+<span id="constructs"></span><h2>Expression constructs<a class="headerlink" href="#expression-constructs" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="17%" />
+<col width="83%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Construct</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><div class="first last line-block">
+<div class="line">(a b ... n)</div>
+<div class="line">(expr...)</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">assign an array of <tt class="docutils literal"><span class="pre">n</span></tt> elements: <tt class="docutils literal"><span class="pre">array=(1</span> <span class="pre">2</span> <span class="pre">3</span> <span class="pre">4)</span></tt></div>
+<div class="line">group commands <tt class="docutils literal"><span class="pre">(expr1;</span> <span class="pre">expr2;</span> <span class="pre">...)</span></tt> to execute in subshell</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>((math))</td>
+<td>double-parentheses math construct: <tt class="docutils literal"><span class="pre">var</span> <span class="pre">=</span> <span class="pre">var1</span> <span class="pre">+</span> <span class="pre">var2</span></tt></td>
+</tr>
+<tr class="row-even"><td>${var}</td>
+<td>evaluate a string variable</td>
+</tr>
+<tr class="row-odd"><td>$(expr)</td>
+<td>evaluate command expression (creates subshell)</td>
+</tr>
+<tr class="row-even"><td>$((math))</td>
+<td>evaluate an integer arithmetic expression (C-style)</td>
+</tr>
+<tr class="row-odd"><td>`expr`</td>
+<td>evaluate a command, original Bourne notation (deprecated)</td>
+</tr>
+<tr class="row-even"><td>$[3+4+5]</td>
+<td>evaluate an integer math expression (deprecated)</td>
+</tr>
+<tr class="row-odd"><td><div class="first last line-block">
+<div class="line">{var}</div>
+<div class="line">{02..8..2}</div>
+<div class="line">{ expr..; }</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">brace expansion: <tt class="docutils literal"><span class="pre">echo</span> <span class="pre">{1,2,3}</span></tt> shows <tt class="docutils literal"><span class="pre">1</span> <span class="pre">2</span> <span class="pre">3</span></tt></div>
+<div class="line">expand series starting <tt class="docutils literal"><span class="pre">02</span></tt> step <tt class="docutils literal"><span class="pre">2</span></tt> with <tt class="docutils literal"><span class="pre">0</span></tt> padding</div>
+<div class="line">code block: inline group commands into local anonymous function</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><div class="first last line-block">
+<div class="line">${var:l:n}</div>
+<div class="line"><br /></div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">at <tt class="docutils literal"><span class="pre">l</span></tt> from left extract <tt class="docutils literal"><span class="pre">n</span></tt> characters</div>
+<div class="line">negatives start at right and extract by position, not count</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>${!var}</td>
+<td>indirect reference (eval) to value of variable</td>
+</tr>
+<tr class="row-even"><td>[ logical ]</td>
+<td>builtin shell logical test (<tt class="docutils literal"><span class="pre">[</span></tt> is the &#8220;test&#8221; operator)</td>
+</tr>
+<tr class="row-odd"><td>[[ logic ]]</td>
+<td>shell keyword construct for logical test</td>
+</tr>
+<tr class="row-even"><td>array[index]</td>
+<td>(de)reference an element of an array</td>
+</tr>
+<tr class="row-odd"><td>[c d e]</td>
+<td>delineates a range of characters to match in regular expression</td>
+</tr>
+<tr class="row-even"><td><div class="first last line-block">
+<div class="line"><tt class="docutils literal"><span class="pre">&gt;</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">&amp;&gt;</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">&gt;&amp;2</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">&gt;&gt;</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">&lt;</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">&lt;&gt;</span></tt></div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">redirect output (stdout): <tt class="docutils literal"><span class="pre">ls</span> <span class="pre">&gt;</span> <span class="pre">filename</span></tt></div>
+<div class="line">redirect errors, output (stdout, stderr): <tt class="docutils literal"><span class="pre">ls</span> <span class="pre">&amp;&gt;</span> <span class="pre">filename</span></tt></div>
+<div class="line">redirect output to error (stdout &gt; stderr)</div>
+<div class="line">append output (stdout) to filename: <tt class="docutils literal"><span class="pre">ls</span> <span class="pre">&gt;&gt;</span> <span class="pre">filename</span></tt></div>
+<div class="line">redirect input from expression: <tt class="docutils literal"><span class="pre">filename</span> <span class="pre">&lt;</span> <span class="pre">ls</span></tt></div>
+<div class="line">open file and assign file descriptor: <tt class="docutils literal"><span class="pre">[i]&lt;&gt;filename</span></tt></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><div class="first last line-block">
+<div class="line"><tt class="docutils literal"><span class="pre">|</span></tt></div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">pipe output (stdout) of one process to input (stdin) of next</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><div class="first last line-block">
+<div class="line">&lt;(commands)</div>
+<div class="line">&gt;(commands)</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">substitutes output of one process into another process</div>
+<div class="line"><br /></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><div class="first last line-block">
+<div class="line"><tt class="docutils literal"><span class="pre">&amp;</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">&amp;&amp;</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">|</span></tt></div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">at end of command, detach and run command in background</div>
+<div class="line">linking two commands, run second iff for first, <tt class="docutils literal"><span class="pre">exit</span> <span class="pre">-eq</span> <span class="pre">0</span></tt></div>
+<div class="line">linking two commands, run second iff for first, <tt class="docutils literal"><span class="pre">exit</span> <span class="pre">-ne</span> <span class="pre">0</span></tt></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><div class="first last line-block">
+<div class="line"><tt class="docutils literal"><span class="pre">-</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">--</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">--</span></tt></div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">command option prefix: <tt class="docutils literal"><span class="pre">ls</span> <span class="pre">-al</span></tt></div>
+<div class="line">verbose option prefix: <tt class="docutils literal"><span class="pre">ls</span> <span class="pre">--all</span> <span class="pre">--list</span></tt></div>
+<div class="line">(builtin) end of options <tt class="docutils literal"><span class="pre">rm</span> <span class="pre">--</span> <span class="pre">-badname*</span></tt></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="glob-pattern-matching">
+<span id="glob"></span><h2>Glob Pattern Matching<a class="headerlink" href="#glob-pattern-matching" title="Permalink to this headline">¶</a></h2>
+<p>Some entries, such as file system paths, may be written as expressions to be
+expanded by substitution and pattern matching.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="21%" />
+<col width="79%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Expression</th>
+<th class="head">Interpretation</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">*</span></tt></td>
+<td>any string of 0 or more characters</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">?</span></tt></td>
+<td>any string of 0 or 1 character</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">X</span></tt> or <tt class="docutils literal"><span class="pre">\X</span></tt></td>
+<td>where <tt class="docutils literal"><span class="pre">X</span></tt> represents any (special) character</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">[XYZ]</span></tt></td>
+<td>where <tt class="docutils literal"><span class="pre">XYZ</span></tt> is a set of permitted characters</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">[x..z]</span></tt></td>
+<td>where <tt class="docutils literal"><span class="pre">x..z</span></tt> is a range of permitted characters</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="special-characters">
+<span id="characters"></span><h2>Special characters<a class="headerlink" href="#special-characters" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="14%" />
+<col width="86%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Character</th>
+<th class="head">&nbsp;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><div class="first last line-block">
+<div class="line">&#8220;X&#8221;</div>
+<div class="line">&#8216;X&#8217;</div>
+<div class="line">\X</div>
+<div class="line">`X`</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">partial quoting interprets embedded expressions (quotes)</div>
+<div class="line">full quoting preserves literal contents of text</div>
+<div class="line">escape single character to display literal value (like <tt class="docutils literal"><span class="pre">'X'</span></tt>)</div>
+<div class="line">back-tick quote command to assign output to a variable</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>!</td>
+<td>negates a conditional test result or exit status</td>
+</tr>
+<tr class="row-even"><td>:</td>
+<td>synonym for <tt class="docutils literal"><span class="pre">true</span></tt> conditional result</td>
+</tr>
+<tr class="row-odd"><td><div class="first last line-block">
+<div class="line">;</div>
+<div class="line"><br /></div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">semicolons separate commands appearing on one line:</div>
+<div class="line-block">
+<div class="line"><tt class="docutils literal"><span class="pre">if</span> <span class="pre">[</span> <span class="pre">-x</span> <span class="pre">&quot;$filename&quot;</span> <span class="pre">]</span> <span class="pre">;</span> <span class="pre">then</span> <span class="pre">cp</span> <span class="pre">$filename</span> <span class="pre">$dir/</span> <span class="pre">;</span> <span class="pre">fi</span></tt></div>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>#</td>
+<td><tt class="docutils literal"><span class="pre">#</span></tt> after a newline or a command separator denotes a comment</td>
+</tr>
+<tr class="row-odd"><td><div class="first last line-block">
+<div class="line">;;</div>
+<div class="line"><br /></div>
+<div class="line">;;&amp;</div>
+<div class="line">;&amp;</div>
+<div class="line"><br /></div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">double-semicolons terminate an option in case statements</div>
+<div class="line-block">
+<div class="line"><tt class="docutils literal"><span class="pre">case</span> <span class="pre">&quot;$variable&quot;</span> <span class="pre">in</span></tt></div>
+<div class="line-block">
+<div class="line"><tt class="docutils literal"><span class="pre">abc)</span>&nbsp; <span class="pre">echo</span> <span class="pre">&quot;\$variable</span> <span class="pre">=</span> <span class="pre">abc&quot;</span> <span class="pre">;;</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">xyz)</span>&nbsp; <span class="pre">echo</span> <span class="pre">&quot;\$variable</span> <span class="pre">=</span> <span class="pre">xyz&quot;</span> <span class="pre">;;</span></tt></div>
+</div>
+<div class="line"><tt class="docutils literal"><span class="pre">esac</span></tt></div>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><div class="first last line-block">
+<div class="line">.</div>
+<div class="line">.filename</div>
+<div class="line">. or ./</div>
+<div class="line">..</div>
+<div class="line">/</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">period by itself indicates a source</div>
+<div class="line">period as a filename prefix indicates a hidden file</div>
+<div class="line">directory name <tt class="docutils literal"><span class="pre">.</span></tt> represents the working directory <tt class="docutils literal"><span class="pre">PWD</span></tt></div>
+<div class="line">directory <tt class="docutils literal"><span class="pre">..</span></tt> represents the parent directory of <tt class="docutils literal"><span class="pre">PWD</span></tt></div>
+<div class="line">file path directory separator (forward slash)</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><div class="first last line-block">
+<div class="line">*</div>
+<div class="line">*text</div>
+<div class="line">**</div>
+<div class="line">,</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">return all visible files in the current directory</div>
+<div class="line">return all files ending in &#8220;text&#8221; in current directory</div>
+<div class="line">recursively return files in directory tree (shopt -s globstar)</div>
+<div class="line">concatenate string results: <tt class="docutils literal"><span class="pre">for</span> <span class="pre">file</span> <span class="pre">in</span> <span class="pre">/{,usr/}bin/*calc</span></tt></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><div class="first last line-block">
+<div class="line">~</div>
+<div class="line">~+</div>
+<div class="line">~-</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">user home directory path: corresponds to $HOME</div>
+<div class="line">present working directory: corresponds to $PWD</div>
+<div class="line">previous working directory: corresponds to $OLDPWD</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><div class="first last line-block">
+<div class="line">^</div>
+<div class="line">^^</div>
+<div class="line">,</div>
+<div class="line">,,</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">parameter substitution: <tt class="docutils literal"><span class="pre">echo</span> <span class="pre">${var^}</span></tt> uppercase first char</div>
+<div class="line">parameter substitution: <tt class="docutils literal"><span class="pre">echo</span> <span class="pre">${var^^}</span></tt> uppercase string</div>
+<div class="line">parameter substitution: <tt class="docutils literal"><span class="pre">echo</span> <span class="pre">${var,}</span></tt> lowercase first char</div>
+<div class="line">parameter substitution: <tt class="docutils literal"><span class="pre">echo</span> <span class="pre">${var,,}</span></tt> lowercase string</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><div class="first last line-block">
+<div class="line">?</div>
+<div class="line"><br /></div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">in globbing and regex, represents a single wild-card character</div>
+<div class="line">operator in double-parentheses construct, parameter substitution</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><div class="first last line-block">
+<div class="line">$</div>
+<div class="line">${}</div>
+<div class="line">$&#8217; ..&#8217;</div>
+<div class="line">$n</div>
+<div class="line">&#8220;$*&#8221;</div>
+<div class="line">&#8220;$&#64;&#8221;</div>
+<div class="line">$?</div>
+<div class="line">$$</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">in a regular expression, <tt class="docutils literal"><span class="pre">$</span></tt> represents end of line of text</div>
+<div class="line">in parameter substitution, evaluates a variable or expression</div>
+<div class="line">in quoted string, expands octal/hex values into ASCII/Unicode</div>
+<div class="line">the n-th positional parameter input to a command or script</div>
+<div class="line">all positional parameters, seen together as single word</div>
+<div class="line">list of positional parameters, each one quoted</div>
+<div class="line">exit status of a command, function, or script</div>
+<div class="line">process id of running script</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference external" href="http://tldp.org/LDP/abs/html/special-chars.html">Shell scripting special characters.</a></p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="08_expressions.html" title="Routines and Expressions"
+             >next</a></li>
+        <li class="right" >
+          <a href="06_commands.html" title="Commands and Variables"
+             >previous</a> |</li>
+        <li><a href="index.html">Developer Documentation Resource Pages 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Gerald Lovel.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>

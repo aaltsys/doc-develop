@@ -1,0 +1,317 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>AAltsys CSS Rules &mdash; HTML and CSS Developer Tutorial 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/aaltsys.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="HTML and CSS Developer Tutorial 1.0 documentation" href="index.html" />
+    <link rel="prev" title="Web Client Software Coding" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="index.html" title="Web Client Software Coding"
+             accesskey="P">previous</a></li>
+        <li><a href="index.html">HTML and CSS Developer Tutorial 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">AAltsys CSS Rules</a><ul>
+<li><a class="reference internal" href="#tests-of-table-formatting">Tests of Table Formatting</a><ul>
+<li><a class="reference internal" href="#body-paragraphs">Body paragraphs</a></li>
+<li><a class="reference internal" href="#bulleted-lists">Bulleted lists</a></li>
+<li><a class="reference internal" href="#numbered-lists">Numbered lists</a></li>
+<li><a class="reference internal" href="#admonitions-and-warnings">Admonitions and Warnings</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">Web Client Software Coding</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/01_aaltsys-css.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="aaltsys-css-rules">
+<h1>AAltsys CSS Rules<a class="headerlink" href="#aaltsys-css-rules" title="Permalink to this headline">¶</a></h1>
+<p>AAltsys documentation projects add a few CSS rules to the default Sphinxdoc CSS
+to accomodate better browser display and proper alignment of text in tables.
+This page documents these CSS rule changes with corresponding notes.</p>
+<ol class="arabic">
+<li><p class="first">Eliminate the 80-pixel side borders on the Sphinx pages, using a 5px border
+around the entire page including at the top:</p>
+<div class="highlight-python"><div class="highlight"><pre>body {
+    margin: 5px 5px 5px 5px;
+}
+</pre></div>
+</div>
+</li>
+<li><p class="first">Change tables from collapsed borders to separate, with .25em spacing:</p>
+<div class="highlight-python"><div class="highlight"><pre>table, table.docutils {
+  margin: 0.5em -0.5em 0.5em -0.5em;
+  border-collapse: separate;
+  border-spacing: 0.25em;
+}
+</pre></div>
+</div>
+</li>
+<li><p class="first">Change table head and detail to display margins even with paragraphs in
+bulleted lists:</p>
+<div class="highlight-python"><div class="highlight"><pre>table th, table td, table.docutils th, table.docutils td {
+  padding: 0 0.25em 0 0.25em;
+}
+</pre></div>
+</div>
+</li>
+<li><p class="first">Fix margins for headings and detail in tables in numbered lists:</p>
+<div class="highlight-python"><div class="highlight"><pre>th p, td p, th p.first.last, td p.first.last {
+  margin: 0 0 0 0;
+}
+</pre></div>
+</div>
+</li>
+<li><p class="first">Change tables in admonitions and warnings to display margins even with
+paragraphs:</p>
+<div class="highlight-python"><div class="highlight"><pre>.admonition table, .warning table, {
+  margin: 0 0.5em 0.5em 0.5em;
+}
+</pre></div>
+</div>
+</li>
+</ol>
+<div class="section" id="tests-of-table-formatting">
+<h2>Tests of Table Formatting<a class="headerlink" href="#tests-of-table-formatting" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="body-paragraphs">
+<h3>Body paragraphs<a class="headerlink" href="#body-paragraphs" title="Permalink to this headline">¶</a></h3>
+<p>This body paragraph is at the left margin and has no indent. The following table
+text should align with this paragraph body text.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="26%" />
+<col width="74%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Table heading</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Table detail</td>
+<td>This table is in an unindented body section</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<div><p>This paragraph has an indent level from the main body margin. The following
+table text should align with this paragraph text.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="26%" />
+<col width="74%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Table heading</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Table detail</td>
+<td>This table is in an indented body section</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div>
+<div class="section" id="bulleted-lists">
+<h3>Bulleted lists<a class="headerlink" href="#bulleted-lists" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first">This bulleted list is within the main body of a document. The table text
+which follows should align with the text in this bulleted paragraph.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="26%" />
+<col width="74%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Table heading</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Table detail</td>
+<td>This table is in a bulleted body section</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+</div>
+<div class="section" id="numbered-lists">
+<h3>Numbered lists<a class="headerlink" href="#numbered-lists" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic">
+<li><p class="first">This is a numbered list in the main body of a document.</p>
+<p>This paragraph is in a numbered list. The table text which follows should
+align with this numbered paragraph.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="26%" />
+<col width="74%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Table heading</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Table detail</td>
+<td>This table is in a numbered body section</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p class="first">This bulleted list is a paragraph within a numbered list. The following
+table text should align with text in this bulleted paragraph.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="26%" />
+<col width="74%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Table heading</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Table detail</td>
+<td>This table section is numbered and bulleted</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+</li>
+</ol>
+</div>
+<div class="section" id="admonitions-and-warnings">
+<h3>Admonitions and Warnings<a class="headerlink" href="#admonitions-and-warnings" title="Permalink to this headline">¶</a></h3>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>This warning is within the main body text of the page. The border
+of the warning should align with main body text, and the following table text
+should align with this paragraph.</p>
+<table border="1" class="last docutils">
+<colgroup>
+<col width="26%" />
+<col width="74%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Table heading</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Table detail</td>
+<td>A warning encloses this table body section</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ol class="arabic">
+<li><p class="first">Numbered paragraph section.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>This note text is embedded within a numbered paragraph. The note
+encloses table text which should align with the note paragraph.</p>
+<table border="1" class="last docutils">
+<colgroup>
+<col width="26%" />
+<col width="74%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Table heading</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Table detail</td>
+<td>An admonition encloses this table section</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="index.html" title="Web Client Software Coding"
+             >previous</a></li>
+        <li><a href="index.html">HTML and CSS Developer Tutorial 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Julia Lovel.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>

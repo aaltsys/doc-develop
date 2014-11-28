@@ -63,25 +63,25 @@ makedeployment () {
 
 for OPT in "$@"
 do
-case $OPT in
+  case $OPT in
     -h|--help)
-    echo -e "\ndoc-deploy.sh [projectname] [options]"
-    echo -e "   projectname  defaults to name of working directory (pwd)"
-    echo -e "   options      -h, --help - displays this text"
-    echo -e "                -n, --nodeploy - builds _deploy but does not push it\n"
-    shift
-    exit
-    ;;
+      echo -e "\ndoc-deploy.sh [projectname] [options]"
+      echo -e "   projectname  defaults to name of working directory (pwd)"
+      echo -e "   options      -h, --help - displays this text"
+      echo -e "                -n, --nodeploy - builds _deploy but does not push it\n"
+      shift
+      exit
+      ;;
     -n|--nodeploy)
-    NODEPLOY='YES'
-    echo "No deploy: $NODEPLOY"
-    shift
-    ;;
+      NODEPLOY='YES'
+      echo "No deploy: $NODEPLOY"
+      shift
+      ;;
     *)
-    PROJECT=$key
-    shift
-    ;;
-esac
+      PROJECT=$OPT
+      shift
+      ;;
+  esac
 done
 
 ######### PRE-EXECUTION TESTS
