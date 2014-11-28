@@ -152,23 +152,6 @@ Add statements to your script to: (1) prompt the user to run the script, and
    On the previous page, look for an example of the :command:`read` command for 
    guidance.
 
-Just for Fun(ctionality)
------------------------------
-
-Replace your user confirmation code with the following statements:
-
-.. code-block:: bash
-
-   echo -e -n '\n\e[1;31m Say Hello'
-   read -n 1 -p ' (y/n)?' RESP 
-   echo -e '\e[0m' 
-
-Play around with (that means test run) these statements. On the :command:`echo` 
-statement, remove the option parameters ``-e`` or ``-n`` and observe the effect. 
-Similarly, try removing ``-n 1`` from the :command:`read` statement. Finally, 
-why would full quoting (with ``'``) or partial quoting (with ``"``) have the 
-same result here?
-
 Example Finished Program
 =============================
 

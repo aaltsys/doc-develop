@@ -55,7 +55,6 @@
 <li><a class="reference internal" href="#assign-a-variable">Assign a variable</a></li>
 <li><a class="reference internal" href="#read-and-assign-an-input">Read and assign an input</a></li>
 <li><a class="reference internal" href="#user-confirmation">User confirmation</a></li>
-<li><a class="reference internal" href="#just-for-fun-ctionality">Just for Fun(ctionality)</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#example-finished-program">Example Finished Program</a></li>
@@ -296,20 +295,6 @@ work right with just any syntax. To verify results, logic must be tested.</p>
 <p class="last">On the previous page, look for an example of the <strong class="command">read</strong> command for
 guidance.</p>
 </div>
-</div>
-<div class="section" id="just-for-fun-ctionality">
-<h3>Just for Fun(ctionality)<a class="headerlink" href="#just-for-fun-ctionality" title="Permalink to this headline">¶</a></h3>
-<p>Replace your user confirmation code with the following statements:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nb">echo</span> -e -n <span class="s1">&#39;\n\e[1;31m Say Hello&#39;</span>
-<span class="nb">read</span> -n 1 -p <span class="s1">&#39; (y/n)?&#39;</span> RESP
-<span class="nb">echo</span> -e <span class="s1">&#39;\e[0m&#39;</span>
-</pre></div>
-</div>
-<p>Play around with (that means test run) these statements. On the <strong class="command">echo</strong>
-statement, remove the option parameters <tt class="docutils literal"><span class="pre">-e</span></tt> or <tt class="docutils literal"><span class="pre">-n</span></tt> and observe the effect.
-Similarly, try removing <tt class="docutils literal"><span class="pre">-n</span> <span class="pre">1</span></tt> from the <strong class="command">read</strong> statement. Finally,
-why would full quoting (with <tt class="docutils literal"><span class="pre">'</span></tt>) or partial quoting (with <tt class="docutils literal"><span class="pre">&quot;</span></tt>) have the
-same result here?</p>
 </div>
 </div>
 <div class="section" id="example-finished-program">
