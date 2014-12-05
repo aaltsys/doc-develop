@@ -269,10 +269,11 @@ variable <tt class="kbd docutils literal"><span class="pre">DISPLAY</span></tt>.
 </div>
 <p>Now include the following four logic test statements preceding your then
 statement, so your code reads:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="c"># if [$1 != &#39;&#39;]      ; # without spaces around [ ]</span>
-<span class="c"># if [ $1 != &#39;&#39; ]    ; # with !# and single [ ]</span>
-<span class="c"># if [ ! $1 == &#39;&#39; ]  ; # to (!) negate the expression</span>
-<span class="c"># if [[ $1 != &#39;&#39; ]]  ; # w/ single [ and double [[</span>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c"># Assign parameters ($n) to named variables</span>
+<span class="c"># if [! $1 = &#39;&#39;] &amp;&amp; [-n $1]    ; # fails without spaces around [ ]</span>
+<span class="c"># if [ $1 != &#39;&#39; ] &amp;&amp; [ -n $1]   ; # works with !# and single [ ]</span>
+<span class="c"># if [ ! $1 == &#39;&#39; ] &amp;&amp; [ -n $1]  ; # works to (!) negate the expression</span>
+<span class="c">#if [ -n $1 ] &amp;&amp; [ ! $1 = &#39;&#39; ]   ; # works w/ single [ and double [[</span>
 <span class="k">then </span><span class="nv">DISPLAY</span><span class="o">=</span><span class="nv">$1</span>
 <span class="k">fi</span>
 </pre></div>

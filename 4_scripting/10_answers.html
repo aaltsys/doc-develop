@@ -189,9 +189,7 @@ as organized in this guide, or just view the code below.</p>
 53
 54
 55
-56
-57
-58</pre></div></td><td class="code"><div class="highlight"><pre><span class="c">#! /bin/bash</span>
+56</pre></div></td><td class="code"><div class="highlight"><pre><span class="c">#! /bin/bash</span>
 <span class="c"># My first script, presenting programming to the world</span>
 <span class="c"># </span>
 <span class="c"># Initialize variables</span>
@@ -205,22 +203,29 @@ as organized in this guide, or just view the code below.</p>
 <span class="c"># if [ ! $1 == &#39;&#39; ]  ; # works to (!) negate the expression</span>
 <span class="k">if</span> <span class="o">[[</span> <span class="nv">$1</span> !<span class="o">=</span> <span class="s1">&#39;&#39;</span> <span class="o">]]</span>    ; <span class="c"># works w/ single [ and double [[ </span>
 <span class="k">then </span><span class="nv">DISPLAY</span><span class="o">=</span><span class="nv">$1</span>
+<span class="c">#! /bin/bash</span>
+<span class="c"># My first script, presenting programming to the world</span>
+<span class="c"># </span>
+<span class="c"># Initialize variables</span>
+<span class="nv">DISPLAY</span><span class="o">=</span><span class="s1">&#39;World&#39;</span>
+<span class="c"># </span>
+<span class="c"># Assign parameters ($n) to named variables</span>
+<span class="c"># if [! $1 = &#39;&#39;] &amp;&amp; [-n $1]    ; # fails without spaces around [ ]</span>
+<span class="c"># if [ $1 != &#39;&#39; ] &amp;&amp; [ -n $1]   ; # works with !# and single [ ]</span>
+<span class="c"># if [ ! $1 == &#39;&#39; ] &amp;&amp; [ -n $1]  ; # works to (!) negate the expression</span>
+<span class="k">if</span> <span class="o">[</span> -n <span class="nv">$1</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="o">[</span> ! <span class="nv">$1</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span> <span class="o">]</span>   ; <span class="c"># works w/ single [ and double [[ </span>
+<span class="k">then </span><span class="nv">DISPLAY</span><span class="o">=</span><span class="nv">$1</span>
 <span class="k">fi</span>
 <span class="c"># </span>
 <span class="c"># User execution confirmation (location varies)</span>
 <span class="c"># echo &quot;Say Hello?&quot; </span>
 <span class="c"># echo &quot;\n\e[1;31m Say Hello?&quot;</span>
-<span class="nb">echo</span> -e -n <span class="s1">&#39;\n\e[1;31m Say Hello&#39;</span>
-<span class="nb">read</span> -n 1 -p <span class="s1">&#39; (y/n)?&#39;</span> RESP 
-<span class="nb">echo</span> -e <span class="s1">&#39;\e[0m&#39;</span>
-<span class="k">case</span> <span class="nv">$RESP</span> in
-  y|Y<span class="o">)</span>
-    <span class="nv">EXIT</span><span class="o">=</span><span class="s1">&#39;0&#39;</span> ;;
-  n|N<span class="o">)</span>
-    <span class="nv">EXIT</span><span class="o">=</span><span class="s1">&#39;1&#39;</span> ;;
-  *<span class="o">)</span>
-    <span class="nv">EXIT</span><span class="o">=</span><span class="s1">&#39;2&#39;</span> ;;
-<span class="k">esac</span>
+<span class="nb">echo</span>  <span class="s2">&quot;Run this script? (y/n) &quot;</span>
+<span class="nb">read </span>RESP
+<span class="k">if</span> <span class="o">[</span> <span class="s2">&quot;$RESP&quot;</span> !<span class="o">=</span> <span class="s1">&#39;y&#39;</span> <span class="o">]</span>; <span class="k">then</span>
+<span class="k">  </span><span class="nb">echo</span> <span class="s2">&quot;Canceled&quot;</span>
+  <span class="nb">exit </span>1
+<span class="k">fi</span>
 <span class="c"># </span>
 <span class="c"># Declare repeated code functions (none declared)</span>
 <span class="c"># </span>
@@ -238,16 +243,7 @@ as organized in this guide, or just view the code below.</p>
 <span class="c"># echo &quot;Hello $DISPLAY&quot; ; # $ evaluation in partial quotes</span>
 
 <span class="c"># exit statements with user message display</span>
-<span class="k">case</span> <span class="nv">$EXIT</span> in
-  <span class="s1">&#39;0&#39;</span> <span class="o">)</span>
-    <span class="c"># echo -e &quot;\nHello $DISPLAY&quot; ;;</span>
-    <span class="nb">echo</span> -e <span class="s2">&quot;\n\e[1;32m Hello $DISPLAY \e[0m\n&quot;</span> ;;
-  * <span class="o">)</span>
-    <span class="c"># echo -e &quot;\nCanceled&quot; ;;</span>
-    <span class="nb">echo</span> -e <span class="s2">&quot;\n\e[1;31m Canceled \e[0m\n&quot;</span> ;;
-<span class="k">esac</span>
-
-<span class="nb">exit</span> <span class="nv">$EXIT</span>
+<span class="nb">echo</span> <span class="s2">&quot;Hello $DISPLAY&quot;</span>
 <span class="c"># </span>
 </pre></div>
 </td></tr></table></div>
