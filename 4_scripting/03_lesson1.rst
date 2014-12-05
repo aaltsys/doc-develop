@@ -127,12 +127,13 @@ statement, so your code reads:
 
 .. code-block:: bash
 
-   # if [$1 != '']      ; # without spaces around [ ]
-   # if [ $1 != '' ]    ; # with !# and single [ ]
-   # if [ ! $1 == '' ]  ; # to (!) negate the expression
-   # if [[ $1 != '' ]]  ; # w/ single [ and double [[ 
-   then DISPLAY=$1
-   fi
+  # Assign parameters ($n) to named variables
+  # if [! $1 = ''] && [-n $1]    ; # fails without spaces around [ ]
+  # if [ $1 != '' ] && [ -n $1]   ; # works with !# and single [ ]
+  # if [ ! $1 == '' ] && [ -n $1]  ; # works to (!) negate the expression
+  #if [ -n $1 ] && [ ! $1 = '' ]   ; # works w/ single [ and double [[ 
+  then DISPLAY=$1
+  fi
 
 One at a time: uncomment a statement, test run the script, and note the result 
 in the comments (either :kbd:`works` or :kbd:`fails`). 
@@ -151,23 +152,6 @@ Add statements to your script to: (1) prompt the user to run the script, and
 .. hint::
    On the previous page, look for an example of the :command:`read` command for 
    guidance.
-
-Just for Fun(ctionality)
------------------------------
-
-Replace your user confirmation code with the following statements:
-
-.. code-block:: bash
-
-   echo -e -n '\n\e[1;31m Say Hello'
-   read -n 1 -p ' (y/n)?' RESP 
-   echo -e '\e[0m' 
-
-Play around with (that means test run) these statements. On the :command:`echo` 
-statement, remove the option parameters ``-e`` or ``-n`` and observe the effect. 
-Similarly, try removing ``-n 1`` from the :command:`read` statement. Finally, 
-why would full quoting (with ``'``) or partial quoting (with ``"``) have the 
-same result here?
 
 Example Finished Program
 =============================

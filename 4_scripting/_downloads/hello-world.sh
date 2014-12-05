@@ -12,22 +12,29 @@ RESP='n'
 # if [ ! $1 == '' ]  ; # works to (!) negate the expression
 if [[ $1 != '' ]]    ; # works w/ single [ and double [[ 
 then DISPLAY=$1
+#! /bin/bash
+# My first script, presenting programming to the world
+# 
+# Initialize variables
+DISPLAY='World'
+# 
+# Assign parameters ($n) to named variables
+# if [! $1 = ''] && [-n $1]    ; # fails without spaces around [ ]
+# if [ $1 != '' ] && [ -n $1]   ; # works with !# and single [ ]
+# if [ ! $1 == '' ] && [ -n $1]  ; # works to (!) negate the expression
+if [ -n $1 ] && [ ! $1 = '' ]   ; # works w/ single [ and double [[ 
+then DISPLAY=$1
 fi
 # 
 # User execution confirmation (location varies)
 # echo "Say Hello?" 
 # echo "\n\e[1;31m Say Hello?"
-echo -e -n '\n\e[1;31m Say Hello'
-read -n 1 -p ' (y/n)?' RESP 
-echo -e '\e[0m'
-case $RESP in
-  y|Y)
-    EXIT='0' ;;
-  n|N)
-    EXIT='1' ;;
-  *)
-    EXIT='2' ;;
-esac
+echo  "Run this script? (y/n) "
+read RESP
+if [ "$RESP" != 'y' ]; then
+  echo "Canceled"
+  exit 1
+fi
 # 
 # Declare repeated code functions (none declared)
 # 
@@ -45,14 +52,6 @@ esac
 # echo "Hello $DISPLAY" ; # $ evaluation in partial quotes
 
 # exit statements with user message display
-case $EXIT in
-  '0' )
-    # echo -e "\nHello $DISPLAY" ;;
-    echo -e "\n\e[1;32m Hello $DISPLAY \e[0m\n" ;;
-  * )
-    # echo -e "\nCanceled" ;;
-    echo -e "\n\e[1;31m Canceled \e[0m\n" ;;
-esac
-
-exit $EXIT
+echo "Hello $DISPLAY"
 # 
+

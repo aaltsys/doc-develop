@@ -3,18 +3,7 @@
 
 .. _index:
 
-<<<<<<< HEAD
-Learn Linux Shell Scripting
-=============================
 
-This section is designed to teach you to understand the mindset of a developer, 
-and to really start to learn like a developer would.
-
-#. :ref:`bash`.
-#. :ref:`program`.
-#. :ref:`prolinux`.
-#. :ref:`command`.
-=======
 Learn Shell Scripting
 =============================
 
@@ -42,7 +31,6 @@ Contents:
    05_lesson2
    06_concerns
    07_lesson3
->>>>>>> e18820cd98f7afff8c78e40b3bfd642075efb9a4
 
 .. toctree::
    :hidden:
