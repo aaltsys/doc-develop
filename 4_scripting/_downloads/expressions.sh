@@ -35,28 +35,28 @@ echo
 echo test command list in parentheses
 #
 TEXT='embedded grouped commands'
-# echo -e $(
-#   '\e[32m These statements test'
-#   " $TEXT. \e[0m"
+# echo $(
+#   ' These statements test'
+#   " $TEXT. "
 # )
 #
 # $(
-#   echo -e "\e[31m These statements test"
-#   echo -e " $TEXT. \e[0m"
+#   echo  " These statements test"
+#   echo  " $TEXT. "
 # )
 #
-echo -e $(
-  echo '\e[32m These statements test'
-  echo " $TEXT. \e[0m"
+echo  $(
+  echo ' These statements test'
+  echo " $TEXT. "
 )
 #
 echo
 echo test command group anonymous function
 #
 TEXT='an embedded anonymous function'
-# echo -e ${ 
-#   echo '\e[32m These statements test'
-#   echo " $TEXT. \e[0m" 
+# echo  ${ 
+#   echo 'These statements test'
+#   echo " $TEXT. " 
 # }
 #
 echo
@@ -64,11 +64,12 @@ echo 'test an integer calculation'
 #
 SEVEN=7
 FIVE=5
-# echo -e '\e[32m $FIVE times $SEVEN is $(( FIVE * SEVEN )) \e[0m'
-echo -e "\e[32m $FIVE times $SEVEN is $(( FIVE * SEVEN )) \e[0m"
+# echo '$FIVE times $SEVEN is $(( FIVE * SEVEN ))'
+echo  "$FIVE times $SEVEN is $(( FIVE * SEVEN ))"
 # 
 # Main code, if Valid
 # 
 # 
 # Exit section: echo results, log errors
 # 
+

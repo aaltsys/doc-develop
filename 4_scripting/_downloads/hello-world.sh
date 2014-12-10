@@ -3,20 +3,6 @@
 # 
 # Initialize variables
 DISPLAY='World'
-EXIT='0'
-RESP='n'
-# 
-# Assign parameters ($n) to named variables
-# if [$1 != '']      ; # fails without spaces around [ ]
-# if [ $1 != '' ]    ; # works with !# and single [ ]
-# if [ ! $1 == '' ]  ; # works to (!) negate the expression
-if [[ $1 != '' ]]    ; # works w/ single [ and double [[ 
-then DISPLAY=$1
-#! /bin/bash
-# My first script, presenting programming to the world
-# 
-# Initialize variables
-DISPLAY='World'
 # 
 # Assign parameters ($n) to named variables
 # if [! $1 = ''] && [-n $1]    ; # fails without spaces around [ ]
@@ -28,8 +14,8 @@ fi
 # 
 # User execution confirmation (location varies)
 # echo "Say Hello?" 
-# echo "\n\e[1;31m Say Hello?"
-echo  "Run this script? (y/n) "
+# echo "$(tput setaf 1) Say Hello?$(tput sgr0)"
+echo  "$(tput setaf 1)Run this script? (y/n) $(tput sgr0)"
 read RESP
 if [ "$RESP" != 'y' ]; then
   echo "Canceled"
@@ -52,6 +38,6 @@ fi
 # echo "Hello $DISPLAY" ; # $ evaluation in partial quotes
 
 # exit statements with user message display
-echo "Hello $DISPLAY"
+echo "$(tput setaf 2) Hello $DISPLAY $(tput sgr0)"
 # 
 

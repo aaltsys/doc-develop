@@ -175,35 +175,7 @@ as organized in this guide, or just view the code below.</p>
 39
 40
 41
-42
-43
-44
-45
-46
-47
-48
-49
-50
-51
-52
-53
-54
-55
-56</pre></div></td><td class="code"><div class="highlight"><pre><span class="c">#! /bin/bash</span>
-<span class="c"># My first script, presenting programming to the world</span>
-<span class="c"># </span>
-<span class="c"># Initialize variables</span>
-<span class="nv">DISPLAY</span><span class="o">=</span><span class="s1">&#39;World&#39;</span>
-<span class="nv">EXIT</span><span class="o">=</span><span class="s1">&#39;0&#39;</span>
-<span class="nv">RESP</span><span class="o">=</span><span class="s1">&#39;n&#39;</span>
-<span class="c"># </span>
-<span class="c"># Assign parameters ($n) to named variables</span>
-<span class="c"># if [$1 != &#39;&#39;]      ; # fails without spaces around [ ]</span>
-<span class="c"># if [ $1 != &#39;&#39; ]    ; # works with !# and single [ ]</span>
-<span class="c"># if [ ! $1 == &#39;&#39; ]  ; # works to (!) negate the expression</span>
-<span class="k">if</span> <span class="o">[[</span> <span class="nv">$1</span> !<span class="o">=</span> <span class="s1">&#39;&#39;</span> <span class="o">]]</span>    ; <span class="c"># works w/ single [ and double [[ </span>
-<span class="k">then </span><span class="nv">DISPLAY</span><span class="o">=</span><span class="nv">$1</span>
-<span class="c">#! /bin/bash</span>
+42</pre></div></td><td class="code"><div class="highlight"><pre><span class="c">#! /bin/bash</span>
 <span class="c"># My first script, presenting programming to the world</span>
 <span class="c"># </span>
 <span class="c"># Initialize variables</span>
@@ -219,8 +191,8 @@ as organized in this guide, or just view the code below.</p>
 <span class="c"># </span>
 <span class="c"># User execution confirmation (location varies)</span>
 <span class="c"># echo &quot;Say Hello?&quot; </span>
-<span class="c"># echo &quot;\n\e[1;31m Say Hello?&quot;</span>
-<span class="nb">echo</span>  <span class="s2">&quot;Run this script? (y/n) &quot;</span>
+<span class="c"># echo &quot;$(tput setaf 1) Say Hello?$(tput sgr0)&quot;</span>
+<span class="nb">echo</span>  <span class="s2">&quot;$(tput setaf 1)Run this script? (y/n) $(tput sgr0)&quot;</span>
 <span class="nb">read </span>RESP
 <span class="k">if</span> <span class="o">[</span> <span class="s2">&quot;$RESP&quot;</span> !<span class="o">=</span> <span class="s1">&#39;y&#39;</span> <span class="o">]</span>; <span class="k">then</span>
 <span class="k">  </span><span class="nb">echo</span> <span class="s2">&quot;Canceled&quot;</span>
@@ -243,7 +215,7 @@ as organized in this guide, or just view the code below.</p>
 <span class="c"># echo &quot;Hello $DISPLAY&quot; ; # $ evaluation in partial quotes</span>
 
 <span class="c"># exit statements with user message display</span>
-<span class="nb">echo</span> <span class="s2">&quot;Hello $DISPLAY&quot;</span>
+<span class="nb">echo</span> <span class="s2">&quot;$(tput setaf 2) Hello $DISPLAY $(tput sgr0)&quot;</span>
 <span class="c"># </span>
 </pre></div>
 </td></tr></table></div>
@@ -362,28 +334,28 @@ as organized in this guide, or just view the code below.</p>
 <span class="nb">echo test command </span>list in parentheses
 <span class="c">#</span>
 <span class="nv">TEXT</span><span class="o">=</span><span class="s1">&#39;embedded grouped commands&#39;</span>
-<span class="c"># echo -e $(</span>
-<span class="c">#   &#39;\e[32m These statements test&#39;</span>
-<span class="c">#   &quot; $TEXT. \e[0m&quot;</span>
+<span class="c"># echo $(</span>
+<span class="c">#   &#39; These statements test&#39;</span>
+<span class="c">#   &quot; $TEXT. &quot;</span>
 <span class="c"># )</span>
 <span class="c">#</span>
 <span class="c"># $(</span>
-<span class="c">#   echo -e &quot;\e[31m These statements test&quot;</span>
-<span class="c">#   echo -e &quot; $TEXT. \e[0m&quot;</span>
+<span class="c">#   echo  &quot; These statements test&quot;</span>
+<span class="c">#   echo  &quot; $TEXT. &quot;</span>
 <span class="c"># )</span>
 <span class="c">#</span>
-<span class="nb">echo</span> -e <span class="k">$(</span>
-  <span class="nb">echo</span> <span class="s1">&#39;\e[32m These statements test&#39;</span>
-  <span class="nb">echo</span> <span class="s2">&quot; $TEXT. \e[0m&quot;</span>
+<span class="nb">echo</span>  <span class="k">$(</span>
+  <span class="nb">echo</span> <span class="s1">&#39; These statements test&#39;</span>
+  <span class="nb">echo</span> <span class="s2">&quot; $TEXT. &quot;</span>
 <span class="k">)</span>
 <span class="c">#</span>
 <span class="nb">echo</span>
 <span class="nb">echo test command </span>group anonymous <span class="k">function</span>
 <span class="c">#</span>
 <span class="nv">TEXT</span><span class="o">=</span><span class="s1">&#39;an embedded anonymous function&#39;</span>
-<span class="c"># echo -e ${ </span>
-<span class="c">#   echo &#39;\e[32m These statements test&#39;</span>
-<span class="c">#   echo &quot; $TEXT. \e[0m&quot; </span>
+<span class="c"># echo  ${ </span>
+<span class="c">#   echo &#39;These statements test&#39;</span>
+<span class="c">#   echo &quot; $TEXT. &quot; </span>
 <span class="c"># }</span>
 <span class="c">#</span>
 <span class="nb">echo</span>
@@ -391,8 +363,8 @@ as organized in this guide, or just view the code below.</p>
 <span class="c">#</span>
 <span class="nv">SEVEN</span><span class="o">=</span>7
 <span class="nv">FIVE</span><span class="o">=</span>5
-<span class="c"># echo -e &#39;\e[32m $FIVE times $SEVEN is $(( FIVE * SEVEN )) \e[0m&#39;</span>
-<span class="nb">echo</span> -e <span class="s2">&quot;\e[32m $FIVE times $SEVEN is $(( FIVE * SEVEN )) \e[0m&quot;</span>
+<span class="c"># echo &#39;$FIVE times $SEVEN is $(( FIVE * SEVEN ))&#39;</span>
+<span class="nb">echo</span>  <span class="s2">&quot;$FIVE times $SEVEN is $(( FIVE * SEVEN ))&quot;</span>
 <span class="c"># </span>
 <span class="c"># Main code, if Valid</span>
 <span class="c"># </span>
