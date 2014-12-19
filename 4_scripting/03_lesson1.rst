@@ -128,10 +128,10 @@ statement, so your code reads:
 .. code-block:: bash
 
   # Assign parameters ($n) to named variables
-  # if [! $1 = ''] && [-n $1]    ; # fails without spaces around [ ]
-  # if [ $1 != '' ] && [ -n $1]   ; # works with !# and single [ ]
-  # if [ ! $1 == '' ] && [ -n $1]  ; # works to (!) negate the expression
-  #if [ -n $1 ] && [ ! $1 = '' ]   ; # works w/ single [ and double [[ 
+  # if [! $1 = ''] && [-n $1]    ; 
+  # if [ $1 != '' ] && [ -n $1 ]   ; 
+  # if [ ! $1 == '' ] && [ -n $1 ]  ;
+  #if [ -n $1 ] && [ ! $1 = '' ]   ; 
   then DISPLAY=$1
   fi
 

@@ -72,18 +72,18 @@ commands.
 
       TEXT='embedded grouped commands'
       $(
-        echo -e '\e[31m These statements test'
-        echo -e " $TEXT. \e[0m"
+        echo  'These statements test'
+        echo " $TEXT. "
       )
       #
-      echo -e $(
-        '\e[32m These statements test'
-        " $TEXT. \e[0m"
+      echo  $(
+        ' These statements test'
+        " $TEXT."
       )
       #
-      echo -e $(
-        echo '\e[32m These statements test'
-        echo " $TEXT. \e[0m"
+      echo  $(
+        echo ' These statements test'
+        echo " $TEXT."
       )
 
 Grouped Commands *$(...)*
@@ -111,9 +111,9 @@ Question: were local variables assigned in the subshell?
    .. code-block:: bash
 
       TEXT='an embedded anonymous function'
-      echo -e ${
-        echo '\e[32m These statements test'
-        echo " $TEXT. \e[0m"
+      echo  ${
+        echo 'These statements test'
+        echo " $TEXT. "
       }
 
 Anonymous functions *${ ... }*
@@ -137,8 +137,8 @@ variables are accessible to the local anonymous function.
    .. code-block:: bash
 
       SEVEN=7 ; FIVE=5
-      echo -e '\e[32m $FIVE times $SEVEN is $(( FIVE * SEVEN )) \e[0m'
-      echo -e "\e[32m $FIVE times $SEVEN is $(( FIVE * SEVEN )) \e[0m"
+      echo  '$FIVE times $SEVEN is $(( FIVE * SEVEN )) '
+      echo "$FIVE times $SEVEN is $(( FIVE * SEVEN ))"
 
 Integer calculation *$((...))*
 ------------------------------
@@ -175,7 +175,7 @@ example shell outline or download it from :download:`_downloads/example.sh`.
 
       for NAME in 'in' 'inn' 'ian' 'eoin'
       do
-        echo $NAME
+        echo "$(tput setaf 2) $NAME $(tput sgr0)"
       done
 
 Iterative For
@@ -236,7 +236,7 @@ have been the second error.)
         *)
           ANS+="ambiguous answer\n" ;;
       esac
-      echo -e -n "\e[32m$ANS\e[0m"
+      echo "$ANS"
 
 Case Branching
 -----------------------------
@@ -278,9 +278,9 @@ happens after a block is executed:
         else
           CHROMEVER+='amd64.deb'
         fi
-        echo -e "\e[32m $CHROMEVER \e[0m"
+        echo  "$(tput setaf 2) $CHROMEVER $(tput sgr0)"
       else
-        echo -e '\e[5;31m try again using sudo \e[0m'
+        echo  "$(tput setaf 2) try again using sudo $(tput sgr0)"
       fi
 
 if branching
@@ -315,7 +315,7 @@ be used to download and install the **Chrome** web browser from a script.
       # until [[ $K -le 0 ]]
       do
         (( K-- ))
-        echo -e "\e[32m $K squared is: $(( K ** 2 )) \e[0m"
+        echo  "$(tput setaf 2) $K squared is: $(( K ** 2 )) $(tput sgr0)"
       done
 
 While Conditional Looping
@@ -338,7 +338,7 @@ performs conditional looping.
 
       select NAME in 'in' 'inn' 'ian' 'eoin'
       do
-        echo -e "\e[32m $NAME \e[0m"
+        echo "$(tput setaf 2) $NAME $(tput sgr0)"
       done
  
 Select List

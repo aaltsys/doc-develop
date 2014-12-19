@@ -20,12 +20,12 @@
 echo
 echo "iterative for loop"
 #
-echo -e -n '\e[32m'
+echo "$(tput setaf 2)"
 for NAME in 'in' 'inn' 'ian' 'eoin'
 do
   echo "$NAME"
 done
-echo -e '\e[0m'
+echo "$(tput sgr0)"
 #
 echo
 echo "integer for loop"
@@ -35,9 +35,9 @@ echo "integer for loop"
 #   echo "The negative of $K squared is: $(( K * -K ))"
 # done
 # 
-for (( K=4; $K>=0; K-- ))
+for $(( I=4; $I>=0; I-- ))
 do
-  echo -e "\e[32m The negative of $K squared is: $(( K * -K )) \e[0m"
+  echo  "$(tput setaf 2) The negative of $K squared is: $(( K * -K )) $(tput sgr0)"
 done
 #
 echo
@@ -49,13 +49,13 @@ OPT='YNmaybe'
 ANS=''
 case $OPT in 
   Y*|y*)
-    ANS+="positive answer\n" ;;
+    ANS+="positive answer" ;;
   *N*|*n*)
-    ANS+="negative answer\n" ;;&
+    ANS+="negative answer" ;;&
   *)
-    ANS+="ambiguous answer\n" ;;
+    ANS+="ambiguous answer" ;;
 esac
-echo -e -n "\e[32m$ANS\e[0m"
+echo  "$(tput setaf 2)$ANS$(tput sgr0)"
 #
 echo
 echo "if branching test"
@@ -70,9 +70,9 @@ then
   else
     CHROMEVER+='amd64.deb'
   fi
-  echo -e "\e[32m $CHROMEVER \e[0m"
+  echo  "$(tput setaf 2) $CHROMEVER $(tput sgr0)"
 else
-  echo -e '\e[5;31m try again using sudo \e[0m'
+  echo  "$(tput setaf 1) try again using sudo $(tput sgr0)"
 fi
 #
 echo
@@ -83,16 +83,18 @@ while [ $K -gt 0 ]
 # until [[ $K -le 0 ]]
 do
   (( K-- ))
-  echo -e "\e[32m $K squared is: $(( K ** 2 )) \e[0m"
+  echo -e "$(tput setaf 2) $K squared is: $(( K ** 2 )) $(tput sgr0)"
 done
 #
 echo
 echo "select loop"
 #
-select NAME in 'in' 'inn' 'ian' 'eoin'
+select NAME in 'in' 'inn' 'ian' 'eoin' 
 do
-  echo -e "\e[32m $NAME \e[0m"
+  echo  "$(tput setaf 2) $NAME $(tput sgr0)"
+break
 done
+
 #
 # 
 # Exit section: echo results, log errors
