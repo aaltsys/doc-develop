@@ -46,8 +46,8 @@ TEXT='embedded grouped commands'
 # )
 #
 echo  $(
-  echo ' These statements test'
-  echo " $TEXT. "
+  echo "$(tput setaf 1) These statements test "
+  echo " $TEXT. $(tput sgr0)"
 )
 #
 echo

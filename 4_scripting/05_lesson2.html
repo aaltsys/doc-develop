@@ -161,18 +161,18 @@ commmand must be used to feed that result as a command to the evaluation.</p>
 <p class="first sidebar-title">Grouped command expressions</p>
 <div class="last highlight-bash"><div class="highlight"><pre><span class="nv">TEXT</span><span class="o">=</span><span class="s1">&#39;embedded grouped commands&#39;</span>
 <span class="k">$(</span>
-  <span class="nb">echo</span> -e <span class="s1">&#39;\e[31m These statements test&#39;</span>
-  <span class="nb">echo</span> -e <span class="s2">&quot; $TEXT. \e[0m&quot;</span>
+  <span class="nb">echo</span>  <span class="s1">&#39;These statements test&#39;</span>
+  <span class="nb">echo</span> <span class="s2">&quot; $TEXT. &quot;</span>
 <span class="k">)</span>
 <span class="c">#</span>
-<span class="nb">echo</span> -e <span class="k">$(</span>
-  <span class="s1">&#39;\e[32m These statements test&#39;</span>
-  <span class="s2">&quot; $TEXT. \e[0m&quot;</span>
+<span class="nb">echo</span>  <span class="k">$(</span>
+  <span class="s1">&#39; These statements test&#39;</span>
+  <span class="s2">&quot; $TEXT.&quot;</span>
 <span class="k">)</span>
 <span class="c">#</span>
-<span class="nb">echo</span> -e <span class="k">$(</span>
-  <span class="nb">echo</span> <span class="s1">&#39;\e[32m These statements test&#39;</span>
-  <span class="nb">echo</span> <span class="s2">&quot; $TEXT. \e[0m&quot;</span>
+<span class="nb">echo</span>  <span class="k">$(</span>
+  <span class="nb">echo</span> <span class="s1">&#39; These statements test&#39;</span>
+  <span class="nb">echo</span> <span class="s2">&quot; $TEXT.&quot;</span>
 <span class="k">)</span>
 </pre></div>
 </div>
@@ -198,9 +198,9 @@ Question: were local variables assigned in the subshell?</p>
 <div class="sidebar">
 <p class="first sidebar-title">Grouped command functions</p>
 <div class="last highlight-bash"><div class="highlight"><pre><span class="nv">TEXT</span><span class="o">=</span><span class="s1">&#39;an embedded anonymous function&#39;</span>
-<span class="nb">echo</span> -e <span class="k">${</span><span class="p"></span>
-<span class="p">  echo </span><span class="s1">&#39;\e[32m These statements test&#39;</span><span class="p"></span>
-<span class="p">  echo </span><span class="s2">&quot; $TEXT. \e[0m&quot;</span><span class="p"></span>
+<span class="nb">echo</span>  <span class="k">${</span><span class="p"></span>
+<span class="p">  echo </span><span class="s1">&#39;These statements test&#39;</span><span class="p"></span>
+<span class="p">  echo </span><span class="s2">&quot; $TEXT. &quot;</span><span class="p"></span>
 <span class="k">}</span>
 </pre></div>
 </div>
@@ -222,8 +222,8 @@ for grouped commands. However, this syntax will evaluate variables.</p>
 <div class="sidebar">
 <p class="first sidebar-title">Integer calculation evaluation</p>
 <div class="last highlight-bash"><div class="highlight"><pre><span class="nv">SEVEN</span><span class="o">=</span>7 ; <span class="nv">FIVE</span><span class="o">=</span>5
-<span class="nb">echo</span> -e <span class="s1">&#39;\e[32m $FIVE times $SEVEN is $(( FIVE * SEVEN )) \e[0m&#39;</span>
-<span class="nb">echo</span> -e <span class="s2">&quot;\e[32m $FIVE times $SEVEN is $(( FIVE * SEVEN )) \e[0m&quot;</span>
+<span class="nb">echo</span>  <span class="s1">&#39;$FIVE times $SEVEN is $(( FIVE * SEVEN )) &#39;</span>
+<span class="nb">echo</span> <span class="s2">&quot;$FIVE times $SEVEN is $(( FIVE * SEVEN ))&quot;</span>
 </pre></div>
 </div>
 </div>
@@ -257,7 +257,7 @@ example shell outline or download it from <a class="reference download internal"
 <p class="first sidebar-title">Iterative for</p>
 <div class="last highlight-bash"><div class="highlight"><pre><span class="k">for </span>NAME in <span class="s1">&#39;in&#39;</span> <span class="s1">&#39;inn&#39;</span> <span class="s1">&#39;ian&#39;</span> <span class="s1">&#39;eoin&#39;</span>
 <span class="k">do</span>
-<span class="k">  </span><span class="nb">echo</span> <span class="nv">$NAME</span>
+<span class="k">  </span><span class="nb">echo</span> <span class="s2">&quot;$(tput setaf 2) $NAME $(tput sgr0)&quot;</span>
 <span class="k">done</span>
 </pre></div>
 </div>
@@ -311,7 +311,7 @@ have been the second error.)</p>
   *<span class="o">)</span>
     ANS+<span class="o">=</span><span class="s2">&quot;ambiguous answer\n&quot;</span> ;;
 <span class="k">esac</span>
-<span class="nb">echo</span> -e -n <span class="s2">&quot;\e[32m$ANS\e[0m&quot;</span>
+<span class="nb">echo</span> <span class="s2">&quot;$ANS&quot;</span>
 </pre></div>
 </div>
 </div>
@@ -363,9 +363,9 @@ script using each of the suggested values for <tt class="docutils literal"><span
   <span class="k">else</span>
 <span class="k">    </span>CHROMEVER+<span class="o">=</span><span class="s1">&#39;amd64.deb&#39;</span>
   <span class="k">fi</span>
-<span class="k">  </span><span class="nb">echo</span> -e <span class="s2">&quot;\e[32m $CHROMEVER \e[0m&quot;</span>
+<span class="k">  </span><span class="nb">echo</span>  <span class="s2">&quot;$(tput setaf 2) $CHROMEVER $(tput sgr0)&quot;</span>
 <span class="k">else</span>
-<span class="k">  </span><span class="nb">echo</span> -e <span class="s1">&#39;\e[5;31m try again using sudo \e[0m&#39;</span>
+<span class="k">  </span><span class="nb">echo</span>  <span class="s2">&quot;$(tput setaf 2) try again using sudo $(tput sgr0)&quot;</span>
 <span class="k">fi</span>
 </pre></div>
 </div>
@@ -400,7 +400,7 @@ be used to download and install the <strong>Chrome</strong> web browser from a s
 <span class="c"># until [[ $K -le 0 ]]</span>
 <span class="k">do</span>
   <span class="o">((</span> K-- <span class="o">))</span>
-  <span class="nb">echo</span> -e <span class="s2">&quot;\e[32m $K squared is: $(( K ** 2 )) \e[0m&quot;</span>
+  <span class="nb">echo</span>  <span class="s2">&quot;$(tput setaf 2) $K squared is: $(( K ** 2 )) $(tput sgr0)&quot;</span>
 <span class="k">done</span>
 </pre></div>
 </div>
@@ -422,7 +422,7 @@ the two tests are equivalent in simplicity.</p>
 <p class="first sidebar-title">Select list</p>
 <div class="last highlight-bash"><div class="highlight"><pre><span class="k">select </span>NAME in <span class="s1">&#39;in&#39;</span> <span class="s1">&#39;inn&#39;</span> <span class="s1">&#39;ian&#39;</span> <span class="s1">&#39;eoin&#39;</span>
 <span class="k">do</span>
-<span class="k">  </span><span class="nb">echo</span> -e <span class="s2">&quot;\e[32m $NAME \e[0m&quot;</span>
+<span class="k">  </span><span class="nb">echo</span> <span class="s2">&quot;$(tput setaf 2) $NAME $(tput sgr0)&quot;</span>
 <span class="k">done</span>
 </pre></div>
 </div>

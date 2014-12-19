@@ -345,8 +345,8 @@ as organized in this guide, or just view the code below.</p>
 <span class="c"># )</span>
 <span class="c">#</span>
 <span class="nb">echo</span>  <span class="k">$(</span>
-  <span class="nb">echo</span> <span class="s1">&#39; These statements test&#39;</span>
-  <span class="nb">echo</span> <span class="s2">&quot; $TEXT. &quot;</span>
+  <span class="nb">echo</span> <span class="s2">&quot;$(tput setaf 1) These statements test &quot;</span>
+  <span class="nb">echo</span> <span class="s2">&quot; $TEXT. $(tput sgr0)&quot;</span>
 <span class="k">)</span>
 <span class="c">#</span>
 <span class="nb">echo</span>
@@ -378,105 +378,107 @@ as organized in this guide, or just view the code below.</p>
 <span id="logic-answers"></span><h2>Sample Logic Control Script<a class="headerlink" href="#sample-logic-control-script" title="Permalink to this headline">¶</a></h2>
 <p>Download a sample script answering the Lesson 2 logic control topics
 <a class="reference download internal" href="_downloads/logic-control.sh"><tt class="xref download docutils literal"><span class="pre">here</span></tt></a>, or just view the code below.</p>
-<div class="highlight-bash"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48
-49
-50
-51
-52
-53
-54
-55
-56
-57
-58
-59
-60
-61
-62
-63
-64
-65
-66
-67
-68
-69
-70
-71
-72
-73
-74
-75
-76
-77
-78
-79
-80
-81
-82
-83
-84
-85
-86
-87
-88
-89
-90
-91
-92
-93
-94
-95
-96
-97
-98
-99</pre></div></td><td class="code"><div class="highlight"><pre><span class="c">#!/bin/bash</span>
+<div class="highlight-bash"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>  1
+  2
+  3
+  4
+  5
+  6
+  7
+  8
+  9
+ 10
+ 11
+ 12
+ 13
+ 14
+ 15
+ 16
+ 17
+ 18
+ 19
+ 20
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59
+ 60
+ 61
+ 62
+ 63
+ 64
+ 65
+ 66
+ 67
+ 68
+ 69
+ 70
+ 71
+ 72
+ 73
+ 74
+ 75
+ 76
+ 77
+ 78
+ 79
+ 80
+ 81
+ 82
+ 83
+ 84
+ 85
+ 86
+ 87
+ 88
+ 89
+ 90
+ 91
+ 92
+ 93
+ 94
+ 95
+ 96
+ 97
+ 98
+ 99
+100
+101</pre></div></td><td class="code"><div class="highlight"><pre><span class="c">#!/bin/bash</span>
 <span class="c"># Describe program&#39;s principal objective</span>
 <span class="c"># </span>
 <span class="c"># Initialize variables</span>
@@ -498,12 +500,12 @@ as organized in this guide, or just view the code below.</p>
 <span class="nb">echo</span>
 <span class="nb">echo</span> <span class="s2">&quot;iterative for loop&quot;</span>
 <span class="c">#</span>
-<span class="nb">echo</span> -e -n <span class="s1">&#39;\e[32m&#39;</span>
+<span class="nb">echo</span> <span class="s2">&quot;$(tput setaf 2)&quot;</span>
 <span class="k">for </span>NAME in <span class="s1">&#39;in&#39;</span> <span class="s1">&#39;inn&#39;</span> <span class="s1">&#39;ian&#39;</span> <span class="s1">&#39;eoin&#39;</span>
 <span class="k">do</span>
 <span class="k">  </span><span class="nb">echo</span> <span class="s2">&quot;$NAME&quot;</span>
 <span class="k">done</span>
-<span class="nb">echo</span> -e <span class="s1">&#39;\e[0m&#39;</span>
+<span class="nb">echo</span> <span class="s2">&quot;$(tput sgr0)&quot;</span>
 <span class="c">#</span>
 <span class="nb">echo</span>
 <span class="nb">echo</span> <span class="s2">&quot;integer for loop&quot;</span>
@@ -513,9 +515,9 @@ as organized in this guide, or just view the code below.</p>
 <span class="c">#   echo &quot;The negative of $K squared is: $(( K * -K ))&quot;</span>
 <span class="c"># done</span>
 <span class="c"># </span>
-<span class="k">for</span> <span class="o">((</span> <span class="nv">K</span><span class="o">=</span>4; <span class="nv">$K</span>&gt;<span class="o">=</span>0; K-- <span class="o">))</span>
+<span class="k">for</span> <span class="k">$((</span> <span class="nv">I</span><span class="o">=</span><span class="m">4</span>; <span class="nv">$I</span>&gt;<span class="o">=</span><span class="m">0</span>; I-- <span class="k">))</span>
 <span class="k">do</span>
-<span class="k">  </span><span class="nb">echo</span> -e <span class="s2">&quot;\e[32m The negative of $K squared is: $(( K * -K )) \e[0m&quot;</span>
+<span class="k">  </span><span class="nb">echo</span>  <span class="s2">&quot;$(tput setaf 2) The negative of $K squared is: $(( K * -K )) $(tput sgr0)&quot;</span>
 <span class="k">done</span>
 <span class="c">#</span>
 <span class="nb">echo</span>
@@ -527,13 +529,13 @@ as organized in this guide, or just view the code below.</p>
 <span class="nv">ANS</span><span class="o">=</span><span class="s1">&#39;&#39;</span>
 <span class="k">case</span> <span class="nv">$OPT</span> in 
   Y*|y*<span class="o">)</span>
-    ANS+<span class="o">=</span><span class="s2">&quot;positive answer\n&quot;</span> ;;
+    ANS+<span class="o">=</span><span class="s2">&quot;positive answer&quot;</span> ;;
   *N*|*n*<span class="o">)</span>
-    ANS+<span class="o">=</span><span class="s2">&quot;negative answer\n&quot;</span> ;;&amp;
+    ANS+<span class="o">=</span><span class="s2">&quot;negative answer&quot;</span> ;;&amp;
   *<span class="o">)</span>
-    ANS+<span class="o">=</span><span class="s2">&quot;ambiguous answer\n&quot;</span> ;;
+    ANS+<span class="o">=</span><span class="s2">&quot;ambiguous answer&quot;</span> ;;
 <span class="k">esac</span>
-<span class="nb">echo</span> -e -n <span class="s2">&quot;\e[32m$ANS\e[0m&quot;</span>
+<span class="nb">echo</span>  <span class="s2">&quot;$(tput setaf 2)$ANS$(tput sgr0)&quot;</span>
 <span class="c">#</span>
 <span class="nb">echo</span>
 <span class="nb">echo</span> <span class="s2">&quot;if branching test&quot;</span>
@@ -548,9 +550,9 @@ as organized in this guide, or just view the code below.</p>
   <span class="k">else</span>
 <span class="k">    </span>CHROMEVER+<span class="o">=</span><span class="s1">&#39;amd64.deb&#39;</span>
   <span class="k">fi</span>
-<span class="k">  </span><span class="nb">echo</span> -e <span class="s2">&quot;\e[32m $CHROMEVER \e[0m&quot;</span>
+<span class="k">  </span><span class="nb">echo</span>  <span class="s2">&quot;$(tput setaf 2) $CHROMEVER $(tput sgr0)&quot;</span>
 <span class="k">else</span>
-<span class="k">  </span><span class="nb">echo</span> -e <span class="s1">&#39;\e[5;31m try again using sudo \e[0m&#39;</span>
+<span class="k">  </span><span class="nb">echo</span>  <span class="s2">&quot;$(tput setaf 1) try again using sudo $(tput sgr0)&quot;</span>
 <span class="k">fi</span>
 <span class="c">#</span>
 <span class="nb">echo</span>
@@ -561,16 +563,18 @@ as organized in this guide, or just view the code below.</p>
 <span class="c"># until [[ $K -le 0 ]]</span>
 <span class="k">do</span>
   <span class="o">((</span> K-- <span class="o">))</span>
-  <span class="nb">echo</span> -e <span class="s2">&quot;\e[32m $K squared is: $(( K ** 2 )) \e[0m&quot;</span>
+  <span class="nb">echo</span> -e <span class="s2">&quot;$(tput setaf 2) $K squared is: $(( K ** 2 )) $(tput sgr0)&quot;</span>
 <span class="k">done</span>
 <span class="c">#</span>
 <span class="nb">echo</span>
 <span class="nb">echo</span> <span class="s2">&quot;select loop&quot;</span>
 <span class="c">#</span>
-<span class="k">select </span>NAME in <span class="s1">&#39;in&#39;</span> <span class="s1">&#39;inn&#39;</span> <span class="s1">&#39;ian&#39;</span> <span class="s1">&#39;eoin&#39;</span>
+<span class="k">select </span>NAME in <span class="s1">&#39;in&#39;</span> <span class="s1">&#39;inn&#39;</span> <span class="s1">&#39;ian&#39;</span> <span class="s1">&#39;eoin&#39;</span> 
 <span class="k">do</span>
-<span class="k">  </span><span class="nb">echo</span> -e <span class="s2">&quot;\e[32m $NAME \e[0m&quot;</span>
+<span class="k">  </span><span class="nb">echo</span>  <span class="s2">&quot;$(tput setaf 2) $NAME $(tput sgr0)&quot;</span>
+<span class="nb">break</span>
 <span class="k">done</span>
+
 <span class="c">#</span>
 <span class="c"># </span>
 <span class="c"># Exit section: echo results, log errors</span>
